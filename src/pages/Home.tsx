@@ -10,9 +10,9 @@ const Home = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Wellness Solutions for Everyone
               </h1>
-              <p className="text-lg mb-8">
-                Meltdown provides innovative wellness programs for companies, employees, and wellness providers. Transform your workplace culture with our holistic approach.
-              </p>
+              <p className="text-lg mb-8 text-left">We have developed a wellbeing system for companies 
+to  build  an  active  work  culture  by  providing  their  employees  access  to  multiple  wellness 
+services under one membership and gamifying the entire experience.</p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-primary">Get Started</Link>
                 <Link to="/corporate-wellness" className="btn-outline">Learn More</Link>
