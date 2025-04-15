@@ -19,7 +19,7 @@ const Home = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img alt="Wellness at work" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png" />
+              <img alt="Wellness at work" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/1215fe4c-07f6-441d-9878-2f07f49ef187.png" />
             </div>
           </div>
         </div>
