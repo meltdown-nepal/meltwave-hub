@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Home = () => {
-  return (
-    <div>
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -22,11 +19,7 @@ const Home = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
-                alt="Wellness at work" 
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
+              <img alt="Wellness at work" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png" />
             </div>
           </div>
         </div>
@@ -172,8 +165,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Home;
