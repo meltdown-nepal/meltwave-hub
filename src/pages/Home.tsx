@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FaqSection from '../components/FaqSection';
 import TrustedBySection from '../components/TrustedBySection';
+import ClientLogoCarousel from '../components/ClientLogoCarousel';
 
 const Home = () => {
   return <div>
@@ -81,6 +82,9 @@ services under one membership and gamifying the entire experience.</p>
           </div>
         </div>
       </section>
+
+      {/* Inline Client Logo Carousel */}
+      <ClientLogoCarousel />
 
       {/* Trusted By Section */}
       <TrustedBySection />
