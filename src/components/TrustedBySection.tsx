@@ -4,7 +4,7 @@ import { ScrollArea } from './ui/scroll-area';
 // Logo array - easy to edit manually
 const logos = [{
   id: 1,
-  src: "/lovable-uploads/logo1.png",
+  src: "https://www.brand.lftechnology.com/download/full-color/leapfrog-fl-fc.svg",
   alt: "Company Logo 1"
 }, {
   id: 2,
