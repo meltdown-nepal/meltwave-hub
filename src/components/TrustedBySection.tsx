@@ -47,7 +47,7 @@ const TrustedBySection = () => {
     return () => clearInterval(animationId);
   }, []);
   return <section id="trusted-by" className="bg-gray-50 py-0">
-      <div className="container-custom">
+      <div className="container-custom py-0 my-[2px]">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold tracking-wider mx-0 py-0 my-[20px]">Our Clients</h2>
         </div>
