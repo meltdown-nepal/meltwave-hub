@@ -18,42 +18,45 @@ const TrustedBySection = () => {
     const animateScroll = () => {
       if (scrollRef.current) {
         if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+          // Reset to start with no visual interruption
           scrollRef.current.scrollLeft = 0;
         } else {
+          // Smooth continuous scroll
           scrollRef.current.scrollLeft += 1;
         }
       }
     };
     
-    const animationId = setInterval(animateScroll, 30);
+    // Faster animation for more fluid movement
+    const animationId = setInterval(animateScroll, 20);
     
     return () => clearInterval(animationId);
   }, []);
 
   return (
-    <section className="section-padding bg-gray-50" id="trusted-by">
+    <section className="py-16 bg-gray-50" id="trusted-by">
       <div className="container-custom">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-wider">TRUSTED BY</h2>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-wider">OUR CLIENTS</h2>
         </div>
         
-        {/* Desktop scrolling logos */}
+        {/* Desktop scrolling logos - full width continuous flow */}
         <div className="hidden md:block overflow-hidden">
           <div 
             ref={scrollRef} 
-            className="flex space-x-16 py-6 overflow-x-hidden w-full"
+            className="flex items-center space-x-12 py-8 overflow-x-hidden w-full"
             style={{ minWidth: "200%" }}
           >
             {/* First set of logos */}
             {logos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-lg shadow-sm h-20 w-40"
+                className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-md shadow-sm h-24 w-48"
               >
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className="max-h-12 max-w-full object-contain" 
+                  className="max-h-14 max-w-full object-contain" 
                 />
               </div>
             ))}
@@ -62,12 +65,12 @@ const TrustedBySection = () => {
             {logos.map((logo) => (
               <div 
                 key={`duplicate-${logo.id}`} 
-                className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-lg shadow-sm h-20 w-40"
+                className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-md shadow-sm h-24 w-48"
               >
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className="max-h-12 max-w-full object-contain" 
+                  className="max-h-14 max-w-full object-contain" 
                 />
               </div>
             ))}
@@ -77,16 +80,16 @@ const TrustedBySection = () => {
         {/* Mobile version with ScrollArea */}
         <div className="md:hidden">
           <ScrollArea className="w-full whitespace-nowrap">
-            <div className="flex space-x-8 py-6 px-4">
+            <div className="flex space-x-6 py-6 px-4">
               {logos.map((logo) => (
                 <div 
                   key={logo.id} 
-                  className="flex-shrink-0 flex items-center justify-center bg-white p-4 rounded-lg shadow-sm h-16 w-32"
+                  className="flex-shrink-0 flex items-center justify-center bg-white p-4 rounded-md shadow-sm h-20 w-40"
                 >
                   <img 
                     src={logo.src} 
                     alt={logo.alt}
-                    className="max-h-10 max-w-full object-contain" 
+                    className="max-h-12 max-w-full object-contain" 
                   />
                 </div>
               ))}

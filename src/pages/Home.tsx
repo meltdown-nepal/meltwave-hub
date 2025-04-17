@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -83,11 +82,11 @@ services under one membership and gamifying the entire experience.</p>
         </div>
       </section>
 
-      {/* Video Testimonials Section */}
-      <TestimonialsSection />
-
       {/* Trusted By Section */}
       <TrustedBySection />
+
+      {/* Video Testimonials Section */}
+      <TestimonialsSection />
 
       {/* FAQ Section */}
       <FaqSection />
