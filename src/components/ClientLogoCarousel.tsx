@@ -45,33 +45,6 @@ const ClientLogoCarousel = () => {
     const animationId = setInterval(animateScroll, 30);
     return () => clearInterval(animationId);
   }, []);
-  return <section className="py-8 bg-white border-y border-gray-100" id="client-logos">
-      <div className="overflow-hidden">
-        <div className="container-custom">
-          <div ref={scrollRef} className="flex items-center space-x-12 py-4 overflow-x-hidden w-full" style={{
-          minWidth: "200%"
-        }}>
-            {/* Trusted By label */}
-            <div className="flex-shrink-0 mr-6">
-              <span className="uppercase text-sm font-bold tracking-wider text-gray-500">Trusted By</span>
-            </div>
-            
-            {/* First set of logos */}
-            {clientLogos.map(logo => <div key={logo.id} className="flex-shrink-0">
-                <img src={logo.src} alt={logo.alt} className="h-12 max-w-full object-fill" />
-              </div>)}
-            
-            {/* Duplicate set for seamless looping */}
-            <div className="flex-shrink-0 mr-6">
-              <span className="uppercase text-sm font-bold tracking-wider text-gray-500">Trusted By</span>
-            </div>
-            
-            {clientLogos.map(logo => <div key={`duplicate-${logo.id}`} className="flex-shrink-0">
-                <img src={logo.src} alt={logo.alt} className="h-12 max-w-full object-contain" />
-              </div>)}
-          </div>
-        </div>
-      </div>
-    </section>;
+  return;
 };
 export default ClientLogoCarousel;
