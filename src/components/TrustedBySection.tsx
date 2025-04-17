@@ -47,7 +47,7 @@ const TrustedBySection = () => {
     return () => clearInterval(animationId);
   }, []);
   return <section id="trusted-by" className="bg-gray-50 py-0">
-      <div className="container-custom py-0 my-[2px] bg-gray-50">
+      <div className="container-custom py-0 my-[2px] bg-white">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold tracking-wider mx-0 py-0 my-[20px]">Our Clients</h2>
         </div>
@@ -56,10 +56,10 @@ const TrustedBySection = () => {
         <div className="hidden md:block overflow-hidden">
           <div ref={scrollRef} style={{
           minWidth: "200%"
-        }} className="flex items-center space-x-12 overflow-x-hidden w-full bg-neutral-50 py-0">
+        }} className="flex items-center space-x-12 overflow-x-hidden w-full py-0 bg-white">
             {/* First set of logos */}
             {logos.map(logo => <div key={logo.id} className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-md shadow-sm h-24 w-48">
-                <img src={logo.src} alt={logo.alt} className="max-h-14 max-w-full object-contain" />
+                <img src={logo.src} alt={logo.alt} className="max-h-14 max-w-full object-none" />
               </div>)}
             
             {/* Duplicate set for seamless looping */}
