@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Contact = () => {
-  return (
-    <div>
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -33,60 +30,32 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium mb-1">First Name</label>
-                    <input 
-                      type="text" 
-                      id="firstName" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      placeholder="Your first name"
-                    />
+                    <input type="text" id="firstName" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your first name" />
                   </div>
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last Name</label>
-                    <input 
-                      type="text" 
-                      id="lastName" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      placeholder="Your last name"
-                    />
+                    <input type="text" id="lastName" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your last name" />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    placeholder="Your email address"
-                  />
+                  <input type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your email address" />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number (Optional)</label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    placeholder="Your phone number"
-                  />
+                  <input type="tel" id="phone" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your phone number" />
                 </div>
 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium mb-1">Company/Organization (Optional)</label>
-                  <input 
-                    type="text" 
-                    id="company" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    placeholder="Your company or organization"
-                  />
+                  <input type="text" id="company" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your company or organization" />
                 </div>
 
                 <div>
                   <label htmlFor="interest" className="block text-sm font-medium mb-1">I'm interested in:</label>
-                  <select 
-                    id="interest" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white"
-                  >
+                  <select id="interest" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white">
                     <option value="">Please select an option</option>
                     <option value="corporate">Corporate Wellness Solutions</option>
                     <option value="provider">Becoming a Wellness Provider</option>
@@ -99,12 +68,7 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                  <textarea 
-                    id="message" 
-                    rows={5} 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    placeholder="Please provide any additional information about your inquiry"
-                  ></textarea>
+                  <textarea id="message" rows={5} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Please provide any additional information about your inquiry"></textarea>
                 </div>
 
                 <div>
@@ -149,23 +113,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-                <h3 className="text-2xl font-bold mb-4">Hours of Operation</h3>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM EST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Saturday</span>
-                    <span>10:00 AM - 2:00 PM EST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-medium">Sunday</span>
-                    <span>Closed</span>
-                  </div>
-                </div>
-              </div>
+              
 
               <div className="mt-8 rounded-lg overflow-hidden h-64 bg-gray-100 flex items-center justify-center">
                 <span className="text-gray-500">Map Location</span>
@@ -260,18 +208,12 @@ const Contact = () => {
           </p>
           <div className="max-w-md mx-auto">
             <div className="flex flex-col sm:flex-row gap-2">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="px-4 py-2 rounded-full border border-gray-300 flex-grow"
-              />
+              <input type="email" placeholder="Enter your email" className="px-4 py-2 rounded-full border border-gray-300 flex-grow" />
               <button className="btn-primary whitespace-nowrap">Subscribe</button>
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
