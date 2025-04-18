@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 // Logo array - easy to edit manually
@@ -26,8 +27,10 @@ const clientLogos = [{
   src: "/lovable-uploads/logo6.png",
   alt: "Client Logo 6"
 }];
+
 const ClientLogoCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
     const animateScroll = () => {
       if (scrollRef.current) {
@@ -45,6 +48,30 @@ const ClientLogoCarousel = () => {
     const animationId = setInterval(animateScroll, 30);
     return () => clearInterval(animationId);
   }, []);
-  return;
+  
+  return (
+    <section className="py-10 bg-white">
+      <div className="container-custom">
+        <div className="flex items-center">
+          <span className="text-sm font-semibold text-gray-500 mr-8 whitespace-nowrap">TRUSTED BY</span>
+          <div 
+            ref={scrollRef} 
+            className="flex overflow-hidden space-x-12 items-center"
+          >
+            {/* Duplicate logos for seamless looping */}
+            {[...clientLogos, ...clientLogos].map((logo, index) => (
+              <img 
+                key={`${logo.id}-${index}`}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-10 w-auto object-contain"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default ClientLogoCarousel;
