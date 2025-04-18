@@ -1,6 +1,28 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import VideoTestimonial from '@/components/VideoTestimonial';
+
+// FAQ Data
+const companyFaqs = [
+  {
+    question: "How quickly can we implement a wellness program?",
+    answer: "We can have your program up and running within 2-4 weeks, depending on your company's size and specific needs. Our team handles all aspects of implementation, from initial assessment to employee onboarding."
+  },
+  {
+    question: "What ROI can we expect?",
+    answer: "Companies typically see a 3:1 return on investment within the first year through reduced healthcare costs, increased productivity, and improved employee retention."
+  },
+  {
+    question: "How do you measure program success?",
+    answer: "We provide comprehensive analytics tracking key metrics like participation rates, health outcomes, employee satisfaction, and cost savings. Regular reports help you understand the program's impact."
+  }
+];
 
 const ForCompanies = () => {
   return (
@@ -76,6 +98,71 @@ const ForCompanies = () => {
         </div>
       </section>
 
+      {/* Success Stories & Testimonials */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Hear what other companies have achieved with our wellness programs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <VideoTestimonial 
+              videoSrc="company-video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Transformed Our Company Culture"
+              name="Sarah Chen"
+              role="HR Director, TechCorp"
+            />
+            <VideoTestimonial 
+              videoSrc="company-video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              title="Measurable Health Improvements"
+              name="Michael Rodriguez"
+              role="CEO, HealthFirst Inc"
+            />
+            <VideoTestimonial 
+              videoSrc="company-video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Significant Cost Savings"
+              name="Emily Thompson"
+              role="CFO, Global Solutions"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="bg-gray-50 section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Find answers to common questions about implementing our wellness solutions.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
+            <Accordion type="single" collapsible className="w-full">
+              {companyFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <p className="py-2 text-gray-700">
+                      {faq.answer}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
       <section className="bg-gray-50 section-padding">
         <div className="container-custom">
@@ -132,60 +219,6 @@ const ForCompanies = () => {
                 <p>
                   We provide continuous monitoring, reporting, and program adjustments to ensure optimal results.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Hear what other companies have achieved with Meltdown wellness programs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </div>
-              <p className="mb-6">
-                "After partnering with Meltdown, we've seen a 25% decrease in sick days and a 30% increase in employee satisfaction scores. The ROI has been tremendous not just in terms of healthcare savings but in overall productivity."
-              </p>
-              <div className="flex items-center">
-                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-bold">Robert Thompson</p>
-                  <p className="text-sm text-gray-600">COO, InnovaTech Solutions</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </div>
-              <p className="mb-6">
-                "As a midsize company, we were looking for a wellness solution that wouldn't break the bank but would still deliver real results. Meltdown's customized approach has helped us reduce turnover by 20% and has become a key recruiting advantage."
-              </p>
-              <div className="flex items-center">
-                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-bold">Jennifer Martinez</p>
-                  <p className="text-sm text-gray-600">HR Director, GroWell Industries</p>
-                </div>
               </div>
             </div>
           </div>
