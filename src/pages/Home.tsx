@@ -29,7 +29,9 @@ services under one membership and gamifying the entire experience.</p>
           </div>
         </div>
       </section>
-      
+       {/* Inline Client Logo Carousel */}
+       <ClientLogoCarousel />
+
       {/* Trusted By Section */}
       <TrustedBySection />
 
@@ -86,8 +88,7 @@ services under one membership and gamifying the entire experience.</p>
         </div>
       </section>
 
-      {/* Inline Client Logo Carousel */}
-      <ClientLogoCarousel />
+     
 
       
 
