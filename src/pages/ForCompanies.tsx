@@ -98,6 +98,68 @@ const ForCompanies = () => {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="bg-gray-50 section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Meltdown Works for Your Company</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              A simple, effective process to implement comprehensive wellness solutions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
+                1
+              </div>
+              <div className="pt-4">
+                <h3 className="text-xl font-bold mb-3">Assessment</h3>
+                <p>
+                  We evaluate your company's current wellness status and identify specific needs and goals.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
+                2
+              </div>
+              <div className="pt-4">
+                <h3 className="text-xl font-bold mb-3">Custom Program Design</h3>
+                <p>
+                  Our experts create a tailored wellness program aligned with your company's culture and objectives.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
+                3
+              </div>
+              <div className="pt-4">
+                <h3 className="text-xl font-bold mb-3">Implementation</h3>
+                <p>
+                  We handle all aspects of program rollout, from provider management to employee engagement.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
+                4
+              </div>
+              <div className="pt-4">
+                <h3 className="text-xl font-bold mb-3">Ongoing Support</h3>
+                <p>
+                  We provide continuous monitoring, reporting, and program adjustments to ensure optimal results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Success Stories & Testimonials */}
       <section className="section-padding">
         <div className="container-custom">
@@ -159,68 +221,6 @@ const ForCompanies = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="bg-gray-50 section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Meltdown Works for Your Company</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              A simple, effective process to implement comprehensive wellness solutions.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                1
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Assessment</h3>
-                <p>
-                  We evaluate your company's current wellness status and identify specific needs and goals.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                2
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Custom Program Design</h3>
-                <p>
-                  Our experts create a tailored wellness program aligned with your company's culture and objectives.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                3
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Implementation</h3>
-                <p>
-                  We handle all aspects of program rollout, from provider management to employee engagement.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                4
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Ongoing Support</h3>
-                <p>
-                  We provide continuous monitoring, reporting, and program adjustments to ensure optimal results.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
