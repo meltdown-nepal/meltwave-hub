@@ -9,20 +9,7 @@ import {
 import VideoTestimonial from '@/components/VideoTestimonial';
 
 // FAQ Data
-const employeeFaqs = [
-  {
-    question: "How do I access the wellness services?",
-    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
-  },
-  {
-    question: "Can I participate during work hours?",
-    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
-  },
-  {
-    question: "Are the services confidential?",
-    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
-  }
-];
+
 
 const partnerFaqs = [
   {
