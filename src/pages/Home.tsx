@@ -29,6 +29,9 @@ services under one membership and gamifying the entire experience.</p>
           </div>
         </div>
       </section>
+      
+      {/* Trusted By Section */}
+      <TrustedBySection />
 
       {/* Features Section */}
       <section className="section-padding">
@@ -86,8 +89,7 @@ services under one membership and gamifying the entire experience.</p>
       {/* Inline Client Logo Carousel */}
       <ClientLogoCarousel />
 
-      {/* Trusted By Section */}
-      <TrustedBySection />
+      
 
       {/* Video Testimonials Section */}
       <TestimonialsSection />
