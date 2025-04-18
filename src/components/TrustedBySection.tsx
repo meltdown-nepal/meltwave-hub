@@ -47,39 +47,7 @@ const TrustedBySection = () => {
     return () => clearInterval(animationId);
   }, []);
   return <section id="trusted-by" className="bg-gray-50 py-0">
-      <div className="container-custom py-0 my-[2px] bg-white">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl tracking-wider mx-0 py-0 my-[20px] font-bold">Our Clients</h2>
-        </div>
-        
-        {/* Desktop scrolling logos - full width continuous flow */}
-        <div className="hidden md:block overflow-hidden">
-          <div ref={scrollRef} style={{
-          minWidth: "200%"
-        }} className="flex items-center space-x-12 overflow-x-hidden w-full py-0 bg-white">
-            {/* First set of logos */}
-            {logos.map(logo => <div key={logo.id} className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-md shadow-sm h-24 w-48">
-                <img src={logo.src} alt={logo.alt} className="max-h-14 max-w-full object-none" />
-              </div>)}
-            
-            {/* Duplicate set for seamless looping */}
-            {logos.map(logo => <div key={`duplicate-${logo.id}`} className="flex-shrink-0 flex items-center justify-center bg-white p-6 rounded-md shadow-sm h-24 w-48">
-                <img src={logo.src} alt={logo.alt} className="max-h-14 max-w-full object-contain" />
-              </div>)}
-          </div>
-        </div>
-        
-        {/* Mobile version with ScrollArea */}
-        <div className="md:hidden">
-          <ScrollArea className="w-full whitespace-nowrap">
-            <div className="flex space-x-6 py-6 px-4">
-              {logos.map(logo => <div key={logo.id} className="flex-shrink-0 flex items-center justify-center bg-white p-4 rounded-md shadow-sm h-20 w-40">
-                  <img src={logo.src} alt={logo.alt} className="max-h-12 max-w-full object-contain" />
-                </div>)}
-            </div>
-          </ScrollArea>
-        </div>
-      </div>
+      
     </section>;
 };
 export default TrustedBySection;
