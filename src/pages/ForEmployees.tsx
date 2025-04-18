@@ -9,18 +9,18 @@ import {
 } from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
 
-const partnerFaqs = [
+const EmployeeFaqs = [
   {
-    question: "How do I become a wellness provider?",
-    answer: "Submit your application through our partner portal. We'll review your qualifications and certifications, and guide you through the onboarding process."
+    question: "How do I access the wellness services?",
+    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
   },
   {
-    question: "What types of services are in demand?",
-    answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
+    question: "Can I participate during work hours?",
+    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
   },
   {
-    question: "How does payment work?",
-    answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
+    question: "Are the services confidential?",
+    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
   }
 ];
 const ForEmployees = () => {
@@ -347,7 +347,7 @@ const ForEmployees = () => {
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {partnerFaqs.map((faq, index) => (
+              {EmployeeFaqs.map((faq, index) => (
                 <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
