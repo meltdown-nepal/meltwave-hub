@@ -1,6 +1,12 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import VideoTestimonial from '@/components/VideoTestimonial';
 
 const CorporateWellness = () => {
   return (
@@ -65,7 +71,7 @@ const CorporateWellness = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 1 0 7.75"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-3">Enhanced Retention</h3>
               <p>
@@ -86,116 +92,179 @@ const CorporateWellness = () => {
         </div>
       </section>
 
-      {/* Program Overview */}
-      <section className="bg-gray-50 section-padding">
+      {/* For Companies Section */}
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Comprehensive Programs</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Tailored solutions to meet the diverse needs of your workforce.
-            </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">For Companies</h2>
+          
+          <Accordion type="single" collapsible className="mb-12">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-left">
+                How quickly can we implement a wellness program?
+              </AccordionTrigger>
+              <AccordionContent>
+                We can have your program up and running within 2-4 weeks, depending on your company's size and specific needs. Our team handles all aspects of implementation, from initial assessment to employee onboarding.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left">
+                What ROI can we expect from implementing a wellness program?
+              </AccordionTrigger>
+              <AccordionContent>
+                Companies typically see a 3:1 return on investment within the first year, through reduced healthcare costs, increased productivity, and improved employee retention.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left">
+                How do you measure program success?
+              </AccordionTrigger>
+              <AccordionContent>
+                We provide comprehensive analytics tracking key metrics like participation rates, health outcomes, employee satisfaction, and cost savings. Regular reports help you understand the program's impact.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <h3 className="text-2xl font-bold mb-6">Success Stories</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <VideoTestimonial 
+              videoSrc="video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Transformed Our Company Culture"
+              name="Sarah Chen"
+              role="HR Director, TechCorp"
+            />
+            <VideoTestimonial 
+              videoSrc="video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              title="Measurable Health Improvements"
+              name="Michael Rodriguez"
+              role="CEO, HealthFirst Inc"
+            />
+            <VideoTestimonial 
+              videoSrc="video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Significant Cost Savings"
+              name="Emily Thompson"
+              role="CFO, Global Solutions"
+            />
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Physical Wellness</h3>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Fitness challenges and group classes</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Ergonomic workspace assessments</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Nutrition workshops and meal planning</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Health screenings and assessments</span>
-                </li>
-              </ul>
-              <Link to="/meltfit" className="text-secondary font-bold hover:underline">
-                Learn more about MeltFit →
-              </Link>
-            </div>
+      {/* For Employees Section */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">For Employees</h2>
+          
+          <Accordion type="single" collapsible className="mb-12">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-left">
+                What wellness services are available to me?
+              </AccordionTrigger>
+              <AccordionContent>
+                You have access to a wide range of services including fitness classes, nutrition coaching, mental health support, and wellness workshops. All services can be accessed both in-person and virtually.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left">
+                How do I get started with the program?
+              </AccordionTrigger>
+              <AccordionContent>
+                Simply sign up through your company's wellness portal. You'll then complete a brief wellness assessment and can immediately start booking services and accessing resources.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left">
+                Can I participate in wellness activities during work hours?
+              </AccordionTrigger>
+              <AccordionContent>
+                Many companies allow for flexible scheduling to accommodate wellness activities. Check with your HR department about your company's specific policies.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
 
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Mental & Emotional Wellness</h3>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Stress management workshops</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Mindfulness and meditation sessions</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Mental health resources and support</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Work-life balance coaching</span>
-                </li>
-              </ul>
-              <Link to="/events" className="text-secondary font-bold hover:underline">
-                View upcoming events →
-              </Link>
-            </div>
+          <h3 className="text-2xl font-bold mb-6">Success Stories</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <VideoTestimonial 
+              videoSrc="video4.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+              title="Found Work-Life Balance"
+              name="David Kim"
+              role="Software Engineer"
+            />
+            <VideoTestimonial 
+              videoSrc="video5.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Mental Health Support"
+              name="Lisa Garcia"
+              role="Project Manager"
+            />
+            <VideoTestimonial 
+              videoSrc="video6.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Physical Wellness Journey"
+              name="James Wilson"
+              role="Sales Director"
+            />
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Social Wellness</h3>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Team-building events and activities</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Volunteer opportunities and community service</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Diversity and inclusion initiatives</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Social connection programs for remote teams</span>
-                </li>
-              </ul>
-              <Link to="/companies" className="text-secondary font-bold hover:underline">
-                Learn more about company offerings →
-              </Link>
-            </div>
+      {/* For Fitness Partners Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">For Fitness Partners</h2>
+          
+          <Accordion type="single" collapsible className="mb-12">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-left">
+                How can I become a wellness provider?
+              </AccordionTrigger>
+              <AccordionContent>
+                Apply through our partner portal. We'll review your qualifications, certifications, and experience. Once approved, you can start offering services to our corporate clients.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left">
+                What types of services are in demand?
+              </AccordionTrigger>
+              <AccordionContent>
+                High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left">
+                How does payment and scheduling work?
+              </AccordionTrigger>
+              <AccordionContent>
+                Our platform handles all scheduling and payments. You set your availability, and payments are processed automatically after each session. We typically pay providers bi-weekly.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
 
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Professional Development</h3>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Career coaching and mentorship</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Skill development workshops</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Leadership training</span>
-                </li>
-                <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Continuing education opportunities</span>
-                </li>
-              </ul>
-              <Link to="/academy" className="text-secondary font-bold hover:underline">
-                Explore our Academy for Trainers →
-              </Link>
-            </div>
+          <h3 className="text-2xl font-bold mb-6">Success Stories</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <VideoTestimonial 
+              videoSrc="video7.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Growing My Business"
+              name="Rachel Torres"
+              role="Yoga Instructor"
+            />
+            <VideoTestimonial 
+              videoSrc="video8.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Corporate Partnerships"
+              name="Mark Johnson"
+              role="Fitness Trainer"
+            />
+            <VideoTestimonial 
+              videoSrc="video9.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              title="Virtual Training Success"
+              name="Anna Lee"
+              role="Nutritionist"
+            />
           </div>
         </div>
       </section>
