@@ -265,60 +265,6 @@ const ForProviders = () => {
         </div>
       </section>
 
-      {/* Employee Section */}
-      <section className="bg-gray-50 section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Employee Testimonials</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Hear from employees who have benefited from our wellness programs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial 
-              videoSrc="employee-video1.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
-              title="Found Work-Life Balance"
-              name="David Kim"
-              role="Software Engineer"
-            />
-            <VideoTestimonial 
-              videoSrc="employee-video2.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-              title="Mental Health Support"
-              name="Lisa Garcia"
-              role="Project Manager"
-            />
-            <VideoTestimonial 
-              videoSrc="employee-video3.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-              title="Physical Wellness Journey"
-              name="James Wilson"
-              role="Sales Director"
-            />
-          </div>
-
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
-            <h3 className="text-2xl font-bold mb-6 text-center">Employee FAQs</h3>
-            <Accordion type="single" collapsible className="w-full">
-              {employeeFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`employee-${index}`}>
-                  <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <p className="py-2 text-gray-700">
-                      {faq.answer}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
       {/* Fitness Partners Section */}
       <section className="section-padding">
         <div className="container-custom">
