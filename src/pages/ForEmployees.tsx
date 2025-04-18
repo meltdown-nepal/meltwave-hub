@@ -1,19 +1,31 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
-const EmployeeFaqs = [{
-  question: "How do I access the wellness services?",
-  answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
-}, {
-  question: "Can I participate during work hours?",
-  answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
-}, {
-  question: "Are the services confidential?",
-  answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
-}];
+
+const EmployeeFaqs = [
+  {
+    question: "How do I access the wellness services?",
+    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
+  },
+  {
+    question: "Can I participate during work hours?",
+    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
+  },
+  {
+    question: "Are the services confidential?",
+    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
+  }
+];
 const ForEmployees = () => {
-  return <div>
+  return (
+    <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -31,7 +43,11 @@ const ForEmployees = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" />
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
+                alt="Employee Wellness" 
+                className="rounded-lg shadow-xl max-w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -222,7 +238,78 @@ const ForEmployees = () => {
       </section>
 
       {/* Testimonials */}
-      
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Employee Success Stories</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Hear from employees who have transformed their well-being through our programs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <p className="mb-6">
+                "The MeltFit program helped me lose 15 pounds and significantly improve my energy levels. I'm more productive at work and have more energy for my family when I get home."
+              </p>
+              <div className="flex items-center">
+                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
+                <div>
+                  <p className="font-bold">Thomas Reynolds</p>
+                  <p className="text-sm text-gray-600">Marketing Manager</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <p className="mb-6">
+                "The mindfulness workshops completely changed how I handle workplace stress. I used to bring my anxiety home with me, but now I have tools to manage it effectively."
+              </p>
+              <div className="flex items-center">
+                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
+                <div>
+                  <p className="font-bold">Sophia Garcia</p>
+                  <p className="text-sm text-gray-600">Project Manager</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <p className="mb-6">
+                "The leadership training I received through Meltdown's professional development program helped me secure a promotion. The skills I learned have made me a more confident and effective team leader."
+              </p>
+              <div className="flex items-center">
+                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
+                <div>
+                  <p className="font-bold">Marcus Johnson</p>
+                  <p className="text-sm text-gray-600">Team Lead</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Fitness Partners Section */}
       <section className="section-padding">
         <div className="container-custom">
@@ -234,15 +321,34 @@ const ForEmployees = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial videoSrc="partner-video1.mp4" thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" />
-            <VideoTestimonial videoSrc="partner-video2.mp4" thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" />
-            <VideoTestimonial videoSrc="partner-video3.mp4" thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" />
+            <VideoTestimonial 
+              videoSrc="partner-video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Growing My Business"
+              name="Rachel Torres"
+              role="Yoga Instructor"
+            />
+            <VideoTestimonial 
+              videoSrc="partner-video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Corporate Partnerships"
+              name="Mark Johnson"
+              role="Fitness Trainer"
+            />
+            <VideoTestimonial 
+              videoSrc="partner-video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              title="Virtual Training Success"
+              name="Anna Lee"
+              role="Nutritionist"
+            />
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {EmployeeFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`}>
+              {EmployeeFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -251,7 +357,8 @@ const ForEmployees = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>)}
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </div>
@@ -270,6 +377,8 @@ const ForEmployees = () => {
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default ForEmployees;
