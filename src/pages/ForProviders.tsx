@@ -1,31 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
 
 // FAQ Data
-const employeeFaqs = [{
-  question: "How do I access the wellness services?",
-  answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
-}, {
-  question: "Can I participate during work hours?",
-  answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
-}, {
-  question: "Are the services confidential?",
-  answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
-}];
-const partnerFaqs = [{
-  question: "How do I become a wellness provider?",
-  answer: "Submit your application through our partner portal. We'll review your qualifications and certifications, and guide you through the onboarding process."
-}, {
-  question: "What types of services are in demand?",
-  answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
-}, {
-  question: "How does payment work?",
-  answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
-}];
+const employeeFaqs = [
+  {
+    question: "How do I access the wellness services?",
+    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
+  },
+  {
+    question: "Can I participate during work hours?",
+    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
+  },
+  {
+    question: "Are the services confidential?",
+    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
+  }
+];
+
+const partnerFaqs = [
+  {
+    question: "How do I become a wellness provider?",
+    answer: "Submit your application through our partner portal. We'll review your qualifications and certifications, and guide you through the onboarding process."
+  },
+  {
+    question: "What types of services are in demand?",
+    answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
+  },
+  {
+    question: "How does payment work?",
+    answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
+  }
+];
+
 const ForProviders = () => {
-  return <div>
+  return (
+    <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -43,7 +59,11 @@ const ForProviders = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Wellness Provider" className="rounded-lg shadow-xl max-w-full h-auto" />
+              <img 
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" 
+                alt="Wellness Provider" 
+                className="rounded-lg shadow-xl max-w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -246,7 +266,58 @@ const ForProviders = () => {
       </section>
 
       {/* Employee Section */}
-      
+      <section className="bg-gray-50 section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Employee Testimonials</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Hear from employees who have benefited from our wellness programs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <VideoTestimonial 
+              videoSrc="employee-video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+              title="Found Work-Life Balance"
+              name="David Kim"
+              role="Software Engineer"
+            />
+            <VideoTestimonial 
+              videoSrc="employee-video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Mental Health Support"
+              name="Lisa Garcia"
+              role="Project Manager"
+            />
+            <VideoTestimonial 
+              videoSrc="employee-video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Physical Wellness Journey"
+              name="James Wilson"
+              role="Sales Director"
+            />
+          </div>
+
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
+            <h3 className="text-2xl font-bold mb-6 text-center">Employee FAQs</h3>
+            <Accordion type="single" collapsible className="w-full">
+              {employeeFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`employee-${index}`}>
+                  <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <p className="py-2 text-gray-700">
+                      {faq.answer}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
 
       {/* Fitness Partners Section */}
       <section className="section-padding">
@@ -259,15 +330,34 @@ const ForProviders = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial videoSrc="partner-video1.mp4" thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" />
-            <VideoTestimonial videoSrc="partner-video2.mp4" thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" />
-            <VideoTestimonial videoSrc="partner-video3.mp4" thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" />
+            <VideoTestimonial 
+              videoSrc="partner-video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Growing My Business"
+              name="Rachel Torres"
+              role="Yoga Instructor"
+            />
+            <VideoTestimonial 
+              videoSrc="partner-video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Corporate Partnerships"
+              name="Mark Johnson"
+              role="Fitness Trainer"
+            />
+            <VideoTestimonial 
+              videoSrc="partner-video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              title="Virtual Training Success"
+              name="Anna Lee"
+              role="Nutritionist"
+            />
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {partnerFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`}>
+              {partnerFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -276,7 +366,8 @@ const ForProviders = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>)}
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </div>
@@ -295,6 +386,8 @@ const ForProviders = () => {
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default ForProviders;
