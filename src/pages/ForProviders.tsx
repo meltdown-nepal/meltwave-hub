@@ -1,6 +1,43 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import VideoTestimonial from '@/components/VideoTestimonial';
+
+// FAQ Data
+const employeeFaqs = [
+  {
+    question: "How do I access the wellness services?",
+    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
+  },
+  {
+    question: "Can I participate during work hours?",
+    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
+  },
+  {
+    question: "Are the services confidential?",
+    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
+  }
+];
+
+const partnerFaqs = [
+  {
+    question: "How do I become a wellness provider?",
+    answer: "Submit your application through our partner portal. We'll review your qualifications and certifications, and guide you through the onboarding process."
+  },
+  {
+    question: "What types of services are in demand?",
+    answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
+  },
+  {
+    question: "How does payment work?",
+    answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
+  }
+];
 
 const ForProviders = () => {
   return (
@@ -228,76 +265,110 @@ const ForProviders = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Employee Section */}
       <section className="bg-gray-50 section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Provider Success Stories</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Employee Testimonials</h2>
             <p className="text-lg max-w-3xl mx-auto">
-              Hear from wellness professionals who have grown their business with Meltdown.
+              Hear from employees who have benefited from our wellness programs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </div>
-              <p className="mb-6">
-                "Before joining Meltdown, I struggled to find corporate clients for my yoga classes. Now I teach at three companies regularly, and my income has doubled without the stress of marketing and administration."
-              </p>
-              <div className="flex items-center">
-                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-bold">Maya Patel</p>
-                  <p className="text-sm text-gray-600">Yoga Instructor</p>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <VideoTestimonial 
+              videoSrc="employee-video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+              title="Found Work-Life Balance"
+              name="David Kim"
+              role="Software Engineer"
+            />
+            <VideoTestimonial 
+              videoSrc="employee-video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Mental Health Support"
+              name="Lisa Garcia"
+              role="Project Manager"
+            />
+            <VideoTestimonial 
+              videoSrc="employee-video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Physical Wellness Journey"
+              name="James Wilson"
+              role="Sales Director"
+            />
+          </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </div>
-              <p className="mb-6">
-                "The certification I received through Meltdown's Academy gave me the credentials I needed to work with larger companies. Their platform handles all the scheduling and payments, so I can focus on delivering quality nutrition workshops."
-              </p>
-              <div className="flex items-center">
-                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-bold">David Kim</p>
-                  <p className="text-sm text-gray-600">Nutritionist</p>
-                </div>
-              </div>
-            </div>
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
+            <h3 className="text-2xl font-bold mb-6 text-center">Employee FAQs</h3>
+            <Accordion type="single" collapsible className="w-full">
+              {employeeFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`employee-${index}`}>
+                  <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <p className="py-2 text-gray-700">
+                      {faq.answer}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFD838" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </div>
-              <p className="mb-6">
-                "As a mindfulness coach, I was always focused on my practice, not business development. Meltdown connects me with clients who truly value my services, and I've been able to grow my business by 75% in just one year."
-              </p>
-              <div className="flex items-center">
-                <div className="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-bold">James Rodriguez</p>
-                  <p className="text-sm text-gray-600">Mindfulness Coach</p>
-                </div>
-              </div>
-            </div>
+      {/* Fitness Partners Section */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Partner Success Stories</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Learn from wellness professionals who have grown their business with us.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <VideoTestimonial 
+              videoSrc="partner-video1.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+              title="Growing My Business"
+              name="Rachel Torres"
+              role="Yoga Instructor"
+            />
+            <VideoTestimonial 
+              videoSrc="partner-video2.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              title="Corporate Partnerships"
+              name="Mark Johnson"
+              role="Fitness Trainer"
+            />
+            <VideoTestimonial 
+              videoSrc="partner-video3.mp4"
+              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              title="Virtual Training Success"
+              name="Anna Lee"
+              role="Nutritionist"
+            />
+          </div>
+
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
+            <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
+            <Accordion type="single" collapsible className="w-full">
+              {partnerFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`partner-${index}`}>
+                  <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <p className="py-2 text-gray-700">
+                      {faq.answer}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
