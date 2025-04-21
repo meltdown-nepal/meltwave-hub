@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 // Logo array - easy to edit manually
 const clientLogos = [{
   id: 1,
-  src: "/lovable-uploads/logo1.png",
+  src: "/lovable-uploads/golchhagroup_logo_fill.png",
   alt: "Client Logo 1"
 }, {
   id: 2,
