@@ -8,15 +8,15 @@ const clientLogos = [{
   alt: "Client Logo 1"
 }, {
   id: 2,
-  src: "/lovable-uploads/logo2.png",
+  src: "/lovable-uploads/java-newlogo.png",
   alt: "Client Logo 2"
 }, {
   id: 3,
-  src: "/lovable-uploads/logo3.png",
+  src: "/lovable-uploads/security pal logo fill.png",
   alt: "Client Logo 3"
 }, {
   id: 4,
-  src: "/lovable-uploads/logo4.png",
+  src: "/lovable-uploads/karobar logo.png",
   alt: "Client Logo 4"
 }, {
   id: 5,
