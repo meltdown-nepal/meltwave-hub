@@ -16,11 +16,11 @@ const clientLogos = [{
   alt: "Client Logo 3"
 }, {
   id: 4,
-  src: "/lovable-uploads/karobar logo.png",
+  src: "/lovable-uploads/karobarlogo.png",
   alt: "Client Logo 4"
 }, {
   id: 5,
-  src: "/lovable-uploads/logo5.png",
+  src: "/lovable-uploads/flextecs.png",
   alt: "Client Logo 5"
 }, {
   id: 6,
