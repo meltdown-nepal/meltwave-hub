@@ -57,7 +57,7 @@ const ClientLogoCarousel = () => {
   }, []);
   return <section className="py-8 bg-yellow-50">
       <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-8">TRUSTED BY</h3>
+        <h3 className="text-2xl font-bold mb-8">Loved by ❤️</h3>
         <div className="overflow-hidden">
           <div ref={scrollRef} className="flex justify-center items-center space-x-12 py-4 overflow-x-auto scrollbar-hide" style={{
           scrollbarWidth: 'none',
