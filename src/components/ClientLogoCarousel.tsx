@@ -8,15 +8,15 @@ const clientLogos = [{
   alt: "Client Logo 1"
 }, {
   id: 2,
-  src: "/lovable-uploads/java-newlogo.png",
+  src: "/lovable-uploads/java.png",
   alt: "Client Logo 2"
 }, {
   id: 3,
-  src: "/lovable-uploads/security pal logo fill.png",
+  src: "/lovable-uploads/securitypal.png",
   alt: "Client Logo 3"
 }, {
   id: 4,
-  src: "/lovable-uploads/karobarlogo.png",
+  src: "/lovable-uploads/karobar.png",
   alt: "Client Logo 4"
 }, {
   id: 5,
@@ -24,8 +24,24 @@ const clientLogos = [{
   alt: "Client Logo 5"
 }, {
   id: 6,
-  src: "/lovable-uploads/logo6.png",
+  src: "/lovable-uploads/leapfrog.png",
   alt: "Client Logo 6"
+},{
+  id: 7,
+  src: "/lovable-uploads/yi.png",
+  alt: "Client Logo 5"
+},{
+  id: 8,
+  src: "/lovable-uploads/vedalogo.png",
+  alt: "Client Logo 5"
+},{
+  id: 9,
+  src: "/lovable-uploads/stalwart.png",
+  alt: "Client Logo 5"
+},{
+  id: 10,
+  src: "/lovable-uploads/naamche.png",
+  alt: "Client Logo 5"
 }];
 
 const ClientLogoCarousel = () => {
