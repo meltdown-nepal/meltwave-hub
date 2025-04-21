@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EventGalleryImage from "@/components/EventGalleryImage";
+import EventHeroSection from "@/components/EventHeroSection";
 
 const Events = () => {
   // Sample upcoming events data
@@ -76,23 +77,8 @@ const Events = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Events & Community
-            </h1>
-            <p className="text-lg mb-8">
-              Connect, learn, and grow with like-minded wellness advocates through our events and community initiatives. Join us for workshops, webinars, and networking opportunities.
-            </p>
-            <div className="flex justify-center gap-4 flex-wrap">
-              <Link to="#upcoming" className="btn-primary">View Upcoming Events</Link>
-              <Link to="/contact" className="btn-outline">Request a Custom Event</Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* HERO SECTION: replaced by new component */}
+      <EventHeroSection />
 
       {/* Upcoming Events Section */}
       <section id="upcoming" className="section-padding">
