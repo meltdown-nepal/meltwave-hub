@@ -1,20 +1,13 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Footer: React.FC = () => {
-  return (
-    <footer className="bg-gray-100 pt-12 pb-8">
+  return <footer className="bg-gray-100 pt-12 pb-8">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <img 
-                src="/public/lovable-uploads/MeltdownLogo.png" 
-                alt="Meltdown Logo" 
-                className="h-10 w-auto"
-              />
+              <img alt="Meltdown Logo" className="h-10 w-auto" src="/lovable-uploads/a44d1192-3b50-4319-8b71-b312a47bf095.png" />
               <span className="font-header font-bold text-xl">Meltdown</span>
             </div>
             <p className="text-gray-600 mb-4">
@@ -72,8 +65,6 @@ const Footer: React.FC = () => {
           <p>© {new Date().getFullYear()} Meltdown. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
