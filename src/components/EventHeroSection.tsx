@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Dumbbell, HeartPulse, Run, Timer } from "lucide-react";
+import { Dumbbell, HeartPulse, Timer } from "lucide-react";
 
 const eventDate = new Date("2025-06-15T09:00:00"); // Next event start date/time
 
@@ -19,7 +19,6 @@ function getCountdown() {
 const fitnessIcons = [
   { Icon: Dumbbell, className: "left-8 top-10 animate-[float1_6s_ease-in-out_infinite]" },
   { Icon: HeartPulse, className: "right-8 top-28 animate-[float2_7s_ease-in-out_infinite] hidden md:block" },
-  { Icon: Run, className: "left-1/2 bottom-6 animate-[float3_5s_ease-in-out_infinite] hidden sm:block" },
 ];
 
 export default function EventHeroSection() {
@@ -108,3 +107,4 @@ export default function EventHeroSection() {
     </section>
   );
 }
+
