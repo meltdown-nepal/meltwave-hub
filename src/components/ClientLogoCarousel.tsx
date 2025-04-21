@@ -33,12 +33,12 @@ const ClientLogoCarousel = () => {
 
   return (
     <section className="py-8 bg-white">
-      <div className="container-custom">
-        <h3 className="text-2xl font-bold text-center mb-8">TRUSTED BY</h3>
+      <div className="max-w-screen-xl mx-auto text-center">
+        <h3 className="text-2xl font-bold mb-8">TRUSTED BY</h3>
         <div className="overflow-hidden">
           <div
             ref={scrollRef}
-            className="flex space-x-12 py-4 overflow-x-auto scrollbar-hide items-center"
+            className="flex justify-center items-center space-x-12 py-4 overflow-x-auto scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {[...clientLogos, ...clientLogos].map((logo, index) => (
