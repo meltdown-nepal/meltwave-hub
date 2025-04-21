@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { MagnifyingGlass, Heart } from "lucide-react";
+import { ZoomIn, Heart } from "lucide-react";
 
 type Props = {
   src: string;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const ICONS: Record<"magnifying-glass" | "heart", React.ReactNode> = {
-  "magnifying-glass": <MagnifyingGlass size={28} className="text-white" />,
+  "magnifying-glass": <ZoomIn size={28} className="text-white" />,
   "heart": <Heart size={28} className="text-white" />,
 };
 
