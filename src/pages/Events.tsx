@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import EventGalleryImage from "@/components/EventGalleryImage";
 
 const Events = () => {
   // Sample upcoming events data
@@ -119,7 +119,7 @@ const Events = () => {
                     {event.date}
                   </div>
                   <div className="flex items-center mb-4 text-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-map-pin mr-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-map-pin mr-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     {event.location}
                   </div>
                   <p className="mb-6 text-gray-700">{event.description}</p>
@@ -158,7 +158,7 @@ const Events = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-trophy"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
                   )}
                   {initiative.icon === "users" && (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 1 0 7.75"></path></svg>
                   )}
                   {initiative.icon === "heart-handshake" && (
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-heart-handshake"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg>
@@ -186,24 +186,36 @@ const Events = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center text-gray-500">
-              Event Photo
-            </div>
-            <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center text-gray-500">
-              Event Photo
-            </div>
-            <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center text-gray-500">
-              Event Photo
-            </div>
-            <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center text-gray-500">
-              Event Photo
-            </div>
-            <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center text-gray-500">
-              Event Photo
-            </div>
-            <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center text-gray-500">
-              Event Photo
-            </div>
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
+              title="Team Collaboration"
+              icon="magnifying-glass"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5"
+              title="Annual Wellness Expo"
+              icon="heart"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1500673922987-e212871fec22"
+              title="Networking Evening"
+              icon="magnifying-glass"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05"
+              title="Outdoor Mindfulness"
+              icon="heart"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1433086966358-54859d0ed716"
+              title="Nature Retreat"
+              icon="magnifying-glass"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1721322800607-8c38375eef04"
+              title="Custom Company Event"
+              icon="heart"
+            />
           </div>
         </div>
       </section>
