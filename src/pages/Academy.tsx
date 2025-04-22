@@ -1,10 +1,8 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useScrollTo } from '@/hooks/useScrollTo';
 
 const Academy = () => {
-  const { scrollToSection } = useScrollTo();
-  
   // Sample certification programs
   const certificationPrograms = [
     {
@@ -63,12 +61,7 @@ const Academy = () => {
                 Enhance your skills and credentials with specialized training in corporate wellness. Our certification programs and continuing education courses are designed for wellness professionals who want to excel in the workplace wellness sector.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button 
-                  onClick={() => scrollToSection('certifications')}
-                  className="btn-primary"
-                >
-                  View Certification Programs
-                </button>
+                <Link to="#certifications" className="btn-primary">View Certification Programs</Link>
                 <Link to="/contact" className="btn-outline">Request Information</Link>
               </div>
             </div>
@@ -173,7 +166,7 @@ const Academy = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4v-7a2 2 0 0 0-2 2v16"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-3">Industry-Relevant</h3>
               <p>
