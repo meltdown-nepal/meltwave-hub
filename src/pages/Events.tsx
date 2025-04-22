@@ -113,20 +113,7 @@ const Events = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">Subscribe to Our Newsletter</h2>
-            <p className="text-lg max-w-2xl mx-auto">
-              Stay updated with our latest events, news, and wellness tips.
-            </p>
-          </div>
-          <div className="flex justify-center">
-            <input type="email" placeholder="Enter your email" className="border-2 border-gray-300 rounded-full py-2 px-4 w-full md:w-auto" />
-            <button className="btn-primary ml-4">Subscribe</button>
-          </div>
-        </div>
-      </section>
+      
     </div>;
 };
 export default Events;
