@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Dumbbell, HeartPulse, Timer } from "lucide-react";
@@ -35,7 +34,11 @@ const fitnessIcons = [
   { Icon: HeartPulse, className: "right-8 top-28 animate-[float2_7s_ease-in-out_infinite] hidden md:block" },
 ];
 
-export default function EventHeroSection() {
+interface EventHeroSectionProps {
+  onSeeUpcomingClick: () => void;
+}
+
+export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectionProps) {
   const [nextRun, setNextRun] = useState<Date>(getNextWednesday9am());
   const [countdown, setCountdown] = useState(getCountdown(nextRun));
   const intervalRef = useRef<number>();
@@ -96,13 +99,13 @@ export default function EventHeroSection() {
           <span className="text-gray-700">until next Wednesday Run</span>
         </div>
         {/* CTA Button */}
-        <Link
-          to="#upcoming"
+        <button
+          onClick={onSeeUpcomingClick}
           className="btn-primary text-lg px-8 py-3 shadow-lg animate-slide-in-right"
           style={{ animationDelay: "0.6s" }}
         >
           See Upcoming Events
-        </Link>
+        </button>
       </div>
 
       {/* Subtle CSS for floating icons & animations */}

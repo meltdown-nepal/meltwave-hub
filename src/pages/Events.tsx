@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EventHeroSection from "@/components/EventHeroSection";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import EventGalleryImage from "@/components/EventGalleryImage";
 
 // A single compact Card component for display-only purposes
 function EventCard({
@@ -42,10 +44,41 @@ function EventCard({
 }
 
 const Events = () => {
+  const { scrollToSection } = useSmoothScroll();
+
   return (
     <div>
-      {/* HERO SECTION: replaced by new component */}
-      <EventHeroSection />
+      {/* Hero Section: pass scrollToSection to EventHeroSection */}
+      <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
+
+      {/* Gallery Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Highlights from Past Events</h2>
+            <p className="text-lg max-w-2xl mx-auto text-gray-600">
+              Relive the energy and inspiration from our wellness community gatherings
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80"
+              title="Community Running Event"
+              alt="Group of people running together at sunrise"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80"
+              title="Meditation by the Lake"
+              alt="Peaceful lake surrounded by trees"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
+              title="Wellness Workshop"
+              alt="People participating in a wellness workshop"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Upcoming Events Section */}
       <section id="upcoming" className="section-padding">
@@ -79,7 +112,94 @@ const Events = () => {
       </section>
 
       {/* Community Initiatives */}
-      {/* ... keep existing code (Community Initiatives, Past Events Gallery, Host an Event Section, Newsletter Section) the same ... */}
+      <section className="section-padding bg-gray-100">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Community Initiatives</h2>
+            <p className="text-lg max-w-2xl mx-auto">
+              Explore our ongoing projects and how you can contribute to community wellness.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <EventCard
+              title="Clean-Up Drives"
+              description="Join our monthly clean-up drives to keep our community spaces clean and green."
+            />
+            <EventCard
+              title="Wellness Workshops"
+              description="Attend our free wellness workshops covering topics like nutrition, mental health, and fitness."
+            />
+            <EventCard
+              title="Support Groups"
+              description="Connect with others in our support groups for various health and wellness needs."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Past Events Gallery */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Past Events Gallery</h2>
+            <p className="text-lg max-w-2xl mx-auto">
+              A glimpse into the memorable moments from our past events.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1560518883-ce09059ee953?auto=format&fit=crop&w=1400&q=80"
+              title="Yoga Session"
+              alt="People doing yoga in a park"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=1400&q=80"
+              title="Healthy Cooking Class"
+              alt="People learning to cook healthy meals"
+            />
+            <EventGalleryImage
+              src="https://images.unsplash.com/photo-1517331156700-3c241e82ca72?auto=format&fit=crop&w=1400&q=80"
+              title="Group Meditation"
+              alt="People meditating together indoors"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Host an Event Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Host an Event</h2>
+            <p className="text-lg max-w-2xl mx-auto">
+              Interested in hosting a wellness event with us? Let's collaborate!
+            </p>
+          </div>
+          <div className="text-center">
+            <Link to="/contact" className="btn-primary">Contact Us to Host an Event</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Subscribe to Our Newsletter</h2>
+            <p className="text-lg max-w-2xl mx-auto">
+              Stay updated with our latest events, news, and wellness tips.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="border-2 border-gray-300 rounded-full py-2 px-4 w-full md:w-auto"
+            />
+            <button className="btn-primary ml-4">Subscribe</button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
