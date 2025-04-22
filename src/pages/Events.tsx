@@ -10,7 +10,7 @@ function EventCard({
   address,
   date,
   description,
-  note,
+  note
 }: {
   title: string;
   address?: string;
@@ -18,36 +18,25 @@ function EventCard({
   description?: string;
   note?: string;
 }) {
-  return (
-    <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+  return <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
       <h3 className="text-xl font-bold mb-1 text-gray-800">{title}</h3>
-      {address && (
-        <div className="flex items-center text-sm mb-2 text-gray-500">
+      {address && <div className="flex items-center text-sm mb-2 text-gray-500">
           <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" /></svg>
           {address}
-        </div>
-      )}
-      {date && (
-        <div className="flex items-center text-sm mb-2 text-gray-500">
+        </div>}
+      {date && <div className="flex items-center text-sm mb-2 text-gray-500">
           <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" stroke="currentColor" strokeWidth="2"></rect><line x1="16" x2="16" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line><line x1="8" x2="8" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line><line x1="3" x2="21" y1="10" y2="10" stroke="currentColor" strokeWidth="2"></line></svg>
           {date}
-        </div>
-      )}
-      {description && (
-        <p className="mb-2 text-gray-700">{description}</p>
-      )}
-      {note && (
-        <p className="mb-1 text-xs italic text-secondary-foreground">{note}</p>
-      )}
-    </div>
-  );
+        </div>}
+      {description && <p className="mb-2 text-gray-700">{description}</p>}
+      {note && <p className="mb-1 text-xs italic text-secondary-foreground">{note}</p>}
+    </div>;
 }
-
 const Events = () => {
-  const { scrollToSection } = useSmoothScroll();
-
-  return (
-    <div>
+  const {
+    scrollToSection
+  } = useSmoothScroll();
+  return <div>
       {/* Hero Section: pass scrollToSection to EventHeroSection */}
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
@@ -61,21 +50,9 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <EventGalleryImage
-              src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80"
-              title="Community Running Event"
-              alt="Group of people running together at sunrise"
-            />
-            <EventGalleryImage
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80"
-              title="Meditation by the Lake"
-              alt="Peaceful lake surrounded by trees"
-            />
-            <EventGalleryImage
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
-              title="Wellness Workshop"
-              alt="People participating in a wellness workshop"
-            />
+            <EventGalleryImage src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80" title="Community Running Event" alt="Group of people running together at sunrise" />
+            <EventGalleryImage src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" title="Meditation by the Lake" alt="Peaceful lake surrounded by trees" />
+            <EventGalleryImage src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80" title="Wellness Workshop" alt="People participating in a wellness workshop" />
           </div>
         </div>
       </section>
@@ -90,20 +67,9 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard
-              title="Weekly Wednesday Run"
-              address="Narayanchaur"
-              description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)"
-              note="This event repeats every Wednesday."
-            />
-            <EventCard
-              title="Java Fun Marathon"
-              date="10th May"
-              description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run."
-            />
-            <EventCard
-              title="Coming Soon"
-            />
+            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." />
+            <EventCard title="Java Fun Marathon" date="10th May" description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." />
+            <EventCard title="Coming Soon" />
           </div>
           <div className="text-center">
             <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
@@ -121,50 +87,15 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <EventCard
-              title="Clean-Up Drives"
-              description="Join our monthly clean-up drives to keep our community spaces clean and green."
-            />
-            <EventCard
-              title="Wellness Workshops"
-              description="Attend our free wellness workshops covering topics like nutrition, mental health, and fitness."
-            />
-            <EventCard
-              title="Support Groups"
-              description="Connect with others in our support groups for various health and wellness needs."
-            />
+            <EventCard title="Clean-Up Drives" description="Join our monthly clean-up drives to keep our community spaces clean and green." />
+            <EventCard title="Wellness Workshops" description="Attend our free wellness workshops covering topics like nutrition, mental health, and fitness." />
+            <EventCard title="Support Groups" description="Connect with others in our support groups for various health and wellness needs." />
           </div>
         </div>
       </section>
 
       {/* Past Events Gallery */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">Past Events Gallery</h2>
-            <p className="text-lg max-w-2xl mx-auto">
-              A glimpse into the memorable moments from our past events.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <EventGalleryImage
-              src="https://images.unsplash.com/photo-1560518883-ce09059ee953?auto=format&fit=crop&w=1400&q=80"
-              title="Yoga Session"
-              alt="People doing yoga in a park"
-            />
-            <EventGalleryImage
-              src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=1400&q=80"
-              title="Healthy Cooking Class"
-              alt="People learning to cook healthy meals"
-            />
-            <EventGalleryImage
-              src="https://images.unsplash.com/photo-1517331156700-3c241e82ca72?auto=format&fit=crop&w=1400&q=80"
-              title="Group Meditation"
-              alt="People meditating together indoors"
-            />
-          </div>
-        </div>
-      </section>
+      
 
       {/* Host an Event Section */}
       <section className="section-padding bg-gray-50">
@@ -191,17 +122,11 @@ const Events = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="border-2 border-gray-300 rounded-full py-2 px-4 w-full md:w-auto"
-            />
+            <input type="email" placeholder="Enter your email" className="border-2 border-gray-300 rounded-full py-2 px-4 w-full md:w-auto" />
             <button className="btn-primary ml-4">Subscribe</button>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Events;
