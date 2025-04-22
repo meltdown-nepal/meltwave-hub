@@ -1,8 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const MeltFit = () => {
+  const { scrollToSection } = useSmoothScroll();
+  
   // Sample training programs
   const trainingPrograms = [
     {
@@ -67,7 +69,12 @@ const MeltFit = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-primary">Schedule a Consultation</Link>
-                <Link to="#programs" className="btn-outline">View Programs</Link>
+                <button 
+                  onClick={() => scrollToSection('programs')} 
+                  className="btn-outline"
+                >
+                  View Programs
+                </button>
               </div>
             </div>
             <div className="flex justify-center">
