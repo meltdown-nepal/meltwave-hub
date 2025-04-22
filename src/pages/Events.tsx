@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EventHeroSection from "@/components/EventHeroSection";
 import { useScrollTo } from '@/hooks/useScrollTo';
 import { Button } from '@/components/ui/button';
+import EventGalleryImage from '@/components/EventGalleryImage';
+import { CalendarDays, Clock, MapPin } from 'lucide-react';
 
 // A single compact Card component for display-only purposes
 function EventCard({
@@ -11,25 +14,27 @@ function EventCard({
   date,
   description,
   note,
+  showRegister = true,
 }: {
   title: string;
   address?: string;
   date?: string;
   description?: string;
   note?: string;
+  showRegister?: boolean;
 }) {
   return (
-    <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+    <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100 hover-scale transition-transform duration-300">
       <h3 className="text-xl font-bold mb-1 text-gray-800">{title}</h3>
       {address && (
         <div className="flex items-center text-sm mb-2 text-gray-500">
-          <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" /></svg>
+          <MapPin className="mr-2 text-primary" size={18} />
           {address}
         </div>
       )}
       {date && (
         <div className="flex items-center text-sm mb-2 text-gray-500">
-          <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" stroke="currentColor" strokeWidth="2"></rect><line x1="16" x2="16" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line><line x1="8" x2="8" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line><line x1="3" x2="21" y1="10" y2="10" stroke="currentColor" strokeWidth="2"></line></svg>
+          <CalendarDays className="mr-2 text-primary" size={18} />
           {date}
         </div>
       )}
@@ -37,7 +42,12 @@ function EventCard({
         <p className="mb-2 text-gray-700">{description}</p>
       )}
       {note && (
-        <p className="mb-1 text-xs italic text-secondary-foreground">{note}</p>
+        <p className="mb-4 text-xs italic text-secondary-foreground">{note}</p>
+      )}
+      {showRegister && (
+        <Button className="mt-auto w-full" asChild>
+          <Link to="/contact">Register Now</Link>
+        </Button>
       )}
     </div>
   );
@@ -61,10 +71,10 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+            <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100 hover-scale transition-transform duration-300">
               <h3 className="text-xl font-bold mb-1 text-gray-800">Weekly Wednesday Run</h3>
               <div className="flex items-center text-sm mb-2 text-gray-500">
-                <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" /></svg>
+                <MapPin className="mr-2 text-primary" size={18} />
                 Narayanchaur
               </div>
               <p className="mb-2 text-gray-700">Join us to achieve a milestone of running 40,000 km in a year (Running around the world)</p>
@@ -74,10 +84,10 @@ const Events = () => {
               </Button>
             </div>
 
-            <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+            <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100 hover-scale transition-transform duration-300">
               <h3 className="text-xl font-bold mb-1 text-gray-800">Java Fun Marathon</h3>
               <div className="flex items-center text-sm mb-2 text-gray-500">
-                <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" stroke="currentColor" strokeWidth="2"></rect><line x1="16" x2="16" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line><line x1="8" x2="8" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line><line x1="3" x2="21" y1="10" y2="10" stroke="currentColor" strokeWidth="2"></line></svg>
+                <CalendarDays className="mr-2 text-primary" size={18} />
                 10th May
               </div>
               <p className="mb-4 text-gray-700">Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run.</p>
@@ -86,7 +96,7 @@ const Events = () => {
               </Button>
             </div>
 
-            <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+            <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100 hover-scale transition-transform duration-300">
               <h3 className="text-xl font-bold mb-1 text-gray-800">Coming Soon</h3>
               <Button className="mt-auto w-full" asChild variant="outline">
                 <Link to="/contact">Get Notified</Link>
@@ -94,13 +104,13 @@ const Events = () => {
             </div>
           </div>
           <div className="text-center">
-            <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
+            <Link to="/contact" className="btn-primary hover-scale transition-transform duration-300">Request Custom Event for Your Company</Link>
           </div>
         </div>
       </section>
 
       {/* Community Initiatives */}
-      <section className="section-padding">
+      <section className="section-padding bg-gradient-to-b from-white to-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-2">Community Initiatives</h2>
@@ -134,22 +144,27 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Replace with actual image gallery */}
-            <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-md flex items-center justify-center">
-              <span className="text-gray-500">Image</span>
-            </div>
-            <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-md flex items-center justify-center">
-              <span className="text-gray-500">Image</span>
-            </div>
-            <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-md flex items-center justify-center">
-              <span className="text-gray-500">Image</span>
-            </div>
+            <EventGalleryImage 
+              src="https://images.unsplash.com/photo-1519389950473-47a04ca2a54e" 
+              title="Tech Meetup"
+              alt="People collaborating at tech meetup" 
+            />
+            <EventGalleryImage 
+              src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" 
+              title="Java Workshop"
+              alt="Java programming session" 
+            />
+            <EventGalleryImage 
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" 
+              title="Coding Marathon"
+              alt="Laptop with code on screen" 
+            />
           </div>
         </div>
       </section>
 
       {/* Host an Event Section */}
-      <section className="section-padding">
+      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-2">Host an Event</h2>
@@ -158,7 +173,7 @@ const Events = () => {
             </p>
           </div>
           <div className="text-center">
-            <Link to="/contact" className="btn-primary">Contact Us to Host an Event</Link>
+            <Link to="/contact" className="btn-primary hover-scale transition-transform duration-300">Contact Us to Host an Event</Link>
           </div>
         </div>
       </section>
@@ -177,9 +192,9 @@ const Events = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="input input-bordered w-full md:w-auto md:mr-2 mb-2 md:mb-0"
+                className="input input-bordered w-full md:w-auto md:mr-2 mb-2 md:mb-0 p-2 rounded-md border border-gray-300"
               />
-              <button className="btn-primary">Subscribe</button>
+              <button className="btn-primary hover-scale transition-transform duration-300">Subscribe</button>
             </div>
           </div>
         </div>

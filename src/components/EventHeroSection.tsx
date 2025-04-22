@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface EventHeroSectionProps {
@@ -18,7 +19,8 @@ const EventHeroSection: React.FC<EventHeroSectionProps> = ({ onSeeUpcoming }) =>
             </p>
             <button
               onClick={onSeeUpcoming}
-              className="btn-primary"
+              className="btn-primary hover-scale transition-transform duration-300"
+              aria-label="See upcoming events"
             >
               See Upcoming Events
             </button>
@@ -27,7 +29,7 @@ const EventHeroSection: React.FC<EventHeroSectionProps> = ({ onSeeUpcoming }) =>
             <img
               src="https://images.unsplash.com/photo-1519389950473-47a04ca2a54e"
               alt="Community Event"
-              className="rounded-lg shadow-xl max-w-full h-auto"
+              className="rounded-lg shadow-xl max-w-full h-auto hover-scale transition-all duration-500"
             />
           </div>
         </div>
