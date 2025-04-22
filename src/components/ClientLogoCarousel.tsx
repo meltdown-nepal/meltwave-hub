@@ -73,7 +73,7 @@ const clientLogos = [{
   alt: "Client Logo 10"
 },{
   id: 19,
-  src: "/lovable-uploads/Nepalighar.png",
+  src: "/lovable-uploads/NepaliGharHotel.png",
   alt: "Client Logo 10"
 },{
   id: 20,
