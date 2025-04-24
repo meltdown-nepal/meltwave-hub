@@ -1,4 +1,3 @@
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -13,6 +12,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
+import { supabase } from "@/integrations/supabase/client"
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -44,29 +45,24 @@ export function ContactForm() {
 
   async function onSubmit(data: ContactFormData) {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      const { error } = await supabase.functions.invoke('contact', {
+        body: data
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to send message')
-      }
+      if (error) throw error
 
       toast({
-        title: "Success!",
-        description: "Thank you for reaching out! We'll get back to you soon.",
+        title: "✅ Success!",
+        description: "Your message has been sent successfully!",
       })
       
       form.reset()
     } catch (error) {
+      console.error('Contact form error:', error)
       toast({
         variant: "destructive",
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
+        title: "❌ Error",
+        description: "Oops! Something went wrong. Please try again later.",
       })
     }
   }
@@ -188,9 +184,9 @@ export function ContactForm() {
           )}
         />
 
-        <button type="submit" className="btn-primary w-full">
+        <Button type="submit" className="btn-primary w-full">
           Send Message
-        </button>
+        </Button>
       </form>
     </Form>
   )
