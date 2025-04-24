@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -47,52 +41,51 @@ const clientLogos = [{
   id: 10,
   src: "/lovable-uploads/shanker.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 11,
   src: "/lovable-uploads/KingsCollege.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 12,
   src: "/lovable-uploads/ottr.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 13,
   src: "/lovable-uploads/CodingMountain.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 14,
   src: "/lovable-uploads/JagadambaMotors.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 15,
   src: "/lovable-uploads/OwlDigital.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 16,
   src: "/lovable-uploads/KavyaSports.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 17,
   src: "/lovable-uploads/Stalwart.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 18,
   src: "/lovable-uploads/WeBajraStudio.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 19,
   src: "/lovable-uploads/NepaliGharHotel.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 20,
   src: "/lovable-uploads/UBASolutions.png",
   alt: "Client Logo 10"
-},{
+}, {
   id: 21,
   src: "/lovable-uploads/snackon.png",
   alt: "Client Logo 10"
-},];
-
+}];
 const Contact = () => {
   return <div>
     {/* Hero Section */}
@@ -188,7 +181,7 @@ const Contact = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-phone mr-3 text-primary flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                   <div>
                     <p className="font-bold">Phone</p>
-                    <a href="tel:+1-800-555-0123" className="text-gray-600 hover:text-secondary">+1 (800) 555-0123</a>
+                    <a href="tel:+1-800-555-0123" className="text-gray-600 hover:text-secondary">+977 9820115144</a>
                   </div>
                 </div>
 
@@ -209,16 +202,9 @@ const Contact = () => {
             <div className="mt-8">
               <h3 className="text-2xl font-bold mb-4">Our Partner Companies</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                {clientLogos.slice(0, 12).map((logo, index) => (
-                  <div key={`${logo.id}-${index}`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <img 
-                      src={logo.src} 
-                      alt={logo.alt} 
-                      className="h-12 w-full object-contain" 
-                      draggable={false}
-                    />
-                  </div>
-                ))}
+                {clientLogos.slice(0, 12).map((logo, index) => <div key={`${logo.id}-${index}`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <img src={logo.src} alt={logo.alt} className="h-12 w-full object-contain" draggable={false} />
+                  </div>)}
               </div>
             </div>
           </div>
@@ -329,5 +315,4 @@ const Contact = () => {
     </section>
   </div>;
 };
-
 export default Contact;
