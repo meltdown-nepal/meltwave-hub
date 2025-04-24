@@ -20,10 +20,23 @@ serve(async (req) => {
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
     
     if (!RESEND_API_KEY) {
+      console.error('Missing Resend API key')
       throw new Error('Missing Resend API key')
     }
 
     const resend = new Resend(RESEND_API_KEY)
+
+    // Validate required fields
+    if (!firstName || !lastName || !email || !interest || !message) {
+      console.error('Missing required fields in contact form submission')
+      return new Response(
+        JSON.stringify({ error: 'Missing required fields' }),
+        { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        },
+      )
+    }
 
     // Construct email content
     const emailContent = `
@@ -39,6 +52,8 @@ serve(async (req) => {
       ${message}
     `
 
+    console.log('Attempting to send email with Resend...')
+    
     // Send email using Resend
     const emailResponse = await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
@@ -47,8 +62,12 @@ serve(async (req) => {
       text: emailContent,
     })
 
-    if (!emailResponse.data) {
-      throw new Error('Failed to send email')
+    console.log('Resend API response:', JSON.stringify(emailResponse))
+    
+    // Check if the email was sent successfully
+    if (emailResponse.error) {
+      console.error('Resend API error:', emailResponse.error)
+      throw new Error(`Failed to send email: ${emailResponse.error.message}`)
     }
 
     return new Response(
