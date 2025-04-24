@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ContactForm } from '@/components/ContactForm';
+
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -86,6 +88,7 @@ const clientLogos = [{
   src: "/lovable-uploads/snackon.png",
   alt: "Client Logo 10"
 }];
+
 const Contact = () => {
   return <div>
     {/* Hero Section */}
@@ -112,57 +115,7 @@ const Contact = () => {
               Fill out the form below and a member of our team will get back to you within 24 hours. Or you can contact us directly using the information provided.
             </p>
 
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium mb-1">First Name</label>
-                  <input type="text" id="firstName" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your first name" />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last Name</label>
-                  <input type="text" id="lastName" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your last name" />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
-                <input type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your email address" />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number (Optional)</label>
-                <input type="tel" id="phone" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your phone number" />
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium mb-1">Company/Organization (Optional)</label>
-                <input type="text" id="company" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Your company or organization" />
-              </div>
-
-              <div>
-                <label htmlFor="interest" className="block text-sm font-medium mb-1">I'm interested in:</label>
-                <select id="interest" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white">
-                  <option value="">Please select an option</option>
-                  <option value="corporate">Corporate Wellness Solutions</option>
-                  <option value="provider">Becoming a Wellness Provider</option>
-                  <option value="employee">Employee Wellness Programs</option>
-                  <option value="academy">Academy for Trainers</option>
-                  <option value="meltfit">MeltFit Training Programs</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                <textarea id="message" rows={5} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Please provide any additional information about your inquiry"></textarea>
-              </div>
-
-              <div>
-                <button type="submit" className="btn-primary w-full">
-                  Send Message
-                </button>
-              </div>
-            </form>
+            <ContactForm />
           </div>
 
           <div>
@@ -315,4 +268,5 @@ const Contact = () => {
     </section>
   </div>;
 };
+
 export default Contact;
