@@ -35,8 +35,6 @@ serve(async (req) => {
       ${message}
     `
 
-    console.log('Sending email to support@meltdownnepal.com with Resend API')
-
     // Send email using Resend
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -53,13 +51,8 @@ serve(async (req) => {
     })
 
     if (!res.ok) {
-      const errorData = await res.json().catch(() => ({}))
-      console.error('Resend API error:', errorData)
-      throw new Error(`Failed to send email: ${res.status} ${res.statusText}`)
+      throw new Error('Failed to send email')
     }
-
-    const responseData = await res.json()
-    console.log('Email sent successfully, response:', responseData)
 
     return new Response(
       JSON.stringify({ message: 'Email sent successfully' }),
@@ -69,7 +62,6 @@ serve(async (req) => {
       },
     )
   } catch (error) {
-    console.error('Contact form error:', error)
     return new Response(
       JSON.stringify({ error: error.message }),
       { 
