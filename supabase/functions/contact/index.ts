@@ -1,5 +1,6 @@
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
+import { Resend } from "npm:resend@2.0.0"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -7,6 +8,7 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
+  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -20,6 +22,8 @@ serve(async (req) => {
     if (!RESEND_API_KEY) {
       throw new Error('Missing Resend API key')
     }
+
+    const resend = new Resend(RESEND_API_KEY)
 
     // Construct email content
     const emailContent = `
@@ -36,32 +40,26 @@ serve(async (req) => {
     `
 
     // Send email using Resend
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Contact Form <onboarding@resend.dev>',
-        to: 'sanskar.meltdown@gmail.com',
-        subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-        text: emailContent,
-      }),
+    const emailResponse = await resend.emails.send({
+      from: 'Contact Form <onboarding@resend.dev>',
+      to: 'support@meltdownnepal.com',
+      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+      text: emailContent,
     })
 
-    if (!res.ok) {
+    if (!emailResponse.data) {
       throw new Error('Failed to send email')
     }
 
     return new Response(
-      JSON.stringify({ message: 'Email sent successfully' }),
+      JSON.stringify({ message: 'Email sent successfully', data: emailResponse.data }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
       },
     )
   } catch (error) {
+    console.error('Contact form error:', error)
     return new Response(
       JSON.stringify({ error: error.message }),
       { 
