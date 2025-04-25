@@ -17,6 +17,7 @@ const steps = ["Company Size", "Company Details", "Contact Info", "Success"] as 
 export default function ScheduleDemoFlow() {
   const [step, setStep] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
 
   React.useEffect(() => {
@@ -32,6 +33,8 @@ export default function ScheduleDemoFlow() {
 
   const onSubmit = async (data: DemoFormData) => {
     try {
+      setIsSubmitting(true);
+      
       // First, save to database
       const { error: dbError } = await supabase
         .from('demo_requests')
@@ -54,7 +57,6 @@ export default function ScheduleDemoFlow() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.SUPABASE_ANON_KEY}`,
           },
           body: JSON.stringify({
             company_size: data.companySize,
@@ -69,11 +71,14 @@ export default function ScheduleDemoFlow() {
       );
 
       if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Email notification error:", errorData);
         throw new Error('Failed to send email notification');
       }
 
       // Move to success step
       setStep(3);
+      
     } catch (error) {
       console.error('Submission error:', error);
       toast({
@@ -81,6 +86,8 @@ export default function ScheduleDemoFlow() {
         description: "There was a problem submitting your request. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -125,6 +132,7 @@ export default function ScheduleDemoFlow() {
                   form={form}
                   onSubmit={form.handleSubmit(onSubmit)}
                   onBack={() => setStep(1)}
+                  isSubmitting={isSubmitting}
                 />
               )}
               {step === 3 && <Success />}

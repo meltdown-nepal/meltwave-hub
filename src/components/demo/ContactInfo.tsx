@@ -3,7 +3,7 @@ import React from "react";
 import { Mail, Phone, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 import { DemoFormData } from "@/lib/types/demo";
 import { UseFormReturn } from "react-hook-form";
@@ -12,9 +12,10 @@ interface Props {
   form: UseFormReturn<DemoFormData>;
   onSubmit: () => void;
   onBack: () => void;
+  isSubmitting?: boolean;
 }
 
-export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack }) => {
+export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack, isSubmitting = false }) => {
   return (
     <div className="space-y-6 animate-fade-in">
       <FormField
@@ -29,6 +30,7 @@ export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack }) => {
                 <Input className="pl-10" placeholder="Full name" {...field} />
               </div>
             </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />
@@ -45,6 +47,7 @@ export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack }) => {
                 <Input className="pl-10" placeholder="work@company.com" {...field} />
               </div>
             </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />
@@ -74,6 +77,7 @@ export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack }) => {
                   <Input className="pl-10" placeholder="Your phone number" {...field} />
                 </div>
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -82,13 +86,17 @@ export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack }) => {
       <p className="text-sm text-gray-500">No spam. Only relevant info from our team.</p>
 
       <div className="flex justify-between pt-6">
-        <Button type="button" variant="outline" onClick={onBack}>
+        <Button type="button" variant="outline" onClick={onBack} disabled={isSubmitting}>
           Back
         </Button>
-        <Button type="button" onClick={onSubmit}>
-          Submit
+        <Button 
+          type="button" 
+          onClick={onSubmit} 
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </div>
     </div>
   );
-};
+}

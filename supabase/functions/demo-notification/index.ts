@@ -26,6 +26,8 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const demoRequest: DemoRequest = await req.json()
+    
+    console.log("Received demo request:", JSON.stringify(demoRequest));
 
     const emailResponse = await resend.emails.send({
       from: "Meltdown Demo <onboarding@resend.dev>",
@@ -47,6 +49,8 @@ const handler = async (req: Request): Promise<Response> => {
         </ul>
       `,
     });
+
+    console.log("Email sent response:", JSON.stringify(emailResponse));
 
     return new Response(JSON.stringify(emailResponse), {
       status: 200,
