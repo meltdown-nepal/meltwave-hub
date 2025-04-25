@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Building, Building2, Users } from "lucide-react";
+import { Building, Building2, Users, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FormField } from "@/components/ui/form";
 import { DemoFormData } from "@/lib/types/demo";
@@ -33,14 +33,24 @@ export const CompanySize: React.FC<Props> = ({ form, onNext }) => {
                 key={option.value}
                 type="button"
                 variant={field.value === option.value ? "default" : "outline"}
-                className="w-full justify-start gap-4 p-6"
+                className={`
+                  w-full justify-between gap-4 p-6
+                  transition-all duration-200
+                  hover:scale-[1.02] hover:shadow-md
+                  ${field.value === option.value ? 'ring-2 ring-primary ring-offset-2' : ''}
+                `}
                 onClick={() => {
                   field.onChange(option.value);
                   onNext();
                 }}
               >
-                <option.icon className="h-5 w-5" />
-                {option.label}
+                <div className="flex items-center gap-4">
+                  <option.icon className="h-5 w-5" />
+                  {option.label}
+                </div>
+                {field.value === option.value && (
+                  <Check className="h-5 w-5 text-primary animate-scale-in" />
+                )}
               </Button>
             ))}
           </div>
