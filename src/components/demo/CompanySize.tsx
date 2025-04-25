@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building, Users, Building2, Buildings, LandPlot } from 'lucide-react';
+import { Building, Users, Building2, LandPlot } from 'lucide-react';
 
 type CompanySizeOption = 'solo' | 'small' | 'medium' | 'large' | 'enterprise';
 
@@ -32,7 +32,7 @@ const sizeOptions = [
   {
     value: 'large',
     label: '51-200 people',
-    icon: Buildings,
+    icon: Building,
     description: 'Established business',
   },
   {
