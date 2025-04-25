@@ -9,12 +9,15 @@ import { CompanyInfo } from "@/components/demo/CompanyInfo";
 import { ContactInfo } from "@/components/demo/ContactInfo";
 import { Success } from "@/components/demo/Success";
 import { DemoFormData, demoFormSchema } from "@/lib/types/demo";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const steps = ["Company Size", "Company Details", "Contact Info", "Success"] as const;
 
 export default function ScheduleDemoFlow() {
   const [step, setStep] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
+  const { toast } = useToast();
 
   React.useEffect(() => {
     setProgress((step / (steps.length - 1)) * 100);
@@ -28,8 +31,57 @@ export default function ScheduleDemoFlow() {
   });
 
   const onSubmit = async (data: DemoFormData) => {
-    console.log("Form submitted:", data);
-    setStep(3);
+    try {
+      // First, save to database
+      const { error: dbError } = await supabase
+        .from('demo_requests')
+        .insert([{
+          company_size: data.companySize,
+          company_name: data.companyName,
+          company_type: data.companyType,
+          role: data.role,
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+        }]);
+
+      if (dbError) throw dbError;
+
+      // Then, send email notification
+      const response = await fetch(
+        "https://isqyxkfodhgxzcyplbkg.supabase.co/functions/v1/demo-notification",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify({
+            company_size: data.companySize,
+            company_name: data.companyName,
+            company_type: data.companyType,
+            role: data.role,
+            full_name: data.fullName,
+            email: data.email,
+            phone: data.phone,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to send email notification');
+      }
+
+      // Move to success step
+      setStep(3);
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
