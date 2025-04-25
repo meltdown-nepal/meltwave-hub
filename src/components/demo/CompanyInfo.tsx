@@ -1,49 +1,31 @@
 
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
-import { DemoFormData } from "../ScheduleDemo";
+import { DemoFormData } from "../ScheduleDemoFlow";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
+import { Building, Briefcase } from "lucide-react";
 
 interface CompanyInfoProps {
   form: UseFormReturn<DemoFormData>;
 }
 
-const companyTypes = [
-  "Software / SaaS", 
-  "Finance / Banking",
-  "Healthcare",
-  "Education",
-  "E-commerce",
-  "Manufacturing",
-  "Logistics",
-  "Marketing / Advertising",
-  "Consulting",
-  "Non-profit",
-  "Media / Entertainment",
-  "Other"
-];
-
 const CompanyInfo = ({ form }: CompanyInfoProps) => {
   return (
     <Form {...form}>
-      <motion.div 
+      <motion.div
         className="space-y-6"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <div>
           <h2 className="text-2xl font-semibold mb-2">Tell us about your company</h2>
-          <p className="text-gray-600 mb-6">This helps us customize your demo experience</p>
-        </motion.div>
+          <p className="text-gray-600 mb-6">Help us understand your business better</p>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
@@ -52,13 +34,18 @@ const CompanyInfo = ({ form }: CompanyInfoProps) => {
             name="companyName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What's your company name?</FormLabel>
+                <FormLabel>Company Name</FormLabel>
                 <FormControl>
-                  <Input 
-                    placeholder="Enter company name" 
-                    {...field} 
-                    className="transition-all focus:ring-2 focus:ring-primary/30 border-gray-300"
-                  />
+                  <div className="relative">
+                    <Input 
+                      placeholder="Enter your company name" 
+                      {...field} 
+                      className="pl-10 transition-all focus:ring-2 focus:ring-primary/30"
+                    />
+                    <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                      <Building className="h-4 w-4" />
+                    </div>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -67,7 +54,7 @@ const CompanyInfo = ({ form }: CompanyInfoProps) => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
@@ -76,17 +63,18 @@ const CompanyInfo = ({ form }: CompanyInfoProps) => {
             name="companyType"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What does your company do?</FormLabel>
+                <FormLabel>Industry</FormLabel>
                 <FormControl>
-                  <select 
-                    className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 bg-white"
-                    {...field}
-                  >
-                    <option value="">Select industry or type</option>
-                    {companyTypes.map(type => (
-                      <option key={type} value={type}>{type}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <Input 
+                      placeholder="e.g., Technology, Healthcare, etc." 
+                      {...field} 
+                      className="pl-10 transition-all focus:ring-2 focus:ring-primary/30"
+                    />
+                    <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                      <Briefcase className="h-4 w-4" />
+                    </div>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -95,7 +83,7 @@ const CompanyInfo = ({ form }: CompanyInfoProps) => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
@@ -104,13 +92,18 @@ const CompanyInfo = ({ form }: CompanyInfoProps) => {
             name="role"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>And what's your role there?</FormLabel>
+                <FormLabel>Your Role</FormLabel>
                 <FormControl>
-                  <Input 
-                    placeholder="E.g., Marketing Manager, CEO, IT Director" 
-                    {...field} 
-                    className="transition-all focus:ring-2 focus:ring-primary/30 border-gray-300"
-                  />
+                  <div className="relative">
+                    <Input 
+                      placeholder="What's your role at the company?" 
+                      {...field} 
+                      className="pl-10 transition-all focus:ring-2 focus:ring-primary/30"
+                    />
+                    <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                      <User className="h-4 w-4" />
+                    </div>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
