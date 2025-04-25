@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,6 +20,7 @@ import MeltFit from "./pages/MeltFit";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
+import ScheduleDemoFlow from "./pages/ScheduleDemoFlow";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +44,7 @@ const App = () => (
             <Route path="/meltfit" element={<MeltFit />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
