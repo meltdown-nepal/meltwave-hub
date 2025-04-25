@@ -1,11 +1,11 @@
 
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
-import { DemoFormData } from "../ScheduleDemoFlow";
+import { DemoFormData } from "../../pages/ScheduleDemoFlow";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { Building, Briefcase } from "lucide-react";
+import { Building, Briefcase, User } from "lucide-react";
 
 interface CompanyInfoProps {
   form: UseFormReturn<DemoFormData>;
