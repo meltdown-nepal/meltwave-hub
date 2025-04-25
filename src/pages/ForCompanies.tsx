@@ -39,7 +39,7 @@ const ForCompanies = () => {
                 Create a healthier, more productive workplace with customized wellness programs that meet your company's specific needs and goals.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/schedule-demo" className="btn-primary">Schedule a Demo</Link>
+                <Link to="/contact" className="btn-primary">Schedule a Demo</Link>
                 <Link to="/corporate-wellness" className="btn-outline">Explore Our Programs</Link>
               </div>
             </div>
@@ -233,7 +233,7 @@ const ForCompanies = () => {
             Schedule a consultation with our team to discuss how Meltdown can create a customized wellness solution for your company.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link to="/schedule-demo" className="btn-primary">Schedule a Consultation</Link>
+            <Link to="/contact" className="btn-primary">Schedule a Consultation</Link>
             <Link to="/corporate-wellness" className="btn-outline">Explore Our Programs</Link>
           </div>
         </div>
