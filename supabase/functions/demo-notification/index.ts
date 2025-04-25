@@ -28,21 +28,10 @@ const handler = async (req: Request): Promise<Response> => {
     const demoRequest: DemoRequest = await req.json()
     
     console.log("Received demo request:", JSON.stringify(demoRequest));
-    console.log("Using RESEND_API_KEY:", Deno.env.get("RESEND_API_KEY") ? "API key is set" : "API key is missing");
-    
-    // Ensure we have a valid API key before attempting to send
-    if (!Deno.env.get("RESEND_API_KEY")) {
-      throw new Error("Missing Resend API key in environment variables");
-    }
-    
-    // Define recipient email addresses - you can add multiple recipients
-    const recipients = ["support@meltdownnepal.com"];
-    console.log("Sending email to:", recipients);
 
     const emailResponse = await resend.emails.send({
       from: "Meltdown Demo <onboarding@resend.dev>",
-
-      to: "support@meltdownnepal.com",
+      to: ["support@meltdownnepal.com"],
       subject: "New Demo Request 🎉",
       html: `
         <h2>New Demo Request from ${demoRequest.company_name}</h2>

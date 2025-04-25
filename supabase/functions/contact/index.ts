@@ -44,7 +44,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Contact Form <onboarding@resend.dev>',
-        to: ['support@meltdownnepal.com','sanskar.meltdown@gmail.com'],
+        to: 'support@meltdownnepal.com',
         subject: `New Contact Form Submission from ${firstName} ${lastName}`,
         text: emailContent,
       }),

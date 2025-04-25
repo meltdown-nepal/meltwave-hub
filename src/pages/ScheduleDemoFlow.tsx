@@ -18,7 +18,6 @@ export default function ScheduleDemoFlow() {
   const [step, setStep] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submissionError, setSubmissionError] = React.useState<string | null>(null);
   const { toast } = useToast();
 
   React.useEffect(() => {
@@ -34,10 +33,7 @@ export default function ScheduleDemoFlow() {
 
   const onSubmit = async (data: DemoFormData) => {
     try {
-      setSubmissionError(null);
       setIsSubmitting(true);
-      
-      console.log("Submitting demo request:", data);
       
       // First, save to database
       const { error: dbError } = await supabase
@@ -52,12 +48,7 @@ export default function ScheduleDemoFlow() {
           phone: data.phone,
         }]);
 
-      if (dbError) {
-        console.error("Database error:", dbError);
-        throw dbError;
-      }
-
-      console.log("Database insert successful, sending email notification");
+      if (dbError) throw dbError;
 
       // Then, send email notification
       const response = await fetch(
@@ -79,11 +70,9 @@ export default function ScheduleDemoFlow() {
         }
       );
 
-      const responseData = await response.json();
-      console.log("Email notification response:", responseData);
-
       if (!response.ok) {
-        console.error("Email notification error:", responseData);
+        const errorData = await response.json();
+        console.error("Email notification error:", errorData);
         throw new Error('Failed to send email notification');
       }
 
@@ -92,9 +81,6 @@ export default function ScheduleDemoFlow() {
       
     } catch (error) {
       console.error('Submission error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      setSubmissionError(errorMessage);
-      
       toast({
         title: "Error",
         description: "There was a problem submitting your request. Please try again.",
@@ -126,12 +112,6 @@ export default function ScheduleDemoFlow() {
         )}
 
         <div className="bg-white shadow-lg rounded-lg p-6 md:p-8">
-          {submissionError && (
-            <div className="mb-4 p-3 rounded bg-red-50 text-red-800 text-sm">
-              Error: {submissionError}
-            </div>
-          )}
-          
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               {step === 0 && (
