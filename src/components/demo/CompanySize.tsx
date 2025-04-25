@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Building, Building2, Buildings, Users } from "lucide-react";
+import { Building, Building2, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FormField } from "@/components/ui/form";
 import { DemoFormData } from "@/lib/types/demo";
@@ -15,7 +15,7 @@ const companySizeOptions = [
   { value: "small", label: "2–10 people", icon: Building },
   { value: "medium", label: "11-25 people", icon: Building },
   { value: "mediumLarge", label: "26–50 people", icon: Building2 },
-  { value: "large", label: "51–200 people", icon: Buildings },
+  { value: "large", label: "51–200 people", icon: Building },
   { value: "enterprise", label: "201+ people", icon: Users },
 ];
 
