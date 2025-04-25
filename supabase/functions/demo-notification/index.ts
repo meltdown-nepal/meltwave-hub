@@ -41,10 +41,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     const emailResponse = await resend.emails.send({
       from: "Meltdown Demo <onboarding@resend.dev>",
-<<<<<<< HEAD
+
       to: "support@meltdownnepal.com",
-=======
-`to: "support@meltdownnepal.com",
       subject: "New Demo Request 🎉",
       html: `
         <h2>New Demo Request from ${demoRequest.company_name}</h2>
