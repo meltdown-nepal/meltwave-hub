@@ -56,8 +56,8 @@ serve(async (req) => {
     
     // Send email using Resend
     const emailResponse = await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>',
-      to: 'support@meltdownnepal.com',
+      from: 'Meltdown Contact <no-reply@meltdownnepal.com>', // after domain verification
+      to: 'sanskar.meltdown@gmail.com',
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
       text: emailContent,
     })
