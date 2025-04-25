@@ -1,8 +1,5 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { Resend } from "npm:resend@2.0.0"
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -19,43 +16,66 @@ interface DemoRequest {
   phone?: string;
 }
 
-const handler = async (req: Request): Promise<Response> => {
+serve(async (req: Request): Promise<Response> => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    const demoRequest: DemoRequest = await req.json()
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    if (!RESEND_API_KEY) {
+      console.error("Missing RESEND_API_KEY");
+      throw new Error("Missing required API key");
+    }
     
+    const demoRequest: DemoRequest = await req.json();
     console.log("Received demo request:", JSON.stringify(demoRequest));
 
-    const emailResponse = await resend.emails.send({
-      from: "Meltdown Demo <onboarding@resend.dev>",
-      to: ["support@meltdownnepal.com"],
-      subject: "New Demo Request 🎉",
-      html: `
-        <h2>New Demo Request from ${demoRequest.company_name}</h2>
-        <h3>Company Information:</h3>
-        <ul>
-          <li>Size: ${demoRequest.company_size}</li>
-          <li>Type: ${demoRequest.company_type}</li>
-        </ul>
-        <h3>Contact Information:</h3>
-        <ul>
-          <li>Name: ${demoRequest.full_name}</li>
-          <li>Role: ${demoRequest.role}</li>
-          <li>Email: ${demoRequest.email}</li>
-          ${demoRequest.phone ? `<li>Phone: ${demoRequest.phone}</li>` : ''}
-        </ul>
-      `,
+    // Construct email content
+    const htmlContent = `
+      <h2>New Demo Request from ${demoRequest.company_name}</h2>
+      <h3>Company Information:</h3>
+      <ul>
+        <li>Size: ${demoRequest.company_size}</li>
+        <li>Type: ${demoRequest.company_type}</li>
+      </ul>
+      <h3>Contact Information:</h3>
+      <ul>
+        <li>Name: ${demoRequest.full_name}</li>
+        <li>Role: ${demoRequest.role}</li>
+        <li>Email: ${demoRequest.email}</li>
+        ${demoRequest.phone ? `<li>Phone: ${demoRequest.phone}</li>` : ''}
+      </ul>
+    `;
+
+    // Send email using Resend API directly
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: "Meltdown Demo <onboarding@resend.dev>",
+        to: ["support@meltdownnepal.com"],
+        subject: "New Demo Request 🎉",
+        html: htmlContent,
+      }),
     });
 
-    console.log("Email sent response:", JSON.stringify(emailResponse));
+    if (!emailResponse.ok) {
+      const errorData = await emailResponse.json();
+      console.error("Email sending failed:", JSON.stringify(errorData));
+      throw new Error(`Failed to send email: ${emailResponse.status}`);
+    }
 
-    return new Response(JSON.stringify(emailResponse), {
+    const responseData = await emailResponse.json();
+    console.log("Email sent response:", JSON.stringify(responseData));
+
+    return new Response(JSON.stringify(responseData), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    })
+    });
 
   } catch (error) {
     console.error('Error sending email:', error);
@@ -65,8 +85,6 @@ const handler = async (req: Request): Promise<Response> => {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
-    )
+    );
   }
-}
-
-serve(handler)
+});

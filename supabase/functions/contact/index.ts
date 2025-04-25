@@ -6,7 +6,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req) => {
+serve(async (req: Request): Promise<Response> => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -16,6 +16,7 @@ serve(async (req) => {
 
     // Get environment variables
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
+    console.log("RESEND_API_KEY exists:", !!RESEND_API_KEY);
     
     if (!RESEND_API_KEY) {
       throw new Error('Missing Resend API key')
@@ -51,17 +52,23 @@ serve(async (req) => {
     })
 
     if (!res.ok) {
-      throw new Error('Failed to send email')
+      const errorData = await res.json();
+      console.error("Email sending failed:", JSON.stringify(errorData));
+      throw new Error(`Failed to send email: ${res.status}`)
     }
 
+    const responseData = await res.json();
+    console.log("Email sent response:", JSON.stringify(responseData));
+
     return new Response(
-      JSON.stringify({ message: 'Email sent successfully' }),
+      JSON.stringify({ message: 'Email sent successfully', response: responseData }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
       },
     )
   } catch (error) {
+    console.error('Contact form error:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
       { 
