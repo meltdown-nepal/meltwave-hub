@@ -6,7 +6,7 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { motion } from "framer-motion";
-import { Mail, Phone, Check } from "lucide-react";
+import { Mail, Phone, Check, User } from "lucide-react";
 
 interface ContactInfoProps {
   form: UseFormReturn<DemoFormData>;
