@@ -39,7 +39,7 @@ const ForCompanies = () => {
                 Create a healthier, more productive workplace with customized wellness programs that meet your company's specific needs and goals.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="btn-primary">Schedule a Demo</Link>
+                <Link to="/schedule-demo" className="btn-primary">Schedule a Demo</Link>
                 <Link to="/corporate-wellness" className="btn-outline">Explore Our Programs</Link>
               </div>
             </div>
