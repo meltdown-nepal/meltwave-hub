@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
 
@@ -18,21 +18,31 @@ const VideoTestimonial = ({
   name,
   role
 }: VideoTestimonialProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
+    <Card 
+      className="overflow-hidden group hover:shadow-lg transition-all duration-300"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="relative">
         <div className="aspect-video bg-gray-200 relative overflow-hidden">
           <img 
             src={thumbnailSrc} 
             alt={`${name}'s testimonial`} 
             className="w-full h-full object-cover"
+            loading="lazy"
+            width="350"
+            height="197"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
               <Play className="h-8 w-8 text-white ml-1" />
             </div>
           </div>
-          <video src={videoSrc} className="hidden" />
+          {/* Only preload video when hovered */}
+          {isHovered && <link rel="preload" href={videoSrc} as="video" />}
         </div>
       </div>
       <div className="p-5">

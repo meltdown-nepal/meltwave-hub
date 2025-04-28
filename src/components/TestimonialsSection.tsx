@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -53,6 +54,12 @@ const testimonials: Testimonial[] = [
 
 const TestimonialsSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleVideoClick = (videoUrl: string) => {
+    setIsLoading(true);
+    setSelectedVideo(videoUrl);
+  };
 
   return (
     <section className="bg-gray-50 section-padding" id="testimonials">
@@ -74,11 +81,14 @@ const TestimonialsSection = () => {
                     src={testimonial.image} 
                     alt={`${testimonial.name} testimonial`} 
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    width="300"
+                    height="169"
                   />
                   {testimonial.videoUrl && (
                     <div 
                       className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                      onClick={() => setSelectedVideo(testimonial.videoUrl!)}
+                      onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
                     >
                       <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
                         <Play className="h-10 w-10 text-white ml-1" />
@@ -111,11 +121,14 @@ const TestimonialsSection = () => {
                           src={testimonial.image} 
                           alt={`${testimonial.name} testimonial`} 
                           className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                          width="300"
+                          height="169"
                         />
                         {testimonial.videoUrl && (
                           <div 
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center cursor-pointer"
-                            onClick={() => setSelectedVideo(testimonial.videoUrl!)}
+                            onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
                           >
                             <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
                               <Play className="h-10 w-10 text-white ml-1" />
@@ -143,14 +156,19 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Video Dialog */}
-        <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
+        <Dialog open={!!selectedVideo} onOpenChange={() => {
+          setSelectedVideo(null);
+          setIsLoading(false);
+        }}>
           <DialogContent className="sm:max-w-4xl">
+            {isLoading && <div className="flex justify-center items-center h-40">Loading video...</div>}
             {selectedVideo && (
               <video 
                 src={selectedVideo}
                 controls
                 autoPlay
-                className="w-full"
+                className={`w-full ${isLoading ? 'hidden' : 'block'}`}
+                onCanPlay={() => setIsLoading(false)}
               >
                 Your browser does not support the video tag.
               </video>

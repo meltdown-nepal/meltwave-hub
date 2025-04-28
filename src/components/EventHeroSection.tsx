@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Dumbbell, HeartPulse, Timer } from "lucide-react";
 
@@ -42,16 +43,31 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
   const [nextRun, setNextRun] = useState<Date>(getNextWednesday9am());
   const [countdown, setCountdown] = useState(getCountdown(nextRun));
   const intervalRef = useRef<number>();
+  
+  const updateCountdown = useCallback(() => {
+    const n = getNextWednesday9am();
+    setNextRun(n);
+    setCountdown(getCountdown(n));
+  }, []);
 
   useEffect(() => {
-    function updateCountdown() {
-      const n = getNextWednesday9am();
-      setNextRun(n);
-      setCountdown(getCountdown(n));
-    }
-    intervalRef.current = window.setInterval(updateCountdown, 1000);
-    return () => clearInterval(intervalRef.current);
-  }, []);
+    // Initial setup
+    updateCountdown();
+    
+    // Update every second, but don't use setInterval which can cause performance issues
+    const updateTimer = () => {
+      updateCountdown();
+      intervalRef.current = window.setTimeout(updateTimer, 1000);
+    };
+    
+    intervalRef.current = window.setTimeout(updateTimer, 1000);
+    
+    return () => {
+      if (intervalRef.current) {
+        clearTimeout(intervalRef.current);
+      }
+    };
+  }, [updateCountdown]);
 
   return (
     <section
@@ -64,6 +80,9 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
           alt="People running marathon event"
           className="w-full h-full object-cover brightness-100"
           draggable={false}
+          loading="eager" // This is a hero image, so we want it to load quickly
+          width="1400"
+          height="800"
         />
         {/* White/pastel overlay */}
         <div className="absolute inset-0 bg-white/80 md:bg-white/60" />

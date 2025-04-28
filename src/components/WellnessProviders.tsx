@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const providers = [
   {
@@ -86,8 +86,29 @@ const providers = [
 
 const WellnessProviders = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const animationRef = useRef<number>();
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (scrollRef.current) {
+      observer.observe(scrollRef.current);
+    }
+    
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || !scrollRef.current) return;
+    
     const animateScroll = () => {
       if (scrollRef.current) {
         if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
@@ -96,11 +117,17 @@ const WellnessProviders = () => {
           scrollRef.current.scrollLeft += 1;
         }
       }
+      animationRef.current = requestAnimationFrame(animateScroll);
     };
-
-    const animationId = setInterval(animateScroll, 30);
-    return () => clearInterval(animationId);
-  }, []);
+    
+    animationRef.current = requestAnimationFrame(animateScroll);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible]);
 
   return (
     <section className="py-12 bg-yellow-50">
@@ -112,12 +139,13 @@ const WellnessProviders = () => {
             className="flex justify-center items-center space-x-24 py-8 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
+              msOverflowStyle: 'none',
+              scrollBehavior: 'smooth'
             }}
           >
-            {[...providers, ...providers].map((provider, index) => (
+            {providers.map((provider) => (
               <div 
-                key={`${provider.id}-${index}`} 
+                key={provider.id} 
                 className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
               >
                 <img 
@@ -125,6 +153,26 @@ const WellnessProviders = () => {
                   alt={provider.alt} 
                   className="h-24 w-56 object-contain"
                   draggable={false}
+                  loading="lazy"
+                  width="224"
+                  height="96"
+                />
+              </div>
+            ))}
+            {/* Add clones of the first few items to create a seamless loop effect */}
+            {providers.slice(0, 5).map((provider) => (
+              <div 
+                key={`clone-${provider.id}`} 
+                className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
+              >
+                <img 
+                  src={provider.src} 
+                  alt={provider.alt} 
+                  className="h-24 w-56 object-contain"
+                  draggable={false}
+                  loading="lazy"
+                  width="224"
+                  height="96"
                 />
               </div>
             ))}

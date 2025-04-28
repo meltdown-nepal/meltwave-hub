@@ -1,97 +1,119 @@
-import React, { useEffect, useRef } from 'react';
+
+import React, { useEffect, useRef, useState } from 'react';
 
 const clientLogos = [
   {
     id: 1,
     src: "/lovable-uploads/Veda.png",
-    alt: "Client Logo 1"
+    alt: "Veda Logo"
   }, {
     id: 2,
     src: "/lovable-uploads/Karobar.png",
-    alt: "Client Logo 2"
+    alt: "Karobar Logo"
   }, {
     id: 3,
     src: "/lovable-uploads/naamche.png",
-    alt: "Client Logo 3"
+    alt: "Naamche Logo"
   }, {
     id: 4,
     src: "/lovable-uploads/SecurityPal.png",
-    alt: "Client Logo 4"
+    alt: "SecurityPal Logo"
   }, {
     id: 5,
     src: "/lovable-uploads/HimalayanJava.png",
-    alt: "Client Logo 5"
+    alt: "Himalayan Java Logo"
   }, {
     id: 6,
     src: "/lovable-uploads/flextecs.png",
-    alt: "Client Logo 6"
+    alt: "FlexTecs Logo"
   }, {
     id: 7,
     src: "/lovable-uploads/GolchhaGroup.png",
-    alt: "Client Logo 7"
+    alt: "Golchha Group Logo"
   }, {
     id: 8,
     src: "/lovable-uploads/YoungInnovations.png",
-    alt: "Client Logo 8"
+    alt: "Young Innovations Logo"
   }, {
     id: 9,
     src: "/lovable-uploads/leapfrog.png",
-    alt: "Client Logo 9"
+    alt: "Leapfrog Logo"
   }, {
     id: 10,
     src: "/lovable-uploads/shanker.png",
-    alt: "Client Logo 10"
+    alt: "Shanker Logo"
   }, {
     id: 11,
     src: "/lovable-uploads/KingsCollege.png",
-    alt: "Client Logo 10"
+    alt: "Kings College Logo"
   }, {
     id: 12,
     src: "/lovable-uploads/ottr.png",
-    alt: "Client Logo 10"
+    alt: "Ottr Logo"
   }, {
     id: 13,
     src: "/lovable-uploads/CodingMountain.png",
-    alt: "Client Logo 10"
+    alt: "Coding Mountain Logo"
   }, {
     id: 14,
     src: "/lovable-uploads/JagadambaMotors.png",
-    alt: "Client Logo 10"
+    alt: "Jagadamba Motors Logo"
   }, {
     id: 15,
     src: "/lovable-uploads/OwlDigital.png",
-    alt: "Client Logo 10"
+    alt: "Owl Digital Logo"
   }, {
     id: 16,
     src: "/lovable-uploads/KavyaSports.png",
-    alt: "Client Logo 10"
+    alt: "Kavya Sports Logo"
   }, {
     id: 17,
     src: "/lovable-uploads/Stalwart.png",
-    alt: "Client Logo 10"
+    alt: "Stalwart Logo"
   }, {
     id: 18,
     src: "/lovable-uploads/WeBajraStudio.png",
-    alt: "Client Logo 10"
+    alt: "We Bajra Studio Logo"
   }, {
     id: 19,
     src: "/lovable-uploads/NepaliGharHotel.png",
-    alt: "Client Logo 10"
+    alt: "Nepali Ghar Hotel Logo"
   }, {
     id: 20,
     src: "/lovable-uploads/UBASolutions.png",
-    alt: "Client Logo 10"
+    alt: "UBA Solutions Logo"
   }, {
     id: 21,
     src: "/lovable-uploads/snackon.png",
-    alt: "Client Logo 10"
+    alt: "Snack On Logo"
   }
 ];
 
 const ClientLogoCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const animationRef = useRef<number>();
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (scrollRef.current) {
+      observer.observe(scrollRef.current);
+    }
+    
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || !scrollRef.current) return;
+    
     const animateScroll = () => {
       if (scrollRef.current) {
         if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
@@ -100,10 +122,26 @@ const ClientLogoCarousel = () => {
           scrollRef.current.scrollLeft += 1;
         }
       }
+      animationRef.current = requestAnimationFrame(animateScroll);
     };
-    const animationId = setInterval(animateScroll, 30);
-    return () => clearInterval(animationId);
-  }, []);
+    
+    animationRef.current = requestAnimationFrame(animateScroll);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  // Calculate visible items based on viewport width
+  const getVisibleItems = () => {
+    // Return enough logos to fill the carousel plus a buffer
+    // We'll render the original array once, not twice
+    return clientLogos;
+  };
+
+  const visibleItems = getVisibleItems();
 
   return (
     <section className="py-8 bg-yellow-50">
@@ -115,12 +153,13 @@ const ClientLogoCarousel = () => {
             className="flex justify-center items-center space-x-16 py-6 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
+              msOverflowStyle: 'none',
+              scrollBehavior: 'smooth'
             }}
           >
-            {[...clientLogos, ...clientLogos].map((logo, index) => (
+            {visibleItems.map((logo) => (
               <div 
-                key={`${logo.id}-${index}`} 
+                key={logo.id} 
                 className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
               >
                 <img
@@ -128,6 +167,26 @@ const ClientLogoCarousel = () => {
                   alt={logo.alt}
                   className="h-24 w-48 object-contain"
                   draggable={false}
+                  loading="lazy"
+                  width="192"
+                  height="96"
+                />
+              </div>
+            ))}
+            {/* Add clones of the first few items to create a seamless loop effect */}
+            {visibleItems.slice(0, 5).map((logo) => (
+              <div 
+                key={`clone-${logo.id}`} 
+                className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-24 w-48 object-contain"
+                  draggable={false}
+                  loading="lazy"
+                  width="192"
+                  height="96"
                 />
               </div>
             ))}
