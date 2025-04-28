@@ -49,9 +49,8 @@ const CorporateWellness = () => {
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Who We Serve</h2>
-            <p className="text-lg max-w-2xl mx-auto">
-              Our corporate wellness platform is designed for every part of your organization—choose your role to learn more!
-            </p>
+            <p className="text-lg max-w-2xl mx-auto">Our corporate wellbeing system is designed for companies that want to build an active community and engage their employees through health focused initiatives
+          </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
