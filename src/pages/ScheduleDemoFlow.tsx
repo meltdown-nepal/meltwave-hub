@@ -78,7 +78,7 @@ export default function ScheduleDemoFlow() {
       }
 
       // Move to success step
-      setStep(3);
+      setStep(4);
       
     } catch (error) {
       console.error('Submission error:', error);
@@ -161,4 +161,3 @@ export default function ScheduleDemoFlow() {
     </div>
   );
 }
-

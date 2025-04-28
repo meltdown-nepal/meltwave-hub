@@ -57,7 +57,7 @@ serve(async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Meltdown Demo <onboarding@resend.dev>",
-        to: ["support@meltdownnepal.com"],
+        to: ["sanskar.meltdown@gmail.com"],
         subject: "New Demo Request 🎉",
         html: htmlContent,
       }),
