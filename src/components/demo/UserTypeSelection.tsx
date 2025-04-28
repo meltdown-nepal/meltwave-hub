@@ -25,30 +25,30 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
             title: "Employee",
             description: "Looking for wellness solutions",
             icon: User,
-            color: "bg-blue-50 text-blue-500",
+            color: "bg-primary/10 text-primary",
           },
           {
             type: "company" as const,
             title: "Company",
             description: "Seeking corporate wellness",
             icon: Building2,
-            color: "bg-purple-50 text-purple-500",
+            color: "bg-secondary/20 text-secondary",
           },
           {
             type: "provider" as const,
             title: "Wellness Provider",
             description: "Want to join our network",
             icon: Heart,
-            color: "bg-rose-50 text-rose-500",
+            color: "bg-primary/20 text-primary",
           },
         ].map((option) => (
           <Card
             key={option.type}
-            className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer group border-2 hover:border-primary"
+            className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer group border-2 border-transparent hover:border-primary"
             onClick={() => onSelect(option.type)}
           >
             <div className="p-8 flex flex-col items-center text-center space-y-6">
-              <div className={`p-4 rounded-full ${option.color} transition-colors duration-300 group-hover:bg-primary/10`}>
+              <div className={`p-4 rounded-full ${option.color} transition-colors duration-300 group-hover:bg-primary/30`}>
                 <option.icon className="w-10 h-10" />
               </div>
               <div className="space-y-3">
