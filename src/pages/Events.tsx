@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays } from 'lucide-react';
@@ -24,20 +23,16 @@ function EventCard({
   note?: string;
   registrationLink?: string;
 }) {
-  return (
-    <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+  return <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
       <h3 className="text-xl font-bold mb-1 text-gray-800">{title}</h3>
-      {address && (
-        <div className="flex items-center text-sm mb-2 text-gray-500">
+      {address && <div className="flex items-center text-sm mb-2 text-gray-500">
           <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" stroke="currentColor" strokeWidth="2" />
             <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" />
           </svg>
           {address}
-        </div>
-      )}
-      {date && (
-        <div className="flex items-center text-sm mb-2 text-gray-500">
+        </div>}
+      {date && <div className="flex items-center text-sm mb-2 text-gray-500">
           <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none">
             <rect width="18" height="18" x="3" y="4" rx="2" ry="2" stroke="currentColor" strokeWidth="2"></rect>
             <line x1="16" x2="16" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line>
@@ -45,66 +40,48 @@ function EventCard({
             <line x1="3" x2="21" y1="10" y2="10" stroke="currentColor" strokeWidth="2"></line>
           </svg>
           {date}
-        </div>
-      )}
+        </div>}
       {description && <p className="mb-2 text-gray-700">{description}</p>}
       {note && <p className="mb-4 text-xs italic text-secondary-foreground">{note}</p>}
-      {registrationLink && (
-        <Button 
-          variant="default" 
-          className="mt-auto bg-primary hover:bg-secondary text-black font-semibold"
-          asChild
-        >
-          <Link to={registrationLink}>Register Now</Link>
-        </Button>
-      )}
-    </div>
-  );
+      {registrationLink && <Button variant="default" className="mt-auto bg-primary hover:bg-secondary text-black font-semibold" asChild>
+          
+        </Button>}
+    </div>;
 }
-
 const Events = () => {
-  const { scrollToSection } = useSmoothScroll();
-
-  const offerTypes = [
-    {
-      icon: Activity,
-      title: "Bootcamps",
-      description: "Strength, conditioning, and full-body workouts in open spaces."
-    },
-    {
-      icon: Award,
-      title: "Runs",
-      description: "Fun runs, timed challenges, and team relay races."
-    },
-    {
-      icon: Award,
-      title: "Basketball Tournaments",
-      description: "Casual games or competitive corporate tournaments."
-    },
-    {
-      icon: Mountain,
-      title: "Hiking Adventures",
-      description: "Scenic group hikes, perfect for adventure lovers."
-    },
-    {
-      icon: Puzzle,
-      title: "Treasure Hunts",
-      description: "Interactive, team-building experiences combining fitness and fun."
-    },
-    {
-      icon: Bike,
-      title: "Cycling Events",
-      description: "Group cycling expeditions around beautiful locations."
-    },
-    {
-      icon: CalendarDays,
-      title: "Topic-Specific Events",
-      description: "Tailored experiences based on wellness and active living."
-    }
-  ];
-
-  return (
-    <div>
+  const {
+    scrollToSection
+  } = useSmoothScroll();
+  const offerTypes = [{
+    icon: Activity,
+    title: "Bootcamps",
+    description: "Strength, conditioning, and full-body workouts in open spaces."
+  }, {
+    icon: Award,
+    title: "Runs",
+    description: "Fun runs, timed challenges, and team relay races."
+  }, {
+    icon: Award,
+    title: "Basketball Tournaments",
+    description: "Casual games or competitive corporate tournaments."
+  }, {
+    icon: Mountain,
+    title: "Hiking Adventures",
+    description: "Scenic group hikes, perfect for adventure lovers."
+  }, {
+    icon: Puzzle,
+    title: "Treasure Hunts",
+    description: "Interactive, team-building experiences combining fitness and fun."
+  }, {
+    icon: Bike,
+    title: "Cycling Events",
+    description: "Group cycling expeditions around beautiful locations."
+  }, {
+    icon: CalendarDays,
+    title: "Topic-Specific Events",
+    description: "Tailored experiences based on wellness and active living."
+  }];
+  return <div>
       {/* Hero Section */}
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
@@ -135,23 +112,9 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard 
-              title="Weekly Wednesday Run" 
-              address="Narayanchaur" 
-              description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" 
-              note="This event repeats every Wednesday."
-              registrationLink="/contact?event=weekly-run" 
-            />
-            <EventCard 
-              title="Java Fun Marathon" 
-              date="10th May" 
-              description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run."
-              registrationLink="/contact?event=java-marathon" 
-            />
-            <EventCard 
-              title="Coming Soon"
-              registrationLink="/contact?event=notify" 
-            />
+            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
+            <EventCard title="Java Fun Marathon" date="10th May" description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." registrationLink="/contact?event=java-marathon" />
+            <EventCard title="Coming Soon" registrationLink="/contact?event=notify" />
           </div>
           <div className="text-center">
             <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
@@ -169,14 +132,7 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {offerTypes.map((offer) => (
-              <EventOfferCard
-                key={offer.title}
-                Icon={offer.icon}
-                title={offer.title}
-                description={offer.description}
-              />
-            ))}
+            {offerTypes.map(offer => <EventOfferCard key={offer.title} Icon={offer.icon} title={offer.title} description={offer.description} />)}
           </div>
         </div>
       </section>
@@ -195,8 +151,6 @@ const Events = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Events;
