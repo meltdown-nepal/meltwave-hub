@@ -7,7 +7,6 @@ import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
 
-// A single compact Card component for display-only purposes
 function EventCard({
   title,
   address,
@@ -95,10 +94,8 @@ const Events = () => {
     description: "Tailored experiences based on wellness and active living."
   }];
   return <div>
-      {/* Hero Section */}
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
-      {/* Gallery Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
@@ -115,7 +112,6 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
       <section id="upcoming" className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-12">
@@ -125,9 +121,22 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
-            <EventCard title="Java Fun Marathon" date="10th May" description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." registrationLink="/contact?event=java-marathon" />
-            <EventCard title="Coming Soon" registrationLink="/contact?event=notify" />
+            <EventCard 
+              title="Weekly Wednesday Run" 
+              address="Narayanchaur" 
+              description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" 
+              note="This event repeats every Wednesday." 
+              registrationLink="/contact?event=weekly-run" 
+            />
+            <EventCard 
+              title="Java Fun Marathon" 
+              date="10th May" 
+              description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." 
+              registrationLink="/contact?event=java-marathon" 
+            />
+            <EventCard 
+              title="Coming Soon" 
+            />
           </div>
           <div className="text-center">
             <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
@@ -135,7 +144,6 @@ const Events = () => {
         </div>
       </section>
 
-      {/* What We Offer Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
@@ -150,7 +158,6 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Host an Event Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
@@ -166,4 +173,5 @@ const Events = () => {
       </section>
     </div>;
 };
+
 export default Events;
