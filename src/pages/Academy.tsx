@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -8,7 +7,8 @@ import {
   Users, 
   Award, 
   CheckCircle,
-  Calendar
+  Calendar,
+  ChevronDown
 } from 'lucide-react';
 import { 
   Card, 
@@ -30,6 +30,11 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const Academy = () => {
   const { scrollToSection } = useSmoothScroll();
@@ -281,48 +286,56 @@ const Academy = () => {
             {courses.map((course, index) => (
               <Card key={index} className="transition-all duration-300 hover:shadow-lg">
                 <CardHeader className="bg-primary/10">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle className="text-xl">{course.title}</CardTitle>
-                      <CardDescription className="text-base mt-1 font-medium">{course.subtitle}</CardDescription>
+                  <Collapsible>
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <CollapsibleTrigger className="flex items-center justify-between w-full group">
+                          <div>
+                            <CardTitle className="text-xl">{course.title}</CardTitle>
+                            <CardDescription className="text-base mt-1 font-medium">
+                              {course.subtitle}
+                            </CardDescription>
+                          </div>
+                          <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                        </CollapsibleTrigger>
+                      </div>
+                      {course.icon}
                     </div>
-                    {course.icon}
-                  </div>
+                    
+                    <CollapsibleContent className="pt-6 space-y-4">
+                      <div>
+                        <h4 className="font-bold mb-1">Overview</h4>
+                        <p className="text-sm text-gray-700">{course.overview}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Who Should Take This Course</h4>
+                        <p className="text-sm text-gray-700">{course.audience}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">What You Will Learn</h4>
+                        <ul className="text-sm text-gray-700 list-disc list-inside">
+                          {course.learnings.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Certification Details</h4>
+                        <p className="text-sm text-gray-700">{course.certification}</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-bold mb-1">Duration</h4>
+                          <p className="text-sm text-gray-700">{course.duration}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-bold mb-1">Fees</h4>
+                          <p className="text-sm text-gray-700">{course.fees}</p>
+                        </div>
+                      </div>
+                    </CollapsibleContent>
+                  </Collapsible>
                 </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-bold mb-1">Overview</h4>
-                      <p className="text-sm text-gray-700">{course.overview}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-1">Who Should Take This Course</h4>
-                      <p className="text-sm text-gray-700">{course.audience}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-1">What You Will Learn</h4>
-                      <ul className="text-sm text-gray-700 list-disc list-inside">
-                        {course.learnings.map((item, i) => (
-                          <li key={i}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-1">Certification Details</h4>
-                      <p className="text-sm text-gray-700">{course.certification}</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <h4 className="font-bold mb-1">Duration</h4>
-                        <p className="text-sm text-gray-700">{course.duration}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-bold mb-1">Fees</h4>
-                        <p className="text-sm text-gray-700">{course.fees}</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
                 <CardFooter className="flex flex-col sm:flex-row gap-3 border-t pt-6">
                   <HoverCard>
                     <HoverCardTrigger asChild>
