@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Run, Basketball, Hiking, TreasureMap, Bike, CalendarDays } from 'lucide-react';
+import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
@@ -71,22 +72,22 @@ const Events = () => {
       description: "Strength, conditioning, and full-body workouts in open spaces."
     },
     {
-      icon: Run,
+      icon: Award,
       title: "Runs",
       description: "Fun runs, timed challenges, and team relay races."
     },
     {
-      icon: Basketball,
+      icon: Award,
       title: "Basketball Tournaments",
       description: "Casual games or competitive corporate tournaments."
     },
     {
-      icon: Hiking,
+      icon: Mountain,
       title: "Hiking Adventures",
       description: "Scenic group hikes, perfect for adventure lovers."
     },
     {
-      icon: TreasureMap,
+      icon: Puzzle,
       title: "Treasure Hunts",
       description: "Interactive, team-building experiences combining fitness and fun."
     },
