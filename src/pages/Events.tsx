@@ -6,7 +6,6 @@ import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
-
 function EventCard({
   title,
   address,
@@ -22,20 +21,16 @@ function EventCard({
   note?: string;
   registrationLink?: string;
 }) {
-  return (
-    <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
+  return <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
       <h3 className="text-xl font-bold mb-1 text-gray-800">{title}</h3>
-      {address && (
-        <div className="flex items-center text-sm mb-2 text-gray-500">
+      {address && <div className="flex items-center text-sm mb-2 text-gray-500">
           <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" stroke="currentColor" strokeWidth="2" />
             <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" />
           </svg>
           {address}
-        </div>
-      )}
-      {date && (
-        <div className="flex items-center text-sm mb-2 text-gray-500">
+        </div>}
+      {date && <div className="flex items-center text-sm mb-2 text-gray-500">
           <svg className="inline-block mr-2 text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none">
             <rect width="18" height="18" x="3" y="4" rx="2" ry="2" stroke="currentColor" strokeWidth="2"></rect>
             <line x1="16" x2="16" y1="2" y2="6" stroke="currentColor" strokeWidth="2"></line>
@@ -43,23 +38,14 @@ function EventCard({
             <line x1="3" x2="21" y1="10" y2="10" stroke="currentColor" strokeWidth="2"></line>
           </svg>
           {date}
-        </div>
-      )}
+        </div>}
       {description && <p className="mb-2 text-gray-700">{description}</p>}
       {note && <p className="mb-4 text-xs italic text-secondary-foreground">{note}</p>}
-      {registrationLink && (
-        <Button 
-          variant="default" 
-          className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold"
-          asChild
-        >
-          <Link to={registrationLink}>Register Now</Link>
-        </Button>
-      )}
-    </div>
-  );
+      {registrationLink && <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
+          <Link to={registrationLink} className="mx-[70px]">Register Now</Link>
+        </Button>}
+    </div>;
 }
-
 const Events = () => {
   const {
     scrollToSection
@@ -121,22 +107,9 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard 
-              title="Weekly Wednesday Run" 
-              address="Narayanchaur" 
-              description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" 
-              note="This event repeats every Wednesday." 
-              registrationLink="/contact?event=weekly-run" 
-            />
-            <EventCard 
-              title="Java Fun Marathon" 
-              date="10th May" 
-              description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." 
-              registrationLink="/contact?event=java-marathon" 
-            />
-            <EventCard 
-              title="Coming Soon" 
-            />
+            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
+            <EventCard title="Java Fun Marathon" date="10th May" description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." registrationLink="/contact?event=java-marathon" />
+            <EventCard title="Coming Soon" />
           </div>
           <div className="text-center">
             <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
@@ -173,5 +146,4 @@ const Events = () => {
       </section>
     </div>;
 };
-
 export default Events;
