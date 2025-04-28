@@ -1,34 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
 
 // FAQ Data
 
-
-const partnerFaqs = [
-  {
-    question: "How do I become a wellness provider?",
-    answer: "Submit your application through our partner portal. We'll review your qualifications and certifications, and guide you through the onboarding process."
-  },
-  {
-    question: "What types of services are in demand?",
-    answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
-  },
-  {
-    question: "How does payment work?",
-    answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
-  }
-];
-
+const partnerFaqs = [{
+  question: "How do I become a wellness provider?",
+  answer: "Submit your application through our partner portal. We'll review your qualifications and certifications, and guide you through the onboarding process."
+}, {
+  question: "What types of services are in demand?",
+  answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
+}, {
+  question: "How does payment work?",
+  answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
+}];
 const ForProviders = () => {
-  return (
-    <div>
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -46,11 +34,7 @@ const ForProviders = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" 
-                alt="Wellness Provider" 
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Wellness Provider" className="rounded-lg shadow-xl max-w-full h-auto" />
             </div>
           </div>
         </div>
@@ -82,9 +66,7 @@ const ForProviders = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
               </div>
               <h3 className="text-xl font-bold mb-3">Streamlined Scheduling</h3>
-              <p>
-                Our platform handles bookings, payments, and administrative tasks so you can focus on your services.
-              </p>
+              <p>Our platform handles payments, and administrative tasks so you can focus on your services.</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -102,9 +84,8 @@ const ForProviders = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-bar-chart"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-3">Business Growth</h3>
-              <p>
-                Increase your client base and revenue while building a reputation in the corporate wellness sector.
-              </p>
+              <p>Improve retention of clients with our challenges and rewards
+            </p>
             </div>
           </div>
         </div>
@@ -263,34 +244,15 @@ const ForProviders = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial 
-              videoSrc="partner-video1.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-              title="Growing My Business"
-              name="Rachel Torres"
-              role="Yoga Instructor"
-            />
-            <VideoTestimonial 
-              videoSrc="partner-video2.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-              title="Corporate Partnerships"
-              name="Mark Johnson"
-              role="Fitness Trainer"
-            />
-            <VideoTestimonial 
-              videoSrc="partner-video3.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-              title="Virtual Training Success"
-              name="Anna Lee"
-              role="Nutritionist"
-            />
+            <VideoTestimonial videoSrc="partner-video1.mp4" thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" />
+            <VideoTestimonial videoSrc="partner-video2.mp4" thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" />
+            <VideoTestimonial videoSrc="partner-video3.mp4" thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" />
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {partnerFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`partner-${index}`}>
+              {partnerFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -299,8 +261,7 @@ const ForProviders = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -319,8 +280,6 @@ const ForProviders = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default ForProviders;
