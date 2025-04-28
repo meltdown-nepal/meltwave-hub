@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 const providers = [
@@ -102,24 +103,27 @@ const WellnessProviders = () => {
   }, []);
 
   return (
-    <section className="py-8 bg-yellow-50">
+    <section className="py-12 bg-yellow-50">
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8">Our Wellness Providers</h3>
         <div className="overflow-hidden">
           <div 
             ref={scrollRef} 
-            className="flex justify-center items-center space-x-12 py-4 overflow-x-auto scrollbar-hide"
+            className="flex justify-center items-center space-x-24 py-8 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none'
             }}
           >
             {[...providers, ...providers].map((provider, index) => (
-              <div key={`${provider.id}-${index}`} className="flex-shrink-0">
+              <div 
+                key={`${provider.id}-${index}`} 
+                className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
+              >
                 <img 
                   src={provider.src} 
                   alt={provider.alt} 
-                  className="h-16 w-40 object-contain"
+                  className="h-24 w-56 object-contain"
                   draggable={false}
                 />
               </div>
