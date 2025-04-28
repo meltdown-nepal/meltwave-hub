@@ -289,19 +289,18 @@ const Academy = () => {
                   <Collapsible>
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <CollapsibleTrigger className="flex items-center justify-between w-full group">
-                          <div>
-                            <CardTitle className="text-xl">{course.title}</CardTitle>
-                            <CardDescription className="text-base mt-1 font-medium">
-                              {course.subtitle}
-                            </CardDescription>
-                          </div>
-                          <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                        </CollapsibleTrigger>
+                        <CardTitle className="text-xl mb-2">{course.title}</CardTitle>
+                        <CardDescription className="text-base font-medium">
+                          {course.subtitle}
+                        </CardDescription>
                       </div>
                       {course.icon}
                     </div>
                     
+                    <CollapsibleTrigger className="text-sm text-primary hover:underline mt-4 inline-block">
+                      View More
+                    </CollapsibleTrigger>
+
                     <CollapsibleContent className="pt-6 space-y-4">
                       <div>
                         <h4 className="font-bold mb-1">Overview</h4>
@@ -336,19 +335,8 @@ const Academy = () => {
                     </CollapsibleContent>
                   </Collapsible>
                 </CardHeader>
-                <CardFooter className="flex flex-col sm:flex-row gap-3 border-t pt-6">
-                  <HoverCard>
-                    <HoverCardTrigger asChild>
-                      <Button variant="outline" className="w-full sm:w-auto">View Full Curriculum</Button>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-80">
-                      <div className="space-y-2">
-                        <h4 className="font-bold">Full Curriculum Available</h4>
-                        <p className="text-sm">Contact us to receive the detailed curriculum for this course.</p>
-                      </div>
-                    </HoverCardContent>
-                  </HoverCard>
-                  <Link to="/contact" className="w-full sm:w-auto">
+                <CardFooter className="flex justify-center pt-6 border-t">
+                  <Link to="/contact" className="w-full">
                     <Button className="w-full" variant="default">Apply Now</Button>
                   </Link>
                 </CardFooter>
