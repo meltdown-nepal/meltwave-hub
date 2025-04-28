@@ -42,7 +42,7 @@ function EventCard({
       {description && <p className="mb-2 text-gray-700">{description}</p>}
       {note && <p className="mb-4 text-xs italic text-secondary-foreground">{note}</p>}
       {registrationLink && <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
-          <Link to={registrationLink} className="mx-[70px]">Register Now</Link>
+          <Link to={registrationLink} className="mx-0">Register Now</Link>
         </Button>}
     </div>;
 }
