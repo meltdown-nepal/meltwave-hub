@@ -93,8 +93,17 @@ export default function ScheduleDemoFlow() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-xl mx-auto">
+    <div className="relative min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{ 
+          backgroundImage: "url('/lovable-uploads/8acbd348-e2ba-45d5-9056-60b939d71eae.png')",
+        }}
+      />
+      
+      {/* Content with relative positioning to appear above background */}
+      <div className="relative z-10 max-w-xl mx-auto">
         {/* Progress Bar */}
         {step < steps.length - 1 && (
           <div className="mb-8 space-y-4">
@@ -112,7 +121,7 @@ export default function ScheduleDemoFlow() {
           </div>
         )}
 
-        <div className="bg-white shadow-lg rounded-lg p-6 md:p-8">
+        <div className="bg-white/95 backdrop-blur-sm shadow-lg rounded-lg p-6 md:p-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               {step === 0 && (
@@ -151,4 +160,4 @@ export default function ScheduleDemoFlow() {
       </div>
     </div>
   );
-};
+}
