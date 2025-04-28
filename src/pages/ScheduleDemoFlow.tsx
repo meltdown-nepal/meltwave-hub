@@ -98,7 +98,7 @@ export default function ScheduleDemoFlow() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ 
-          backgroundImage: "url('/lovable-uploads/8acbd348-e2ba-45d5-9056-60b939d71eae.png')",
+          backgroundImage: "url('/lovable-uploads/1215fe4c-07f6-441d-9878-2f07f49ef187.png')",
         }}
       />
       
@@ -161,3 +161,4 @@ export default function ScheduleDemoFlow() {
     </div>
   );
 }
+
