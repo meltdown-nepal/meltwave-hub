@@ -1,31 +1,19 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
-
-const EmployeeFaqs = [
-  {
-    question: "How do I access the wellness services?",
-    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
-  },
-  {
-    question: "Can I participate during work hours?",
-    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
-  },
-  {
-    question: "Are the services confidential?",
-    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
-  }
-];
+const EmployeeFaqs = [{
+  question: "How do I access the wellness services?",
+  answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
+}, {
+  question: "Can I participate during work hours?",
+  answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
+}, {
+  question: "Are the services confidential?",
+  answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
+}];
 const ForEmployees = () => {
-  return (
-    <div>
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -43,11 +31,7 @@ const ForEmployees = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
-                alt="Employee Wellness" 
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" />
             </div>
           </div>
         </div>
@@ -68,40 +52,36 @@ const ForEmployees = () => {
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-heart-pulse"><path d="M19 14V6"></path><path d="M14 9h10"></path><path d="M21 17h-2.5a2 2 0 0 0-1.5.7l-1.7 2.6a2 2 0 0 1-3.3 0l-1.7-2.6a2 2 0 0 0-3.3 0l-1.7 2.6a2 2 0 0 1-3.3 0L1 17.8"></path><path d="M5 6a1 1 0 0 0-1 1v3.7a1 1 0 0 0 .4.8L9 15"></path></svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Improved Health</h3>
-              <p>
-                Access fitness programs, nutrition guidance, and health resources tailored to your needs and goals.
-              </p>
+              <h3 className="text-xl font-bold mb-3">Accessibility</h3>
+              <p>Visit any center any day accordingly to your timing 
+            </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-brain"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Reduced Stress</h3>
-              <p>
-                Learn effective stress management techniques, mindfulness practices, and mental health strategies.
-              </p>
+              <h3 className="text-xl font-bold mb-3">Variety</h3>
+              <p>Try different activities and find what you love 
+            </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-lightbulb"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Enhanced Productivity</h3>
-              <p>
-                Boost your energy, focus, and efficiency through targeted wellness interventions and work-life balance strategies.
-              </p>
+              <h3 className="text-xl font-bold mb-3">Affordability</h3>
+              <p>You company subsidizes a portion of your subscription 
+            </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Community Connection</h3>
-              <p>
-                Connect with colleagues and wellness professionals in a supportive community focused on well-being.
-              </p>
+              <h3 className="text-xl font-bold mb-3">Challenges</h3>
+              <p>Compete with your friends and win rewards 
+            </p>
             </div>
           </div>
         </div>
@@ -248,34 +228,15 @@ const ForEmployees = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial 
-              videoSrc="partner-video1.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-              title="Growing My Business"
-              name="Rachel Torres"
-              role="Yoga Instructor"
-            />
-            <VideoTestimonial 
-              videoSrc="partner-video2.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-              title="Corporate Partnerships"
-              name="Mark Johnson"
-              role="Fitness Trainer"
-            />
-            <VideoTestimonial 
-              videoSrc="partner-video3.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-              title="Virtual Training Success"
-              name="Anna Lee"
-              role="Nutritionist"
-            />
+            <VideoTestimonial videoSrc="partner-video1.mp4" thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" />
+            <VideoTestimonial videoSrc="partner-video2.mp4" thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" />
+            <VideoTestimonial videoSrc="partner-video3.mp4" thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" />
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {EmployeeFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`partner-${index}`}>
+              {EmployeeFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -284,8 +245,7 @@ const ForEmployees = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -304,8 +264,6 @@ const ForEmployees = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default ForEmployees;
