@@ -15,6 +15,7 @@ const partnerFaqs = [{
   question: "How does payment work?",
   answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
 }];
+
 const ForProviders = () => {
   return <div>
       {/* Hero Section */}
@@ -29,7 +30,7 @@ const ForProviders = () => {
                 Join our network of wellness providers and connect with corporate clients seeking your expertise. Expand your reach and grow your business without the hassle of sales and marketing.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="btn-primary">Apply to Join</Link>
+                <Link to="/schedule-demo" className="btn-primary">Apply to Join</Link>
                 <Link to="/academy" className="btn-outline">Explore Our Academy</Link>
               </div>
             </div>
@@ -275,11 +276,12 @@ const ForProviders = () => {
             Join our network of wellness providers and start connecting with corporate clients seeking your expertise.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link to="/contact" className="btn-primary">Apply to Join</Link>
+            <Link to="/schedule-demo" className="btn-primary">Apply to Join</Link>
             <Link to="/academy" className="btn-outline">Explore Our Academy</Link>
           </div>
         </div>
       </section>
     </div>;
 };
+
 export default ForProviders;

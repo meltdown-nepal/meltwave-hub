@@ -5,6 +5,7 @@ import FaqSection from '../components/FaqSection';
 import TrustedBySection from '../components/TrustedBySection';
 import ClientLogoCarousel from '../components/ClientLogoCarousel';
 import WellnessProviders from '../components/WellnessProviders';
+
 const Home = () => {
   return <div>
       {/* Hero Section */}
@@ -18,7 +19,7 @@ const Home = () => {
               <p className="text-lg mb-8 text-left">We create innovative solutions that empower people to lead an active lifestyle and connect through wellness 
             </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="btn-primary">Get Started</Link>
+                <Link to="/schedule-demo" className="btn-primary">Get Started</Link>
                 <Link to="/corporate-wellness" className="btn-outline">Learn More</Link>
               </div>
             </div>
@@ -104,11 +105,12 @@ const Home = () => {
             Join thousands of companies, employees, and providers who are creating healthier, happier workplaces with Meltdown.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link to="/contact" className="btn-primary">Get Started</Link>
+            <Link to="/schedule-demo" className="btn-primary">Get Started</Link>
             <Link to="/corporate-wellness" className="btn-outline">Learn More</Link>
           </div>
         </div>
       </section>
     </div>;
 };
+
 export default Home;

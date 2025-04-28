@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:block">
-            <Link to="/contact" className="btn-primary">Get Started</Link>
+            <Link to="/schedule-demo" className="btn-primary">Get Started</Link>
           </div>
 
           <button className="md:hidden text-text" onClick={toggleMenu} aria-label="Toggle menu">
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
             <Link to="/academy" className={`py-2 ${getNavLinkClass('/academy')}`} onClick={toggleMenu}>Academy</Link>
             <Link to="/meltfit" className={`py-2 ${getNavLinkClass('/meltfit')}`} onClick={toggleMenu}>MeltFit</Link>
             <Link to="/contact" className={`py-2 ${getNavLinkClass('/contact')}`} onClick={toggleMenu}>Contact</Link>
-            <Link to="/contact" className="btn-primary self-start mt-2" onClick={toggleMenu}>Get Started</Link>
+            <Link to="/schedule-demo" className="btn-primary self-start mt-2" onClick={toggleMenu}>Get Started</Link>
           </div>
         </div>
       )}

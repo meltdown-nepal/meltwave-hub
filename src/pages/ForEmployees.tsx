@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
+
 const EmployeeFaqs = [{
   question: "How do I access the wellness services?",
   answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
@@ -12,6 +13,7 @@ const EmployeeFaqs = [{
   question: "Are the services confidential?",
   answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
 }];
+
 const ForEmployees = () => {
   return <div>
       {/* Hero Section */}
@@ -26,7 +28,7 @@ const ForEmployees = () => {
                 Access high-quality wellness programs designed to help you thrive both personally and professionally. Improve your health, reduce stress, and enhance your work-life balance.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="btn-primary">Get Started</Link>
+                <Link to="/schedule-demo" className="btn-primary">Get Started</Link>
                 <Link to="/meltfit" className="btn-outline">Explore MeltFit</Link>
               </div>
             </div>
@@ -59,7 +61,7 @@ const ForEmployees = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-brain"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-brain"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 0-4.96.44 2.5 2.5 0 0 0-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 0 1.32-4.24 2.5 2.5 0 0 0 1.98-3A2.5 2.5 0 0 0 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-3">Variety</h3>
               <p>Try different activities and find what you love 
@@ -130,7 +132,7 @@ const ForEmployees = () => {
             <div className="bg-white p-8 rounded-lg shadow-md">
               <div className="flex items-center gap-4 mb-6">
                 <div className="bg-primary/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-brain"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-brain"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 0-4.96.44 2.5 2.5 0 0 0-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 0 1.32-4.24 2.5 2.5 0 0 0 1.98-3A2.5 2.5 0 0 0 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
                 </div>
                 <h3 className="text-2xl font-bold">Mental Wellness Program</h3>
               </div>
@@ -259,11 +261,12 @@ const ForEmployees = () => {
             Talk to your employer about Meltdown wellness programs or contact us directly to learn how you can participate.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link to="/contact" className="btn-primary">Contact Us</Link>
+            <Link to="/schedule-demo" className="btn-primary">Contact Us</Link>
             <Link to="/events" className="btn-outline">Explore Upcoming Events</Link>
           </div>
         </div>
       </section>
     </div>;
 };
+
 export default ForEmployees;
