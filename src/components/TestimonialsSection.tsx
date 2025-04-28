@@ -65,7 +65,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Desktop view (grid) */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial) => (
             <Card key={testimonial.id} className="bg-white overflow-hidden group hover:shadow-lg transition-all duration-300">
               <div className="relative">
@@ -73,15 +73,15 @@ const TestimonialsSection = () => {
                   <img 
                     src={testimonial.image} 
                     alt={`${testimonial.name} testimonial`} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                   />
                   {testimonial.videoUrl && (
                     <div 
                       className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
                       onClick={() => setSelectedVideo(testimonial.videoUrl!)}
                     >
-                      <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                        <Play className="h-8 w-8 text-white ml-1" />
+                      <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
+                        <Play className="h-10 w-10 text-white ml-1" />
                       </div>
                     </div>
                   )}
@@ -110,15 +110,15 @@ const TestimonialsSection = () => {
                         <img 
                           src={testimonial.image} 
                           alt={`${testimonial.name} testimonial`} 
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                         />
                         {testimonial.videoUrl && (
                           <div 
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center cursor-pointer"
                             onClick={() => setSelectedVideo(testimonial.videoUrl!)}
                           >
-                            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                              <Play className="h-8 w-8 text-white ml-1" />
+                            <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
+                              <Play className="h-10 w-10 text-white ml-1" />
                             </div>
                           </div>
                         )}

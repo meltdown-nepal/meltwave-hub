@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -84,8 +85,10 @@ const clientLogos = [{
   src: "/lovable-uploads/snackon.png",
   alt: "Client Logo 10"
 },];
+
 const ClientLogoCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const animateScroll = () => {
       if (scrollRef.current) {
@@ -99,20 +102,35 @@ const ClientLogoCarousel = () => {
     const animationId = setInterval(animateScroll, 30);
     return () => clearInterval(animationId);
   }, []);
-  return <section className="py-8 bg-yellow-50">
+
+  return (
+    <section className="py-8 bg-yellow-50">
       <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-8">Loved by ❤️</h3>
+        <h3 className="text-2xl font-bold mb-8">Loved by ❤️</h3>
         <div className="overflow-hidden">
-          <div ref={scrollRef} className="flex justify-center items-center space-x-12 py-4 overflow-x-auto scrollbar-hide" style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none'
-        }}>
-            {[...clientLogos, ...clientLogos].map((logo, index) => <div key={`${logo.id}-${index}`} className="flex-shrink-0">
-                <img src={logo.src} alt={logo.alt} className="h-16 w-40 object-contain" draggable={false} />
-              </div>)}
+          <div
+            ref={scrollRef}
+            className="flex justify-center items-center space-x-16 py-6 overflow-x-auto scrollbar-hide"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
+            {[...clientLogos, ...clientLogos].map((logo, index) => (
+              <div key={`${logo.id}-${index}`} className="flex-shrink-0">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-24 w-48 object-contain"
+                  draggable={false}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ClientLogoCarousel;
