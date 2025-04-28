@@ -8,11 +8,12 @@ import { CompanySize } from "@/components/demo/CompanySize";
 import { CompanyInfo } from "@/components/demo/CompanyInfo";
 import { ContactInfo } from "@/components/demo/ContactInfo";
 import { Success } from "@/components/demo/Success";
+import { UserTypeSelection } from "@/components/demo/UserTypeSelection";
 import { DemoFormData, demoFormSchema } from "@/lib/types/demo";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 
-const steps = ["Company Size", "Company Details", "Contact Info", "Success"] as const;
+const steps = ["Who Are You?", "Company Size", "Company Details", "Contact Info", "Success"] as const;
 
 export default function ScheduleDemoFlow() {
   const [step, setStep] = React.useState(0);
@@ -92,10 +93,10 @@ export default function ScheduleDemoFlow() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-xl mx-auto">
         {/* Progress Bar */}
-        {step < 3 && (
+        {step < steps.length - 1 && (
           <div className="mb-8 space-y-4">
             <Progress value={progress} className="h-2 w-full" />
             <div className="flex justify-between text-sm text-gray-600">
@@ -115,31 +116,39 @@ export default function ScheduleDemoFlow() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               {step === 0 && (
-                <CompanySize
-                  form={form}
-                  onNext={() => setStep(1)}
+                <UserTypeSelection
+                  onSelect={(type) => {
+                    form.setValue("userType", type);
+                    setStep(1);
+                  }}
                 />
               )}
               {step === 1 && (
-                <CompanyInfo
+                <CompanySize
                   form={form}
                   onNext={() => setStep(2)}
-                  onBack={() => setStep(0)}
                 />
               )}
               {step === 2 && (
+                <CompanyInfo
+                  form={form}
+                  onNext={() => setStep(3)}
+                  onBack={() => setStep(1)}
+                />
+              )}
+              {step === 3 && (
                 <ContactInfo
                   form={form}
                   onSubmit={form.handleSubmit(onSubmit)}
-                  onBack={() => setStep(1)}
+                  onBack={() => setStep(2)}
                   isSubmitting={isSubmitting}
                 />
               )}
-              {step === 3 && <Success />}
+              {step === 4 && <Success />}
             </form>
           </Form>
         </div>
       </div>
     </div>
   );
-}
+};
