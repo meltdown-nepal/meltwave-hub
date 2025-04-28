@@ -1,34 +1,23 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const roles = [
-  {
-    label: "For Companies",
-    description:
-      "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
-    href: "/companies",
-    img: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81", // people in meeting
-  },
-  {
-    label: "For Employees",
-    description:
-      "Access a wide range of wellness services and resources—anytime, anywhere. Participate in fun wellness challenges, track your progress, and discover activities to improve your work-life balance.",
-    href: "/employees",
-    img: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7", // woman using laptop on bed
-  },
-  {
-    label: "For Fitness Partners",
-    description:
-      "Grow your wellness business by connecting with leading employers and health-focused teams. Let us help you deliver your expertise where it’s needed most—virtually or in-person.",
-    href: "/providers",
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158", // professional setting
-  },
-];
-
+const roles = [{
+  label: "For Companies",
+  description: "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
+  href: "/companies",
+  img: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81" // people in meeting
+}, {
+  label: "For Employees",
+  description: "Access a wide range of wellness services and resources—anytime, anywhere. Participate in fun wellness challenges, track your progress, and discover activities to improve your work-life balance.",
+  href: "/employees",
+  img: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7" // woman using laptop on bed
+}, {
+  label: "For Fitness Partners",
+  description: "Grow your wellness business by connecting with leading employers and health-focused teams. Let us help you deliver your expertise where it’s needed most—virtually or in-person.",
+  href: "/providers",
+  img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" // professional setting
+}];
 const CorporateWellness = () => {
-  return (
-    <div>
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -37,9 +26,8 @@ const CorporateWellness = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Corporate Wellness Solutions
               </h1>
-              <p className="text-lg mb-8 text-left">
-                Meltdown helps companies, employees, and wellness providers create healthier, happier workplaces. Our holistic approach connects everyone in your organization to meaningful wellness opportunities with measurable results.
-              </p>
+              <p className="text-lg mb-8 text-left">We create innovative solutions that empower people to lead an active lifestyle and connect through wellness 
+            </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-primary">
                   Get Started
@@ -50,11 +38,7 @@ const CorporateWellness = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-                alt="Corporate Wellness"
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
+              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Corporate Wellness" className="rounded-lg shadow-xl max-w-full h-auto" />
             </div>
           </div>
         </div>
@@ -71,27 +55,14 @@ const CorporateWellness = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {roles.map((role) => (
-              <div
-                key={role.label}
-                className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center"
-              >
-                <img
-                  src={role.img}
-                  alt={role.label}
-                  className="mb-6 rounded-md w-full h-40 object-cover"
-                />
+            {roles.map(role => <div key={role.label} className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
+                <img src={role.img} alt={role.label} className="mb-6 rounded-md w-full h-40 object-cover" />
                 <h3 className="text-xl font-bold mb-3">{role.label}</h3>
                 <p className="mb-6 text-center">{role.description}</p>
-                <Link
-                  to={role.href}
-                  className="btn-outline mt-auto"
-                  aria-label={`Read more about ${role.label}`}
-                >
+                <Link to={role.href} className="btn-outline mt-auto" aria-label={`Read more about ${role.label}`}>
                   Learn More
                 </Link>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -111,9 +82,6 @@ const CorporateWellness = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default CorporateWellness;
-
