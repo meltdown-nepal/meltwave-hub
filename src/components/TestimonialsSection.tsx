@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     title: "HR Director, TechCorp",
     quote: "Since implementing Meltdown's wellness program, we've seen a 30% decrease in employee sick days.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
-    videoUrl: "/lovable-uploads/hello.mp4"
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
   },
   {
     id: 2,
