@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Carousel,
@@ -9,6 +8,7 @@ import {
   CarouselPrevious
 } from "@/components/ui/carousel";
 import { Play } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 type Testimonial = {
   id: number;
@@ -16,6 +16,7 @@ type Testimonial = {
   title: string;
   quote: string;
   image: string;
+  videoUrl?: string;
 };
 
 const testimonials: Testimonial[] = [
@@ -25,6 +26,7 @@ const testimonials: Testimonial[] = [
     title: "HR Director, TechCorp",
     quote: "Since implementing Meltdown's wellness program, we've seen a 30% decrease in employee sick days.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
+    videoUrl: "/lovable-uploads/hello.mp4"
   },
   {
     id: 2,
@@ -50,6 +52,8 @@ const testimonials: Testimonial[] = [
 ];
 
 const TestimonialsSection = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
   return (
     <section className="bg-gray-50 section-padding" id="testimonials">
       <div className="container-custom">
@@ -71,11 +75,16 @@ const TestimonialsSection = () => {
                     alt={`${testimonial.name} testimonial`} 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                      <Play className="h-8 w-8 text-white ml-1" />
+                  {testimonial.videoUrl && (
+                    <div 
+                      className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                      onClick={() => setSelectedVideo(testimonial.videoUrl!)}
+                    >
+                      <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+                        <Play className="h-8 w-8 text-white ml-1" />
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
               <CardContent className="p-5">
@@ -103,11 +112,16 @@ const TestimonialsSection = () => {
                           alt={`${testimonial.name} testimonial`} 
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                          <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                            <Play className="h-8 w-8 text-white ml-1" />
+                        {testimonial.videoUrl && (
+                          <div 
+                            className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center cursor-pointer"
+                            onClick={() => setSelectedVideo(testimonial.videoUrl!)}
+                          >
+                            <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+                              <Play className="h-8 w-8 text-white ml-1" />
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                     <CardContent className="p-5">
@@ -127,6 +141,22 @@ const TestimonialsSection = () => {
             </div>
           </Carousel>
         </div>
+
+        {/* Video Dialog */}
+        <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
+          <DialogContent className="sm:max-w-4xl">
+            {selectedVideo && (
+              <video 
+                src={selectedVideo}
+                controls
+                autoPlay
+                className="w-full"
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
