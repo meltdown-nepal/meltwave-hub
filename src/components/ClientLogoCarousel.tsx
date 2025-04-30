@@ -82,9 +82,7 @@ const clientLogos = [
 const ClientLogoCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const animationRef = useRef<number>();
-  const [resetPosition, setResetPosition] = useState(false);
-
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -104,43 +102,23 @@ const ClientLogoCarousel = () => {
 
   useEffect(() => {
     if (!isVisible || !scrollRef.current) return;
+    
+    const animateScroll = () => {
+      if (scrollRef.current) {
+        if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+          // Reset to start with no visual interruption
+          scrollRef.current.scrollLeft = 0;
+        } else {
+          // Smooth continuous scroll
+          scrollRef.current.scrollLeft += 1;
+        }
+      }
+    };
 
-    let lastTimestamp = 0;
-    const SCROLL_SPEED = 0.5; // pixels per frame (lower = slower)
-    
-    const animateScroll = (timestamp: number) => {
-      if (!scrollRef.current) return;
-      
-      // Calculate time delta for consistent speed regardless of framerate
-      if (!lastTimestamp) lastTimestamp = timestamp;
-      const delta = timestamp - lastTimestamp;
-      lastTimestamp = timestamp;
-      
-      const container = scrollRef.current;
-      const maxScroll = container.scrollWidth / 2;
-      
-      // Detect when we need to reset without visual glitch
-      if (container.scrollLeft >= maxScroll) {
-        // Reset scroll position without animation
-        setResetPosition(true);
-        container.scrollLeft = 1; // Small offset to avoid edge case
-        setResetPosition(false);
-      } else {
-        // Smooth scrolling with delta time for consistent speed
-        container.scrollLeft += SCROLL_SPEED * (delta / 16); // normalize to ~60fps
-      }
-      
-      animationRef.current = requestAnimationFrame(animateScroll);
-    };
-    
-    animationRef.current = requestAnimationFrame(animateScroll);
-    
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isVisible, resetPosition]);
+    // Faster animation for more fluid movement
+    const animationId = setInterval(animateScroll, 20);
+    return () => clearInterval(animationId);
+  }, [isVisible]);
 
   return (
     <section className="py-8 bg-yellow-50">
@@ -149,11 +127,10 @@ const ClientLogoCarousel = () => {
         <div className="overflow-hidden">
           <div
             ref={scrollRef}
-            className={`flex justify-center items-center space-x-16 py-6 overflow-x-auto scrollbar-hide ${resetPosition ? 'transition-none' : 'transition-all'}`}
+            className="flex justify-center items-center space-x-16 py-6 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              scrollBehavior: resetPosition ? 'auto' : 'smooth'
             }}
           >
             {clientLogos.map((logo) => (
