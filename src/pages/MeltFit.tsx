@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -6,41 +7,50 @@ import { Card, CardContent } from "@/components/ui/card";
 import VideoTestimonial from '@/components/VideoTestimonial';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight } from 'lucide-react';
+
 const MeltFit = () => {
-  const {
-    scrollToSection
-  } = useSmoothScroll();
+  const { scrollToSection } = useSmoothScroll();
 
   // FAQ data
-  const faqs = [{
-    question: "I'm a beginner. Can I still join MeltFit classes?",
-    answer: "Absolutely. Our coaches scale every workout to match your current fitness level."
-  }, {
-    question: "What is the difference between Group Classes and the Transformation Program?",
-    answer: "Group classes focus on strength and conditioning, while the Transformation Program includes training, nutrition coaching, and weekly tracking for maximum results."
-  }, {
-    question: "How do I know which program is right for me?",
-    answer: "You can book a free consultation with our coaches. We'll guide you based on your goals."
-  }, {
-    question: "Can I join just for Personal Training?",
-    answer: "Yes! You don't need to join group classes to work with a personal trainer."
-  }];
+  const faqs = [
+    {
+      question: "I'm a beginner. Can I still join MeltFit classes?",
+      answer: "Absolutely. Our coaches scale every workout to match your current fitness level."
+    },
+    {
+      question: "What is the difference between Group Classes and the Transformation Program?",
+      answer: "Group classes focus on strength and conditioning, while the Transformation Program includes training, nutrition coaching, and weekly tracking for maximum results."
+    },
+    {
+      question: "How do I know which program is right for me?",
+      answer: "You can book a free consultation with our coaches. We'll guide you based on your goals."
+    },
+    {
+      question: "Can I join just for Personal Training?",
+      answer: "Yes! You don't need to join group classes to work with a personal trainer."
+    }
+  ];
 
   // Transformation stories
-  const transformationStories = [{
-    quote: "In just 6 weeks, I gained strength, lost 5kg, and learned how to maintain my results for life!",
-    name: "Nisha K.",
-    role: "MeltFit Member",
-    thumbnailSrc: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
-    videoSrc: "#"
-  }, {
-    quote: "The corrective exercise program helped me walk pain-free again after years of knee trouble.",
-    name: "Rajesh M.",
-    role: "MeltFit Client",
-    thumbnailSrc: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
-    videoSrc: "#"
-  }];
-  return <div>
+  const transformationStories = [
+    {
+      quote: "In just 6 weeks, I gained strength, lost 5kg, and learned how to maintain my results for life!",
+      name: "Nisha K.",
+      role: "MeltFit Member",
+      thumbnailSrc: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
+      videoSrc: "#"
+    },
+    {
+      quote: "The corrective exercise program helped me walk pain-free again after years of knee trouble.",
+      name: "Rajesh M.",
+      role: "MeltFit Client",
+      thumbnailSrc: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
+      videoSrc: "#"
+    }
+  ];
+
+  return (
+    <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -58,7 +68,14 @@ const MeltFit = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="MeltFit Training" className="rounded-lg shadow-xl max-w-full h-auto" loading="lazy" width="600" height="400" />
+              <img 
+                src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                alt="MeltFit Training" 
+                className="rounded-lg shadow-xl max-w-full h-auto"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
             </div>
           </div>
         </div>
@@ -133,7 +150,14 @@ const MeltFit = () => {
                   <Button size="lg" className="text-base">See Class Timings</Button>
                 </div>
                 <div className="hidden lg:block relative">
-                  <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Group Training at MeltFit" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt="Group Training at MeltFit"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    width="800"
+                    height="600"
+                  />
                 </div>
               </div>
             </div>
@@ -144,7 +168,14 @@ const MeltFit = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="hidden lg:block relative order-2 lg:order-1">
-                  <img src="https://images.unsplash.com/photo-1618170124640-0b68b8410dbf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Transformation Program" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1618170124640-0b68b8410dbf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt="Transformation Program"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    width="800"
+                    height="600"
+                  />
                 </div>
                 <div className="p-8 lg:p-12 order-1 lg:order-2">
                   <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 2</div>
@@ -245,7 +276,14 @@ const MeltFit = () => {
                   <Button size="lg" className="text-base">Learn More About Corrective Training</Button>
                 </div>
                 <div className="hidden lg:block relative">
-                  <img src="https://images.unsplash.com/photo-1616279967983-ec413476e824?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Corrective Exercise Training" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1616279967983-ec413476e824?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt="Corrective Exercise Training"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    width="800"
+                    height="600"
+                  />
                 </div>
               </div>
             </div>
@@ -256,7 +294,14 @@ const MeltFit = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="hidden lg:block relative order-2 lg:order-1">
-                  <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Personal Training" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt="Personal Training"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    width="800"
+                    height="600"
+                  />
                 </div>
                 <div className="p-8 lg:p-12 order-1 lg:order-2">
                   <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 4</div>
@@ -348,7 +393,14 @@ const MeltFit = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="XYZ Gym" className="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+              <img 
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                alt="XYZ Gym"
+                className="w-full h-48 object-cover"
+                loading="lazy"
+                width="500"
+                height="300"
+              />
               <CardContent className="p-4">
                 <h3 className="font-bold text-lg mb-1">XYZ Gym</h3>
                 <p className="text-sm text-gray-600 mb-3">123 Fitness Street, City Center</p>
@@ -360,7 +412,14 @@ const MeltFit = () => {
             </Card>
             
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ABC Fitness" className="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+              <img 
+                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                alt="ABC Fitness"
+                className="w-full h-48 object-cover"
+                loading="lazy"
+                width="500"
+                height="300"
+              />
               <CardContent className="p-4">
                 <h3 className="font-bold text-lg mb-1">ABC Fitness</h3>
                 <p className="text-sm text-gray-600 mb-3">456 Wellness Avenue, North District</p>
@@ -372,7 +431,14 @@ const MeltFit = () => {
             </Card>
             
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="FitZone" className="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+              <img 
+                src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                alt="FitZone"
+                className="w-full h-48 object-cover"
+                loading="lazy"
+                width="500"
+                height="300"
+              />
               <CardContent className="p-4">
                 <h3 className="font-bold text-lg mb-1">FitZone</h3>
                 <p className="text-sm text-gray-600 mb-3">789 Health Road, East End</p>
@@ -401,9 +467,17 @@ const MeltFit = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {transformationStories.map((story, index) => <div key={index} className="mx-auto w-full max-w-md">
-                <VideoTestimonial videoSrc={story.videoSrc} thumbnailSrc={story.thumbnailSrc} title={story.quote} name={story.name} role={story.role} />
-              </div>)}
+            {transformationStories.map((story, index) => (
+              <div key={index} className="mx-auto w-full max-w-md">
+                <VideoTestimonial
+                  videoSrc={story.videoSrc}
+                  thumbnailSrc={story.thumbnailSrc}
+                  title={story.quote}
+                  name={story.name}
+                  role={story.role}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -420,14 +494,16 @@ const MeltFit = () => {
           
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`}>
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left text-lg font-medium">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent>
                     <p className="py-2 text-gray-700">{faq.answer}</p>
                   </AccordionContent>
-                </AccordionItem>)}
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </div>
@@ -439,11 +515,13 @@ const MeltFit = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your strength, movement, and life?</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg">Join MeltFit Today</Button>
-            
-            
+            <Button variant="outline" size="lg">Book a Free Consultation</Button>
+            <Button variant="secondary" size="lg">Talk to a Coach</Button>
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default MeltFit;
