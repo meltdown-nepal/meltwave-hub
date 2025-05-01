@@ -11,6 +11,7 @@ import {
 import { Play, Quote } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import VideoTestimonial from './VideoTestimonial';
 
 type Testimonial = {
   id: number;
@@ -63,11 +64,12 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="bg-gray-50 section-padding" id="testimonials">
+    <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-          <p className="text-lg max-w-3xl mx-auto">
+          <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">TESTIMONIALS</div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">What Our Clients Say</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Hear from companies and employees who have experienced the Meltdown difference.
           </p>
         </div>
@@ -75,28 +77,38 @@ const TestimonialsSection = () => {
         {/* Desktop view (grid) */}
         <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <Quote className="h-10 w-10 text-primary/20" />
+            <Card 
+              key={testimonial.id} 
+              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+            >
+              <CardContent className="p-8 relative">
+                <div className="absolute -left-3 -top-3 text-primary opacity-20">
+                  <Quote size={60} />
                 </div>
-                <p className="text-lg font-medium mb-6">"{testimonial.quote}"</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.title}</p>
+                <div className="relative z-10">
+                  <p className="text-lg font-medium mb-8 italic">"{testimonial.quote}"</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{testimonial.name}</p>
+                        <p className="text-sm text-gray-600">{testimonial.title}</p>
+                      </div>
+                    </div>
+                    {testimonial.videoUrl && (
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                        onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
+                      >
+                        <Play className="h-4 w-4" />
+                        Watch Video
+                      </Button>
+                    )}
                   </div>
-                  {testimonial.videoUrl && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center gap-2" 
-                      onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
-                    >
-                      <Play className="h-4 w-4" />
-                      Watch Video
-                    </Button>
-                  )}
                 </div>
               </CardContent>
             </Card>
@@ -109,37 +121,44 @@ const TestimonialsSection = () => {
             <CarouselContent>
               {testimonials.map((testimonial) => (
                 <CarouselItem key={testimonial.id}>
-                  <Card className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="mb-4">
-                        <Quote className="h-8 w-8 text-primary/20" />
+                  <Card className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
+                    <CardContent className="p-6 relative">
+                      <div className="absolute -left-2 -top-2 text-primary opacity-20">
+                        <Quote size={40} />
                       </div>
-                      <p className="text-base font-medium mb-5">"{testimonial.quote}"</p>
-                      <div className="flex flex-col gap-3">
-                        <div>
-                          <p className="font-bold">{testimonial.name}</p>
-                          <p className="text-sm text-gray-600">{testimonial.title}</p>
+                      <div className="relative z-10">
+                        <p className="text-base font-medium mb-5 italic">"{testimonial.quote}"</p>
+                        <div className="flex flex-col gap-4">
+                          <div className="flex items-center space-x-3">
+                            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                              {testimonial.name.charAt(0)}
+                            </div>
+                            <div>
+                              <p className="font-bold">{testimonial.name}</p>
+                              <p className="text-sm text-gray-600">{testimonial.title}</p>
+                            </div>
+                          </div>
+                          {testimonial.videoUrl && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="flex items-center gap-2 w-full justify-center border-amber-300 hover:bg-amber-50 text-amber-700" 
+                              onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
+                            >
+                              <Play className="h-4 w-4" />
+                              Watch Video
+                            </Button>
+                          )}
                         </div>
-                        {testimonial.videoUrl && (
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            className="flex items-center gap-2 w-full justify-center" 
-                            onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
-                          >
-                            <Play className="h-4 w-4" />
-                            Watch Video
-                          </Button>
-                        )}
                       </div>
                     </CardContent>
                   </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-4">
-              <CarouselPrevious className="static transform-none mx-2" />
-              <CarouselNext className="static transform-none mx-2" />
+            <div className="flex justify-center gap-2 mt-6">
+              <CarouselPrevious className="static transform-none mx-2 bg-white hover:bg-amber-50 border-amber-200" />
+              <CarouselNext className="static transform-none mx-2 bg-white hover:bg-amber-50 border-amber-200" />
             </div>
           </Carousel>
         </div>
@@ -149,14 +168,18 @@ const TestimonialsSection = () => {
           setSelectedVideo(null);
           setIsLoading(false);
         }}>
-          <DialogContent className="sm:max-w-4xl">
-            {isLoading && <div className="flex justify-center items-center h-40">Loading video...</div>}
+          <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
+            {isLoading && (
+              <div className="flex justify-center items-center h-40 text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
+              </div>
+            )}
             {selectedVideo && (
               <video 
                 src={selectedVideo}
                 controls
                 autoPlay
-                className={`w-full ${isLoading ? 'hidden' : 'block'}`}
+                className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
                 onCanPlay={() => setIsLoading(false)}
               >
                 Your browser does not support the video tag.
