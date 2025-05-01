@@ -8,8 +8,9 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
-import { Play } from "lucide-react";
+import { Play, Quote } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 type Testimonial = {
   id: number;
@@ -67,41 +68,35 @@ const TestimonialsSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-lg max-w-3xl mx-auto">
-            Hear from companies and employees who have experienced the Meltdown difference through video testimonials.
+            Hear from companies and employees who have experienced the Meltdown difference.
           </p>
         </div>
 
         {/* Desktop view (grid) */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="bg-white overflow-hidden group hover:shadow-lg transition-all duration-300">
-              <div className="relative">
-                <div className="aspect-video bg-gray-200 relative overflow-hidden">
-                  <img 
-                    src={testimonial.image} 
-                    alt={`${testimonial.name} testimonial`} 
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width="300"
-                    height="169"
-                  />
+            <Card key={testimonial.id} className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <Quote className="h-10 w-10 text-primary/20" />
+                </div>
+                <p className="text-lg font-medium mb-6">"{testimonial.quote}"</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-bold">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.title}</p>
+                  </div>
                   {testimonial.videoUrl && (
-                    <div 
-                      className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2" 
                       onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
                     >
-                      <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
-                        <Play className="h-10 w-10 text-white ml-1" />
-                      </div>
-                    </div>
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
                   )}
-                </div>
-              </div>
-              <CardContent className="p-5">
-                <p className="font-medium mb-3 line-clamp-2">"{testimonial.quote}"</p>
-                <div className="mt-4">
-                  <p className="font-bold">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600">{testimonial.title}</p>
                 </div>
               </CardContent>
             </Card>
@@ -113,35 +108,29 @@ const TestimonialsSection = () => {
           <Carousel className="w-full">
             <CarouselContent>
               {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="bg-white overflow-hidden group hover:shadow-lg transition-all duration-300">
-                    <div className="relative">
-                      <div className="aspect-video bg-gray-200 relative overflow-hidden">
-                        <img 
-                          src={testimonial.image} 
-                          alt={`${testimonial.name} testimonial`} 
-                          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                          loading="lazy"
-                          width="300"
-                          height="169"
-                        />
+                <CarouselItem key={testimonial.id}>
+                  <Card className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="mb-4">
+                        <Quote className="h-8 w-8 text-primary/20" />
+                      </div>
+                      <p className="text-base font-medium mb-5">"{testimonial.quote}"</p>
+                      <div className="flex flex-col gap-3">
+                        <div>
+                          <p className="font-bold">{testimonial.name}</p>
+                          <p className="text-sm text-gray-600">{testimonial.title}</p>
+                        </div>
                         {testimonial.videoUrl && (
-                          <div 
-                            className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center cursor-pointer"
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="flex items-center gap-2 w-full justify-center" 
                             onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
                           >
-                            <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
-                              <Play className="h-10 w-10 text-white ml-1" />
-                            </div>
-                          </div>
+                            <Play className="h-4 w-4" />
+                            Watch Video
+                          </Button>
                         )}
-                      </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <p className="font-medium mb-3 line-clamp-2">"{testimonial.quote}"</p>
-                      <div className="mt-4">
-                        <p className="font-bold">{testimonial.name}</p>
-                        <p className="text-sm text-gray-600">{testimonial.title}</p>
                       </div>
                     </CardContent>
                   </Card>
