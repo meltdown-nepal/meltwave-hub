@@ -1,7 +1,10 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import VideoTestimonial from '@/components/VideoTestimonial';
+import { Card } from "@/components/ui/card";
+import { Play, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -13,21 +16,18 @@ import {
 const employeeTestimonials = [
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6",
     title: "Transformed my work-life balance",
     name: "Jason Kim",
     role: "Software Developer"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
     title: "Helped me stay active while working",
     name: "Maria Garcia",
     role: "Marketing Specialist"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
     title: "Reduced my stress levels significantly",
     name: "David Johnson",
     role: "Project Manager"
@@ -38,21 +38,18 @@ const employeeTestimonials = [
 const partnerTestimonials = [
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
     title: "Growing My Business",
     name: "Rachel Torres",
     role: "Yoga Instructor"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
     title: "Corporate Partnerships",
     name: "Mark Johnson",
     role: "Fitness Trainer"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
     title: "Virtual Training Success",
     name: "Anna Lee",
     role: "Nutritionist"
@@ -299,30 +296,68 @@ const ForEmployees = () => {
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {partnerTestimonials.map((testimonial, index) => (
-              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc}
-                  thumbnailSrc={testimonial.thumbnailSrc}
-                  title={testimonial.title}
-                  name={testimonial.name}
-                  role={testimonial.role}
-                />
-              </div>
+              <Card 
+                key={index} 
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+              >
+                <div className="p-6">
+                  <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{testimonial.name}</p>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(testimonial.videoSrc)}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
             {partnerTestimonials.map((testimonial, index) => (
-              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc}
-                  thumbnailSrc={testimonial.thumbnailSrc}
-                  title={testimonial.title}
-                  name={testimonial.name}
-                  role={testimonial.role}
-                />
-              </div>
+              <Card 
+                key={index} 
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+              >
+                <div className="p-6">
+                  <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{testimonial.name}</p>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(testimonial.videoSrc)}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
 
@@ -360,30 +395,68 @@ const ForEmployees = () => {
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {employeeTestimonials.map((testimonial, index) => (
-              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc}
-                  thumbnailSrc={testimonial.thumbnailSrc}
-                  title={testimonial.title}
-                  name={testimonial.name}
-                  role={testimonial.role}
-                />
-              </div>
+              <Card 
+                key={index} 
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+              >
+                <div className="p-6">
+                  <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{testimonial.name}</p>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(testimonial.videoSrc)}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
             {employeeTestimonials.map((testimonial, index) => (
-              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc}
-                  thumbnailSrc={testimonial.thumbnailSrc}
-                  title={testimonial.title}
-                  name={testimonial.name}
-                  role={testimonial.role}
-                />
-              </div>
+              <Card 
+                key={index} 
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+              >
+                <div className="p-6">
+                  <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{testimonial.name}</p>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(testimonial.videoSrc)}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
           

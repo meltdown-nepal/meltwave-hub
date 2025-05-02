@@ -11,7 +11,6 @@ import {
 import { Play, Quote } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import VideoTestimonial from './VideoTestimonial';
 
 type Testimonial = {
   id: number;
@@ -128,7 +127,7 @@ const TestimonialsSection = () => {
                       </div>
                       <div className="relative z-10">
                         <p className="text-base font-medium mb-5 italic">"{testimonial.quote}"</p>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex justify-between items-center">
                           <div className="flex items-center space-x-3">
                             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
                               {testimonial.name.charAt(0)}
@@ -142,7 +141,7 @@ const TestimonialsSection = () => {
                             <Button 
                               variant="outline" 
                               size="sm" 
-                              className="flex items-center gap-2 w-full justify-center border-amber-300 hover:bg-amber-50 text-amber-700" 
+                              className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
                               onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
                             >
                               <Play className="h-4 w-4" />

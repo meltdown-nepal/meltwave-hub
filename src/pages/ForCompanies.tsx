@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -7,9 +8,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
-import VideoTestimonial from '@/components/VideoTestimonial';
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 // FAQ Data
 const companyFaqs = [
@@ -31,21 +32,18 @@ const companyFaqs = [
 const successStories = [
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
     title: "Transformed Our Company Culture",
     name: "Sarah Chen",
     role: "HR Director, TechCorp"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
     title: "Measurable Health Improvements",
     name: "Michael Rodriguez",
     role: "CEO, HealthFirst Inc"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
     title: "Significant Cost Savings",
     name: "Emily Thompson",
     role: "CFO, Global Solutions"
@@ -210,30 +208,68 @@ const ForCompanies = () => {
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {successStories.map((story, index) => (
-              <div key={index} onClick={() => handleVideoClick(story.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={story.videoSrc}
-                  thumbnailSrc={story.thumbnailSrc}
-                  title={story.title}
-                  name={story.name}
-                  role={story.role}
-                />
-              </div>
+              <Card 
+                key={index} 
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+              >
+                <div className="p-6">
+                  <h4 className="font-medium text-lg mb-3 italic">"{story.title}"</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {story.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{story.name}</p>
+                        <p className="text-sm text-gray-600">{story.role}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(story.videoSrc)}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
             {successStories.map((story, index) => (
-              <div key={index} onClick={() => handleVideoClick(story.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={story.videoSrc}
-                  thumbnailSrc={story.thumbnailSrc}
-                  title={story.title}
-                  name={story.name}
-                  role={story.role}
-                />
-              </div>
+              <Card 
+                key={index} 
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
+              >
+                <div className="p-6">
+                  <h4 className="font-medium text-lg mb-3 italic">"{story.title}"</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
+                        {story.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold">{story.name}</p>
+                        <p className="text-sm text-gray-600">{story.role}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(story.videoSrc)}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
           
