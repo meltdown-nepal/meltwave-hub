@@ -102,7 +102,7 @@ const ForCompanies = () => {
               <img 
                 src="/lovable-uploads/a48b3904-c6dd-43cc-b3e1-398362f1feae.png" 
                 alt="Corporate wellness workshop with employees learning about workplace health" 
-                className="rounded-lg shadow-xl max-w-full h-auto"
+                className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover"
               />
             </div>
           </div>

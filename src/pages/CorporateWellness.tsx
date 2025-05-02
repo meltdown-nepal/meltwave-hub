@@ -42,7 +42,7 @@ const CorporateWellness = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Corporate Wellness" className="rounded-lg shadow-xl max-w-full h-auto" />
+              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Corporate Wellness" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" />
             </div>
           </div>
         </div>
