@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FaqSection from '../components/FaqSection';
-import ClientLogoCarousel from '../components/ClientLogoCarousel';
 import WellnessProviders from '../components/WellnessProviders';
+import TrustedCompanies from '../components/TrustedCompanies';
 
 const Home = () => {
   return <div>
@@ -28,10 +29,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-       {/* Inline Client Logo Carousel */}
-       <ClientLogoCarousel />
-
-
+       
+      {/* Trusted Companies Section */}
+      <TrustedCompanies />
 
       {/* Features Section */}
       <section className="section-padding">

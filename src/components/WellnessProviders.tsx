@@ -1,6 +1,7 @@
+
 import React from 'react';
 
-const clientLogos = [
+const wellnessProviders = [
   { id: 1, src: "/lovable-uploads/397c4685-d91a-452b-b4fa-51c0f4236ee7.png", alt: "Athlete Land" },
   { id: 2, src: "/lovable-uploads/1b36a7dd-923f-4af1-8b78-0c422d5f576c.png", alt: "AWA Club" },
   { id: 3, src: "/lovable-uploads/14a3b627-4a42-469a-a6a5-d6f54dbb06ad.png", alt: "Bajra Sports Centre" },
@@ -19,53 +20,35 @@ const clientLogos = [
   { id: 16, src: "/lovable-uploads/20d63b1f-921f-4e7c-b6a6-e9e511c135e0.png", alt: "Tranquility Spa" }
 ];
 
-const ClientLogoCarousel = () => {
+const WellnessProviders = () => {
   return (
-    <section className="py-8 bg-yellow-50 overflow-hidden">
-      <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-8">Wellness Providers</h3>
-        <div className="relative overflow-hidden">
-          {/* Gradient edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-yellow-50 to-transparent" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-yellow-50 to-transparent" />
-          
-          {/* Scrolling container */}
-          <div className="whitespace-nowrap flex overflow-hidden">
-            <div className="animate-scroll flex min-w-max">
-              {[...clientLogos, ...clientLogos].map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="inline-flex flex-shrink-0 mx-12 transition-transform hover:scale-110 duration-300"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-24 md:h-28 w-auto max-w-[160px] md:max-w-[200px] object-contain"
-                    draggable={false}
-                    loading="lazy"
-                    width="200"
-                    height="112"
-                  />
-                </div>
-              ))}
+    <section className="py-16 px-4 md:px-8 bg-yellow-50">
+      <div className="container-custom">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Our Wellness Network</h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            These amazing gyms, studios, and wellness centers help power the Meltdown experience.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {wellnessProviders.map((provider) => (
+            <div 
+              key={provider.id} 
+              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105 flex items-center justify-center h-40"
+            >
+              <img
+                src={provider.src}
+                alt={provider.alt}
+                className="max-h-24 w-auto object-contain"
+                loading="lazy"
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
-
-      {/* Tailwind animation added via custom class */}
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-      `}</style>
     </section>
   );
 };
 
-export default ClientLogoCarousel;
+export default WellnessProviders;
