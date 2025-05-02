@@ -93,6 +93,21 @@ const ClientLogoCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const animationRef = useRef<number>();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the screen is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -114,12 +129,15 @@ const ClientLogoCarousel = () => {
   useEffect(() => {
     if (!isVisible || !scrollRef.current) return;
     
+    const scrollSpeed = isMobile ? 0.5 : 1;
+    
     const animateScroll = () => {
       if (scrollRef.current) {
         if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+          // Smoothly reset to beginning without visual jump
           scrollRef.current.scrollLeft = 0;
         } else {
-          scrollRef.current.scrollLeft += 1;
+          scrollRef.current.scrollLeft += scrollSpeed;
         }
       }
       animationRef.current = requestAnimationFrame(animateScroll);
@@ -132,61 +150,58 @@ const ClientLogoCarousel = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isVisible]);
-
-  // Calculate visible items based on viewport width
-  const getVisibleItems = () => {
-    // Return enough logos to fill the carousel plus a buffer
-    // We'll render the original array once, not twice
-    return clientLogos;
-  };
-
-  const visibleItems = getVisibleItems();
+  }, [isVisible, isMobile]);
 
   return (
-    <section className="py-8 bg-yellow-50">
+    <section className="py-8 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8">Loved by ❤️</h3>
-        <div className="overflow-hidden">
+        <div className="relative overflow-hidden">
+          {/* Add gradients for fade effect on the sides */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-yellow-50 to-transparent"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-yellow-50 to-transparent"></div>
+          
           <div
             ref={scrollRef}
-            className="flex justify-center items-center space-x-16 py-6 overflow-x-auto scrollbar-hide"
+            className="flex items-center py-6 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               scrollBehavior: 'smooth'
             }}
           >
-            {visibleItems.map((logo) => (
+            {/* First set of logos */}
+            {clientLogos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
+                className="flex-shrink-0 mx-8 transition-transform hover:scale-110 duration-300"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-24 w-48 object-contain"
+                  className="h-16 md:h-20 w-auto max-w-[120px] md:max-w-[160px] object-contain"
                   draggable={false}
                   loading="lazy"
-                  width="192"
-                  height="96"
+                  width="160"
+                  height="80"
                 />
               </div>
             ))}
-            {/* Add clones of the first few items to create a seamless loop effect */}
-            {visibleItems.slice(0, 5).map((logo) => (
+            
+            {/* Duplicate the first few logos to create a seamless loop */}
+            {clientLogos.slice(0, 7).map((logo) => (
               <div 
                 key={`clone-${logo.id}`} 
-                className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
+                className="flex-shrink-0 mx-8 transition-transform hover:scale-110 duration-300"
               >
                 <img
                   src={logo.src}
-                  alt={logo.alt}
-                  className="h-24 w-48 object-contain"
+                  alt={`${logo.alt} (duplicate)`}
+                  className="h-16 md:h-20 w-auto max-w-[120px] md:max-w-[160px] object-contain"
                   draggable={false}
                   loading="lazy"
-                  width="192"
-                  height="96"
+                  width="160"
+                  height="80"
                 />
               </div>
             ))}
