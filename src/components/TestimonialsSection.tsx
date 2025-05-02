@@ -36,6 +36,7 @@ const testimonials: Testimonial[] = [
     title: "Software Engineer",
     quote: "The MeltFit training program has transformed how I approach wellness. I've never felt better.",
     image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
   },
   {
     id: 3,
@@ -43,6 +44,7 @@ const testimonials: Testimonial[] = [
     title: "Wellness Provider",
     quote: "Partnering with Meltdown has allowed our yoga studio to reach corporate clients we never had access to before.",
     image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
   },
   {
     id: 4,
@@ -50,6 +52,7 @@ const testimonials: Testimonial[] = [
     title: "Fitness Trainer",
     quote: "Meltdown's platform has helped me connect with companies looking for wellness programs.",
     image: "/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png",
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
   }
 ];
 
@@ -60,6 +63,12 @@ const TestimonialsSection = () => {
   const handleVideoClick = (videoUrl: string) => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
+  };
+
+  const getDefaultVideoUrl = () => {
+    // Use the first testimonial's video URL as default if available
+    return testimonials.find(t => t.videoUrl)?.videoUrl || 
+           "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4";
   };
 
   return (
@@ -96,17 +105,15 @@ const TestimonialsSection = () => {
                         <p className="text-sm text-gray-600">{testimonial.title}</p>
                       </div>
                     </div>
-                    {testimonial.videoUrl && (
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                        onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
-                      >
-                        <Play className="h-4 w-4" />
-                        Watch Video
-                      </Button>
-                    )}
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                      onClick={() => handleVideoClick(testimonial.videoUrl || getDefaultVideoUrl())}
+                    >
+                      <Play className="h-4 w-4" />
+                      Watch Video
+                    </Button>
                   </div>
                 </div>
               </CardContent>
@@ -137,17 +144,15 @@ const TestimonialsSection = () => {
                               <p className="text-sm text-gray-600">{testimonial.title}</p>
                             </div>
                           </div>
-                          {testimonial.videoUrl && (
-                            <Button 
-                              variant="outline" 
-                              size="sm" 
-                              className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                              onClick={() => testimonial.videoUrl && handleVideoClick(testimonial.videoUrl)}
-                            >
-                              <Play className="h-4 w-4" />
-                              Watch Video
-                            </Button>
-                          )}
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+                            onClick={() => handleVideoClick(testimonial.videoUrl || getDefaultVideoUrl())}
+                          >
+                            <Play className="h-4 w-4" />
+                            Watch Video
+                          </Button>
                         </div>
                       </div>
                     </CardContent>
