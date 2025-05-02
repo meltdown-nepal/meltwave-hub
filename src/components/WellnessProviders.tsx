@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 
 const providers = [
@@ -86,88 +85,76 @@ const providers = [
 
 const WellnessProviders = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
   const animationRef = useRef<number>();
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Detect viewport width for responsive scroll speed
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (scrollRef.current) {
-      observer.observe(scrollRef.current);
-    }
-    
-    return () => {
-      observer.disconnect();
-    };
+    const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
+  // Visibility detection (scrolling only when in view)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    if (scrollRef.current) observer.observe(scrollRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll animation loop
   useEffect(() => {
     if (!isVisible || !scrollRef.current) return;
-    
-    const animateScroll = () => {
-      if (scrollRef.current) {
-        if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+
+    const scrollSpeed = isMobile ? 0.5 : 0.8;
+    let lastTimestamp = 0;
+
+    const animate = (timestamp: number) => {
+      if (!scrollRef.current) return;
+      if (lastTimestamp) {
+        const elapsed = timestamp - lastTimestamp;
+        scrollRef.current.scrollLeft += (scrollSpeed * elapsed) / 16;
+
+        const scrollWidth = scrollRef.current.scrollWidth / 2;
+        if (scrollRef.current.scrollLeft >= scrollWidth) {
           scrollRef.current.scrollLeft = 0;
-        } else {
-          scrollRef.current.scrollLeft += 1;
         }
       }
-      animationRef.current = requestAnimationFrame(animateScroll);
+      lastTimestamp = timestamp;
+      animationRef.current = requestAnimationFrame(animate);
     };
-    
-    animationRef.current = requestAnimationFrame(animateScroll);
-    
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isVisible]);
+
+    animationRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationRef.current!);
+  }, [isVisible, isMobile]);
 
   return (
     <section className="py-12 bg-yellow-50">
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8">Our Wellness Providers</h3>
-        <div className="overflow-hidden">
-          <div 
-            ref={scrollRef} 
-            className="flex justify-center items-center space-x-24 py-8 overflow-x-auto scrollbar-hide"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              scrollBehavior: 'smooth'
-            }}
+        <div className="relative overflow-hidden">
+          {/* Optional: Fade gradient for better visual edge */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-yellow-50 to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-yellow-50 to-transparent z-10" />
+          <div
+            ref={scrollRef}
+            className="flex items-center space-x-16 py-8 overflow-x-hidden whitespace-nowrap"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
-            {providers.map((provider) => (
-              <div 
-                key={provider.id} 
+            {[...providers, ...providers].map((provider, idx) => (
+              <div
+                key={`${provider.id}-${idx}`}
                 className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
               >
-                <img 
-                  src={provider.src} 
-                  alt={provider.alt} 
-                  className="h-24 w-56 object-contain"
-                  draggable={false}
-                  loading="lazy"
-                  width="224"
-                  height="96"
-                />
-              </div>
-            ))}
-            {/* Add clones of the first few items to create a seamless loop effect */}
-            {providers.slice(0, 5).map((provider) => (
-              <div 
-                key={`clone-${provider.id}`} 
-                className="flex-shrink-0 transition-transform hover:scale-110 duration-300"
-              >
-                <img 
-                  src={provider.src} 
-                  alt={provider.alt} 
+                <img
+                  src={provider.src}
+                  alt={provider.alt}
                   className="h-24 w-56 object-contain"
                   draggable={false}
                   loading="lazy"
