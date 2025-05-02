@@ -94,6 +94,7 @@ const ClientLogoCarousel = () => {
   const [isVisible, setIsVisible] = useState(false);
   const animationRef = useRef<number>();
   const [isMobile, setIsMobile] = useState(false);
+  const [resetInProgress, setResetInProgress] = useState(false);
 
   // Check if the screen is mobile
   useEffect(() => {
@@ -129,18 +130,44 @@ const ClientLogoCarousel = () => {
   useEffect(() => {
     if (!isVisible || !scrollRef.current) return;
     
-    const scrollSpeed = isMobile ? 0.5 : 1;
+    const scrollSpeed = isMobile ? 0.4 : 0.7;
     
     const animateScroll = () => {
-      if (scrollRef.current) {
-        if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
-          // Smoothly reset to beginning without visual jump
-          scrollRef.current.scrollLeft = 0;
+      if (scrollRef.current && !resetInProgress) {
+        const containerWidth = scrollRef.current.clientWidth;
+        const scrollWidth = scrollRef.current.scrollWidth;
+        const scrollLeft = scrollRef.current.scrollLeft;
+        const halfwayPoint = scrollWidth / 2;
+        
+        // If we're near the end of the first set, smoothly reset
+        if (scrollLeft >= halfwayPoint - containerWidth) {
+          setResetInProgress(true);
+          
+          // Use requestAnimationFrame for smooth transition
+          const resetScroll = () => {
+            if (scrollRef.current) {
+              // Reset to beginning with a smooth transition
+              scrollRef.current.scrollTo({
+                left: 0,
+                behavior: 'auto'
+              });
+              
+              // Wait a tiny bit to avoid visual jank
+              setTimeout(() => {
+                setResetInProgress(false);
+              }, 50);
+            }
+          };
+          
+          resetScroll();
         } else {
           scrollRef.current.scrollLeft += scrollSpeed;
         }
       }
-      animationRef.current = requestAnimationFrame(animateScroll);
+      
+      if (!resetInProgress) {
+        animationRef.current = requestAnimationFrame(animateScroll);
+      }
     };
     
     animationRef.current = requestAnimationFrame(animateScroll);
@@ -150,7 +177,7 @@ const ClientLogoCarousel = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isVisible, isMobile]);
+  }, [isVisible, isMobile, resetInProgress]);
 
   return (
     <section className="py-8 bg-yellow-50 overflow-hidden">
@@ -158,12 +185,12 @@ const ClientLogoCarousel = () => {
         <h3 className="text-2xl font-bold mb-8">Loved by ❤️</h3>
         <div className="relative overflow-hidden">
           {/* Add gradients for fade effect on the sides */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-r from-yellow-50 to-transparent"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-12 z-10 bg-gradient-to-l from-yellow-50 to-transparent"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-yellow-50 to-transparent"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-yellow-50 to-transparent"></div>
           
           <div
             ref={scrollRef}
-            className="flex items-center py-6 overflow-x-auto scrollbar-hide"
+            className="flex items-center justify-start py-8 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -174,34 +201,34 @@ const ClientLogoCarousel = () => {
             {clientLogos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex-shrink-0 mx-8 transition-transform hover:scale-110 duration-300"
+                className="flex-shrink-0 mx-10 transition-transform hover:scale-110 duration-300"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-16 md:h-20 w-auto max-w-[120px] md:max-w-[160px] object-contain"
+                  className="h-20 md:h-24 w-auto max-w-[140px] md:max-w-[180px] object-contain"
                   draggable={false}
                   loading="lazy"
-                  width="160"
-                  height="80"
+                  width="180"
+                  height="96"
                 />
               </div>
             ))}
             
-            {/* Duplicate the first few logos to create a seamless loop */}
-            {clientLogos.slice(0, 7).map((logo) => (
+            {/* Duplicate the full set of logos to create a seamless loop */}
+            {clientLogos.map((logo) => (
               <div 
                 key={`clone-${logo.id}`} 
-                className="flex-shrink-0 mx-8 transition-transform hover:scale-110 duration-300"
+                className="flex-shrink-0 mx-10 transition-transform hover:scale-110 duration-300"
               >
                 <img
                   src={logo.src}
                   alt={`${logo.alt} (duplicate)`}
-                  className="h-16 md:h-20 w-auto max-w-[120px] md:max-w-[160px] object-contain"
+                  className="h-20 md:h-24 w-auto max-w-[140px] md:max-w-[180px] object-contain"
                   draggable={false}
                   loading="lazy"
-                  width="160"
-                  height="80"
+                  width="180"
+                  height="96"
                 />
               </div>
             ))}
