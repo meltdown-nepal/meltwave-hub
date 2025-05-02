@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Dumbbell, HeartPulse, Timer } from "lucide-react";
@@ -76,16 +75,16 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0">
         <img
-          src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80"
-          alt="People running marathon event"
-          className="w-full h-full object-cover brightness-100"
+          src="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png"
+          alt="Group of fitness enthusiasts at a stadium track"
+          className="w-full h-full object-cover"
           draggable={false}
           loading="eager" // This is a hero image, so we want it to load quickly
           width="1400"
           height="800"
         />
-        {/* White/pastel overlay */}
-        <div className="absolute inset-0 bg-white/80 md:bg-white/60" />
+        {/* Dark overlay with gradient for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
       </div>
 
       {/* Floating fitness icons */}
@@ -93,7 +92,7 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
         <Icon
           key={i}
           size={46}
-          className={`absolute text-secondary opacity-70 drop-shadow-lg pointer-events-none ${className}`}
+          className={`absolute text-primary opacity-70 drop-shadow-lg pointer-events-none ${className}`}
           aria-hidden
         />
       ))}
@@ -101,21 +100,21 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
       {/* Content */}
       <div className="relative z-10 w-full text-center mx-auto max-w-3xl">
         <h1
-          className="text-3xl md:text-5xl font-extrabold mb-6 animate-fade-in tracking-tight text-gray-800"
+          className="text-3xl md:text-5xl font-extrabold mb-6 animate-fade-in tracking-tight text-white"
           style={{ animationDelay: "0.1s" }}
         >
           Ready for the Next Challenge?
         </h1>
-        <p className="text-lg md:text-xl mb-8 text-gray-700 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <p className="text-lg md:text-xl mb-8 text-gray-100 animate-fade-in" style={{ animationDelay: "0.3s" }}>
           Join the movement! Explore upcoming wellness events, workshops and fitness initiatives designed to inspire and energize.
         </p>
         {/* Countdown */}
-        <div className="flex justify-center gap-2 mb-8 items-center animate-scale-in text-black">
-          <Timer className="text-secondary" aria-hidden />
+        <div className="flex justify-center gap-2 mb-8 items-center animate-scale-in text-white">
+          <Timer className="text-primary" aria-hidden />
           <span className="font-semibold">
             {countdown.d}d {countdown.h}h {countdown.m}m {countdown.s}s
           </span>
-          <span className="text-gray-700">until next Wednesday Run</span>
+          <span className="text-gray-200">until next Wednesday Run</span>
         </div>
         {/* CTA Button */}
         <button
