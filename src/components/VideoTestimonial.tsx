@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface VideoTestimonialProps {
   videoSrc: string;
@@ -22,7 +23,7 @@ const VideoTestimonial = ({
 
   return (
     <Card 
-      className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl"
+      className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl bg-white"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -37,9 +38,14 @@ const VideoTestimonial = ({
             height="197"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center transform group-hover:scale-110 transition-transform">
-              <Play className="h-7 w-7 text-white ml-1" />
-            </div>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-2 bg-white/90 border-amber-300 hover:bg-amber-50 text-amber-700" 
+            >
+              <Play className="h-4 w-4 ml-1" />
+              Watch Video
+            </Button>
           </div>
           {/* Only preload video when hovered */}
           {isHovered && <link rel="preload" href={videoSrc} as="video" />}

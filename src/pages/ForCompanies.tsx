@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -6,6 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
 import VideoTestimonial from '@/components/VideoTestimonial';
 
 // FAQ Data
@@ -24,7 +28,40 @@ const companyFaqs = [
   }
 ];
 
+// Success Stories
+const successStories = [
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    title: "Transformed Our Company Culture",
+    name: "Sarah Chen",
+    role: "HR Director, TechCorp"
+  },
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    title: "Measurable Health Improvements",
+    name: "Michael Rodriguez",
+    role: "CEO, HealthFirst Inc"
+  },
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    title: "Significant Cost Savings",
+    name: "Emily Thompson",
+    role: "CFO, Global Solutions"
+  }
+];
+
 const ForCompanies = () => {
+  const [selectedVideo, setSelectedVideo] = React.useState<string | null>(null);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleVideoClick = (videoUrl: string) => {
+    setIsLoading(true);
+    setSelectedVideo(videoUrl);
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -161,38 +198,70 @@ const ForCompanies = () => {
       </section>
 
       {/* Success Stories & Testimonials */}
-      <section className="section-padding">
+      <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Hear what other companies have achieved with our wellness programs.
+            <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">SUCCESS STORIES</div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Hear From Our Clients</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              See how companies have transformed their workplace wellness with our solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <VideoTestimonial 
-              videoSrc="company-video1.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-              title="Transformed Our Company Culture"
-              name="Sarah Chen"
-              role="HR Director, TechCorp"
-            />
-            <VideoTestimonial 
-              videoSrc="company-video2.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-              title="Measurable Health Improvements"
-              name="Michael Rodriguez"
-              role="CEO, HealthFirst Inc"
-            />
-            <VideoTestimonial 
-              videoSrc="company-video3.mp4"
-              thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-              title="Significant Cost Savings"
-              name="Emily Thompson"
-              role="CFO, Global Solutions"
-            />
+          {/* Desktop view (grid) */}
+          <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {successStories.map((story, index) => (
+              <div key={index} onClick={() => handleVideoClick(story.videoSrc)}>
+                <VideoTestimonial 
+                  videoSrc={story.videoSrc}
+                  thumbnailSrc={story.thumbnailSrc}
+                  title={story.title}
+                  name={story.name}
+                  role={story.role}
+                />
+              </div>
+            ))}
           </div>
+
+          {/* Mobile view (list) */}
+          <div className="md:hidden space-y-6">
+            {successStories.map((story, index) => (
+              <div key={index} onClick={() => handleVideoClick(story.videoSrc)}>
+                <VideoTestimonial 
+                  videoSrc={story.videoSrc}
+                  thumbnailSrc={story.thumbnailSrc}
+                  title={story.title}
+                  name={story.name}
+                  role={story.role}
+                />
+              </div>
+            ))}
+          </div>
+          
+          {/* Video Dialog */}
+          <Dialog open={!!selectedVideo} onOpenChange={() => {
+            setSelectedVideo(null);
+            setIsLoading(false);
+          }}>
+            <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
+              {isLoading && (
+                <div className="flex justify-center items-center h-40 text-white">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
+                </div>
+              )}
+              {selectedVideo && (
+                <video 
+                  src={selectedVideo}
+                  controls
+                  autoPlay
+                  className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
+                  onCanPlay={() => setIsLoading(false)}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 

@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import VideoTestimonial from '@/components/VideoTestimonial';
+
+// Employee testimonials
+const employeeTestimonials = [
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6",
+    title: "Transformed my work-life balance",
+    name: "Jason Kim",
+    role: "Software Developer"
+  },
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
+    title: "Helped me stay active while working",
+    name: "Maria Garcia",
+    role: "Marketing Specialist"
+  },
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
+    title: "Reduced my stress levels significantly",
+    name: "David Johnson",
+    role: "Project Manager"
+  }
+];
 
 const EmployeeFaqs = [{
   question: "How do I access the wellness services?",
@@ -15,6 +40,14 @@ const EmployeeFaqs = [{
 }];
 
 const ForEmployees = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleVideoClick = (videoUrl: string) => {
+    setIsLoading(true);
+    setSelectedVideo(videoUrl);
+  };
+
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -250,6 +283,74 @@ const ForEmployees = () => {
                 </AccordionItem>)}
             </Accordion>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">TESTIMONIALS</div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Employee Success Stories</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Hear how our wellness programs have improved the lives of employees across various companies.
+            </p>
+          </div>
+
+          {/* Desktop view (grid) */}
+          <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {employeeTestimonials.map((testimonial, index) => (
+              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
+                <VideoTestimonial 
+                  videoSrc={testimonial.videoSrc}
+                  thumbnailSrc={testimonial.thumbnailSrc}
+                  title={testimonial.title}
+                  name={testimonial.name}
+                  role={testimonial.role}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile view (list) */}
+          <div className="md:hidden space-y-6">
+            {employeeTestimonials.map((testimonial, index) => (
+              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
+                <VideoTestimonial 
+                  videoSrc={testimonial.videoSrc}
+                  thumbnailSrc={testimonial.thumbnailSrc}
+                  title={testimonial.title}
+                  name={testimonial.name}
+                  role={testimonial.role}
+                />
+              </div>
+            ))}
+          </div>
+          
+          {/* Video Dialog */}
+          <Dialog open={!!selectedVideo} onOpenChange={() => {
+            setSelectedVideo(null);
+            setIsLoading(false);
+          }}>
+            <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
+              {isLoading && (
+                <div className="flex justify-center items-center h-40 text-white">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
+                </div>
+              )}
+              {selectedVideo && (
+                <video 
+                  src={selectedVideo}
+                  controls
+                  autoPlay
+                  className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
+                  onCanPlay={() => setIsLoading(false)}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 

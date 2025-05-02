@@ -1,5 +1,8 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TestimonialsSection from '../components/TestimonialsSection';
+
 const roles = [{
   label: "For Companies",
   description: "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
@@ -12,10 +15,11 @@ const roles = [{
   img: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7" // woman using laptop on bed
 }, {
   label: "For Fitness Partners",
-  description: "Grow your wellness business by connecting with leading employers and health-focused teams. Let us help you deliver your expertise where it’s needed most—virtually or in-person.",
+  description: "Grow your wellness business by connecting with leading employers and health-focused teams. Let us help you deliver your expertise where it's needed most—virtually or in-person.",
   href: "/providers",
   img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" // professional setting
 }];
+
 const CorporateWellness = () => {
   return <div>
       {/* Hero Section */}
@@ -65,6 +69,9 @@ const CorporateWellness = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* CTA Section */}
       <section className="section-padding bg-primary/20">
