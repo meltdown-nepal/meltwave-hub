@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 
 const clientLogos = [
@@ -69,8 +70,25 @@ const clientLogos = [
     id: 17,
     src: "/lovable-uploads/Stalwart.png",
     alt: "Stalwart Logo"
+  }, {
+    id: 18,
+    src: "/lovable-uploads/WeBajraStudio.png",
+    alt: "We Bajra Studio Logo"
+  }, {
+    id: 19,
+    src: "/lovable-uploads/NepaliGharHotel.png",
+    alt: "Nepali Ghar Hotel Logo"
+  }, {
+    id: 20,
+    src: "/lovable-uploads/UBASolutions.png",
+    alt: "UBA Solutions Logo"
+  }, {
+    id: 21,
+    src: "/lovable-uploads/snackon.png",
+    alt: "Snack On Logo"
   }
 ];
+
 const ClientLogoCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
