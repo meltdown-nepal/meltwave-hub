@@ -94,7 +94,6 @@ const ClientLogoCarousel = () => {
   const [isVisible, setIsVisible] = useState(false);
   const animationRef = useRef<number>();
   const [isMobile, setIsMobile] = useState(false);
-  const [resetInProgress, setResetInProgress] = useState(false);
 
   // Check if the screen is mobile
   useEffect(() => {
@@ -110,6 +109,7 @@ const ClientLogoCarousel = () => {
     };
   }, []);
 
+  // Detect if carousel is in viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -127,108 +127,93 @@ const ClientLogoCarousel = () => {
     };
   }, []);
 
+  // Improved smooth scrolling animation
   useEffect(() => {
     if (!isVisible || !scrollRef.current) return;
     
-    const scrollSpeed = isMobile ? 0.4 : 0.7;
+    // Adjusted speeds for smoother animation
+    const scrollSpeed = isMobile ? 0.5 : 0.8;
+    let lastTimestamp = 0;
     
-    const animateScroll = () => {
-      if (scrollRef.current && !resetInProgress) {
+    const animate = (timestamp: number) => {
+      if (!scrollRef.current) return;
+      
+      // Calculate time difference to ensure consistent speed regardless of frame rate
+      const elapsed = timestamp - lastTimestamp;
+      if (lastTimestamp !== 0 && elapsed > 0) {
         const containerWidth = scrollRef.current.clientWidth;
-        const scrollWidth = scrollRef.current.scrollWidth;
-        const scrollLeft = scrollRef.current.scrollLeft;
-        const halfwayPoint = scrollWidth / 2;
+        const scrollWidth = scrollRef.current.scrollWidth / 2; // Half because we duplicated the logos
         
-        // If we're near the end of the first set, smoothly reset
-        if (scrollLeft >= halfwayPoint - containerWidth) {
-          setResetInProgress(true);
-          
-          // Use requestAnimationFrame for smooth transition
-          const resetScroll = () => {
-            if (scrollRef.current) {
-              // Reset to beginning with a smooth transition
-              scrollRef.current.scrollTo({
-                left: 0,
-                behavior: 'auto'
-              });
-              
-              // Wait a tiny bit to avoid visual jank
-              setTimeout(() => {
-                setResetInProgress(false);
-              }, 50);
-            }
-          };
-          
-          resetScroll();
-        } else {
-          scrollRef.current.scrollLeft += scrollSpeed;
+        // Increment scroll position based on elapsed time for smooth motion
+        scrollRef.current.scrollLeft += (scrollSpeed * elapsed) / 16; // Normalize to ~60fps
+        
+        // If we reach the middle (clone section), reset to beginning
+        if (scrollRef.current.scrollLeft >= scrollWidth) {
+          scrollRef.current.scrollLeft = 0;
         }
       }
       
-      if (!resetInProgress) {
-        animationRef.current = requestAnimationFrame(animateScroll);
-      }
+      lastTimestamp = timestamp;
+      animationRef.current = requestAnimationFrame(animate);
     };
     
-    animationRef.current = requestAnimationFrame(animateScroll);
+    animationRef.current = requestAnimationFrame(animate);
     
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isVisible, isMobile, resetInProgress]);
+  }, [isVisible, isMobile]);
 
   return (
     <section className="py-8 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8">Loved by ❤️</h3>
         <div className="relative overflow-hidden">
-          {/* Add gradients for fade effect on the sides */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-yellow-50 to-transparent"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-yellow-50 to-transparent"></div>
+          {/* Enhanced gradients for fade effect on the sides */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-yellow-50 to-transparent"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-yellow-50 to-transparent"></div>
           
           <div
             ref={scrollRef}
-            className="flex items-center justify-start py-8 overflow-x-auto scrollbar-hide"
+            className="flex items-center justify-start py-8 overflow-x-hidden whitespace-nowrap"
             style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              scrollBehavior: 'smooth'
+              WebkitOverflowScrolling: 'touch',
             }}
           >
             {/* First set of logos */}
             {clientLogos.map((logo) => (
               <div 
                 key={logo.id} 
-                className="flex-shrink-0 mx-10 transition-transform hover:scale-110 duration-300"
+                className="inline-flex flex-shrink-0 mx-12 transition-transform hover:scale-110 duration-300"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-20 md:h-24 w-auto max-w-[140px] md:max-w-[180px] object-contain"
+                  className="h-24 md:h-28 w-auto max-w-[160px] md:max-w-[200px] object-contain"
                   draggable={false}
                   loading="lazy"
-                  width="180"
-                  height="96"
+                  width="200"
+                  height="112"
                 />
               </div>
             ))}
             
-            {/* Duplicate the full set of logos to create a seamless loop */}
+            {/* Duplicate set of logos for seamless looping */}
             {clientLogos.map((logo) => (
               <div 
                 key={`clone-${logo.id}`} 
-                className="flex-shrink-0 mx-10 transition-transform hover:scale-110 duration-300"
+                className="inline-flex flex-shrink-0 mx-12 transition-transform hover:scale-110 duration-300"
               >
                 <img
                   src={logo.src}
                   alt={`${logo.alt} (duplicate)`}
-                  className="h-20 md:h-24 w-auto max-w-[140px] md:max-w-[180px] object-contain"
+                  className="h-24 md:h-28 w-auto max-w-[160px] md:max-w-[200px] object-contain"
                   draggable={false}
                   loading="lazy"
-                  width="180"
-                  height="96"
+                  width="200"
+                  height="112"
                 />
               </div>
             ))}
