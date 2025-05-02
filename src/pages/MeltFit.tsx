@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -37,14 +36,12 @@ const MeltFit = () => {
       quote: "In just 6 weeks, I gained strength, lost 5kg, and learned how to maintain my results for life!",
       name: "Nisha K.",
       role: "MeltFit Member",
-      thumbnailSrc: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
       videoSrc: "#"
     },
     {
       quote: "The corrective exercise program helped me walk pain-free again after years of knee trouble.",
       name: "Rajesh M.",
       role: "MeltFit Client",
-      thumbnailSrc: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
       videoSrc: "#"
     }
   ];
@@ -471,7 +468,6 @@ const MeltFit = () => {
               <div key={index} className="mx-auto w-full max-w-md">
                 <VideoTestimonial
                   videoSrc={story.videoSrc}
-                  thumbnailSrc={story.thumbnailSrc}
                   title={story.quote}
                   name={story.name}
                   role={story.role}

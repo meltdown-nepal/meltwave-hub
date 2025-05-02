@@ -20,21 +20,18 @@ const partnerFaqs = [{
 const providerTestimonials = [
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b",
     title: "Grew my client base by 40%",
     name: "Rachel Lee",
     role: "Yoga Instructor"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1518611012118-696072aa579a",
     title: "Connected me with corporate clients",
     name: "Marcus Wilson",
     role: "Fitness Trainer"
   },
   {
     videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    thumbnailSrc: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
     title: "Simplified my business operations",
     name: "Elena Rodriguez",
     role: "Nutritionist"
@@ -278,9 +275,9 @@ const ForProviders = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial videoSrc="partner-video1.mp4" thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" />
-            <VideoTestimonial videoSrc="partner-video2.mp4" thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" />
-            <VideoTestimonial videoSrc="partner-video3.mp4" thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" />
+            <VideoTestimonial videoSrc="partner-video1.mp4" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" onClick={() => handleVideoClick("partner-video1.mp4")} />
+            <VideoTestimonial videoSrc="partner-video2.mp4" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" onClick={() => handleVideoClick("partner-video2.mp4")} />
+            <VideoTestimonial videoSrc="partner-video3.mp4" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" onClick={() => handleVideoClick("partner-video3.mp4")} />
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
@@ -318,7 +315,6 @@ const ForProviders = () => {
               <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
                 <VideoTestimonial 
                   videoSrc={testimonial.videoSrc}
-                  thumbnailSrc={testimonial.thumbnailSrc}
                   title={testimonial.title}
                   name={testimonial.name}
                   role={testimonial.role}
@@ -333,7 +329,6 @@ const ForProviders = () => {
               <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
                 <VideoTestimonial 
                   videoSrc={testimonial.videoSrc}
-                  thumbnailSrc={testimonial.thumbnailSrc}
                   title={testimonial.title}
                   name={testimonial.name}
                   role={testimonial.role}

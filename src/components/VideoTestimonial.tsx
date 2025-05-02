@@ -9,6 +9,7 @@ interface VideoTestimonialProps {
   title: string;
   name: string;
   role: string;
+  thumbnailSrc?: string;
   onClick?: () => void;
 }
 
