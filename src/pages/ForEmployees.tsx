@@ -34,16 +34,43 @@ const employeeTestimonials = [
   }
 ];
 
-const EmployeeFaqs = [{
-  question: "How do I access the wellness services?",
-  answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
-}, {
-  question: "Can I participate during work hours?",
-  answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
-}, {
-  question: "Are the services confidential?",
-  answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
-}];
+// Partner testimonials
+const partnerTestimonials = [
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    title: "Growing My Business",
+    name: "Rachel Torres",
+    role: "Yoga Instructor"
+  },
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    title: "Corporate Partnerships",
+    name: "Mark Johnson",
+    role: "Fitness Trainer"
+  },
+  {
+    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    thumbnailSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    title: "Virtual Training Success",
+    name: "Anna Lee",
+    role: "Nutritionist"
+  }
+];
+
+const EmployeeFaqs = [
+  {
+    question: "How do I access the wellness services?",
+    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
+  }, {
+    question: "Can I participate during work hours?",
+    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
+  }, {
+    question: "Are the services confidential?",
+    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
+  }
+];
 
 const ForEmployees = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
@@ -262,22 +289,48 @@ const ForEmployees = () => {
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Partner Success Stories</h2>
+            <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">PARTNERS</div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Partner Success Stories</h2>
             <p className="text-lg max-w-3xl mx-auto">
               Learn from wellness professionals who have grown their business with us.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <VideoTestimonial videoSrc="partner-video1.mp4" thumbnailSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" />
-            <VideoTestimonial videoSrc="partner-video2.mp4" thumbnailSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" title="Corporate Partnerships" name="Mark Johnson" role="Fitness Trainer" />
-            <VideoTestimonial videoSrc="partner-video3.mp4" thumbnailSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c" title="Virtual Training Success" name="Anna Lee" role="Nutritionist" />
+          {/* Desktop view (grid) */}
+          <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {partnerTestimonials.map((testimonial, index) => (
+              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
+                <VideoTestimonial 
+                  videoSrc={testimonial.videoSrc}
+                  thumbnailSrc={testimonial.thumbnailSrc}
+                  title={testimonial.title}
+                  name={testimonial.name}
+                  role={testimonial.role}
+                />
+              </div>
+            ))}
           </div>
 
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
+          {/* Mobile view (list) */}
+          <div className="md:hidden space-y-6">
+            {partnerTestimonials.map((testimonial, index) => (
+              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
+                <VideoTestimonial 
+                  videoSrc={testimonial.videoSrc}
+                  thumbnailSrc={testimonial.thumbnailSrc}
+                  title={testimonial.title}
+                  name={testimonial.name}
+                  role={testimonial.role}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8 mt-16">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {EmployeeFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`}>
+              {EmployeeFaqs.map((faq, index) => (
+                <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -286,7 +339,8 @@ const ForEmployees = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>)}
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </div>

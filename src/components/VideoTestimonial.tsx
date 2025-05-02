@@ -10,6 +10,7 @@ interface VideoTestimonialProps {
   title: string;
   name: string;
   role: string;
+  onClick?: () => void;
 }
 
 const VideoTestimonial = ({
@@ -17,15 +18,23 @@ const VideoTestimonial = ({
   thumbnailSrc,
   title,
   name,
-  role
+  role,
+  onClick
 }: VideoTestimonialProps) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
 
   return (
     <Card 
       className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl bg-white"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
     >
       <div className="relative">
         <div className="aspect-video bg-gray-100 relative overflow-hidden">
