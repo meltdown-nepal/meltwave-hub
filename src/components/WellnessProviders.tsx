@@ -89,7 +89,6 @@ const WellnessProviders = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect viewport width for responsive scroll speed
   useEffect(() => {
     const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
     checkIsMobile();
@@ -97,29 +96,26 @@ const WellnessProviders = () => {
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
-  // Visibility detection (scrolling only when in view)
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
-
     if (scrollRef.current) observer.observe(scrollRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Scroll animation loop
   useEffect(() => {
     if (!isVisible || !scrollRef.current) return;
 
-    const scrollSpeed = isMobile ? 0.5 : 0.8;
+    const scrollSpeed = isMobile ? 0.6 : 1.2;
     let lastTimestamp = 0;
 
     const animate = (timestamp: number) => {
       if (!scrollRef.current) return;
       if (lastTimestamp) {
         const elapsed = timestamp - lastTimestamp;
-        scrollRef.current.scrollLeft += (scrollSpeed * elapsed) / 16;
+        scrollRef.current.scrollLeft += scrollSpeed * elapsed;
 
         const scrollWidth = scrollRef.current.scrollWidth / 2;
         if (scrollRef.current.scrollLeft >= scrollWidth) {
@@ -139,13 +135,16 @@ const WellnessProviders = () => {
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8">Our Wellness Providers</h3>
         <div className="relative overflow-hidden">
-          {/* Optional: Fade gradient for better visual edge */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-yellow-50 to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-yellow-50 to-transparent z-10" />
           <div
             ref={scrollRef}
             className="flex items-center space-x-16 py-8 overflow-x-hidden whitespace-nowrap"
-            style={{ WebkitOverflowScrolling: 'touch' }}
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              willChange: 'scroll-position',
+              transform: 'translateZ(0)',
+            }}
           >
             {[...providers, ...providers].map((provider, idx) => (
               <div
