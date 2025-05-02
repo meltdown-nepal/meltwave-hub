@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -101,8 +100,8 @@ const ForCompanies = () => {
             </div>
             <div className="flex justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1721322800607-8c38375eef04" 
-                alt="Company Wellness Program" 
+                src="/lovable-uploads/a48b3904-c6dd-43cc-b3e1-398362f1feae.png" 
+                alt="Corporate wellness workshop with employees learning about workplace health" 
                 className="rounded-lg shadow-xl max-w-full h-auto"
               />
             </div>
