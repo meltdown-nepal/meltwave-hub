@@ -23,6 +23,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import ScheduleDemoFlow from "./pages/ScheduleDemoFlow";
+import WellnessProviders from "./pages/WellnessProviders";
 
 const App = () => {
   // Create a query client instance inside the component
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
+              <Route path="/wellness-providers" element={<WellnessProviders />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

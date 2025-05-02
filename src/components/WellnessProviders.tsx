@@ -1,4 +1,6 @@
+
 import React from 'react';
+import LogoCarousel from './LogoCarousel';
 
 const clientLogos = [
   { id: 1, src: "/lovable-uploads/397c4685-d91a-452b-b4fa-51c0f4236ee7.png", alt: "Athlete Land" },
@@ -19,53 +21,14 @@ const clientLogos = [
   { id: 16, src: "/lovable-uploads/20d63b1f-921f-4e7c-b6a6-e9e511c135e0.png", alt: "Tranquility Spa" }
 ];
 
-const ClientLogoCarousel = () => {
+const WellnessProviders = () => {
   return (
-    <section className="py-8 bg-yellow-50 overflow-hidden">
-      <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-8">Wellness Providers</h3>
-        <div className="relative overflow-hidden">
-          {/* Gradient edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-yellow-50 to-transparent" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-yellow-50 to-transparent" />
-          
-          {/* Scrolling container */}
-          <div className="whitespace-nowrap flex overflow-hidden">
-            <div className="animate-scroll flex min-w-max">
-              {[...clientLogos, ...clientLogos].map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="inline-flex flex-shrink-0 mx-12 transition-transform hover:scale-110 duration-300"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-24 md:h-28 w-auto max-w-[160px] md:max-w-[200px] object-contain"
-                    draggable={false}
-                    loading="lazy"
-                    width="200"
-                    height="112"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tailwind animation added via custom class */}
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-      `}</style>
-    </section>
+    <LogoCarousel 
+      logos={clientLogos} 
+      title="Our Wellness Network" 
+      description="These amazing gyms, studios, and wellness centers help power the Meltdown experience."
+    />
   );
 };
 
-export default ClientLogoCarousel;
+export default WellnessProviders;

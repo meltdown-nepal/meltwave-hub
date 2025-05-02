@@ -11,6 +11,28 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import LogoCarousel from '../components/LogoCarousel';
+
+// Trusted Companies Logos
+const trustedCompanies = [
+  { id: 1, src: "/lovable-uploads/leapfrog.png", alt: "Leapfrog Technology" },
+  { id: 2, src: "/lovable-uploads/SecurityPal.png", alt: "Security Pal" },
+  { id: 3, src: "/lovable-uploads/naamche.png", alt: "Naamche" },
+  { id: 4, src: "/lovable-uploads/flextecs.png", alt: "Flextecs" },
+  { id: 5, src: "/lovable-uploads/YoungInnovations.png", alt: "Young Innovations" },
+  { id: 6, src: "/lovable-uploads/HimalayanJava.png", alt: "Himalayan Java" },
+  { id: 7, src: "/lovable-uploads/GolchhaGroup.png", alt: "Golchha Group" },
+  { id: 8, src: "/lovable-uploads/ottr.png", alt: "Ottr" },
+  { id: 9, src: "/lovable-uploads/OwlDigital.png", alt: "Owl Digital" },
+  { id: 10, src: "/lovable-uploads/shanker.png", alt: "Shanker" },
+  { id: 11, src: "/lovable-uploads/KingsCollege.png", alt: "Kings College" },
+  { id: 12, src: "/lovable-uploads/Veda.png", alt: "Veda" },
+  { id: 13, src: "/lovable-uploads/CodingMountain.png", alt: "Coding Mountain" },
+  { id: 14, src: "/lovable-uploads/JagadambaMotors.png", alt: "Jagadamba Motors" },
+  { id: 15, src: "/lovable-uploads/KavyaSports.png", alt: "Kavya Sports" },
+  { id: 16, src: "/lovable-uploads/Stalwart.png", alt: "Stalwart" },
+  { id: 17, src: "/lovable-uploads/WeBajraStudio.png", alt: "We Bajra Studio" }
+];
 
 // FAQ Data
 const companyFaqs = [
@@ -87,6 +109,13 @@ const ForCompanies = () => {
           </div>
         </div>
       </section>
+
+      {/* Trusted Companies Section */}
+      <LogoCarousel 
+        logos={trustedCompanies} 
+        title="Trusted by Leading Companies" 
+        description="We're proud to partner with forward-thinking companies who prioritize wellness."
+      />
 
       {/* Benefits Section */}
       <section className="section-padding">
