@@ -6,6 +6,7 @@ import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
+
 function EventCard({
   title,
   address,
@@ -46,39 +47,50 @@ function EventCard({
         </Button>}
     </div>;
 }
+
 const Events = () => {
   const {
     scrollToSection
   } = useSmoothScroll();
-  const offerTypes = [{
-    icon: Activity,
-    title: "Bootcamps",
-    description: "Strength, conditioning, and full-body workouts in open spaces."
-  }, {
-    icon: Award,
-    title: "Runs",
-    description: "Fun runs, timed challenges, and team relay races."
-  }, {
-    icon: Award,
-    title: "Basketball Tournaments",
-    description: "Casual games or competitive corporate tournaments."
-  }, {
-    icon: Mountain,
-    title: "Hiking Adventures",
-    description: "Scenic group hikes, perfect for adventure lovers."
-  }, {
-    icon: Puzzle,
-    title: "Treasure Hunts",
-    description: "Interactive, team-building experiences combining fitness and fun."
-  }, {
-    icon: Bike,
-    title: "Cycling Events",
-    description: "Group cycling expeditions around beautiful locations."
-  }, {
-    icon: CalendarDays,
-    title: "Topic-Specific Events",
-    description: "Tailored experiences based on wellness and active living."
-  }];
+  
+  const offerTypes = [
+    {
+      icon: Activity,
+      title: "Bootcamps",
+      description: "Strength, conditioning, and full-body workouts in open spaces."
+    },
+    {
+      icon: Award,
+      title: "Runs",
+      description: "Fun runs, timed challenges, and team relay races."
+    },
+    {
+      icon: Award,
+      title: "Basketball Tournaments",
+      description: "Casual games or competitive corporate tournaments."
+    },
+    {
+      icon: Mountain,
+      title: "Hiking Adventures",
+      description: "Scenic group hikes, perfect for adventure lovers."
+    },
+    {
+      icon: Puzzle,
+      title: "Treasure Hunts",
+      description: "Interactive, team-building experiences combining fitness and fun."
+    },
+    {
+      icon: Bike,
+      title: "Cycling Events",
+      description: "Group cycling expeditions around beautiful locations."
+    },
+    {
+      icon: CalendarDays,
+      title: "Topic-Specific Events",
+      description: "Tailored experiences based on wellness and active living."
+    }
+  ];
+  
   return <div>
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
@@ -92,7 +104,7 @@ const Events = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <EventGalleryImage src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80" title="Community Running Event" alt="Group of people running together at sunrise" />
-            <EventGalleryImage src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" title="Meditation by the Lake" alt="Peaceful lake surrounded by trees" />
+            <EventGalleryImage src="/lovable-uploads/761279cd-bc8e-49ce-897a-1b52b2f6e467.png" title="Pet Friendly Hike" alt="Group of hikers with dogs enjoying an outdoor trek" />
             <EventGalleryImage src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80" title="Wellness Workshop" alt="People participating in a wellness workshop" />
           </div>
         </div>
@@ -145,4 +157,5 @@ const Events = () => {
       </section>
     </div>;
 };
+
 export default Events;
