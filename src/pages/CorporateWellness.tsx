@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
-
 const roles = [{
   label: "For Companies",
   description: "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
@@ -19,7 +17,6 @@ const roles = [{
   href: "/providers",
   img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" // professional setting
 }];
-
 const CorporateWellness = () => {
   return <div>
       {/* Hero Section */}
@@ -42,7 +39,7 @@ const CorporateWellness = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Corporate Wellness" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" />
+              <img alt="Corporate Wellness" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" src="/lovable-uploads/146c33ba-fd46-45de-9faa-e6b33ca16566.jpg" />
             </div>
           </div>
         </div>
