@@ -11,12 +11,12 @@ const roles = [{
   label: "For Employees",
   description: "Access a wide range of wellness services and resources—anytime, anywhere. Participate in fun wellness challenges, track your progress, and discover activities to improve your work-life balance.",
   href: "/employees",
-  img: "/lovable-uploads/30f61b7c-2119-402c-9a49-c5f940a79247.png" // updated image with group fitness activity
+  img: "/lovable-uploads/b4863552-29ab-4f82-a691-89315c7a3124.png" // swapped with fitness partners image
 }, {
-  label: "For Fitness Partners",
+  label: "Wellness Sessions",
   description: "Grow your wellness business by connecting with leading employers and health-focused teams. Let us help you deliver your expertise where it's needed most—virtually or in-person.",
   href: "/providers",
-  img: "/lovable-uploads/b4863552-29ab-4f82-a691-89315c7a3124.png" // updated image with fitness instructor leading session
+  img: "/lovable-uploads/30f61b7c-2119-402c-9a49-c5f940a79247.png" // swapped with employees image
 }];
 const CorporateWellness = () => {
   return <div>
