@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays } from 'lucide-react';
@@ -103,9 +104,9 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <EventGalleryImage src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80" title="Community Running Event" alt="Group of people running together at sunrise" />
+            <EventGalleryImage src="/lovable-uploads/83d3d1e0-9633-41e9-a92d-25894ca6b40b.png" title="Community Running Event" alt="Group of people doing fitness exercise outdoors" />
             <EventGalleryImage src="/lovable-uploads/761279cd-bc8e-49ce-897a-1b52b2f6e467.png" title="Pet Friendly Hike" alt="Group of hikers with dogs enjoying an outdoor trek" />
-            <EventGalleryImage src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80" title="Wellness Workshop" alt="People participating in a wellness workshop" />
+            <EventGalleryImage src="/lovable-uploads/c7877f89-f497-4cf4-8cb7-63d1104518c3.png" title="Java Fun Marathon" alt="Group of people running together in a park" />
           </div>
         </div>
       </section>
