@@ -16,7 +16,7 @@ const roles = [{
   label: "For Fitness Partners",
   description: "Grow your wellness business by connecting with leading employers and health-focused teams. Let us help you deliver your expertise where it's needed most—virtually or in-person.",
   href: "/providers",
-  img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" // professional setting
+  img: "/lovable-uploads/b4863552-29ab-4f82-a691-89315c7a3124.png" // updated image with fitness instructor leading session
 }];
 const CorporateWellness = () => {
   return <div>
