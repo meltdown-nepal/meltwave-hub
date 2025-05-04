@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -5,7 +6,7 @@ const roles = [{
   label: "For Companies",
   description: "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
   href: "/companies",
-  img: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81" // people in meeting
+  img: "/lovable-uploads/21b19f4f-f68a-4680-99f6-e75cdcb4e715.png" // updated image with corporate wellness workshop
 }, {
   label: "For Employees",
   description: "Access a wide range of wellness services and resources—anytime, anywhere. Participate in fun wellness challenges, track your progress, and discover activities to improve your work-life balance.",
