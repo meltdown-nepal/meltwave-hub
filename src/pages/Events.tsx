@@ -105,7 +105,7 @@ const Events = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <EventGalleryImage src="/lovable-uploads/83d3d1e0-9633-41e9-a92d-25894ca6b40b.png" title="Hyrox Event" alt="Group of people doing fitness exercise outdoors" />
-            <EventGalleryImage src="/lovable-uploads/761279cd-bc8e-49ce-897a-1b52b2f6e467.png" title="Pet Friendly Hike" alt="Group of hikers with dogs enjoying an outdoor trek" />
+            <EventGalleryImage src="/lovable-uploads/b0b2e3ab-b951-4fbd-894e-fc9a3b5c082f.png" title="Pet Friendly Hike" alt="Group of people doing handstands in a field" />
             <EventGalleryImage src="/lovable-uploads/c7877f89-f497-4cf4-8cb7-63d1104518c3.png" title="Community Run Event" alt="Group of people running together in a park" />
           </div>
         </div>
