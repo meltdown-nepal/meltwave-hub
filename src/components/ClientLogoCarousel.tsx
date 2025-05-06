@@ -17,7 +17,8 @@ const clientLogos = [
   { id: 14, src: "/lovable-uploads/JagadambaMotors.png", alt: "Jagadamba Motors Logo" },
   { id: 15, src: "/lovable-uploads/OwlDigital.png", alt: "Owl Digital Logo" },
   { id: 16, src: "/lovable-uploads/KavyaSports.png", alt: "Kavya Sports Logo" },
-  { id: 17, src: "/lovable-uploads/Stalwart.png", alt: "Stalwart Logo" }
+  { id: 17, src: "/lovable-uploads/Stalwart.png", alt: "Stalwart Logo" },
+  { id: 18, src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png", alt: "CloudFactory Logo" }
 ];
 
 const ClientLogoCarousel = () => {
