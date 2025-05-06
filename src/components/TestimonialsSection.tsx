@@ -29,8 +29,7 @@ const testimonials: Testimonial[] = [
     title: "HR Director, LeapFrog Technology",
     quote: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
-    videoUrl: "https://www.instagram.com/p/DFP4tBFTzbC/",
-    linkTo: "/companies"
+    linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
   },
   {
     id: 2,
@@ -38,8 +37,7 @@ const testimonials: Testimonial[] = [
     title: "Project Manager,Young Innovation",
     quote: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
-    videoUrl: "https://www.instagram.com/p/DG-wZ4HIpLs/",
-    linkTo: "/employees"
+    linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
   },
   {
     id: 3,
@@ -48,7 +46,7 @@ const testimonials: Testimonial[] = [
     quote: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
     image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
     videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    linkTo: "/providers"
+    linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
   },
   {
     id: 4,
