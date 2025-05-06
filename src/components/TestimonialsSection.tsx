@@ -24,33 +24,33 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    title: "HR Director, TechCorp",
-    quote: "Since implementing Meltdown's wellness program, we've seen a 30% decrease in employee sick days.",
+    name: "Jyoti Pokharel",
+    title: "HR Director, LeapFrog Technology",
+    quote: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
-    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
+    videoUrl: "https://www.instagram.com/p/DFP4tBFTzbC/"
   },
   {
     id: 2,
-    name: "Michael Chen",
-    title: "Software Engineer",
-    quote: "The MeltFit training program has transformed how I approach wellness. I've never felt better.",
+    name: "Bibha Tandukar",
+    title: "Project Manager,Young Innovation",
+    quote: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
-    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
+    videoUrl: "https://www.instagram.com/p/DG-wZ4HIpLs/"
   },
   {
     id: 3,
-    name: "Amara Patel",
-    title: "Wellness Provider",
-    quote: "Partnering with Meltdown has allowed our yoga studio to reach corporate clients we never had access to before.",
+    name: "Pabin Karki",
+    title: "CEO, Kaya Sports",
+    quote: "Meltdown’s fresh approach to the fitness market and its diverse features have reignited my motivation.",
     image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
     videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
   },
   {
     id: 4,
-    name: "David Rodriguez",
-    title: "Fitness Trainer",
-    quote: "Meltdown's platform has helped me connect with companies looking for wellness programs.",
+    name: "Jagadamba Team",
+    title: "Jagadamba Motors",
+    quote: "Meltdown's workshops have transformed my daily routine and made me significantly more active.",
     image: "/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png",
     videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
   }
