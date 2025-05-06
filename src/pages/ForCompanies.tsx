@@ -53,22 +53,22 @@ const companyFaqs = [
 // Success Stories
 const successStories = [
   {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
     title: "Transformed Our Company Culture",
-    name: "Sarah Chen",
-    role: "HR Director, TechCorp"
+    name: "Jyoti Pokharel",
+    role: "HR Director, LeapFrog Technology",
+    linkTo:"https://www.instagram.com/p/DFP4tBFTzbC/",
   },
   {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Measurable Health Improvements",
-    name: "Michael Rodriguez",
-    role: "CEO, HealthFirst Inc"
+    title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+    name: "Bibha Tandukar",
+    role: "Project Manager,Young Innovation",
+    linkTo:"https://www.instagram.com/p/DG-wZ4HIpLs/"
   },
   {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
     title: "Significant Cost Savings",
-    name: "Emily Thompson",
-    role: "CFO, Global Solutions"
+    name: "Pabin Karki",
+    role: "",
+    linkTo:"https://www.instagram.com/p/DGa0GjtzQCn/"
   }
 ];
 
@@ -257,7 +257,6 @@ const ForCompanies = () => {
                       variant="outline" 
                       size="sm" 
                       className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(story.videoSrc)}
                     >
                       <Play className="h-4 w-4" />
                       Watch Video
@@ -291,7 +290,7 @@ const ForCompanies = () => {
                       variant="outline" 
                       size="sm" 
                       className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(story.videoSrc)}
+
                     >
                       <Play className="h-4 w-4" />
                       Watch Video
