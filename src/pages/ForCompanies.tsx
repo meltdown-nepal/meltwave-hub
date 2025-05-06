@@ -53,7 +53,7 @@ const companyFaqs = [
 // Success Stories
 const successStories = [
   {
-    title: "Transformed Our Company Culture",
+    title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     name: "Jyoti Pokharel",
     role: "HR Director, LeapFrog Technology",
     linkTo:"https://www.instagram.com/p/DFP4tBFTzbC/",
@@ -65,9 +65,9 @@ const successStories = [
     linkTo:"https://www.instagram.com/p/DG-wZ4HIpLs/"
   },
   {
-    title: "Significant Cost Savings",
+    title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
     name: "Pabin Karki",
-    role: "",
+    role: "CEO,Kaya Sports",
     linkTo:"https://www.instagram.com/p/DGa0GjtzQCn/"
   }
 ];
