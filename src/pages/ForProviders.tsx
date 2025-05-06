@@ -6,24 +6,71 @@ import VideoTestimonial from '@/components/VideoTestimonial';
 import LogoCarousel from '@/components/LogoCarousel';
 
 // Wellness provider logos
-const wellnessLogos = [
-  { id: 1, src: "/lovable-uploads/397c4685-d91a-452b-b4fa-51c0f4236ee7.png", alt: "Athlete Land" },
-  { id: 2, src: "/lovable-uploads/1b36a7dd-923f-4af1-8b78-0c422d5f576c.png", alt: "AWA Club" },
-  { id: 3, src: "/lovable-uploads/14a3b627-4a42-469a-a6a5-d6f54dbb06ad.png", alt: "Bajra Sports Centre" },
-  { id: 4, src: "/lovable-uploads/201cad4a-1cf7-49c2-961f-5e1c1760e01f.png", alt: "Bands Fitness" },
-  { id: 5, src: "/lovable-uploads/cf919e11-e768-4da0-8356-f14df6a3e4f0.png", alt: "Blackstar Fitness" },
-  { id: 6, src: "/lovable-uploads/bdc58112-4650-4b00-9673-ff29a29f2db5.png", alt: "Beauty & The Beast Fitness Station" },
-  { id: 7, src: "/lovable-uploads/8acbd348-e2ba-45d5-9056-60b939d71eae.png", alt: "Bob's Gym" },
-  { id: 8, src: "/lovable-uploads/06891232-b111-41e1-aa37-b381970e4df0.png", alt: "E Dev Gym" },
-  { id: 9, src: "/lovable-uploads/719006e5-d062-44b4-99ba-8fbd518b54e7.png", alt: "Ekarana Muay Thai" },
-  { id: 10, src: "/lovable-uploads/13b7cac1-6f5d-49af-a91d-95098751d3ee.png", alt: "Happy Minds" },
-  { id: 11, src: "/lovable-uploads/ff546b12-05d6-4589-88bc-6dccce67bf1c.png", alt: "Regal Fitness" },
-  { id: 12, src: "/lovable-uploads/5c9d285f-e605-40e0-9db4-01d516e2b888.png", alt: "Riddhi Pilates Studios" },
-  { id: 13, src: "/lovable-uploads/53894216-71b2-4325-ab38-8344563caa74.png", alt: "Super Fitness" },
-  { id: 14, src: "/lovable-uploads/d7f9a37a-1fe9-488e-b4e3-cbcef131cafe.png", alt: "Tapout Fitness" },
-  { id: 15, src: "/lovable-uploads/98c39ae5-f842-422f-89a8-b8b626e945ad.png", alt: "Three Lions Fitness Center" },
-  { id: 16, src: "/lovable-uploads/20d63b1f-921f-4e7c-b6a6-e9e511c135e0.png", alt: "Tranquility Spa" }
-];
+const wellnessLogos = [{
+  id: 1,
+  src: "/lovable-uploads/397c4685-d91a-452b-b4fa-51c0f4236ee7.png",
+  alt: "Athlete Land"
+}, {
+  id: 2,
+  src: "/lovable-uploads/1b36a7dd-923f-4af1-8b78-0c422d5f576c.png",
+  alt: "AWA Club"
+}, {
+  id: 3,
+  src: "/lovable-uploads/14a3b627-4a42-469a-a6a5-d6f54dbb06ad.png",
+  alt: "Bajra Sports Centre"
+}, {
+  id: 4,
+  src: "/lovable-uploads/201cad4a-1cf7-49c2-961f-5e1c1760e01f.png",
+  alt: "Bands Fitness"
+}, {
+  id: 5,
+  src: "/lovable-uploads/cf919e11-e768-4da0-8356-f14df6a3e4f0.png",
+  alt: "Blackstar Fitness"
+}, {
+  id: 6,
+  src: "/lovable-uploads/bdc58112-4650-4b00-9673-ff29a29f2db5.png",
+  alt: "Beauty & The Beast Fitness Station"
+}, {
+  id: 7,
+  src: "/lovable-uploads/8acbd348-e2ba-45d5-9056-60b939d71eae.png",
+  alt: "Bob's Gym"
+}, {
+  id: 8,
+  src: "/lovable-uploads/06891232-b111-41e1-aa37-b381970e4df0.png",
+  alt: "E Dev Gym"
+}, {
+  id: 9,
+  src: "/lovable-uploads/719006e5-d062-44b4-99ba-8fbd518b54e7.png",
+  alt: "Ekarana Muay Thai"
+}, {
+  id: 10,
+  src: "/lovable-uploads/13b7cac1-6f5d-49af-a91d-95098751d3ee.png",
+  alt: "Happy Minds"
+}, {
+  id: 11,
+  src: "/lovable-uploads/ff546b12-05d6-4589-88bc-6dccce67bf1c.png",
+  alt: "Regal Fitness"
+}, {
+  id: 12,
+  src: "/lovable-uploads/5c9d285f-e605-40e0-9db4-01d516e2b888.png",
+  alt: "Riddhi Pilates Studios"
+}, {
+  id: 13,
+  src: "/lovable-uploads/53894216-71b2-4325-ab38-8344563caa74.png",
+  alt: "Super Fitness"
+}, {
+  id: 14,
+  src: "/lovable-uploads/d7f9a37a-1fe9-488e-b4e3-cbcef131cafe.png",
+  alt: "Tapout Fitness"
+}, {
+  id: 15,
+  src: "/lovable-uploads/98c39ae5-f842-422f-89a8-b8b626e945ad.png",
+  alt: "Three Lions Fitness Center"
+}, {
+  id: 16,
+  src: "/lovable-uploads/20d63b1f-921f-4e7c-b6a6-e9e511c135e0.png",
+  alt: "Tranquility Spa"
+}];
 
 // FAQ Data
 
@@ -37,37 +84,29 @@ const partnerFaqs = [{
   question: "How does payment work?",
   answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
 }];
-
-const providerTestimonials = [
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Grew my client base by 40%",
-    name: "Rachel Lee",
-    role: "Yoga Instructor"
-  },
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Connected me with corporate clients",
-    name: "Marcus Wilson",
-    role: "Fitness Trainer"
-  },
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Simplified my business operations",
-    name: "Elena Rodriguez",
-    role: "Nutritionist"
-  }
-];
-
+const providerTestimonials = [{
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Grew my client base by 40%",
+  name: "Rachel Lee",
+  role: "Yoga Instructor"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Connected me with corporate clients",
+  name: "Marcus Wilson",
+  role: "Fitness Trainer"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Simplified my business operations",
+  name: "Elena Rodriguez",
+  role: "Nutritionist"
+}];
 const ForProviders = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const handleVideoClick = (videoUrl: string) => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -86,7 +125,7 @@ const ForProviders = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Wellness Provider" className="rounded-lg shadow-xl max-w-full h-auto" />
+              <img alt="Wellness Provider" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/b4d593d4-69e8-4ab7-a1df-4d8d5371874b.jpg" />
             </div>
           </div>
         </div>
@@ -144,11 +183,7 @@ const ForProviders = () => {
       </section>
 
       {/* Provider Network Section */}
-      <LogoCarousel 
-        logos={wellnessLogos} 
-        title="Our Wellness Network" 
-        description="These amazing gyms, studios, and wellness centers help power the Meltdown experience."
-      />
+      <LogoCarousel logos={wellnessLogos} title="Our Wellness Network" description="These amazing gyms, studios, and wellness centers help power the Meltdown experience." />
 
       {/* How It Works */}
       <section className="bg-gray-50 section-padding">
@@ -339,54 +374,30 @@ const ForProviders = () => {
 
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {providerTestimonials.map((testimonial, index) => (
-              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc}
-                  title={testimonial.title}
-                  name={testimonial.name}
-                  role={testimonial.role}
-                />
-              </div>
-            ))}
+            {providerTestimonials.map((testimonial, index) => <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
+                <VideoTestimonial videoSrc={testimonial.videoSrc} title={testimonial.title} name={testimonial.name} role={testimonial.role} />
+              </div>)}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
-            {providerTestimonials.map((testimonial, index) => (
-              <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc}
-                  title={testimonial.title}
-                  name={testimonial.name}
-                  role={testimonial.role}
-                />
-              </div>
-            ))}
+            {providerTestimonials.map((testimonial, index) => <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)}>
+                <VideoTestimonial videoSrc={testimonial.videoSrc} title={testimonial.title} name={testimonial.name} role={testimonial.role} />
+              </div>)}
           </div>
           
           {/* Video Dialog */}
           <Dialog open={!!selectedVideo} onOpenChange={() => {
-            setSelectedVideo(null);
-            setIsLoading(false);
-          }}>
+          setSelectedVideo(null);
+          setIsLoading(false);
+        }}>
             <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
-              {isLoading && (
-                <div className="flex justify-center items-center h-40 text-white">
+              {isLoading && <div className="flex justify-center items-center h-40 text-white">
                   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-                </div>
-              )}
-              {selectedVideo && (
-                <video 
-                  src={selectedVideo}
-                  controls
-                  autoPlay
-                  className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
-                  onCanPlay={() => setIsLoading(false)}
-                >
+                </div>}
+              {selectedVideo && <video src={selectedVideo} controls autoPlay className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`} onCanPlay={() => setIsLoading(false)}>
                   Your browser does not support the video tag.
-                </video>
-              )}
+                </video>}
             </DialogContent>
           </Dialog>
         </div>
@@ -407,5 +418,4 @@ const ForProviders = () => {
       </section>
     </div>;
 };
-
 export default ForProviders;
