@@ -1,83 +1,63 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Card } from "@/components/ui/card";
 import { Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Employee testimonials
-const employeeTestimonials = [
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Transformed my work-life balance",
-    name: "Jason Kim",
-    role: "Software Developer"
-  },
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Helped me stay active while working",
-    name: "Maria Garcia",
-    role: "Marketing Specialist"
-  },
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Reduced my stress levels significantly",
-    name: "David Johnson",
-    role: "Project Manager"
-  }
-];
+const employeeTestimonials = [{
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Transformed my work-life balance",
+  name: "Jason Kim",
+  role: "Software Developer"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Helped me stay active while working",
+  name: "Maria Garcia",
+  role: "Marketing Specialist"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Reduced my stress levels significantly",
+  name: "David Johnson",
+  role: "Project Manager"
+}];
 
 // Partner testimonials
-const partnerTestimonials = [
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Growing My Business",
-    name: "Rachel Torres",
-    role: "Yoga Instructor"
-  },
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Corporate Partnerships",
-    name: "Mark Johnson",
-    role: "Fitness Trainer"
-  },
-  {
-    videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-    title: "Virtual Training Success",
-    name: "Anna Lee",
-    role: "Nutritionist"
-  }
-];
-
-const EmployeeFaqs = [
-  {
-    question: "How do I access the wellness services?",
-    answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
-  }, {
-    question: "Can I participate during work hours?",
-    answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
-  }, {
-    question: "Are the services confidential?",
-    answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
-  }
-];
-
+const partnerTestimonials = [{
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Growing My Business",
+  name: "Rachel Torres",
+  role: "Yoga Instructor"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Corporate Partnerships",
+  name: "Mark Johnson",
+  role: "Fitness Trainer"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "Virtual Training Success",
+  name: "Anna Lee",
+  role: "Nutritionist"
+}];
+const EmployeeFaqs = [{
+  question: "How do I access the wellness services?",
+  answer: "Simply log in to our platform using your company credentials. You'll have immediate access to all wellness services, scheduling tools, and resources."
+}, {
+  question: "Can I participate during work hours?",
+  answer: "Most companies allow flexibility for wellness activities. Check with your HR department about your company's specific policies."
+}, {
+  question: "Are the services confidential?",
+  answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
+}];
 const ForEmployees = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const handleVideoClick = (videoUrl: string) => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -96,7 +76,7 @@ const ForEmployees = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" />
+              <img alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg" />
             </div>
           </div>
         </div>
@@ -295,11 +275,7 @@ const ForEmployees = () => {
 
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {partnerTestimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
-              >
+            {partnerTestimonials.map((testimonial, index) => <Card key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
                 <div className="p-6">
                   <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
                   <div className="flex items-center justify-between">
@@ -312,28 +288,18 @@ const ForEmployees = () => {
                         <p className="text-sm text-gray-600">{testimonial.role}</p>
                       </div>
                     </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(testimonial.videoSrc)}
-                    >
+                    <Button variant="outline" size="sm" className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" onClick={() => handleVideoClick(testimonial.videoSrc)}>
                       <Play className="h-4 w-4" />
                       Watch Video
                     </Button>
                   </div>
                 </div>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
-            {partnerTestimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
-              >
+            {partnerTestimonials.map((testimonial, index) => <Card key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
                 <div className="p-6">
                   <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
                   <div className="flex items-center justify-between">
@@ -346,26 +312,19 @@ const ForEmployees = () => {
                         <p className="text-sm text-gray-600">{testimonial.role}</p>
                       </div>
                     </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(testimonial.videoSrc)}
-                    >
+                    <Button variant="outline" size="sm" className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" onClick={() => handleVideoClick(testimonial.videoSrc)}>
                       <Play className="h-4 w-4" />
                       Watch Video
                     </Button>
                   </div>
                 </div>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8 mt-16">
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {EmployeeFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`partner-${index}`}>
+              {EmployeeFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -374,8 +333,7 @@ const ForEmployees = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -394,11 +352,7 @@ const ForEmployees = () => {
 
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {employeeTestimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
-              >
+            {employeeTestimonials.map((testimonial, index) => <Card key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
                 <div className="p-6">
                   <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
                   <div className="flex items-center justify-between">
@@ -411,28 +365,18 @@ const ForEmployees = () => {
                         <p className="text-sm text-gray-600">{testimonial.role}</p>
                       </div>
                     </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(testimonial.videoSrc)}
-                    >
+                    <Button variant="outline" size="sm" className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" onClick={() => handleVideoClick(testimonial.videoSrc)}>
                       <Play className="h-4 w-4" />
                       Watch Video
                     </Button>
                   </div>
                 </div>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
-            {employeeTestimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
-              >
+            {employeeTestimonials.map((testimonial, index) => <Card key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
                 <div className="p-6">
                   <h4 className="font-medium text-lg mb-3 italic">"{testimonial.title}"</h4>
                   <div className="flex items-center justify-between">
@@ -445,43 +389,27 @@ const ForEmployees = () => {
                         <p className="text-sm text-gray-600">{testimonial.role}</p>
                       </div>
                     </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(testimonial.videoSrc)}
-                    >
+                    <Button variant="outline" size="sm" className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" onClick={() => handleVideoClick(testimonial.videoSrc)}>
                       <Play className="h-4 w-4" />
                       Watch Video
                     </Button>
                   </div>
                 </div>
-              </Card>
-            ))}
+              </Card>)}
           </div>
           
           {/* Video Dialog */}
           <Dialog open={!!selectedVideo} onOpenChange={() => {
-            setSelectedVideo(null);
-            setIsLoading(false);
-          }}>
+          setSelectedVideo(null);
+          setIsLoading(false);
+        }}>
             <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
-              {isLoading && (
-                <div className="flex justify-center items-center h-40 text-white">
+              {isLoading && <div className="flex justify-center items-center h-40 text-white">
                   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-                </div>
-              )}
-              {selectedVideo && (
-                <video 
-                  src={selectedVideo}
-                  controls
-                  autoPlay
-                  className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
-                  onCanPlay={() => setIsLoading(false)}
-                >
+                </div>}
+              {selectedVideo && <video src={selectedVideo} controls autoPlay className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`} onCanPlay={() => setIsLoading(false)}>
                   Your browser does not support the video tag.
-                </video>
-              )}
+                </video>}
             </DialogContent>
           </Dialog>
         </div>
@@ -502,5 +430,4 @@ const ForEmployees = () => {
       </section>
     </div>;
 };
-
 export default ForEmployees;
