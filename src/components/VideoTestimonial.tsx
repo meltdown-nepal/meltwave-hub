@@ -3,22 +3,24 @@ import React from 'react';
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface VideoTestimonialProps {
-  videoSrc: string;
+  videoSrc?: string;
   title: string;
   name: string;
   role: string;
   thumbnailSrc?: string;
   onClick?: () => void;
+  linkTo?: string;
 }
 
 const VideoTestimonial = ({
-  videoSrc,
   title,
   name,
   role,
-  onClick
+  onClick,
+  linkTo = "/"
 }: VideoTestimonialProps) => {
   const handleClick = () => {
     if (onClick) {
@@ -46,10 +48,13 @@ const VideoTestimonial = ({
           <Button 
             variant="outline" 
             size="sm" 
-            className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
+            className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700"
+            asChild
           >
-            <Play className="h-4 w-4" />
-            Watch Video
+            <Link to={linkTo}>
+              <Play className="h-4 w-4" />
+              Watch Video
+            </Link>
           </Button>
         </div>
       </div>

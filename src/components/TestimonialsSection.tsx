@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Carousel,
@@ -9,8 +9,8 @@ import {
   CarouselPrevious
 } from "@/components/ui/carousel";
 import { Play, Quote } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 type Testimonial = {
   id: number;
@@ -19,6 +19,7 @@ type Testimonial = {
   quote: string;
   image: string;
   videoUrl?: string;
+  linkTo?: string;
 };
 
 const testimonials: Testimonial[] = [
@@ -28,7 +29,8 @@ const testimonials: Testimonial[] = [
     title: "HR Director, LeapFrog Technology",
     quote: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
-    videoUrl: "https://www.instagram.com/p/DFP4tBFTzbC/"
+    videoUrl: "https://www.instagram.com/p/DFP4tBFTzbC/",
+    linkTo: "/companies"
   },
   {
     id: 2,
@@ -36,15 +38,17 @@ const testimonials: Testimonial[] = [
     title: "Project Manager,Young Innovation",
     quote: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
-    videoUrl: "https://www.instagram.com/p/DG-wZ4HIpLs/"
+    videoUrl: "https://www.instagram.com/p/DG-wZ4HIpLs/",
+    linkTo: "/employees"
   },
   {
     id: 3,
     name: "Pabin Karki",
     title: "CEO, Kaya Sports",
-    quote: "Meltdown’s fresh approach to the fitness market and its diverse features have reignited my motivation.",
+    quote: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
     image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
-    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    linkTo: "/providers"
   },
   {
     id: 4,
@@ -52,25 +56,12 @@ const testimonials: Testimonial[] = [
     title: "Jagadamba Motors",
     quote: "Meltdown's workshops have transformed my daily routine and made me significantly more active.",
     image: "/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png",
-    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4"
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    linkTo: "/events"
   }
 ];
 
 const TestimonialsSection = () => {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleVideoClick = (videoUrl: string) => {
-    setIsLoading(true);
-    setSelectedVideo(videoUrl);
-  };
-
-  const getDefaultVideoUrl = () => {
-    // Use the first testimonial's video URL as default if available
-    return testimonials.find(t => t.videoUrl)?.videoUrl || 
-           "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4";
-  };
-
   return (
     <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
       <div className="container-custom">
@@ -108,11 +99,13 @@ const TestimonialsSection = () => {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                      onClick={() => handleVideoClick(testimonial.videoUrl || getDefaultVideoUrl())}
+                      className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700"
+                      asChild
                     >
-                      <Play className="h-4 w-4" />
-                      Watch Video
+                      <Link to={testimonial.linkTo || "/"}>
+                        <Play className="h-4 w-4" />
+                        Watch Video
+                      </Link>
                     </Button>
                   </div>
                 </div>
@@ -147,11 +140,13 @@ const TestimonialsSection = () => {
                           <Button 
                             variant="outline" 
                             size="sm" 
-                            className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" 
-                            onClick={() => handleVideoClick(testimonial.videoUrl || getDefaultVideoUrl())}
+                            className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700"
+                            asChild
                           >
-                            <Play className="h-4 w-4" />
-                            Watch Video
+                            <Link to={testimonial.linkTo || "/"}>
+                              <Play className="h-4 w-4" />
+                              Watch Video
+                            </Link>
                           </Button>
                         </div>
                       </div>
@@ -166,31 +161,6 @@ const TestimonialsSection = () => {
             </div>
           </Carousel>
         </div>
-
-        {/* Video Dialog */}
-        <Dialog open={!!selectedVideo} onOpenChange={() => {
-          setSelectedVideo(null);
-          setIsLoading(false);
-        }}>
-          <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
-            {isLoading && (
-              <div className="flex justify-center items-center h-40 text-white">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-              </div>
-            )}
-            {selectedVideo && (
-              <video 
-                src={selectedVideo}
-                controls
-                autoPlay
-                className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
-                onCanPlay={() => setIsLoading(false)}
-              >
-                Your browser does not support the video tag.
-              </video>
-            )}
-          </DialogContent>
-        </Dialog>
       </div>
     </section>
   );
