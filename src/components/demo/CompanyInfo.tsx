@@ -70,9 +70,13 @@ export const CompanyInfo: React.FC<Props> = ({ form, onNext, onBack }) => {
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200 shadow-lg">
                   {industries.map((industry) => (
-                    <SelectItem key={industry.value} value={industry.value} className="hover:bg-gray-100">
+                    <SelectItem 
+                      key={industry.value} 
+                      value={industry.value} 
+                      className="hover:bg-purple-100 hover:text-purple-700 transition-colors"
+                    >
                       <div className="flex items-center">
-                        <industry.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+                        <industry.icon className="mr-2 h-4 w-4 text-muted-foreground group-hover:text-purple-600" />
                         {industry.label}
                       </div>
                     </SelectItem>
