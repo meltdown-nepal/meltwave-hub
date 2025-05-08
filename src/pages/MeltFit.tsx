@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import VideoTestimonial from '@/components/VideoTestimonial';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight } from 'lucide-react';
+
 const MeltFit = () => {
   const {
     scrollToSection
@@ -56,7 +57,7 @@ const MeltFit = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="MeltFit Training" className="rounded-lg shadow-xl max-w-full h-auto" loading="lazy" width="600" height="400" />
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="MeltFit Group Training" className="rounded-lg shadow-xl max-w-full h-auto" loading="lazy" width="600" height="400" />
             </div>
           </div>
         </div>
@@ -142,7 +143,7 @@ const MeltFit = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="hidden lg:block relative order-2 lg:order-1">
-                  <img src="https://images.unsplash.com/photo-1618170124640-0b68b8410dbf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Transformation Program" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                  <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Transformation Program" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
                 </div>
                 <div className="p-8 lg:p-12 order-1 lg:order-2">
                   <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 2</div>
