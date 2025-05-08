@@ -225,9 +225,7 @@ const ForEmployees = () => {
                   <span>Boundary-setting strategies</span>
                 </li>
               </ul>
-              <Link to="/blog" className="text-secondary font-bold hover:underline">
-                Read our work-life balance articles →
-              </Link>
+              
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-md">
