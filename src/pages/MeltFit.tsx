@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -52,8 +53,12 @@ const MeltFit = () => {
                 MeltFit offers group strength and conditioning classes, transformation programs, corrective exercise training, and personal training — built to help you move better, feel better, and live better.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="text-base">Join MeltFit</Button>
-                <Button variant="outline" size="lg" className="text-base">Try a Free Class</Button>
+                <Button size="lg" className="text-base" asChild>
+                  <Link to="/contact">Join MeltFit</Link>
+                </Button>
+                <Button variant="outline" size="lg" className="text-base" asChild>
+                  <Link to="/contact">Try a Free Class</Link>
+                </Button>
               </div>
             </div>
             <div className="flex justify-center">
@@ -129,7 +134,9 @@ const MeltFit = () => {
                     </li>
                   </ul>
                   
-                  <Button size="lg" className="text-base">See Class Timings</Button>
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">See Class Timings</Link>
+                  </Button>
                 </div>
                 <div className="hidden lg:block relative">
                   <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Group Training at MeltFit" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
@@ -188,7 +195,9 @@ const MeltFit = () => {
                     </li>
                   </ul>
                   
-                  <Button size="lg" className="text-base">Apply for Transformation Program</Button>
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">Apply for Transformation Program</Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -241,7 +250,9 @@ const MeltFit = () => {
                     </li>
                   </ul>
                   
-                  <Button size="lg" className="text-base">Learn More About Corrective Training</Button>
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">Learn More About Corrective Training</Link>
+                  </Button>
                 </div>
                 <div className="hidden lg:block relative">
                   <img src="https://images.unsplash.com/photo-1616279967983-ec413476e824?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Corrective Exercise Training" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
@@ -284,7 +295,9 @@ const MeltFit = () => {
                   <h4 className="font-bold text-lg mb-3">Location:</h4>
                   <p className="mb-8">Available at select MeltFit partner facilities</p>
                   
-                  <Button size="lg" className="text-base">Book a Free Consultation</Button>
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">Book a Free Consultation</Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -349,11 +362,13 @@ const MeltFit = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="XYZ Gym" className="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
               <CardContent className="p-4">
-                <h3 className="font-bold text-lg mb-1">Banu's Total Fitness </h3>
+                <h3 className="font-bold text-lg mb-1">Banu's Total Fitness </h3>
                 <p className="text-sm text-gray-600 mb-3">Kamalpokhari,Kathmandu</p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Get Directions
-                  <ChevronRight className="h-4 w-4 ml-1" />
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <Link to="/contact">
+                    Get Directions
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -361,11 +376,13 @@ const MeltFit = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ABC Fitness" className="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
               <CardContent className="p-4">
-                <h3 className="font-bold text-lg mb-1">Comming Soon </h3>
-                <p className="text-sm text-gray-600 mb-3">Expanding soon into multiple Locaitons </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Get Directions
-                  <ChevronRight className="h-4 w-4 ml-1" />
+                <h3 className="font-bold text-lg mb-1">Comming Soon </h3>
+                <p className="text-sm text-gray-600 mb-3">Expanding soon into multiple Locaitons </p>
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <Link to="/contact">
+                    Get Directions
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -373,18 +390,22 @@ const MeltFit = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="FitZone" className="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
               <CardContent className="p-4">
-                <h3 className="font-bold text-lg mb-1">Comming Soon </h3>
+                <h3 className="font-bold text-lg mb-1">Comming Soon </h3>
                 <p className="text-sm text-gray-600 mb-3">Expanding Soon in multiple locations</p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Get Directions
-                  <ChevronRight className="h-4 w-4 ml-1" />
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <Link to="/contact">
+                    Get Directions
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
           </div>
           
           <div className="text-center mt-10">
-            <Button size="lg">Find a Class Near You</Button>
+            <Button size="lg" asChild>
+              <Link to="/contact">Find a Class Near You</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -437,9 +458,9 @@ const MeltFit = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to transform your strength, movement, and life?</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg">Join MeltFit Today</Button>
-            
-            
+            <Button size="lg" asChild>
+              <Link to="/contact">Join MeltFit Today</Link>
+            </Button>
           </div>
         </div>
       </section>
