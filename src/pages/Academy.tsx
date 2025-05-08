@@ -1,150 +1,102 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
-import { 
-  BookOpen, 
-  GraduationCap, 
-  Users, 
-  Award, 
-  CheckCircle,
-  Calendar,
-  ChevronDown
-} from 'lucide-react';
-import { 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardFooter, 
-  CardHeader, 
-  CardTitle 
-} from '@/components/ui/card';
+import { BookOpen, GraduationCap, Users, Award, CheckCircle, Calendar, ChevronDown } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
 const Academy = () => {
-  const { scrollToSection } = useSmoothScroll();
-  
+  const {
+    scrollToSection
+  } = useSmoothScroll();
+
   // Course data
-  const courses = [
-    {
-      title: "Strength & Conditioning Specialist",
-      subtitle: "CSCS® Prep + Meltdown Certification",
-      icon: <GraduationCap className="h-8 w-8 text-primary" />,
-      overview: "Prepare for the CSCS® exam while gaining practical experience in strength and conditioning program design.",
-      audience: "Fitness professionals, athletes looking to transition to coaching, and strength coaches seeking certification.",
-      learnings: ["Program design for athletes", "Strength training science", "Performance testing", "Injury prevention", "Speed and agility development"],
-      certification: "Includes CSCS® exam prep and Meltdown Academy certification upon completion.",
-      duration: "12 weeks (weekends)",
-      fees: "$1,999",
-    },
-    {
-      title: "Corrective Exercise Specialist",
-      subtitle: "CES® Prep + Meltdown Certification",
-      icon: <Award className="h-8 w-8 text-primary" />,
-      overview: "Learn to identify and address movement dysfunctions while preparing for the CES® certification exam.",
-      audience: "Personal trainers, physical therapists, and fitness professionals seeking to specialize in corrective exercise.",
-      learnings: ["Movement assessments", "Corrective exercise techniques", "Functional anatomy", "Program design for special populations", "Mobility enhancement strategies"],
-      certification: "Includes CES® exam prep and Meltdown Academy certification upon completion.",
-      duration: "8 weeks (weekends)",
-      fees: "$1,599",
-    },
-    {
-      title: "Sports Nutrition Specialist",
-      subtitle: "Meltdown Certification",
-      icon: <BookOpen className="h-8 w-8 text-primary" />,
-      overview: "Master the science of nutrition for performance enhancement and optimal athletic recovery.",
-      audience: "Coaches, trainers, nutritionists, and health professionals working with active populations.",
-      learnings: ["Performance nutrition principles", "Supplement evaluation", "Meal planning for athletes", "Hydration strategies", "Weight management for sports"],
-      certification: "Meltdown Academy certification upon successful completion.",
-      duration: "6 weeks (weekends)",
-      fees: "$1,299",
-    }
-  ];
+  const courses = [{
+    title: "Strength & Conditioning Specialist",
+    subtitle: "CSCS® Prep + Meltdown Certification",
+    icon: <GraduationCap className="h-8 w-8 text-primary" />,
+    overview: "Prepare for the CSCS® exam while gaining practical experience in strength and conditioning program design.",
+    audience: "Fitness professionals, athletes looking to transition to coaching, and strength coaches seeking certification.",
+    learnings: ["Program design for athletes", "Strength training science", "Performance testing", "Injury prevention", "Speed and agility development"],
+    certification: "Includes CSCS® exam prep and Meltdown Academy certification upon completion.",
+    duration: "12 weeks (weekends)",
+    fees: "$1,999"
+  }, {
+    title: "Corrective Exercise Specialist",
+    subtitle: "CES® Prep + Meltdown Certification",
+    icon: <Award className="h-8 w-8 text-primary" />,
+    overview: "Learn to identify and address movement dysfunctions while preparing for the CES® certification exam.",
+    audience: "Personal trainers, physical therapists, and fitness professionals seeking to specialize in corrective exercise.",
+    learnings: ["Movement assessments", "Corrective exercise techniques", "Functional anatomy", "Program design for special populations", "Mobility enhancement strategies"],
+    certification: "Includes CES® exam prep and Meltdown Academy certification upon completion.",
+    duration: "8 weeks (weekends)",
+    fees: "$1,599"
+  }, {
+    title: "Sports Nutrition Specialist",
+    subtitle: "Meltdown Certification",
+    icon: <BookOpen className="h-8 w-8 text-primary" />,
+    overview: "Master the science of nutrition for performance enhancement and optimal athletic recovery.",
+    audience: "Coaches, trainers, nutritionists, and health professionals working with active populations.",
+    learnings: ["Performance nutrition principles", "Supplement evaluation", "Meal planning for athletes", "Hydration strategies", "Weight management for sports"],
+    certification: "Meltdown Academy certification upon successful completion.",
+    duration: "6 weeks (weekends)",
+    fees: "$1,299"
+  }];
 
   // Upcoming batches
-  const upcomingBatches = [
-    {
-      course: "Strength & Conditioning Specialist",
-      date: "June 15, 2025",
-      schedule: "Saturdays & Sundays, 9am - 1pm",
-      spots: "12 spots remaining"
-    },
-    {
-      course: "Corrective Exercise Specialist",
-      date: "July 12, 2025",
-      schedule: "Saturdays & Sundays, 2pm - 6pm",
-      spots: "10 spots remaining"
-    },
-    {
-      course: "Sports Nutrition Specialist",
-      date: "August 3, 2025",
-      schedule: "Saturdays, 10am - 3pm",
-      spots: "15 spots remaining"
-    }
-  ];
+  const upcomingBatches = [{
+    course: "Strength & Conditioning Specialist",
+    date: "June 15, 2025",
+    schedule: "Saturdays & Sundays, 9am - 1pm",
+    spots: "12 spots remaining"
+  }, {
+    course: "Corrective Exercise Specialist",
+    date: "July 12, 2025",
+    schedule: "Saturdays & Sundays, 2pm - 6pm",
+    spots: "10 spots remaining"
+  }, {
+    course: "Sports Nutrition Specialist",
+    date: "August 3, 2025",
+    schedule: "Saturdays, 10am - 3pm",
+    spots: "15 spots remaining"
+  }];
 
   // Testimonials
-  const testimonials = [
-    {
-      quote: "The CSCS prep program at Meltdown Academy was rigorous and comprehensive. I passed my exam on the first attempt and secured a coaching position with a professional sports team.",
-      name: "Michael Johnson",
-      title: "Strength Coach, Kathmandu Kings XI"
-    },
-    {
-      quote: "The practical experience I gained through Meltdown's CES program was invaluable. Their dual certification approach gave me an edge in the job market.",
-      name: "Priya Sharma",
-      title: "Rehabilitation Specialist, Wellness Center"
-    },
-    {
-      quote: "The Sports Nutrition program completely transformed my approach to working with athletic clients. The evidence-based curriculum and hands-on practice set it apart from other certifications.",
-      name: "Raj Thapa",
-      title: "Performance Nutritionist, National Team"
-    }
-  ];
+  const testimonials = [{
+    quote: "The CSCS prep program at Meltdown Academy was rigorous and comprehensive. I passed my exam on the first attempt and secured a coaching position with a professional sports team.",
+    name: "Michael Johnson",
+    title: "Strength Coach, Kathmandu Kings XI"
+  }, {
+    quote: "The practical experience I gained through Meltdown's CES program was invaluable. Their dual certification approach gave me an edge in the job market.",
+    name: "Priya Sharma",
+    title: "Rehabilitation Specialist, Wellness Center"
+  }, {
+    quote: "The Sports Nutrition program completely transformed my approach to working with athletic clients. The evidence-based curriculum and hands-on practice set it apart from other certifications.",
+    name: "Raj Thapa",
+    title: "Performance Nutritionist, National Team"
+  }];
 
   // FAQ items
-  const faqItems = [
-    {
-      question: "Are these certifications recognized internationally?",
-      answer: "Yes, the CSCS® and CES® certifications we prepare you for are internationally recognized industry standards. Our Meltdown certification adds practical value and is recognized throughout South Asia."
-    },
-    {
-      question: "What prerequisites are required to enroll?",
-      answer: "For CSCS® preparation, a bachelor's degree in a related field or final year student status is recommended. For CES® and Sports Nutrition programs, a background in fitness or health is beneficial but not required."
-    },
-    {
-      question: "How are the courses structured?",
-      answer: "Our courses combine weekend classes with practical sessions, online learning modules, and hands-on experience opportunities. Each course concludes with both practical assessments and exam preparations."
-    },
-    {
-      question: "What is included in the course fees?",
-      answer: "Course fees cover all learning materials, practical sessions, Meltdown certification, and exam preparation. CSCS® and CES® examination fees to the certifying bodies are not included."
-    },
-    {
-      question: "Do you offer job placement assistance?",
-      answer: "Yes, we provide ongoing career support including resume building, interview preparation, and connections with our industry partners who regularly hire our graduates."
-    }
-  ];
-
-  return (
-    <div>
+  const faqItems = [{
+    question: "Are these certifications recognized internationally?",
+    answer: "Yes, the CSCS® and CES® certifications we prepare you for are internationally recognized industry standards. Our Meltdown certification adds practical value and is recognized throughout South Asia."
+  }, {
+    question: "What prerequisites are required to enroll?",
+    answer: "For CSCS® preparation, a bachelor's degree in a related field or final year student status is recommended. For CES® and Sports Nutrition programs, a background in fitness or health is beneficial but not required."
+  }, {
+    question: "How are the courses structured?",
+    answer: "Our courses combine weekend classes with practical sessions, online learning modules, and hands-on experience opportunities. Each course concludes with both practical assessments and exam preparations."
+  }, {
+    question: "What is included in the course fees?",
+    answer: "Course fees cover all learning materials, practical sessions, Meltdown certification, and exam preparation. CSCS® and CES® examination fees to the certifying bodies are not included."
+  }, {
+    question: "Do you offer job placement assistance?",
+    answer: "Yes, we provide ongoing career support including resume building, interview preparation, and connections with our industry partners who regularly hire our graduates."
+  }];
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -156,19 +108,12 @@ const Academy = () => {
               <p className="text-lg mb-8">
                 We train you to excel in the CSCS® by NSCA, CES® by NASM, and Sports Nutrition fields — and award you a Meltdown Certification upon successful completion.
               </p>
-              <button 
-                onClick={() => scrollToSection('courses')} 
-                className="btn-primary"
-              >
+              <button onClick={() => scrollToSection('courses')} className="btn-primary">
                 Explore Courses
               </button>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f" 
-                alt="Fitness Coach Training Athletes" 
-                className="rounded-lg shadow-xl max-w-full h-auto"
-              />
+              <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f" alt="Fitness Coach Training Athletes" className="rounded-lg shadow-xl max-w-full h-auto" />
             </div>
           </div>
         </div>
@@ -282,8 +227,7 @@ const Academy = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {courses.map((course, index) => (
-              <Card key={index} className="transition-all duration-300 hover:shadow-lg">
+            {courses.map((course, index) => <Card key={index} className="transition-all duration-300 hover:shadow-lg">
                 <CardHeader className="bg-primary/10">
                   <Collapsible>
                     <div className="flex items-center justify-between">
@@ -312,9 +256,7 @@ const Academy = () => {
                       <div>
                         <h4 className="font-bold mb-1">What You Will Learn</h4>
                         <ul className="text-sm text-gray-700 list-disc list-inside">
-                          {course.learnings.map((item, i) => (
-                            <li key={i}>{item}</li>
-                          ))}
+                          {course.learnings.map((item, i) => <li key={i}>{item}</li>)}
                         </ul>
                       </div>
                       <div>
@@ -339,8 +281,7 @@ const Academy = () => {
                     <Button className="w-full" variant="default">Apply Now</Button>
                   </Link>
                 </CardFooter>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -356,8 +297,7 @@ const Academy = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {upcomingBatches.map((batch, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+            {upcomingBatches.map((batch, index) => <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300">
                 <div className="bg-primary/10 p-5">
                   <h3 className="text-xl font-bold mb-1">{batch.course}</h3>
                   <div className="flex items-center text-sm text-gray-600 mb-1">
@@ -372,8 +312,7 @@ const Academy = () => {
                     <Button className="w-full" variant="default">Register Now</Button>
                   </Link>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -389,11 +328,10 @@ const Academy = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-md">
+            {testimonials.map((testimonial, index) => <div key={index} className="bg-white p-8 rounded-lg shadow-md">
                 <div className="flex justify-center mb-4">
                   <Avatar className="h-16 w-16">
-                    <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/40 text-primary font-bold">
+                    <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/40 font-bold text-slate-950">
                       {testimonial.name.split(' ').map(name => name[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
@@ -403,8 +341,7 @@ const Academy = () => {
                   <p className="font-bold">{testimonial.name}</p>
                   <p className="text-sm text-gray-600">{testimonial.title}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -471,16 +408,14 @@ const Academy = () => {
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <Accordion type="single" collapsible className="w-full">
-              {faqItems.map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`}>
+              {faqItems.map((item, i) => <AccordionItem key={i} value={`item-${i}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent>
                     <p className="py-2 text-gray-700">{item.answer}</p>
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -499,8 +434,6 @@ const Academy = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Academy;
