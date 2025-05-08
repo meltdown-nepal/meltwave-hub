@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Hero from '../components/Hero';
 import SectionHeader from '../components/SectionHeader';
@@ -41,7 +42,7 @@ const MeltFit = () => {
         subtitle="Achieve your health goals with our personalized fitness programs."
         imageSrc="/lovable-uploads/69648a4e-e34a-4a5d-a893-997a44a5c942.png"
         buttonText="Get Started Now"
-        linkTo="/signup"
+        linkTo="/contact"
       />
 
       {/* Pricing Section */}
@@ -57,21 +58,21 @@ const MeltFit = () => {
               price="19.99"
               features={["Access to basic workouts", "Limited support"]}
               buttonText="Choose Basic"
-              linkTo="/signup"
+              linkTo="/contact"
             />
             <PricingCard
               title="Pro"
               price="39.99"
               features={["Access to all workouts", "Priority support", "Personalized fitness plan"]}
               buttonText="Choose Pro"
-              linkTo="/signup"
+              linkTo="/contact"
             />
             <PricingCard
               title="Premium"
               price="59.99"
               features={["Everything in Pro", "One-on-one coaching", "Exclusive content"]}
               buttonText="Choose Premium"
-              linkTo="/signup"
+              linkTo="/contact"
             />
           </div>
         </div>
@@ -106,7 +107,7 @@ const MeltFit = () => {
             {/* Banu's Total Fitness */}
             <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
               <img 
-                src="/lovable-uploads/c84ed7e9-8e90-4a13-b65e-6075713c84df.png" 
+                src="/lovable-uploads/467af599-4651-4a08-9945-98c9c1aa3519.png" 
                 alt="Banu's Total Fitness" 
                 className="w-full h-48 object-cover"
               />
@@ -186,7 +187,7 @@ const MeltFit = () => {
         <div className="container-custom text-center">
           <h2 className="text-4xl font-bold mb-8">Ready to Transform Your Life?</h2>
           <p className="text-lg mb-12">Join MeltFit today and start your journey to a healthier, happier you.</p>
-          <a href="/signup" className="btn-secondary">Sign Up Now</a>
+          <a href="/contact" className="btn-secondary">Sign Up Now</a>
         </div>
       </section>
     </div>
