@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 interface VideoTestimonialProps {
   videoSrc?: string;
   title: string;
@@ -14,7 +12,6 @@ interface VideoTestimonialProps {
   onClick?: () => void;
   linkTo?: string;
 }
-
 const VideoTestimonial = ({
   title,
   name,
@@ -27,12 +24,7 @@ const VideoTestimonial = ({
       onClick();
     }
   };
-
-  return (
-    <Card 
-      className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl bg-white"
-      onClick={handleClick}
-    >
+  return <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl bg-white" onClick={handleClick}>
       <div className="p-6">
         <h4 className="font-medium text-lg mb-3 italic">"{title}"</h4>
         <div className="flex items-center justify-between">
@@ -45,21 +37,11 @@ const VideoTestimonial = ({
               <p className="text-sm text-gray-600">{role}</p>
             </div>
           </div>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700"
-            asChild
-          >
-            <Link to={linkTo}>
-              <Play className="h-4 w-4" />
-              Watch Video
-            </Link>
+          <Button variant="outline" size="sm" className="flex items-center gap-2 border-amber-300 hover:bg-amber-50 text-amber-700" asChild>
+            
           </Button>
         </div>
       </div>
-    </Card>
-  );
+    </Card>;
 };
-
 export default VideoTestimonial;
