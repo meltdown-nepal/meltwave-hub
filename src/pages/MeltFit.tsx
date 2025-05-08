@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -364,11 +363,9 @@ const MeltFit = () => {
               <CardContent className="p-4">
                 <h3 className="font-bold text-lg mb-1">Banu's Total Fitness </h3>
                 <p className="text-sm text-gray-600 mb-3">Kamalpokhari,Kathmandu</p>
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <Link to="/contact">
-                    Get Directions
-                    <ChevronRight className="h-4 w-4 ml-1" />
-                  </Link>
+                <Button variant="outline" size="sm" className="w-full" onClick={() => window.open("https://www.google.com/maps/place/Banu's+Total+Fitness/@27.7116617,85.322952,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb190f34770a11:0xf08d1474a9fa25ee!8m2!3d27.711657!4d85.3255269!16s%2Fg%2F1thl3v8p?entry=ttu&g_ep=EgoyMDI1MDUwNS4wIKXMDSoASAFQAw%3D%3D", "_blank")}>
+                  Get Directions
+                  <ChevronRight className="h-4 w-4 ml-1" />
                 </Button>
               </CardContent>
             </Card>
