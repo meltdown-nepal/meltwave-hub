@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
+
 const roles = [{
   label: "For Companies",
   description: "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
@@ -17,7 +18,31 @@ const roles = [{
   href: "/providers",
   img: "/lovable-uploads/30f61b7c-2119-402c-9a49-c5f940a79247.png" // swapped with employees image
 }];
+
 const CorporateWellness = () => {
+  
+  // Define testimonials for this page
+  const corporateTestimonials = [
+    {
+      name: "Jyoti Pokharel",
+      title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
+      role: "HR Director",
+      linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
+    },
+    {
+      name: "Bibha Tandukar",
+      title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+      role: "Project Manager, Young Innovation",
+      linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
+    },
+    {
+      name: "Pabin Karki",
+      title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
+      role: "CEO, Kaya Sports",
+      linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
+    }
+  ];
+
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -68,7 +93,11 @@ const CorporateWellness = () => {
       </section>
 
       {/* Testimonials Section */}
-      <TestimonialsSection />
+      <TestimonialsSection 
+        testimonials={corporateTestimonials}
+        title="Corporate Success Stories"
+        subtitle="Hear from companies who have transformed their workplace wellness with our solutions."
+      />
 
       {/* CTA Section */}
       <section className="section-padding bg-primary/20">
@@ -87,4 +116,5 @@ const CorporateWellness = () => {
       </section>
     </div>;
 };
+
 export default CorporateWellness;

@@ -1,19 +1,25 @@
 
+
 export type EmployeeTestimonial = {
-  videoSrc: string;
+  videoSrc?: string;
   title: string;
   name: string;
-  role: string;
+  role?: string;
+  image?: string;
+  linkTo?: string;
 };
 
 export type PartnerTestimonial = {
-  videoSrc: string;
+  videoSrc?: string;
   title: string;
   name: string;
-  role: string;
+  role?: string;
+  image?: string;
+  linkTo?: string;
 };
 
 export type EmployeeFaq = {
   question: string;
   answer: string;
 };
+
