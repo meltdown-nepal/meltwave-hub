@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -13,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LogoCarousel from '../components/LogoCarousel';
 import VideoTestimonial from '../components/VideoTestimonial';
+import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 // Trusted Companies Logos
 const trustedCompanies = [
@@ -77,6 +77,7 @@ const successStories = [
 const ForCompanies = () => {
   const [selectedVideo, setSelectedVideo] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const { scrollToSection } = useSmoothScroll();
 
   const handleVideoClick = (videoUrl: string) => {
     setIsLoading(true);
@@ -98,7 +99,12 @@ const ForCompanies = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/schedule-demo" className="btn-primary">Schedule a Demo</Link>
-                <Link to="/corporate-wellness" className="btn-outline">Explore Our Programs</Link>
+                <button 
+                  onClick={() => scrollToSection('testimonials')} 
+                  className="btn-outline"
+                >
+                  Hear From Our Clients
+                </button>
               </div>
             </div>
             <div className="flex justify-center">
