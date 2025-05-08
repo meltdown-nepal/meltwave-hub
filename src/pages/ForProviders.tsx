@@ -354,55 +354,7 @@ const ForProviders = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
-        <div className="container-custom">
-          <div className="text-center mb-16 opacity-0 animate-fade-in" style={{
-          animationDelay: "200ms",
-          animationFillMode: "forwards"
-        }}>
-            <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm transform transition-transform hover:scale-105">TESTIMONIALS</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Provider Success Stories</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              See how wellness providers have grown their business through our platform.
-            </p>
-          </div>
-
-          {/* Desktop view (grid) */}
-          <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {providerTestimonials.map((testimonial, index) => <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)} className="opacity-0 animate-fade-in" style={{
-            animationDelay: `${300 + index * 100}ms`,
-            animationFillMode: "forwards"
-          }}>
-                <VideoTestimonial videoSrc={testimonial.videoSrc} title={testimonial.title} name={testimonial.name} role={testimonial.role} thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg" />
-              </div>)}
-          </div>
-
-          {/* Mobile view (list) */}
-          <div className="md:hidden space-y-6">
-            {providerTestimonials.map((testimonial, index) => <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)} className="opacity-0 animate-fade-in" style={{
-            animationDelay: `${300 + index * 100}ms`,
-            animationFillMode: "forwards"
-          }}>
-                <VideoTestimonial videoSrc={testimonial.videoSrc} title={testimonial.title} name={testimonial.name} role={testimonial.role} thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg" />
-              </div>)}
-          </div>
-          
-          {/* Video Dialog */}
-          <Dialog open={!!selectedVideo} onOpenChange={() => {
-          setSelectedVideo(null);
-          setIsLoading(false);
-        }}>
-            <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
-              {isLoading && <div className="flex justify-center items-center h-40 text-white">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-                </div>}
-              {selectedVideo && <video src={selectedVideo} controls autoPlay className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`} onCanPlay={() => setIsLoading(false)}>
-                  Your browser does not support the video tag.
-                </video>}
-            </DialogContent>
-          </Dialog>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="section-padding bg-primary/20">
