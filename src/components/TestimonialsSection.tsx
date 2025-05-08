@@ -59,7 +59,8 @@ const TestimonialsSection = ({
   title = "What Our Clients Say",
   subtitle = "Hear from companies and employees who have experienced the Meltdown difference."
 }: TestimonialsSectionProps) => {
-  return <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
+  return (
+    <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
       <div className="container-custom">
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">TESTIMONIALS</div>
@@ -71,7 +72,8 @@ const TestimonialsSection = ({
 
         {/* Desktop view (grid) */}
         <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => <Card key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
               <CardContent className="p-8 relative">
                 <div className="absolute -left-3 -top-3 text-primary opacity-20">
                   <Quote size={60} />
@@ -98,21 +100,23 @@ const TestimonialsSection = ({
                   </div>
                 </div>
               </CardContent>
-            </Card>)}
+            </Card>
+          ))}
         </div>
 
         {/* Mobile view (carousel) */}
         <div className="md:hidden">
           <Carousel className="w-full">
             <CarouselContent>
-              {testimonials.map((testimonial, index) => <CarouselItem key={index}>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index}>
                   <Card className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
                     <CardContent className="p-6 relative">
                       <div className="absolute -left-2 -top-2 text-primary opacity-20">
                         <Quote size={40} />
                       </div>
-<<<<<<< HEAD
->>>>>>> 5fc9efb229b14d39f672b34684831bf266750246
+                      <div className="relative z-10">
+                        <p className="text-md font-medium mb-6 italic">"{testimonial.title}"</p>
                         <div className="flex justify-between items-center">
                           <div className="flex items-center space-x-3">
                             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
@@ -120,7 +124,6 @@ const TestimonialsSection = ({
                             </div>
                             <div>
                               <p className="font-bold">{testimonial.name}</p>
-                            
                             </div>
                           </div>
                           {testimonial.linkTo && (
@@ -135,7 +138,8 @@ const TestimonialsSection = ({
                       </div>
                     </CardContent>
                   </Card>
-                </CarouselItem>)}
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <div className="flex justify-center gap-2 mt-6">
               <CarouselPrevious className="static transform-none mx-2 bg-white hover:bg-amber-50 border-amber-200" />
@@ -144,7 +148,8 @@ const TestimonialsSection = ({
           </Carousel>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default TestimonialsSection;

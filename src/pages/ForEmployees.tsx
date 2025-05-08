@@ -42,6 +42,7 @@ const ForEmployees = () => {
         title="Employee Success Stories"
         subtitle="Hear from employees who have experienced positive changes through our wellness programs."
       />
+      <PartnerSuccessSection />
       <CtaSection />
     </div>
   );
