@@ -32,6 +32,7 @@ export type ContactFormData = z.infer<typeof formSchema>
 export function ContactForm() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState<string | null>(null)
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(formSchema),
@@ -49,12 +50,19 @@ export function ContactForm() {
   async function onSubmit(data: ContactFormData) {
     try {
       setIsSubmitting(true)
+      setSubmissionError(null)
       
-      const { error } = await supabase.functions.invoke('contact', {
+      const response = await supabase.functions.invoke('contact', {
         body: data
       })
-
-      if (error) throw error
+      
+      if (response.error) {
+        console.error('Contact function error:', response.error)
+        throw new Error(response.error.message || 'Failed to send message')
+      }
+      
+      const result = response.data
+      console.log('Contact form submission result:', result)
 
       toast({
         title: "✅ Success!",
@@ -62,8 +70,9 @@ export function ContactForm() {
       })
       
       form.reset()
-    } catch (error) {
+    } catch (error: any) {
       console.error('Contact form error:', error)
+      setSubmissionError(error.message || 'Unknown error occurred')
       toast({
         variant: "destructive",
         title: "❌ Error",
@@ -190,6 +199,13 @@ export function ContactForm() {
             </FormItem>
           )}
         />
+
+        {submissionError && (
+          <div className="text-destructive text-sm">
+            <p>Error details: {submissionError}</p>
+            <p className="mt-1">If this issue persists, please email us directly at support@meltdownnepal.com</p>
+          </div>
+        )}
 
         <Button 
           type="submit" 
