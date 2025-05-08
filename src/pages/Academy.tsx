@@ -35,6 +35,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Academy = () => {
   const { scrollToSection } = useSmoothScroll();
@@ -103,20 +104,17 @@ const Academy = () => {
     {
       quote: "The CSCS prep program at Meltdown Academy was rigorous and comprehensive. I passed my exam on the first attempt and secured a coaching position with a professional sports team.",
       name: "Michael Johnson",
-      title: "Strength Coach, Kathmandu Kings XI",
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=300&q=80"
+      title: "Strength Coach, Kathmandu Kings XI"
     },
     {
       quote: "The practical experience I gained through Meltdown's CES program was invaluable. Their dual certification approach gave me an edge in the job market.",
       name: "Priya Sharma",
-      title: "Rehabilitation Specialist, Wellness Center",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=300&q=80"
+      title: "Rehabilitation Specialist, Wellness Center"
     },
     {
       quote: "The Sports Nutrition program completely transformed my approach to working with athletic clients. The evidence-based curriculum and hands-on practice set it apart from other certifications.",
       name: "Raj Thapa",
-      title: "Performance Nutritionist, National Team",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=300&q=80"
+      title: "Performance Nutritionist, National Team"
     }
   ];
 
@@ -393,9 +391,11 @@ const Academy = () => {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-md">
                 <div className="flex justify-center mb-4">
-                  <div className="w-20 h-20 rounded-full overflow-hidden">
-                    <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
-                  </div>
+                  <Avatar className="h-16 w-16">
+                    <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/40 text-primary font-bold">
+                      {testimonial.name.split(' ').map(name => name[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
                 </div>
                 <p className="text-gray-700 mb-6">"{testimonial.quote}"</p>
                 <div className="text-center">
