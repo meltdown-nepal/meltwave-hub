@@ -330,12 +330,7 @@ const ForProviders = () => {
       {/* Fitness Partners Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Partner Success Stories</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Learn from wellness professionals who have grown their business with us.
-            </p>
-          </div>
+          
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             <VideoTestimonial videoSrc="partner-video1.mp4" title="Growing My Business" name="Rachel Torres" role="Yoga Instructor" onClick={() => handleVideoClick("partner-video1.mp4")} />
