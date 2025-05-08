@@ -1,17 +1,38 @@
 
 import React from "react";
-import { Building, User } from "lucide-react";
+import { Building, User, Briefcase, Banknote, Users, Hospital, Book, ShoppingCart, Factory, Antenna, CircleDot } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { DemoFormData } from "@/lib/types/demo";
 import { UseFormReturn } from "react-hook-form";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
 
 interface Props {
   form: UseFormReturn<DemoFormData>;
   onNext: () => void;
   onBack: () => void;
 }
+
+const industries = [
+  { value: "tech", label: "Technology", icon: Briefcase },
+  { value: "finance", label: "Finance/Banking", icon: Banknote },
+  { value: "ngo", label: "NGO/INGO", icon: Users },
+  { value: "consulting", label: "Consulting", icon: Briefcase },
+  { value: "hospitality", label: "Hospitality", icon: Hospital },
+  { value: "education", label: "Education", icon: Book },
+  { value: "ecommerce", label: "E-commerce", icon: ShoppingCart },
+  { value: "retail", label: "Retail", icon: ShoppingCart },
+  { value: "manufacturing", label: "Manufacturing", icon: Factory },
+  { value: "internet", label: "Internet/Telecommunication", icon: Antenna },
+  { value: "other", label: "Others", icon: CircleDot },
+];
 
 export const CompanyInfo: React.FC<Props> = ({ form, onNext, onBack }) => {
   return (
@@ -39,7 +60,25 @@ export const CompanyInfo: React.FC<Props> = ({ form, onNext, onBack }) => {
           <FormItem className="space-y-4">
             <FormLabel className="text-2xl font-semibold">What industry are you in?</FormLabel>
             <FormControl>
-              <Input placeholder="e.g. Technology, Healthcare, etc." {...field} />
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select your industry" />
+                </SelectTrigger>
+                <SelectContent>
+                  {industries.map((industry) => (
+                    <SelectItem key={industry.value} value={industry.value}>
+                      <div className="flex items-center">
+                        <industry.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+                        {industry.label}
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </FormControl>
           </FormItem>
         )}
