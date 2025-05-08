@@ -216,7 +216,7 @@ const Contact = () => {
                 How quickly can you implement a wellness program?
               </AccordionTrigger>
               <AccordionContent className="text-gray-700">
-                Most corporate wellness programs can be implemented within 2-4 weeks from initial consultation, depending on the program's complexity and company size.
+                Most corporate wellness programs can be implemented within 1 weeks from initial consultation, depending on the program's complexity and company size.
               </AccordionContent>
             </AccordionItem>
 
@@ -225,7 +225,7 @@ const Contact = () => {
                 What is the cost of your corporate wellness programs?
               </AccordionTrigger>
               <AccordionContent className="text-gray-700">
-                Our program costs vary based on company size, program components, and implementation approach. We offer customized solutions to fit various budgets, with options starting at $5,000 per quarter. Contact us for a personalized quote.
+                Our program costs vary based on company size, program components, and implementation approach. We offer customized solutions to fit various budgets. Contact us for a personalized quote.
               </AccordionContent>
             </AccordionItem>
 
