@@ -12,21 +12,26 @@ import { Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-type Testimonial = {
-  id: number;
-  name: string;
+type TestimonialProp = {
+  videoSrc?: string;
   title: string;
-  quote: string;
-  image: string;
-  videoUrl?: string;
+  name: string;
+  role: string;
+  image?: string;
   linkTo?: string;
 };
 
-const testimonials: Testimonial[] = [
+interface TestimonialsSectionProps {
+  testimonials: TestimonialProp[];
+  title?: string;
+  subtitle?: string;
+}
+
+const defaultTestimonials = [
   {
     id: 1,
     name: "Jyoti Pokharel",
-    title: "HR Director, LeapFrog Technology",
+    title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     quote: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
     linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
@@ -59,23 +64,27 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-const TestimonialsSection = () => {
+const TestimonialsSection = ({ 
+  testimonials = defaultTestimonials, 
+  title = "What Our Clients Say",
+  subtitle = "Hear from companies and employees who have experienced the Meltdown difference."
+}: TestimonialsSectionProps) => {
   return (
     <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
       <div className="container-custom">
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">TESTIMONIALS</div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">What Our Clients Say</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{title}</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hear from companies and employees who have experienced the Meltdown difference.
+            {subtitle}
           </p>
         </div>
 
         {/* Desktop view (grid) */}
         <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <Card 
-              key={testimonial.id} 
+              key={index} 
               className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0"
             >
               <CardContent className="p-8 relative">
@@ -83,15 +92,15 @@ const TestimonialsSection = () => {
                   <Quote size={60} />
                 </div>
                 <div className="relative z-10">
-                  <p className="text-lg font-medium mb-8 italic">"{testimonial.quote}"</p>
+                  <p className="text-lg font-medium mb-8 italic">"{testimonial.title || testimonial.quote}"</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <div className="h-12 w-12 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
-                        {testimonial.name.charAt(0)}
+                        {testimonial.name?.charAt(0)}
                       </div>
                       <div>
                         <p className="font-bold">{testimonial.name}</p>
-                        <p className="text-sm text-gray-600">{testimonial.title}</p>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
                       </div>
                     </div>
                     <Button 
@@ -116,23 +125,23 @@ const TestimonialsSection = () => {
         <div className="md:hidden">
           <Carousel className="w-full">
             <CarouselContent>
-              {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id}>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index}>
                   <Card className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border-0">
                     <CardContent className="p-6 relative">
                       <div className="absolute -left-2 -top-2 text-primary opacity-20">
                         <Quote size={40} />
                       </div>
                       <div className="relative z-10">
-                        <p className="text-base font-medium mb-5 italic">"{testimonial.quote}"</p>
+                        <p className="text-base font-medium mb-5 italic">"{testimonial.title || testimonial.quote}"</p>
                         <div className="flex justify-between items-center">
                           <div className="flex items-center space-x-3">
                             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
-                              {testimonial.name.charAt(0)}
+                              {testimonial.name?.charAt(0)}
                             </div>
                             <div>
                               <p className="font-bold">{testimonial.name}</p>
-                              <p className="text-sm text-gray-600">{testimonial.title}</p>
+                              <p className="text-sm text-gray-600">{testimonial.role}</p>
                             </div>
                           </div>
                           <Button 
