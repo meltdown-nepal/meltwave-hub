@@ -5,7 +5,8 @@ import { PersonalInfoFields, InterestAndMessageFields } from "./contact-form/For
 import { FormError } from "./contact-form/FormError";
 import { useContactForm } from "./contact-form/useContactForm";
 
-export { ContactFormData } from "./contact-form/types";
+// Use 'export type' when re-exporting types with isolatedModules enabled
+export type { ContactFormData } from "./contact-form/types";
 
 export function ContactForm() {
   const { form, isSubmitting, submissionError, onSubmit } = useContactForm();
