@@ -1,3 +1,4 @@
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -14,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { supabase } from "@/integrations/supabase/client"
+import { useState } from "react"
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -29,6 +31,7 @@ export type ContactFormData = z.infer<typeof formSchema>
 
 export function ContactForm() {
   const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(formSchema),
@@ -45,6 +48,8 @@ export function ContactForm() {
 
   async function onSubmit(data: ContactFormData) {
     try {
+      setIsSubmitting(true)
+      
       const { error } = await supabase.functions.invoke('contact', {
         body: data
       })
@@ -53,7 +58,7 @@ export function ContactForm() {
 
       toast({
         title: "✅ Success!",
-        description: "Your message has been sent successfully!",
+        description: "Your message has been sent successfully! We'll get back to you soon.",
       })
       
       form.reset()
@@ -62,8 +67,10 @@ export function ContactForm() {
       toast({
         variant: "destructive",
         title: "❌ Error",
-        description: "Oops! Something went wrong. Please try again later.",
+        description: "Oops! Something went wrong. Please try again later or contact us directly via email.",
       })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -184,8 +191,12 @@ export function ContactForm() {
           )}
         />
 
-        <Button type="submit" className="btn-primary w-full">
-          Send Message
+        <Button 
+          type="submit" 
+          className="btn-primary w-full"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
     </Form>

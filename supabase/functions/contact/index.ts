@@ -16,6 +16,7 @@ serve(async (req: Request): Promise<Response> => {
 
     // Get environment variables
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
+    const VERIFIED_EMAIL = 'sanskar.meltdown@gmail.com' // This is the verified email in Resend
     console.log("RESEND_API_KEY exists:", !!RESEND_API_KEY);
     
     if (!RESEND_API_KEY) {
@@ -36,7 +37,7 @@ serve(async (req: Request): Promise<Response> => {
       ${message}
     `
 
-    // Send email using Resend
+    // Send email using Resend - using verified email as both from and to addresses
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -44,20 +45,21 @@ serve(async (req: Request): Promise<Response> => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Contact Form <onboarding@resend.dev>',
-        to: 'support@meltdownnepal.com',
+        from: `Contact Form <${VERIFIED_EMAIL}>`,
+        to: VERIFIED_EMAIL, // Use verified email as recipient in test mode
         subject: `New Contact Form Submission from ${firstName} ${lastName}`,
         text: emailContent,
+        reply_to: email // Add reply-to so you can reply directly to the sender
       }),
     })
 
+    const responseData = await res.json();
+    
     if (!res.ok) {
-      const errorData = await res.json();
-      console.error("Email sending failed:", JSON.stringify(errorData));
+      console.error("Email sending failed:", JSON.stringify(responseData));
       throw new Error(`Failed to send email: ${res.status}`)
     }
 
-    const responseData = await res.json();
     console.log("Email sent response:", JSON.stringify(responseData));
 
     return new Response(
