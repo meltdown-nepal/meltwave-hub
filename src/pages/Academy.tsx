@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -164,8 +165,8 @@ const Academy = () => {
             </div>
             <div className="flex justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b" 
-                alt="Certification Training" 
+                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f" 
+                alt="Fitness Coach Training Athletes" 
                 className="rounded-lg shadow-xl max-w-full h-auto"
               />
             </div>
