@@ -14,7 +14,8 @@ function EventCard({
   date,
   description,
   note,
-  registrationLink
+  registrationLink,
+  isExternalLink
 }: {
   title: string;
   address?: string;
@@ -22,6 +23,7 @@ function EventCard({
   description?: string;
   note?: string;
   registrationLink?: string;
+  isExternalLink?: boolean;
 }) {
   return <div className="rounded-xl card-gradient shadow-lg p-6 flex flex-col items-start min-h-[210px] border border-gray-100">
       <h3 className="text-xl font-bold mb-1 text-gray-800">{title}</h3>
@@ -43,9 +45,17 @@ function EventCard({
         </div>}
       {description && <p className="mb-2 text-gray-700">{description}</p>}
       {note && <p className="mb-4 text-xs italic text-secondary-foreground">{note}</p>}
-      {registrationLink && <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
-          <Link to={registrationLink} className="mx-0">Register Now</Link>
-        </Button>}
+      {registrationLink && (
+        isExternalLink ? (
+          <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold">
+            <a href={registrationLink} target="_blank" rel="noopener noreferrer" className="mx-0">Register Now</a>
+          </Button>
+        ) : (
+          <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
+            <Link to={registrationLink} className="mx-0">Register Now</Link>
+          </Button>
+        )
+      )}
     </div>;
 }
 
@@ -121,7 +131,13 @@ const Events = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
-            <EventCard title="Java Fun Marathon" date="10th May" description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." registrationLink="/contact?event=java-marathon" />
+            <EventCard 
+              title="Java Fun Marathon" 
+              date="10th May" 
+              description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." 
+              registrationLink="https://esewafonepay.page.link/Java-runventure2025" 
+              isExternalLink={true} 
+            />
             <EventCard title="Coming Soon" />
           </div>
           <div className="text-center">
