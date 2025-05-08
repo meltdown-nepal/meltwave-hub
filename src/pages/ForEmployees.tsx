@@ -5,23 +5,29 @@ import { Card } from "@/components/ui/card";
 import { Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 // Employee testimonials
 const employeeTestimonials = [{
   videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-  title: "Transformed my work-life balance",
-  name: "Jason Kim",
+  title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
+  name: "Chiring Sherpa",
   role: "Software Developer"
 }, {
   videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-  title: "Helped me stay active while working",
-  name: "Maria Garcia",
+  title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+  name: "Prashant Shrestha",
   role: "Marketing Specialist"
 }, {
   videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-  title: "Reduced my stress levels significantly",
-  name: "David Johnson",
+  title: "Partnering with Meltdown has helped me build a more positive mindset around fitness.",
+  name: "Prashant Shrestha",
   role: "Project Manager"
+}, {
+  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+  title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+  name: "Bibha Tandukar",
+  role: "Yoga Instructor"
 }];
 
 // Partner testimonials
@@ -338,7 +344,7 @@ const ForEmployees = () => {
       </section>
 
       {/* Testimonials Section */}
-      
+      <TestimonialsSection testimonials={employeeTestimonials} />
 
       {/* CTA Section */}
       <section className="section-padding bg-primary/20">
