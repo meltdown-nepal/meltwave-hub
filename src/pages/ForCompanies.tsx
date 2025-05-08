@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -39,7 +40,7 @@ const trustedCompanies = [
 const companyFaqs = [
   {
     question: "How quickly can we implement a wellness program?",
-    answer: "We can have your program up and running within 2-4 weeks, depending on your company's size and specific needs. Our team handles all aspects of implementation, from initial assessment to employee onboarding."
+    answer: "We can have your program up and running within 1 week, depending on your company's size and specific needs. Our team handles all aspects of implementation, from initial assessment to employee onboarding."
   },
   {
     question: "What ROI can we expect?",
