@@ -21,40 +21,41 @@ interface TestimonialsSectionProps {
   subtitle?: string;
 }
 
-const defaultTestimonials = [{
-  id: 1,
-  name: "Jyoti Pokharel",
-  title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-  role: "",
-  image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
-  linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
-}, {
-  id: 2,
-  name: "Bibha Tandukar",
-  title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
-  role: "Project Manager,Young Innovation",
-  image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
-  linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
-}, {
-  id: 3,
-  name: "Pabin Karki",
-  title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
-  role: "CEO, Kaya Sports",
-  image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
-  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-  linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
-}, {
-  id: 4,
-  name: "Jagadamba Team",
-  title: "Meltdown's workshops have transformed my daily routine and made me significantly more active.",
-  role: "Jagadamba Motors",
-  image: "/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png",
-  videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
-  linkTo: "/events"
-}];
+const defaultTestimonials = [
+  {
+    id: 1,
+    name: "Jyoti Pokharel,LeapFrog Technology",
+    title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
+    image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
+    linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
+  },
+  {
+    id: 2,
+    name: "Bibha Tandukar,Young Innovation",
+    title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+    image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
+    linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
+  },
+  {
+    id: 3,
+    name: "Pabin Karki,Kaya Sports",
+    title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
+    image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
+  },
+  {
+    id: 4,
+    name: "Jagadamba Team",
+    title: "Meltdown's workshops have transformed my daily routine and made me significantly more active.",
+    image: "/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png",
+    videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
+    linkTo: "/events"
+  }
+];
 
-const TestimonialsSection = ({
-  testimonials = defaultTestimonials,
+const TestimonialsSection = ({ 
+  testimonials = defaultTestimonials, 
   title = "What Our Clients Say",
   subtitle = "Hear from companies and employees who have experienced the Meltdown difference."
 }: TestimonialsSectionProps) => {
@@ -84,7 +85,6 @@ const TestimonialsSection = ({
                       </div>
                       <div>
                         <p className="font-bold">{testimonial.name}</p>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
                       </div>
                     </div>
                     {testimonial.linkTo && (
@@ -111,8 +111,8 @@ const TestimonialsSection = ({
                       <div className="absolute -left-2 -top-2 text-primary opacity-20">
                         <Quote size={40} />
                       </div>
-                      <div className="relative z-10">
-                        <p className="text-base font-medium mb-5 italic">"{testimonial.title}"</p>
+<<<<<<< HEAD
+>>>>>>> 5fc9efb229b14d39f672b34684831bf266750246
                         <div className="flex justify-between items-center">
                           <div className="flex items-center space-x-3">
                             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 flex items-center justify-center text-white font-bold">
@@ -120,7 +120,7 @@ const TestimonialsSection = ({
                             </div>
                             <div>
                               <p className="font-bold">{testimonial.name}</p>
-                              <p className="text-sm text-gray-600">{testimonial.role}</p>
+                            
                             </div>
                           </div>
                           {testimonial.linkTo && (

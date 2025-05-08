@@ -37,7 +37,6 @@ const ForEmployees = () => {
       <HeroSection />
       <BenefitsSection />
       <ProgramsSection />
-      <PartnerSuccessSection />
       <TestimonialsSection 
         testimonials={employeeTestimonials}
         title="Employee Success Stories"
