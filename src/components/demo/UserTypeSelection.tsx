@@ -3,12 +3,20 @@ import React from "react";
 import { User, Building2, Heart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { useNavigate } from "react-router-dom"; // Import for navigation
 
 interface Props {
   onSelect: (type: "employee" | "company" | "provider") => void;
 }
 
 export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
+  const navigate = useNavigate(); // Initialize navigate hook
+  
+  // Handle wellness provider selection separately
+  const handleProviderSelect = () => {
+    navigate("/wellness-onboarding"); // Navigate to dedicated wellness provider flow
+  };
+  
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="text-center space-y-4">
@@ -26,6 +34,7 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
             description: "Looking for wellness solutions",
             icon: User,
             color: "bg-primary/10 text-primary",
+            onClick: () => onSelect("employee"),
           },
           {
             type: "company" as const,
@@ -33,6 +42,7 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
             description: "Seeking corporate wellness",
             icon: Building2,
             color: "bg-secondary/20 text-secondary",
+            onClick: () => onSelect("company"),
           },
           {
             type: "provider" as const,
@@ -40,12 +50,13 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
             description: "Want to join our network",
             icon: Heart,
             color: "bg-primary/20 text-primary",
+            onClick: handleProviderSelect, // Use special handler for providers
           },
         ].map((option) => (
           <Card
             key={option.type}
             className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer group border-2 border-transparent hover:border-primary"
-            onClick={() => onSelect(option.type)}
+            onClick={option.onClick}
           >
             <div className="p-8 flex flex-col items-center text-center space-y-6">
               <div className={`p-4 rounded-full ${option.color} transition-colors duration-300 group-hover:bg-primary/30`}>
