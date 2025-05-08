@@ -134,7 +134,7 @@ const Events = () => {
             <EventCard 
               title="Java Fun Marathon" 
               date="10th May" 
-              description="Code hard, run harder! A unique blend of caffeine, community, and cardio. Get your java fix and join the fun run." 
+              description="A thrilling 7km run with unique fitness challenges at each Himalayan Java stop! Enjoy coffee, community, and exercise all in one event." 
               registrationLink="https://esewafonepay.page.link/Java-runventure2025" 
               isExternalLink={true} 
             />
