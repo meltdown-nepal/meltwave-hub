@@ -44,20 +44,13 @@ const PartnerSuccessSection = () => {
   return <section className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Partner Success Stories</h2>
-          <p className="text-lg max-w-3xl mx-auto">
-            See how wellness providers are growing their business through our platform
-          </p>
+          
+          
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {partnerTestimonials.map((testimonial, index) => <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-all duration-300">
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">{testimonial.title}</h3>
-                <p className="mb-4">{testimonial.name}</p>
-                <p className="text-gray-600 mb-6">{testimonial.role}</p>
-                
-              </div>
+              
             </Card>)}
         </div>
         
