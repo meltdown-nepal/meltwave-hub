@@ -68,9 +68,9 @@ export const CompanyInfo: React.FC<Props> = ({ form, onNext, onBack }) => {
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select your industry" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border border-gray-200 shadow-lg">
                   {industries.map((industry) => (
-                    <SelectItem key={industry.value} value={industry.value}>
+                    <SelectItem key={industry.value} value={industry.value} className="hover:bg-gray-100">
                       <div className="flex items-center">
                         <industry.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                         {industry.label}
