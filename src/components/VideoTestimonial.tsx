@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 interface VideoTestimonialProps {
   videoSrc?: string;
   title: string;
@@ -14,7 +12,6 @@ interface VideoTestimonialProps {
   onClick?: () => void;
   linkTo?: string;
 }
-
 const VideoTestimonial = ({
   title,
   name,
@@ -28,26 +25,11 @@ const VideoTestimonial = ({
       onClick();
     }
   };
-
-  return (
-    <Card 
-      className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl bg-white transform hover:-translate-y-1 hover:scale-[1.02]" 
-      onClick={handleClick}
-    >
+  return <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 rounded-xl bg-white transform hover:-translate-y-1 hover:scale-[1.02]" onClick={handleClick}>
       <div className="relative">
         <div className="relative aspect-video overflow-hidden bg-gray-100">
-          <img 
-            src={thumbnailSrc} 
-            alt={`${name} - ${role}`}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Button 
-              className="bg-primary hover:bg-primary/90 text-black rounded-full w-12 h-12 p-0 flex items-center justify-center animate-pulse"
-            >
-              <Play className="w-5 h-5 ml-1" />
-            </Button>
-          </div>
+          <img src={thumbnailSrc} alt={`${name} - ${role}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          
         </div>
       </div>
       <div className="p-4">
@@ -59,8 +41,6 @@ const VideoTestimonial = ({
           </div>
         </div>
       </div>
-    </Card>
-  );
+    </Card>;
 };
-
 export default VideoTestimonial;

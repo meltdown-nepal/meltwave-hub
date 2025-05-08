@@ -330,38 +330,15 @@ const ForProviders = () => {
       {/* Fitness Partners Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 opacity-0 animate-fade-in" style={{animationDelay: "200ms", animationFillMode: "forwards"}}>
-            <VideoTestimonial 
-              videoSrc="partner-video1.mp4" 
-              title="Growing My Business" 
-              name="Rachel Torres" 
-              role="Yoga Instructor" 
-              onClick={() => handleVideoClick("partner-video1.mp4")}
-              thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg"
-            />
-            <VideoTestimonial 
-              videoSrc="partner-video2.mp4" 
-              title="Corporate Partnerships" 
-              name="Mark Johnson" 
-              role="Fitness Trainer" 
-              onClick={() => handleVideoClick("partner-video2.mp4")}
-              thumbnailSrc="/lovable-uploads/b4d593d4-69e8-4ab7-a1df-4d8d5371874b.jpg"
-            />
-            <VideoTestimonial 
-              videoSrc="partner-video3.mp4" 
-              title="Virtual Training Success" 
-              name="Anna Lee" 
-              role="Nutritionist" 
-              onClick={() => handleVideoClick("partner-video3.mp4")}
-              thumbnailSrc="/lovable-uploads/b0ae0d98-83cf-4c33-9a90-cbe1b92c5a8e.jpg"
-            />
-          </div>
+          
 
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8 transform transition-all duration-500 hover:shadow-md opacity-0 animate-fade-in" style={{animationDelay: "400ms", animationFillMode: "forwards"}}>
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8 transform transition-all duration-500 hover:shadow-md opacity-0 animate-fade-in" style={{
+          animationDelay: "400ms",
+          animationFillMode: "forwards"
+        }}>
             <h3 className="text-2xl font-bold mb-6 text-center">Partner FAQs</h3>
             <Accordion type="single" collapsible className="w-full">
-              {partnerFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`partner-${index}`} className="overflow-hidden transition-all duration-300">
+              {partnerFaqs.map((faq, index) => <AccordionItem key={index} value={`partner-${index}`} className="overflow-hidden transition-all duration-300">
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline hover:text-primary transition-colors">
                     {faq.question}
                   </AccordionTrigger>
@@ -370,8 +347,7 @@ const ForProviders = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -380,7 +356,10 @@ const ForProviders = () => {
       {/* Testimonials Section */}
       <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
         <div className="container-custom">
-          <div className="text-center mb-16 opacity-0 animate-fade-in" style={{animationDelay: "200ms", animationFillMode: "forwards"}}>
+          <div className="text-center mb-16 opacity-0 animate-fade-in" style={{
+          animationDelay: "200ms",
+          animationFillMode: "forwards"
+        }}>
             <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm transform transition-transform hover:scale-105">TESTIMONIALS</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Provider Success Stories</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -390,49 +369,29 @@ const ForProviders = () => {
 
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {providerTestimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
-                onClick={() => handleVideoClick(testimonial.videoSrc)}
-                className="opacity-0 animate-fade-in"
-                style={{animationDelay: `${300 + index * 100}ms`, animationFillMode: "forwards"}}
-              >
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc} 
-                  title={testimonial.title} 
-                  name={testimonial.name} 
-                  role={testimonial.role} 
-                  thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg"
-                />
-              </div>
-            ))}
+            {providerTestimonials.map((testimonial, index) => <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)} className="opacity-0 animate-fade-in" style={{
+            animationDelay: `${300 + index * 100}ms`,
+            animationFillMode: "forwards"
+          }}>
+                <VideoTestimonial videoSrc={testimonial.videoSrc} title={testimonial.title} name={testimonial.name} role={testimonial.role} thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg" />
+              </div>)}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
-            {providerTestimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
-                onClick={() => handleVideoClick(testimonial.videoSrc)}
-                className="opacity-0 animate-fade-in"
-                style={{animationDelay: `${300 + index * 100}ms`, animationFillMode: "forwards"}}
-              >
-                <VideoTestimonial 
-                  videoSrc={testimonial.videoSrc} 
-                  title={testimonial.title} 
-                  name={testimonial.name} 
-                  role={testimonial.role} 
-                  thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg"
-                />
-              </div>
-            ))}
+            {providerTestimonials.map((testimonial, index) => <div key={index} onClick={() => handleVideoClick(testimonial.videoSrc)} className="opacity-0 animate-fade-in" style={{
+            animationDelay: `${300 + index * 100}ms`,
+            animationFillMode: "forwards"
+          }}>
+                <VideoTestimonial videoSrc={testimonial.videoSrc} title={testimonial.title} name={testimonial.name} role={testimonial.role} thumbnailSrc="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg" />
+              </div>)}
           </div>
           
           {/* Video Dialog */}
           <Dialog open={!!selectedVideo} onOpenChange={() => {
-            setSelectedVideo(null);
-            setIsLoading(false);
-          }}>
+          setSelectedVideo(null);
+          setIsLoading(false);
+        }}>
             <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
               {isLoading && <div className="flex justify-center items-center h-40 text-white">
                   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
