@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Play } from "lucide-react";
@@ -35,98 +34,48 @@ const EmployeeFaqs = [{
   question: "Are the services confidential?",
   answer: "Yes, all individual wellness activities and health information are completely confidential and protected by HIPAA regulations."
 }];
-
 const PartnerSuccessSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  
   const handleVideoClick = (videoUrl: string) => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-  
-  return (
-    <section className="section-padding bg-gray-50">
+  return <section className="section-padding bg-gray-50">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Wellness Partner Success</h2>
-          <p className="text-lg max-w-3xl mx-auto">
-            Learn how our wellness partners make a difference in corporate health programs.
-          </p>
-        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {partnerTestimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">{testimonial.title}</h3>
-                <p className="mb-4 text-gray-600">"{testimonial.title} has been an amazing journey for me as a {testimonial.role}."</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
-                  </div>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="flex items-center gap-2" 
-                    onClick={() => handleVideoClick(testimonial.videoSrc)}
-                  >
-                    <Play className="h-4 w-4" />
-                    Watch
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        
+        
         
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">
           <h3 className="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h3>
           <Accordion type="single" collapsible className="w-full">
-            {EmployeeFaqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
+            {EmployeeFaqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger className="text-left font-medium">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent>
                   <p>{faq.answer}</p>
                 </AccordionContent>
-              </AccordionItem>
-            ))}
+              </AccordionItem>)}
           </Accordion>
         </div>
         
         {/* Video Dialog */}
-        <Dialog 
-          open={!!selectedVideo} 
-          onOpenChange={() => {
-            setSelectedVideo(null);
-            setIsLoading(false);
-          }}
-        >
+        <Dialog open={!!selectedVideo} onOpenChange={() => {
+        setSelectedVideo(null);
+        setIsLoading(false);
+      }}>
           <DialogContent className="sm:max-w-4xl p-1 bg-black rounded-lg">
-            {isLoading && (
-              <div className="flex justify-center items-center h-40 text-white">
+            {isLoading && <div className="flex justify-center items-center h-40 text-white">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-              </div>
-            )}
-            {selectedVideo && (
-              <video 
-                src={selectedVideo} 
-                controls 
-                autoPlay 
-                className={`w-full rounded ${isLoading ? 'hidden' : 'block'}`} 
-                onCanPlay={() => setIsLoading(false)}
-              >
+              </div>}
+            {selectedVideo && <video src={selectedVideo} controls autoPlay className={`w-full rounded ${isLoading ? 'hidden' : 'block'}`} onCanPlay={() => setIsLoading(false)}>
                 Your browser does not support the video tag.
-              </video>
-            )}
+              </video>}
           </DialogContent>
         </Dialog>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default PartnerSuccessSection;
