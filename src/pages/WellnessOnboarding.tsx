@@ -20,8 +20,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
+import { supabase } from "@/integrations/supabase/client";
 
 // Wellness Provider Schema
 const wellnessProviderSchema = z.object({
@@ -76,20 +77,32 @@ const WellnessOnboarding = () => {
       setIsSubmitting(true);
       console.log("Form submitted with data:", data);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send data to Supabase Edge Function
+      const { error } = await supabase.functions.invoke('wellness-provider', {
+        body: data
+      });
+      
+      if (error) {
+        console.error("Submission error:", error);
+        throw new Error(error.message || "Failed to submit application");
+      }
       
       setIsSubmitting(false);
       setIsSummaryOpen(false);
       setIsSuccessDialogOpen(true);
       
-    } catch (error) {
+      toast({
+        title: "Application Submitted!",
+        description: "Thank you for applying to join our wellness provider network.",
+      });
+      
+    } catch (error: any) {
       console.error("Submission error:", error);
       setIsSubmitting(false);
       toast({
-        title: "Something went wrong",
-        description: "Please try again later",
         variant: "destructive",
+        title: "Something went wrong",
+        description: error.message || "Please try again later",
       });
     }
   };
