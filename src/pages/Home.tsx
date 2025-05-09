@@ -31,7 +31,7 @@ const Home = () => {
       name: "Chiring Sherpa",
       title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
       role: "Security Research Analyst, Security Pal",
-      linkTo: "/testimonials"
+      linkTo: "https://www.instagram.com/p/DIqwP8yIqr4/"
     }
   ];
 
