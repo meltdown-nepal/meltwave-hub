@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -11,7 +12,7 @@ const Home = () => {
     {
       name: "Jyoti Pokharel",
       title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-      role: "HR Director",
+      role: "Senior Officer, People Management at LeapFrog Technology",
       linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
     },
     {
@@ -29,7 +30,7 @@ const Home = () => {
     {
       name: "Chiring Sherpa",
       title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
-      role: "",
+      role: "Security Research Analyst at Security Pal",
       linkTo: "/testimonials"
     }
   ];

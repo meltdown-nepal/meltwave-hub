@@ -87,6 +87,7 @@ const TestimonialsSection = ({
                       </div>
                       <div>
                         <p className="font-bold">{testimonial.name}</p>
+                        {testimonial.role && <p className="text-sm text-gray-600">{testimonial.role}</p>}
                       </div>
                     </div>
                     {testimonial.linkTo && (
@@ -124,6 +125,7 @@ const TestimonialsSection = ({
                             </div>
                             <div>
                               <p className="font-bold">{testimonial.name}</p>
+                              {testimonial.role && <p className="text-xs text-gray-600">{testimonial.role}</p>}
                             </div>
                           </div>
                           {testimonial.linkTo && (
