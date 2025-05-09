@@ -12,7 +12,7 @@ const Home = () => {
     {
       name: "Jyoti Pokharel",
       title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-      role: "Senior Officer, People Management at LeapFrog Technology",
+      role: "HR Director, Leapfrog Technology",
       linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
     },
     {

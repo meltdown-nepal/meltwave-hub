@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -26,7 +27,7 @@ const CorporateWellness = () => {
     {
       name: "Jyoti Pokharel",
       title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-      role: "HR Director",
+      role: "HR Director, Leapfrog Technology",
       linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
     },
     {

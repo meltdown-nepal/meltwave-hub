@@ -24,23 +24,26 @@ interface TestimonialsSectionProps {
 const defaultTestimonials = [
   {
     id: 1,
-    name: "Jyoti Pokharel,LeapFrog Technology",
+    name: "Jyoti Pokharel",
     title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
+    role: "HR Director, Leapfrog Technology",
     linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
   },
   {
     id: 2,
-    name: "Bibha Tandukar,Young Innovation",
+    name: "Bibha Tandukar",
     title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
+    role: "Project Manager, Young Innovation",
     linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
   },
   {
     id: 3,
-    name: "Pabin Karki,Kaya Sports",
+    name: "Pabin Karki",
     title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
     image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
+    role: "CEO, Kaya Sports",
     videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
     linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
   },
@@ -49,6 +52,7 @@ const defaultTestimonials = [
     name: "Jagadamba Team",
     title: "Meltdown's workshops have transformed my daily routine and made me significantly more active.",
     image: "/lovable-uploads/2b7bb71f-9aea-436e-9865-e6990877f6c0.png",
+    role: "Automotive Company",
     videoUrl: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
     linkTo: "/events"
   }
