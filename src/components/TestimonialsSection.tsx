@@ -10,8 +10,8 @@ type TestimonialProp = {
   videoSrc?: string;
   title: string;
   name: string;
-  role?: string;
   image?: string;
+  role?:string,
   linkTo?: string;
 };
 
