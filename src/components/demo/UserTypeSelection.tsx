@@ -29,20 +29,20 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
       <div className="grid gap-6 md:grid-cols-3">
         {[
           {
-            type: "employee" as const,
-            title: "Employee",
-            description: "Looking for wellness solutions",
-            icon: User,
-            color: "bg-primary/10 text-primary",
-            onClick: () => onSelect("employee"),
-          },
-          {
             type: "company" as const,
             title: "Company",
             description: "Seeking corporate wellness",
             icon: Building2,
             color: "bg-secondary/20 text-secondary",
             onClick: () => onSelect("company"),
+          },
+          {
+            type: "employee" as const,
+            title: "Employee",
+            description: "Looking for wellness solutions",
+            icon: User,
+            color: "bg-primary/10 text-primary",
+            onClick: () => onSelect("employee"),
           },
           {
             type: "provider" as const,
