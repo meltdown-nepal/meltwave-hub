@@ -23,6 +23,12 @@ const JobCard: React.FC<JobCardProps> = ({ job, onJobClick }) => {
         </div>
       </CardHeader>
       <CardContent>
+        <div className="mb-4">
+          <h4 className="text-sm font-semibold text-gray-700 mb-2">About Meltdown</h4>
+          <p className="text-xs text-gray-600 mb-3">
+            Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to build a culture of active living through gamified challenges, social experiences, and wellness services across Nepal.
+          </p>
+        </div>
         <p className="text-gray-600 mb-4 line-clamp-3">
           {job.summary}
         </p>
