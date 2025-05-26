@@ -11,25 +11,45 @@ interface Job {
   summary: string;
   description: string;
   requirements: string[];
+  responsibilities: string[];
   location: string;
-  applyLink: string;
+  applyEmail: string;
+  benefits: string[];
 }
 
 const jobListings: Job[] = [
   {
     id: 1,
-    title: "Fitness Instructor",
-    summary: "Lead engaging group fitness classes and help members achieve their wellness goals.",
-    description: "We're looking for an energetic and passionate fitness instructor to join our team. You'll lead various group fitness classes, provide personalized guidance to members, and contribute to our positive, supportive environment. This role is perfect for someone who loves fitness and enjoys motivating others to reach their health goals.",
+    title: "Sales Manager",
+    summary: "Full-time on-site role managing and growing corporate accounts, building client relationships, and driving sales for our corporate wellbeing tech ecosystem.",
+    description: "Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to not just offer wellness benefits but build a culture of active living. Unlike typical gym subsidies or one-off wellness sessions - which most employees don't use - Meltdown combines access to wellness services across Nepal with gamified challenges, social experiences, and behavior tracking that drive participation and build team connection. This is a full-time on-site role for a Sales Manager, based in Kathmandu. The role will be responsible for managing and growing corporate accounts, building and maintaining relationships with clients, driving sales, and providing exceptional client service.",
     requirements: [
-      "Certified fitness instructor (ACE, NASM, ACSM, or equivalent)",
-      "2+ years of group fitness instruction experience",
-      "Excellent communication and motivational skills",
-      "CPR/AED certification required",
-      "Ability to modify exercises for different fitness levels"
+      "2-4 years experience in Sales Execution",
+      "Strong track record to exceed sales targets",
+      "Strong Communication Skills and Account Management Skills",
+      "Strong networking and relationship-building abilities",
+      "Bachelor's degree in Business, Marketing, or related field. Master's degree is a plus."
+    ],
+    responsibilities: [
+      "Identify, target, and convert potential corporate clients through strategic outreach and relationship-building",
+      "Develop and execute sales strategies to meet and exceed revenue goals",
+      "Build and manage a pipeline of qualified leads and track progress through the sales cycle",
+      "Conduct effective sales presentations and negotiations tailored to client needs",
+      "Maintain strong post-sales relationships to ensure client satisfaction and retention",
+      "Work closely with marketing team to align on campaign strategies and brand positioning",
+      "Manage and mentor junior sales team members, providing guidance and performance feedback",
+      "Provide regular sales forecasts, reporting, and market insights to the leadership team",
+      "Represent Meltdown at networking events, conferences, and wellness expos"
     ],
     location: "Kathmandu, Nepal",
-    applyLink: "https://forms.gle/fitness-instructor-application"
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: [
+      "Competitive salary with performance-based growth",
+      "High growth rate in the tech and corporate wellness sector",
+      "Attractive incentives based on performance",
+      "5-day work week (Monday to Friday)",
+      "Exclusive access to Meltdown's wellbeing services"
+    ]
   },
   {
     id: 2,
@@ -43,8 +63,10 @@ const jobListings: Job[] = [
       "Experience working with corporate clients",
       "Knowledge of health metrics and program evaluation"
     ],
+    responsibilities: [],
     location: "Kathmandu, Nepal",
-    applyLink: "https://forms.gle/wellness-coordinator-application"
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: []
   },
   {
     id: 3,
@@ -58,8 +80,10 @@ const jobListings: Job[] = [
       "Strong counseling and communication skills",
       "Knowledge of fitness and exercise nutrition"
     ],
+    responsibilities: [],
     location: "Kathmandu, Nepal",
-    applyLink: "https://forms.gle/nutritionist-application"
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: []
   },
   {
     id: 4,
@@ -73,8 +97,10 @@ const jobListings: Job[] = [
       "Experience with email marketing and CRM systems",
       "Strong analytical skills and attention to detail"
     ],
+    responsibilities: [],
     location: "Kathmandu, Nepal",
-    applyLink: "https://forms.gle/marketing-specialist-application"
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: []
   }
 ];
 
@@ -91,7 +117,7 @@ const Careers = () => {
 
   const handleApplyNow = () => {
     if (selectedJob) {
-      window.open(selectedJob.applyLink, '_blank');
+      window.open(`mailto:${selectedJob.applyEmail}?subject=Application for ${selectedJob.title} Position`, '_blank');
     }
   };
 
@@ -187,13 +213,41 @@ const Careers = () => {
                   </ul>
                 </div>
 
+                {selectedJob.responsibilities.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Responsibilities</h3>
+                    <ul className="space-y-2">
+                      {selectedJob.responsibilities.map((responsibility, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-primary mr-2 mt-1">•</span>
+                          <span className="text-gray-600">{responsibility}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {selectedJob.benefits.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">What Meltdown Offers</h3>
+                    <ul className="space-y-2">
+                      {selectedJob.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-primary mr-2 mt-1">•</span>
+                          <span className="text-gray-600">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div className="pt-4 border-t">
                   <Button 
                     onClick={handleApplyNow}
                     className="w-full bg-primary hover:bg-secondary text-black font-semibold"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Apply Now
+                    Apply Now via Email
                   </Button>
                 </div>
               </div>
