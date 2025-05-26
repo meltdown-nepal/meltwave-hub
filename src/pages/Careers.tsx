@@ -116,9 +116,9 @@ const Careers = () => {
   };
 
   const handleApplyNow = () => {
-    if (selectedJob) {
-      window.open(`mailto:${selectedJob.applyEmail}?subject=Application for ${selectedJob.title} Position`, '_blank');
-    }
+    // TODO: Replace with actual Google Form URL
+    const googleFormUrl = "https://forms.google.com/your-form-url";
+    window.open(googleFormUrl, '_blank');
   };
 
   return (
@@ -247,7 +247,7 @@ const Careers = () => {
                     className="w-full bg-primary hover:bg-secondary text-black font-semibold"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Apply Now via Email
+                    Apply Now
                   </Button>
                 </div>
               </div>
