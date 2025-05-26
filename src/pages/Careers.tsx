@@ -117,20 +117,37 @@ const jobListings: Job[] = [
   },
   {
     id: 4,
-    title: "Marketing Specialist",
-    summary: "Drive brand awareness and member acquisition through creative marketing campaigns.",
-    description: "Join our marketing team to help grow the Meltdown brand and expand our reach in the corporate wellness space. You'll develop and execute marketing campaigns, manage social media presence, create engaging content, and analyze campaign performance. This role is perfect for a creative marketer passionate about health and wellness.",
+    title: "Digital Marketing Associate",
+    summary: "Oversee website and social platforms, optimize SEO, plan content, manage performance metrics, and work with Content Team to ensure brand consistency and measurable growth.",
+    description: "Meltdown is Nepal's leading platform for corporate wellness, community events, group fitness programs, and coach development. We exist to break barriers to healthy living through engaging wellness solutions. Our digital presence is how we tell our story—and we're looking for someone to own that space! We're seeking a Digital Marketing Executive who understands both strategy and execution. You'll oversee our website and social platforms, optimize SEO, plan and schedule content, manage performance metrics, and work closely with the Content Team to ensure brand consistency and measurable growth.",
     requirements: [
-      "Bachelor's degree in Marketing, Communications, or related field",
-      "2+ years of digital marketing experience",
-      "Proficiency in social media management and content creation",
-      "Experience with email marketing and CRM systems",
-      "Strong analytical skills and attention to detail"
+      "2+ years experience in digital marketing or similar roles",
+      "Strong grasp of SEO, Google Analytics, Meta Business Suite, and scheduling tools (like Buffer, Hootsuite)",
+      "Basic content creation skills (e.g. Canva, simple video edits, or caption writing)",
+      "Ability to manage multiple projects and collaborate cross-functionally",
+      "Data-driven with an understanding of KPIs and performance reporting"
     ],
-    responsibilities: [],
+    responsibilities: [
+      "Optimize all web pages for search engine performance (SEO: on-page, off-page, and technical)",
+      "Conduct keyword research and update meta titles/descriptions regularly",
+      "Work with the tech/design team to improve UI/UX, page speed, and performance",
+      "Plan and maintain the social media content calendar",
+      "Write captions, schedule posts, and manage uploads across Instagram, Facebook, LinkedIn, and YouTube",
+      "Plan campaigns based on Meltdown's core verticals (Corporate Wellbeing, Events, Gyms, Academy)",
+      "Assign tasks to the Content Team (designers, writers, video editors) and follow up to ensure delivery",
+      "Track website traffic, keyword ranking, engagement, reach, and conversions",
+      "Generate weekly and monthly performance reports with insights and actionable suggestions",
+      "Identify trends, emerging platforms, and engagement tactics to experiment with"
+    ],
     location: "Kathmandu, Nepal",
     applyEmail: "meltdownnepal@gmail.com",
-    benefits: []
+    benefits: [
+      "Competitive salary with performance-based growth",
+      "High growth rate in the tech and corporate wellness sector",
+      "Attractive incentives based on performance",
+      "5-day work week (Monday to Friday)",
+      "Exclusive access to Meltdown's wellbeing services"
+    ]
   },
   {
     id: 5,
