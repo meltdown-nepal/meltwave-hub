@@ -34,9 +34,9 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold mb-3">About Meltdown</h3>
+                <h3 className="text-lg font-semibold mb-3">About Meltdown Wellbeing</h3>
                 <p className="text-gray-600">
-                  Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to build a culture of active living through gamified challenges, social experiences, and wellness services across Nepal.
+                  Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to not just offer wellness benefits but build a culture of active living. Unlike typical gym subsidies or one-off wellness sessions - which most employees don't use - Meltdown combines access to wellness services across Nepal with gamified challenges, social experiences, and behavior tracking that drive participation and build team connection.
                 </p>
               </div>
 
