@@ -34,6 +34,13 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
             
             <div className="space-y-6">
               <div>
+                <h3 className="text-lg font-semibold mb-3">About Meltdown</h3>
+                <p className="text-gray-600">
+                  Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to build a culture of active living through gamified challenges, social experiences, and wellness services across Nepal.
+                </p>
+              </div>
+
+              <div>
                 <h3 className="text-lg font-semibold mb-3">Job Description</h3>
                 <div className="text-gray-600 whitespace-pre-line">
                   {job.description}
