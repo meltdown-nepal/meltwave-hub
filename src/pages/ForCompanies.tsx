@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,77 +10,120 @@ import VideoTestimonial from '../components/VideoTestimonial';
 import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 // Trusted Companies Logos
-const trustedCompanies = [
-  { id: 1, src: "/lovable-uploads/leapfrog.png", alt: "Leapfrog Technology" },
-  { id: 2, src: "/lovable-uploads/SecurityPal.png", alt: "Security Pal" },
-  { id: 3, src: "/lovable-uploads/naamche.png", alt: "Naamche" },
-  { id: 4, src: "/lovable-uploads/flextecs.png", alt: "Flextecs" },
-  { id: 5, src: "/lovable-uploads/YoungInnovations.png", alt: "Young Innovations" },
-  { id: 6, src: "/lovable-uploads/HimalayanJava.png", alt: "Himalayan Java" },
-  { id: 7, src: "/lovable-uploads/GolchhaGroup.png", alt: "Golchha Group" },
-  { id: 8, src: "/lovable-uploads/ottr.png", alt: "Ottr" },
-  { id: 9, src: "/lovable-uploads/OwlDigital.png", alt: "Owl Digital" },
-  { id: 10, src: "/lovable-uploads/shanker.png", alt: "Shanker" },
-  { id: 11, src: "/lovable-uploads/KingsCollege.png", alt: "Kings College" },
-  { id: 12, src: "/lovable-uploads/Veda.png", alt: "Veda" },
-  { id: 13, src: "/lovable-uploads/CodingMountain.png", alt: "Coding Mountain" },
-  { id: 14, src: "/lovable-uploads/JagadambaMotors.png", alt: "Jagadamba Motors" },
-  { id: 15, src: "/lovable-uploads/KavyaSports.png", alt: "Kavya Sports" },
-  { id: 16, src: "/lovable-uploads/Stalwart.png", alt: "Stalwart" },
-  { id: 17, src: "/lovable-uploads/WeBajraStudio.png", alt: "We Bajra Studio" },
-  { id: 18, src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png", alt: "CloudFactory" }
-];
+const trustedCompanies = [{
+  id: 1,
+  src: "/lovable-uploads/leapfrog.png",
+  alt: "Leapfrog Technology"
+}, {
+  id: 2,
+  src: "/lovable-uploads/SecurityPal.png",
+  alt: "Security Pal"
+}, {
+  id: 3,
+  src: "/lovable-uploads/naamche.png",
+  alt: "Naamche"
+}, {
+  id: 4,
+  src: "/lovable-uploads/flextecs.png",
+  alt: "Flextecs"
+}, {
+  id: 5,
+  src: "/lovable-uploads/YoungInnovations.png",
+  alt: "Young Innovations"
+}, {
+  id: 6,
+  src: "/lovable-uploads/HimalayanJava.png",
+  alt: "Himalayan Java"
+}, {
+  id: 7,
+  src: "/lovable-uploads/GolchhaGroup.png",
+  alt: "Golchha Group"
+}, {
+  id: 8,
+  src: "/lovable-uploads/ottr.png",
+  alt: "Ottr"
+}, {
+  id: 9,
+  src: "/lovable-uploads/OwlDigital.png",
+  alt: "Owl Digital"
+}, {
+  id: 10,
+  src: "/lovable-uploads/shanker.png",
+  alt: "Shanker"
+}, {
+  id: 11,
+  src: "/lovable-uploads/KingsCollege.png",
+  alt: "Kings College"
+}, {
+  id: 12,
+  src: "/lovable-uploads/Veda.png",
+  alt: "Veda"
+}, {
+  id: 13,
+  src: "/lovable-uploads/CodingMountain.png",
+  alt: "Coding Mountain"
+}, {
+  id: 14,
+  src: "/lovable-uploads/JagadambaMotors.png",
+  alt: "Jagadamba Motors"
+}, {
+  id: 15,
+  src: "/lovable-uploads/KavyaSports.png",
+  alt: "Kavya Sports"
+}, {
+  id: 16,
+  src: "/lovable-uploads/Stalwart.png",
+  alt: "Stalwart"
+}, {
+  id: 17,
+  src: "/lovable-uploads/WeBajraStudio.png",
+  alt: "We Bajra Studio"
+}, {
+  id: 18,
+  src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
+  alt: "CloudFactory"
+}];
 
 // FAQ Data
-const companyFaqs = [
-  {
-    question: "How quickly can we implement a wellness program?",
-    answer: "We can have your program up and running within 1 week, depending on your company's size and specific needs. Our team handles all aspects of implementation, from initial assessment to employee onboarding."
-  },
-  {
-    question: "What ROI can we expect?",
-    answer: "Companies typically see a 3:1 return on investment within the first year through reduced healthcare costs, increased productivity, and improved employee retention."
-  },
-  {
-    question: "How do you measure program success?",
-    answer: "We provide comprehensive analytics tracking key metrics like participation rates, health outcomes, employee satisfaction, and cost savings. Regular reports help you understand the program's impact."
-  }
-];
+const companyFaqs = [{
+  question: "How quickly can we implement a wellness program?",
+  answer: "We can have your program up and running within 1 week, depending on your company's size and specific needs. Our team handles all aspects of implementation, from initial assessment to employee onboarding."
+}, {
+  question: "What ROI can we expect?",
+  answer: "Companies typically see a 3:1 return on investment within the first year through reduced healthcare costs, increased productivity, and improved employee retention."
+}, {
+  question: "How do you measure program success?",
+  answer: "We provide comprehensive analytics tracking key metrics like participation rates, health outcomes, employee satisfaction, and cost savings. Regular reports help you understand the program's impact."
+}];
 
 // Success Stories
-const successStories = [
-  {
-    title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-    name: "Jyoti Pokharel",
-    role: "HR Director, LeapFrog Technology",
-    linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
-  },
-  {
-    title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
-    name: "Bibha Tandukar",
-    role: "Project Manager,Young Innovation",
-    linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
-  },
-  {
-    title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
-    name: "Pabin Karki",
-    role: "CEO,Kaya Sports",
-    linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
-  }
-];
-
+const successStories = [{
+  title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
+  name: "Jyoti Pokharel",
+  role: "HR Director, LeapFrog Technology",
+  linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
+}, {
+  title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+  name: "Bibha Tandukar",
+  role: "Project Manager,Young Innovation",
+  linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
+}, {
+  title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
+  name: "Pabin Karki",
+  role: "CEO,Kaya Sports",
+  linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
+}];
 const ForCompanies = () => {
   const [selectedVideo, setSelectedVideo] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const { scrollToSection } = useSmoothScroll();
-
+  const {
+    scrollToSection
+  } = useSmoothScroll();
   const handleVideoClick = (videoUrl: string) => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-
-  return (
-    <div>
+  return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -99,31 +137,20 @@ const ForCompanies = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/schedule-demo" className="btn-primary">Schedule a Demo</Link>
-                <button 
-                  onClick={() => scrollToSection('testimonials')} 
-                  className="btn-outline"
-                >
+                <button onClick={() => scrollToSection('testimonials')} className="btn-outline">
                   Hear From Our Clients
                 </button>
               </div>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="/lovable-uploads/a48b3904-c6dd-43cc-b3e1-398362f1feae.png" 
-                alt="Corporate wellness workshop with employees learning about workplace health" 
-                className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover"
-              />
+              <img alt="Corporate wellness workshop with employees learning about workplace health" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" src="/lovable-uploads/bf301484-0160-4f98-9ad4-48db6fc2e27d.png" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Trusted Companies Section */}
-      <LogoCarousel 
-        logos={trustedCompanies} 
-        title="Trusted by Leading Companies" 
-        description="We're proud to partner with forward-thinking companies who prioritize wellness."
-      />
+      <LogoCarousel logos={trustedCompanies} title="Trusted by Leading Companies" description="We're proud to partner with forward-thinking companies who prioritize wellness." />
 
       {/* Benefits Section */}
       <section className="section-padding">
@@ -244,52 +271,26 @@ const ForCompanies = () => {
 
           {/* Desktop view (grid) */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {successStories.map((story, index) => (
-              <VideoTestimonial
-                key={index}
-                title={story.title}
-                name={story.name}
-                role={story.role}
-                linkTo={story.linkTo}
-              />
-            ))}
+            {successStories.map((story, index) => <VideoTestimonial key={index} title={story.title} name={story.name} role={story.role} linkTo={story.linkTo} />)}
           </div>
 
           {/* Mobile view (list) */}
           <div className="md:hidden space-y-6">
-            {successStories.map((story, index) => (
-              <VideoTestimonial
-                key={index}
-                title={story.title}
-                name={story.name}
-                role={story.role}
-                linkTo={story.linkTo}
-              />
-            ))}
+            {successStories.map((story, index) => <VideoTestimonial key={index} title={story.title} name={story.name} role={story.role} linkTo={story.linkTo} />)}
           </div>
           
           {/* Video Dialog */}
           <Dialog open={!!selectedVideo} onOpenChange={() => {
-            setSelectedVideo(null);
-            setIsLoading(false);
-          }}>
+          setSelectedVideo(null);
+          setIsLoading(false);
+        }}>
             <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
-              {isLoading && (
-                <div className="flex justify-center items-center h-40 text-white">
+              {isLoading && <div className="flex justify-center items-center h-40 text-white">
                   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-                </div>
-              )}
-              {selectedVideo && (
-                <video 
-                  src={selectedVideo}
-                  controls
-                  autoPlay
-                  className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`}
-                  onCanPlay={() => setIsLoading(false)}
-                >
+                </div>}
+              {selectedVideo && <video src={selectedVideo} controls autoPlay className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`} onCanPlay={() => setIsLoading(false)}>
                   Your browser does not support the video tag.
-                </video>
-              )}
+                </video>}
             </DialogContent>
           </Dialog>
         </div>
@@ -307,8 +308,7 @@ const ForCompanies = () => {
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
             <Accordion type="single" collapsible className="w-full">
-              {companyFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
+              {companyFaqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
@@ -317,8 +317,7 @@ const ForCompanies = () => {
                       {faq.answer}
                     </p>
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -337,8 +336,6 @@ const ForCompanies = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default ForCompanies;
