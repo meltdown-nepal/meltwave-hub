@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -83,6 +84,7 @@ const Navbar: React.FC = () => {
             <Link to="/events" className={getNavLinkClass('/events')}>Events</Link>
             <Link to="/academy" className={getNavLinkClass('/academy')}>Academy</Link>
             <Link to="/meltfit" className={getNavLinkClass('/meltfit')}>MeltFit</Link>
+            <Link to="/careers" className={getNavLinkClass('/careers')}>Careers</Link>
             <Link to="/contact" className={getNavLinkClass('/contact')}>Contact</Link>
           </div>
 
@@ -107,6 +109,7 @@ const Navbar: React.FC = () => {
             <Link to="/events" className={`py-2 ${getNavLinkClass('/events')}`} onClick={toggleMenu}>Events</Link>
             <Link to="/academy" className={`py-2 ${getNavLinkClass('/academy')}`} onClick={toggleMenu}>Academy</Link>
             <Link to="/meltfit" className={`py-2 ${getNavLinkClass('/meltfit')}`} onClick={toggleMenu}>MeltFit</Link>
+            <Link to="/careers" className={`py-2 ${getNavLinkClass('/careers')}`} onClick={toggleMenu}>Careers</Link>
             <Link to="/contact" className={`py-2 ${getNavLinkClass('/contact')}`} onClick={toggleMenu}>Contact</Link>
             <Link to="/schedule-demo" className="btn-primary self-start mt-2" onClick={toggleMenu}>Get Started</Link>
           </div>
