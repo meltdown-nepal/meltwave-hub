@@ -194,13 +194,6 @@ const Careers = () => {
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">Job Description</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {selectedJob.description}
-                  </p>
-                </div>
-
-                <div>
                   <h3 className="text-lg font-semibold mb-3">Requirements</h3>
                   <ul className="space-y-2">
                     {selectedJob.requirements.map((requirement, index) => (
