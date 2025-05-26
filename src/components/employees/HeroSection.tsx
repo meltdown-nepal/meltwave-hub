@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const HeroSection = () => {
-  return (
-    <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
+  return <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
@@ -20,16 +17,10 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <img 
-              alt="Employee Wellness" 
-              className="rounded-lg shadow-xl max-w-full h-auto" 
-              src="/lovable-uploads/471e4a35-9cef-4248-a8c7-bd276fadf115.jpg" 
-            />
+            <img alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/6e5c0497-d07d-442c-acf4-9d7cfebe1cf9.png" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
