@@ -131,6 +131,36 @@ const jobListings: Job[] = [
     location: "Kathmandu, Nepal",
     applyEmail: "meltdownnepal@gmail.com",
     benefits: []
+  },
+  {
+    id: 5,
+    title: "Sales Associate",
+    summary: "Junior level position assisting in lead generation, client outreach, and supporting sales efforts to expand Meltdown's reach across companies.",
+    description: "Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to not just offer wellness benefits but build a culture of active living. Unlike typical gym subsidies or one-off wellness sessions - which most employees don't use - Meltdown combines access to wellness services across Nepal with gamified challenges, social experiences, and behavior tracking that drive participation and build team connection. This is a full-time, on-site role for a Sales Associate, based in Kathmandu. The Sales Associate will assist in generating leads, conducting outreach, supporting client meetings, and maintaining CRM records. The ideal candidate is enthusiastic, motivated, and eager to learn and grow in the sales field, with a passion for health, fitness, and corporate wellness. You'll work closely with the sales and marketing team to support overall business development efforts and play a key role in expanding Meltdown's reach across companies.",
+    requirements: [
+      "1 year of experience in sales, management, marketing, or customer service",
+      "Strong communication and interpersonal skills",
+      "Self-motivated, goal-oriented, and eager to learn",
+      "Bachelor's degree in Business, Marketing, or related field (ongoing studies may also be considered)"
+    ],
+    responsibilities: [
+      "Assist in identifying and reaching out to potential corporate clients",
+      "Support the sales team in preparing presentations and proposals",
+      "Maintain accurate records of leads and customer interactions using CRM tools",
+      "Follow up with prospects and clients to support conversion and retention",
+      "Attend meetings, wellness events, and sales activations",
+      "Support the execution of client onboarding and feedback collection",
+      "Stay updated with Meltdown services and the wellness industry"
+    ],
+    location: "Kathmandu, Nepal",
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: [
+      "Competitive salary with performance-based growth",
+      "High growth rate in the tech and corporate wellness sector",
+      "Attractive incentives based on performance",
+      "5-day work week (Monday to Friday)",
+      "Exclusive access to Meltdown's wellbeing services"
+    ]
   }
 ];
 
