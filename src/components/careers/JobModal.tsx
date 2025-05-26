@@ -34,6 +34,13 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
             
             <div className="space-y-6">
               <div>
+                <h3 className="text-lg font-semibold mb-3">Job Description</h3>
+                <div className="text-gray-600 whitespace-pre-line">
+                  {job.description}
+                </div>
+              </div>
+
+              <div>
                 <h3 className="text-lg font-semibold mb-3">Requirements</h3>
                 <ul className="space-y-2">
                   {job.requirements.map((requirement, index) => (
@@ -53,6 +60,20 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                       <li key={index} className="flex items-start">
                         <span className="text-primary mr-2 mt-1">•</span>
                         <span className="text-gray-600">{responsibility}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {job.benefits.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Benefits</h3>
+                  <ul className="space-y-2">
+                    {job.benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-primary mr-2 mt-1">•</span>
+                        <span className="text-gray-600">{benefit}</span>
                       </li>
                     ))}
                   </ul>
