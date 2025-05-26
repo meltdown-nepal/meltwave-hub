@@ -143,7 +143,7 @@ const ForCompanies = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img alt="Corporate wellness workshop with employees learning about workplace health" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" src="/lovable-uploads/bf301484-0160-4f98-9ad4-48db6fc2e27d.png" />
+              <img alt="Corporate wellness workshop with employees learning about workplace health" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" src="/lovable-uploads/86d05d1c-7428-462e-bf36-6ed0b24be2d1.png" />
             </div>
           </div>
         </div>
