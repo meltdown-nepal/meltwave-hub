@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -52,20 +53,33 @@ const jobListings: Job[] = [
   },
   {
     id: 2,
-    title: "Wellness Program Coordinator",
-    summary: "Design and implement comprehensive wellness programs for corporate clients.",
-    description: "Join our team as a Wellness Program Coordinator where you'll be responsible for developing, implementing, and managing wellness programs for our corporate clients. You'll work closely with companies to assess their needs, design customized programs, and ensure successful implementation and ongoing support.",
+    title: "Partner Relations Associate",
+    summary: "Junior level position focused on expanding and managing Meltdown's network of wellness service providers to build strong partnerships across Nepal.",
+    description: "We are looking for a Partner Relations Associate to join our growing team in Kathmandu. This is a full-time, on-site role focused on expanding and managing Meltdown's network of wellness service providers—including fitness centers, wellness studios, wellbeing professionals, and wellness activities—based on the needs and demands of corporate employees. The ideal candidate is passionate about building relationships, and committed to delivering quality experiences. You'll work closely with internal teams to ensure our partners are well-aligned with Meltdown's goals of driving engagement, experience, and high standards in service delivery.",
     requirements: [
-      "Bachelor's degree in Health Promotion, Exercise Science, or related field",
-      "3+ years experience in wellness program development",
-      "Strong project management skills",
-      "Experience working with corporate clients",
-      "Knowledge of health metrics and program evaluation"
+      "1 year of experience in business development, hospitality, community engagement, or related roles",
+      "Strong communication and interpersonal skills",
+      "Ability to manage multiple partnerships and prioritize tasks effectively",
+      "Detail-oriented, self-motivated, and proactive",
+      "Bachelor's degree in Business, Marketing, Hospitality, or related field"
     ],
-    responsibilities: [],
+    responsibilities: [
+      "Identify, evaluate, and onboard wellness centers and service providers that align with employee needs",
+      "Regularly visit partner locations to ensure quality and service standards are maintained",
+      "Develop and maintain strong, collaborative relationships with partner facilities and professionals",
+      "Negotiate terms and draft partnership agreements with service providers",
+      "Stay updated on emerging wellness trends, tools, and offerings to enhance Meltdown's service portfolio",
+      "Prepare reports and insights for management to inform decision-making and experience improvements"
+    ],
     location: "Kathmandu, Nepal",
     applyEmail: "meltdownnepal@gmail.com",
-    benefits: []
+    benefits: [
+      "Competitive salary with performance-based growth",
+      "High growth rate in the tech and corporate wellness sector",
+      "Attractive incentives based on performance",
+      "5-day work week (Monday to Friday)",
+      "Exclusive access to Meltdown's wellbeing services"
+    ]
   },
   {
     id: 3,
