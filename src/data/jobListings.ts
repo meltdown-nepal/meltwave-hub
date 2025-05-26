@@ -1,4 +1,3 @@
-
 export interface Job {
   id: number;
   title: string;
@@ -15,8 +14,8 @@ export const jobListings: Job[] = [
   {
     id: 1,
     title: "Sales Manager",
-    summary: "Full-time on-site role managing and growing corporate accounts, building client relationships, and driving sales for our corporate wellbeing tech ecosystem.",
-    description: "Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to not just offer wellness benefits but build a culture of active living. Unlike typical gym subsidies or one-off wellness sessions - which most employees don't use - Meltdown combines access to wellness services across Nepal with gamified challenges, social experiences, and behavior tracking that drive participation and build team connection. This is a full-time on-site role for a Sales Manager, based in Kathmandu. The role will be responsible for managing and growing corporate accounts, building and maintaining relationships with clients, driving sales, and providing exceptional client service.",
+    summary: "Mid-level full-time on-site role managing and growing corporate accounts, building client relationships, and driving sales for our corporate wellbeing tech ecosystem.",
+    description: "Meltdown is a corporate wellbeing tech ecosystem designed for companies who want to not just offer wellness benefits but build a culture of active living. Unlike typical gym subsidies or one-off wellness sessions - which most employees don't use - Meltdown combines access to wellness services across Nepal with gamified challenges, social experiences, and behavior tracking that drive participation and build team connection.\n\nThis is a full-time on-site role for a Sales Manager, based in Kathmandu. The role will be responsible for managing and growing corporate accounts, building and maintaining relationships with clients, driving sales, and providing exceptional client service. Daily tasks include identifying new business opportunities, creating sales strategies, presenting solutions to corporate clients, and achieving sales targets. This role requires strong communication, negotiation, and interpersonal skills.\n\nPosition: Mid-Level",
     requirements: [
       "2-4 years experience in Sales Execution",
       "Strong track record to exceed sales targets",
