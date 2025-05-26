@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -221,20 +220,6 @@ const Careers = () => {
                         <li key={index} className="flex items-start">
                           <span className="text-primary mr-2 mt-1">•</span>
                           <span className="text-gray-600">{responsibility}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {selectedJob.benefits.length > 0 && (
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">What Meltdown Offers</h3>
-                    <ul className="space-y-2">
-                      {selectedJob.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="text-primary mr-2 mt-1">•</span>
-                          <span className="text-gray-600">{benefit}</span>
                         </li>
                       ))}
                     </ul>
