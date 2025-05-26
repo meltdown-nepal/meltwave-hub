@@ -75,7 +75,7 @@ const clientLogos = [{
 const ClientLogoCarousel = () => {
   return <section className="py-8 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-8">Trusted By </h3>
+        <h3 className="text-2xl font-bold mb-8">Trusted By Companies </h3>
         <div className="relative overflow-hidden">
           {/* Gradient edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-yellow-50 to-transparent" />
