@@ -24,7 +24,8 @@ import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import ScheduleDemoFlow from "./pages/ScheduleDemoFlow";
 import WellnessProviders from "./pages/WellnessProviders";
-import WellnessOnboarding from "./pages/WellnessOnboarding"; // Add the new page import
+import WellnessOnboarding from "./pages/WellnessOnboarding";
+import Careers from "./pages/Careers";
 
 const App = () => {
   // Create a query client instance inside the component
@@ -52,7 +53,8 @@ const App = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
               <Route path="/wellness-providers" element={<WellnessProviders />} />
-              <Route path="/wellness-onboarding" element={<WellnessOnboarding />} /> {/* Add the new route */}
+              <Route path="/wellness-onboarding" element={<WellnessOnboarding />} />
+              <Route path="/careers" element={<Careers />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
