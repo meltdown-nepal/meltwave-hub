@@ -1,40 +1,32 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FaqSection from '../components/FaqSection';
 import ClientLogoCarousel from '../components/ClientLogoCarousel';
 import WellnessProviders from '../components/WellnessProviders';
-
 const Home = () => {
   // Home page testimonials
-  const homeTestimonials = [
-    {
-      name: "Jyoti Pokharel",
-      title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-      role: "HR Director, Leapfrog Technology",
-      linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
-    },
-    {
-      name: "Bibha Tandukar",
-      title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
-      role: "Project Manager, Young Innovation",
-      linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
-    },
-    {
-      name: "Pabin Karki",
-      title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
-      role: "CEO, Kaya Sports",
-      linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
-    },
-    {
-      name: "Chiring Sherpa",
-      title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
-      role: "Security Research Analyst, Security Pal",
-      linkTo: "https://www.instagram.com/p/DIqwP8yIqr4/"
-    }
-  ];
-
+  const homeTestimonials = [{
+    name: "Jyoti Pokharel",
+    title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
+    role: "HR Director, Leapfrog Technology",
+    linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
+  }, {
+    name: "Bibha Tandukar",
+    title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+    role: "Project Manager, Young Innovation",
+    linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
+  }, {
+    name: "Pabin Karki",
+    title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
+    role: "CEO, Kaya Sports",
+    linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
+  }, {
+    name: "Chiring Sherpa",
+    title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
+    role: "Security Research Analyst, Security Pal",
+    linkTo: "https://www.instagram.com/p/DIqwP8yIqr4/"
+  }];
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -52,7 +44,7 @@ const Home = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img alt="Wellness at work" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/1215fe4c-07f6-441d-9878-2f07f49ef187.png" />
+              <img alt="Wellness at work" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png" />
             </div>
           </div>
         </div>
@@ -119,11 +111,7 @@ const Home = () => {
       <WellnessProviders />
 
       {/* Video Testimonials Section */}
-      <TestimonialsSection 
-        testimonials={homeTestimonials}
-        title="What Our Clients Say"
-        subtitle="Hear from companies and employees who have experienced the Meltdown difference."
-      />
+      <TestimonialsSection testimonials={homeTestimonials} title="What Our Clients Say" subtitle="Hear from companies and employees who have experienced the Meltdown difference." />
 
       {/* FAQ Section */}
       <FaqSection />
@@ -143,5 +131,4 @@ const Home = () => {
       </section>
     </div>;
 };
-
 export default Home;
