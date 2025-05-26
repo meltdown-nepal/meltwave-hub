@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -83,20 +82,38 @@ const jobListings: Job[] = [
   },
   {
     id: 3,
-    title: "Nutritionist",
-    summary: "Provide nutritional guidance and meal planning support to our members.",
-    description: "We're seeking a qualified nutritionist to provide expert nutritional guidance to our members. You'll conduct assessments, create personalized meal plans, and educate clients on healthy eating habits. This role involves one-on-one consultations, group workshops, and collaborating with our fitness team to provide comprehensive wellness support.",
+    title: "Events Manager",
+    summary: "Lead end-to-end planning and execution of events, from weekly runs to quarterly flagship events, while managing partnerships and driving community engagement.",
+    description: "We're looking for a proactive, creative, and hands-on Event Manager who can take complete ownership of events from concept to execution. You'll lead the events team, bring fresh ideas to life, and ensure every event aligns with our mission—to activate people and connect communities through wellness. This role involves leading weekly runs, corporate wellness events, and quarterly flagship events while building strategic partnerships and continuously innovating event formats.",
     requirements: [
-      "Licensed Nutritionist or Registered Dietitian",
-      "2+ years of clinical or consulting experience",
-      "Experience with meal planning and nutritional assessments",
-      "Strong counseling and communication skills",
-      "Knowledge of fitness and exercise nutrition"
+      "Proven experience (1+ years) organizing and leading events",
+      "Strong leadership, delegation, and coordination skills",
+      "Creative thinking with an understanding of fitness and wellness trends",
+      "Experience in sponsorship outreach and brand partnerships",
+      "Excellent time management and communication skills",
+      "Proficient with event planning tools (Google Sheets, Notion, etc.)"
     ],
-    responsibilities: [],
+    responsibilities: [
+      "Lead end-to-end planning and execution of events (weekly runs, corporate wellness events, and quarterly flagship events)",
+      "Create event concepts that reflect our mission and engage diverse audiences",
+      "Prepare detailed event checklists, assign tasks, and ensure accountability within the team",
+      "Lead and manage the Events Team, ensuring clear delegation and communication",
+      "Coordinate with logistics, marketing, wellness, and sales teams for seamless delivery",
+      "Identify and secure collaborations with fitness brands, wellness companies, and sponsors",
+      "Build strategic relationships that add value and visibility to events",
+      "Continuously bring new event formats, activities, and themes to enhance participation",
+      "Track KPIs including attendance, engagement, revenue, and partnerships",
+      "Submit weekly and monthly reports to management"
+    ],
     location: "Kathmandu, Nepal",
     applyEmail: "meltdownnepal@gmail.com",
-    benefits: []
+    benefits: [
+      "Competitive salary with performance-based growth",
+      "High growth rate in the tech and corporate wellness sector",
+      "Attractive incentives based on performance",
+      "5-day work week (Monday to Friday)",
+      "Exclusive access to Meltdown's wellbeing services"
+    ]
   },
   {
     id: 4,
