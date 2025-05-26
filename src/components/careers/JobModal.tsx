@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { MapPin, ExternalLink } from "lucide-react";
+import { MapPin, ExternalLink, Calendar } from "lucide-react";
 import { Job } from "@/data/jobListings";
 
 interface JobModalProps {
@@ -86,6 +85,14 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                   </ul>
                 </div>
               )}
+
+              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                <div className="flex items-center text-orange-700">
+                  <Calendar className="w-5 h-5 mr-2" />
+                  <span className="font-semibold">Application Deadline</span>
+                </div>
+                <p className="text-orange-600 mt-1 font-medium">7th June 2025</p>
+              </div>
 
               <div className="pt-4 border-t">
                 <Button 
