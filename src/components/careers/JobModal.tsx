@@ -13,8 +13,7 @@ interface JobModalProps {
 
 const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
   const handleApplyNow = () => {
-    // TODO: Replace with actual Google Form URL
-    const googleFormUrl = "https://forms.google.com/your-form-url";
+    const googleFormUrl = "https://forms.gle/XhNDyCs6ChLdhjX79";
     window.open(googleFormUrl, '_blank');
   };
 
