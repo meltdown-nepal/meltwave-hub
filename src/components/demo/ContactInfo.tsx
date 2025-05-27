@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Mail, Phone, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -15,6 +14,32 @@ interface Props {
 }
 
 export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack, isSubmitting = false }) => {
+  const handlePhoneKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Allow: backspace, delete, tab, escape, enter
+    if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+        // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+        (e.keyCode === 65 && e.ctrlKey === true) ||
+        (e.keyCode === 67 && e.ctrlKey === true) ||
+        (e.keyCode === 86 && e.ctrlKey === true) ||
+        (e.keyCode === 88 && e.ctrlKey === true) ||
+        // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+      return;
+    }
+    
+    // Allow: numbers (0-9), space, hyphen, parentheses, plus sign
+    const char = String.fromCharCode(e.keyCode);
+    if (!/[0-9\s\-\(\)\+]/.test(char)) {
+      e.preventDefault();
+    }
+  };
+
+  const handlePhoneInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Remove any non-numeric characters except spaces, hyphens, parentheses, and plus
+    const value = e.target.value.replace(/[^0-9\s\-\(\)\+]/g, '');
+    form.setValue('phone', value);
+  };
+
   return (
     <div className="space-y-6 animate-fade-in">
       <FormField
@@ -60,7 +85,13 @@ export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack, isSubmitt
             <FormControl>
               <div className="relative">
                 <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                <Input className="pl-10" placeholder="Your phone number" {...field} />
+                <Input 
+                  className="pl-10" 
+                  placeholder="Your phone number" 
+                  {...field}
+                  onKeyDown={handlePhoneKeyPress}
+                  onChange={handlePhoneInput}
+                />
               </div>
             </FormControl>
             <FormMessage />
