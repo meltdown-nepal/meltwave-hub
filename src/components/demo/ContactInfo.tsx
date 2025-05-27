@@ -4,7 +4,6 @@ import { Mail, Phone, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { Switch } from "@/components/ui/switch";
 import { DemoFormData } from "@/lib/types/demo";
 import { UseFormReturn } from "react-hook-form";
 
@@ -54,34 +53,20 @@ export const ContactInfo: React.FC<Props> = ({ form, onSubmit, onBack, isSubmitt
 
       <FormField
         control={form.control}
-        name="phoneContact"
+        name="phone"
         render={({ field }) => (
-          <FormItem className="flex items-center justify-between space-x-4">
-            <FormLabel className="text-lg">Would you like us to contact you by phone?</FormLabel>
+          <FormItem className="space-y-4">
+            <FormLabel className="text-2xl font-semibold">What's your phone number?</FormLabel>
             <FormControl>
-              <Switch checked={field.value} onCheckedChange={field.onChange} />
+              <div className="relative">
+                <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                <Input className="pl-10" placeholder="Your phone number" {...field} />
+              </div>
             </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />
-
-      {form.watch("phoneContact") && (
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem className="space-y-4 animate-fade-in">
-              <FormControl>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                  <Input className="pl-10" placeholder="Your phone number" {...field} />
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      )}
 
       <p className="text-sm text-gray-500">No spam. Only relevant info from our team.</p>
 
