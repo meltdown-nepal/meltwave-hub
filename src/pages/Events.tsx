@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays } from 'lucide-react';
@@ -130,14 +129,13 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
             <EventCard 
               title="Java Fun Marathon" 
               date="10th May" 
               description="A thrilling 7km run with unique fitness challenges at each Himalayan Java stop! Enjoy coffee, community, and exercise all in one event." 
-              registrationLink="https://esewafonepay.page.link/Java-runventure2025" 
-              isExternalLink={true} 
+              registrationLink="#"
             />
+            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
             <EventCard title="Coming Soon" />
           </div>
           <div className="text-center">
