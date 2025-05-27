@@ -78,7 +78,7 @@ export const ContactInfo: React.FC<Props> = ({
             <FormMessage />
           </FormItem>} />
 
-      <p className="text-sm text-red-500">No spam. Only relevant info from our team.</p>
+      <p className="text-sm text-gray-500">No spam. Only relevant info from our team.</p>
 
       <div className="flex justify-between pt-6">
         <Button type="button" variant="outline" onClick={onBack} disabled={isSubmitting}>
