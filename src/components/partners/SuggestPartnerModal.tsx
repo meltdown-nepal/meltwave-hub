@@ -151,12 +151,12 @@ const SuggestPartnerModal: React.FC<SuggestPartnerModalProps> = ({ isOpen, onClo
             <div className="space-y-2">
               <Label htmlFor="serviceType">Wellness Service Type *</Label>
               <Select value={formData.serviceType} onValueChange={(value) => handleInputChange('serviceType', value)}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-white">
                   <SelectValue placeholder="Select service type" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border border-gray-200 shadow-lg z-50">
                   {serviceTypes.map(type => (
-                    <SelectItem key={type} value={type}>
+                    <SelectItem key={type} value={type} className="hover:bg-gray-100 focus:bg-gray-100">
                       {type}
                     </SelectItem>
                   ))}
