@@ -8,6 +8,7 @@ import TierBadge from '../components/partners/TierBadge';
 import PartnerCard from '../components/partners/PartnerCard';
 import PartnerCarousel from '../components/partners/PartnerCarousel';
 import FilterDropdown from '../components/partners/FilterDropdown';
+import SuggestPartnerModal from '../components/partners/SuggestPartnerModal';
 import { useWellnessPartners } from '../hooks/useWellnessPartners';
 
 export type Tier = 'Basic' | 'Gold' | 'Platinum';
@@ -25,6 +26,7 @@ const WellnessPartners = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTier, setSelectedTier] = useState<Tier | 'All'>('All');
   const [selectedLocation, setSelectedLocation] = useState<string>('All');
+  const [showSuggestModal, setShowSuggestModal] = useState(false);
 
   const uniqueLocations = Array.from(new Set(partnersData.map(p => p.location.split(',')[1]?.trim() || p.location)));
 
@@ -160,7 +162,10 @@ const WellnessPartners = () => {
             to be the first to know about new partnerships.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="btn-primary">
+            <Button 
+              className="btn-primary"
+              onClick={() => setShowSuggestModal(true)}
+            >
               Suggest a Partner
             </Button>
             <Button variant="outline" className="btn-outline">
@@ -169,6 +174,12 @@ const WellnessPartners = () => {
           </div>
         </div>
       </section>
+
+      {/* Suggest Partner Modal */}
+      <SuggestPartnerModal 
+        isOpen={showSuggestModal}
+        onClose={() => setShowSuggestModal(false)}
+      />
     </div>
   );
 };
