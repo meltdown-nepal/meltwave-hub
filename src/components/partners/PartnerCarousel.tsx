@@ -79,7 +79,7 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="w-80 flex-none"
+              className="w-80 flex-none h-64"
             >
               <PartnerCard partner={partner} />
             </div>
