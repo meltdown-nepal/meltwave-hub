@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Brain, Building2, Users, Settings, TrendingUp, Target, Shield, Lightbulb } from 'lucide-react';
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import FaqSection from '../components/faq/FaqSection';
 import { faqData } from '../data/faqData';
 
@@ -113,22 +114,34 @@ const Faq = () => {
         </div>
       </section>
 
-      {/* Contact CTA */}
+      {/* Enhanced Contact CTA */}
       <section className="section-padding bg-gradient-to-r from-primary/20 to-secondary/20">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
-          <p className="text-lg mb-6 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
             Can't find the answer you're looking for? Our team is here to help you understand 
             how Meltdown can transform your workplace wellness.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <a href="#/contact" className="btn-primary">
-              Contact Our Team
-            </a>
-            <a href="#/schedule-demo" className="btn-outline">
-              Schedule a Demo
-            </a>
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <a href="#/contact">Get Personal Support</a>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              asChild
+              className="border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 text-lg font-semibold transition-all duration-300"
+            >
+              <a href="#/schedule-demo">Schedule a Demo</a>
+            </Button>
           </div>
+          <p className="text-sm text-gray-600 mt-4">
+            💬 Get responses within 24 hours • 🎯 Personalized wellness solutions
+          </p>
         </div>
       </section>
     </div>
