@@ -1,6 +1,6 @@
 
 import React, { useState, useMemo } from 'react';
-import { Search, Brain, Building2, Users, Settings, TrendingUp, Target, Shield, Lightbulb } from 'lucide-react';
+import { Search, Brain } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import FaqSection from '../components/faq/FaqSection';
@@ -22,22 +22,6 @@ const Faq = () => {
       )
     })).filter(section => section.questions.length > 0);
   }, [searchTerm]);
-
-  const getSectionIcon = (sectionId: string) => {
-    const iconMap: Record<string, any> = {
-      'general': Brain,
-      'business': Building2,
-      'engagement': Users,
-      'technology': Settings,
-      'onboarding': Target,
-      'metrics': TrendingUp,
-      'value': Lightbulb,
-      'customization': Settings,
-      'challenges': Shield,
-      'mission': Target
-    };
-    return iconMap[sectionId] || Brain;
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
@@ -97,12 +81,10 @@ const Faq = () => {
             ) : (
               <div className="space-y-6">
                 {filteredFaqData.map((section) => {
-                  const IconComponent = getSectionIcon(section.id);
                   return (
                     <FaqSection
                       key={section.id}
                       title={section.title}
-                      icon={<IconComponent className="h-6 w-6" />}
                       questions={section.questions}
                       defaultOpen={searchTerm.length > 0}
                     />

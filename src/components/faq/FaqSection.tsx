@@ -22,14 +22,12 @@ interface Question {
 
 interface FaqSectionProps {
   title: string;
-  icon: React.ReactNode;
   questions: Question[];
   defaultOpen?: boolean;
 }
 
 const FaqSection: React.FC<FaqSectionProps> = ({ 
   title, 
-  icon, 
   questions, 
   defaultOpen = false 
 }) => {
@@ -44,9 +42,6 @@ const FaqSection: React.FC<FaqSectionProps> = ({
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
           <div className="flex items-center gap-3">
-            <div className="text-primary">
-              {icon}
-            </div>
             <h2 className="text-xl font-bold text-left">{title}</h2>
           </div>
           <ChevronDown 
