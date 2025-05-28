@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ContactForm } from '@/components/ContactForm';
-
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -88,7 +87,6 @@ const clientLogos = [{
   src: "/lovable-uploads/snackon.png",
   alt: "Client Logo 10"
 }];
-
 const Contact = () => {
   return <div>
     {/* Hero Section */}
@@ -98,9 +96,7 @@ const Contact = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Contact Us
           </h1>
-          <p className="text-lg mb-8">
-            Have questions about our wellness solutions? Want to learn more about how Meltdown can benefit your company, employees, or wellness practice? We're here to help.
-          </p>
+          <p className="text-lg mb-8">Have questions about our wellness solutions? Want to learn more about how Meltdown can benefit your company, employees, or wellness practice? We're here to help. Maybe Our FAQ section can help!</p>
         </div>
       </div>
     </section>
@@ -259,24 +255,8 @@ const Contact = () => {
           Connect with like-minded wellness enthusiasts, get exclusive tips, and stay updated with our latest events.
         </p>
         <div className="max-w-md mx-auto">
-          <a 
-            href="https://l.instagram.com/?u=https%3A%2F%2Fchat.whatsapp.com%2FDctCedZET8o4HQoM3SHq9b%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAad2UyTIHESAh0IsFLxcrsDOq18A9kXUMkf1-W1OLe7Me8QpsRuLCA67hdUkPQ_aem_3LUCU1BFSQ8OLpq_W5PXyA&e=AT0VE7pgs46FlohVEtGMpz0xAIocDNYT0PH7SHdRK05fV90Ect21IrkWWR-4r8TRCBqu3ey89BJzNwdn2PuOSNExWQugj5dKcO_YqdjibMuvvgyAAEIdDA"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center gap-2 px-6 py-3"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              className="lucide-link-2"
-            >
+          <a href="https://l.instagram.com/?u=https%3A%2F%2Fchat.whatsapp.com%2FDctCedZET8o4HQoM3SHq9b%3Ffbclid%3DPAZXh0bgNhZW0CMTEAAad2UyTIHESAh0IsFLxcrsDOq18A9kXUMkf1-W1OLe7Me8QpsRuLCA67hdUkPQ_aem_3LUCU1BFSQ8OLpq_W5PXyA&e=AT0VE7pgs46FlohVEtGMpz0xAIocDNYT0PH7SHdRK05fV90Ect21IrkWWR-4r8TRCBqu3ey89BJzNwdn2PuOSNExWQugj5dKcO_YqdjibMuvvgyAAEIdDA" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-6 py-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-link-2">
               <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
               <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
               <line x1="8" x2="16" y1="12" y2="12"></line>
@@ -288,5 +268,4 @@ const Contact = () => {
     </section>
   </div>;
 };
-
 export default Contact;
