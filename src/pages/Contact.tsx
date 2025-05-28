@@ -108,7 +108,7 @@ const Contact = () => {
             <p className="text-gray-700 mb-4">
               Many questions are answered instantly in our comprehensive FAQ section. Save time and get immediate answers about our services, pricing, implementation, and more.
             </p>
-            <Link to="/faq" className="inline-flex items-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+            <Link to="/faq" className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
               Browse FAQ Section
               <ArrowRight className="h-4 w-4" />
             </Link>
