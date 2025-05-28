@@ -183,7 +183,13 @@ const ForProviders = () => {
       </section>
 
       {/* Provider Network Section */}
-      <LogoCarousel logos={wellnessLogos} title="Our Wellness Network" description="These amazing gyms, studios, and wellness centers help power the Meltdown experience." />
+      <LogoCarousel 
+        logos={wellnessLogos} 
+        title="Our Wellness Network" 
+        description="These amazing gyms, studios, and wellness centers help power the Meltdown experience."
+        showViewAllButton={true}
+        viewAllLink="/wellness-partners"
+      />
 
       {/* How It Works */}
       <section className="bg-gray-50 section-padding">

@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
 
 interface Logo {
   id: number;
@@ -11,18 +13,39 @@ interface LogoCarouselProps {
   logos: Logo[];
   title: string;
   description?: string;
+  showViewAllButton?: boolean;
+  viewAllLink?: string;
 }
 
-const LogoCarousel: React.FC<LogoCarouselProps> = ({ logos, title, description }) => {
+const LogoCarousel: React.FC<LogoCarouselProps> = ({ 
+  logos, 
+  title, 
+  description, 
+  showViewAllButton = false,
+  viewAllLink = '/wellness-partners'
+}) => {
   // Duplicate logos to create seamless infinite scroll
   const duplicatedLogos = [...logos, ...logos];
   
   return (
     <section className="py-12 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold mb-3">{title}</h2>
-          {description && <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>}
+        <div className="text-center mb-8 relative">
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold mb-3">{title}</h2>
+              {description && <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>}
+            </div>
+            {showViewAllButton && (
+              <div className="absolute top-0 right-0">
+                <Link to={viewAllLink}>
+                  <Button variant="outline" className="btn-outline">
+                    View All
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
         
         <div className="relative">
