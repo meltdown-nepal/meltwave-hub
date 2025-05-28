@@ -44,6 +44,18 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({ logos, title, description }
           </div>
         </div>
       </div>
+
+      {/* CSS Animation */}
+      <style>{`
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };
