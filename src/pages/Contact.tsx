@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ContactForm } from '@/components/ContactForm';
+import { MessageCircleQuestion, ArrowRight } from 'lucide-react';
+
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -96,7 +98,29 @@ const Contact = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Contact Us
           </h1>
-          <p className="text-lg mb-8">Have questions about our wellness solutions? Want to learn more about how Meltdown can benefit your company, employees, or wellness practice? We're here to help. Maybe Our FAQ section can help!</p>
+          <p className="text-lg mb-8">Have questions about our wellness solutions? Want to learn more about how Meltdown can benefit your company, employees, or wellness practice? We're here to help.</p>
+          
+          {/* FAQ Notice */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <MessageCircleQuestion className="h-6 w-6 text-yellow-600" />
+              <h3 className="text-lg font-semibold text-gray-800">Quick Answer? Check Our FAQ First!</h3>
+            </div>
+            <p className="text-gray-700 mb-4">
+              Many questions are answered instantly in our comprehensive FAQ section. Save time and get immediate answers about our services, pricing, implementation, and more.
+            </p>
+            <Link 
+              to="/faq" 
+              className="inline-flex items-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Browse FAQ Section
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          
+          <p className="text-base text-gray-600">
+            Still need personal assistance? Fill out the form below and we'll get back to you within 24 hours.
+          </p>
         </div>
       </div>
     </section>
