@@ -18,7 +18,7 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ 
-        left: -320, 
+        left: -640, // Increased scroll distance to account for 2 cards per column
         behavior: 'smooth' 
       });
     }
@@ -27,13 +27,19 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ 
-        left: 320, 
+        left: 640, // Increased scroll distance to account for 2 cards per column
         behavior: 'smooth' 
       });
     }
   };
 
   if (partners.length === 0) return null;
+
+  // Split partners into chunks of 2 for the 2-row layout
+  const partnerColumns = [];
+  for (let i = 0; i < partners.length; i += 2) {
+    partnerColumns.push(partners.slice(i, i + 2));
+  }
 
   return (
     <div className="mb-12">
@@ -68,7 +74,7 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
         </div>
       </div>
 
-      {/* Scrollable Cards Container */}
+      {/* Scrollable Cards Container with 2 Rows */}
       <ScrollArea className="w-full whitespace-nowrap rounded-md">
         <div
           ref={scrollRef}
@@ -76,12 +82,19 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
           role="region"
           aria-label={`${tier} tier wellness partners`}
         >
-          {partners.map((partner) => (
+          {partnerColumns.map((column, columnIndex) => (
             <div
-              key={partner.id}
-              className="w-80 flex-none h-64"
+              key={columnIndex}
+              className="w-80 flex-none flex flex-col space-y-4 h-[544px]" // Height for 2 cards + gap
             >
-              <PartnerCard partner={partner} />
+              {column.map((partner) => (
+                <div
+                  key={partner.id}
+                  className="h-64 flex-none"
+                >
+                  <PartnerCard partner={partner} />
+                </div>
+              ))}
             </div>
           ))}
         </div>
