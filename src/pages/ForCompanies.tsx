@@ -212,7 +212,7 @@ const ForCompanies = () => {
                 1
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-4 text-gray-950">Your Company Invests per Employee</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-950">Company Invests per Employee</h3>
                 <p className="text-gray-700">
                   Your organization makes an annual investment per employee, starting with a minimum of 5 employees. This gives your team access to a customized wellness platform built to support physical, mental, and social well-being.
                 </p>
