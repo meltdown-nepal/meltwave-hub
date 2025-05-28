@@ -35,7 +35,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Meltdown Providers <hello@meltdown.fit>',
-        to: ['hello@meltdown.fit', 'business@meltdown.fit'],
+        to: ['sanskar.meltdown@gmail.com', 'support@meltdownnepal.com'],
         subject: `New Wellness Provider Application from ${firstName} ${lastName}`,
         html: `
           <h2>New Wellness Provider Application</h2>
