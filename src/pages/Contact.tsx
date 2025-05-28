@@ -100,7 +100,7 @@ const Contact = () => {
           
           
           {/* FAQ Notice */}
-          <div className="border rounded-lg p-6 mb-8 bg-transparent">
+          <div className=" p-6 mb-8 bg-transparent">
             <div className="flex items-center justify-center gap-3 mb-3">
               <MessageCircleQuestion className="h-6 w-6 text-yellow-600" />
               <h3 className="text-lg font-semibold text-gray-800">Quick Answer? Check Our FAQ First!</h3>
