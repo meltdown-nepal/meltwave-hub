@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import TierBadge from '../components/partners/TierBadge';
 import PartnerCard from '../components/partners/PartnerCard';
+import PartnerCarousel from '../components/partners/PartnerCarousel';
 import FilterDropdown from '../components/partners/FilterDropdown';
+
 export type Tier = 'Basic' | 'Gold' | 'Platinum';
+
 export interface Partner {
   id: number;
   name: string;
@@ -14,8 +17,9 @@ export interface Partner {
   tier: Tier;
   services: string[];
 }
-const partnersData: Partner[] = [
+
 // Basic Tier Partners
+const partnersData: Partner[] = [
 {
   id: 1,
   name: "Bajra Sports Center",
@@ -423,23 +427,31 @@ const partnersData: Partner[] = [
   tier: "Platinum",
   services: ["Pilates Classes"]
 }];
+
 const WellnessPartners = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTier, setSelectedTier] = useState<Tier | 'All'>('All');
   const [selectedLocation, setSelectedLocation] = useState<string>('All');
+
   const uniqueLocations = Array.from(new Set(partnersData.map(p => p.location.split(',')[1]?.trim() || p.location)));
+
   const filteredPartners = partnersData.filter(partner => {
-    const matchesSearch = partner.name.toLowerCase().includes(searchTerm.toLowerCase()) || partner.location.toLowerCase().includes(searchTerm.toLowerCase()) || partner.services.some(service => service.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesSearch = partner.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      partner.location.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      partner.services.some(service => service.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesTier = selectedTier === 'All' || partner.tier === selectedTier;
     const matchesLocation = selectedLocation === 'All' || partner.location.includes(selectedLocation);
     return matchesSearch && matchesTier && matchesLocation;
   });
+
   const groupedPartners = {
     Platinum: filteredPartners.filter(p => p.tier === 'Platinum'),
     Gold: filteredPartners.filter(p => p.tier === 'Gold'),
     Basic: filteredPartners.filter(p => p.tier === 'Basic')
   };
-  return <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-r from-primary/10 to-secondary/10">
         <div className="container-custom">
@@ -447,11 +459,9 @@ const WellnessPartners = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Partner Wellness Options & Centers
             </h1>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">Meltdown regularly partners with new wellness studios and centers based on demand and feedback from our partner companies. Each addition goes through a standard screening process to ensure the highest wellbeing experience. Explore the most up-to-date list of our partners below.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              
-              
-            </div>
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              Meltdown regularly partners with new wellness studios and centers based on demand and feedback from our partner companies. Each addition goes through a standard screening process to ensure the highest wellbeing experience. Explore the most up-to-date list of our partners below.
+            </p>
           </div>
         </div>
       </section>
@@ -463,11 +473,26 @@ const WellnessPartners = () => {
             <div className="flex flex-col md:flex-row gap-4 items-center">
               <div className="relative flex-1 w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <Input placeholder="Search by name, location, or service..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-10" />
+                <Input 
+                  placeholder="Search by name, location, or service..." 
+                  value={searchTerm} 
+                  onChange={(e) => setSearchTerm(e.target.value)} 
+                  className="pl-10" 
+                />
               </div>
               <div className="flex gap-2 w-full md:w-auto">
-                <FilterDropdown label="Tier" value={selectedTier} options={['All', 'Platinum', 'Gold', 'Basic']} onChange={setSelectedTier} />
-                <FilterDropdown label="Location" value={selectedLocation} options={['All', ...uniqueLocations]} onChange={setSelectedLocation} />
+                <FilterDropdown 
+                  label="Tier" 
+                  value={selectedTier} 
+                  options={['All', 'Platinum', 'Gold', 'Basic']} 
+                  onChange={setSelectedTier} 
+                />
+                <FilterDropdown 
+                  label="Location" 
+                  value={selectedLocation} 
+                  options={['All', ...uniqueLocations]} 
+                  onChange={setSelectedLocation} 
+                />
               </div>
             </div>
           </div>
@@ -481,26 +506,18 @@ const WellnessPartners = () => {
             </p>
           </div>
 
-          {/* Partners by Tier */}
-          {(['Platinum', 'Gold', 'Basic'] as const).map(tier => {
-          const tieredPartners = groupedPartners[tier];
-          if (tieredPartners.length === 0) return null;
-          return <div key={tier} className="mb-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <TierBadge tier={tier} />
-                  <h2 className="text-2xl font-bold">
-                    {tier} Partners ({tieredPartners.length})
-                  </h2>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {tieredPartners.map(partner => <PartnerCard key={partner.id} partner={partner} />)}
-                </div>
-              </div>;
-        })}
+          {/* Partners by Tier - Now in Horizontal Carousels */}
+          {(['Platinum', 'Gold', 'Basic'] as const).map(tier => (
+            <PartnerCarousel
+              key={tier}
+              tier={tier}
+              partners={groupedPartners[tier]}
+            />
+          ))}
 
           {/* No Results */}
-          {filteredPartners.length === 0 && <div className="text-center py-12">
+          {filteredPartners.length === 0 && (
+            <div className="text-center py-12">
               <div className="bg-gray-100 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Search className="h-8 w-8 text-gray-400" />
               </div>
@@ -508,7 +525,8 @@ const WellnessPartners = () => {
               <p className="text-gray-600">
                 Try adjusting your search criteria or filters to find wellness centers.
               </p>
-            </div>}
+            </div>
+          )}
         </div>
       </section>
 
@@ -530,6 +548,8 @@ const WellnessPartners = () => {
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default WellnessPartners;
