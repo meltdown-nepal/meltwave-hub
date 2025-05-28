@@ -216,56 +216,7 @@ const Contact = () => {
     </section>
 
     {/* FAQ Section */}
-    <section className="section-padding">
-      <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg max-w-3xl mx-auto">
-            Find quick answers to common questions about our services.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            <AccordionItem value="item-1" className="border rounded-lg px-6 py-2 bg-white shadow-md">
-              <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                How quickly can you implement a wellness program?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700">
-                Most corporate wellness programs can be implemented within 1 weeks from initial consultation, depending on the program's complexity and company size.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2" className="border rounded-lg px-6 py-2 bg-white shadow-md">
-              <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                What is the cost of your corporate wellness programs?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700">
-                Our program costs vary based on company size, program components, and implementation approach. We offer customized solutions to fit various budgets. Contact us for a personalized quote.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3" className="border rounded-lg px-6 py-2 bg-white shadow-md">
-              <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                How do I qualify as a wellness provider?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700">
-                We look for providers with appropriate certifications, insurance, and experience in their area of expertise. Apply through our "For Providers" page, and our team will contact you to discuss the next steps.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-4" className="border rounded-lg px-6 py-2 bg-white shadow-md">
-              <AccordionTrigger className="text-xl font-bold hover:no-underline">
-                Do you offer remote wellness programs?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700">
-                Yes, we offer fully remote, hybrid, and in-person wellness programs to accommodate various work arrangements and company preferences.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </div>
-    </section>
+    
 
     {/* WhatsApp Community Section */}
     <section className="bg-primary/20 section-padding">
