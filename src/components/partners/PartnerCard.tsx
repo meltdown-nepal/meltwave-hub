@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { MapPin, ChevronRight } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import TierBadge from './TierBadge';
 import ServiceIcon from './ServiceIcon';
 import { Partner } from '../../pages/WellnessPartners';
@@ -48,21 +47,12 @@ const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
 
         {/* Special Features for Platinum */}
         {isPlatinum && partner.services.some(s => ['Mental Health', 'Physiotherapy', 'Personal Training'].includes(s)) && (
-          <div className="mb-4 p-3 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-100">
+          <div className="p-3 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-100">
             <p className="text-xs text-purple-700 font-medium">
               ✨ Premium services include specialized wellness programs
             </p>
           </div>
         )}
-
-        {/* Action Button */}
-        <Button 
-          variant="outline" 
-          className="w-full group-hover:bg-primary group-hover:text-black transition-colors"
-        >
-          View Details
-          <ChevronRight className="h-4 w-4 ml-1" />
-        </Button>
       </CardContent>
     </Card>
   );
