@@ -447,9 +447,7 @@ const WellnessPartners = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Partner Wellness Options & Centers
             </h1>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              Meltdown regularly partners with new wellness studios and centers based on demand and feedback from our partner companies. Each addition goes through a standard screening process to ensure the highest wellbeing experience. Explore the most up-to-date list of our partners below or turn on app notifications to stay in the loop.
-            </p>
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">Meltdown regularly partners with new wellness studios and centers based on demand and feedback from our partner companies. Each addition goes through a standard screening process to ensure the highest wellbeing experience. Explore the most up-to-date list of our partners below.</p>
             <div className="flex flex-wrap gap-4 justify-center">
               
               
