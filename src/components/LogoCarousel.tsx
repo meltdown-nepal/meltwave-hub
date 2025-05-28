@@ -42,10 +42,6 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({ logos, title, description }
               </div>
             ))}
           </div>
-          
-          {/* Gradient overlays for smooth edge effect */}
-          <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-yellow-50 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-yellow-50 to-transparent z-10 pointer-events-none"></div>
         </div>
       </div>
     </section>
