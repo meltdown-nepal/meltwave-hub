@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -28,6 +29,7 @@ import WellnessOnboarding from "./pages/WellnessOnboarding";
 import WellnessPartners from "./pages/WellnessPartners";
 import Careers from "./pages/Careers";
 import AnalyticsPage from "./pages/Analytics";
+import Faq from "./pages/Faq";
 
 function AppContent() {
   const { trackEvent } = useVisitorTracking();
@@ -57,6 +59,7 @@ function AppContent() {
           <Route path="/wellness-partners" element={<WellnessPartners />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
