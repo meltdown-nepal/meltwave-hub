@@ -206,51 +206,63 @@ const ForCompanies = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
                 1
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Assessment</h3>
-                <p>
-                  We evaluate your company's current wellness status and identify specific needs and goals.
+                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Your Company Invests per Employee</h3>
+                <p className="text-sm">
+                  Your organization makes an annual investment per employee, starting with a minimum of 5 employees. This gives your team access to a customized wellness platform built to support physical, mental, and social well-being.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+            <div className="bg-white p-6 rounded-lg shadow-md relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
                 2
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Custom Program Design</h3>
-                <p>
-                  Our experts create a tailored wellness program aligned with your company's culture and objectives.
+                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Customized App for Your Employees</h3>
+                <p className="text-sm">
+                  Once enrolled, your employees receive access to a Meltdown app customized exclusively for your company. Through the app, employees can explore wellness services, choose packages, track progress, join challenges, and access company-specific content.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+            <div className="bg-white p-6 rounded-lg shadow-md relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
                 3
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Implementation</h3>
-                <p>
-                  We handle all aspects of program rollout, from provider management to employee engagement.
+                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Employees Choose Their Own Package</h3>
+                <p className="text-sm">
+                  We offer tiered packages: Basic (gym & group fitness), Gold (includes swimming, mental health, nutrition), Platinum (full access with 1-on-1 services). All packages are heavily subsidized (40–50% below market rates) thanks to your company's investment.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md text-center relative">
+            <div className="bg-white p-6 rounded-lg shadow-md relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
                 4
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3">Ongoing Support</h3>
-                <p>
-                  We provide continuous monitoring, reporting, and program adjustments to ensure optimal results.
+                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Transparent Reporting for HR</h3>
+                <p className="text-sm">
+                  Your HR team gets access to a secure corporate dashboard with real-time participation data, monthly engagement reports, wellness trend insights across departments, and tools to launch internal wellness campaigns.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
+                5
+              </div>
+              <div className="pt-4">
+                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Continuous Support & Engagement</h3>
+                <p className="text-sm">
+                  Meltdown provides a dedicated account manager, regular check-ins and program reviews, optional on-site workshops, events, and pop-ups, plus custom marketing material to encourage participation.
                 </p>
               </div>
             </div>
