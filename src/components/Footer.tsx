@@ -1,11 +1,8 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import CorporateFaqsModal from './CorporateFaqsModal';
 
 const Footer: React.FC = () => {
-  const [isFaqsModalOpen, setIsFaqsModalOpen] = useState(false);
-
   return (
     <>
       <footer className="bg-gray-100 pt-12 pb-8">
@@ -43,12 +40,14 @@ const Footer: React.FC = () => {
                 <li><Link to="/meltfit" className="text-gray-600 hover:text-secondary transition-colors">MeltFit Programs</Link></li>
                 <li><Link to="/contact" className="text-gray-600 hover:text-secondary transition-colors">Contact Us</Link></li>
                 <li>
-                  <button 
-                    onClick={() => setIsFaqsModalOpen(true)}
-                    className="text-gray-600 hover:text-secondary transition-colors text-left"
+                  <a 
+                    href="https://docs.google.com/document/d/1xgvWGJ3wE2vpXMWR6RoBDMUG7xjZJnRpiX9ERo65fGc/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-secondary transition-colors"
                   >
                     Corporate FAQs
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -74,11 +73,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </footer>
-
-      <CorporateFaqsModal 
-        isOpen={isFaqsModalOpen} 
-        onClose={() => setIsFaqsModalOpen(false)} 
-      />
     </>
   );
 };
