@@ -212,7 +212,7 @@ const ForCompanies = () => {
                 1
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Your Company Invests per Employee</h3>
+                <h3 className="text-xl font-bold mb-3 text-gray-950">Your Company Invests per Employee</h3>
                 <p className="text-sm">
                   Your organization makes an annual investment per employee, starting with a minimum of 5 employees. This gives your team access to a customized wellness platform built to support physical, mental, and social well-being.
                 </p>
@@ -224,7 +224,7 @@ const ForCompanies = () => {
                 2
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Customized App for Your Employees</h3>
+                <h3 className="text-xl font-bold mb-3 text-slate-950">Customized App for Your Employees</h3>
                 <p className="text-sm">
                   Once enrolled, your employees receive access to a Meltdown app customized exclusively for your company. Through the app, employees can explore wellness services, choose packages, track progress, join challenges, and access company-specific content.
                 </p>
@@ -236,7 +236,7 @@ const ForCompanies = () => {
                 3
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Employees Choose Their Own Package</h3>
+                <h3 className="text-xl font-bold mb-3 text-slate-950">Employees Choose Their Own Package</h3>
                 <p className="text-sm">
                   We offer tiered packages: Basic (gym & group fitness), Gold (includes swimming, mental health, nutrition), Platinum (full access with 1-on-1 services). All packages are heavily subsidized (40–50% below market rates) thanks to your company's investment.
                 </p>
@@ -248,7 +248,7 @@ const ForCompanies = () => {
                 4
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Transparent Reporting for HR</h3>
+                <h3 className="text-xl font-bold mb-3 text-slate-950">Transparent Reporting for HR</h3>
                 <p className="text-sm">
                   Your HR team gets access to a secure corporate dashboard with real-time participation data, monthly engagement reports, wellness trend insights across departments, and tools to launch internal wellness campaigns.
                 </p>
@@ -260,7 +260,7 @@ const ForCompanies = () => {
                 5
               </div>
               <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-green-600">✅ Continuous Support & Engagement</h3>
+                <h3 className="text-xl font-bold mb-3 text-slate-950"> Continuous Support &amp; Engagement</h3>
                 <p className="text-sm">
                   Meltdown provides a dedicated account manager, regular check-ins and program reviews, optional on-site workshops, events, and pop-ups, plus custom marketing material to encourage participation.
                 </p>
