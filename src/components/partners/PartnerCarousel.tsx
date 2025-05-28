@@ -17,8 +17,13 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
 
   const scrollLeft = () => {
     if (scrollRef.current) {
+      const containerWidth = scrollRef.current.clientWidth;
+      const columnWidth = 320; // Width of each column (w-80 = 320px) plus gap
+      const visibleColumns = Math.floor(containerWidth / columnWidth);
+      const scrollDistance = visibleColumns * columnWidth;
+      
       scrollRef.current.scrollBy({ 
-        left: -640, // Increased scroll distance to account for 2 cards per column
+        left: -scrollDistance,
         behavior: 'smooth' 
       });
     }
@@ -26,8 +31,13 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
 
   const scrollRight = () => {
     if (scrollRef.current) {
+      const containerWidth = scrollRef.current.clientWidth;
+      const columnWidth = 320; // Width of each column (w-80 = 320px) plus gap
+      const visibleColumns = Math.floor(containerWidth / columnWidth);
+      const scrollDistance = visibleColumns * columnWidth;
+      
       scrollRef.current.scrollBy({ 
-        left: 640, // Increased scroll distance to account for 2 cards per column
+        left: scrollDistance,
         behavior: 'smooth' 
       });
     }
