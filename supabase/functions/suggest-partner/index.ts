@@ -1,100 +1,58 @@
 
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-interface SuggestPartnerData {
-  centerName: string;
-  serviceType: string;
-  serviceTypeOther?: string;
-  location: string;
-  centerDescription?: string;
-  userName: string;
-  userEmail: string;
-  userPhone?: string;
-  additionalInfo?: string;
-}
-
-serve(async (req: Request): Promise<Response> => {
+serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    console.log("RESEND_API_KEY exists:", !!RESEND_API_KEY);
-    
-    if (!RESEND_API_KEY) {
-      throw new Error('Missing Resend API key')
-    }
-    
-    const suggestionData: SuggestPartnerData = await req.json();
-    console.log("Received partner suggestion:", JSON.stringify(suggestionData));
+    const { partnerName, location, services, contactInfo, additionalInfo, submitterName, submitterEmail } = await req.json()
 
-    // Construct email content
-    const htmlContent = `
-      <h2>New Wellness Partner Suggestion</h2>
-      
-      <h3>Suggested Wellness Center:</h3>
-      <ul>
-        <li><strong>Name:</strong> ${suggestionData.centerName}</li>
-        <li><strong>Service Type:</strong> ${suggestionData.serviceType === 'Other' ? suggestionData.serviceTypeOther : suggestionData.serviceType}</li>
-        <li><strong>Location:</strong> ${suggestionData.location}</li>
-        ${suggestionData.centerDescription ? `<li><strong>Description:</strong> ${suggestionData.centerDescription}</li>` : ''}
-      </ul>
-      
-      <h3>Suggested By:</h3>
-      <ul>
-        <li><strong>Name:</strong> ${suggestionData.userName}</li>
-        <li><strong>Email:</strong> ${suggestionData.userEmail}</li>
-        ${suggestionData.userPhone ? `<li><strong>Phone:</strong> ${suggestionData.userPhone}</li>` : ''}
-      </ul>
-      
-      ${suggestionData.additionalInfo ? `
-        <h3>Additional Information:</h3>
-        <p>${suggestionData.additionalInfo}</p>
-      ` : ''}
-      
-      <hr style="margin: 20px 0;">
-      <p><em>This suggestion was submitted through the Meltdown wellness partner suggestion form.</em></p>
-    `;
-
-    // Send email using Resend API
-    const emailResponse = await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Partner Suggestions <onboarding@resend.dev>',
-        to: ['sanskar.meltdown@gmail.com'], // Replace with your email
-        subject: `New Partner Suggestion: ${suggestionData.centerName}`,
-        html: htmlContent,
+        from: 'Meltdown Partners <hello@meltdown.fit>',
+        to: ['hello@meltdown.fit', 'business@meltdown.fit'],
+        subject: `New Partner Suggestion: ${partnerName}`,
+        html: `
+          <h2>New Partner Suggestion</h2>
+          
+          <h3>Suggested Partner Information</h3>
+          <p><strong>Partner Name:</strong> ${partnerName}</p>
+          <p><strong>Location:</strong> ${location}</p>
+          <p><strong>Services:</strong> ${services}</p>
+          <p><strong>Contact Info:</strong> ${contactInfo}</p>
+          ${additionalInfo ? `<p><strong>Additional Info:</strong> ${additionalInfo}</p>` : ''}
+          
+          <h3>Submitted By</h3>
+          <p><strong>Name:</strong> ${submitterName}</p>
+          <p><strong>Email:</strong> ${submitterEmail}</p>
+        `,
       }),
-    });
+    })
 
-    if (!emailResponse.ok) {
-      const errorData = await emailResponse.json();
-      console.error("Email sending failed:", JSON.stringify(errorData));
-      throw new Error(`Failed to send email: ${emailResponse.status}`);
-    }
-
-    const responseData = await emailResponse.json();
-    console.log("Email sent response:", JSON.stringify(responseData));
-
+    const data = await res.json()
+    
     return new Response(
-      JSON.stringify({ message: 'Partner suggestion submitted successfully' }),
+      JSON.stringify(data),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
+        status: res.ok ? 200 : 400,
       },
     )
   } catch (error) {
-    console.error('Partner suggestion submission error:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
       { 

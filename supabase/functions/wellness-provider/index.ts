@@ -1,102 +1,72 @@
 
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-interface WellnessProviderData {
-  serviceType: string;
-  serviceTypeOther?: string;
-  operationMode: string;
-  location: string;
-  clientsPerWeek: string;
-  gymCollaboration: boolean;
-  name: string;
-  email: string;
-  phone?: string;
-  additionalInfo?: string;
-}
-
-serve(async (req: Request): Promise<Response> => {
+serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    console.log("RESEND_API_KEY exists:", !!RESEND_API_KEY);
-    
-    if (!RESEND_API_KEY) {
-      throw new Error('Missing Resend API key')
-    }
-    
-    const providerData: WellnessProviderData = await req.json();
-    console.log("Received wellness provider submission:", JSON.stringify(providerData));
+    const { 
+      firstName, 
+      lastName, 
+      email, 
+      phone, 
+      company, 
+      services, 
+      experience, 
+      certifications, 
+      availability, 
+      message 
+    } = await req.json()
 
-    // Construct email content
-    const htmlContent = `
-      <h2>New Wellness Provider Application</h2>
-      
-      <h3>Provider Information:</h3>
-      <ul>
-        <li><strong>Name:</strong> ${providerData.name}</li>
-        <li><strong>Email:</strong> ${providerData.email}</li>
-        <li><strong>Phone:</strong> ${providerData.phone || 'Not provided'}</li>
-      </ul>
-      
-      <h3>Service Details:</h3>
-      <ul>
-        <li><strong>Service Type:</strong> ${providerData.serviceType === 'other' ? providerData.serviceTypeOther : providerData.serviceType}</li>
-        <li><strong>Operation Mode:</strong> ${providerData.operationMode}</li>
-        <li><strong>Location:</strong> ${providerData.location}</li>
-        <li><strong>Clients per Week:</strong> ${providerData.clientsPerWeek}</li>
-        <li><strong>Interested in Gym Collaboration:</strong> ${providerData.gymCollaboration ? 'Yes' : 'No'}</li>
-      </ul>
-      
-      ${providerData.additionalInfo ? `
-        <h3>Additional Information:</h3>
-        <p>${providerData.additionalInfo}</p>
-      ` : ''}
-    `;
-
-    // Send email using Resend API
-    const emailResponse = await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Wellness Provider <onboarding@resend.dev>',
-        to: ['sanskar.meltdown@gmail.com'], // Replace with your email
-        subject: `New Wellness Provider: ${providerData.name}`,
-        html: htmlContent,
+        from: 'Meltdown Providers <hello@meltdown.fit>',
+        to: ['hello@meltdown.fit', 'business@meltdown.fit'],
+        subject: `New Wellness Provider Application from ${firstName} ${lastName}`,
+        html: `
+          <h2>New Wellness Provider Application</h2>
+          
+          <h3>Personal Information</h3>
+          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+          
+          <h3>Professional Information</h3>
+          <p><strong>Services:</strong> ${services}</p>
+          <p><strong>Experience:</strong> ${experience}</p>
+          <p><strong>Certifications:</strong> ${certifications || 'Not provided'}</p>
+          <p><strong>Availability:</strong> ${availability}</p>
+          
+          ${message ? `<h3>Additional Message</h3><p>${message}</p>` : ''}
+        `,
       }),
-    });
+    })
 
-    if (!emailResponse.ok) {
-      const errorData = await emailResponse.json();
-      console.error("Email sending failed:", JSON.stringify(errorData));
-      throw new Error(`Failed to send email: ${emailResponse.status}`);
-    }
-
-    const responseData = await emailResponse.json();
-    console.log("Email sent response:", JSON.stringify(responseData));
-
-    // Store the wellness provider data in Supabase (optional if you want to store it)
-    // We're just sending email notification for now
-
+    const data = await res.json()
+    
     return new Response(
-      JSON.stringify({ message: 'Wellness provider application submitted successfully' }),
+      JSON.stringify(data),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
+        status: res.ok ? 200 : 400,
       },
     )
   } catch (error) {
-    console.error('Wellness provider submission error:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
       { 

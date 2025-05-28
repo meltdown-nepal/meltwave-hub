@@ -1,75 +1,53 @@
 
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req: Request): Promise<Response> => {
+serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    const { firstName, lastName, email, phone, company, interest, message } = await req.json()
+    const { name, email, phone, company, message } = await req.json()
 
-    // Get environment variables
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    console.log("RESEND_API_KEY exists:", !!RESEND_API_KEY);
-    
-    if (!RESEND_API_KEY) {
-      throw new Error('Missing Resend API key')
-    }
-
-    // Construct email content
-    const emailContent = `
-      New Contact Form Submission:
-      
-      Name: ${firstName} ${lastName}
-      Email: ${email}
-      Phone: ${phone || 'Not provided'}
-      Company: ${company || 'Not provided'}
-      Interest: ${interest}
-      
-      Message:
-      ${message}
-    `
-
-    // In test mode, we must use the special Resend test email address
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Acme <onboarding@resend.dev>', // Using Resend's test email
-        to: 'sanskar.meltdown@gmail.com', // Send to a real recipient
-        subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-        text: emailContent,
-        reply_to: email // Add reply-to so you can reply directly to the sender
+        from: 'Meltdown Contact <hello@meltdown.fit>',
+        to: ['hello@meltdown.fit', 'business@meltdown.fit'],
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+          <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
       }),
     })
 
-    const responseData = await res.json();
+    const data = await res.json()
     
-    if (!res.ok) {
-      console.error("Email sending failed:", JSON.stringify(responseData));
-      throw new Error(`Failed to send email: ${res.status}`)
-    }
-
-    console.log("Email sent response:", JSON.stringify(responseData));
-
     return new Response(
-      JSON.stringify({ message: 'Email sent successfully', response: responseData }),
+      JSON.stringify(data),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
+        status: res.ok ? 200 : 400,
       },
     )
   } catch (error) {
-    console.error('Contact form error:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
       { 
