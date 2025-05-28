@@ -45,6 +45,168 @@ export type Database = {
         }
         Relationships: []
       }
+      page_views: {
+        Row: {
+          browser: string | null
+          city: string | null
+          country: string | null
+          device_type: string | null
+          duration_seconds: number | null
+          id: string
+          ip_address: unknown | null
+          os: string | null
+          page_path: string
+          page_title: string | null
+          referrer: string | null
+          screen_resolution: string | null
+          session_id: string
+          timestamp: string
+          user_agent: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+          viewport_size: string | null
+        }
+        Insert: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          duration_seconds?: number | null
+          id?: string
+          ip_address?: unknown | null
+          os?: string | null
+          page_path: string
+          page_title?: string | null
+          referrer?: string | null
+          screen_resolution?: string | null
+          session_id: string
+          timestamp?: string
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          viewport_size?: string | null
+        }
+        Update: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          duration_seconds?: number | null
+          id?: string
+          ip_address?: unknown | null
+          os?: string | null
+          page_path?: string
+          page_title?: string | null
+          referrer?: string | null
+          screen_resolution?: string | null
+          session_id?: string
+          timestamp?: string
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          viewport_size?: string | null
+        }
+        Relationships: []
+      }
+      visitor_events: {
+        Row: {
+          event_data: Json | null
+          event_name: string
+          event_type: string
+          id: string
+          page_path: string | null
+          session_id: string
+          timestamp: string
+        }
+        Insert: {
+          event_data?: Json | null
+          event_name: string
+          event_type: string
+          id?: string
+          page_path?: string | null
+          session_id: string
+          timestamp?: string
+        }
+        Update: {
+          event_data?: Json | null
+          event_name?: string
+          event_type?: string
+          id?: string
+          page_path?: string | null
+          session_id?: string
+          timestamp?: string
+        }
+        Relationships: []
+      }
+      visitor_sessions: {
+        Row: {
+          browser: string | null
+          city: string | null
+          country: string | null
+          device_type: string | null
+          entry_page: string | null
+          exit_page: string | null
+          first_visit: string
+          id: string
+          is_returning_visitor: boolean | null
+          last_activity: string
+          os: string | null
+          page_views_count: number | null
+          session_id: string
+          total_duration_seconds: number | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          entry_page?: string | null
+          exit_page?: string | null
+          first_visit?: string
+          id?: string
+          is_returning_visitor?: boolean | null
+          last_activity?: string
+          os?: string | null
+          page_views_count?: number | null
+          session_id: string
+          total_duration_seconds?: number | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          entry_page?: string | null
+          exit_page?: string | null
+          first_visit?: string
+          id?: string
+          is_returning_visitor?: boolean | null
+          last_activity?: string
+          os?: string | null
+          page_views_count?: number | null
+          session_id?: string
+          total_duration_seconds?: number | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

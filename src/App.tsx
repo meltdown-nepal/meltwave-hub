@@ -9,6 +9,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import { useVisitorTracking } from "./hooks/useVisitorTracking";
 
 // Pages
 import Home from "./pages/Home";
@@ -26,6 +27,42 @@ import ScheduleDemoFlow from "./pages/ScheduleDemoFlow";
 import WellnessProviders from "./pages/WellnessProviders";
 import WellnessOnboarding from "./pages/WellnessOnboarding";
 import Careers from "./pages/Careers";
+import AnalyticsPage from "./pages/Analytics";
+
+function AppContent() {
+  const { trackEvent } = useVisitorTracking();
+
+  // Make trackEvent available globally for easy access
+  (window as any).trackEvent = trackEvent;
+
+  return (
+    <>
+      <ScrollToTop />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/corporate-wellness" element={<CorporateWellness />} />
+          <Route path="/companies" element={<ForCompanies />} />
+          <Route path="/providers" element={<ForProviders />} />
+          <Route path="/employees" element={<ForEmployees />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/academy" element={<Academy />} />
+          <Route path="/meltfit" element={<MeltFit />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
+          <Route path="/wellness-providers" element={<WellnessProviders />} />
+          <Route path="/wellness-onboarding" element={<WellnessOnboarding />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
+  );
+}
 
 const App = () => {
   // Create a query client instance inside the component
@@ -37,28 +74,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <HashRouter>
-          <ScrollToTop />
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/corporate-wellness" element={<CorporateWellness />} />
-              <Route path="/companies" element={<ForCompanies />} />
-              <Route path="/providers" element={<ForProviders />} />
-              <Route path="/employees" element={<ForEmployees />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/academy" element={<Academy />} />
-              <Route path="/meltfit" element={<MeltFit />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
-              <Route path="/wellness-providers" element={<WellnessProviders />} />
-              <Route path="/wellness-onboarding" element={<WellnessOnboarding />} />
-              <Route path="/careers" element={<Careers />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
+          <AppContent />
         </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>
