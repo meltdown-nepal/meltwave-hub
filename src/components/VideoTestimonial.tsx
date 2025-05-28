@@ -34,7 +34,7 @@ const VideoTestimonial = ({
       onClick={handleClick}
     >
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200">{title}</h3>
+        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200">"{title}"</h3>
         <div className="flex items-center">
           <div>
             <p className="font-bold">{name}</p>
