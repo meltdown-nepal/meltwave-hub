@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, MapPin, Filter } from 'lucide-react';
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,7 @@ import TierBadge from '../components/partners/TierBadge';
 import PartnerCard from '../components/partners/PartnerCard';
 import PartnerCarousel from '../components/partners/PartnerCarousel';
 import FilterDropdown from '../components/partners/FilterDropdown';
+import { useWellnessPartners } from '../hooks/useWellnessPartners';
 
 export type Tier = 'Basic' | 'Gold' | 'Platinum';
 
@@ -18,417 +20,8 @@ export interface Partner {
   services: string[];
 }
 
-// Basic Tier Partners
-const partnersData: Partner[] = [
-{
-  id: 1,
-  name: "Bajra Sports Center",
-  location: "Kalopul",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 2,
-  name: "Beauty and The Beast Fitness Station",
-  location: "New Baneshwor",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 3,
-  name: "Belegend Shapes Fitness And Gym",
-  location: "Khushibu",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 4,
-  name: "Black Star Gym",
-  location: "Boudha Road Nayabasti",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 5,
-  name: "Fitness Area",
-  location: "Kirtipur",
-  tier: "Basic",
-  services: ["Gym", "Cardio", "Group Classes"]
-}, {
-  id: 6,
-  name: "Gurkhali Fitness and Gym center",
-  location: "New road",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 7,
-  name: "Gym Go Fitness",
-  location: "Madhyepur Thimi",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 8,
-  name: "Gymcha Fitness",
-  location: "Ram Mandir, Bhaktapur",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 9,
-  name: "Kumari Fitness Center",
-  location: "Kanibhal, Patan",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 10,
-  name: "Lifegoal Fitness",
-  location: "Bohoratar",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 11,
-  name: "Numa Fitness",
-  location: "Dhapakhel Road",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 12,
-  name: "Power Planet Fitness",
-  location: "Dhalko, Kathmandu",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 13,
-  name: "Proton Gym",
-  location: "Ekantakuna, Lalitpur",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 14,
-  name: "Revive Fitness Nepal",
-  location: "Mid Baneshwor",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 15,
-  name: "RJ Gym Fitness",
-  location: "Babarmahal, Kathmandu",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 16,
-  name: "Super Fitness",
-  location: "Samakhushi",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 17,
-  name: "Madhyapur VR Fitness",
-  location: "Lokanthali, Bhaktapur",
-  tier: "Basic",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 18,
-  name: "De Gym",
-  location: "Tokha, Dhapasi",
-  tier: "Basic",
-  services: ["Gym", "Cardio", "Zumba", "Group Classes"]
-},
-// Gold Tier Partners
-{
-  id: 19,
-  name: "7 Iron Golf",
-  location: "Shree Durbar Tol, Pulchowk",
-  tier: "Gold",
-  services: ["Indoor Golf", "Simulated Golf"]
-}, {
-  id: 20,
-  name: "Avya Club",
-  location: "Gharipatan, Pokhara",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 21,
-  name: "Athlete Land",
-  location: "Balkumari, Lalitpur",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 22,
-  name: "Boxmandu (Lazimpat)",
-  location: "Lazimpat, Kathmandu",
-  tier: "Gold",
-  services: ["Boxing", "Kick Boxing", "Group Classes"]
-}, {
-  id: 23,
-  name: "Boxmandu (Bouddha)",
-  location: "Bouddha, Kathmandu",
-  tier: "Gold",
-  services: ["Boxing", "Kick Boxing", "Group Classes"]
-}, {
-  id: 24,
-  name: "Regal Fitness Center",
-  location: "Kamalpokhari",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 25,
-  name: "Regal Fitness Center",
-  location: "Teku",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 26,
-  name: "Bajra Nanita's Fitness",
-  location: "Bhaisepati",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 27,
-  name: "Banus Total Fitness",
-  location: "Kamal Pokhari",
-  tier: "Gold",
-  services: ["Gym", "Cardio", "Sauna", "Group Classes", "Yoga"]
-}, {
-  id: 28,
-  name: "Bob's Gym Lakecity",
-  location: "Ammat St, Pokhara",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 29,
-  name: "Cage Total Fitness",
-  location: "Gwarko",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 30,
-  name: "CGG Sports Hub",
-  location: "Ikhadole",
-  tier: "Gold",
-  services: ["Boxing", "Group Classes"]
-}, {
-  id: 31,
-  name: "City Health Studio",
-  location: "Dhumbarahi",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 32,
-  name: "DG Boxing",
-  location: "Boudha",
-  tier: "Gold",
-  services: ["Boxing"]
-}, {
-  id: 33,
-  name: "Divine Physical Fitness Center",
-  location: "Nayabazar",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 34,
-  name: "Epic Fitness",
-  location: "Dallu, Lakhatirtga marg",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 35,
-  name: "Fitzen Studio",
-  location: "Khaldhara Dhalku",
-  tier: "Gold",
-  services: ["Kickboxing", "Group Classes"]
-}, {
-  id: 36,
-  name: "Gymkhana Muay Thai",
-  location: "Maharajgunj",
-  tier: "Gold",
-  services: ["Gym", "Cardio", "Muay Thai", "Sauna"]
-}, {
-  id: 37,
-  name: "Hardik Fitness Club",
-  location: "Pulchowk, Lalitpur",
-  tier: "Gold",
-  services: ["Gym", "Cardio", "Yoga", "Group Classes", "Sauna"]
-}, {
-  id: 38,
-  name: "Healthy Heart Fitness Center",
-  location: "Thulo Barang",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 39,
-  name: "Impulse Academy of Performing Arts",
-  location: "Pulchowk",
-  tier: "Gold",
-  services: ["Dance", "Fitness Classes", "Group Classes"]
-}, {
-  id: 40,
-  name: "Kalanki Gym Center",
-  location: "Kalanki",
-  tier: "Gold",
-  services: ["Gym", "Cardio", "Kickboxing", "Group Classes"]
-}, {
-  id: 41,
-  name: "Kathmandu Sport Climbing Center",
-  location: "Paknajol",
-  tier: "Gold",
-  services: ["Rock Climbing", "Bouldering"]
-}, {
-  id: 42,
-  name: "Manjushree Fitness",
-  location: "Boudha",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 43,
-  name: "Moksha Fitness Studio",
-  location: "Lazimpat",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 44,
-  name: "Nayabazar Divine Fitness",
-  location: "Nayabazar",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 45,
-  name: "Nepal Fitness Mantra",
-  location: "Kirtan Chowk",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 46,
-  name: "ROC Fitness Club",
-  location: "Tinkune",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 47,
-  name: "Rush Fitness and Cafe Studio",
-  location: "Bansbari",
-  tier: "Gold",
-  services: ["Gym", "Cardio", "Yoga"]
-}, {
-  id: 48,
-  name: "Tahachal Physical Fitness Center",
-  location: "Tahachal",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 49,
-  name: "Tapout Fitness",
-  location: "Bishalnagar, Maharajgunj",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 50,
-  name: "The Pump - Chabahil",
-  location: "Chabahil",
-  tier: "Gold",
-  services: ["Gym", "Cardio", "Yoga"]
-}, {
-  id: 51,
-  name: "The Pump - Jhamsikhel",
-  location: "Jhamsikhel",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 52,
-  name: "The Vibe Boxing Club",
-  location: "Nayabazar",
-  tier: "Gold",
-  services: ["Boxing"]
-}, {
-  id: 53,
-  name: "Three Lions Fitness Center",
-  location: "Samakhushi",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 54,
-  name: "Titan Gym and Fitness",
-  location: "Kumaripati",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 55,
-  name: "Total Physical Fitness Center",
-  location: "Baneshwor",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 56,
-  name: "Ultimate Lifting Club",
-  location: "Tinkune",
-  tier: "Gold",
-  services: ["Gym", "Cardio"]
-}, {
-  id: 57,
-  name: "Yogalets N Dance Studio",
-  location: "Kumaripati, Lalitpur",
-  tier: "Gold",
-  services: ["Dance", "Yoga"]
-},
-// Platinum Tier Partners
-{
-  id: 58,
-  name: "Banu's Physiotherapy",
-  location: "Kamalpokhari",
-  tier: "Platinum",
-  services: ["Sports Rehab", "Physiotherapy Classes"]
-}, {
-  id: 59,
-  name: "Dhanyantari Sports Hub (Swimming)",
-  location: "Kalopul",
-  tier: "Platinum",
-  services: ["Swimming"]
-}, {
-  id: 60,
-  name: "Happy Minds",
-  location: "Jhamsikhel",
-  tier: "Platinum",
-  services: ["Mental Health Counselling"]
-}, {
-  id: 61,
-  name: "Hardik Fitness (Swimming Saturdays)",
-  location: "Pulchowk, Lalitpur",
-  tier: "Platinum",
-  services: ["Swimming (Saturdays)"]
-}, {
-  id: 62,
-  name: "Kalanki Gym Center (Swimming)",
-  location: "Makalu Petrol Pump",
-  tier: "Platinum",
-  services: ["Swimming"]
-}, {
-  id: 63,
-  name: "Tahachal Physical Fitness (Swimming)",
-  location: "Tahachal",
-  tier: "Platinum",
-  services: ["Swimming"]
-}, {
-  id: 64,
-  name: "Tranquility Spa",
-  location: "10 Locations (Ktm, Pkr)",
-  tier: "Platinum",
-  services: ["Steam", "Sauna"]
-}, {
-  id: 65,
-  name: "Riddhi Pilates - Sanepa",
-  location: "Sanepa",
-  tier: "Platinum",
-  services: ["Pilates Classes"]
-}, {
-  id: 66,
-  name: "Riddhi Pilates - Baluwatar",
-  location: "Baluwatar",
-  tier: "Platinum",
-  services: ["Pilates Classes"]
-}, {
-  id: 67,
-  name: "Riddhi Pilates - Gyaneshwor",
-  location: "Gyaneshwor",
-  tier: "Platinum",
-  services: ["Pilates Classes"]
-}];
-
 const WellnessPartners = () => {
+  const { partners: partnersData, loading, error } = useWellnessPartners();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTier, setSelectedTier] = useState<Tier | 'All'>('All');
   const [selectedLocation, setSelectedLocation] = useState<string>('All');
@@ -449,6 +42,34 @@ const WellnessPartners = () => {
     Gold: filteredPartners.filter(p => p.tier === 'Gold'),
     Basic: filteredPartners.filter(p => p.tier === 'Basic')
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading wellness partners...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="bg-red-100 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <Search className="h-8 w-8 text-red-400" />
+          </div>
+          <h3 className="text-xl font-semibold mb-2">Error Loading Partners</h3>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <Button onClick={() => window.location.reload()} className="btn-primary">
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">

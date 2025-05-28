@@ -207,6 +207,36 @@ export type Database = {
         }
         Relationships: []
       }
+      wellness_partners: {
+        Row: {
+          created_at: string
+          id: string
+          location: string
+          name: string
+          services: string[]
+          tier: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          location: string
+          name: string
+          services: string[]
+          tier: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          location?: string
+          name?: string
+          services?: string[]
+          tier?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
