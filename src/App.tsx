@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -26,6 +25,7 @@ import NotFound from "./pages/NotFound";
 import ScheduleDemoFlow from "./pages/ScheduleDemoFlow";
 import WellnessProviders from "./pages/WellnessProviders";
 import WellnessOnboarding from "./pages/WellnessOnboarding";
+import WellnessPartners from "./pages/WellnessPartners";
 import Careers from "./pages/Careers";
 import AnalyticsPage from "./pages/Analytics";
 
@@ -54,6 +54,7 @@ function AppContent() {
           <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
           <Route path="/wellness-providers" element={<WellnessProviders />} />
           <Route path="/wellness-onboarding" element={<WellnessOnboarding />} />
+          <Route path="/wellness-partners" element={<WellnessPartners />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="*" element={<NotFound />} />
