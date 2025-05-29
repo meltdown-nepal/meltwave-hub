@@ -34,7 +34,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Meltdown Providers <hello@meltdown.fit>',
+        from: 'Meltdown Providers <onboarding@resend.dev>',
         to: ['sanskar.meltdown@gmail.com', 'support@meltdownnepal.com'],
         subject: `New Wellness Provider Application from ${firstName} ${lastName}`,
         html: `

@@ -23,7 +23,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Meltdown Contact <hello@meltdown.fit>',
+        from: 'Meltdown Contact <onboarding@resend.dev>',
         to: ['sanskar.meltdown@gmail.com', 'support@meltdownnepal.com'],
         subject: `New Contact Form Submission from ${name}`,
         html: `
