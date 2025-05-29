@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface Logo {
   id: number;
@@ -11,18 +12,42 @@ interface LogoCarouselProps {
   logos: Logo[];
   title: string;
   description?: string;
+  showViewAllButton?: boolean;
+  viewAllLink?: string;
 }
 
-const LogoCarousel: React.FC<LogoCarouselProps> = ({ logos, title, description }) => {
+const LogoCarousel: React.FC<LogoCarouselProps> = ({ 
+  logos, 
+  title, 
+  description, 
+  showViewAllButton = false,
+  viewAllLink = "/wellness-partners"
+}) => {
   // Duplicate logos to create seamless infinite scroll
   const duplicatedLogos = [...logos, ...logos];
   
   return (
     <section className="py-12 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold mb-3">{title}</h2>
-          {description && <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>}
+        <div className="flex justify-between items-center mb-8">
+          <div className="text-center flex-1">
+            <h2 className="text-2xl font-bold mb-3">{title}</h2>
+            {description && <p className="text-gray-600 max-w-2xl mx-auto">{description}</p>}
+          </div>
+          {showViewAllButton && (
+            <div className="flex-shrink-0 ml-4">
+              <Link 
+                to={viewAllLink}
+                className="bg-primary hover:bg-primary/90 text-black font-medium px-6 py-2 rounded-lg transition-colors duration-200 inline-flex items-center gap-2"
+              >
+                View All
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-arrow-right">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </Link>
+            </div>
+          )}
         </div>
         
         <div className="relative">
