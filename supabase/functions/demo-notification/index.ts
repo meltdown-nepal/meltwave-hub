@@ -16,6 +16,8 @@ serve(async (req) => {
   try {
     const formData = await req.json()
 
+    console.log('Received demo notification data:', formData)
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -25,23 +27,20 @@ serve(async (req) => {
       body: JSON.stringify({
         from: 'Meltdown Demo <onboarding@resend.dev>',
         to: ['sanskar.meltdown@gmail.com', 'support@meltdownnepal.com'],
-        subject: `New Demo Request from ${formData.firstName} ${formData.lastName}`,
+        subject: `New Demo Request from ${formData.fullName}`,
         html: `
           <h2>New Demo Request</h2>
           <h3>Contact Information</h3>
-          <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
+          <p><strong>Name:</strong> ${formData.fullName}</p>
           <p><strong>Email:</strong> ${formData.email}</p>
           <p><strong>Phone:</strong> ${formData.phone}</p>
           
           <h3>Company Information</h3>
-          <p><strong>Company:</strong> ${formData.company}</p>
-          <p><strong>Industry:</strong> ${formData.industry}</p>
+          <p><strong>Company:</strong> ${formData.companyName}</p>
+          <p><strong>Company Type:</strong> ${formData.companyType}</p>
           <p><strong>Company Size:</strong> ${formData.companySize}</p>
-          <p><strong>User Type:</strong> ${formData.userType}</p>
-          
-          ${formData.goals ? `<h3>Goals</h3><p>${formData.goals}</p>` : ''}
-          ${formData.timeline ? `<h3>Timeline</h3><p>${formData.timeline}</p>` : ''}
-          ${formData.budget ? `<h3>Budget</h3><p>${formData.budget}</p>` : ''}
+          <p><strong>Role:</strong> ${formData.role}</p>
+          <p><strong>User Type:</strong> ${formData.userType || 'Not specified'}</p>
         `,
       }),
     })
@@ -56,6 +55,7 @@ serve(async (req) => {
       },
     )
   } catch (error) {
+    console.error('Error in demo-notification function:', error)
     return new Response(
       JSON.stringify({ error: error.message }),
       { 

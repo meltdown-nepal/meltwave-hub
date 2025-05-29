@@ -14,7 +14,11 @@ serve(async (req) => {
   }
 
   try {
-    const { name, email, phone, company, message } = await req.json()
+    const { firstName, lastName, email, phone, company, interest, message } = await req.json()
+
+    console.log('Received contact form data:', {
+      firstName, lastName, email, phone, company, interest, message
+    })
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -25,13 +29,14 @@ serve(async (req) => {
       body: JSON.stringify({
         from: 'Meltdown Contact <onboarding@resend.dev>',
         to: ['sanskar.meltdown@gmail.com', 'support@meltdownnepal.com'],
-        subject: `New Contact Form Submission from ${name}`,
+        subject: `New Contact Form Submission from ${firstName} ${lastName}`,
         html: `
           <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
           <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+          <p><strong>Interest:</strong> ${interest}</p>
           <p><strong>Message:</strong></p>
           <p>${message}</p>
         `,
@@ -48,6 +53,7 @@ serve(async (req) => {
       },
     )
   } catch (error) {
+    console.error('Error in contact function:', error)
     return new Response(
       JSON.stringify({ error: error.message }),
       { 

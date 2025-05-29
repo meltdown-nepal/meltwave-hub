@@ -36,6 +36,8 @@ export default function ScheduleDemoFlow() {
     try {
       setIsSubmitting(true);
 
+      console.log('Demo form data being submitted:', data);
+
       // First, save to database
       const { error: dbError } = await supabase
         .from('demo_requests')
@@ -49,9 +51,12 @@ export default function ScheduleDemoFlow() {
           phone: data.phone,
         }]);
 
-      if (dbError) throw dbError;
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw dbError;
+      }
 
-      // Then, send email notification
+      // Then, send email notification with the correct data structure
       const { error: emailError } = await supabase.functions.invoke('demo-notification', {
         body: {
           companySize: data.companySize,
@@ -61,6 +66,7 @@ export default function ScheduleDemoFlow() {
           fullName: data.fullName,
           email: data.email,
           phone: data.phone,
+          userType: data.userType,
         }
       });
 
