@@ -9,7 +9,6 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import FacultyPhotosSection from '@/components/academy/FacultyPhotosSection';
-
 const Academy = () => {
   const {
     scrollToSection
@@ -115,7 +114,7 @@ const Academy = () => {
               </button>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f" alt="Fitness Coach Training Athletes" className="rounded-lg shadow-xl max-w-full h-auto" />
+              <img alt="Fitness Coach Training Athletes" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/547fbeca-a702-4751-89c3-c305cd703c61.jpg" />
             </div>
           </div>
         </div>
@@ -441,5 +440,4 @@ const Academy = () => {
       </section>
     </div>;
 };
-
 export default Academy;
