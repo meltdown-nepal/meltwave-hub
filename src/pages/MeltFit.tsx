@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import VideoTestimonial from '@/components/VideoTestimonial';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, Dumbbell, Target, UserCheck, Sparkles } from 'lucide-react';
-
+import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight } from 'lucide-react';
 const MeltFit = () => {
   const {
     scrollToSection
@@ -39,55 +38,6 @@ const MeltFit = () => {
     role: "MeltFit Client",
     videoSrc: "#"
   }];
-
-  // Programs data with enhanced structure
-  const programs = [
-    {
-      id: 1,
-      title: "Group Strength & Conditioning",
-      subtitle: "Build strength in a community setting",
-      icon: <Users className="h-8 w-8" />,
-      gradient: "from-blue-500 to-blue-600",
-      description: "Our signature group classes focus on functional strength, endurance, and improved movement.",
-      highlights: ["Real-world strength", "Improved posture", "Motivating environment"],
-      schedule: "5-6 days/week • Morning & Evening",
-      image: "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 2,
-      title: "6-Week Transformation",
-      subtitle: "Complete body & lifestyle transformation",
-      icon: <Target className="h-8 w-8" />,
-      gradient: "from-purple-500 to-purple-600",
-      description: "Intensive program combining training, nutrition guidance, and accountability support.",
-      highlights: ["Custom nutrition plan", "Weekly tracking", "1-on-1 coaching"],
-      schedule: "6 weeks intensive program",
-      image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 3,
-      title: "Corrective Exercise",
-      subtitle: "Movement quality & injury prevention",
-      icon: <Activity className="h-8 w-8" />,
-      gradient: "from-green-500 to-green-600",
-      description: "Specialized program for improving movement quality and addressing muscular imbalances.",
-      highlights: ["Mobility training", "Pain management", "Balance & stability"],
-      schedule: "Flexible scheduling available",
-      image: "https://images.unsplash.com/photo-1616279967983-ec413476e824?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 4,
-      title: "Personal Training",
-      subtitle: "One-on-one customized coaching",
-      icon: <UserCheck className="h-8 w-8" />,
-      gradient: "from-orange-500 to-orange-600",
-      description: "Fully customized 1-on-1 training with personalized program design and hands-on support.",
-      highlights: ["Tailored programs", "Flexible focus areas", "Premium locations"],
-      schedule: "Flexible 1-on-1 sessions",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white py-16 md:py-24">
@@ -132,105 +82,222 @@ const MeltFit = () => {
         </div>
       </section>
 
-      {/* Programs Section - Redesigned */}
-      <section id="programs" className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      {/* Programs Section */}
+      <section id="programs" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-              <Sparkles className="h-5 w-5 text-primary" />
-              <span className="text-primary font-medium">Our Programs</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-              Choose Your Fitness Journey
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From group energy to personal attention, find the perfect program to match your goals and lifestyle.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Programs Offered</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Choose the right program to match your goals, fitness level, and preferences.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-            {programs.map((program, index) => (
-              <Card key={program.id} className={`group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 ${index % 2 === 0 ? 'lg:translate-y-4' : 'lg:-translate-y-4'} hover:translate-y-0`}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${program.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
-                
-                <div className="relative">
-                  {/* Header with Icon and Title */}
-                  <div className={`p-6 bg-gradient-to-r ${program.gradient} text-white`}>
-                    <div className="flex items-center gap-4">
-                      <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
-                        {program.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold mb-1">{program.title}</h3>
-                        <p className="text-white/90 font-medium">{program.subtitle}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={program.image} 
-                      alt={program.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-
-                  {/* Content */}
-                  <CardContent className="p-6">
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {program.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <div className="mb-6">
-                      <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <Trophy className="h-4 w-4 text-primary" />
-                        Key Benefits
-                      </h4>
-                      <div className="grid grid-cols-1 gap-2">
-                        {program.highlights.map((highlight, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-                            <span className="text-sm text-gray-700">{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Schedule */}
-                    <div className="mb-6 p-3 bg-gray-50 rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-primary" />
-                        <span className="text-sm font-medium text-gray-900">{program.schedule}</span>
-                      </div>
-                    </div>
-
-                    {/* CTA Button */}
-                    <Button className="w-full group-hover:scale-105 transition-transform duration-300" asChild>
-                      <Link to="/contact">
-                        Get Started
-                        <ChevronRight className="h-4 w-4 ml-2" />
-                      </Link>
-                    </Button>
-                  </CardContent>
+          {/* Program 1: Group Classes */}
+          <div className="max-w-6xl mx-auto mb-20">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-8 lg:p-12">
+                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 1</div>
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-4">Group Strength and Conditioning Classes</h3>
+                  <p className="text-gray-600 mb-6">
+                    Our signature group classes focus on functional strength, endurance, and improved movement.
+                    We build your foundation with proper technique, progressive strength training, and conditioning workouts tailored for the general population — from beginners to seasoned lifters.
+                  </p>
+                  
+                  <h4 className="font-bold text-lg mb-3">Benefits:</h4>
+                  <ul className="mb-6 space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Boost real-world strength and stamina</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Improve posture and joint health</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Fun, motivating group environment</span>
+                    </li>
+                  </ul>
+                  
+                  <h4 className="font-bold text-lg mb-3">Frequency:</h4>
+                  <ul className="mb-8 space-y-2">
+                    <li className="flex items-start">
+                      <Clock className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Classes run 5–6 days a week</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Clock className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Morning and Evening Batches Available</span>
+                    </li>
+                  </ul>
+                  
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">See Class Timings</Link>
+                  </Button>
                 </div>
-              </Card>
-            ))}
+                <div className="hidden lg:block relative">
+                  <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Group Training at MeltFit" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <div className="bg-white p-8 rounded-2xl shadow-lg max-w-2xl mx-auto border">
-              <h3 className="text-2xl font-bold mb-4">Not sure which program is right for you?</h3>
-              <p className="text-gray-600 mb-6">
-                Book a free consultation with our coaches and we'll help you find the perfect fit for your goals.
-              </p>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/contact">Schedule Free Consultation</Link>
-              </Button>
+          {/* Program 2: 6-Week Transformation */}
+          <div className="max-w-6xl mx-auto mb-20">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="hidden lg:block relative order-2 lg:order-1">
+                  <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Transformation Program" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                </div>
+                <div className="p-8 lg:p-12 order-1 lg:order-2">
+                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 2</div>
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-4">6-Week Transformation Program</h3>
+                  <p className="text-gray-600 mb-6">
+                    An intensive 6-week program combining MeltFit's training system with personalized nutrition guidance, progress tracking, and full accountability support.
+                  </p>
+                  
+                  <h4 className="font-bold text-lg mb-3">Includes:</h4>
+                  <ul className="mb-6 space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>6 Weeks of Group Training</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Custom Nutrition Plan</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Weekly Progress Tracking and Adjustments</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>1-on-1 Accountability Coach</span>
+                    </li>
+                  </ul>
+                  
+                  <h4 className="font-bold text-lg mb-3">Ideal For:</h4>
+                  <ul className="mb-8 space-y-2">
+                    <li className="flex items-start">
+                      <Trophy className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Fat loss</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Trophy className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Strength gain</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Trophy className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Building healthy habits that last</span>
+                    </li>
+                  </ul>
+                  
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">Apply for Transformation Program</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Program 3: Corrective Exercise */}
+          <div className="max-w-6xl mx-auto mb-20">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-8 lg:p-12">
+                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 3</div>
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-4">Corrective Exercise Program</h3>
+                  <p className="text-gray-600 mb-6">
+                    Tailored for older adults or those recovering from injuries, this program focuses on improving movement quality, correcting muscular imbalances, managing pain, and preventing future injuries.
+                  </p>
+                  
+                  <h4 className="font-bold text-lg mb-3">Focus Areas:</h4>
+                  <ul className="mb-6 space-y-2">
+                    <li className="flex items-start">
+                      <Activity className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Mobility and Flexibility Training</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Activity className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Balance and Core Stability</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Activity className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Strengthening Weak Links</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Activity className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Posture and Joint Health</span>
+                    </li>
+                  </ul>
+                  
+                  <h4 className="font-bold text-lg mb-3">Ideal For:</h4>
+                  <ul className="mb-8 space-y-2">
+                    <li className="flex items-start">
+                      <Users className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Seniors</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Users className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Post-rehabilitation clients</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Users className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Anyone struggling with pain or limited movement</span>
+                    </li>
+                  </ul>
+                  
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">Learn More About Corrective Training</Link>
+                  </Button>
+                </div>
+                <div className="hidden lg:block relative">
+                  <img src="https://images.unsplash.com/photo-1616279967983-ec413476e824?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Corrective Exercise Training" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Program 4: Personal Training */}
+          <div className="max-w-6xl mx-auto mb-12">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="hidden lg:block relative order-2 lg:order-1">
+                  <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Personal Training" className="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+                </div>
+                <div className="p-8 lg:p-12 order-1 lg:order-2">
+                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Program 4</div>
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-4">Personal Training</h3>
+                  <p className="text-gray-600 mb-6">
+                    For those who prefer a fully customized approach, MeltFit also offers 1-on-1 Personal Training.
+                    Work closely with a coach to set goals, create a tailored program, and get hands-on support every step of the way.
+                  </p>
+                  
+                  <h4 className="font-bold text-lg mb-3">Options:</h4>
+                  <ul className="mb-6 space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Strength and Performance Focus</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Fat Loss and Body Transformation</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Injury Recovery and Corrective Focus</span>
+                    </li>
+                  </ul>
+                  
+                  <h4 className="font-bold text-lg mb-3">Location:</h4>
+                  <p className="mb-8">Available at select MeltFit partner facilities</p>
+                  
+                  <Button size="lg" className="text-base" asChild>
+                    <Link to="/contact">Book a Free Consultation</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
