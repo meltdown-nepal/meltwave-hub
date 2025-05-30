@@ -122,7 +122,7 @@ const Faq = () => {
             </Button>
           </div>
           <p className="text-sm text-gray-600 mt-4">
-            💬 Get responses within 24 hours • 🎯 Personalized wellness solutions
+             Get responses within 24 hours • Personalized wellness solutions
           </p>
         </div>
       </section>
