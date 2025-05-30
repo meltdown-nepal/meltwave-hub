@@ -157,11 +157,6 @@ const ClientLogoCarousel = () => {
           width: fit-content;
         }
 
-        /* Pause animation on hover for better UX */
-        .animate-seamless-scroll:hover {
-          animation-play-state: paused;
-        }
-
         /* Ensure smooth performance */
         .animate-seamless-scroll {
           will-change: transform;
