@@ -8,7 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import FacultySection from '@/components/academy/FacultySection';
+import FacultyPhotosSection from '@/components/academy/FacultyPhotosSection';
 
 const Academy = () => {
   const {
@@ -218,8 +218,8 @@ const Academy = () => {
         </div>
       </section>
 
-      {/* Faculty Section */}
-      <FacultySection />
+      {/* Faculty Photos Section */}
+      <FacultyPhotosSection />
 
       {/* Courses Offered Section */}
       <section id="courses" className="section-padding bg-gray-50">
