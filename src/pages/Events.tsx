@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays } from 'lucide-react';
+import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
@@ -56,6 +56,61 @@ function EventCard({
         )
       )}
     </div>;
+}
+
+function EnvironmentalRunCard() {
+  return (
+    <div className="rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 text-green-100 opacity-50">
+        <TreePine size={120} />
+      </div>
+      
+      <div className="relative z-10 w-full">
+        {/* Header with emoji and title */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-2xl">🌿</span>
+          <h3 className="text-xl font-bold text-green-800">Run for the Environment 2025</h3>
+        </div>
+        
+        {/* Subtitle */}
+        <p className="text-green-700 font-medium mb-4 flex items-center gap-1">
+          Because every step grows a tree! <span>🌱👟</span>
+        </p>
+        
+        {/* Event details */}
+        <div className="space-y-3 mb-4">
+          <div className="flex items-center gap-2 text-gray-700">
+            <MapPin size={16} className="text-green-600" />
+            <span className="font-medium">Le Sherpa, Maharajgunj</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-700">
+            <Clock size={16} className="text-green-600" />
+            <span className="font-medium">June 5, 2025 (Thu) | 6–8 AM</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-700">
+            <Users size={16} className="text-green-600" />
+            <span className="font-medium">Open to all runners, walkers & wanderers!</span>
+          </div>
+        </div>
+        
+        {/* Environmental impact */}
+        <div className="bg-green-100 rounded-lg p-3 mb-4 border border-green-200">
+          <div className="flex items-center gap-2 text-green-800 font-semibold">
+            <TreePine size={16} />
+            <span>1 tree planted for every 5 runners!</span>
+          </div>
+        </div>
+        
+        {/* Register button */}
+        <Button className="mt-auto bg-green-600 hover:bg-green-700 text-white font-semibold w-full">
+          🎟️ Register Now
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 const Events = () => {
@@ -136,7 +191,7 @@ const Events = () => {
               registrationLink="#"
             />
             <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
-            <EventCard title="Coming Soon" />
+            <EnvironmentalRunCard />
           </div>
           <div className="text-center">
             <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
