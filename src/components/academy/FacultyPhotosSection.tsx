@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Carousel,
@@ -31,8 +30,8 @@ const FacultyPhotosSection = () => {
       image: "/lovable-uploads/25caa255-d3d2-4965-a9fb-b47a1176a006.png",
     },
     {
-      name: "Faculty Member",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
+      name: "Tenzing D. Gurung",
+      image: "/lovable-uploads/2c5c24ae-48eb-40d4-9e16-844e1abda2d5.png",
     }
   ];
 
