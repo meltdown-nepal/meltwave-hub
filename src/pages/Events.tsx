@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine } from 'lucide-react';
+import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
@@ -57,6 +57,61 @@ function EventCard({
         )
       )}
     </div>;
+}
+
+function WeeklyWednesdayRunCard() {
+  return (
+    <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 text-orange-100 opacity-50">
+        <Target size={120} />
+      </div>
+      
+      <div className="relative z-10 w-full">
+        {/* Header with emoji and title */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-2xl">🏃‍♂️</span>
+          <h3 className="text-xl font-bold text-gray-800">Weekly Wednesday Run</h3>
+        </div>
+        
+        {/* Subtitle */}
+        <p className="text-gray-700 font-medium mb-4 flex items-center gap-1">
+          Running around the world, one step at a time! <span>🌍💪</span>
+        </p>
+        
+        {/* Event details */}
+        <div className="space-y-3 mb-4">
+          <div className="flex items-center gap-2 text-gray-700">
+            <MapPin size={16} className="text-secondary" />
+            <span className="font-medium">Narayanchaur</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-700">
+            <Clock size={16} className="text-secondary" />
+            <span className="font-medium">Every Wednesday</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-700">
+            <Users size={16} className="text-secondary" />
+            <span className="font-medium">Join our community challenge!</span>
+          </div>
+        </div>
+        
+        {/* Goal highlight */}
+        <div className="bg-secondary/10 rounded-lg p-3 mb-4 border border-secondary/20">
+          <div className="flex items-center gap-2 text-gray-800 font-semibold">
+            <Target size={16} />
+            <span>Goal: 40,000 km in a year!</span>
+          </div>
+        </div>
+        
+        {/* Register button */}
+        <Button className="mt-auto bg-secondary hover:bg-primary text-black font-semibold w-full" asChild>
+          <Link to="/contact?event=weekly-run">🎯 Join the Challenge</Link>
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 function EnvironmentalRunCard() {
@@ -191,7 +246,7 @@ const Events = () => {
               description="A thrilling 7km run with unique fitness challenges at each Himalayan Java stop! Enjoy coffee, community, and exercise all in one event." 
               registrationLink="#"
             />
-            <EventCard title="Weekly Wednesday Run" address="Narayanchaur" description="Join us to achieve a milestone of running 40,000 km in a year (Running around the world)" note="This event repeats every Wednesday." registrationLink="/contact?event=weekly-run" />
+            <WeeklyWednesdayRunCard />
             <EnvironmentalRunCard />
           </div>
           <div className="text-center">
