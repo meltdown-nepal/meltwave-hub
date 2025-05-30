@@ -9,7 +9,6 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import FacultyPhotosSection from '@/components/academy/FacultyPhotosSection';
-
 const Academy = () => {
   const {
     scrollToSection
@@ -272,11 +271,7 @@ const Academy = () => {
                     </CollapsibleContent>
                   </Collapsible>
                 </CardHeader>
-                <CardFooter className="flex justify-center pt-6 border-t">
-                  <Link to="/contact" className="w-full">
-                    <Button className="w-full" variant="default">Apply Now</Button>
-                  </Link>
-                </CardFooter>
+                
               </Card>)}
           </div>
         </div>
@@ -432,5 +427,4 @@ const Academy = () => {
       </section>
     </div>;
 };
-
 export default Academy;
