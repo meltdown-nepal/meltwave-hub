@@ -241,91 +241,91 @@ const ForProviders = () => {
         </div>
       </section>
 
-      {/* Provider Types */}
+      {/* Wellness Facilities Section */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Who Can Join?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Which Wellness Facilities Can Join?</h2>
             <p className="text-lg max-w-3xl mx-auto">
-              We welcome a wide range of wellness professionals to our provider network.
+              We welcome diverse wellness spaces and facilities to join our provider network and host corporate wellness programs.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Physical Wellness</h3>
+              <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Physical Wellness Facilities</h3>
               <ul className="space-y-2 mt-4">
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Fitness Trainers</span>
+                  <span>Fitness Centers & Gyms</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Yoga Instructors</span>
+                  <span>Yoga Studios</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Pilates Teachers</span>
+                  <span>Pilates Studios</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Nutritionists</span>
+                  <span>Sports & Recreation Centers</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Physical Therapists</span>
+                  <span>Martial Arts Studios</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Mental Wellness</h3>
+              <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Mental Wellness Centers</h3>
               <ul className="space-y-2 mt-4">
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Meditation Teachers</span>
+                  <span>Counseling Centers</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Stress Management Coaches</span>
+                  <span>Meditation Centers</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Mindfulness Instructors</span>
+                  <span>Mindfulness Studios</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Mental Health Counselors</span>
+                  <span>Mental Health Clinics</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Life Coaches</span>
+                  <span>Therapy & Coaching Centers</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Specialized Wellness</h3>
+              <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Specialized Wellness Venues</h3>
               <ul className="space-y-2 mt-4">
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Ergonomic Specialists</span>
+                  <span>Spas & Wellness Resorts</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Sleep Consultants</span>
+                  <span>Nutrition & Wellness Clinics</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Financial Wellness Advisors</span>
+                  <span>Physical Therapy Centers</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Team Building Facilitators</span>
+                  <span>Corporate Wellness Facilities</span>
                 </li>
                 <li className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD838" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-check mr-2 flex-shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
-                  <span>Health Educators</span>
+                  <span>Community Recreation Centers</span>
                 </li>
               </ul>
             </div>
@@ -333,7 +333,7 @@ const ForProviders = () => {
         </div>
       </section>
 
-      {/* Fitness Partners Section */}
+      {/* Partner FAQs Section */}
       <section className="section-padding">
         <div className="container-custom">
           
