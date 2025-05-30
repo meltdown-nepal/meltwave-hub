@@ -11,7 +11,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, LucideIcon } from 'lucide-react';
 import FaqItem from './FaqItem';
 
 interface Question {
@@ -24,12 +24,14 @@ interface FaqSectionProps {
   title: string;
   questions: Question[];
   defaultOpen?: boolean;
+  icon?: LucideIcon;
 }
 
 const FaqSection: React.FC<FaqSectionProps> = ({ 
   title, 
   questions, 
-  defaultOpen = false 
+  defaultOpen = false,
+  icon: Icon
 }) => {
   const [isOpen, setIsOpen] = React.useState(defaultOpen);
 
@@ -42,6 +44,11 @@ const FaqSection: React.FC<FaqSectionProps> = ({
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
           <div className="flex items-center gap-3">
+            {Icon && (
+              <div className="w-10 h-10 rounded-full border-2 border-yellow-400 bg-yellow-50 flex items-center justify-center">
+                <Icon className="h-5 w-5 text-yellow-600" />
+              </div>
+            )}
             <h2 className="text-xl font-bold text-left">{title}</h2>
           </div>
           <ChevronDown 

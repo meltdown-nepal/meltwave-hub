@@ -1,6 +1,19 @@
 
 import React, { useState, useMemo } from 'react';
-import { Search, Brain } from 'lucide-react';
+import { 
+  Search, 
+  Brain, 
+  BookOpen, 
+  Building2, 
+  Users, 
+  Settings, 
+  Rocket, 
+  BarChart3, 
+  Lightbulb, 
+  Wrench, 
+  ShieldCheck, 
+  Target 
+} from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import FaqSection from '../components/faq/FaqSection';
@@ -8,6 +21,20 @@ import { faqData } from '../data/faqData';
 
 const Faq = () => {
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Map section IDs to appropriate icons
+  const sectionIcons = {
+    'general': BookOpen,
+    'business': Building2,
+    'engagement': Users,
+    'technology': Settings,
+    'onboarding': Rocket,
+    'metrics': BarChart3,
+    'value': Lightbulb,
+    'customization': Wrench,
+    'challenges': ShieldCheck,
+    'mission': Target
+  };
 
   // Filter FAQ data based on search term
   const filteredFaqData = useMemo(() => {
@@ -81,12 +108,14 @@ const Faq = () => {
             ) : (
               <div className="space-y-6">
                 {filteredFaqData.map((section) => {
+                  const IconComponent = sectionIcons[section.id as keyof typeof sectionIcons];
                   return (
                     <FaqSection
                       key={section.id}
                       title={section.title}
                       questions={section.questions}
                       defaultOpen={searchTerm.length > 0}
+                      icon={IconComponent}
                     />
                   );
                 })}
