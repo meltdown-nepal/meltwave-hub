@@ -1,84 +1,93 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ContactForm } from '@/components/ContactForm';
 import { MessageCircleQuestion, ArrowRight } from 'lucide-react';
-
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
-  alt: "Veda Logo"
+  alt: "Client Logo 1"
 }, {
   id: 2,
   src: "/lovable-uploads/Karobar.png",
-  alt: "Karobar Logo"
+  alt: "Client Logo 2"
 }, {
   id: 3,
   src: "/lovable-uploads/naamche.png",
-  alt: "Naamche Logo"
+  alt: "Client Logo 3"
 }, {
   id: 4,
   src: "/lovable-uploads/SecurityPal.png",
-  alt: "SecurityPal Logo"
+  alt: "Client Logo 4"
 }, {
   id: 5,
   src: "/lovable-uploads/HimalayanJava.png",
-  alt: "Himalayan Java Logo"
+  alt: "Client Logo 5"
 }, {
   id: 6,
   src: "/lovable-uploads/flextecs.png",
-  alt: "FlexTecs Logo"
+  alt: "Client Logo 6"
 }, {
   id: 7,
   src: "/lovable-uploads/GolchhaGroup.png",
-  alt: "Golchha Group Logo"
+  alt: "Client Logo 7"
 }, {
   id: 8,
   src: "/lovable-uploads/YoungInnovations.png",
-  alt: "Young Innovations Logo"
+  alt: "Client Logo 8"
 }, {
   id: 9,
   src: "/lovable-uploads/leapfrog.png",
-  alt: "Leapfrog Logo"
+  alt: "Client Logo 9"
 }, {
   id: 10,
   src: "/lovable-uploads/shanker.png",
-  alt: "Shanker Logo"
+  alt: "Client Logo 10"
 }, {
   id: 11,
   src: "/lovable-uploads/KingsCollege.png",
-  alt: "Kings College Logo"
+  alt: "Client Logo 10"
 }, {
   id: 12,
   src: "/lovable-uploads/ottr.png",
-  alt: "Ottr Logo"
+  alt: "Client Logo 10"
 }, {
   id: 13,
   src: "/lovable-uploads/CodingMountain.png",
-  alt: "Coding Mountain Logo"
+  alt: "Client Logo 10"
 }, {
   id: 14,
   src: "/lovable-uploads/JagadambaMotors.png",
-  alt: "Jagadamba Motors Logo"
+  alt: "Client Logo 10"
 }, {
   id: 15,
   src: "/lovable-uploads/OwlDigital.png",
-  alt: "Owl Digital Logo"
+  alt: "Client Logo 10"
 }, {
   id: 16,
   src: "/lovable-uploads/KavyaSports.png",
-  alt: "Kavya Sports Logo"
+  alt: "Client Logo 10"
 }, {
   id: 17,
   src: "/lovable-uploads/Stalwart.png",
-  alt: "Stalwart Logo"
+  alt: "Client Logo 10"
 }, {
   id: 18,
-  src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
-  alt: "CloudFactory Logo"
+  src: "/lovable-uploads/WeBajraStudio.png",
+  alt: "Client Logo 10"
+}, {
+  id: 19,
+  src: "/lovable-uploads/NepaliGharHotel.png",
+  alt: "Client Logo 10"
+}, {
+  id: 20,
+  src: "/lovable-uploads/UBASolutions.png",
+  alt: "Client Logo 10"
+}, {
+  id: 21,
+  src: "/lovable-uploads/snackon.png",
+  alt: "Client Logo 10"
 }];
-
 const Contact = () => {
   return <div>
     {/* Hero Section */}
@@ -157,42 +166,23 @@ const Contact = () => {
                 </div>
               </div>
             </div>
+
+            {/* Partner Companies Grid */}
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold mb-4">Our Partner Companies</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {clientLogos.slice(0, 12).map((logo, index) => <div key={`${logo.id}-${index}`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <img src={logo.src} alt={logo.alt} className="h-12 w-full object-contain" draggable={false} />
+                  </div>)}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    {/* Our Partners Section */}
-    <section className="bg-gray-50 section-padding">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Partners</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're proud to work with these amazing companies to deliver exceptional wellness solutions.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-          {clientLogos.map((logo) => (
-            <div
-              key={logo.id}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 group"
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="h-12 w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                draggable={false}
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
     {/* Quick Links */}
-    <section className="bg-white section-padding">
+    <section className="bg-gray-50 section-padding">
       <div className="container-custom">
         <h2 className="text-3xl font-bold mb-8 text-center">
           Quick Links
@@ -224,6 +214,9 @@ const Contact = () => {
         </div>
       </div>
     </section>
+
+    {/* FAQ Section */}
+    
 
     {/* WhatsApp Community Section */}
     <section className="bg-primary/20 section-padding">
