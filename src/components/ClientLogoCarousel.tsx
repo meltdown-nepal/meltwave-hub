@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const clientLogos = [
@@ -116,7 +115,7 @@ const ClientLogoCarousel = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
                     draggable={false}
                     loading="lazy"
                   />
@@ -131,7 +130,7 @@ const ClientLogoCarousel = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
                     draggable={false}
                     loading="lazy"
                   />
