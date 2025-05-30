@@ -87,7 +87,6 @@ const Faq = () => {
                       title={section.title}
                       questions={section.questions}
                       defaultOpen={searchTerm.length > 0}
-                      icon={section.icon}
                     />
                   );
                 })}
