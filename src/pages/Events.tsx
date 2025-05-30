@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine } from 'lucide-react';
@@ -60,9 +61,9 @@ function EventCard({
 
 function EnvironmentalRunCard() {
   return (
-    <div className="rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+    <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 text-green-100 opacity-50">
+      <div className="absolute top-0 right-0 text-yellow-100 opacity-50">
         <TreePine size={120} />
       </div>
       
@@ -70,42 +71,42 @@ function EnvironmentalRunCard() {
         {/* Header with emoji and title */}
         <div className="flex items-center gap-2 mb-3">
           <span className="text-2xl">🌿</span>
-          <h3 className="text-xl font-bold text-green-800">Run for the Environment 2025</h3>
+          <h3 className="text-xl font-bold text-gray-800">Run for the Environment 2025</h3>
         </div>
         
         {/* Subtitle */}
-        <p className="text-green-700 font-medium mb-4 flex items-center gap-1">
+        <p className="text-gray-700 font-medium mb-4 flex items-center gap-1">
           Because every step grows a tree! <span>🌱👟</span>
         </p>
         
         {/* Event details */}
         <div className="space-y-3 mb-4">
           <div className="flex items-center gap-2 text-gray-700">
-            <MapPin size={16} className="text-green-600" />
+            <MapPin size={16} className="text-secondary" />
             <span className="font-medium">Le Sherpa, Maharajgunj</span>
           </div>
           
           <div className="flex items-center gap-2 text-gray-700">
-            <Clock size={16} className="text-green-600" />
+            <Clock size={16} className="text-secondary" />
             <span className="font-medium">June 5, 2025 (Thu) | 6–8 AM</span>
           </div>
           
           <div className="flex items-center gap-2 text-gray-700">
-            <Users size={16} className="text-green-600" />
+            <Users size={16} className="text-secondary" />
             <span className="font-medium">Open to all runners, walkers & wanderers!</span>
           </div>
         </div>
         
         {/* Environmental impact */}
-        <div className="bg-green-100 rounded-lg p-3 mb-4 border border-green-200">
-          <div className="flex items-center gap-2 text-green-800 font-semibold">
+        <div className="bg-primary/10 rounded-lg p-3 mb-4 border border-primary/20">
+          <div className="flex items-center gap-2 text-gray-800 font-semibold">
             <TreePine size={16} />
             <span>1 tree planted for every 5 runners!</span>
           </div>
         </div>
         
         {/* Register button */}
-        <Button className="mt-auto bg-green-600 hover:bg-green-700 text-white font-semibold w-full">
+        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">
           🎟️ Register Now
         </Button>
       </div>
