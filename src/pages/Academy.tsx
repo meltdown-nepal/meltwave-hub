@@ -50,19 +50,19 @@ const Academy = () => {
   // Upcoming batches
   const upcomingBatches = [{
     course: "Strength & Conditioning Specialist",
-    date: "June 15, 2025",
+    date: "August 30, 2025",
     schedule: "Saturdays & Sundays, 9am - 1pm",
     spots: "12 spots remaining"
   }, {
     course: "Corrective Exercise Specialist",
-    date: "July 12, 2025",
+    date: "Coming Soon",
     schedule: "Saturdays & Sundays, 2pm - 6pm",
-    spots: "10 spots remaining"
+    spots: "Coming Soon"
   }, {
     course: "Sports Nutrition Specialist",
-    date: "August 3, 2025",
+    date: "Coming Soon",
     schedule: "Saturdays, 10am - 3pm",
-    spots: "15 spots remaining"
+    spots: "Coming Soon"
   }];
 
   // Testimonials
