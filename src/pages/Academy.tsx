@@ -308,7 +308,7 @@ const Academy = () => {
                     <Calendar className="h-4 w-4 mr-2" />
                     <span>Starts: {batch.date}</span>
                   </div>
-                  <p className="text-sm text-gray-600 mb-1">{batch.schedule}</p>
+                  
                   <p className="text-sm font-medium text-primary">{batch.spots}</p>
                 </div>
                 <div className="p-5">
