@@ -199,9 +199,7 @@ function EnvironmentalRunCard() {
         </div>
         
         {/* Register button */}
-        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">
-          🎟️ Register Now
-        </Button>
+        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">Register Now</Button>
       </div>
     </div>;
 }
