@@ -1,5 +1,12 @@
 
 import React from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const FacultyPhotosSection = () => {
   const facultyPhotos = [
@@ -39,37 +46,48 @@ const FacultyPhotosSection = () => {
           <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {facultyPhotos.map((faculty, index) => (
-            <div 
-              key={index}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
-            >
-              {/* Image Container */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
-                <div className="aspect-[4/5] overflow-hidden">
-                  <img 
-                    src={faculty.image} 
-                    alt={faculty.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
-                </div>
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Hover Effect Ring */}
-                <div className="absolute inset-0 ring-0 group-hover:ring-4 ring-primary/20 transition-all duration-300 rounded-2xl"></div>
-              </div>
+        <div className="max-w-5xl mx-auto">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {facultyPhotos.map((faculty, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    {/* Image Container */}
+                    <div className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
+                      <div className="aspect-[4/5] overflow-hidden">
+                        <img 
+                          src={faculty.image} 
+                          alt={faculty.name}
+                          className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
+                        />
+                      </div>
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      {/* Hover Effect Ring */}
+                      <div className="absolute inset-0 ring-0 group-hover:ring-4 ring-primary/20 transition-all duration-300 rounded-2xl"></div>
+                    </div>
 
-              {/* Optional Name Label (appears on hover) */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-white font-semibold text-center text-sm">
-                  {faculty.name}
-                </p>
-              </div>
-            </div>
-          ))}
+                    {/* Optional Name Label (appears on hover) */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="text-white font-semibold text-center text-sm">
+                        {faculty.name}
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+          </Carousel>
         </div>
 
         {/* Decorative Elements */}
