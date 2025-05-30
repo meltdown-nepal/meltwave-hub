@@ -11,14 +11,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown, LucideIcon } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import FaqItem from './FaqItem';
 
 interface Question {
   id: string;
   question: string;
   answer: string;
-  icon?: LucideIcon;
 }
 
 interface FaqSectionProps {
@@ -62,21 +61,10 @@ const FaqSection: React.FC<FaqSectionProps> = ({
                   className="border border-gray-100 rounded-lg overflow-hidden"
                 >
                   <AccordionTrigger className="px-4 py-3 text-left font-medium hover:no-underline hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center gap-3">
-                      {question.icon && (
-                        <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
-                          <question.icon className="h-5 w-5 text-yellow-600" />
-                        </div>
-                      )}
-                      <span className="flex-1">{question.question}</span>
-                    </div>
+                    {question.question}
                   </AccordionTrigger>
                   <AccordionContent className="px-4 pb-4">
-                    <FaqItem 
-                      question={question.question} 
-                      answer={question.answer} 
-                      icon={question.icon}
-                    />
+                    <FaqItem question={question.question} answer={question.answer} />
                   </AccordionContent>
                 </AccordionItem>
               ))}
