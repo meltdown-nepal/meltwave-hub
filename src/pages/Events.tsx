@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine, Target } from 'lucide-react';
+import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine, Target, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
+
 function EventCard({
   title,
   address,
@@ -50,6 +51,60 @@ function EventCard({
           </Button>)}
     </div>;
 }
+
+function JavaRunVentureCard() {
+  return <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 text-amber-100 opacity-50">
+        <Coffee size={120} />
+      </div>
+      
+      <div className="relative z-10 w-full">
+        {/* Header with emoji and title */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-2xl">☕</span>
+          <h3 className="text-xl font-bold text-gray-800">Java Run Venture</h3>
+        </div>
+        
+        {/* Subtitle */}
+        <p className="text-gray-700 font-medium mb-4 flex items-center gap-1">
+          Run, Coffee, Repeat! <span>🏃‍♂️☕</span>
+        </p>
+        
+        {/* Event details */}
+        <div className="space-y-3 mb-4">
+          <div className="flex items-center gap-2 text-gray-700">
+            <CalendarDays size={16} className="text-primary" />
+            <span className="font-medium">10th May</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-700">
+            <Target size={16} className="text-primary" />
+            <span className="font-medium">7km thrilling run with fitness challenges</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-700">
+            <Coffee size={16} className="text-primary" />
+            <span className="font-medium">Stop at every Himalayan Java location!</span>
+          </div>
+        </div>
+        
+        {/* Special highlight */}
+        <div className="bg-primary/15 rounded-lg p-3 mb-4 border border-primary/30">
+          <div className="flex items-center gap-2 text-gray-800 font-semibold">
+            <Award size={16} />
+            <span>Collect fun goodies at every station!</span>
+          </div>
+        </div>
+        
+        {/* Register button */}
+        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">
+          ☕ Join the Adventure
+        </Button>
+      </div>
+    </div>;
+}
+
 function WeeklyWednesdayRunCard() {
   return <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -102,6 +157,7 @@ function WeeklyWednesdayRunCard() {
       </div>
     </div>;
 }
+
 function EnvironmentalRunCard() {
   return <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -154,10 +210,13 @@ function EnvironmentalRunCard() {
       </div>
     </div>;
 }
+
 const Events = () => {
   const {
     scrollToSection
   } = useSmoothScroll();
+
+  // ... keep existing code (offerTypes array definition)
   const offerTypes = [{
     icon: Activity,
     title: "Bootcamps",
@@ -187,6 +246,7 @@ const Events = () => {
     title: "Topic-Specific Events",
     description: "Tailored experiences based on wellness and active living."
   }];
+
   return <div>
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
@@ -215,7 +275,7 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard title="Java Fun Marathon" date="10th May" description="A thrilling 7km run with unique fitness challenges at each Himalayan Java stop! Enjoy coffee, community, and exercise all in one event." registrationLink="#" />
+            <JavaRunVentureCard />
             <WeeklyWednesdayRunCard />
             <EnvironmentalRunCard />
           </div>
@@ -253,4 +313,5 @@ const Events = () => {
       </section>
     </div>;
 };
+
 export default Events;
