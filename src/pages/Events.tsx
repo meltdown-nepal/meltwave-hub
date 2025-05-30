@@ -134,7 +134,7 @@ function WeeklyWednesdayRunCard() {
           
           <div className="flex items-center gap-2 text-gray-700">
             <Users size={16} className="text-secondary" />
-            <span className="font-medium">Join our community challenge! Open for all </span>
+            <span className="font-medium">Join our community challenge! </span>
           </div>
         </div>
         
