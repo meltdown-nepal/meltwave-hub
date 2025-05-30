@@ -23,8 +23,7 @@ const Academy = () => {
     audience: "Fitness professionals, athletes looking to transition to coaching, and strength coaches seeking certification.",
     learnings: ["Program design for athletes", "Strength training science", "Performance testing", "Injury prevention", "Speed and agility development"],
     certification: "Includes CSCS® exam prep and Meltdown Academy certification upon completion.",
-    duration: "12 weeks (weekends)",
-    fees: "$1,999"
+    duration: "12 weeks (weekends)"
   }, {
     title: "Corrective Exercise Specialist",
     subtitle: "CES® Prep + Meltdown Certification",
@@ -33,8 +32,7 @@ const Academy = () => {
     audience: "Personal trainers, physical therapists, and fitness professionals seeking to specialize in corrective exercise.",
     learnings: ["Movement assessments", "Corrective exercise techniques", "Functional anatomy", "Program design for special populations", "Mobility enhancement strategies"],
     certification: "Includes CES® exam prep and Meltdown Academy certification upon completion.",
-    duration: "8 weeks (weekends)",
-    fees: "$1,599"
+    duration: "8 weeks (weekends)"
   }, {
     title: "Sports Nutrition Specialist",
     subtitle: "Meltdown Certification",
@@ -43,8 +41,7 @@ const Academy = () => {
     audience: "Coaches, trainers, nutritionists, and health professionals working with active populations.",
     learnings: ["Performance nutrition principles", "Supplement evaluation", "Meal planning for athletes", "Hydration strategies", "Weight management for sports"],
     certification: "Meltdown Academy certification upon successful completion.",
-    duration: "6 weeks (weekends)",
-    fees: "$1,299"
+    duration: "6 weeks (weekends)"
   }];
 
   // Upcoming batches
@@ -267,15 +264,9 @@ const Academy = () => {
                         <h4 className="font-bold mb-1">Certification Details</h4>
                         <p className="text-sm text-gray-700">{course.certification}</p>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <h4 className="font-bold mb-1">Duration</h4>
-                          <p className="text-sm text-gray-700">{course.duration}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-bold mb-1">Fees</h4>
-                          <p className="text-sm text-gray-700">{course.fees}</p>
-                        </div>
+                      <div>
+                        <h4 className="font-bold mb-1">Duration</h4>
+                        <p className="text-sm text-gray-700">{course.duration}</p>
                       </div>
                     </CollapsibleContent>
                   </Collapsible>
