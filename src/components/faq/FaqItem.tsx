@@ -1,15 +1,16 @@
 
 import React, { useState } from 'react';
-import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, LucideIcon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 interface FaqItemProps {
   question: string;
   answer: string;
+  icon?: LucideIcon;
 }
 
-const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
+const FaqItem: React.FC<FaqItemProps> = ({ question, answer, icon: Icon }) => {
   const [feedback, setFeedback] = useState<'helpful' | 'not-helpful' | null>(null);
   const { toast } = useToast();
 
@@ -57,6 +58,16 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
 
   return (
     <div className="space-y-4">
+      {/* Question with Icon */}
+      {Icon && (
+        <div className="flex items-center gap-3 mb-3">
+          <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
+            <Icon className="h-5 w-5 text-yellow-600" />
+          </div>
+          <span className="font-medium text-gray-800">{question}</span>
+        </div>
+      )}
+      
       <div className="prose prose-gray max-w-none">
         {formatAnswer(answer)}
       </div>
