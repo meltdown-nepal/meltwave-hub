@@ -8,6 +8,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import FacultySection from '@/components/academy/FacultySection';
+
 const Academy = () => {
   const {
     scrollToSection
@@ -215,6 +217,9 @@ const Academy = () => {
           </div>
         </div>
       </section>
+
+      {/* Faculty Section */}
+      <FacultySection />
 
       {/* Courses Offered Section */}
       <section id="courses" className="section-padding bg-gray-50">
@@ -436,4 +441,5 @@ const Academy = () => {
       </section>
     </div>;
 };
+
 export default Academy;
