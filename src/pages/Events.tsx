@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Activity, Bike, Award, Mountain, Puzzle, CalendarDays, MapPin, Clock, Users, TreePine, Target } from 'lucide-react';
@@ -7,7 +6,6 @@ import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
-
 function EventCard({
   title,
   address,
@@ -45,23 +43,15 @@ function EventCard({
         </div>}
       {description && <p className="mb-2 text-gray-700">{description}</p>}
       {note && <p className="mb-4 text-xs italic text-secondary-foreground">{note}</p>}
-      {registrationLink && (
-        isExternalLink ? (
-          <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold">
+      {registrationLink && (isExternalLink ? <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold">
             <a href={registrationLink} target="_blank" rel="noopener noreferrer" className="mx-0">Register Now</a>
-          </Button>
-        ) : (
-          <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
+          </Button> : <Button variant="default" className="mt-auto bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
             <Link to={registrationLink} className="mx-0">Register Now</Link>
-          </Button>
-        )
-      )}
+          </Button>)}
     </div>;
 }
-
 function WeeklyWednesdayRunCard() {
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+  return <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 text-orange-100 opacity-50">
         <Target size={120} />
@@ -71,7 +61,7 @@ function WeeklyWednesdayRunCard() {
         {/* Header with emoji and title */}
         <div className="flex items-center gap-2 mb-3">
           <span className="text-2xl">🏃‍♂️</span>
-          <h3 className="text-xl font-bold text-gray-800">Weekly Wednesday Run</h3>
+          <h3 className="text-xl font-bold text-gray-800">Around the world with Meltdown Run Club</h3>
         </div>
         
         {/* Subtitle */}
@@ -93,7 +83,7 @@ function WeeklyWednesdayRunCard() {
           
           <div className="flex items-center gap-2 text-gray-700">
             <Users size={16} className="text-secondary" />
-            <span className="font-medium">Join our community challenge!</span>
+            <span className="font-medium">Join our community challenge! Open for all </span>
           </div>
         </div>
         
@@ -110,13 +100,10 @@ function WeeklyWednesdayRunCard() {
           <Link to="/contact?event=weekly-run">🎯 Join the Challenge</Link>
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 }
-
 function EnvironmentalRunCard() {
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+  return <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 text-yellow-100 opacity-50">
         <TreePine size={120} />
@@ -165,53 +152,41 @@ function EnvironmentalRunCard() {
           🎟️ Register Now
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 }
-
 const Events = () => {
   const {
     scrollToSection
   } = useSmoothScroll();
-  
-  const offerTypes = [
-    {
-      icon: Activity,
-      title: "Bootcamps",
-      description: "Strength, conditioning, and full-body workouts in open spaces."
-    },
-    {
-      icon: Award,
-      title: "Runs",
-      description: "Fun runs, timed challenges, and team relay races."
-    },
-    {
-      icon: Award,
-      title: "Basketball Tournaments",
-      description: "Casual games or competitive corporate tournaments."
-    },
-    {
-      icon: Mountain,
-      title: "Hiking Adventures",
-      description: "Scenic group hikes, perfect for adventure lovers."
-    },
-    {
-      icon: Puzzle,
-      title: "Treasure Hunts",
-      description: "Interactive, team-building experiences combining fitness and fun."
-    },
-    {
-      icon: Bike,
-      title: "Cycling Events",
-      description: "Group cycling expeditions around beautiful locations."
-    },
-    {
-      icon: CalendarDays,
-      title: "Topic-Specific Events",
-      description: "Tailored experiences based on wellness and active living."
-    }
-  ];
-  
+  const offerTypes = [{
+    icon: Activity,
+    title: "Bootcamps",
+    description: "Strength, conditioning, and full-body workouts in open spaces."
+  }, {
+    icon: Award,
+    title: "Runs",
+    description: "Fun runs, timed challenges, and team relay races."
+  }, {
+    icon: Award,
+    title: "Basketball Tournaments",
+    description: "Casual games or competitive corporate tournaments."
+  }, {
+    icon: Mountain,
+    title: "Hiking Adventures",
+    description: "Scenic group hikes, perfect for adventure lovers."
+  }, {
+    icon: Puzzle,
+    title: "Treasure Hunts",
+    description: "Interactive, team-building experiences combining fitness and fun."
+  }, {
+    icon: Bike,
+    title: "Cycling Events",
+    description: "Group cycling expeditions around beautiful locations."
+  }, {
+    icon: CalendarDays,
+    title: "Topic-Specific Events",
+    description: "Tailored experiences based on wellness and active living."
+  }];
   return <div>
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
@@ -240,12 +215,7 @@ const Events = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <EventCard 
-              title="Java Fun Marathon" 
-              date="10th May" 
-              description="A thrilling 7km run with unique fitness challenges at each Himalayan Java stop! Enjoy coffee, community, and exercise all in one event." 
-              registrationLink="#"
-            />
+            <EventCard title="Java Fun Marathon" date="10th May" description="A thrilling 7km run with unique fitness challenges at each Himalayan Java stop! Enjoy coffee, community, and exercise all in one event." registrationLink="#" />
             <WeeklyWednesdayRunCard />
             <EnvironmentalRunCard />
           </div>
@@ -283,5 +253,4 @@ const Events = () => {
       </section>
     </div>;
 };
-
 export default Events;
