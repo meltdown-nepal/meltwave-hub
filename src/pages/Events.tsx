@@ -6,6 +6,7 @@ import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
+
 function EventCard({
   title,
   address,
@@ -50,6 +51,7 @@ function EventCard({
           </Button>)}
     </div>;
 }
+
 function JavaRunVentureCard() {
   return <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -101,6 +103,7 @@ function JavaRunVentureCard() {
       </div>
     </div>;
 }
+
 function WeeklyWednesdayRunCard() {
   return <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -153,6 +156,7 @@ function WeeklyWednesdayRunCard() {
       </div>
     </div>;
 }
+
 function EnvironmentalRunCard() {
   return <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -199,10 +203,13 @@ function EnvironmentalRunCard() {
         </div>
         
         {/* Register button */}
-        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">Register Now</Button>
+        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">
+          <a href="https://docs.google.com/forms/d/14iGg1WEHgFRRzban69pirrAhpQcmvoGLWr7R8RFQamY/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer" className="mx-0">Register Now</a>
+        </Button>
       </div>
     </div>;
 }
+
 const Events = () => {
   const {
     scrollToSection
