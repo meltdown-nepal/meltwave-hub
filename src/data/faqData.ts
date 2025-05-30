@@ -5,6 +5,7 @@ export const faqData = [
   {
     id: 'getting-started',
     title: 'Getting Started',
+    icon: Play,
     questions: [
       {
         id: 'what-is-meltdown',
@@ -29,6 +30,7 @@ export const faqData = [
   {
     id: 'for-companies',
     title: 'For Companies',
+    icon: Building2,
     questions: [
       {
         id: 'company-benefits',
@@ -59,6 +61,7 @@ export const faqData = [
   {
     id: 'for-employees',
     title: 'For Employees',
+    icon: Users,
     questions: [
       {
         id: 'employee-services',
@@ -83,6 +86,7 @@ export const faqData = [
   {
     id: 'for-providers',
     title: 'For Wellness Providers',
+    icon: HandHeart,
     questions: [
       {
         id: 'provider-partnership',
@@ -107,6 +111,7 @@ export const faqData = [
   {
     id: 'programs-services',
     title: 'Programs & Services',
+    icon: Dumbbell,
     questions: [
       {
         id: 'meltfit-programs',
@@ -131,6 +136,7 @@ export const faqData = [
   {
     id: 'support-contact',
     title: 'Support & Contact',
+    icon: HelpCircle,
     questions: [
       {
         id: 'customer-support',

@@ -25,12 +25,14 @@ interface FaqSectionProps {
   title: string;
   questions: Question[];
   defaultOpen?: boolean;
+  icon?: LucideIcon;
 }
 
 const FaqSection: React.FC<FaqSectionProps> = ({ 
   title, 
   questions, 
-  defaultOpen = false 
+  defaultOpen = false,
+  icon: SectionIcon
 }) => {
   const [isOpen, setIsOpen] = React.useState(defaultOpen);
 
@@ -43,6 +45,11 @@ const FaqSection: React.FC<FaqSectionProps> = ({
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
           <div className="flex items-center gap-3">
+            {SectionIcon && (
+              <div className="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <SectionIcon className="h-6 w-6 text-yellow-600" />
+              </div>
+            )}
             <h2 className="text-xl font-bold text-left">{title}</h2>
           </div>
           <ChevronDown 
@@ -62,14 +69,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({
                   className="border border-gray-100 rounded-lg overflow-hidden"
                 >
                   <AccordionTrigger className="px-4 py-3 text-left font-medium hover:no-underline hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center gap-3">
-                      {question.icon && (
-                        <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
-                          <question.icon className="h-5 w-5 text-yellow-600" />
-                        </div>
-                      )}
-                      <span className="flex-1">{question.question}</span>
-                    </div>
+                    <span className="flex-1">{question.question}</span>
                   </AccordionTrigger>
                   <AccordionContent className="px-4 pb-4">
                     <FaqItem 
