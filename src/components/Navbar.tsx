@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
             <Link to="/" className={`py-2 ${getNavLinkClass('/')}`} onClick={toggleMenu}>Home</Link>
             <Link to="/corporate-wellness" className={`py-2 ${getNavLinkClass('/corporate-wellness')}`} onClick={toggleMenu}>Corporate Wellness Overview</Link>
             <Link to="/companies" className={`py-2 pl-4 ${getNavLinkClass('/companies')}`} onClick={toggleMenu}>- For Companies</Link>
-            <Link to="/providers" className={`py-2 pl-4 ${getNavLinkClass('/providers')}`} onClick={toggleMenu}>- For Providers</Link>
+            <Link to="/providers" className={`py-2 pl-4 ${getNavLinkClass('/providers')}`} onClick={toggleMenu}>- For  Wellness Providers</Link>
             <Link to="/employees" className={`py-2 pl-4 ${getNavLinkClass('/employees')}`} onClick={toggleMenu}>- For Employees</Link>
             <Link to="/events" className={`py-2 ${getNavLinkClass('/events')}`} onClick={toggleMenu}>Events</Link>
             <Link to="/academy" className={`py-2 ${getNavLinkClass('/academy')}`} onClick={toggleMenu}>Academy</Link>
