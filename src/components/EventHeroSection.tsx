@@ -17,95 +17,88 @@ function getNextWednesday9am() {
   }
   return nextWednesday;
 }
-
 function getCountdown(date: Date) {
   const now = new Date();
   const diff = date.getTime() - now.getTime();
-  if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 };
+  if (diff <= 0) return {
+    d: 0,
+    h: 0,
+    m: 0,
+    s: 0
+  };
   const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((diff / (1000 * 60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
-  return { d, h, m, s };
+  const h = Math.floor(diff / (1000 * 60 * 60) % 24);
+  const m = Math.floor(diff / (1000 * 60) % 60);
+  const s = Math.floor(diff / 1000 % 60);
+  return {
+    d,
+    h,
+    m,
+    s
+  };
 }
-
-const fitnessIcons = [
-  { Icon: Dumbbell, className: "left-8 top-10 animate-[float1_6s_ease-in-out_infinite]" },
-  { Icon: HeartPulse, className: "right-8 top-28 animate-[float2_7s_ease-in-out_infinite] hidden md:block" },
-];
-
+const fitnessIcons = [{
+  Icon: Dumbbell,
+  className: "left-8 top-10 animate-[float1_6s_ease-in-out_infinite]"
+}, {
+  Icon: HeartPulse,
+  className: "right-8 top-28 animate-[float2_7s_ease-in-out_infinite] hidden md:block"
+}];
 interface EventHeroSectionProps {
   onSeeUpcomingClick: () => void;
 }
-
-export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectionProps) {
+export default function EventHeroSection({
+  onSeeUpcomingClick
+}: EventHeroSectionProps) {
   const [nextRun, setNextRun] = useState<Date>(getNextWednesday9am());
   const [countdown, setCountdown] = useState(getCountdown(nextRun));
   const intervalRef = useRef<number>();
-  
   const updateCountdown = useCallback(() => {
     const n = getNextWednesday9am();
     setNextRun(n);
     setCountdown(getCountdown(n));
   }, []);
-
   useEffect(() => {
     // Initial setup
     updateCountdown();
-    
+
     // Update every second, but don't use setInterval which can cause performance issues
     const updateTimer = () => {
       updateCountdown();
       intervalRef.current = window.setTimeout(updateTimer, 1000);
     };
-    
     intervalRef.current = window.setTimeout(updateTimer, 1000);
-    
     return () => {
       if (intervalRef.current) {
         clearTimeout(intervalRef.current);
       }
     };
   }, [updateCountdown]);
-
-  return (
-    <section
-      className="relative min-h-[440px] md:min-h-[500px] flex items-center justify-center section-padding"
-    >
+  return <section className="relative min-h-[440px] md:min-h-[500px] flex items-center justify-center section-padding">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <img
-          src="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png"
-          alt="Group of fitness enthusiasts at a stadium track"
-          className="w-full h-full object-cover"
-          draggable={false}
-          loading="eager" // This is a hero image, so we want it to load quickly
-          width="1400"
-          height="800"
-        />
+        <img src="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png" alt="Group of fitness enthusiasts at a stadium track" className="w-full h-full object-cover" draggable={false} loading="eager" // This is a hero image, so we want it to load quickly
+      width="1400" height="800" />
         {/* Dark overlay with gradient for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
       </div>
 
       {/* Floating fitness icons */}
-      {fitnessIcons.map(({ Icon, className }, i) => (
-        <Icon
-          key={i}
-          size={46}
-          className={`absolute text-primary opacity-70 drop-shadow-lg pointer-events-none ${className}`}
-          aria-hidden
-        />
-      ))}
+      {fitnessIcons.map(({
+      Icon,
+      className
+    }, i) => <Icon key={i} size={46} className={`absolute text-primary opacity-70 drop-shadow-lg pointer-events-none ${className}`} aria-hidden />)}
 
       {/* Content */}
       <div className="relative z-10 w-full text-center mx-auto max-w-3xl">
-        <h1
-          className="text-3xl md:text-5xl font-extrabold mb-6 animate-fade-in tracking-tight text-white"
-          style={{ animationDelay: "0.1s" }}
-        >
+        <h1 className="text-3xl md:text-5xl font-extrabold mb-6 animate-fade-in tracking-tight text-white" style={{
+        animationDelay: "0.1s"
+      }}>
           Ready for the Next Challenge?
         </h1>
-        <p className="text-lg md:text-xl mb-8 text-gray-100 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <p className="text-lg md:text-xl mb-8 text-gray-100 animate-fade-in" style={{
+        animationDelay: "0.3s"
+      }}>
           Join the movement! Explore upcoming wellness events, workshops and fitness initiatives designed to inspire and energize.
         </p>
         {/* Countdown */}
@@ -117,13 +110,9 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
           <span className="text-gray-200">until next Wednesday Run</span>
         </div>
         {/* CTA Button */}
-        <button
-          onClick={onSeeUpcomingClick}
-          className="btn-primary text-lg px-8 py-3 shadow-lg animate-slide-in-right"
-          style={{ animationDelay: "0.6s" }}
-        >
-          See Upcoming Events
-        </button>
+        <button onClick={onSeeUpcomingClick} className="btn-primary text-lg px-8 py-3 shadow-lg animate-slide-in-right" style={{
+        animationDelay: "0.6s"
+      }}>Scroll to  Events</button>
       </div>
 
       {/* Subtle CSS for floating icons & animations */}
@@ -142,6 +131,5 @@ export default function EventHeroSection({ onSeeUpcomingClick }: EventHeroSectio
           100% { transform: translateY(0) rotate(-4deg);}
         }
       `}</style>
-    </section>
-  );
+    </section>;
 }
