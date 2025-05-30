@@ -14,7 +14,7 @@ export interface FaqSection {
 export const faqData: FaqSection[] = [
   {
     id: 'general',
-    title: '💼 General Understanding',
+    title: ' General Understanding',
     questions: [
       {
         id: 'what-is-meltdown',
@@ -71,7 +71,7 @@ Meltdown offers:
   },
   {
     id: 'business',
-    title: '💰 Business Model',
+    title: ' Business Model',
     questions: [
       {
         id: 'pricing-work',
@@ -106,7 +106,7 @@ Employees can choose one of the following packages at subsidized rates:
   },
   {
     id: 'engagement',
-    title: '👥 Employee Engagement',
+    title: ' Employee Engagement',
     questions: [
       {
         id: 'encourage-participation',
@@ -140,7 +140,7 @@ As your team members become accountability partners, staying consistent becomes 
   },
   {
     id: 'technology',
-    title: '⚙️ Technology and Operations',
+    title: ' Technology and Operations',
     questions: [
       {
         id: 'app-offers',
@@ -170,7 +170,7 @@ We will be providing a monthly counseling session to deal with any challenges or
   },
   {
     id: 'onboarding',
-    title: '🎯 Collaboration and Onboarding',
+    title: 'Collaboration and Onboarding',
     questions: [
       {
         id: 'onboarding-process',
@@ -191,7 +191,7 @@ We will be providing a monthly counseling session to deal with any challenges or
   },
   {
     id: 'metrics',
-    title: '📈 Impact and Metrics',
+    title: 'Impact and Metrics',
     questions: [
       {
         id: 'measure-engagement',
@@ -241,7 +241,7 @@ These metrics help you understand employee engagement and tailor wellbeing progr
   },
   {
     id: 'value',
-    title: '💡 Value Proposition',
+    title: 'Value Proposition',
     questions: [
       {
         id: 'why-choose-meltdown',
@@ -276,7 +276,7 @@ When employees feel supported in their health journey, it creates a ripple effec
   },
   {
     id: 'customization',
-    title: '🔧 Customization and Flexibility',
+    title: 'Customization and Flexibility',
     questions: [
       {
         id: 'customize-program',
@@ -297,7 +297,7 @@ When employees feel supported in their health journey, it creates a ripple effec
   },
   {
     id: 'challenges',
-    title: '🛡️ Challenges and Concerns',
+    title: 'Challenges and Concerns',
     questions: [
       {
         id: 'employees-dont-use',
@@ -323,7 +323,7 @@ When employees feel supported in their health journey, it creates a ripple effec
   },
   {
     id: 'mission',
-    title: '🌟 Mission and Vision',
+    title: 'Mission and Vision',
     questions: [
       {
         id: 'meltdown-mission',
