@@ -9,6 +9,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import FacultyPhotosSection from '@/components/academy/FacultyPhotosSection';
+
 const Academy = () => {
   const {
     scrollToSection
@@ -303,9 +304,9 @@ const Academy = () => {
                   <p className="text-sm font-medium text-primary">{batch.spots}</p>
                 </div>
                 <div className="p-5">
-                  <Link to="/contact" className="w-full">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_VSDXTvKWnzDkusFz_L1uSFAiVWXhARgbl9Ah3AlvUElCdQ/viewform" target="_blank" rel="noopener noreferrer" className="w-full">
                     <Button className="w-full" variant="default">Register Now</Button>
-                  </Link>
+                  </a>
                 </div>
               </div>)}
           </div>
@@ -431,4 +432,5 @@ const Academy = () => {
       </section>
     </div>;
 };
+
 export default Academy;
