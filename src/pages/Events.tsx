@@ -6,7 +6,6 @@ import EventHeroSection from "@/components/EventHeroSection";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import EventOfferCard from "@/components/EventOfferCard";
-
 function EventCard({
   title,
   address,
@@ -51,7 +50,6 @@ function EventCard({
           </Button>)}
     </div>;
 }
-
 function JavaRunVentureCard() {
   return <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -98,13 +96,11 @@ function JavaRunVentureCard() {
         </div>
         
         {/* Register button */}
-        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">
-          ☕ Join the Adventure
-        </Button>
+        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">View Gallery
+      </Button>
       </div>
     </div>;
 }
-
 function WeeklyWednesdayRunCard() {
   return <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -157,7 +153,6 @@ function WeeklyWednesdayRunCard() {
       </div>
     </div>;
 }
-
 function EnvironmentalRunCard() {
   return <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Background decoration */}
@@ -210,7 +205,6 @@ function EnvironmentalRunCard() {
       </div>
     </div>;
 }
-
 const Events = () => {
   const {
     scrollToSection
@@ -246,7 +240,6 @@ const Events = () => {
     title: "Topic-Specific Events",
     description: "Tailored experiences based on wellness and active living."
   }];
-
   return <div>
       <EventHeroSection onSeeUpcomingClick={() => scrollToSection('upcoming')} />
 
@@ -313,5 +306,4 @@ const Events = () => {
       </section>
     </div>;
 };
-
 export default Events;
