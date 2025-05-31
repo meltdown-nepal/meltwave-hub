@@ -9,7 +9,6 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import { useVisitorTracking } from "./hooks/useVisitorTracking";
 
 // Pages
 import Home from "./pages/Home";
@@ -32,11 +31,6 @@ import AnalyticsPage from "./pages/Analytics";
 import Faq from "./pages/Faq";
 
 function AppContent() {
-  const { trackEvent } = useVisitorTracking();
-
-  // Make trackEvent available globally for easy access
-  (window as any).trackEvent = trackEvent;
-
   return (
     <>
       <ScrollToTop />
