@@ -203,9 +203,16 @@ function EnvironmentalRunCard() {
         </div>
         
         {/* Register button */}
-        <Button className="mt-auto bg-primary hover:bg-secondary text-black font-semibold w-full">
-          <a href="https://docs.google.com/forms/d/14iGg1WEHgFRRzban69pirrAhpQcmvoGLWr7R8RFQamY/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer" className="mx-0">Register Now</a>
-        </Button>
+        <a 
+          href="https://docs.google.com/forms/d/14iGg1WEHgFRRzban69pirrAhpQcmvoGLWr7R8RFQamY/viewform?edit_requested=true" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="mt-auto w-full block"
+        >
+          <Button className="bg-primary hover:bg-secondary text-black font-semibold w-full">
+            Register Now
+          </Button>
+        </a>
       </div>
     </div>;
 }
