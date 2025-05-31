@@ -37,8 +37,8 @@ export const usePagePerformance = () => {
         }
 
         const performanceMetrics: PerformanceMetrics = {
-          loadTime: navigation.loadEventEnd - navigation.navigationStart,
-          domContentLoaded: navigation.domContentLoadedEventEnd - navigation.navigationStart,
+          loadTime: navigation.loadEventEnd - navigation.startTime,
+          domContentLoaded: navigation.domContentLoadedEventEnd - navigation.startTime,
           firstContentfulPaint: fcpEntry ? fcpEntry.startTime : 0,
           largestContentfulPaint: lcp
         };
