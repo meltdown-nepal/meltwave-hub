@@ -30,7 +30,7 @@ const WellnessProvidersCarousel = () => {
           <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-yellow-50 to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none" />
           
-          {/* Seamless scrolling container */}
+          {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
             <div className="animate-seamless-scroll flex">
               {/* First set of logos */}
@@ -45,6 +45,9 @@ const WellnessProvidersCarousel = () => {
                     className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
                     draggable={false}
                     loading="lazy"
+                    width="180"
+                    height="80"
+                    decoding="async"
                   />
                 </div>
               ))}
@@ -60,6 +63,9 @@ const WellnessProvidersCarousel = () => {
                     className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
                     draggable={false}
                     loading="lazy"
+                    width="180"
+                    height="80"
+                    decoding="async"
                   />
                 </div>
               ))}
@@ -68,27 +74,36 @@ const WellnessProvidersCarousel = () => {
         </div>
       </div>
 
-      {/* Enhanced CSS animation for seamless scrolling */}
+      {/* Optimized CSS animation for better performance */}
       <style>{`
         @keyframes seamless-scroll {
           0% {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
           }
         }
 
         .animate-seamless-scroll {
           animation: seamless-scroll 60s linear infinite;
           width: fit-content;
-        }
-
-        /* Ensure smooth performance */
-        .animate-seamless-scroll {
           will-change: transform;
           backface-visibility: hidden;
           perspective: 1000px;
+          transform: translateZ(0);
+        }
+
+        /* Pause animation on hover for better UX */
+        .animate-seamless-scroll:hover {
+          animation-play-state: paused;
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-seamless-scroll {
+            animation-duration: 120s;
+          }
         }
       `}</style>
     </section>
