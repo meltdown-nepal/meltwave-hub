@@ -10,24 +10,24 @@ const ModernFeaturesSection = () => {
       title: "For Companies",
       description: "Implement effective wellness programs that boost productivity, reduce turnover, and create a positive workplace culture.",
       link: "/companies",
-      color: "from-blue-400 to-blue-600",
-      bgColor: "bg-blue-50"
+      color: "from-primary to-secondary",
+      bgColor: "bg-primary/10"
     },
     {
       emoji: "👥",
       title: "For Employees",
       description: "Access high-quality wellness programs that help you stay healthy, reduce stress, and improve your work-life balance.",
       link: "/employees",
-      color: "from-green-400 to-green-600",
-      bgColor: "bg-green-50"
+      color: "from-secondary to-primary",
+      bgColor: "bg-secondary/10"
     },
     {
       emoji: "🤝",
       title: "For Providers",
       description: "Grow your wellness business by connecting with companies seeking your specific expertise and services.",
       link: "/providers",
-      color: "from-purple-400 to-purple-600",
-      bgColor: "bg-purple-50"
+      color: "from-primary to-secondary",
+      bgColor: "bg-primary/10"
     }
   ];
 
@@ -69,7 +69,7 @@ const ModernFeaturesSection = () => {
                     </p>
                     <Link 
                       to={feature.link} 
-                      className={`inline-flex items-center gap-2 bg-gradient-to-r ${feature.color} text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
+                      className={`inline-flex items-center gap-2 bg-gradient-to-r ${feature.color} text-black font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
                     >
                       Learn more
                       <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
