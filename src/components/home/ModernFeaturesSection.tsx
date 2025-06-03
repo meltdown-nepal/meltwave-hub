@@ -1,0 +1,120 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import AnimatedElement from '../animations/AnimatedElement';
+
+const ModernFeaturesSection = () => {
+  const features = [
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-building">
+          <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+          <path d="M9 22v-4h6v4"></path>
+          <path d="M8 6h.01"></path>
+          <path d="M16 6h.01"></path>
+          <path d="M12 6h.01"></path>
+          <path d="M12 10h.01"></path>
+          <path d="M12 14h.01"></path>
+          <path d="M16 10h.01"></path>
+          <path d="M16 14h.01"></path>
+          <path d="M8 10h.01"></path>
+          <path d="M8 14h.01"></path>
+        </svg>
+      ),
+      title: "For Companies",
+      description: "Implement effective wellness programs that boost productivity, reduce turnover, and create a positive workplace culture.",
+      link: "/companies",
+      color: "from-blue-400 to-blue-600",
+      bgColor: "bg-blue-50"
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-users">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      ),
+      title: "For Employees",
+      description: "Access high-quality wellness programs that help you stay healthy, reduce stress, and improve your work-life balance.",
+      link: "/employees",
+      color: "from-green-400 to-green-600",
+      bgColor: "bg-green-50"
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide-heart-handshake">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+          <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path>
+          <path d="m18 15-2-2"></path>
+          <path d="m15 18-2-2"></path>
+        </svg>
+      ),
+      title: "For Providers",
+      description: "Grow your wellness business by connecting with companies seeking your specific expertise and services.",
+      link: "/providers",
+      color: "from-purple-400 to-purple-600",
+      bgColor: "bg-purple-50"
+    }
+  ];
+
+  return (
+    <section className="section-padding bg-gradient-to-b from-white to-gray-50">
+      <div className="container-custom">
+        <AnimatedElement animation="slideUp" delay={0.2}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              How Meltdown Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Our comprehensive platform connects companies with top wellness providers to create effective programs for employees.
+            </p>
+          </div>
+        </AnimatedElement>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <AnimatedElement key={feature.title} animation="slideUp" delay={0.4 + index * 0.2}>
+              <div className="group relative">
+                {/* Card */}
+                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+                  {/* Background gradient on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  
+                  {/* Icon */}
+                  <div className={`relative ${feature.bgColor} w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`bg-gradient-to-br ${feature.color} bg-clip-text text-transparent`}>
+                      {feature.icon}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative text-center">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-gray-800 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {feature.description}
+                    </p>
+                    <Link 
+                      to={feature.link} 
+                      className={`inline-flex items-center gap-2 bg-gradient-to-r ${feature.color} text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
+                    >
+                      Learn more
+                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </AnimatedElement>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ModernFeaturesSection;
