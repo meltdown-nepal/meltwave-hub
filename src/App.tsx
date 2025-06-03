@@ -38,8 +38,8 @@ function AppContent() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/enhanced" element={<EnhancedHome />} />
+          <Route path="/" element={<EnhancedHome />} />
+          <Route path="/simple" element={<Home />} />
           <Route path="/corporate-wellness" element={<CorporateWellness />} />
           <Route path="/companies" element={<ForCompanies />} />
           <Route path="/providers" element={<ForProviders />} />
