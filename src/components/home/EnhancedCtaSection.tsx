@@ -56,24 +56,6 @@ const EnhancedCtaSection = () => {
             </Link>
           </div>
         </AnimatedElement>
-
-        {/* Feature highlights */}
-        <AnimatedElement animation="slideUp" delay={0.8}>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-3xl font-bold text-black mb-2">24/7</div>
-              <div className="text-black/80">Support Available</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-3xl font-bold text-black mb-2">30 Days</div>
-              <div className="text-black/80">Money-Back Guarantee</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-3xl font-bold text-black mb-2">5 Min</div>
-              <div className="text-black/80">Quick Setup</div>
-            </div>
-          </div>
-        </AnimatedElement>
       </div>
     </section>
   );

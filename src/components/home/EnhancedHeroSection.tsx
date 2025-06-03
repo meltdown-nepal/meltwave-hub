@@ -1,10 +1,28 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
 
 const EnhancedHeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const backgroundImages = [
+    "/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png",
+    "/lovable-uploads/146c33ba-fd46-45de-9faa-e6b33ca16566.jpg",
+    "/lovable-uploads/b4d593d4-69e8-4ab7-a1df-4d8d5371874b.jpg"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
       {/* Background decorative elements */}
@@ -69,47 +87,67 @@ const EnhancedHeroSection = () => {
               </div>
             </AnimatedElement>
 
-            {/* Stats */}
+            {/* Updated Stats */}
             <AnimatedElement animation="slideUp" delay={1.0}>
               <div className="grid grid-cols-3 gap-6 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">50+</div>
-                  <div className="text-sm text-gray-600">Companies</div>
+                  <div className="text-3xl font-bold text-gray-900 font-inter">40+</div>
+                  <div className="text-sm text-gray-600 font-inter">Companies</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">15+</div>
-                  <div className="text-sm text-gray-600">Wellness Partners</div>
+                  <div className="text-3xl font-bold text-gray-900 font-inter">70+</div>
+                  <div className="text-sm text-gray-600 font-inter">Wellness Partners</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">1000+</div>
-                  <div className="text-sm text-gray-600">Happy Employees</div>
+                  <div className="text-3xl font-bold text-gray-900 font-inter">800+</div>
+                  <div className="text-sm text-gray-600 font-inter">Happy Employees</div>
                 </div>
               </div>
             </AnimatedElement>
           </div>
 
-          {/* Image Side */}
+          {/* Image Side with Slideshow */}
           <div className="relative">
             <AnimatedElement animation="scaleIn" delay={0.5}>
               <div className="relative">
-                {/* Main image with enhanced styling */}
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
+                {/* Main image with slideshow */}
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-transform duration-700">
+                  {backgroundImages.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-1000 ${
+                        index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <OptimizedImage
+                        src={image}
+                        alt={`Wellness at work ${index + 1}`}
+                        className="w-full h-auto"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
+                  {/* Ensure first image is loaded for sizing */}
                   <OptimizedImage
-                    src="/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png"
+                    src={backgroundImages[0]}
                     alt="Wellness at work"
-                    className="w-full h-auto"
+                    className="w-full h-auto opacity-0"
                     priority={true}
                   />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
-                {/* Floating elements */}
-                <div className="absolute -top-6 -left-6 w-20 h-20 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-float">
-                  <div className="text-2xl">💪</div>
-                </div>
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-float" style={{ animationDelay: '1s' }}>
-                  <div className="text-2xl">🧘</div>
+                {/* Slideshow indicator dots */}
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {backgroundImages.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentImageIndex ? 'bg-primary scale-125' : 'bg-gray-300'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </AnimatedElement>
