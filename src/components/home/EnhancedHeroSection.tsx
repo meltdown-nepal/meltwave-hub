@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -7,12 +8,8 @@ import OptimizedImage from '../OptimizedImage';
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const backgroundImages = [
-    "/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png", 
-    "/lovable-uploads/146c33ba-fd46-45de-9faa-e6b33ca16566.jpg", 
-    "/lovable-uploads/b4d593d4-69e8-4ab7-a1df-4d8d5371874b.jpg",
-    "/lovable-uploads/a787d202-ac50-43a7-bab4-1024e02988b5.png",
-    "/lovable-uploads/e396fbb9-0ba4-4293-94d7-30973176aa1b.png",
-    "/lovable-uploads/35e0de05-06ee-470a-888c-2f5cf5939779.png"
+    "/lovable-uploads/b5db24bf-4b35-49bb-a7d2-7f408be9e532.png", 
+    "/lovable-uploads/d4dd8fd7-57ca-4c3b-987c-8089812c0685.png"
   ];
 
   useEffect(() => {
