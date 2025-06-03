@@ -6,7 +6,7 @@ import AnimatedElement from '../animations/AnimatedElement';
 const ModernFeaturesSection = () => {
   const features = [
     {
-      emoji: "🏢",
+      emoji: "💪",
       title: "For Companies",
       description: "Implement effective wellness programs that boost productivity, reduce turnover, and create a positive workplace culture.",
       link: "/companies",
@@ -14,7 +14,7 @@ const ModernFeaturesSection = () => {
       bgColor: "bg-primary/10"
     },
     {
-      emoji: "👥",
+      emoji: "🏃‍♂️",
       title: "For Employees",
       description: "Access high-quality wellness programs that help you stay healthy, reduce stress, and improve your work-life balance.",
       link: "/employees",
@@ -22,7 +22,7 @@ const ModernFeaturesSection = () => {
       bgColor: "bg-secondary/10"
     },
     {
-      emoji: "🤝",
+      emoji: "🌟",
       title: "For Providers",
       description: "Grow your wellness business by connecting with companies seeking your specific expertise and services.",
       link: "/providers",
