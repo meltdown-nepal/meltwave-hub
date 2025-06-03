@@ -12,6 +12,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 // Pages
 import Home from "./pages/Home";
+import EnhancedHome from "./pages/EnhancedHome";
 import CorporateWellness from "./pages/CorporateWellness";
 import ForCompanies from "./pages/ForCompanies";
 import ForProviders from "./pages/ForProviders";
@@ -38,6 +39,7 @@ function AppContent() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/enhanced" element={<EnhancedHome />} />
           <Route path="/corporate-wellness" element={<CorporateWellness />} />
           <Route path="/companies" element={<ForCompanies />} />
           <Route path="/providers" element={<ForProviders />} />

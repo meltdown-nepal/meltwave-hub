@@ -3,8 +3,12 @@ import React from 'react';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FaqSection from '../components/FaqSection';
 import WellnessProviders from '../components/WellnessProviders';
+import EnhancedHeroSection from '../components/home/EnhancedHeroSection';
+import ModernFeaturesSection from '../components/home/ModernFeaturesSection';
+import EnhancedClientCarousel from '../components/home/EnhancedClientCarousel';
+import EnhancedCtaSection from '../components/home/EnhancedCtaSection';
 
-const Home = () => {
+const EnhancedHome = () => {
   // Home page testimonials
   const homeTestimonials = [
     {
@@ -35,25 +39,14 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
-      {/* Simple Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary/10 via-white to-secondary/10">
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
-            Wellness Solutions for Everyone
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            We create innovative solutions that empower people to lead an active lifestyle and connect through wellness.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="/schedule-demo" className="btn-primary text-lg px-8 py-3">
-              Get Started
-            </a>
-            <a href="/corporate-wellness" className="btn-outline text-lg px-8 py-3">
-              Learn More
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Enhanced Hero Section */}
+      <EnhancedHeroSection />
+
+      {/* Enhanced Client Logo Carousel */}
+      <EnhancedClientCarousel />
+
+      {/* Modern Features Section */}
+      <ModernFeaturesSection />
 
       {/* Our Wellness Providers Section */}
       <WellnessProviders />
@@ -68,22 +61,10 @@ const Home = () => {
       {/* FAQ Section */}
       <FaqSection />
 
-      {/* Simple CTA Section */}
-      <section className="section-padding bg-primary">
-        <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-6 text-black">
-            Ready to Transform Your Workplace?
-          </h2>
-          <p className="text-xl mb-8 text-black/80 max-w-2xl mx-auto">
-            Join thousands of companies who are creating healthier, happier workplaces with Meltdown.
-          </p>
-          <a href="/schedule-demo" className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full transition-all duration-300">
-            Get Started Today
-          </a>
-        </div>
-      </section>
+      {/* Enhanced CTA Section */}
+      <EnhancedCtaSection />
     </div>
   );
 };
 
-export default Home;
+export default EnhancedHome;
