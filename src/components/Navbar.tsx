@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container-custom">
-        <div className="flex justify-between items-center py-2">
+        <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
             <img alt="Meltdown Logo" className="h-8 w-auto" src="/lovable-uploads/02d094e0-8d2b-4b00-b52b-a9623830309c.png" />
             <span className="font-header font-bold text-lg">Meltdown</span>

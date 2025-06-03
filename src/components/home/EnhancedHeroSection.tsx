@@ -33,14 +33,14 @@ const EnhancedHeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="relative container-custom min-h-screen flex items-center">
+      <div className="relative container-custom pt-16 pb-20 flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           {/* Content Side */}
           <div className="space-y-6">
