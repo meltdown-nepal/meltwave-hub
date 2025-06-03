@@ -3,15 +3,25 @@ import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
+
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const backgroundImages = ["/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png", "/lovable-uploads/146c33ba-fd46-45de-9faa-e6b33ca16566.jpg", "/lovable-uploads/b4d593d4-69e8-4ab7-a1df-4d8d5371874b.jpg"];
+  const backgroundImages = [
+    "/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png", 
+    "/lovable-uploads/146c33ba-fd46-45de-9faa-e6b33ca16566.jpg", 
+    "/lovable-uploads/b4d593d4-69e8-4ab7-a1df-4d8d5371874b.jpg",
+    "/lovable-uploads/a787d202-ac50-43a7-bab4-1024e02988b5.png",
+    "/lovable-uploads/e396fbb9-0ba4-4293-94d7-30973176aa1b.png",
+    "/lovable-uploads/35e0de05-06ee-470a-888c-2f5cf5939779.png"
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % backgroundImages.length);
     }, 2000);
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
+
   const scrollToNextSection = () => {
     const nextSection = document.querySelector('#trusted-companies-section') || document.querySelector('section:nth-of-type(2)');
     if (nextSection) {
@@ -20,13 +30,15 @@ const EnhancedHeroSection = () => {
       });
     }
   };
-  return <section className="relative bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
+
+  return (
+    <section className="relative bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{
-        animationDelay: '1s'
-      }}></div>
+          animationDelay: '1s'
+        }}></div>
       </div>
 
       <div className="relative container-custom pt-16 pb-20 flex items-center">
@@ -97,18 +109,42 @@ const EnhancedHeroSection = () => {
               <div className="relative">
                 {/* Main image with slideshow */}
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-transform duration-700">
-                  {backgroundImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
-                      <OptimizedImage src={image} alt={`Wellness at work ${index + 1}`} className="w-full h-auto" priority={index === 0} />
-                    </div>)}
+                  {backgroundImages.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-1000 ${
+                        index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <OptimizedImage
+                        src={image}
+                        alt={`Wellness activities ${index + 1}`}
+                        className="w-full h-auto"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
                   {/* Ensure first image is loaded for sizing */}
-                  <OptimizedImage src={backgroundImages[0]} alt="Wellness at work" className="w-full h-auto opacity-0" priority={true} />
+                  <OptimizedImage
+                    src={backgroundImages[0]}
+                    alt="Wellness activities"
+                    className="w-full h-auto opacity-0"
+                    priority={true}
+                  />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
                 {/* Slideshow indicator dots */}
                 <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  {backgroundImages.map((_, index) => <div key={index} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-primary scale-125' : 'bg-gray-300'}`} />)}
+                  {backgroundImages.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentImageIndex ? 'bg-primary scale-125' : 'bg-gray-300'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </AnimatedElement>
@@ -119,7 +155,11 @@ const EnhancedHeroSection = () => {
       {/* Smart Animated Scroll Indicator */}
       <AnimatedElement animation="fadeIn" delay={1.5}>
         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2">
-          <button onClick={scrollToNextSection} aria-label="Scroll to next section" className="group flex flex-col items-center space-y-1 animate-bounce hover:animate-none transition-all duration-300 my-0 py-0">
+          <button
+            onClick={scrollToNextSection}
+            aria-label="Scroll to next section"
+            className="group flex flex-col items-center space-y-1 animate-bounce hover:animate-none transition-all duration-300 my-0 py-0"
+          >
             <span className="text-xs text-gray-500 font-medium opacity-70 group-hover:opacity-100 transition-opacity"></span>
             <div className="flex flex-col space-y-1">
               <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
@@ -128,6 +168,8 @@ const EnhancedHeroSection = () => {
           </button>
         </div>
       </AnimatedElement>
-    </section>;
+    </section>
+  );
 };
+
 export default EnhancedHeroSection;
