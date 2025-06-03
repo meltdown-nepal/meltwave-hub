@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -8,14 +7,14 @@ import OptimizedImage from '../OptimizedImage';
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const backgroundImages = [
-    "/lovable-uploads/b5db24bf-4b35-49bb-a7d2-7f408be9e532.png", 
-    "/lovable-uploads/d4dd8fd7-57ca-4c3b-987c-8089812c0685.png"
+    "/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png", 
+    "/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.png"
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % backgroundImages.length);
-    }, 2000);
+    }, 3500);
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
 
@@ -105,7 +104,7 @@ const EnhancedHeroSection = () => {
             <AnimatedElement animation="scaleIn" delay={0.5}>
               <div className="relative">
                 {/* Main image with slideshow */}
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-transform duration-700">
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-transform duration-700 aspect-square">
                   {backgroundImages.map((image, index) => (
                     <div
                       key={index}
@@ -116,18 +115,11 @@ const EnhancedHeroSection = () => {
                       <OptimizedImage
                         src={image}
                         alt={`Wellness activities ${index + 1}`}
-                        className="w-full h-auto"
+                        className="w-full h-full object-cover"
                         priority={index === 0}
                       />
                     </div>
                   ))}
-                  {/* Ensure first image is loaded for sizing */}
-                  <OptimizedImage
-                    src={backgroundImages[0]}
-                    alt="Wellness activities"
-                    className="w-full h-auto opacity-0"
-                    priority={true}
-                  />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>

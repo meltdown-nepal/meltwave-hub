@@ -15,15 +15,13 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   priority = false 
 }) => {
   return (
-    <div className={`relative ${className}`}>
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover"
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
-      />
-    </div>
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
+    />
   );
 };
 
