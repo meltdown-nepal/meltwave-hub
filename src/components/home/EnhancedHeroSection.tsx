@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
 
@@ -23,6 +24,14 @@ const EnhancedHeroSection = () => {
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
 
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector('#trusted-companies-section') || 
+                       document.querySelector('section:nth-of-type(2)');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
       {/* Background decorative elements */}
@@ -34,7 +43,7 @@ const EnhancedHeroSection = () => {
       <div className="relative container-custom min-h-screen flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           {/* Content Side */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <AnimatedElement animation="slideUp" delay={0.2}>
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -43,7 +52,7 @@ const EnhancedHeroSection = () => {
             </AnimatedElement>
 
             <AnimatedElement animation="slideUp" delay={0.4}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent">
                   Wellness
                 </span>
@@ -59,7 +68,7 @@ const EnhancedHeroSection = () => {
             </AnimatedElement>
 
             <AnimatedElement animation="slideUp" delay={0.6}>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 We create innovative solutions that empower people to lead an active lifestyle and connect through wellness. Transform your workplace culture today.
               </p>
             </AnimatedElement>
@@ -68,7 +77,7 @@ const EnhancedHeroSection = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   to="/schedule-demo" 
-                  className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-black font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center justify-center gap-2"
+                  className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-black font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center justify-center gap-2"
                 >
                   Get Started
                   <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +86,7 @@ const EnhancedHeroSection = () => {
                 </Link>
                 <Link 
                   to="/corporate-wellness" 
-                  className="group border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-black font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2"
+                  className="group border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-black font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2"
                 >
                   Learn More
                   <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,18 +98,18 @@ const EnhancedHeroSection = () => {
 
             {/* Updated Stats */}
             <AnimatedElement animation="slideUp" delay={1.0}>
-              <div className="grid grid-cols-3 gap-6 pt-8">
+              <div className="grid grid-cols-3 gap-4 pt-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 font-inter">40+</div>
-                  <div className="text-sm text-gray-600 font-inter">Companies</div>
+                  <div className="text-2xl font-bold text-gray-900 font-inter">40+</div>
+                  <div className="text-xs text-gray-600 font-inter">Companies</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 font-inter">70+</div>
-                  <div className="text-sm text-gray-600 font-inter">Wellness Partners</div>
+                  <div className="text-2xl font-bold text-gray-900 font-inter">70+</div>
+                  <div className="text-xs text-gray-600 font-inter">Wellness Partners</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 font-inter">800+</div>
-                  <div className="text-sm text-gray-600 font-inter">Happy Employees</div>
+                  <div className="text-2xl font-bold text-gray-900 font-inter">800+</div>
+                  <div className="text-xs text-gray-600 font-inter">Happy Employees</div>
                 </div>
               </div>
             </AnimatedElement>
@@ -139,7 +148,7 @@ const EnhancedHeroSection = () => {
                 </div>
 
                 {/* Slideshow indicator dots */}
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
                   {backgroundImages.map((_, index) => (
                     <div
                       key={index}
@@ -155,12 +164,22 @@ const EnhancedHeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Smart Animated Scroll Indicator */}
       <AnimatedElement animation="fadeIn" delay={1.5}>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gray-400 rounded-full animate-pulse mt-2"></div>
-          </div>
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2">
+          <button 
+            onClick={scrollToNextSection}
+            className="group flex flex-col items-center space-y-1 animate-bounce hover:animate-none transition-all duration-300"
+            aria-label="Scroll to next section"
+          >
+            <span className="text-xs text-gray-500 font-medium opacity-70 group-hover:opacity-100 transition-opacity">
+              Scroll down
+            </span>
+            <div className="flex flex-col space-y-1">
+              <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
+              <ChevronDown className="w-5 h-5 text-gray-300 group-hover:text-gray-500 transition-colors -mt-3" />
+            </div>
+          </button>
         </div>
       </AnimatedElement>
     </section>

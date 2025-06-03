@@ -77,7 +77,11 @@
   }
   
   .section-padding {
-    @apply py-16 px-4 md:px-8;
+    @apply py-12 px-4 md:px-8;
+  }
+  
+  .section-padding-compact {
+    @apply py-8 px-4 md:px-8;
   }
   
   .container-custom {
@@ -163,6 +167,15 @@
   }
 }
 
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 216, 56, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 216, 56, 0.6);
+  }
+}
+
 /* Animation classes */
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
@@ -190,6 +203,10 @@
 
 .animate-scroll {
   animation: scroll 30s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
 }
 
 /* Enhanced hover effects */

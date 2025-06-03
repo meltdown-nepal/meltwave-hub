@@ -24,13 +24,15 @@ const clientLogos = [
 
 const EnhancedClientCarousel = () => {
   return (
-    <section className="py-8 bg-yellow-50 overflow-hidden">
+    <section id="trusted-companies-section" className="py-12 bg-gradient-to-r from-gray-50 via-white to-gray-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-8">Trusted by Leading Companies</h3>
+        <h3 className="text-3xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+          Trusted by Leading Companies
+        </h3>
         <div className="relative">
           {/* Gradient edges for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-yellow-50 to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-gray-50 via-white to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-gray-50 via-white to-transparent pointer-events-none" />
           
           {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
@@ -39,36 +41,40 @@ const EnhancedClientCarousel = () => {
               {clientLogos.map((logo) => (
                 <div
                   key={`first-${logo.id}`}
-                  className="flex-shrink-0 flex items-center justify-center px-6 py-4"
+                  className="flex-shrink-0 flex items-center justify-center px-8 py-6 group"
                 >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
-                    draggable={false}
-                    loading="lazy"
-                    width="180"
-                    height="80"
-                    decoding="async"
-                  />
+                  <div className="relative overflow-hidden rounded-xl p-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg bg-white/50 backdrop-blur-sm border border-gray-100/50 group-hover:bg-white/70">
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="h-12 md:h-16 w-auto max-w-[120px] md:max-w-[150px] object-contain transition-all duration-300 filter brightness-90 group-hover:brightness-100"
+                      draggable={false}
+                      loading="lazy"
+                      width="150"
+                      height="64"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
               ))}
               {/* Duplicate set for seamless loop */}
               {clientLogos.map((logo) => (
                 <div
                   key={`second-${logo.id}`}
-                  className="flex-shrink-0 flex items-center justify-center px-6 py-4"
+                  className="flex-shrink-0 flex items-center justify-center px-8 py-6 group"
                 >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
-                    draggable={false}
-                    loading="lazy"
-                    width="180"
-                    height="80"
-                    decoding="async"
-                  />
+                  <div className="relative overflow-hidden rounded-xl p-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg bg-white/50 backdrop-blur-sm border border-gray-100/50 group-hover:bg-white/70">
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="h-12 md:h-16 w-auto max-w-[120px] md:max-w-[150px] object-contain transition-all duration-300 filter brightness-90 group-hover:brightness-100"
+                      draggable={false}
+                      loading="lazy"
+                      width="150"
+                      height="64"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
               ))}
             </div>

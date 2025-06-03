@@ -42,27 +42,39 @@ const EnhancedHome = () => {
       {/* Enhanced Hero Section */}
       <EnhancedHeroSection />
 
-      {/* Enhanced Client Logo Carousel */}
-      <EnhancedClientCarousel />
+      {/* Enhanced Client Logo Carousel with reduced spacing */}
+      <div className="-mt-8">
+        <EnhancedClientCarousel />
+      </div>
 
-      {/* Modern Features Section */}
-      <ModernFeaturesSection />
+      {/* Modern Features Section with reduced spacing */}
+      <div className="-mt-4">
+        <ModernFeaturesSection />
+      </div>
 
-      {/* Our Wellness Providers Section */}
-      <WellnessProviders />
+      {/* Our Wellness Providers Section with reduced spacing */}
+      <div className="-mt-4">
+        <WellnessProviders />
+      </div>
 
-      {/* Video Testimonials Section */}
-      <TestimonialsSection 
-        testimonials={homeTestimonials} 
-        title="What Our Clients Say" 
-        subtitle="Hear from companies and employees who have experienced the Meltdown difference." 
-      />
+      {/* Video Testimonials Section with reduced spacing */}
+      <div className="-mt-4">
+        <TestimonialsSection 
+          testimonials={homeTestimonials} 
+          title="What Our Clients Say" 
+          subtitle="Hear from companies and employees who have experienced the Meltdown difference." 
+        />
+      </div>
 
-      {/* FAQ Section */}
-      <FaqSection />
+      {/* FAQ Section with reduced spacing */}
+      <div className="-mt-4">
+        <FaqSection />
+      </div>
 
-      {/* Enhanced CTA Section */}
-      <EnhancedCtaSection />
+      {/* Enhanced CTA Section with reduced spacing */}
+      <div className="-mt-4">
+        <EnhancedCtaSection />
+      </div>
     </div>
   );
 };
