@@ -8,7 +8,7 @@ const EnhancedCtaSection = () => {
       <div className="absolute inset-0 bg-black/10"></div>
       
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden bg-amber-400">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden bg-yellow-50">
         <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
         <div className="absolute bottom-20 right-20 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
@@ -16,7 +16,7 @@ const EnhancedCtaSection = () => {
 
       <div className="relative container-custom text-center">
         <AnimatedElement animation="slideUp" delay={0.2}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-black">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black lg:text-5xl">
             Ready to Transform
             <br />
             <span className="bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent">
@@ -26,7 +26,7 @@ const EnhancedCtaSection = () => {
         </AnimatedElement>
 
         <AnimatedElement animation="slideUp" delay={0.4}>
-          <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-black/80 leading-relaxed">
+          <p className="text-xl mb-12 max-w-4xl mx-auto text-black/80 leading-relaxed md:text-xl">
             Join thousands of companies, employees, and providers who are creating healthier, happier workplaces with Meltdown.
           </p>
         </AnimatedElement>
