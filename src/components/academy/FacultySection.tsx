@@ -48,6 +48,15 @@ const FacultySection = () => {
       experience: "4+ years", 
       specialty: "Medical Officer & Educator, Researcher & Published Author",
       quote: "Bridging medical science with fitness to ensure safe and effective training."
+    },
+    {
+      name: "Tenzing D. Gurung",
+      designation: "S&C Coach",
+      image: "/lovable-uploads/da0586a1-9ce4-456c-8b34-8c31eb75ad8f.png",
+      credentials: ["CSCS/ CPT/ KB-1/ FMT"],
+      experience: "5+ years",
+      specialty: "NITIAN-B.E Mechanical, Gym management consultant",
+      quote: "Combining engineering precision with fitness expertise to optimize performance."
     }
   ];
 
@@ -64,7 +73,7 @@ const FacultySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
           {facultyMembers.map((member, index) => (
             <div 
               key={index} 
@@ -135,11 +144,11 @@ const FacultySection = () => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-primary">15+</div>
+                <div className="text-2xl font-bold text-primary">26+</div>
                 <div className="text-sm text-gray-600">Combined Years</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">20+</div>
+                <div className="text-2xl font-bold text-primary">25+</div>
                 <div className="text-sm text-gray-600">Certifications</div>
               </div>
               <div>
