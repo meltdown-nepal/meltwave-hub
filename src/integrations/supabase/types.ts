@@ -9,6 +9,72 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      bookings: {
+        Row: {
+          booking_status: string | null
+          created_at: string
+          id: string
+          payment_method: string
+          payment_proof_url: string | null
+          payment_verified: boolean | null
+          session_completed: boolean | null
+          slot_id: string
+          trainer_id: string
+          trainer_notes: string | null
+          transaction_id: string | null
+          user_email: string
+          user_name: string
+          user_phone: string | null
+        }
+        Insert: {
+          booking_status?: string | null
+          created_at?: string
+          id?: string
+          payment_method: string
+          payment_proof_url?: string | null
+          payment_verified?: boolean | null
+          session_completed?: boolean | null
+          slot_id: string
+          trainer_id: string
+          trainer_notes?: string | null
+          transaction_id?: string | null
+          user_email: string
+          user_name: string
+          user_phone?: string | null
+        }
+        Update: {
+          booking_status?: string | null
+          created_at?: string
+          id?: string
+          payment_method?: string
+          payment_proof_url?: string | null
+          payment_verified?: boolean | null
+          session_completed?: boolean | null
+          slot_id?: string
+          trainer_id?: string
+          trainer_notes?: string | null
+          transaction_id?: string | null
+          user_email?: string
+          user_name?: string
+          user_phone?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_slot_id_fkey"
+            columns: ["slot_id"]
+            isOneToOne: false
+            referencedRelation: "trainer_slots"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_trainer_id_fkey"
+            columns: ["trainer_id"]
+            isOneToOne: false
+            referencedRelation: "trainers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       demo_requests: {
         Row: {
           company_name: string
@@ -114,6 +180,74 @@ export type Database = {
           utm_source?: string | null
           utm_term?: string | null
           viewport_size?: string | null
+        }
+        Relationships: []
+      }
+      trainer_slots: {
+        Row: {
+          created_at: string
+          end_time: string
+          id: string
+          is_available: boolean | null
+          start_time: string
+          trainer_id: string
+        }
+        Insert: {
+          created_at?: string
+          end_time: string
+          id?: string
+          is_available?: boolean | null
+          start_time: string
+          trainer_id: string
+        }
+        Update: {
+          created_at?: string
+          end_time?: string
+          id?: string
+          is_available?: boolean | null
+          start_time?: string
+          trainer_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trainer_slots_trainer_id_fkey"
+            columns: ["trainer_id"]
+            isOneToOne: false
+            referencedRelation: "trainers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trainers: {
+        Row: {
+          bio: string | null
+          created_at: string
+          email: string
+          hourly_rate: number | null
+          id: string
+          name: string
+          profile_picture_url: string | null
+          specialties: string[] | null
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          email: string
+          hourly_rate?: number | null
+          id?: string
+          name: string
+          profile_picture_url?: string | null
+          specialties?: string[] | null
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          email?: string
+          hourly_rate?: number | null
+          id?: string
+          name?: string
+          profile_picture_url?: string | null
+          specialties?: string[] | null
         }
         Relationships: []
       }

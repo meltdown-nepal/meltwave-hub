@@ -1,115 +1,237 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsOpen(!isOpen);
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const closeMenu = () => {
+    setIsOpen(false);
+    setServicesOpen(false);
   };
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
-
-  const getNavLinkClass = (path: string) => {
-    return `font-header transition-colors ${isActive(path) ? 'text-primary font-bold' : 'hover:text-secondary'}`;
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container-custom">
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-2">
-            <img alt="Meltdown Logo" className="h-8 w-auto" src="/lovable-uploads/02d094e0-8d2b-4b00-b52b-a9623830309c.png" />
-            <span className="font-header font-bold text-lg">Meltdown</span>
-          </Link>
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link 
+              to="/" 
+              className="flex-shrink-0 text-2xl font-bold text-primary"
+              onClick={closeMenu}
+            >
+              Meltdown
+            </Link>
+          </div>
 
-          <div className="hidden md:flex space-x-4">
-            <Link to="/" className={getNavLinkClass('/')}>Home</Link>
-            
-            <div className="relative" ref={dropdownRef}>
-              <button onClick={toggleDropdown} className={`font-header flex items-center transition-colors ${['/corporate-wellness', '/companies', '/providers', '/employees'].some(path => isActive(path)) ? 'text-primary font-bold' : 'hover:text-secondary'}`}>
-                Corporate Wellness <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="relative group">
+              <button 
+                className="flex items-center text-gray-700 hover:text-primary transition-colors"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                Services
+                <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               
-              {isDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20">
-                  <div className="py-1" role="menu" aria-orientation="vertical">
-                    <Link to="/corporate-wellness" className={`block px-4 py-2 text-sm hover:bg-gray-100 transition-colors ${isActive('/corporate-wellness') ? 'text-primary font-bold' : ''}`} onClick={() => setIsDropdownOpen(false)}>
-                      Overview
+              {servicesOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-1 w-64 bg-white shadow-lg rounded-md border z-50"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <div className="py-2">
+                    <Link 
+                      to="/corporate-wellness" 
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                      onClick={closeMenu}
+                    >
+                      Corporate Wellness
                     </Link>
-                    <Link to="/companies" className={`block px-4 py-2 text-sm hover:bg-gray-100 transition-colors ${isActive('/companies') ? 'text-primary font-bold' : ''}`} onClick={() => setIsDropdownOpen(false)}>
+                    <Link 
+                      to="/companies" 
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                      onClick={closeMenu}
+                    >
                       For Companies
                     </Link>
-                    <Link to="/providers" className={`block px-4 py-2 text-sm hover:bg-gray-100 transition-colors ${isActive('/providers') ? 'text-primary font-bold' : ''}`} onClick={() => setIsDropdownOpen(false)}>
+                    <Link 
+                      to="/employees" 
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                      onClick={closeMenu}
+                    >
+                      For Employees
+                    </Link>
+                    <Link 
+                      to="/providers" 
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                      onClick={closeMenu}
+                    >
                       For Providers
                     </Link>
-                    <Link to="/employees" className={`block px-4 py-2 text-sm hover:bg-gray-100 transition-colors ${isActive('/employees') ? 'text-primary font-bold' : ''}`} onClick={() => setIsDropdownOpen(false)}>
-                      For Employees
+                    <Link 
+                      to="/trainers" 
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                      onClick={closeMenu}
+                    >
+                      Personal Trainers
                     </Link>
                   </div>
                 </div>
               )}
             </div>
-            
-            <Link to="/events" className={getNavLinkClass('/events')}>Events</Link>
-            <Link to="/academy" className={getNavLinkClass('/academy')}>Academy</Link>
-            <Link to="/meltfit" className={getNavLinkClass('/meltfit')}>MeltFit</Link>
-            <Link to="/careers" className={getNavLinkClass('/careers')}>Careers</Link>
-            <Link to="/contact" className={getNavLinkClass('/contact')}>Contact</Link>
+
+            <Link 
+              to="/events" 
+              className={`text-gray-700 hover:text-primary transition-colors ${isActive('/events') ? 'text-primary font-semibold' : ''}`}
+              onClick={closeMenu}
+            >
+              Events
+            </Link>
+            <Link 
+              to="/academy" 
+              className={`text-gray-700 hover:text-primary transition-colors ${isActive('/academy') ? 'text-primary font-semibold' : ''}`}
+              onClick={closeMenu}
+            >
+              Academy
+            </Link>
+            <Link 
+              to="/meltfit" 
+              className={`text-gray-700 hover:text-primary transition-colors ${isActive('/meltfit') ? 'text-primary font-semibold' : ''}`}
+              onClick={closeMenu}
+            >
+              MeltFit
+            </Link>
+            <Link 
+              to="/wellness-partners" 
+              className={`text-gray-700 hover:text-primary transition-colors ${isActive('/wellness-partners') ? 'text-primary font-semibold' : ''}`}
+              onClick={closeMenu}
+            >
+              Partners
+            </Link>
+            <Link 
+              to="/contact" 
+              className={`text-gray-700 hover:text-primary transition-colors ${isActive('/contact') ? 'text-primary font-semibold' : ''}`}
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
+            <Link 
+              to="/schedule-demo" 
+              className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors"
+              onClick={closeMenu}
+            >
+              Get Demo
+            </Link>
           </div>
 
-          <div className="hidden md:block">
-            <Link to="/schedule-demo" className="btn-primary py-2 px-4 text-sm">Get Started</Link>
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-primary focus:outline-none focus:text-primary transition-colors"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
-
-          <button className="md:hidden text-text" onClick={toggleMenu} aria-label="Toggle menu">
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+              <Link 
+                to="/corporate-wellness" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                Corporate Wellness
+              </Link>
+              <Link 
+                to="/companies" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                For Companies
+              </Link>
+              <Link 
+                to="/employees" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                For Employees
+              </Link>
+              <Link 
+                to="/providers" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                For Providers
+              </Link>
+              <Link 
+                to="/trainers" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                Personal Trainers
+              </Link>
+              <Link 
+                to="/events" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                Events
+              </Link>
+              <Link 
+                to="/academy" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                Academy
+              </Link>
+              <Link 
+                to="/meltfit" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                MeltFit
+              </Link>
+              <Link 
+                to="/wellness-partners" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                Partners
+              </Link>
+              <Link 
+                to="/contact" 
+                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
+                onClick={closeMenu}
+              >
+                Contact
+              </Link>
+              <Link 
+                to="/schedule-demo" 
+                className="block px-3 py-2 bg-primary text-white rounded-full text-center mx-3 mt-4 hover:bg-primary/90 transition-colors"
+                onClick={closeMenu}
+              >
+                Get Demo
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
-
-      {isMenuOpen && (
-        <div className="md:hidden bg-white pb-3">
-          <div className="container-custom flex flex-col space-y-2">
-            <Link to="/" className={`py-1 ${getNavLinkClass('/')}`} onClick={toggleMenu}>Home</Link>
-            <Link to="/corporate-wellness" className={`py-1 ${getNavLinkClass('/corporate-wellness')}`} onClick={toggleMenu}>Corporate Wellness Overview</Link>
-            <Link to="/companies" className={`py-1 pl-4 ${getNavLinkClass('/companies')}`} onClick={toggleMenu}>- For Companies</Link>
-            <Link to="/providers" className={`py-1 pl-4 ${getNavLinkClass('/providers')}`} onClick={toggleMenu}>- For Wellness Providers</Link>
-            <Link to="/employees" className={`py-1 pl-4 ${getNavLinkClass('/employees')}`} onClick={toggleMenu}>- For Employees</Link>
-            <Link to="/events" className={`py-1 ${getNavLinkClass('/events')}`} onClick={toggleMenu}>Events</Link>
-            <Link to="/academy" className={`py-1 ${getNavLinkClass('/academy')}`} onClick={toggleMenu}>Academy</Link>
-            <Link to="/meltfit" className={`py-1 ${getNavLinkClass('/meltfit')}`} onClick={toggleMenu}>MeltFit</Link>
-            <Link to="/wellness-partners" className={`py-1 ${getNavLinkClass('/wellness-partners')}`} onClick={toggleMenu}>Wellness Partners</Link>
-            <Link to="/careers" className={`py-1 ${getNavLinkClass('/careers')}`} onClick={toggleMenu}>Careers</Link>
-            <Link to="/contact" className={`py-1 ${getNavLinkClass('/contact')}`} onClick={toggleMenu}>Contact</Link>
-            <Link to="/schedule-demo" className="btn-primary self-start mt-2 py-2 px-4 text-sm" onClick={toggleMenu}>Get Started</Link>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
