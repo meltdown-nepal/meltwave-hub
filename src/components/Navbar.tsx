@@ -80,13 +80,6 @@ const Navbar = () => {
                     >
                       For Providers
                     </Link>
-                    <Link 
-                      to="/trainers" 
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
-                      onClick={closeMenu}
-                    >
-                      Personal Trainers
-                    </Link>
                   </div>
                 </div>
               )}
@@ -178,13 +171,6 @@ const Navbar = () => {
                 onClick={closeMenu}
               >
                 For Providers
-              </Link>
-              <Link 
-                to="/trainers" 
-                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors"
-                onClick={closeMenu}
-              >
-                Personal Trainers
               </Link>
               <Link 
                 to="/events" 
