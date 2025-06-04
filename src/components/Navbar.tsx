@@ -26,10 +26,15 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link 
               to="/" 
-              className="flex-shrink-0 text-2xl font-bold text-primary"
+              className="flex-shrink-0 flex items-center space-x-2 text-2xl font-bold text-primary"
               onClick={closeMenu}
             >
-              Meltdown
+              <img 
+                src="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png" 
+                alt="Meltdown Logo" 
+                className="h-8 w-auto"
+              />
+              <span>Meltdown</span>
             </Link>
           </div>
 
