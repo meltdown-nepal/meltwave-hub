@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -30,11 +31,8 @@ import Careers from "./pages/Careers";
 import AnalyticsPage from "./pages/Analytics";
 import Faq from "./pages/Faq";
 
-// New Trainer Booking Pages
-import TrainerBooking from "./pages/TrainerBooking";
-import TrainerDetail from "./pages/TrainerDetail";
-import BookingConfirmation from "./pages/BookingConfirmation";
-import TrainerDashboard from "./pages/TrainerDashboard";
+// New Pricing Page
+import Pricing from "./pages/Pricing";
 
 function AppContent() {
   return (
@@ -62,11 +60,8 @@ function AppContent() {
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/faq" element={<Faq />} />
           
-          {/* New Trainer Booking Routes */}
-          <Route path="/trainers" element={<TrainerBooking />} />
-          <Route path="/trainer/:trainerId" element={<TrainerDetail />} />
-          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
-          <Route path="/trainer-dashboard" element={<TrainerDashboard />} />
+          {/* New Pricing Route */}
+          <Route path="/pricing" element={<Pricing />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 const Footer: React.FC = () => {
@@ -25,7 +26,7 @@ const Footer: React.FC = () => {
                 <li><Link to="/companies" className="text-gray-600 hover:text-secondary transition-colors">For Companies</Link></li>
                 <li><Link to="/providers" className="text-gray-600 hover:text-secondary transition-colors">For Providers</Link></li>
                 <li><Link to="/employees" className="text-gray-600 hover:text-secondary transition-colors">For Employees</Link></li>
-                
+                <li><Link to="/pricing" className="text-gray-600 hover:text-secondary transition-colors">Pricing</Link></li>
               </ul>
             </div>
 
