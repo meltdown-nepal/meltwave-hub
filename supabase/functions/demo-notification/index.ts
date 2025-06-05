@@ -10,11 +10,15 @@ const corsHeaders = {
 
 // Map company size enum values to user-friendly labels
 const companySizeLabels = {
-  "small": "2–10 people",
-  "medium": "11-25 people", 
-  "mediumLarge": "26–50 people",
-  "large": "51–200 people",
-  "enterprise": "201+ people"
+  "under5": "< 5 people",
+  "5to10": "5-10 people",
+  "10to25": "10-25 people",
+  "25to50": "25-50 people",
+  "50to75": "50-75 people",
+  "75to100": "75-100 people",
+  "100to200": "100-200 people",
+  "200to500": "200-500 people",
+  "500plus": "500+ people"
 }
 
 serve(async (req) => {

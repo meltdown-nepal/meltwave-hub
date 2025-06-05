@@ -12,11 +12,15 @@ interface Props {
 }
 
 const companySizeOptions = [
-  { value: "small", label: "2–10 people", icon: Building },
-  { value: "medium", label: "11-25 people", icon: Building },
-  { value: "mediumLarge", label: "26–50 people", icon: Building2 },
-  { value: "large", label: "51–200 people", icon: Building },
-  { value: "enterprise", label: "201+ people", icon: Users },
+  { value: "under5", label: "< 5 people", icon: Building },
+  { value: "5to10", label: "5-10 people", icon: Building },
+  { value: "10to25", label: "10-25 people", icon: Building },
+  { value: "25to50", label: "25-50 people", icon: Building2 },
+  { value: "50to75", label: "50-75 people", icon: Building2 },
+  { value: "75to100", label: "75-100 people", icon: Building2 },
+  { value: "100to200", label: "100-200 people", icon: Users },
+  { value: "200to500", label: "200-500 people", icon: Users },
+  { value: "500plus", label: "500+ people", icon: Users },
 ];
 
 export const CompanySize: React.FC<Props> = ({ form, onNext }) => {
