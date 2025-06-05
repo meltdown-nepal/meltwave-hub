@@ -8,6 +8,15 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
+// Map company size enum values to user-friendly labels
+const companySizeLabels = {
+  "small": "2–10 people",
+  "medium": "11-25 people", 
+  "mediumLarge": "26–50 people",
+  "large": "51–200 people",
+  "enterprise": "201+ people"
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -17,6 +26,9 @@ serve(async (req) => {
     const formData = await req.json()
 
     console.log('Received demo notification data:', formData)
+
+    // Get the user-friendly company size label
+    const companySizeDisplay = companySizeLabels[formData.companySize] || formData.companySize
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -38,7 +50,7 @@ serve(async (req) => {
           <h3>Company Information</h3>
           <p><strong>Company:</strong> ${formData.companyName}</p>
           <p><strong>Company Type:</strong> ${formData.companyType}</p>
-          <p><strong>Company Size:</strong> ${formData.companySize}</p>
+          <p><strong>Company Size:</strong> ${companySizeDisplay}</p>
           <p><strong>Role:</strong> ${formData.role}</p>
           <p><strong>User Type:</strong> ${formData.userType || 'Not specified'}</p>
         `,
