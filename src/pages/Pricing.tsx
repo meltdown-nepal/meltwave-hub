@@ -79,7 +79,11 @@ const Pricing = () => {
                         Learn How It Works
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent className="max-w-sm p-4 text-left" side="top">
+                    <TooltipContent 
+                      className="max-w-sm p-4 text-left bg-white border border-gray-200 shadow-lg z-50" 
+                      side="top"
+                      sideOffset={8}
+                    >
                       <div className="space-y-3">
                         <h4 className="font-semibold text-gray-900 flex items-center gap-2">
                           🛠️ How It Works
@@ -155,7 +159,11 @@ const Pricing = () => {
                         Learn How It Works
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent className="max-w-sm p-4 text-left" side="top">
+                    <TooltipContent 
+                      className="max-w-sm p-4 text-left bg-white border border-gray-200 shadow-lg z-50" 
+                      side="top"
+                      sideOffset={8}
+                    >
                       <div className="space-y-3">
                         <h4 className="font-semibold text-gray-900 flex items-center gap-2">
                           🛠️ How It Works
