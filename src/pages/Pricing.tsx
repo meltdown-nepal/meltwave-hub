@@ -12,16 +12,16 @@ const Pricing = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Pick the Perfect Plan For You
+            Transform Your Fitness Journey
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Choose the plan that fits your fitness goals and get ready to transform your wellness journey
+            Choose from our personalized coaching options and get the support you need to reach your fitness goals
           </p>
         </div>
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Melt Pro Plan - Recommended */}
+          {/* Melt Pro Coaching Plan - Recommended */}
           <Card className="relative overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-primary/20">
             {/* Recommended Badge */}
             <div className="absolute top-0 right-0 bg-gradient-to-r from-primary to-secondary text-black text-sm font-bold px-4 py-2 rounded-bl-lg">
@@ -32,9 +32,9 @@ const Pricing = () => {
             </div>
 
             <CardHeader className="text-center pt-8">
-              <CardTitle className="text-2xl font-bold text-gray-900">Melt Pro Plan</CardTitle>
+              <CardTitle className="text-2xl font-bold text-gray-900">Melt Pro Coaching Plan</CardTitle>
               <CardDescription className="text-gray-600 mb-4">
-                Get dedicated coaching and premium features
+                Get dedicated 1-on-1 coaching and support
               </CardDescription>
               
               {/* Pricing */}
@@ -54,10 +54,10 @@ const Pricing = () => {
               {/* Features */}
               <div className="space-y-4">
                 {[
-                  'Dedicated Fitness Coach with daily check-ins',
-                  'Weekly 1-on-1 video calls for progress and goals',
-                  'Unlimited in-app support and feedback',
-                  'Access to premium app features: XP boosters, bonus Meltz, advanced leaderboards'
+                  '1-on-1 coaching with a certified fitness expert',
+                  'Weekly video check-ins',
+                  'Daily messaging support',
+                  'Personalized fitness and habit guidance'
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-0.5">
@@ -73,22 +73,22 @@ const Pricing = () => {
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-black font-bold py-3 text-lg"
                 size="lg"
               >
-                Subscribe Now $149/mo
+                Subscribe Now – $149/mo
               </Button>
 
               {/* Small Note */}
               <p className="text-center text-sm text-gray-500 italic">
-                Reach your goals 2x faster with Melt Pro
+                Stay consistent, stay accountable — progress faster
               </p>
             </CardContent>
           </Card>
 
-          {/* One-Time Boost Session */}
+          {/* One-Time Boost Call */}
           <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl font-bold text-gray-900">One-Time Boost Session</CardTitle>
+              <CardTitle className="text-2xl font-bold text-gray-900">One-Time Boost Call</CardTitle>
               <CardDescription className="text-gray-600 mb-4">
-                Perfect for getting started or a quick strategy boost
+                Perfect for getting started with a motivational kickstart
               </CardDescription>
               
               {/* Pricing */}
@@ -107,8 +107,8 @@ const Pricing = () => {
               {/* Features */}
               <div className="space-y-4">
                 {[
-                  'One-time video session with a fitness coach',
-                  'Custom strategy for streaks and leaderboard performance'
+                  'One 30-minute call with a coach',
+                  'Custom kickstart strategy and motivational plan'
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-5 h-5 bg-secondary rounded-full flex items-center justify-center mt-0.5">
@@ -125,7 +125,7 @@ const Pricing = () => {
                 className="w-full border-2 border-secondary text-gray-900 hover:bg-secondary hover:text-black font-bold py-3 text-lg transition-all duration-300"
                 size="lg"
               >
-                Book One-Time Call $49
+                Book One-Time Call – $49
               </Button>
             </CardContent>
           </Card>
@@ -134,7 +134,7 @@ const Pricing = () => {
         {/* Additional Info */}
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
-            All plans include access to our gamified fitness platform
+            All coaching services include personalized guidance from certified fitness experts
           </p>
           <div className="flex justify-center items-center gap-8 text-sm text-gray-500">
             <div className="flex items-center gap-2">
