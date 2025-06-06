@@ -1,8 +1,10 @@
+
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useIsMobile } from '@/hooks/use-mobile';
+
 const AppShowcaseSection = () => {
   const isMobile = useIsMobile();
   const appScreens = [{
@@ -27,7 +29,9 @@ const AppShowcaseSection = () => {
     delay: 0.8,
     highlight: true
   }];
-  const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => <div className="flex flex-col items-center flex-shrink-0">
+
+  const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => (
+    <div className="flex flex-col items-center flex-shrink-0">
       {/* iPhone 16 Frame */}
       <div className={`
         relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
@@ -68,8 +72,11 @@ const AppShowcaseSection = () => {
         </p>
         {screen.highlight}
       </div>
-    </div>;
-  return <section className="section-padding bg-gradient-to-br from-gray-50 to-white" id="app-showcase">
+    </div>
+  );
+
+  return (
+    <section className="section-padding bg-gradient-to-br from-gray-50 to-white" id="app-showcase">
       <div className="container-custom">
         <div className="text-center mb-16">
           <AnimatedElement animation="slideUp" delay={0.1}>
@@ -91,36 +98,37 @@ const AppShowcaseSection = () => {
 
         {/* iPhone 16 Mockups */}
         <div className="max-w-6xl mx-auto">
-          {isMobile ?
-        // Mobile: Carousel layout
-        <AnimatedElement animation="slideUp" delay={0.4}>
+          {isMobile ? (
+            // Mobile: Carousel layout
+            <AnimatedElement animation="slideUp" delay={0.4}>
               <Carousel opts={{
-            align: "center",
-            loop: true
-          }} className="w-full">
+                align: "center",
+                loop: true
+              }} className="w-full">
                 <CarouselContent className="-ml-4">
-                  {appScreens.map((screen, index) => <CarouselItem key={index} className="pl-4 basis-full">
+                  {appScreens.map((screen, index) => (
+                    <CarouselItem key={index} className="pl-4 basis-full">
                       <AnimatedElement animation="slideUp" delay={screen.delay}>
                         {renderPhoneScreen(screen, index)}
                       </AnimatedElement>
-                    </CarouselItem>)}
+                    </CarouselItem>
+                  ))}
                 </CarouselContent>
                 <CarouselPrevious className="left-4" />
                 <CarouselNext className="right-4" />
               </Carousel>
-            </AnimatedElement> :
-        // Desktop: Side-by-side layout
-        <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 overflow-x-auto px-4">
-              {appScreens.map((screen, index) => <AnimatedElement key={index} animation="slideUp" delay={screen.delay}>
+            </AnimatedElement>
+          ) : (
+            // Desktop: Side-by-side layout
+            <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 overflow-x-auto px-4">
+              {appScreens.map((screen, index) => (
+                <AnimatedElement key={index} animation="slideUp" delay={screen.delay}>
                   {renderPhoneScreen(screen, index)}
-                </AnimatedElement>)}
-            </div>}
+                </AnimatedElement>
+              ))}
+            </div>
+          )}
         </div>
-
-        {/* Environmental Impact Highlight */}
-        <AnimatedElement animation="slideUp" delay={1.0}>
-          
-        </AnimatedElement>
 
         {/* CTA Section */}
         <AnimatedElement animation="slideUp" delay={0.8}>
@@ -143,6 +151,8 @@ const AppShowcaseSection = () => {
           </div>
         </AnimatedElement>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default AppShowcaseSection;
