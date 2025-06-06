@@ -1,23 +1,26 @@
+
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
+
 const AppShowcaseSection = () => {
   const appScreens = [{
-    title: "Home Page",
-    description: "Browse wellness providers",
-    image: "/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png",
+    title: "Home Dashboard",
+    description: "Track wellness activities",
+    image: "/lovable-uploads/33b2e788-a176-4fa8-8124-3adda728964c.png",
     delay: 0.2
   }, {
     title: "Check-In Page",
-    description: "Track your progress",
-    image: "/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.png",
+    description: "QR code check-ins",
+    image: "/lovable-uploads/081c2c6b-718f-4df8-b382-b6baede4a142.png",
     delay: 0.4
   }, {
     title: "Leaderboard",
-    description: "See your ranking",
-    image: "/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.png",
+    description: "Company rankings",
+    image: "/lovable-uploads/303ad8cd-17b7-4df9-8686-f36a708f98c8.png",
     delay: 0.6
   }];
+
   return <section className="section-padding bg-gradient-to-br from-gray-50 to-white" id="app-showcase">
       <div className="container-custom">
         <div className="text-center mb-16">
@@ -93,4 +96,5 @@ const AppShowcaseSection = () => {
       </div>
     </section>;
 };
+
 export default AppShowcaseSection;
