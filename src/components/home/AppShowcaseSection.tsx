@@ -1,3 +1,4 @@
+
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
@@ -10,22 +11,30 @@ const AppShowcaseSection = () => {
     title: "Home Dashboard",
     description: "Track wellness activities",
     image: "/lovable-uploads/33b2e788-a176-4fa8-8124-3adda728964c.png",
-    delay: 0.2
+    delay: 0.2,
+    width: 320,
+    height: 692
   }, {
     title: "Check-In Page",
     description: "QR code check-ins",
     image: "/lovable-uploads/081c2c6b-718f-4df8-b382-b6baede4a142.png",
-    delay: 0.4
+    delay: 0.4,
+    width: 320,
+    height: 692
   }, {
     title: "Leaderboard",
     description: "Company rankings",
     image: "/lovable-uploads/303ad8cd-17b7-4df9-8686-f36a708f98c8.png",
-    delay: 0.6
+    delay: 0.6,
+    width: 320,
+    height: 692
   }, {
     title: "Profile Dashboard",
     description: "Track your CO₂ savings & impact",
     image: "/lovable-uploads/d4746ccf-c4d2-4213-8e5d-70ba85e9e086.png",
-    delay: 0.8
+    delay: 0.8,
+    width: 320,
+    height: 692
   }];
 
   const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => (
@@ -47,7 +56,14 @@ const AppShowcaseSection = () => {
             {/* App Screen Content - Starts from top */}
             <div className="absolute inset-0 overflow-hidden">
               <div className="h-full overflow-y-auto scrollbar-hide">
-                <OptimizedImage src={screen.image} alt={screen.title} className="w-full min-h-full object-cover object-top" />
+                <OptimizedImage 
+                  src={screen.image} 
+                  alt={screen.title} 
+                  className="w-full min-h-full object-cover object-top" 
+                  priority={index === 0}
+                  width={screen.width}
+                  height={screen.height}
+                />
               </div>
             </div>
           </div>

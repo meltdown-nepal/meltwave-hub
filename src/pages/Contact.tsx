@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ContactForm } from '@/components/ContactForm';
 import { MessageCircleQuestion, ArrowRight } from 'lucide-react';
+import { usePreloadAssets } from '@/hooks/usePreloadAssets';
+
+// Memoize client logos to prevent unnecessary re-renders
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -92,7 +95,20 @@ const clientLogos = [{
   src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
   alt: "CloudFactory Logo"
 }];
+
 const Contact = () => {
+  // Preload critical logos - first 8 visible in viewport
+  usePreloadAssets({
+    "/lovable-uploads/Veda.png": { critical: true, as: 'image' },
+    "/lovable-uploads/Karobar.png": { critical: true, as: 'image' },
+    "/lovable-uploads/naamche.png": { critical: true, as: 'image' },
+    "/lovable-uploads/SecurityPal.png": { critical: true, as: 'image' },
+    "/lovable-uploads/HimalayanJava.png": { critical: true, as: 'image' },
+    "/lovable-uploads/flextecs.png": { critical: true, as: 'image' },
+    "/lovable-uploads/GolchhaGroup.png": { critical: true, as: 'image' },
+    "/lovable-uploads/YoungInnovations.png": { critical: true, as: 'image' },
+  });
+  
   return <div>
     {/* Hero Section */}
     <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -101,7 +117,6 @@ const Contact = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Contact Us
           </h1>
-          
           
           {/* FAQ Notice */}
           <div className=" p-6 mb-8 bg-transparent">
@@ -171,13 +186,24 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Partner Companies Grid */}
+            {/* Partner Companies Grid - With image loading optimization */}
             <div className="mt-8">
               <h3 className="text-2xl font-bold mb-4">Trusted By :</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                {clientLogos.map((logo, index) => <div key={`${logo.id}-${index}`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <img src={logo.src} alt={logo.alt} className="h-12 w-full object-contain" draggable={false} />
-                  </div>)}
+                {clientLogos.map((logo, index) => (
+                  <div key={`${logo.id}-${index}`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <img 
+                      src={logo.src} 
+                      alt={logo.alt} 
+                      className="h-12 w-full object-contain" 
+                      draggable={false}
+                      loading={index < 8 ? "eager" : "lazy"}
+                      decoding="async"
+                      width="150"
+                      height="48"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
