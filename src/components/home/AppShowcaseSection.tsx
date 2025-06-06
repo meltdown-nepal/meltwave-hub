@@ -15,8 +15,7 @@ const AppShowcaseSection = () => {
     title: "Check-In Page",
     description: "QR code check-ins",
     image: "/lovable-uploads/081c2c6b-718f-4df8-b382-b6baede4a142.png",
-    delay: 0.4,
-    smallerScale: true
+    delay: 0.4
   }, {
     title: "Leaderboard",
     description: "Company rankings",
@@ -36,7 +35,6 @@ const AppShowcaseSection = () => {
         relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 transition-all duration-500 transform hover:-translate-y-2
         ${!isMobile && index === 1 ? 'scale-105 sm:scale-110 z-10' : 'scale-90 sm:scale-100'}
         ${isMobile ? 'w-56 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-56'}
-        ${screen.smallerScale && !isMobile ? 'scale-75 sm:scale-85' : ''}
         shadow-2xl shadow-yellow-400/20 hover:shadow-yellow-400/40 hover:shadow-3xl
       `}>
         {/* iPhone 16 Screen with Dynamic Island */}
@@ -115,8 +113,8 @@ const AppShowcaseSection = () => {
               </Carousel>
             </AnimatedElement>
           ) : (
-            // Desktop: Side-by-side layout
-            <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 overflow-x-auto px-4">
+            // Desktop: Side-by-side layout with increased gaps
+            <div className="flex justify-center items-end gap-6 sm:gap-8 md:gap-10 lg:gap-12 overflow-x-auto px-4">
               {appScreens.map((screen, index) => (
                 <AnimatedElement key={index} animation="slideUp" delay={screen.delay}>
                   {renderPhoneScreen(screen, index)}
