@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
@@ -53,17 +52,14 @@ const AppShowcaseSection = () => {
                 w-48 md:w-56
               `}>
                 {/* iPhone 16 Screen with Dynamic Island */}
-                <div className="bg-black rounded-[2.7rem] p-1 relative">
-                  {/* Dynamic Island */}
-                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20"></div>
-                  
-                  {/* Screen Content Area */}
+                <div className="bg-black rounded-[2.7rem] p-1 relative overflow-hidden">
+                  {/* Screen Content Area - Full Height */}
                   <div className="bg-white rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
-                    {/* Status Bar Space */}
-                    <div className="h-12 bg-white relative z-10"></div>
+                    {/* Dynamic Island - Positioned on top of content */}
+                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-30"></div>
                     
-                    {/* App Screen Content with Scroll */}
-                    <div className="absolute top-12 left-0 right-0 bottom-0 overflow-hidden">
+                    {/* App Screen Content - Starts from top */}
+                    <div className="absolute inset-0 overflow-hidden">
                       <div className="h-full overflow-y-auto scrollbar-hide">
                         <OptimizedImage 
                           src={screen.image} 
