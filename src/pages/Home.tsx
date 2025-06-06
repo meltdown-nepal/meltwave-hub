@@ -16,7 +16,7 @@ const Home = () => {
     },
     {
       name: "Bibha Tandukar",
-      title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+      title: "I used to lack motivation and dread going to the same fitness centers, but Meltdown completely changed that with its uplifting vibe.",
       role: "Project Manager, Young Innovation",
       linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
     },
