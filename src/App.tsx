@@ -14,7 +14,7 @@ import { usePerfMonitor } from "./hooks/usePerfMonitor";
 // Eagerly load critical pages
 import EnhancedHome from "./pages/EnhancedHome";
 import Contact from "./pages/Contact";
-import ForEmployees from "./pages/ForEmployees"; // Change from lazy to direct import
+import ForEmployees from "./pages/ForEmployees"; // Keep direct import
 
 // Lazy load non-critical pages
 const Home = lazy(() => import("./pages/Home"));
