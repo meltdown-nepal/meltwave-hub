@@ -120,7 +120,7 @@ const EnhancedTestimonialsSection = ({
                 ))}
               </CarouselContent>
               
-              {/* Custom Navigation Buttons */}
+              {/* Custom Navigation Buttons for Desktop */}
               <div className="hidden md:block">
                 <Button
                   variant="outline"
@@ -141,10 +141,24 @@ const EnhancedTestimonialsSection = ({
               </div>
             </Carousel>
             
-            {/* Mobile Navigation Dots */}
+            {/* Mobile Navigation Buttons */}
             <div className="flex justify-center gap-2 mt-8 md:hidden">
-              <CarouselPrevious className="static transform-none mx-2 bg-white hover:bg-amber-50 border-amber-200 rounded-full" />
-              <CarouselNext className="static transform-none mx-2 bg-white hover:bg-amber-50 border-amber-200 rounded-full" />
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-10 w-10 rounded-full bg-white hover:bg-amber-50 border-amber-200"
+                onClick={scrollPrev}
+              >
+                <ChevronLeft className="h-4 w-4 text-amber-700" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-10 w-10 rounded-full bg-white hover:bg-amber-50 border-amber-200"
+                onClick={scrollNext}
+              >
+                <ChevronRight className="h-4 w-4 text-amber-700" />
+              </Button>
             </div>
           </div>
         </AnimatedElement>
