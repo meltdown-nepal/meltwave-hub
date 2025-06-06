@@ -23,6 +23,12 @@ const AppShowcaseSection = () => {
     description: "Company rankings",
     image: "/lovable-uploads/303ad8cd-17b7-4df9-8686-f36a708f98c8.png",
     delay: 0.6
+  }, {
+    title: "Profile Dashboard",
+    description: "Track your CO₂ savings & impact",
+    image: "/lovable-uploads/d4746ccf-c4d2-4213-8e5d-70ba85e9e086.png",
+    delay: 0.8,
+    highlight: true
   }];
 
   const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => (
@@ -32,6 +38,7 @@ const AppShowcaseSection = () => {
         relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
         ${!isMobile && index === 1 ? 'scale-105 sm:scale-110 z-10' : 'scale-90 sm:scale-100'}
         ${isMobile ? 'w-56 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-56'}
+        ${screen.highlight ? 'ring-2 ring-green-400 ring-opacity-50' : ''}
       `}>
         {/* iPhone 16 Screen with Dynamic Island */}
         <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
@@ -55,12 +62,29 @@ const AppShowcaseSection = () => {
         
         {/* Home Indicator */}
         <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
+        
+        {/* Environmental Impact Badge for Profile Screen */}
+        {screen.highlight && (
+          <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg animate-pulse">
+            🌱 Eco Impact
+          </div>
+        )}
       </div>
 
       {/* Screen Labels */}
       <div className="text-center mt-3 sm:mt-4 md:mt-6 space-y-1 px-1">
-        <h3 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base leading-tight">{screen.title}</h3>
-        <p className="text-gray-600 text-xs md:text-sm leading-tight">{screen.description}</p>
+        <h3 className={`font-bold text-gray-900 text-xs sm:text-sm md:text-base leading-tight ${screen.highlight ? 'text-green-700' : ''}`}>
+          {screen.title}
+        </h3>
+        <p className={`text-gray-600 text-xs md:text-sm leading-tight ${screen.highlight ? 'text-green-600 font-medium' : ''}`}>
+          {screen.description}
+        </p>
+        {screen.highlight && (
+          <div className="flex items-center justify-center gap-1 text-xs text-green-600 font-semibold">
+            <span>🌍</span>
+            <span>Monitor your environmental impact</span>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -81,7 +105,7 @@ const AppShowcaseSection = () => {
           </AnimatedElement>
           <AnimatedElement animation="slideUp" delay={0.3}>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Experience seamless wellness management with our intuitive mobile app designed for modern lifestyles.
+              Experience seamless wellness management with our intuitive mobile app designed for modern lifestyles and environmental consciousness.
             </p>
           </AnimatedElement>
         </div>
@@ -113,7 +137,7 @@ const AppShowcaseSection = () => {
             </AnimatedElement>
           ) : (
             // Desktop: Side-by-side layout
-            <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-8 overflow-x-auto px-4">
+            <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-6 overflow-x-auto px-4">
               {appScreens.map((screen, index) => (
                 <AnimatedElement key={index} animation="slideUp" delay={screen.delay}>
                   {renderPhoneScreen(screen, index)}
@@ -122,6 +146,20 @@ const AppShowcaseSection = () => {
             </div>
           )}
         </div>
+
+        {/* Environmental Impact Highlight */}
+        <AnimatedElement animation="slideUp" delay={1.0}>
+          <div className="text-center mt-12 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-200">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="text-2xl">🌱</span>
+              <h3 className="text-xl font-bold text-green-800">Make Every Step Count for the Planet</h3>
+            </div>
+            <p className="text-green-700 max-w-2xl mx-auto">
+              Track your CO₂ savings and environmental impact through your wellness activities. 
+              See how your healthy choices contribute to a healthier planet.
+            </p>
+          </div>
+        </AnimatedElement>
 
         {/* CTA Section */}
         <AnimatedElement animation="slideUp" delay={0.8}>
