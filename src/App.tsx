@@ -1,5 +1,5 @@
 
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState, Suspense, lazy, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { usePerfMonitor } from "./hooks/usePerfMonitor";
+import PreloaderAnimation from "./components/PreloaderAnimation";
 
 // Eagerly load critical pages
 import EnhancedHome from "./pages/EnhancedHome";
@@ -48,9 +49,15 @@ const LoadingFallback = () => (
 function AppContent() {
   // Monitor performance
   usePerfMonitor();
+  const [loading, setLoading] = useState(true);
+  
+  const handleLoadComplete = () => {
+    setLoading(false);
+  };
   
   return (
     <>
+      {loading && <PreloaderAnimation onLoadComplete={handleLoadComplete} />}
       <ScrollToTop />
       <Navbar />
       <main>

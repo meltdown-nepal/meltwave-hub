@@ -67,11 +67,35 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				logoScale: {
+					'0%': {
+						transform: 'scale(1)',
+					},
+					'50%': {
+						transform: 'scale(1.15)',
+					},
+					'100%': {
+						transform: 'scale(1)',
+					},
+				},
+				logoGlow: {
+					'0%': {
+						boxShadow: '0 0 20px rgba(255, 216, 56, 0.3)',
+					},
+					'50%': {
+						boxShadow: '0 0 40px rgba(255, 216, 56, 0.8)',
+					},
+					'100%': {
+						boxShadow: '0 0 20px rgba(255, 216, 56, 0.3)',
+					},
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'logo-scale': 'logoScale 2s ease-in-out infinite',
+				'logo-glow': 'logoGlow 2s ease-in-out infinite'
 			}
 		}
 	},
