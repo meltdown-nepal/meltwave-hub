@@ -1,12 +1,13 @@
 
 import React from 'react';
-import TestimonialsSection from '../components/TestimonialsSection';
 import FaqSection from '../components/FaqSection';
 import WellnessProviders from '../components/WellnessProviders';
 import EnhancedHeroSection from '../components/home/EnhancedHeroSection';
 import ModernFeaturesSection from '../components/home/ModernFeaturesSection';
 import EnhancedClientCarousel from '../components/home/EnhancedClientCarousel';
 import EnhancedCtaSection from '../components/home/EnhancedCtaSection';
+import AppShowcaseSection from '../components/home/AppShowcaseSection';
+import EnhancedTestimonialsSection from '../components/home/EnhancedTestimonialsSection';
 
 const EnhancedHome = () => {
   // Home page testimonials
@@ -43,7 +44,7 @@ const EnhancedHome = () => {
       <EnhancedHeroSection />
 
       {/* Enhanced Client Logo Carousel with reduced spacing */}
-      <div className="-mt-8">
+      <div className="-mt-8" id="trusted-companies-section">
         <EnhancedClientCarousel />
       </div>
 
@@ -52,14 +53,19 @@ const EnhancedHome = () => {
         <ModernFeaturesSection />
       </div>
 
+      {/* App Showcase Section - NEW */}
+      <div className="-mt-4">
+        <AppShowcaseSection />
+      </div>
+
       {/* Our Wellness Providers Section with reduced spacing */}
       <div className="-mt-4">
         <WellnessProviders />
       </div>
 
-      {/* Video Testimonials Section with reduced spacing */}
+      {/* Enhanced Video Testimonials Section with reduced spacing */}
       <div className="-mt-4">
-        <TestimonialsSection 
+        <EnhancedTestimonialsSection 
           testimonials={homeTestimonials} 
           title="What Our Clients Say" 
           subtitle="Hear from companies and employees who have experienced the Meltdown difference." 
