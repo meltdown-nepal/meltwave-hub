@@ -20,7 +20,7 @@ const Academy = () => {
     subtitle: "CSCS® Prep + Meltdown Certification",
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
     overview: "Prepare for the CSCS® exam while gaining practical experience in strength and conditioning program design.",
-    audience: "Fitness professionals, athletes looking to transition to coaching, and strength coaches seeking certification.",
+    audience: "FCertified Personal trainers, Physiotherapist, Sports science graduates, atheltes who have trained under strength coached before",
     learnings: ["Program design for athletes", "Strength training science", "Performance testing", "Injury prevention", "Speed and agility development"],
     certification: "Includes CSCS® exam prep and Meltdown Academy certification upon completion.",
     duration: "12 weeks (weekends)"
