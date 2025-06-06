@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
@@ -16,7 +15,8 @@ const AppShowcaseSection = () => {
     title: "Check-In Page",
     description: "QR code check-ins",
     image: "/lovable-uploads/081c2c6b-718f-4df8-b382-b6baede4a142.png",
-    delay: 0.4
+    delay: 0.4,
+    smallerScale: true
   }, {
     title: "Leaderboard",
     description: "Company rankings",
@@ -26,18 +26,18 @@ const AppShowcaseSection = () => {
     title: "Profile Dashboard",
     description: "Track your CO₂ savings & impact",
     image: "/lovable-uploads/d4746ccf-c4d2-4213-8e5d-70ba85e9e086.png",
-    delay: 0.8,
-    highlight: true
+    delay: 0.8
   }];
 
   const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => (
     <div className="flex flex-col items-center flex-shrink-0">
       {/* iPhone 16 Frame */}
       <div className={`
-        relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
+        relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 transition-all duration-500 transform hover:-translate-y-2
         ${!isMobile && index === 1 ? 'scale-105 sm:scale-110 z-10' : 'scale-90 sm:scale-100'}
         ${isMobile ? 'w-56 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-56'}
-        ${screen.highlight ? 'ring-2 ring-green-400 ring-opacity-50' : ''}
+        ${screen.smallerScale && !isMobile ? 'scale-75 sm:scale-85' : ''}
+        shadow-2xl shadow-yellow-400/20 hover:shadow-yellow-400/40 hover:shadow-3xl
       `}>
         {/* iPhone 16 Screen with Dynamic Island */}
         <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
@@ -57,9 +57,6 @@ const AppShowcaseSection = () => {
         
         {/* Home Indicator */}
         <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
-        
-        {/* Environmental Impact Badge for Profile Screen */}
-        {screen.highlight}
       </div>
 
       {/* Screen Labels */}
@@ -70,7 +67,6 @@ const AppShowcaseSection = () => {
         <p className="">
           {screen.description}
         </p>
-        {screen.highlight}
       </div>
     </div>
   );
