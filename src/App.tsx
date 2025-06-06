@@ -14,13 +14,13 @@ import { usePerfMonitor } from "./hooks/usePerfMonitor";
 // Eagerly load critical pages
 import EnhancedHome from "./pages/EnhancedHome";
 import Contact from "./pages/Contact";
+import ForEmployees from "./pages/ForEmployees"; // Change from lazy to direct import
 
 // Lazy load non-critical pages
 const Home = lazy(() => import("./pages/Home"));
 const CorporateWellness = lazy(() => import("./pages/CorporateWellness"));
 const ForCompanies = lazy(() => import("./pages/ForCompanies"));
 const ForProviders = lazy(() => import("./pages/ForProviders"));
-const ForEmployees = lazy(() => import("./pages/ForEmployees"));
 const Events = lazy(() => import("./pages/Events"));
 const Academy = lazy(() => import("./pages/Academy"));
 const MeltFit = lazy(() => import("./pages/MeltFit"));
