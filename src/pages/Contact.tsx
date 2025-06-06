@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ContactForm } from '@/components/ContactForm';
 import { MessageCircleQuestion, ArrowRight } from 'lucide-react';
-
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -94,7 +92,6 @@ const clientLogos = [{
   src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
   alt: "CloudFactory Logo"
 }];
-
 const Contact = () => {
   return <div>
     {/* Hero Section */}
@@ -176,7 +173,7 @@ const Contact = () => {
 
             {/* Partner Companies Grid */}
             <div className="mt-8">
-              <h3 className="text-2xl font-bold mb-4">Our Partner Companies</h3>
+              <h3 className="text-2xl font-bold mb-4">Trusted By :</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {clientLogos.map((logo, index) => <div key={`${logo.id}-${index}`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                     <img src={logo.src} alt={logo.alt} className="h-12 w-full object-contain" draggable={false} />
@@ -246,5 +243,4 @@ const Contact = () => {
     </section>
   </div>;
 };
-
 export default Contact;
