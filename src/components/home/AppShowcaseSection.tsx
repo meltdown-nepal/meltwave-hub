@@ -2,8 +2,12 @@
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const AppShowcaseSection = () => {
+  const isMobile = useIsMobile();
+  
   const appScreens = [{
     title: "Home Dashboard",
     description: "Track wellness activities",
@@ -20,6 +24,46 @@ const AppShowcaseSection = () => {
     image: "/lovable-uploads/303ad8cd-17b7-4df9-8686-f36a708f98c8.png",
     delay: 0.6
   }];
+
+  const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => (
+    <div className="flex flex-col items-center flex-shrink-0">
+      {/* iPhone 16 Frame */}
+      <div className={`
+        relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
+        ${!isMobile && index === 1 ? 'scale-105 sm:scale-110 z-10' : 'scale-90 sm:scale-100'}
+        ${isMobile ? 'w-56 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-56'}
+      `}>
+        {/* iPhone 16 Screen with Dynamic Island */}
+        <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
+          {/* Screen Content Area - Full Height */}
+          <div className="bg-white rounded-[1.4rem] sm:rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
+            {/* Dynamic Island - Positioned on top of content */}
+            <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 bg-black rounded-full z-30"></div>
+            
+            {/* App Screen Content - Starts from top */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="h-full overflow-y-auto scrollbar-hide">
+                <OptimizedImage 
+                  src={screen.image} 
+                  alt={screen.title} 
+                  className="w-full min-h-full object-cover object-top" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Home Indicator */}
+        <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
+      </div>
+
+      {/* Screen Labels */}
+      <div className="text-center mt-3 sm:mt-4 md:mt-6 space-y-1 px-1">
+        <h3 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base leading-tight">{screen.title}</h3>
+        <p className="text-gray-600 text-xs md:text-sm leading-tight">{screen.description}</p>
+      </div>
+    </div>
+  );
 
   return (
     <section className="section-padding bg-gradient-to-br from-gray-50 to-white" id="app-showcase">
@@ -43,46 +87,40 @@ const AppShowcaseSection = () => {
         </div>
 
         {/* iPhone 16 Mockups */}
-        <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-8 max-w-6xl mx-auto overflow-x-auto px-4">
-          {appScreens.map((screen, index) => (
-            <AnimatedElement key={index} animation="slideUp" delay={screen.delay} className="flex flex-col items-center flex-shrink-0">
-              {/* iPhone 16 Frame */}
-              <div className={`
-                relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
-                ${index === 1 ? 'scale-105 sm:scale-110 z-10' : 'scale-90 sm:scale-100'}
-                w-32 sm:w-40 md:w-48 lg:w-56
-              `}>
-                {/* iPhone 16 Screen with Dynamic Island */}
-                <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
-                  {/* Screen Content Area - Full Height */}
-                  <div className="bg-white rounded-[1.4rem] sm:rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
-                    {/* Dynamic Island - Positioned on top of content */}
-                    <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 bg-black rounded-full z-30"></div>
-                    
-                    {/* App Screen Content - Starts from top */}
-                    <div className="absolute inset-0 overflow-hidden">
-                      <div className="h-full overflow-y-auto scrollbar-hide">
-                        <OptimizedImage 
-                          src={screen.image} 
-                          alt={screen.title} 
-                          className="w-full min-h-full object-cover object-top" 
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Home Indicator */}
-                <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
-              </div>
-
-              {/* Screen Labels */}
-              <div className="text-center mt-3 sm:mt-4 md:mt-6 space-y-1 px-1">
-                <h3 className="font-bold text-gray-900 text-xs sm:text-sm md:text-base leading-tight">{screen.title}</h3>
-                <p className="text-gray-600 text-xs md:text-sm leading-tight">{screen.description}</p>
-              </div>
+        <div className="max-w-6xl mx-auto">
+          {isMobile ? (
+            // Mobile: Carousel layout
+            <AnimatedElement animation="slideUp" delay={0.4}>
+              <Carousel 
+                opts={{
+                  align: "center",
+                  loop: true
+                }} 
+                className="w-full"
+              >
+                <CarouselContent className="-ml-4">
+                  {appScreens.map((screen, index) => (
+                    <CarouselItem key={index} className="pl-4 basis-full">
+                      <AnimatedElement animation="slideUp" delay={screen.delay}>
+                        {renderPhoneScreen(screen, index)}
+                      </AnimatedElement>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
+              </Carousel>
             </AnimatedElement>
-          ))}
+          ) : (
+            // Desktop: Side-by-side layout
+            <div className="flex justify-center items-end gap-2 sm:gap-4 md:gap-8 overflow-x-auto px-4">
+              {appScreens.map((screen, index) => (
+                <AnimatedElement key={index} animation="slideUp" delay={screen.delay}>
+                  {renderPhoneScreen(screen, index)}
+                </AnimatedElement>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* CTA Section */}
