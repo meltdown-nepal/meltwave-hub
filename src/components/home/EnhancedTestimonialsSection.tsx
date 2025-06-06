@@ -56,7 +56,7 @@ const EnhancedTestimonialsSection = ({
         </div>
 
         <AnimatedElement animation="slideUp" delay={0.4}>
-          <div className="relative max-w-5xl mx-auto">
+          <div className="relative max-w-6xl mx-auto">
             <Carousel
               setApi={setApi}
               opts={{
@@ -67,7 +67,7 @@ const EnhancedTestimonialsSection = ({
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2">
                     <Card className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0 h-full">
                       <CardContent className="p-8 relative h-full flex flex-col">
                         {/* Quote Icon */}

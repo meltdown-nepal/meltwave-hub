@@ -21,7 +21,8 @@ const AppShowcaseSection = () => {
     delay: 0.6
   }];
 
-  return <section className="section-padding bg-gradient-to-br from-gray-50 to-white" id="app-showcase">
+  return (
+    <section className="section-padding bg-gradient-to-br from-gray-50 to-white" id="app-showcase">
       <div className="container-custom">
         <div className="text-center mb-16">
           <AnimatedElement animation="slideUp" delay={0.1}>
@@ -41,28 +42,41 @@ const AppShowcaseSection = () => {
           </AnimatedElement>
         </div>
 
-        {/* Mobile Phone Mockups */}
+        {/* iPhone 16 Mockups */}
         <div className="flex justify-center items-end gap-4 md:gap-8 max-w-4xl mx-auto">
-          {appScreens.map((screen, index) => <AnimatedElement key={index} animation="slideUp" delay={screen.delay} className="flex flex-col items-center">
-              {/* Phone Mockup Container */}
+          {appScreens.map((screen, index) => (
+            <AnimatedElement key={index} animation="slideUp" delay={screen.delay} className="flex flex-col items-center">
+              {/* iPhone 16 Frame */}
               <div className={`
-                relative bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
+                relative bg-gray-900 rounded-[3rem] p-2 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2
                 ${index === 1 ? 'scale-110 z-10' : 'scale-100'}
                 w-48 md:w-56
               `}>
-                {/* Phone Screen */}
-                <div className="bg-white rounded-[2rem] overflow-hidden aspect-[9/19.5] relative">
-                  {/* Status Bar */}
+                {/* iPhone 16 Screen with Dynamic Island */}
+                <div className="bg-black rounded-[2.7rem] p-1 relative">
+                  {/* Dynamic Island */}
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20"></div>
                   
-                  
-                  {/* Screen Content */}
-                  <div className="pt-8 h-full">
-                    <OptimizedImage src={screen.image} alt={screen.title} className="w-full h-full object-cover" />
+                  {/* Screen Content Area */}
+                  <div className="bg-white rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
+                    {/* Status Bar Space */}
+                    <div className="h-12 bg-white relative z-10"></div>
+                    
+                    {/* App Screen Content with Scroll */}
+                    <div className="absolute top-12 left-0 right-0 bottom-0 overflow-hidden">
+                      <div className="h-full overflow-y-auto scrollbar-hide">
+                        <OptimizedImage 
+                          src={screen.image} 
+                          alt={screen.title} 
+                          className="w-full min-h-full object-cover object-top" 
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                {/* Phone Button */}
-                
+                {/* Home Indicator */}
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
               </div>
 
               {/* Screen Labels */}
@@ -70,7 +84,8 @@ const AppShowcaseSection = () => {
                 <h3 className="font-bold text-gray-900 text-sm md:text-base">{screen.title}</h3>
                 <p className="text-gray-600 text-xs md:text-sm">{screen.description}</p>
               </div>
-            </AnimatedElement>)}
+            </AnimatedElement>
+          ))}
         </div>
 
         {/* CTA Section */}
@@ -94,7 +109,18 @@ const AppShowcaseSection = () => {
           </div>
         </AnimatedElement>
       </div>
-    </section>;
+      
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+    </section>
+  );
 };
 
 export default AppShowcaseSection;
