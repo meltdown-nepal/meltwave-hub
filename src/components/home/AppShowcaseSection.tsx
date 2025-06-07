@@ -10,28 +10,28 @@ const AppShowcaseSection = () => {
   const appScreens = [{
     title: "Home Dashboard",
     description: "Track wellness activities",
-    image: "/lovable-uploads/33b2e788-a176-4fa8-8124-3adda728964c.png",
+    image: "/appscreenimage/home.png",
     delay: 0.2,
     width: 320,
     height: 692
   }, {
     title: "Check-In Page",
     description: "QR code check-ins",
-    image: "/lovable-uploads/081c2c6b-718f-4df8-b382-b6baede4a142.png",
+    image: "/appscreenimage/checkin.png",
     delay: 0.4,
     width: 320,
     height: 692
   }, {
     title: "Leaderboard",
     description: "Company rankings",
-    image: "/lovable-uploads/303ad8cd-17b7-4df9-8686-f36a708f98c8.png",
+    image: "/appscreenimage/leaderboard.png",
     delay: 0.6,
     width: 320,
     height: 692
   }, {
     title: "Profile Dashboard",
     description: "Track your CO₂ savings & impact",
-    image: "/lovable-uploads/d4746ccf-c4d2-4213-8e5d-70ba85e9e086.png",
+    image: "/appscreenimage/profile.png",
     delay: 0.8,
     width: 320,
     height: 692
