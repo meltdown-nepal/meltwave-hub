@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
@@ -55,7 +54,7 @@ const AppShowcaseSection = () => {
             
             {/* App Screen Content - Scrollable */}
             <ScrollArea className="h-full w-full">
-              <div className="pt-6 sm:pt-8 md:pt-10">
+              <div>
                 <OptimizedImage 
                   src={screen.image} 
                   alt={screen.title} 
