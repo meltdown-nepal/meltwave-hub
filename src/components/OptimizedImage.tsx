@@ -1,4 +1,6 @@
+
 import React from 'react';
+
 interface OptimizedImageProps {
   src: string;
   alt: string;
@@ -7,6 +9,7 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
 }
+
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
@@ -20,6 +23,18 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
   // Determine if image is a local asset
   const isLocalAsset = src.startsWith('/') && !src.startsWith('//');
-  return;
+
+  return (
+    <img
+      src={isLocalAsset ? webpSrc : src}
+      alt={alt}
+      className={className}
+      width={width}
+      height={height}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding={priority ? 'sync' : 'async'}
+    />
+  );
 };
+
 export default OptimizedImage;
