@@ -55,11 +55,11 @@ const AppShowcaseSection = () => {
             
             {/* App Screen Content - Starts from top */}
             <div className="absolute inset-0 overflow-hidden">
-              <div className="h-full overflow-y-auto scrollbar-hide">
+              <div className="h-full w-full">
                 <OptimizedImage 
                   src={screen.image} 
                   alt={screen.title} 
-                  className="w-full min-h-full object-cover object-top" 
+                  className="w-full h-full object-cover object-top" 
                   priority={index === 0}
                   width={screen.width}
                   height={screen.height}
