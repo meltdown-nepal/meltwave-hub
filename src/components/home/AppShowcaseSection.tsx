@@ -2,6 +2,7 @@ import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const AppShowcaseSection = () => {
@@ -46,24 +47,24 @@ const AppShowcaseSection = () => {
       `}>
         {/* iPhone 16 Screen with Dynamic Island */}
         <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
-          {/* Screen Content Area - Full Height */}
+          {/* Screen Content Area - Full Height with Scroll */}
           <div className="bg-white rounded-[1.4rem] sm:rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
             {/* Dynamic Island - Positioned on top of content */}
             <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 bg-black rounded-full z-30"></div>
             
-            {/* App Screen Content - Starts from top */}
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="h-full w-full">
+            {/* App Screen Content - Scrollable */}
+            <ScrollArea className="h-full w-full">
+              <div className="pt-6 sm:pt-8 md:pt-10">
                 <OptimizedImage 
                   src={screen.image} 
                   alt={screen.title} 
-                  className="w-full h-full object-cover object-top" 
+                  className="w-full h-auto object-top min-h-full" 
                   priority={index === 0}
                   width={screen.width}
                   height={screen.height}
                 />
               </div>
-            </div>
+            </ScrollArea>
           </div>
         </div>
         
