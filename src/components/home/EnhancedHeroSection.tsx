@@ -1,17 +1,25 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
+
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const backgroundImages = ["/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png", "/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.png", "/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.png"];
+  const backgroundImages = [
+    "/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png", 
+    "/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.png", 
+    "/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.png"
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % backgroundImages.length);
     }, 3500);
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
+
   const scrollToNextSection = () => {
     const nextSection = document.querySelector('#trusted-companies-section') || document.querySelector('section:nth-of-type(2)');
     if (nextSection) {
@@ -20,7 +28,9 @@ const EnhancedHeroSection = () => {
       });
     }
   };
-  return <section className="relative bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
+
+  return (
+    <section className="relative bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
@@ -97,16 +107,33 @@ const EnhancedHeroSection = () => {
               <div className="relative">
                 {/* Main image with slideshow */}
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-transform duration-700 aspect-square">
-                  {backgroundImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
-                      <OptimizedImage src={image} alt={`Wellness activities ${index + 1}`} className="w-full h-full object-cover" priority={index === 0} />
-                    </div>)}
+                  {backgroundImages.map((image, index) => (
+                    <div 
+                      key={index} 
+                      className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                      <OptimizedImage 
+                        src={image} 
+                        alt={`Wellness activities ${index + 1}`} 
+                        className="w-full h-full object-cover" 
+                        priority={index === 0}
+                        width={800}
+                        height={800}
+                      />
+                    </div>
+                  ))}
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
                 {/* Slideshow indicator dots */}
                 <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  {backgroundImages.map((_, index) => <div key={index} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-primary scale-125' : 'bg-gray-300'}`} />)}
+                  {backgroundImages.map((_, index) => (
+                    <div 
+                      key={index} 
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-primary scale-125' : 'bg-gray-300'}`} 
+                    />
+                  ))}
                 </div>
               </div>
             </AnimatedElement>
@@ -126,6 +153,8 @@ const EnhancedHeroSection = () => {
           </button>
         </div>
       </AnimatedElement>
-    </section>;
+    </section>
+  );
 };
+
 export default EnhancedHeroSection;

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
