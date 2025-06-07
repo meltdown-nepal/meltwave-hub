@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
@@ -42,7 +41,6 @@ const AppShowcaseSection = () => {
       {/* iPhone 16 Frame */}
       <div className={`
         relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 transition-all duration-500 transform hover:-translate-y-2
-        ${!isMobile && index === 1 ? 'scale-105 sm:scale-110 z-10' : 'scale-90 sm:scale-100'}
         ${isMobile ? 'w-56 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-56'}
         shadow-2xl shadow-yellow-400/20 hover:shadow-yellow-400/40 hover:shadow-3xl
       `}>
