@@ -38,18 +38,19 @@ const PreloaderAnimation: React.FC<PreloaderAnimationProps> = ({ onLoadComplete 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
       <div className="relative">
-        <div className="animate-logo-pulse">
+        {/* Logo with subtle shadow glow */}
+        <div className="relative animate-logo-pulse">
           <OptimizedImage
             src="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png"
             alt="Meltdown Logo"
             width={100}
             height={100}
             priority
-            className="w-24 h-24 animate-logo-scale"
+            className="w-24 h-24 animate-logo-scale drop-shadow-2xl"
           />
+          {/* Subtle backdrop glow - much more refined */}
+          <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl animate-logo-glow opacity-60"></div>
         </div>
-        {/* Glow effect */}
-        <div className="absolute inset-0 rounded-full animate-glow"></div>
       </div>
     </div>
   );

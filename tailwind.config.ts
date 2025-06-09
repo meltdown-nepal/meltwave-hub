@@ -81,13 +81,16 @@ export default {
 				},
 				logoGlow: {
 					'0%': {
-						boxShadow: '0 0 20px rgba(255, 216, 56, 0.3)',
+						transform: 'scale(0.8)',
+						opacity: '0.3',
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(255, 216, 56, 0.8)',
+						transform: 'scale(1.2)',
+						opacity: '0.8',
 					},
 					'100%': {
-						boxShadow: '0 0 20px rgba(255, 216, 56, 0.3)',
+						transform: 'scale(0.8)',
+						opacity: '0.3',
 					},
 				}
 			},
@@ -95,7 +98,7 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'logo-scale': 'logoScale 2s ease-in-out infinite',
-				'logo-glow': 'logoGlow 2s ease-in-out infinite'
+				'logo-glow': 'logoGlow 3s ease-in-out infinite'
 			}
 		}
 	},
