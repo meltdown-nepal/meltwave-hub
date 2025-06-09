@@ -125,7 +125,7 @@ const ForProviders = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img alt="Wellness Provider" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/Screenshot 2025-06-09 164016.jpg" />
+              <img alt="Wellness Provider" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/wellnessprovider.png" />
             </div>
           </div>
         </div>
