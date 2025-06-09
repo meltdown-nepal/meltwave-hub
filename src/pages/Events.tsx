@@ -210,7 +210,7 @@ function EnvironmentalRunCard() {
           className="mt-auto w-full block"
         >
           <Button className="bg-primary hover:bg-secondary text-black font-semibold w-full">
-            Register Now
+            View Gallery 
           </Button>
         </a>
       </div>
