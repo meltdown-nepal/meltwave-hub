@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import AnimatedElement from '../animations/AnimatedElement';
-import OptimizedImage from '../OptimizedImage';
+import HeroImage from '../HeroImage';
 
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -101,7 +101,7 @@ const EnhancedHeroSection = () => {
             </AnimatedElement>
           </div>
 
-          {/* Image Side with Slideshow */}
+          {/* Image Side with Slideshow - Using optimized HeroImage */}
           <div className="relative">
             <AnimatedElement animation="scaleIn" delay={0.5}>
               <div className="relative">
@@ -112,7 +112,7 @@ const EnhancedHeroSection = () => {
                       key={index} 
                       className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
                     >
-                      <OptimizedImage 
+                      <HeroImage 
                         src={image} 
                         alt={`Wellness activities ${index + 1}`} 
                         className="w-full h-full object-cover" 

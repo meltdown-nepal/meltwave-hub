@@ -25,10 +25,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.gpteng.co" />
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/lovable-uploads/45fa564f-44ef-4ee3-aee3-880fc3569707.png" as="image" fetchpriority="high" />
-    <link rel="preload" href="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png" as="image" fetchpriority="high" />
-    <link rel="preload" href="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png" as="image" fetchpriority="high" />
+    <!-- Preload critical hero images with optimized format preference -->
+    <link rel="preload" href="/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png" as="image" fetchpriority="high" />
+    <link rel="preload" href="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png" as="image" />
+    <link rel="preload" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png" as="image" />
     
     <link rel="icon" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png" type="image/png">
     
@@ -45,7 +48,29 @@
       document.documentElement.classList.add('js-loading');
       window.addEventListener('load', function() {
         document.documentElement.classList.remove('js-loading');
+        
+        // Preload next hero images after page load
+        const nextImages = [
+          '/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.webp',
+          '/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.webp'
+        ];
+        
+        nextImages.forEach(src => {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = src;
+          link.as = 'image';
+          link.type = 'image/webp';
+          document.head.appendChild(link);
+        });
       });
+      
+      // Service Worker for image caching (optional future enhancement)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          // Could register a service worker for advanced image caching
+        });
+      }
     </script>
   </head>
 

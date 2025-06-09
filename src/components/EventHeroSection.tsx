@@ -1,7 +1,7 @@
-
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Dumbbell, HeartPulse, Timer } from "lucide-react";
+import HeroImage from "./HeroImage";
 
 // Utility function to get the date and time of the next Wednesday at 9:00 AM
 function getNextWednesday9am() {
@@ -89,16 +89,13 @@ export default function EventHeroSection({
     <section className="relative min-h-[440px] md:min-h-[500px] flex items-center justify-center section-padding">
       {/* Background Image with optimization */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <img 
+        <HeroImage 
           src="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png" 
           alt="Group of fitness enthusiasts at a stadium track" 
           className="w-full h-full object-cover" 
-          draggable={false} 
-          loading="eager"
-          width="1400" 
-          height="800"
-          decoding="async"
-          fetchPriority="high"
+          priority
+          width={1400} 
+          height={800}
         />
         {/* Dark overlay with gradient for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />

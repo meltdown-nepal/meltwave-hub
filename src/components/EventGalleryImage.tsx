@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ZoomIn, Heart } from "lucide-react";
+import OptimizedImage from './OptimizedImage';
 
 type Props = {
   src: string;
@@ -51,11 +52,14 @@ export default function EventGalleryImage({
         role="button"
         onKeyDown={e => { if (e.key === 'Enter') setOpen(true); }}
       >
-        <img
+        <OptimizedImage
           src={src}
           alt={alt || title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          draggable={false}
+          width={600}
+          height={400}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          lazy={true}
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
@@ -66,7 +70,15 @@ export default function EventGalleryImage({
       </div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="bg-black p-0 max-w-2xl">
-          <img src={src} alt={alt || title} className="w-full h-auto rounded-lg max-h-[80vh] object-contain" />
+          <OptimizedImage 
+            src={src} 
+            alt={alt || title} 
+            className="w-full h-auto rounded-lg max-h-[80vh] object-contain" 
+            width={800}
+            height={600}
+            priority={true}
+            sizes="80vw"
+          />
           <div className="absolute bottom-3 left-6 flex items-center gap-3 text-white drop-shadow-md">
             {ICONS[icon]}
             <span className="font-medium text-lg">{title}</span>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from './OptimizedImage';
 
 interface Logo {
   id: number;
@@ -58,11 +59,14 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
                 key={`${logo.id}-${index}`}
                 className="flex-shrink-0 bg-white p-6 rounded-xl shadow-sm flex items-center justify-center h-32 w-48 mx-3"
               >
-                <img
+                <OptimizedImage
                   src={logo.src}
                   alt={logo.alt}
                   className="max-h-16 w-auto max-w-full object-contain"
-                  loading="lazy"
+                  width={120}
+                  height={64}
+                  lazy={true}
+                  sizes="120px"
                 />
               </div>
             ))}
