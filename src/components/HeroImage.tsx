@@ -107,7 +107,6 @@ const HeroImage: React.FC<HeroImageProps> = ({
         height={height}
         loading={priority ? 'eager' : 'lazy'}
         decoding={priority ? 'sync' : 'async'}
-        fetchpriority={priority ? 'high' : 'auto'}
         onLoad={handleLoad}
         onError={handleError}
         style={{
