@@ -131,7 +131,7 @@ const AppShowcaseSection = () => {
         </div>
 
         {/* App Store Buttons */}
-        <AnimatedElement animation="slideUp" delay={1.0}>
+        <AnimatedElement>
           <div className="text-center">
             <p className="text-gray-600 mb-6">Available on iOS and Android</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
