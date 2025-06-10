@@ -31,39 +31,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const imgRef = useRef<HTMLImageElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Generate optimized image sources
-  const generateOptimizedSrc = (originalSrc: string, targetWidth?: number) => {
-    const isLocalAsset = originalSrc.startsWith('/') && !originalSrc.startsWith('//');
-    
-    if (!isLocalAsset) {
-      return originalSrc;
-    }
-
-    // Try WebP first for local images
-    const extension = originalSrc.match(/\.(jpe?g|png|webp)$/i)?.[1];
-    if (extension && extension.toLowerCase() !== 'webp') {
-      const webpSrc = originalSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-      return webpSrc;
-    }
-    
-    return originalSrc;
-  };
-
-  // Generate srcSet for responsive images
-  const generateSrcSet = (originalSrc: string) => {
-    if (!width || !originalSrc.startsWith('/')) {
-      return undefined;
-    }
-
-    const breakpoints = [320, 640, 768, 1024, 1280, 1920];
-    const srcSet = breakpoints
-      .filter(bp => bp <= (width || 1920))
-      .map(bp => `${generateOptimizedSrc(originalSrc, bp)} ${bp}w`)
-      .join(', ');
-    
-    return srcSet || undefined;
-  };
-
   // Set up intersection observer for lazy loading
   useEffect(() => {
     if (priority || !lazy) {
@@ -94,12 +61,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     };
   }, [priority, lazy]);
 
-  // Set image source when in view
+  // Set image source when in view - use original src directly
   useEffect(() => {
     if (isInView && !imgSrc) {
-      setImgSrc(generateOptimizedSrc(src, width));
+      setImgSrc(src);
     }
-  }, [isInView, src, width, imgSrc]);
+  }, [isInView, src, imgSrc]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -107,10 +74,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   };
 
   const handleError = () => {
-    if (!hasError && src !== imgSrc) {
-      setHasError(true);
-      setImgSrc(src); // Fallback to original
-    }
+    console.error(`Failed to load image: ${imgSrc}`);
+    setHasError(true);
+    // Don't try to fallback since we're already using the original src
   };
 
   // Default sizes if not provided
@@ -120,8 +86,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     <img
       ref={imgRef}
       src={isInView ? imgSrc : undefined}
-      srcSet={isInView ? generateSrcSet(src) : undefined}
-      sizes={isInView ? defaultSizes : undefined}
       alt={alt}
       className={`${className} ${!isLoaded && isInView ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
       width={width}
@@ -130,6 +94,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       decoding={priority ? 'sync' : 'async'}
       onLoad={handleLoad}
       onError={handleError}
+      sizes={isInView ? defaultSizes : undefined}
       style={{
         aspectRatio: width && height ? `${width}/${height}` : undefined,
       }}
