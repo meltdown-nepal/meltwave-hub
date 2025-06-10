@@ -136,7 +136,7 @@ const AppShowcaseSection = () => {
             <p className="text-gray-600 mb-6">Available on iOS and Android</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
-                href="#" 
+                href="https://apps.apple.com/np/app/meltdown-nepal/id6445954625" 
                 className="bg-black text-white px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-colors"
               >
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -149,7 +149,7 @@ const AppShowcaseSection = () => {
               </a>
               
               <a 
-                href="#" 
+                href="https://play.google.com/store/apps/details?id=com.corewalkers.meltdown&hl=en" 
                 className="bg-black text-white px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-colors"
               >
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
