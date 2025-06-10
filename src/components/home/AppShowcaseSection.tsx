@@ -3,6 +3,7 @@ import React from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const AppShowcaseSection = () => {
   const isMobile = useIsMobile();
@@ -10,31 +11,35 @@ const AppShowcaseSection = () => {
   const appScreens = [{
     title: "QR Check-In",
     description: "Seamless venue check-ins",
-    image: "/lovable-uploads/21d6ca4c-f8c6-4f3f-8c3c-c89e33b30336.png",
+    image: "/lovable-uploads/ae12e042-70fd-4d39-84e7-1d419fc5a18d.png",
     delay: 0.2,
     width: 390,
-    height: 844
+    height: 844,
+    hasLongContent: false
   }, {
     title: "Home Dashboard",
     description: "Track wellness activities",
-    image: "/lovable-uploads/6cf5f012-a60b-418a-ba5b-663fb433031e.png",
+    image: "/lovable-uploads/cb77fb1c-31c1-4d8b-a847-ec0e19c72cc3.png",
     delay: 0.4,
     width: 390,
-    height: 844
+    height: 844,
+    hasLongContent: true
   }, {
     title: "Leaderboard",
     description: "Company rankings",
-    image: "/lovable-uploads/d5b9dd6b-642a-4e42-88c7-ea8e6d21c8bc.png",
+    image: "/lovable-uploads/1afeb7f0-633e-4f9d-8c6a-7c3ce21c9c97.png",
     delay: 0.6,
     width: 390,
-    height: 844
+    height: 844,
+    hasLongContent: true
   }, {
     title: "Profile Dashboard",
     description: "Track your CO₂ savings & impact",
-    image: "/lovable-uploads/c291677f-694d-4b7d-9563-e8a6c0af5e61.png",
+    image: "/lovable-uploads/6bfb027a-b127-4050-97d6-30abfb2b2565.png",
     delay: 0.8,
     width: 390,
-    height: 844
+    height: 844,
+    hasLongContent: true
   }];
 
   const renderPhoneScreen = (screen: typeof appScreens[0], index: number) => (
@@ -55,14 +60,27 @@ const AppShowcaseSection = () => {
               
               {/* App Screen Content */}
               <div className="h-full w-full">
-                <OptimizedImage 
-                  src={screen.image} 
-                  alt={screen.title} 
-                  className="w-full h-full object-cover object-top" 
-                  priority={index === 0} 
-                  width={screen.width} 
-                  height={screen.height} 
-                />
+                {screen.hasLongContent ? (
+                  <ScrollArea className="h-full w-full">
+                    <OptimizedImage 
+                      src={screen.image} 
+                      alt={screen.title} 
+                      className="w-full h-auto object-cover object-top min-h-full" 
+                      priority={index === 0} 
+                      width={screen.width} 
+                      height={screen.height} 
+                    />
+                  </ScrollArea>
+                ) : (
+                  <OptimizedImage 
+                    src={screen.image} 
+                    alt={screen.title} 
+                    className="w-full h-full object-cover object-top" 
+                    priority={index === 0} 
+                    width={screen.width} 
+                    height={screen.height} 
+                  />
+                )}
               </div>
             </div>
           </div>
