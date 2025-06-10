@@ -204,7 +204,7 @@ function EnvironmentalRunCard() {
         
         {/* Register button */}
         <a 
-          href="https://docs.google.com/forms/d/14iGg1WEHgFRRzban69pirrAhpQcmvoGLWr7R8RFQamY/viewform?edit_requested=true" 
+          href="#" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="mt-auto w-full block"
