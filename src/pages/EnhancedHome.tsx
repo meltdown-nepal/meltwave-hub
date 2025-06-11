@@ -15,7 +15,7 @@ const EnhancedHome = () => {
     {
       name: "Jyoti Pokharel",
       title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-      role: "HR Director, Leapfrog Technology",
+      role: "People Managment Senior Officer, Leapfrog Technology",
       linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
     },
     {
