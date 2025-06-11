@@ -16,11 +16,8 @@ const initializeApp = () => {
     return;
   }
 
-  // Use createRoot API for concurrent mode with optimizations
-  const root = createRoot(container, {
-    // Enable concurrent features for better performance
-    unstable_concurrentUpdatesByDefault: true
-  });
+  // Use createRoot API for concurrent mode
+  const root = createRoot(container);
   
   // Mark before React render
   performance.mark('react-render-start');
