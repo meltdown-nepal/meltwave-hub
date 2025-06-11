@@ -4,6 +4,7 @@ import AnimatedElement from '../animations/AnimatedElement';
 import OptimizedImage from '../OptimizedImage';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const AppShowcaseSection = () => {
   const isMobile = useIsMobile();
@@ -46,65 +47,63 @@ const AppShowcaseSection = () => {
     console.log(`Rendering phone screen: ${screen.title} with image: ${screen.image}`);
     
     return (
-      <AnimatedElement key={screen.title} animation="slideUp" delay={screen.delay}>
-        <div className="flex flex-col items-center">
-          {/* iPhone Frame */}
-          <div className={`
-            relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 transition-all duration-500 transform hover:-translate-y-2
-            ${isMobile ? 'w-48 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-52'}
-            shadow-2xl shadow-gray-400/20 hover:shadow-gray-400/40 hover:shadow-3xl
-          `}>
-            {/* iPhone Screen with Dynamic Island */}
-            <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
-              {/* Screen Content Area */}
-              <div className="bg-white rounded-[1.4rem] sm:rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
-                {/* Dynamic Island */}
-                <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 bg-black rounded-full z-30"></div>
-                
-                {/* App Screen Content */}
-                <div className="h-full w-full">
-                  {screen.hasLongContent ? (
-                    <ScrollArea className="h-full w-full">
-                      <OptimizedImage 
-                        src={screen.image} 
-                        alt={screen.title} 
-                        className="w-full h-auto object-cover object-top min-h-full" 
-                        priority={index === 0} 
-                        width={screen.width} 
-                        height={screen.height} 
-                        lazy={false}
-                      />
-                    </ScrollArea>
-                  ) : (
+      <div className="flex flex-col items-center">
+        {/* iPhone Frame */}
+        <div className={`
+          relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 transition-all duration-500 transform hover:-translate-y-2
+          ${isMobile ? 'w-64 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-52'}
+          shadow-2xl shadow-gray-400/20 hover:shadow-gray-400/40 hover:shadow-3xl
+        `}>
+          {/* iPhone Screen with Dynamic Island */}
+          <div className="bg-black rounded-[1.7rem] sm:rounded-[2.7rem] p-0.5 sm:p-1 relative overflow-hidden">
+            {/* Screen Content Area */}
+            <div className="bg-white rounded-[1.4rem] sm:rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
+              {/* Dynamic Island */}
+              <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 bg-black rounded-full z-30"></div>
+              
+              {/* App Screen Content */}
+              <div className="h-full w-full">
+                {screen.hasLongContent ? (
+                  <ScrollArea className="h-full w-full">
                     <OptimizedImage 
                       src={screen.image} 
                       alt={screen.title} 
-                      className="w-full h-full object-cover object-top" 
+                      className="w-full h-auto object-cover object-top min-h-full" 
                       priority={index === 0} 
                       width={screen.width} 
                       height={screen.height} 
                       lazy={false}
                     />
-                  )}
-                </div>
+                  </ScrollArea>
+                ) : (
+                  <OptimizedImage 
+                    src={screen.image} 
+                    alt={screen.title} 
+                    className="w-full h-full object-cover object-top" 
+                    priority={index === 0} 
+                    width={screen.width} 
+                    height={screen.height} 
+                    lazy={false}
+                  />
+                )}
               </div>
             </div>
-            
-            {/* Home Indicator */}
-            <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
           </div>
-
-          {/* Screen Labels */}
-          <div className="text-center mt-3 sm:mt-4 md:mt-6 space-y-1 px-1">
-            <h3 className="font-semibold text-gray-900 text-sm sm:text-base">
-              {screen.title}
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-600">
-              {screen.description}
-            </p>
-          </div>
+          
+          {/* Home Indicator */}
+          <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
         </div>
-      </AnimatedElement>
+
+        {/* Screen Labels */}
+        <div className="text-center mt-3 sm:mt-4 md:mt-6 space-y-1 px-1">
+          <h3 className="font-semibold text-gray-900 text-sm sm:text-base">
+            {screen.title}
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600">
+            {screen.description}
+          </p>
+        </div>
+      </div>
     );
   };
 
@@ -125,10 +124,48 @@ const AppShowcaseSection = () => {
           </div>
         </AnimatedElement>
 
-        {/* Mobile App Screens Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
-          {appScreens.map((screen, index) => renderPhoneScreen(screen, index))}
-        </div>
+        {/* Mobile App Screens - Mobile Carousel vs Desktop Grid */}
+        {isMobile ? (
+          <div className="mb-12">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {appScreens.map((screen, index) => (
+                  <CarouselItem key={screen.title} className="pl-2 md:pl-4 basis-full">
+                    <AnimatedElement animation="slideUp" delay={screen.delay}>
+                      {renderPhoneScreen(screen, index)}
+                    </AnimatedElement>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
+            
+            {/* Mobile indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {appScreens.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-gray-300"
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
+            {appScreens.map((screen, index) => (
+              <AnimatedElement key={screen.title} animation="slideUp" delay={screen.delay}>
+                {renderPhoneScreen(screen, index)}
+              </AnimatedElement>
+            ))}
+          </div>
+        )}
 
         {/* App Store Buttons */}
         <AnimatedElement>
