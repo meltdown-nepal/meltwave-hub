@@ -9,15 +9,18 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import { usePerfMonitor } from "./hooks/usePerfMonitor";
 import PreloaderAnimation from "./components/PreloaderAnimation";
+import CriticalCSSLoader from "./components/performance/CriticalCSSLoader";
+import ResourcePreloader from "./components/performance/ResourcePreloader";
+import { useAdvancedPerformance } from "./hooks/useAdvancedPerformance";
+import { addResourceHints, preloadModule } from "./utils/bundleOptimizer";
 
 // Eagerly load critical pages
 import EnhancedHome from "./pages/EnhancedHome";
 import Contact from "./pages/Contact";
-import ForEmployees from "./pages/ForEmployees"; // Keep direct import
+import ForEmployees from "./pages/ForEmployees";
 
-// Lazy load non-critical pages
+// Lazy load non-critical pages with optimized imports
 const Home = lazy(() => import("./pages/Home"));
 const CorporateWellness = lazy(() => import("./pages/CorporateWellness"));
 const ForCompanies = lazy(() => import("./pages/ForCompanies"));
@@ -36,32 +39,72 @@ const AnalyticsPage = lazy(() => import("./pages/Analytics"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 
-// Loading fallback
-const LoadingFallback = () => (
-  <div className="flex items-center justify-center min-h-screen">
-    <div className="animate-pulse flex flex-col items-center">
-      <div className="w-12 h-12 bg-primary/20 rounded-full mb-3"></div>
-      <div className="h-4 w-24 bg-gray-200 rounded"></div>
+// Critical resources to preload
+const criticalResources = [
+  {
+    href: "/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png",
+    as: "image" as const,
+    fetchpriority: "high" as const
+  },
+  {
+    href: "/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png",
+    as: "image" as const,
+    fetchpriority: "high" as const
+  }
+];
+
+// Optimized loading fallback
+const OptimizedLoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div className="animate-pulse flex flex-col items-center space-y-4">
+      <div className="w-12 h-12 bg-primary/20 rounded-full animate-bounce"></div>
+      <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
+      <div className="text-xs text-gray-500">Loading experience...</div>
     </div>
   </div>
 );
 
 function AppContent() {
-  // Monitor performance
-  usePerfMonitor();
+  const { metrics, getPerformanceGrade } = useAdvancedPerformance();
   const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // Add resource hints immediately
+    addResourceHints();
+    
+    // Preload likely next pages
+    const preloadPages = [
+      () => import("./pages/CorporateWellness"),
+      () => import("./pages/Events"),
+      () => import("./pages/ForCompanies")
+    ];
+    
+    // Preload after initial load
+    setTimeout(() => {
+      preloadPages.forEach(preloadModule);
+    }, 2000);
+    
+    // Performance monitoring in development
+    if (process.env.NODE_ENV === 'development') {
+      setTimeout(() => {
+        console.log('Performance Grade:', getPerformanceGrade());
+        console.log('Performance Metrics:', metrics);
+      }, 3000);
+    }
+  }, [getPerformanceGrade, metrics]);
   
   const handleLoadComplete = () => {
     setLoading(false);
   };
   
   return (
-    <>
+    <CriticalCSSLoader>
+      <ResourcePreloader resources={criticalResources} />
       {loading && <PreloaderAnimation onLoadComplete={handleLoadComplete} />}
       <ScrollToTop />
       <Navbar />
       <main>
-        <Suspense fallback={<LoadingFallback />}>
+        <Suspense fallback={<OptimizedLoadingFallback />}>
           <Routes>
             <Route path="/" element={<EnhancedHome />} />
             <Route path="/simple" element={<Home />} />
@@ -87,18 +130,25 @@ function AppContent() {
         </Suspense>
       </main>
       <Footer />
-    </>
+    </CriticalCSSLoader>
   );
 }
 
 const App = () => {
-  // Create a query client with optimized settings
+  // Optimized query client with better caching
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        staleTime: 5 * 60 * 1000, // 5 minutes
-        gcTime: 10 * 60 * 1000, // 10 minutes (renamed from cacheTime)
+        staleTime: 10 * 60 * 1000, // 10 minutes
+        gcTime: 30 * 60 * 1000, // 30 minutes
+        retry: (failureCount, error: any) => {
+          // Don't retry on 4xx errors
+          if (error?.status >= 400 && error?.status < 500) {
+            return false;
+          }
+          return failureCount < 3;
+        }
       },
     },
   }));

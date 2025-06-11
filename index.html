@@ -4,10 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google -Site Verification -->
+    <!-- Google Site Verification -->
     <meta name="google-site-verification" content="5lX4YYiG1yoEOBXvHdF64UbkHnuO_q0Sd0i3AT8is0U" />
 
-    <title>Meltdown Wellbeing -Innovative wellness solutions for everyone </title>
+    <title>Meltdown Wellbeing - Innovative wellness solutions for everyone</title>
     <meta name="description" content="Wellness solution for everyone" />
     <meta name="author" content="Meltdown" />
 
@@ -20,63 +20,130 @@
     <meta name="twitter:site" content="@meltdown_wellness" />
     <meta name="twitter:image" content="https://meltdownnepal.com/lovable-uploads/a44d1192-3b50-4319-8b71-b312a47bf095.png" />
     
-    <!-- Performance optimizations -->
+    <!-- Critical Performance Optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.gpteng.co" />
+    <link rel="dns-prefetch" href="//cdn.gpteng.co" />
     
-    <!-- Preload critical hero images with optimized format preference -->
+    <!-- Critical Resource Preloading with WebP support -->
     <link rel="preload" href="/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="preload" href="/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png" as="image" fetchpriority="high" />
     <link rel="preload" href="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.webp" as="image" type="image/webp" />
     <link rel="preload" href="/lovable-uploads/85ad4cbc-7386-45ac-b96e-e70e9cce7179.png" as="image" />
-    <link rel="preload" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.webp" as="image" type="image/webp" />
-    <link rel="preload" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png" as="image" />
     
+    <!-- Favicon with multiple sizes -->
     <link rel="icon" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png" type="image/png">
+    <link rel="apple-touch-icon" href="/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png">
     
-    <!-- Resource hints for better performance -->
+    <!-- Performance and UX optimizations -->
     <meta name="theme-color" content="#fbbf24" />
     <meta name="color-scheme" content="light" />
     
-    <!-- Page load performance optimization -->
+    <!-- Critical inline CSS for above-the-fold content -->
+    <style>
+      /* Critical CSS for immediate rendering */
+      .js-loading * {
+        opacity: 0;
+        animation: none !important;
+      }
+      
+      .js-loading .critical-content {
+        opacity: 1;
+      }
+      
+      /* Prevent layout shift */
+      .hero-image {
+        aspect-ratio: 16/9;
+        background-color: #f3f4f6;
+      }
+      
+      /* Loading states */
+      .loading-skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading-shimmer 1.5s infinite;
+      }
+      
+      @keyframes loading-shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+    </style>
+    
+    <!-- Preload main application script -->
     <link rel="modulepreload" href="/src/main.tsx" />
     
-    <!-- Prevent render blocking -->
+    <!-- Performance monitoring script -->
     <script>
-      // Prevent flash of unstyled content
-      document.documentElement.classList.add('js-loading');
+      // Early performance monitoring
+      window.performanceMarks = {};
+      
+      // Mark critical points
+      performance.mark('html-start');
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        performance.mark('dom-ready');
+      });
+      
       window.addEventListener('load', function() {
+        performance.mark('page-loaded');
         document.documentElement.classList.remove('js-loading');
         
-        // Preload next hero images after page load
+        // Preload next likely images after page load
         const nextImages = [
           '/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.webp',
           '/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.webp'
         ];
         
-        nextImages.forEach(src => {
-          const link = document.createElement('link');
-          link.rel = 'prefetch';
-          link.href = src;
-          link.as = 'image';
-          link.type = 'image/webp';
-          document.head.appendChild(link);
-        });
+        // Use requestIdleCallback for non-critical preloading
+        const preloadImages = () => {
+          nextImages.forEach(src => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = src;
+            link.as = 'image';
+            link.type = 'image/webp';
+            document.head.appendChild(link);
+          });
+        };
+        
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(preloadImages);
+        } else {
+          setTimeout(preloadImages, 2000);
+        }
       });
       
-      // Service Worker for image caching (optional future enhancement)
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          // Could register a service worker for advanced image caching
-        });
+      // Network-aware optimizations
+      if ('connection' in navigator) {
+        const connection = navigator.connection;
+        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+          document.documentElement.classList.add('slow-connection');
+        }
       }
     </script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root" class="critical-content"></div>
+    
+    <!-- Non-critical scripts loaded asynchronously -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer></script>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker registration for caching -->
+    <script>
+      if ('serviceWorker' in navigator && 'production' === 'production') {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('SW registered: ', registration);
+            })
+            .catch(function(registrationError) {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
