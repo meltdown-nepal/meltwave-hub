@@ -27,7 +27,7 @@ const defaultTestimonials = [
     name: "Jyoti Pokharel",
     title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
-    role: "HR Director, Leapfrog Technology",
+    role: "People Managment Senior Officer, Leapfrog Technology",
     linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
   },
   {
