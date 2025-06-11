@@ -10,21 +10,21 @@ const AppShowcaseSection = () => {
   const isMobile = useIsMobile();
   
   const appScreens = [{
-    title: "Home Dashboard",
-    description: "Track wellness activities",
-    image: "/lovable-uploads/cb77fb1c-31c1-4d8b-a847-ec0e19c72cc3.png",
-    delay: 0.2,
-    width: 390,
-    height: 844,
-    hasLongContent: true
-  }, {
     title: "QR Check-In",
     description: "Seamless venue check-ins",
     image: "/lovable-uploads/ae12e042-70fd-4d39-84e7-1d419fc5a18d.png",
-    delay: 0.4,
+    delay: 0.2,
     width: 390,
     height: 844,
     hasLongContent: false
+  }, {
+    title: "Home Dashboard",
+    description: "Track wellness activities",
+    image: "/lovable-uploads/cb77fb1c-31c1-4d8b-a847-ec0e19c72cc3.png",
+    delay: 0.4,
+    width: 390,
+    height: 844,
+    hasLongContent: true
   }, {
     title: "Leaderboard",
     description: "Company rankings",
@@ -65,15 +65,21 @@ const AppShowcaseSection = () => {
               <div className="h-full w-full">
                 {screen.hasLongContent ? (
                   <ScrollArea className="h-full w-full">
-                    <OptimizedImage 
-                      src={screen.image} 
-                      alt={screen.title} 
-                      className="w-full h-auto object-cover object-top min-h-full" 
-                      priority={index === 0} 
-                      width={screen.width} 
-                      height={screen.height} 
-                      lazy={false}
-                    />
+                    <div className="relative">
+                      <OptimizedImage 
+                        src={screen.image} 
+                        alt={screen.title} 
+                        className="w-full h-auto object-cover object-top min-h-full" 
+                        priority={index === 0} 
+                        width={screen.width} 
+                        height={screen.height} 
+                        lazy={false}
+                      />
+                      {/* Scroll indicator for long content */}
+                      <div className="absolute bottom-2 right-2 bg-black/20 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-white/80 pointer-events-none">
+                        Scroll ↕
+                      </div>
+                    </div>
                   </ScrollArea>
                 ) : (
                   <OptimizedImage 
@@ -102,6 +108,11 @@ const AppShowcaseSection = () => {
           <p className="text-xs sm:text-sm text-gray-600">
             {screen.description}
           </p>
+          {screen.hasLongContent && (
+            <p className="text-xs text-gray-500 italic">
+              Scrollable content
+            </p>
+          )}
         </div>
       </div>
     );
