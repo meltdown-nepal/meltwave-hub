@@ -10,10 +10,8 @@ interface PhoneFrameProps {
   index: number;
 }
 
-const PhoneFrame: React.FC<PhoneFrameProps> = ({ screen, index }) => {
+const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => {
   const isMobile = useIsMobile();
-  
-  console.log(`Rendering phone screen: ${screen.title} with image: ${screen.image}`);
   
   return (
     <div className="flex flex-col items-center">
@@ -85,6 +83,8 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({ screen, index }) => {
       </div>
     </div>
   );
-};
+});
+
+PhoneFrame.displayName = 'PhoneFrame';
 
 export default PhoneFrame;

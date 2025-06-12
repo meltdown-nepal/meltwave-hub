@@ -8,7 +8,7 @@ interface DesktopGridProps {
   screens: AppScreen[];
 }
 
-const DesktopGrid: React.FC<DesktopGridProps> = ({ screens }) => {
+const DesktopGrid: React.FC<DesktopGridProps> = React.memo(({ screens }) => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
       {screens.map((screen, index) => (
@@ -18,6 +18,8 @@ const DesktopGrid: React.FC<DesktopGridProps> = ({ screens }) => {
       ))}
     </div>
   );
-};
+});
+
+DesktopGrid.displayName = 'DesktopGrid';
 
 export default DesktopGrid;

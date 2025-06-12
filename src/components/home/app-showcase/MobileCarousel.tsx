@@ -9,7 +9,7 @@ interface MobileCarouselProps {
   screens: AppScreen[];
 }
 
-const MobileCarousel: React.FC<MobileCarouselProps> = ({ screens }) => {
+const MobileCarousel: React.FC<MobileCarouselProps> = React.memo(({ screens }) => {
   return (
     <div className="mb-12">
       <Carousel
@@ -43,6 +43,8 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ screens }) => {
       </div>
     </div>
   );
-};
+});
+
+MobileCarousel.displayName = 'MobileCarousel';
 
 export default MobileCarousel;

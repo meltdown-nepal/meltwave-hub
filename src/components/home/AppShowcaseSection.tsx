@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import AnimatedElement from '../animations/AnimatedElement';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { appScreens } from './app-showcase/AppScreenData';
@@ -7,8 +7,11 @@ import MobileCarousel from './app-showcase/MobileCarousel';
 import DesktopGrid from './app-showcase/DesktopGrid';
 import AppStoreButtons from './app-showcase/AppStoreButtons';
 
-const AppShowcaseSection = () => {
+const AppShowcaseSection = React.memo(() => {
   const isMobile = useIsMobile();
+  
+  // Memoize the screens data to prevent unnecessary re-renders
+  const memoizedScreens = useMemo(() => appScreens, []);
 
   return (
     <section className="section-padding bg-gradient-to-br from-gray-50 to-white py-[60px]" id="app-showcase">
@@ -29,9 +32,9 @@ const AppShowcaseSection = () => {
 
         {/* Mobile App Screens - Mobile Carousel vs Desktop Grid */}
         {isMobile ? (
-          <MobileCarousel screens={appScreens} />
+          <MobileCarousel screens={memoizedScreens} />
         ) : (
-          <DesktopGrid screens={appScreens} />
+          <DesktopGrid screens={memoizedScreens} />
         )}
 
         {/* App Store Buttons */}
@@ -39,6 +42,8 @@ const AppShowcaseSection = () => {
       </div>
     </section>
   );
-};
+});
+
+AppShowcaseSection.displayName = 'AppShowcaseSection';
 
 export default AppShowcaseSection;
