@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -8,9 +8,9 @@ interface OptimizedImageProps {
   priority?: boolean;
   width?: number;
   height?: number;
-  sizes?: string;
-  quality?: number;
   lazy?: boolean;
+  onLoad?: () => void;
+  onError?: () => void;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -20,81 +20,47 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   priority = false,
   width,
   height,
-  sizes,
-  quality = 85,
-  lazy = true
+  lazy = true,
+  onLoad,
+  onError
 }) => {
-  const [imgSrc, setImgSrc] = useState<string>('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [isInView, setIsInView] = useState(priority || !lazy);
-  const imgRef = useRef<HTMLImageElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Set up intersection observer for lazy loading
-  useEffect(() => {
-    if (priority || !lazy) {
-      setIsInView(true);
-      return;
-    }
-
-    if (!imgRef.current) return;
-
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observerRef.current?.disconnect();
-        }
-      },
-      {
-        rootMargin: '50px',
-        threshold: 0.1
-      }
-    );
-
-    observerRef.current.observe(imgRef.current);
-
-    return () => {
-      observerRef.current?.disconnect();
-    };
-  }, [priority, lazy]);
-
-  // Set image source when in view - use original src directly
-  useEffect(() => {
-    if (isInView && !imgSrc) {
-      setImgSrc(src);
-    }
-  }, [isInView, src, imgSrc]);
-
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoaded(true);
-    console.log(`Image loaded successfully: ${imgSrc}`);
-  };
+    if (onLoad) onLoad();
+    console.log(`Image loaded successfully: ${src}`);
+  }, [onLoad, src]);
 
-  const handleError = () => {
-    console.error(`Failed to load image: ${imgSrc}`);
+  const handleError = useCallback(() => {
     setHasError(true);
-    // Don't try to fallback since we're already using the original src
-  };
+    if (onError) onError();
+    console.warn(`Failed to load image: ${src}`);
+  }, [onError, src]);
 
-  // Default sizes if not provided
-  const defaultSizes = sizes || (width ? `(max-width: 768px) 100vw, ${width}px` : '100vw');
+  // Fallback for broken images
+  if (hasError) {
+    return (
+      <div 
+        className={`bg-gray-200 flex items-center justify-center ${className}`}
+        style={{ width, height }}
+      >
+        <span className="text-gray-500 text-sm">Image unavailable</span>
+      </div>
+    );
+  }
 
   return (
     <img
-      ref={imgRef}
-      src={isInView ? imgSrc : undefined}
+      src={src}
       alt={alt}
-      className={`${className} ${!isLoaded && isInView ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
-      width={width}
-      height={height}
-      loading={priority ? 'eager' : 'lazy'}
-      decoding={priority ? 'sync' : 'async'}
+      className={`${className} ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
       onLoad={handleLoad}
       onError={handleError}
-      sizes={isInView ? defaultSizes : undefined}
+      loading={priority ? "eager" : lazy ? "lazy" : "eager"}
+      width={width}
+      height={height}
       style={{
         aspectRatio: width && height ? `${width}/${height}` : undefined,
       }}

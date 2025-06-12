@@ -131,19 +131,6 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer></script>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Service Worker registration for caching -->
-    <script>
-      if ('serviceWorker' in navigator && 'production' === 'production') {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-              console.log('SW registered: ', registration);
-            })
-            .catch(function(registrationError) {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
-      }
-    </script>
+    <!-- Removed service worker registration that was causing 404 errors -->
   </body>
 </html>
