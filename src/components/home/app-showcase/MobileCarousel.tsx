@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import React, { useState, useEffect } from 'react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
 import AnimatedElement from '../../animations/AnimatedElement';
 import PhoneFrame from './PhoneFrame';
 import { AppScreen } from './AppScreenData';
@@ -10,9 +10,23 @@ interface MobileCarouselProps {
 }
 
 const MobileCarousel: React.FC<MobileCarouselProps> = React.memo(({ screens }) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
     <div className="mb-12">
       <Carousel
+        setApi={setApi}
         opts={{
           align: "center",
           loop: true,
@@ -32,12 +46,18 @@ const MobileCarousel: React.FC<MobileCarouselProps> = React.memo(({ screens }) =
         <CarouselNext className="right-4" />
       </Carousel>
       
-      {/* Mobile indicators */}
+      {/* Active Mobile indicators */}
       <div className="flex justify-center mt-6 space-x-2">
         {screens.map((_, index) => (
-          <div
+          <button
             key={index}
-            className="w-2 h-2 rounded-full bg-gray-300"
+            className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+              index === current 
+                ? 'bg-primary' 
+                : 'bg-gray-300'
+            }`}
+            onClick={() => api?.scrollTo(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
