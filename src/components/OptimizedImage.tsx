@@ -9,6 +9,7 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   lazy?: boolean;
+  sizes?: string;
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -21,6 +22,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   width,
   height,
   lazy = true,
+  sizes,
   onLoad,
   onError
 }) => {
@@ -61,6 +63,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       loading={priority ? "eager" : lazy ? "lazy" : "eager"}
       width={width}
       height={height}
+      sizes={sizes}
       style={{
         aspectRatio: width && height ? `${width}/${height}` : undefined,
       }}
