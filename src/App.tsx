@@ -1,5 +1,5 @@
 
-import React, { useState, Suspense, lazy, useEffect } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,7 +9,6 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import PreloaderAnimation from "./components/PreloaderAnimation";
 
 // Eagerly load critical pages
 import EnhancedHome from "./pages/EnhancedHome";
@@ -35,7 +34,7 @@ const AnalyticsPage = lazy(() => import("./pages/Analytics"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 
-// Simple loading fallback that won't interfere with live editor
+// Simple loading fallback
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
     <div className="animate-pulse flex flex-col items-center space-y-4">
@@ -46,15 +45,8 @@ const LoadingFallback = () => (
 );
 
 function AppContent() {
-  const [loading, setLoading] = useState(true);
-  
-  const handleLoadComplete = () => {
-    setLoading(false);
-  };
-  
   return (
     <>
-      {loading && <PreloaderAnimation onLoadComplete={handleLoadComplete} />}
       <ScrollToTop />
       <Navbar />
       <main>
@@ -89,12 +81,11 @@ function AppContent() {
 }
 
 const App = () => {
-  // Simplified query client configuration
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        staleTime: 5 * 60 * 1000, // 5 minutes
+        staleTime: 5 * 60 * 1000,
         retry: 1
       },
     },
