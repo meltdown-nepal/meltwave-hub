@@ -75,11 +75,6 @@ const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => 
         <p className="text-xs sm:text-sm text-gray-600">
           {screen.description}
         </p>
-        {screen.hasLongContent && (
-          <p className="text-xs text-gray-500 italic">
-            Scrollable content
-          </p>
-        )}
       </div>
     </div>
   );
