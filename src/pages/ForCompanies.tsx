@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Play, Package } from "lucide-react";
+import { Play, Package, ArrowRight, CheckCircle, Users, Zap, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LogoCarousel from '../components/LogoCarousel';
@@ -196,123 +196,182 @@ const ForCompanies = () => {
         </div>
       </section>
 
-      {/* How It Works - Redesigned */}
-      <section className="section-padding bg-zinc-50">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-4 px-6 py-2 rounded-full text-amber-700 font-medium text-sm uppercase tracking-wide bg-yellow-100">
+      {/* How It Works - Redesigned for Better Engagement */}
+      <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-amber-100/30 to-orange-100/30 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+        
+        <div className="container-custom relative z-10">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-6 px-6 py-3 rounded-full text-blue-700 font-semibold text-sm uppercase tracking-wide bg-blue-100/80 backdrop-blur-sm border border-blue-200/50 shadow-lg">
+              <Zap className="w-4 h-4" />
               How It Works
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Simple Steps to Healthier Employees
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
+              Transform Your Workplace
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                In 4 Simple Steps
+              </span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-gray-600">
-              Get your team started with comprehensive wellness in just a few easy steps
+            <p className="text-xl max-w-4xl mx-auto text-gray-600 leading-relaxed">
+              From investment to implementation, we'll guide you through creating a comprehensive wellness program that your employees will love
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            {/* Left side - Steps */}
-            <div className="space-y-6">
-              {/* Step 1 */}
-              <div className="flex gap-4 group">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
-                    1
+          {/* Interactive Steps Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto mb-20">
+            {/* Left side - Interactive Steps */}
+            <div className="space-y-8">
+              {[
+                {
+                  number: "01",
+                  icon: Users,
+                  title: "Make Your Investment",
+                  description: "Invest annually per employee (minimum 5 employees) to unlock our comprehensive wellness ecosystem for your entire team.",
+                  highlight: "Starting from just $200/employee/year",
+                  color: "from-blue-500 to-blue-600"
+                },
+                {
+                  number: "02",
+                  icon: Zap,
+                  title: "Custom App Creation",
+                  description: "We build a personalized Meltdown app branded for your company, complete with wellness tracking and team challenges.",
+                  highlight: "Ready in 1-2 weeks",
+                  color: "from-purple-500 to-purple-600"
+                },
+                {
+                  number: "03",
+                  icon: Package,
+                  title: "Employee Package Selection",
+                  description: "Your team chooses from Basic, Gold, or Platinum packages—all subsidized at 40-50% below market rates.",
+                  highlight: "Maximum flexibility, minimum cost",
+                  color: "from-amber-500 to-orange-500"
+                },
+                {
+                  number: "04",
+                  icon: BarChart3,
+                  title: "Track Success & ROI",
+                  description: "Monitor engagement, health outcomes, and cost savings through your dedicated HR dashboard with real-time analytics.",
+                  highlight: "Measure what matters",
+                  color: "from-green-500 to-emerald-600"
+                }
+              ].map((step, index) => (
+                <div key={index} className="group relative">
+                  <div className="flex gap-6 p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                    {/* Step Number & Icon */}
+                    <div className="flex-shrink-0 relative">
+                      <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <step.icon className="text-white w-8 h-8" strokeWidth={2.5} />
+                      </div>
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                        {step.number}
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed mb-3">
+                        {step.description}
+                      </p>
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border border-blue-200/50">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-sm font-medium text-gray-700">{step.highlight}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Arrow connector (hidden on last item) */}
+                    {index < 3 && (
+                      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 lg:hidden">
+                        <ArrowRight className="w-6 h-6 text-gray-300 rotate-90" />
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">Your Investment</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Make an annual investment per employee (minimum 5 employees). This unlocks access to our comprehensive wellness platform for your entire team.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="flex gap-4 group">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
-                    2
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">Custom App Setup</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    We create a personalized Meltdown app for your company. Employees can explore services, track progress, and join wellness challenges.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="flex gap-4 group">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
-                    3
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">Employee Choice</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Team members choose from Basic, Gold, or Platinum packages - all heavily subsidized (40-50% below market rates) thanks to your investment.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 4 */}
-              <div className="flex gap-4 group">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
-                    4
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">Track & Measure</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Get real-time insights through your HR dashboard with participation data, engagement reports, and wellness trends across departments.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Right side - Visual */}
-            <div className="lg:pl-8">
-              <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Package className="text-black" size={32} strokeWidth={2.5} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Package Options</h3>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="font-medium text-gray-700">Basic</span>
-                    <span className="text-sm text-gray-500">Gym & Group Fitness</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <span className="font-medium text-gray-700">Gold</span>
-                    <span className="text-sm text-amber-600">+ Golfing, Yoga, Rock Climbing</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <span className="font-medium text-gray-700">Platinum</span>
-                    <span className="text-sm text-blue-600">+ Swimming, Mental Health, Pilates</span>
+            {/* Right side - Interactive Visual */}
+            <div className="lg:pl-12">
+              <div className="relative">
+                {/* Main Card */}
+                <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 relative overflow-hidden">
+                  {/* Background Pattern */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-center mb-8">
+                      <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <Package className="text-white w-10 h-10" strokeWidth={2.5} />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-3">Wellness Packages</h3>
+                      <p className="text-gray-600">Choose what fits your lifestyle</p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { name: "Basic", features: "Gym & Group Fitness", price: "40% Off", color: "border-gray-200 bg-gray-50" },
+                        { name: "Gold", features: "+ Golf, Yoga, Rock Climbing", price: "45% Off", color: "border-amber-200 bg-amber-50" },
+                        { name: "Platinum", features: "+ Swimming, Mental Health, Pilates", price: "50% Off", color: "border-blue-200 bg-blue-50" }
+                      ].map((pkg, index) => (
+                        <div key={index} className={`p-4 rounded-xl border-2 ${pkg.color} transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer`}>
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h4 className="font-bold text-gray-900">{pkg.name}</h4>
+                              <p className="text-sm text-gray-600">{pkg.features}</p>
+                            </div>
+                            <div className="text-right">
+                              <div className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-bold">
+                                {pkg.price}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border-2 border-green-200">
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <CheckCircle className="w-6 h-6 text-green-600" />
+                          <p className="text-lg font-bold text-green-800">Significant Savings</p>
+                        </div>
+                        <p className="text-sm text-green-700">All packages heavily subsidized by your company's investment</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <div className="text-center">
-                    <p className="text-sm font-medium text-green-700">30-40% Savings</p>
-                    <p className="text-xs text-green-600">Below market rates</p>
-                  </div>
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center shadow-lg">
+                  <Users className="w-6 h-6 text-blue-600" />
+                </div>
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shadow-lg">
+                  <BarChart3 className="w-6 h-6 text-purple-600" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            
+          {/* Bottom CTA Section */}
+          <div className="text-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200/50 max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
+              <p className="text-gray-600 mb-6">Join hundreds of companies already transforming their workplace wellness</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/schedule-demo" className="btn-primary inline-flex items-center gap-2">
+                  Schedule Demo
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link to="/contact" className="btn-outline">
+                  Get Custom Quote
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
