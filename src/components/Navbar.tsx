@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -15,6 +16,19 @@ const Navbar = () => {
   const closeMenu = () => {
     setIsOpen(false);
     setServicesOpen(false);
+  };
+
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setServicesOpen(false);
+    }, 150); // 150ms delay before closing
   };
 
   const isActive = (path: string) => location.pathname === path;
@@ -32,22 +46,18 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <div className="relative group">
-              <button 
-                className="flex items-center text-gray-700 hover:text-primary transition-colors" 
-                onMouseEnter={() => setServicesOpen(true)} 
-                onMouseLeave={() => setServicesOpen(false)}
-              >
+            <div 
+              className="relative group"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button className="flex items-center text-gray-700 hover:text-primary transition-colors">
                 Services
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               
               {servicesOpen && (
-                <div 
-                  className="absolute top-full left-0 mt-1 w-64 bg-white shadow-lg rounded-md border z-[100]" 
-                  onMouseEnter={() => setServicesOpen(true)} 
-                  onMouseLeave={() => setServicesOpen(false)}
-                >
+                <div className="absolute top-full left-0 mt-1 w-64 bg-white shadow-lg rounded-md border z-[100]">
                   <div className="py-2">
                     <Link to="/corporate-wellness" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors" onClick={closeMenu}>
                       Corporate Wellness
