@@ -281,9 +281,9 @@ const ForCompanies = () => {
                 <div className="text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-black">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="m22 2-5 10-5-5-5 10"/>
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="m22 2-5 10-5-5-5 10" />
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Package Options</h3>
@@ -316,18 +316,7 @@ const ForCompanies = () => {
 
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-gray-100">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Ready to Get Started?</h3>
-              <p className="text-gray-600 mb-6">Join leading companies who trust Meltdown for their employee wellness programs</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/schedule-demo" className="btn-primary">
-                  Schedule Demo
-                </Link>
-                <button onClick={() => scrollToSection('testimonials')} className="btn-outline">
-                  See Success Stories
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
