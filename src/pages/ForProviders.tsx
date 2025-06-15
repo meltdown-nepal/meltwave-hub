@@ -186,7 +186,10 @@ const ForProviders = () => {
       {/* How It Works */}
       <HowItWorksStepper />
 
-      {/* Wellness Facilities Section */}
+      {/* Our Wellness Network Section */}
+      <LogoCarousel logos={wellnessLogos} title="Our Wellness Network" description="These amazing gyms, studios, and wellness centers help power the Meltdown experience." showViewAllButton={true} viewAllLink="/wellness-partners" />
+
+      {/* Which Wellness Facilities Can Join Section */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -195,7 +198,6 @@ const ForProviders = () => {
               We welcome diverse wellness spaces and facilities to join our provider network and host corporate wellness programs.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-3 border-b border-primary pb-2">Physical Wellness Facilities</h3>
@@ -277,9 +279,6 @@ const ForProviders = () => {
           </div>
         </div>
       </section>
-
-      {/* Our Wellness Network Section */}
-      <LogoCarousel logos={wellnessLogos} title="Our Wellness Network" description="These amazing gyms, studios, and wellness centers help power the Meltdown experience." showViewAllButton={true} viewAllLink="/wellness-partners" />
 
       {/* Partner FAQs Section */}
       <section className="section-padding">
