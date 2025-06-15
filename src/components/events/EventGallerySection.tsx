@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import OptimizedImage from "@/components/OptimizedImage";
 import EventGalleryModal from "./EventGalleryModal";
@@ -61,23 +60,33 @@ const EVENTS = [{
   key: "java-run",
   title: "Java Run Venture",
   subtitle: "Our biggest community run, in partnership with Himalayan Java.",
-  images: [{
-    src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80",
-    title: "Fun Community Gathering",
-    alt: "People gathered running and drinking coffee"
-  }, {
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-    title: "Team Building Exercise",
-    alt: "Coworkers engaging in race with big smiles"
-  }, {
-    src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
-    title: "Outdoor Meditation",
-    alt: "People doing yoga outdoors with mountain backdrop"
-  }, {
-    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
-    title: "Dance Wellness Event",
-    alt: "Happy group dancing together outside"
-  }]
+  images: [
+    {
+      src: "/lovable-uploads/5ef9d378-6d8a-42fe-8412-5e9955e47beb.png",
+      title: "Team posing at Java Run Venture 2025",
+      alt: "Four runners posing with TEAM 50 bibs in front of Java Run Venture 2025 event banner"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80",
+      title: "Fun Community Gathering",
+      alt: "People gathered running and drinking coffee"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+      title: "Team Building Exercise",
+      alt: "Coworkers engaging in race with big smiles"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
+      title: "Outdoor Meditation",
+      alt: "People doing yoga outdoors with mountain backdrop"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+      title: "Dance Wellness Event",
+      alt: "Happy group dancing together outside"
+    }
+  ]
 }];
 export default function EventGallerySection() {
   const [openModal, setOpenModal] = useState<{
