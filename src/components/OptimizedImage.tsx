@@ -121,10 +121,10 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }
 
   if (!currentSrc || !isLoaded) {
-    // Diagnostic border
+    // Removed the orange border from the skeleton placeholder
     return (
       <div
-        className={`flex items-center justify-center ${className} ${skeletonBg[quality]} animate-pulse border-4 border-orange-400`}
+        className={`flex items-center justify-center ${className} ${skeletonBg[quality]} animate-pulse`}
         style={{ width, height, aspectRatio: width && height ? `${width}/${height}` : undefined }}
         data-img-holder={placeholderIdRef.current}
       >
