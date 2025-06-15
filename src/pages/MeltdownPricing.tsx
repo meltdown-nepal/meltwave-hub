@@ -74,17 +74,13 @@ const features = [{
   values: [false, false, true]
 }];
 const MeltdownPricing = () => {
-  return (
-    <div
-      className="min-h-screen py-10"
-      style={{
-        background: "linear-gradient(to bottom, #fff 0%, #fff 50%, #fffbe8 75%, #fef08a 100%)"
-      }}
-    >
+  return <div className="min-h-screen py-10" style={{
+    background: "linear-gradient(to bottom, #fff 0%, #fff 50%, #fffbe8 75%, #fef08a 100%)"
+  }}>
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 gradient-text">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text text-zinc-950">
             Meltdown Pricing Packages
           </h1>
           <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">
@@ -197,7 +193,6 @@ const MeltdownPricing = () => {
           <p className="text-gray-500 mt-4 text-sm">No hidden fees &middot; Cancel anytime</p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
 export default MeltdownPricing;
