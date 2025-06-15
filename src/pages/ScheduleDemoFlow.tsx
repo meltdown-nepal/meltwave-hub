@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -89,7 +90,7 @@ export default function ScheduleDemoFlow() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen bg-gradient-to-tl from-yellow-200 via-yellow-100 to-white py-12 px-4 sm:px-6 lg:px-8">
       {/* Content with relative positioning to appear above background */}
       <div className="relative z-10 max-w-xl mx-auto">
         {/* Progress Bar */}
