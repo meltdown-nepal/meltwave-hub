@@ -129,10 +129,14 @@ const MeltFit = () => {
             {/* Group Classes */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
-                <LayoutGrid className="h-10 w-10 text-primary" />
+                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
+                  <LayoutGrid className="h-7 w-7 text-primary" />
+                </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Group Strength and Conditioning Classes</h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  Group Strength and Conditioning Classes
+                </h3>
                 <p className="text-gray-700 mb-2">
                   Our signature group classes focus on building real-world strength, stamina, and movement. Scalable for all fitness levels—workouts are personalized so everyone feels challenged and included.
                 </p>
@@ -150,10 +154,14 @@ const MeltFit = () => {
             {/* Transformation Program */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
-                <Grid2x2 className="h-10 w-10 text-primary" />
+                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
+                  <Grid2x2 className="h-7 w-7 text-primary" />
+                </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">6-Week Transformation Program</h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  6-Week Transformation Program
+                </h3>
                 <p className="text-gray-700 mb-2">
                   An intensive, results-driven system combining group training, 1-on-1 nutrition coaching, and accountability. Designed for those who want to see significant change in just 6 weeks—and build the habits to keep it for life.
                 </p>
@@ -171,10 +179,14 @@ const MeltFit = () => {
             {/* Corrective Exercise */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
-                <LayoutList className="h-10 w-10 text-primary" />
+                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
+                  <LayoutList className="h-7 w-7 text-primary" />
+                </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Corrective Exercise Program</h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  Corrective Exercise Program
+                </h3>
                 <p className="text-gray-700 mb-2">
                   A gentle, movement-quality-first program ideal for seniors or anyone coming back from injuries—focused on moving well, reducing pain, and rebuilding confidence.
                 </p>
@@ -192,10 +204,14 @@ const MeltFit = () => {
             {/* Personal Training */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
-                <List className="h-10 w-10 text-primary" />
+                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
+                  <List className="h-7 w-7 text-primary" />
+                </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Personal Training</h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  Personal Training
+                </h3>
                 <p className="text-gray-700 mb-2">
                   Get focused, personalized support with 1-on-1 coaching—perfect for individual goals, rehabilitation, or sport-specific improvement. You set the schedule and the goal, your coach guides you all the way.
                 </p>
