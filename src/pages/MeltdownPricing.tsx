@@ -1,9 +1,10 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 const packages = [{
   name: "BASIC",
@@ -81,7 +82,8 @@ const MeltdownPricing = () => {
         </div>
         {/* Package Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 md:gap-10 max-w-6xl mx-auto mb-10">
-          {packages.map((pkg, i) => <div key={pkg.name} className={`
+          {packages.map((pkg, i) => (
+            <div key={pkg.name} className={`
                 relative flex flex-col items-center justify-between
                 rounded-2xl border transition-transform duration-200 
                 ${pkg.color} 
@@ -90,23 +92,37 @@ const MeltdownPricing = () => {
                 min-h-[430px] md:min-h-[480px] max-w-sm mx-auto
                 h-full
               `} style={pkg.highlight ? {
-          marginTop: "-15px"
-        } : {}}>
+              marginTop: "-15px"
+            } : {}}>
               {pkg.highlight && <Badge variant="secondary" className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow">
-                  Most Popular
-                </Badge>}
+                Most Popular
+              </Badge>}
               <CardHeader className="text-center pt-2 pb-2 px-0 border-none bg-transparent">
-                <CardTitle className="text-2xl md:text-3xl font-bold uppercase">
+                <CardTitle className="text-2xl md:text-3xl font-bold uppercase mb-1">
                   {pkg.name}
-                  <span className="text-sm font-semibold block uppercase tracking-wide mt-1 text-gray-500">Subscription</span>
+                  <span className="text-sm font-semibold block uppercase tracking-wide mt-0.5 text-gray-500">Subscription</span>
                 </CardTitle>
-                <CardDescription className="mt-3 space-y-1 text-base text-gray-800/90">
-                  <div className="font-semibold text-gray-900 text-lg">
-                    Offline: <span className="font-bold">{pkg.offline}</span>
-                  </div>
-                  <div className="text-gray-700">
-                    <span className="font-medium">Via Meltdown:</span>
-                    
+                <CardDescription className="!mt-4 mb-0 p-0">
+                  {/* PRICING - Clear, clean, grouped */}
+                  <div className="flex flex-col gap-2 items-center text-base md:text-lg w-full">
+                    <div className="flex items-center gap-2 font-semibold text-gray-900">
+                      <DollarSign className={`h-5 w-5 ${pkg.name === "PLATINUM" ? "text-blue-700" : pkg.highlight ? "text-yellow-500" : "text-gray-400"}`} />
+                      <span>Offline Cost:</span>
+                      <span className="font-bold ml-2 text-nowrap">{pkg.offline}</span>
+                    </div>
+                    <div className="flex items-start gap-2 text-gray-700 mt-2 w-full flex-col">
+                      <span className="flex items-center font-medium">
+                        <DollarSign className={`h-4 w-4 mr-1 ${pkg.name === "PLATINUM" ? "text-blue-500" : pkg.highlight ? "text-yellow-400" : "text-gray-300"}`} />
+                        <span>Via Meltdown:</span>
+                      </span>
+                      <ul className="ml-7 space-y-1 w-full">
+                        {pkg.online.map((onlinePrice, idx) => (
+                          <li key={onlinePrice} className="text-base text-gray-800">
+                            {onlinePrice}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </CardDescription>
               </CardHeader>
@@ -129,7 +145,8 @@ const MeltdownPricing = () => {
                   </Button>
                 </div>
               </CardContent>
-            </div>)}
+            </div>
+          ))}
         </div>
         {/* Table / Comparison */}
         <div className="rounded-2xl shadow bg-white/90 overflow-x-auto max-w-5xl mx-auto border border-gray-200 mb-8">
