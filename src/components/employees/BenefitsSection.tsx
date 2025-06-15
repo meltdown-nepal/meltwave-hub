@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Check } from "lucide-react";
 
 const benefits = [
   {
@@ -67,8 +68,16 @@ const BenefitsSection = () => {
               key={benefit.title}
               className="flex items-center bg-white py-4 px-4 sm:px-6 rounded-lg shadow hover:shadow-lg transition-all border border-amber-50"
             >
-              <div className="flex-shrink-0 mr-5 flex items-center justify-center w-12 h-12 rounded-full bg-amber-100">
-                {benefit.icon}
+              <div className="flex-shrink-0 mr-5 flex items-center justify-center w-12 h-12 rounded-full bg-amber-100 relative">
+                <Check
+                  size={18}
+                  className="absolute left-0 top-0 z-10 text-green-600"
+                  style={{ transform: "translate(-35%, -35%)" }}
+                  strokeWidth={3}
+                  />
+                <span className="relative z-0 flex items-center justify-center w-full h-full">
+                  {benefit.icon}
+                </span>
               </div>
               <div className="text-left flex-1">
                 <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1">{benefit.title}</h3>
