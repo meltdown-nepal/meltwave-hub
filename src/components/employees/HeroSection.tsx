@@ -5,9 +5,7 @@ const HeroSection = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Wellness That Works For You
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Wellness For You</h1>
             <p className="text-lg mb-8">
               Access high-quality wellness programs designed to help you thrive both personally and professionally. Improve your health, reduce stress, and enhance your work-life balance.
             </p>
