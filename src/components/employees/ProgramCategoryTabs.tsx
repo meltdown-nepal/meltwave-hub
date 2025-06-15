@@ -112,7 +112,6 @@ const programs: Record<
 };
 
 const LucideIcon = ({ name, className }: { name: string; className?: string }) => {
-  // @ts-expect-error
   const Icon = icons[name];
   return Icon ? <Icon className={className} /> : null;
 };
