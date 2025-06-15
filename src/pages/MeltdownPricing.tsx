@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
@@ -75,7 +74,8 @@ const features = [{
   values: [false, false, true]
 }];
 const MeltdownPricing = () => {
-  return <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-100 to-white py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">
@@ -192,7 +192,7 @@ const MeltdownPricing = () => {
           <p className="text-gray-500 mt-4 text-sm">No hidden fees &middot; Cancel anytime</p>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 export default MeltdownPricing;
-
