@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import OptimizedImage from "@/components/OptimizedImage";
 import EventGalleryModal from "./EventGalleryModal";
@@ -104,9 +103,6 @@ export default function EventGallerySection() {
     <section className="relative section-padding bg-gradient-to-br from-yellow-50/75 to-amber-50/50 overflow-hidden">
       <div className="container-custom z-10 relative">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 gradient-text underline decoration-yellow-400 decoration-4 decoration-wavy">
-            Vibrant Event Memories
-          </h2>
           <p className="text-lg max-w-2xl mx-auto text-gray-600">
             Relive the joy, energy, and spirit of our signature events!
           </p>
@@ -159,4 +155,3 @@ export default function EventGallerySection() {
     </section>
   );
 }
-
