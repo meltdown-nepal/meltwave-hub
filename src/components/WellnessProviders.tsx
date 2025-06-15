@@ -1,6 +1,5 @@
 
 import React from 'react';
-import OptimizedImage from './OptimizedImage';
 
 const clientLogos = [{
   id: 1,
@@ -57,6 +56,22 @@ const WellnessProvidersCarousel = () => {
   const visibleLogos = clientLogos.slice(0, 12);
   const duplicatedLogos = [...visibleLogos, ...visibleLogos];
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    console.warn(`Failed to load wellness provider image: ${img.src}`);
+    // Hide the image container if it fails to load
+    const container = img.closest('.logo-container');
+    if (container) {
+      (container as HTMLElement).style.display = 'none';
+    }
+  };
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    console.log(`✅ Wellness provider image loaded: ${img.src}`);
+    img.style.opacity = '1';
+  };
+
   return (
     <section className="py-8 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
@@ -72,18 +87,28 @@ const WellnessProvidersCarousel = () => {
               {duplicatedLogos.map((logo, index) => (
                 <div 
                   key={`${logo.id}-${index}`} 
-                  className="flex-shrink-0 flex items-center justify-center px-6 py-4"
+                  className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4"
                 >
-                  <OptimizedImage
+                  <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300 opacity-0"
                     width={180}
                     height={80}
-                    lazy={index > 8}
-                    sizes="180px"
-                    quality="medium"
-                    responsive={false}
+                    loading={index > 8 ? 'lazy' : 'eager'}
+                    decoding="async"
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                    style={{ 
+                      filter: 'brightness(0.9)',
+                      transition: 'opacity 0.3s ease, filter 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'brightness(1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'brightness(0.9)';
+                    }}
                   />
                 </div>
               ))}
