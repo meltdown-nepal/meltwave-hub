@@ -3,9 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 // Java Run Venture Card
 function JavaRunVentureCard() {
+  const { scrollToSection } = useSmoothScroll();
   return (
     <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       <div className="absolute top-0 right-0 text-amber-100 opacity-50">
@@ -39,7 +41,11 @@ function JavaRunVentureCard() {
             <span>Collect fun goodies at every station!</span>
           </div>
         </div>
-        <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full">
+        <Button
+          className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full"
+          type="button"
+          onClick={() => scrollToSection('event-gallery')}
+        >
           View Gallery
         </Button>
       </div>
