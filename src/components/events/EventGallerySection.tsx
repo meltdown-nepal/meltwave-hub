@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import OptimizedImage from "@/components/OptimizedImage";
-import EventGalleryModal from "./EventGalleryModal";
-import { Images } from "lucide-react";
 
-// Gallery images for each event
+import React from "react";
+import OptimizedImage from "@/components/OptimizedImage";
+
 const EVENTS = [{
   key: "wednesday-run",
   title: "Wednesday Run Clubs",
@@ -93,85 +91,55 @@ const EVENTS = [{
     }
   ]
 }];
-export default function EventGallerySection() {
-  const [openModal, setOpenModal] = useState<{
-    open: boolean;
-    eventIdx: number;
-  }>({
-    open: false,
-    eventIdx: 0
-  });
-  function handleOpen(idx: number) {
-    setOpenModal({
-      open: true,
-      eventIdx: idx
-    });
-  }
-  function handleClose() {
-    setOpenModal({
-      open: false,
-      eventIdx: 0
-    });
-  }
-  const eventForModal =
-    typeof openModal.eventIdx === "number"
-      && openModal.eventIdx >= 0
-      && openModal.eventIdx < EVENTS.length
-      ? EVENTS[openModal.eventIdx]
-      : null;
 
+export default function EventGallerySection() {
   return (
     <section className="relative section-padding bg-gradient-to-br from-yellow-50/75 to-amber-50/50 overflow-hidden">
       <div className="container-custom z-10 relative">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            Vibrant Event Memories
-          </h2>
-          {/* Removed the normal <p> caption as requested */}
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
-          {EVENTS.map((ev, i) => (
-            <button
+          {EVENTS.map((ev) => (
+            <div
               key={ev.key}
-              className="group rounded-2xl bg-gradient-to-br from-white to-yellow-50 shadow-lg border border-primary/20 hover:scale-105 transition-transform flex flex-col cursor-pointer focus-visible:ring-2 focus-visible:ring-primary"
-              onClick={() => handleOpen(i)}
-              tabIndex={0}
-              aria-label={`View images from ${ev.title}`}
-              type="button"
+              className="rounded-2xl bg-gradient-to-br from-white to-yellow-50 shadow-lg border border-primary/20 flex flex-col"
             >
+              {/* Main event banner image */}
               <div className="relative aspect-video w-full rounded-t-2xl overflow-hidden">
                 <OptimizedImage
                   src={ev.images[0].src}
                   alt={ev.images[0].alt || ev.images[0].title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                   width={600}
                   height={340}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={i === 0}
+                  priority={false}
                 />
-                {/* Hover title overlay */}
-                <span className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <span className="text-white text-xl font-bold drop-shadow">{ev.title}</span>
-                </span>
               </div>
-            </button>
+              {/* Event text */}
+              <div className="p-5">
+                <h3 className="text-2xl font-bold mb-1">{ev.title}</h3>
+                <div className="text-primary/80 text-base mb-3">{ev.subtitle}</div>
+                {/* Gallery grid for event images */}
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  {ev.images.slice(1).map((img, idx) => (
+                    <div key={img.src + idx} className="rounded-lg overflow-hidden bg-gray-100 aspect-video shadow-sm">
+                      <OptimizedImage
+                        src={img.src}
+                        alt={img.alt || img.title}
+                        className="w-full h-full object-cover"
+                        width={300}
+                        height={200}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={false}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      {/* Per-event modal - only render if open and event/images valid */}
-      {openModal.open && eventForModal && Array.isArray(eventForModal.images) && eventForModal.images.length > 0 && (
-        <EventGalleryModal
-          open={openModal.open}
-          onOpenChange={v =>
-            setOpenModal({
-              open: v,
-              eventIdx: openModal.eventIdx
-            })}
-          images={eventForModal.images}
-          initialIndex={0}
-        />
-      )}
-      {/* Decorative floating dots */}
+      {/* Floating deco dots */}
       <div className="absolute -bottom-6 left-4 w-32 h-32 bg-amber-200/50 blur-3xl rounded-full pointer-events-none"></div>
       <div className="absolute -top-8 right-6 w-28 h-20 bg-primary/30 blur-2xl rounded-full pointer-events-none"></div>
     </section>
