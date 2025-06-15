@@ -1,5 +1,4 @@
-
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -41,18 +40,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [currentSrc, setCurrentSrc] = useState('');
   const observer = useRef<IntersectionObserver | null>(null);
 
-  // --- Stable placeholder ID per image instance ---
-  // This ID will be used for both: data-img-holder and observer selector
-  const placeholderIdRef = useRef<string>(() => {
-    // Use a hash of src for consistency (or you could use Date.now()+Math.random())
+  // Correct: Create a stable ID string for this instance based on `src`
+  const placeholderId = React.useMemo(() => {
     const digest = btoa(encodeURIComponent(src)).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12);
     return `img-${digest}`;
-  });
-  // If you want a super-stable ID per src, you could use a hash function here.
-
-  const placeholderId = typeof placeholderIdRef.current === 'function'
-    ? placeholderIdRef.current()
-    : placeholderIdRef.current;
+  }, [src]);
+  const placeholderIdRef = useRef<string>(placeholderId);
 
   // For now, just return PNG/Original for src
   const getOptimizedSrc = useCallback(() => src, [src]);
@@ -68,9 +61,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
     const doLoad = () => setCurrentSrc(getOptimizedSrc());
 
-    // Observe the placeholder for visibility using a *stable* selector by ID
+    // Select using the fixed stable placeholder ID
     setTimeout(() => {
-      node = document.querySelector(`[data-img-holder="${placeholderId}"]`);
+      node = document.querySelector(`[data-img-holder="${placeholderIdRef.current}"]`);
       if (node && "IntersectionObserver" in window) {
         observer.current = new window.IntersectionObserver((entries, obs) => {
           entries.forEach(entry => {
@@ -90,7 +83,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return () => {
       if (observer.current) observer.current.disconnect();
     };
-    // Only rerun if lazy/priority/placehorderId/src changes
+    // Only rerun if lazy/priority/placeholderId/src changes
   }, [lazy, priority, getOptimizedSrc, placeholderId, src]);
 
   const handleLoad = useCallback(() => {
@@ -135,7 +128,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       <div
         className={`flex items-center justify-center ${className} ${skeletonBg[quality]} animate-pulse`}
         style={{ width, height, aspectRatio: width && height ? `${width}/${height}` : undefined }}
-        data-img-holder={placeholderId}
+        data-img-holder={placeholderIdRef.current}
       >
         <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
       </div>
