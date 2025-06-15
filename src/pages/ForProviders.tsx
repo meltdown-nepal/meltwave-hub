@@ -82,8 +82,9 @@ const partnerFaqs = [{
   answer: "High-demand services include fitness training, nutrition coaching, mindfulness sessions, and stress management workshops. Both virtual and in-person services are needed."
 }, {
   question: "How does payment work?",
-  answer: "We handle all payment processing. You'll receive bi-weekly payments for services rendered, with detailed reporting and analytics."
+  answer: "You'll receive timely payments on a regular cycle for the services utilised by employees, with detailed reporting and analysis."
 }];
+
 const providerTestimonials = [{
   videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
   title: "Grew my client base by 40%",
