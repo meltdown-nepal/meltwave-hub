@@ -124,7 +124,7 @@ const MeltdownPricing = () => {
                 {/* Price info at bottom */}
                 <div className="w-full flex flex-col gap-2 items-start mt-2 mb-3">
                   <div className="flex items-center gap-2 font-semibold text-gray-900 text-base">
-                    <span>Offline Cost :</span>
+                    <span>Cost :</span>
                     <span className="font-bold ml-1 text-nowrap">{pkg.offline}</span>
                   </div>
                   <div className="flex flex-col gap-1 text-gray-700 text-base w-full">
