@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import EventGalleryImage from "@/components/EventGalleryImage";
-import EventGalleryModal from "./EventGalleryModal";
 
-// Expanded gallery images for "tons" effect
+import React from "react";
+import OptimizedImage from "@/components/OptimizedImage";
+
 const galleryImages = [
-  // Featured/hero images (keep these first for main view)
   {
     src: "/lovable-uploads/a57234a5-bf11-4976-b2b0-beb02e66466d.png",
     title: "Community Fun Events",
@@ -20,7 +18,6 @@ const galleryImages = [
     title: "Community Run Event",
     alt: "Group of people running together in a park"
   },
-  // More: Add several event and placeholder images for variety
   {
     src: "/lovable-uploads/146c33ba-fd46-45de-9faa-e6b33ca16566.jpg",
     title: "Yoga in the Park",
@@ -71,69 +68,43 @@ const galleryImages = [
     title: "Mindfulness in Nature",
     alt: "Small group practicing mindfulness beside a stream"
   },
-  // ... Add as many as needed for a lively look!
+  // ... add more if you want!
 ];
 
 export default function EventGallerySection() {
-  // For modal functionality
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalStartIdx, setModalStartIdx] = useState(0);
-
-  // Only show first 3 as preview in the main grid
-  const previewImages = galleryImages.slice(0, 3);
-
-  function handleImageClick(idx: number) {
-    setModalStartIdx(idx);
-    setModalOpen(true);
-  }
-
   return (
     <section className="relative section-padding bg-gradient-to-br from-yellow-50/75 to-amber-50/50 overflow-hidden">
       <div className="container-custom z-10 relative">
-        <div
-          className="text-center mb-12 cursor-pointer"
-          tabIndex={0}
-          role="button"
-          aria-label="Expand gallery options"
-          onClick={() => { setModalStartIdx(0); setModalOpen(true); }}
-          onKeyDown={e => { if (e.key === "Enter") { setModalStartIdx(0); setModalOpen(true); } } }
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 gradient-text animate-slide-up underline decoration-yellow-400 decoration-4 decoration-wavy">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 gradient-text underline decoration-yellow-400 decoration-4 decoration-wavy">
             Vibrant Event Memories
           </h2>
-          <p className="text-lg max-w-2xl mx-auto text-gray-600 animate-fade-in">Relive the joy, energy, and spirit of our wellness gatherings!</p>
+          <p className="text-lg max-w-2xl mx-auto text-gray-600">
+            Relive the joy, energy, and spirit of our wellness gatherings!
+          </p>
         </div>
-        <div 
-          className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 mb-6 md:mb-0 animate-fade-in"
-          style={{breakInside: "avoid"}}
-        >
-          {previewImages.map((img, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 animate-fade-in">
+          {galleryImages.map((img, idx) => (
             <div
               key={img.src}
-              className="break-inside-avoid mb-6 last:mb-0 group transition-all"
-              onClick={() => handleImageClick(idx)}
-              tabIndex={0}
-              role="button"
-              aria-label={`Open all event gallery options starting from ${img.title}`}
-              onKeyDown={e => { if (e.key === 'Enter') handleImageClick(idx); }}
+              className="rounded-lg overflow-hidden shadow-md bg-white hover:scale-105 transition-transform"
             >
-              <EventGalleryImage
+              <OptimizedImage
                 src={img.src}
-                title={img.title}
-                alt={img.alt}
-                icon={idx === 1 ? "heart" : "magnifying-glass"}
+                alt={img.alt || img.title}
+                className="w-full h-56 object-cover"
+                width={400}
+                height={224}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
+              <div className="py-3 px-4">
+                <span className="font-bold text-gray-800 text-base block">{img.title}</span>
+                <span className="text-sm text-gray-500 block mt-1">{img.alt}</span>
+              </div>
             </div>
           ))}
         </div>
       </div>
-      {/* Modal with FULL gallery browsing */}
-      <EventGalleryModal
-        open={modalOpen}
-        onOpenChange={setModalOpen}
-        images={galleryImages}
-        initialIndex={modalStartIdx}
-      />
       {/* Decorative floating dots */}
       <div className="absolute -bottom-6 left-4 w-32 h-32 bg-amber-200/50 blur-3xl rounded-full pointer-events-none"></div>
       <div className="absolute -top-8 right-6 w-28 h-20 bg-primary/30 blur-2xl rounded-full pointer-events-none"></div>
