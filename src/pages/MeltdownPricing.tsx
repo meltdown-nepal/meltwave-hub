@@ -16,7 +16,7 @@ const packages = [{
 }, {
   name: "GOLD",
   offline: "Rs.9,500/month",
-  online: ["Rs.10,500/3 months"],
+  online: ["Rs.9,500/3 months"], // updated price here!
   centers: "40+ centers",
   color: "bg-yellow-50 border-yellow-300",
   buttonStyle: "border-2 border-yellow-400 text-yellow-900 hover:bg-yellow-100 focus:ring-2 focus:ring-yellow-400",
@@ -24,12 +24,13 @@ const packages = [{
 }, {
   name: "PLATINUM",
   offline: "Rs.14,000/month",
-  online: ["Rs.16,500/3 months"],
+  online: ["Rs.16,500/3 months"], // updated price here!
   centers: "60+ centers",
   color: "bg-blue-50 border-blue-300",
   buttonStyle: "border-2 border-blue-400 text-blue-900 hover:bg-blue-100 focus:ring-2 focus:ring-blue-400",
   highlight: false
 }];
+
 const features = [{
   name: "Gym & Cardio",
   values: [true, true, true],
@@ -71,6 +72,7 @@ const features = [{
   name: "Pilates",
   values: [false, false, true]
 }];
+
 const MeltdownPricing = () => {
   return <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
@@ -112,7 +114,8 @@ const MeltdownPricing = () => {
               
               <CardContent className="flex flex-col items-center flex-1 w-full px-0 pt-2 pb-0">
                 {/* Facilities (centered middle content) */}
-                <div className="text-base font-medium mb-4 text-gray-700 w-full flex flex-col items-center">
+                <div className="text-base font-medium mb-2 text-gray-700 w-full flex flex-col items-center">
+                  {/* Reduced mb-2 from mb-4 for tighter gap */}
                   <span className="font-medium text-gray-700">
                     Facilities:
                   </span>
@@ -120,18 +123,13 @@ const MeltdownPricing = () => {
                     {pkg.centers}
                   </span>
                 </div>
-                <div className="flex-grow" /> {/* Spacer to push price info to bottom */}
-                {/* Price info at bottom */}
-                <div className="w-full flex flex-col gap-2 items-start mt-2 mb-3">
+                <div className="" /> {/* Removed flex-grow, no spacer so price comes closer below centers */}
+                {/* Price info */}
+                <div className="w-full flex flex-col gap-2 items-start mt-1 mb-3">
+                  {/* Reduced mt-1 (was mt-2) for less gap */}
                   <div className="flex items-center gap-2 font-semibold text-gray-900 text-base">
                     <span>Price (3month)  :</span>
-                    <span className="font-bold ml-1 text-nowrap">{pkg.offline}</span>
-                  </div>
-                  <div className="flex flex-col gap-1 text-gray-700 text-base w-full">
-                    
-                    <ul className="ml-7 space-y-1 w-full">
-                      {pkg.online.map(onlinePrice => {})}
-                    </ul>
+                    <span className="font-bold ml-1 text-nowrap">{pkg.online[0]}</span>
                   </div>
                 </div>
                 <div className="w-full">
