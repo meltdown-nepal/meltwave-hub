@@ -24,38 +24,54 @@ const steps = [
 
 const HowItWorksStepper = () => {
   return (
-    <section aria-labelledby="how-it-works-heading" className="w-full max-w-5xl mx-auto px-2 md:px-0">
+    <section aria-labelledby="how-it-works-heading" className="w-full max-w-3xl mx-auto px-2 md:px-0">
       <h2 id="how-it-works-heading" className="text-3xl md:text-4xl font-bold mb-4 text-center">
         How It Works for Providers
       </h2>
-      <p className="text-lg max-w-3xl mx-auto text-center mb-10">
+      <p className="text-lg max-w-2xl mx-auto text-center mb-10">
         A simple process to join our network and start growing your wellness business.
       </p>
-      {/* Stepper */}
-      <div className="relative flex items-center justify-between mb-10 max-w-3xl mx-auto">
-        {/* Horizontal line */}
-        <div className="absolute left-0 right-0 top-1/2 h-1 bg-primary/20 z-0" style={{transform: "translateY(-50%)"}}></div>
-        {steps.map((step, i) => (
-          <div key={step.number} className="relative z-10 flex flex-col items-center w-1/3">
-            {/* Step circle/number */}
-            <div className="flex items-center justify-center rounded-full w-14 h-14 bg-white border-4 border-primary shadow-md font-bold text-xl text-primary z-10 transition-all duration-300">
+      {/* Vertical Stepper */}
+      <ol className="relative border-l-2 border-primary/20 mt-6 md:mt-10 space-y-8">
+        {steps.map((step, idx) => (
+          <li
+            key={step.number}
+            className="relative ml-6 group animate-fade-in"
+            style={{
+              animationDelay: `${idx * 100 + 100}ms`,
+              animationFillMode: "both"
+            }}
+          >
+            {/* Step Icon/Number */}
+            <span
+              className={`
+                absolute -left-8 flex items-center justify-center w-12 h-12 rounded-full
+                bg-white border-4 border-primary text-primary font-bold text-2xl shadow transition
+                group-hover:bg-primary group-hover:text-white group-hover:scale-105 animate-float
+                `}
+              aria-label={`Step ${step.number}`}
+            >
               {step.number}
+            </span>
+            {/* Card-like Box */}
+            <div className="bg-white rounded-xl shadow-md p-6 pl-8 flex flex-col gap-2 hover:shadow-lg transition hover-lift border border-primary/10">
+              <div className="font-semibold text-lg mb-1 text-primary">{step.title}</div>
+              <div className="text-gray-700 text-base">{step.description}</div>
             </div>
-            {/* Step title */}
-            <span className="mt-4 text-lg font-semibold text-gray-900 text-center">{step.title}</span>
-          </div>
+            {/* Connecting vertical line (except last step) */}
+            {idx < steps.length - 1 && (
+              <span
+                className="absolute left-0 top-12 w-1 h-full bg-primary/10"
+                aria-hidden="true"
+                style={{ zIndex: 0 }}
+              ></span>
+            )}
+          </li>
         ))}
-      </div>
-      {/* Descriptions below for each step */}
-      <div className="flex flex-col md:flex-row gap-8 justify-between max-w-3xl mx-auto">
-        {steps.map((step) => (
-          <div key={step.number} className="flex-1 min-w-0">
-            <p className="text-gray-600 text-base text-center md:text-left">{step.description}</p>
-          </div>
-        ))}
-      </div>
+      </ol>
     </section>
   );
 };
 
 export default HowItWorksStepper;
+
