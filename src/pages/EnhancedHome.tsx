@@ -36,7 +36,7 @@ const homeTestimonials = [
     name: "Chiring Sherpa",
     title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
     role: "Security Research Analyst, Security Pal",
-    // Can add image for Chiring Sherpa if available
+    image: "/lovable-uploads/3a46bf1c-59c2-46c0-8a24-b20cfaa69949.png",
     linkTo: "https://www.instagram.com/p/DIqwP8yIqr4/"
   }
 ];
