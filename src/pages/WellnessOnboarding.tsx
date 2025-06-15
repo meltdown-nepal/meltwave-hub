@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
@@ -119,15 +118,7 @@ const WellnessOnboarding = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
-      {/* Background image with overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ 
-          backgroundImage: "url('/lovable-uploads/1215fe4c-07f6-441d-9878-2f07f49ef187.png')",
-        }}
-      />
-      
+    <div className="relative min-h-[calc(100dvh-70px)] bg-gradient-to-tl from-yellow-100 via-yellow-100 to-white py-5 px-2 sm:px-3 lg:px-4 flex items-center justify-center" style={{ minHeight: "100dvh" }}>
       {/* Content with relative positioning */}
       <div className="relative z-10 max-w-xl mx-auto">
         {/* Header with Progress */}
