@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import OptimizedImage from "@/components/OptimizedImage";
@@ -39,6 +38,27 @@ const GALLERY_IMAGES = [
   {
     src: "/lovable-uploads/6fcc2b3e-7d56-49ac-8ac9-5acf5e02a272.png",
     alt: "Friends and dogs in a pine forest hike",
+  },
+
+  {
+    src: "/lovable-uploads/36a51c8f-0e5f-4ffd-a4a3-36a65581da75.png",
+    alt: "Winning team of HikeVenture holding prize cheque outdoors",
+  },
+  {
+    src: "/lovable-uploads/99eba442-8cbe-4268-9a96-c8425840c696.png",
+    alt: "Group exercise and warmup in an urban park setting",
+  },
+  {
+    src: "/lovable-uploads/39174078-db03-4dd7-b925-87ea281aad10.png",
+    alt: "Large group photo at a traditional pavilion after group run",
+  },
+  {
+    src: "/lovable-uploads/ebf6202c-c49e-4c31-8ee7-1f50a0a5af9b.png",
+    alt: "Smiling women athletes group at stadium with blue sky",
+  },
+  {
+    src: "/lovable-uploads/1a1bfbc7-ce57-4f8c-a711-36e49a80401a.png",
+    alt: "Participants holding up time cards with fun captions at event",
   },
 ];
 
@@ -91,4 +111,3 @@ export default function EventGallerySection() {
     </section>
   );
 }
-
