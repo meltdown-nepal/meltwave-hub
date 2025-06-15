@@ -15,11 +15,11 @@ import SmartChatbot from "./components/chatbot/SmartChatbot";
 import EnhancedHome from "./pages/EnhancedHome";
 import Contact from "./pages/Contact";
 import ForEmployees from "./pages/ForEmployees";
+import ForCompanies from "./pages/ForCompanies";
 
 // Lazy load non-critical pages
 const Home = lazy(() => import("./pages/Home"));
 const CorporateWellness = lazy(() => import("./pages/CorporateWellness"));
-const ForCompanies = lazy(() => import("./pages/ForCompanies"));
 const ForProviders = lazy(() => import("./pages/ForProviders"));
 const Events = lazy(() => import("./pages/Events"));
 const Academy = lazy(() => import("./pages/Academy"));
