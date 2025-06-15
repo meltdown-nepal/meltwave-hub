@@ -123,23 +123,55 @@ const ProgramCategoryTabs: React.FC = () => {
     <div>
       {/* Category Tabs */}
       <div className="flex justify-center gap-3 md:gap-8 mb-8 flex-wrap">
-        {categories.map((cat) => (
-          <Button
-            key={cat.key}
-            variant={active === cat.key ? "default" : "outline"}
-            className={`relative px-6 py-2 rounded-full font-semibold shadow-none group text-black transition-all duration-150 border-none
-              ${active === cat.key ? "" : "bg-white hover:bg-accent"}
-            `}
-            onClick={() => setActive(cat.key)}
-          >
-            <span
-              className={`mr-2 flex items-center justify-center rounded-full w-6 h-6 ${cat.color} group-hover:scale-105 transition-transform`}
+        {categories.map((cat) => {
+          const isActive = active === cat.key;
+          return (
+            <Button
+              key={cat.key}
+              variant="outline"
+              className={`
+                relative
+                px-7 py-2
+                rounded-full font-semibold
+                shadow-none
+                group
+                text-black
+                transition-all duration-150 border-2
+                flex items-center
+                ${isActive
+                  ? "bg-white border-primary text-black shadow-[0_1px_8px_0_rgba(255,216,56,0.18)] z-10"
+                  : "bg-gray-50 border-gray-200 hover:border-primary/60 hover:bg-primary/10"}
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-primary
+                cursor-pointer
+                `}
+              style={{
+                boxShadow: isActive
+                  ? "0 2px 12px 0 rgba(255,216,56,0.13)"
+                  : undefined,
+                fontWeight: isActive ? 700 : 500,
+              }}
+              aria-pressed={isActive}
+              onClick={() => setActive(cat.key)}
             >
-              <LucideIcon name={cat.icon} />
-            </span>
-            {cat.label}
-          </Button>
-        ))}
+              <span
+                className={`
+                  mr-2 flex items-center justify-center rounded-full w-7 h-7 text-lg
+                  transition-transform
+                  ${cat.color}
+                  ${isActive ? "ring-2 ring-primary/70 scale-110" : "group-hover:scale-105 opacity-95"}
+                `}
+              >
+                <LucideIcon name={cat.icon} />
+              </span>
+              <span
+                className={`transition-colors 
+                  ${isActive ? "text-black" : "text-gray-700 group-hover:text-black"}`}
+              >
+                {cat.label}
+              </span>
+            </Button>
+          );
+        })}
       </div>
 
       {/* Animated Category Section */}
