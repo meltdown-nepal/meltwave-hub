@@ -111,7 +111,7 @@ const EnhancedClientCarousel = () => {
               {duplicatedLogos.map((logo, index) => (
                 <div 
                   key={`${logo.id}-${index}`} 
-                  className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4 bg-white rounded-lg shadow-sm mx-2"
+                  className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4 bg-white rounded-lg shadow-sm border border-gray-200 mx-2"
                 >
                   <img
                     src={logo.src}
