@@ -78,7 +78,7 @@ const MeltdownPricing = () => {
     <div
       className="min-h-screen py-10"
       style={{
-        background: "linear-gradient(to bottom, #fff 0%, #fff 70%, #fffbe8 84%, #fef08a 100%)"
+        background: "linear-gradient(to bottom, #fff 0%, #fff 50%, #fffbe8 75%, #fef08a 100%)"
       }}
     >
       <div className="container mx-auto px-2 md:px-4">
