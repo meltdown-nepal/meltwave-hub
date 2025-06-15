@@ -10,7 +10,7 @@ const successStories = [
     title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     name: "Jyoti Pokharel",
     role: "HR Director, LeapFrog Technology",
-    image: "/lovable-uploads/8a26d6be-3e65-4d47-9d5d-3fcaa609641a.png",
+    image: "/lovable-uploads/dd89ad23-6116-4567-bd0e-4d7b8a218459.png", // UPDATED image
     linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/",
   },
   {
