@@ -57,7 +57,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           max-w-xs px-4 py-3 rounded-2xl text-sm leading-relaxed
           ${isBot 
             ? 'bg-gray-100 text-gray-800' 
-            : 'bg-primary text-black'
+            : 'bg-white border text-black shadow-sm'
           }
         `}
       >

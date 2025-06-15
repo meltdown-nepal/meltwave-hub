@@ -105,7 +105,7 @@ const SmartChatbot = () => {
         <div className="fixed bottom-6 right-6 z-50">
           <Button
             onClick={toggleChatbot}
-            className="w-16 h-16 rounded-full bg-primary hover:bg-primary/90 shadow-lg transition-all duration-300 hover:scale-110"
+            className="w-16 h-16 rounded-full bg-white hover:bg-gray-50 shadow-lg transition-all duration-300 hover:scale-110 border"
             size="icon"
           >
             <ChatbotCharacter size="large" animate />
@@ -119,7 +119,7 @@ const SmartChatbot = () => {
           isMinimized ? 'w-80 h-16' : 'w-80 h-[500px]'
         }`}>
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b bg-primary rounded-t-2xl">
+          <div className="flex items-center justify-between p-4 border-b bg-white rounded-t-2xl">
             <div className="flex items-center space-x-3">
               <ChatbotCharacter size="small" animate />
               <div>
@@ -206,14 +206,14 @@ const SmartChatbot = () => {
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Ask me anything about wellness! 💬✨"
-                    className="flex-1 px-3 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="flex-1 px-3 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
                     disabled={isTyping}
                   />
                   <Button
                     onClick={handleSendMessage}
                     disabled={!inputValue.trim() || isTyping}
                     size="icon"
-                    className="w-8 h-8 rounded-full"
+                    className="w-8 h-8 rounded-full bg-white hover:bg-gray-50 border text-black"
                   >
                     <Send className="w-4 h-4" />
                   </Button>
