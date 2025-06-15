@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
+import HowItWorksTimeline from "./HowItWorksTimeline";
 
 interface PackageDetailsContentProps {
   name: string;
@@ -29,12 +30,7 @@ const PackageDetailsContent: React.FC<PackageDetailsContentProps> = ({
       {/* How it works - Right */}
       <div className="flex-1 bg-white bg-opacity-70 rounded-lg p-6 shadow flex flex-col justify-between">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">How it Works</h2>
-          <ol className="list-decimal pl-5 space-y-2 text-gray-800">
-            {howItWorks.map((step, idx) => (
-              <li key={idx}>{step}</li>
-            ))}
-          </ol>
+          <HowItWorksTimeline steps={howItWorks} />
         </div>
         <div className="mt-8 flex justify-end">
           <a href={paymentLink} target="_blank" rel="noopener noreferrer">
