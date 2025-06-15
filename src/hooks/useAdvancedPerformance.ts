@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 interface AdvancedPerformanceMetrics {
   fcp: number;
@@ -16,13 +16,19 @@ interface AdvancedPerformanceMetrics {
 export const useAdvancedPerformance = () => {
   const [metrics, setMetrics] = useState<Partial<AdvancedPerformanceMetrics>>({});
   const [isSupported, setIsSupported] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
+
+  const updateMetrics = useCallback((newMetrics: Partial<AdvancedPerformanceMetrics>) => {
+    setMetrics(prev => ({ ...prev, ...newMetrics }));
+  }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !('performance' in window)) {
+    if (typeof window === 'undefined' || !('performance' in window) || hasInitialized) {
       return;
     }
 
     setIsSupported(true);
+    setHasInitialized(true);
 
     const measureMetrics = () => {
       const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
@@ -40,7 +46,7 @@ export const useAdvancedPerformance = () => {
         return total + (resource.transferSize || 0);
       }, 0);
 
-      setMetrics(prev => ({ ...prev, ...newMetrics }));
+      updateMetrics(newMetrics);
     };
 
     // Measure Core Web Vitals
@@ -48,7 +54,7 @@ export const useAdvancedPerformance = () => {
       // First Contentful Paint
       const fcpEntry = performance.getEntriesByName('first-contentful-paint')[0];
       if (fcpEntry) {
-        setMetrics(prev => ({ ...prev, fcp: fcpEntry.startTime }));
+        updateMetrics({ fcp: fcpEntry.startTime });
       }
 
       // Largest Contentful Paint
@@ -57,26 +63,28 @@ export const useAdvancedPerformance = () => {
           const lcpObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
             const lastEntry = entries[entries.length - 1];
-            setMetrics(prev => ({ ...prev, lcp: lastEntry.startTime }));
+            updateMetrics({ lcp: lastEntry.startTime });
+            lcpObserver.disconnect();
           });
           lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
 
           // Cumulative Layout Shift
+          let clsValue = 0;
           const clsObserver = new PerformanceObserver((list) => {
-            let clsValue = 0;
             for (const entry of list.getEntries()) {
               if (!(entry as any).hadRecentInput) {
                 clsValue += (entry as any).value;
               }
             }
-            setMetrics(prev => ({ ...prev, cls: clsValue }));
+            updateMetrics({ cls: clsValue });
           });
           clsObserver.observe({ entryTypes: ['layout-shift'] });
 
           // First Input Delay
           const fidObserver = new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
-              setMetrics(prev => ({ ...prev, fid: (entry as any).processingStart - entry.startTime }));
+              updateMetrics({ fid: (entry as any).processingStart - entry.startTime });
+              fidObserver.disconnect();
             }
           });
           fidObserver.observe({ entryTypes: ['first-input'] });
@@ -97,22 +105,14 @@ export const useAdvancedPerformance = () => {
       });
     }
 
-    // Log performance warnings in development
-    if (process.env.NODE_ENV === 'development') {
-      setTimeout(() => {
-        const currentMetrics = metrics;
-        if (currentMetrics.lcp && currentMetrics.lcp > 2500) {
-          console.warn('⚠️ Poor LCP detected:', currentMetrics.lcp + 'ms');
-        }
-        if (currentMetrics.fcp && currentMetrics.fcp > 1800) {
-          console.warn('⚠️ Slow FCP detected:', currentMetrics.fcp + 'ms');
-        }
-        if (currentMetrics.cls && currentMetrics.cls > 0.1) {
-          console.warn('⚠️ High CLS detected:', currentMetrics.cls);
-        }
-      }, 3000);
-    }
-  }, [metrics]);
+    // Remove the problematic performance warnings that were causing the loop
+    // We'll log once after everything is measured
+    setTimeout(() => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Performance metrics collected:', metrics);
+      }
+    }, 5000);
+  }, [hasInitialized, updateMetrics]); // Removed metrics from dependency array
 
   return {
     metrics,
