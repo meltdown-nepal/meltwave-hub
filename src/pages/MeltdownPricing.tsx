@@ -77,12 +77,18 @@ const MeltdownPricing = () => {
   return <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16">
+        <div className="text-center mb-4 md:mb-6">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 gradient-text">
             Meltdown Pricing Packages
           </h1>
           <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">
             Compare our flexible membership options and choose your ideal plan.
+          </p>
+        </div>
+        {/* Terms and conditions note (moved up) */}
+        <div className="max-w-3xl mx-auto mb-8">
+          <p className="text-xs text-gray-500 italic text-center">
+            Terms and conditions apply.
           </p>
         </div>
         {/* Package Cards */}
@@ -177,13 +183,6 @@ const MeltdownPricing = () => {
             </TableBody>
           </Table>
         </div>
-        {/* Terms and conditions note */}
-        <div className="max-w-5xl mx-auto mb-6">
-          <p className="text-xs text-gray-500 italic text-right pr-1">
-            Terms and conditions apply.
-          </p>
-        </div>
-
         {/* CTA */}
         <div className="text-center mt-10 flex flex-col items-center">
           <Button size="lg" asChild className="bg-primary text-black hover:bg-secondary text-xl px-10 py-5 rounded-full shadow-lg font-bold tracking-wider transition-transform duration-200 transform hover:scale-105">
