@@ -10,7 +10,7 @@ const WellnessAppShowcaseSection: React.FC = () => {
   const memoizedScreens = useMemo(() => appScreens, []);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-yellow-50 via-amber-50 to-white overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-white to-yellow-200 overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
@@ -31,3 +31,4 @@ const WellnessAppShowcaseSection: React.FC = () => {
 };
 
 export default WellnessAppShowcaseSection;
+
