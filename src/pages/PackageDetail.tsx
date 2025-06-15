@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -67,10 +68,11 @@ const PackageDetail = () => {
       className="min-h-screen w-full"
       style={{
         background: `linear-gradient(
-          100deg,
-          #FFD838 0%,
+          90deg,
+          #fff 0%,
+          #fff 60%,
           #FFD838 60%,
-          #FCB017 100%
+          #FFD838 100%
         )`
       }}
     >
@@ -95,3 +97,4 @@ const PackageDetail = () => {
 };
 
 export default PackageDetail;
+
