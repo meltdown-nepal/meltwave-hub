@@ -28,7 +28,17 @@ const PackageDetailsContent: React.FC<PackageDetailsContentProps> = ({
   paymentLink,
 }) => {
   return (
-    <section className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mb-16 animate-fade-in">
+    <section
+      className="w-full max-w-2xl mx-auto rounded-2xl shadow-xl overflow-hidden mb-16 animate-fade-in"
+      style={{
+        background: `linear-gradient(
+          100deg,
+          #FFD838 0%,
+          #FFD838 60%,
+          #FCB017 100%
+        )`
+      }}
+    >
       {/* Top Title and Accent */}
       <div className="px-6 pt-8 pb-2 sm:px-10">
         <h1 className="text-2xl sm:text-3xl font-header font-bold text-center mb-2">{name}</h1>
@@ -86,4 +96,3 @@ const PackageDetailsContent: React.FC<PackageDetailsContentProps> = ({
 };
 
 export default PackageDetailsContent;
-
