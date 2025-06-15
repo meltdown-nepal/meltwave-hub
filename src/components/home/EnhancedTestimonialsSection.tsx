@@ -77,12 +77,12 @@ const EnhancedTestimonialsSection = ({
                         
                         <div className="relative z-10 flex-1 flex flex-col h-full">
                           {/* Testimonial Text */}
-                          <blockquote className="text-base md:text-lg font-medium mb-6 md:mb-8 italic text-gray-800 flex-1 leading-relaxed">
+                          <blockquote className="text-base md:text-lg font-medium mb-4 md:mb-4 italic text-gray-800 flex-1 leading-relaxed">
                             "{testimonial.title}"
                           </blockquote>
                           
                           {/* User Info */}
-                          <div className="flex items-center justify-between mt-auto pt-4">
+                          <div className="flex items-center justify-between mt-auto pt-2">
                             <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0">
                               {/* User Avatar */}
                               <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-black font-bold text-lg shadow-md flex-shrink-0">
