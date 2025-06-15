@@ -1,7 +1,8 @@
+
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { icons } from "lucide-react";
+import { icons, CheckCircle } from "lucide-react";
 import OptimizedImage from "../OptimizedImage";
 
 // Category metadata for tab navigation & icons
@@ -161,7 +162,7 @@ const ProgramCategoryTabs: React.FC = () => {
                   <ul className="space-y-1 mb-2 text-sm">
                     {program.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-center text-gray-900">
-                        <LucideIcon name="CheckCircle" className="text-primary mr-2" />
+                        <CheckCircle className="text-green-600 mr-2 w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
                         {benefit}
                       </li>
                     ))}
