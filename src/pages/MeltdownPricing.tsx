@@ -16,7 +16,8 @@ const packages = [{
 }, {
   name: "GOLD",
   offline: "Rs.9,500/month",
-  online: ["Rs.9,500/3 months"], // updated price here!
+  online: ["Rs.9,500/3 months"],
+  // updated price here!
   centers: "40+ centers",
   color: "bg-yellow-50 border-yellow-300",
   buttonStyle: "border-2 border-yellow-400 text-yellow-900 hover:bg-yellow-100 focus:ring-2 focus:ring-yellow-400",
@@ -24,13 +25,13 @@ const packages = [{
 }, {
   name: "PLATINUM",
   offline: "Rs.14,000/month",
-  online: ["Rs.16,500/3 months"], // updated price here!
+  online: ["Rs.16,500/3 months"],
+  // updated price here!
   centers: "60+ centers",
   color: "bg-blue-50 border-blue-300",
   buttonStyle: "border-2 border-blue-400 text-blue-900 hover:bg-blue-100 focus:ring-2 focus:ring-blue-400",
   highlight: false
 }];
-
 const features = [{
   name: "Gym & Cardio",
   values: [true, true, true],
@@ -72,7 +73,6 @@ const features = [{
   name: "Pilates",
   values: [false, false, true]
 }];
-
 const MeltdownPricing = () => {
   return <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
@@ -87,7 +87,7 @@ const MeltdownPricing = () => {
         </div>
         {/* Terms and conditions note (moved up) */}
         <div className="max-w-3xl mx-auto mb-8">
-          <p className="text-xs text-gray-500 italic text-center">
+          <p className="text-xs text-gray-500 italic text-center py-[20px]">
             Terms and conditions apply.
           </p>
         </div>
