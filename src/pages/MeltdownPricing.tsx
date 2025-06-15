@@ -80,9 +80,7 @@ const MeltdownPricing = () => {
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text text-zinc-950">
-            Meltdown Pricing Packages
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 ">Meltdown Wellness Packages</h1>
           <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">
             Compare our flexible membership options and choose your ideal plan.
           </p>
