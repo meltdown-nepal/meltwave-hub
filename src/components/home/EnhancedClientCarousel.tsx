@@ -97,13 +97,13 @@ const EnhancedClientCarousel = () => {
   };
 
   return (
-    <section className="py-8 bg-yellow-50 overflow-hidden">
+    <section className="py-8 bg-gradient-to-br from-primary/10 via-white to-secondary/10 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8 py-[20px]">Trusted by Leading Companies</h3>
         <div className="relative">
           {/* Gradient edges for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-yellow-50 to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-white/60 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-white/60 to-transparent pointer-events-none" />
           
           {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
