@@ -66,14 +66,14 @@ const PackageDetail = () => {
     <div
       className="min-h-screen w-full"
       style={{
-        // Multi-stop gradient for a soft, blended 60-40 transition with a lighter yellow.
+        // Multi-stop gradient using Tailwind's yellow-100 (#FEF9C3).
         background: `linear-gradient(
           180deg,
           #fff 0%,
           #fff 51%,
-          #fffbe9 60%,
-          #FFF7B2 72%,
-          #FFF7B2 100%
+          #FEF9C3 60%,
+          #FEF9C3 72%,
+          #FEF9C3 100%
         )`
       }}
     >
