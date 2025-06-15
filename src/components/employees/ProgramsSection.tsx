@@ -1,7 +1,7 @@
 import React from "react";
 import ProgramCategoryTabs from "./ProgramCategoryTabs";
 const ProgramsSection = () => {
-  return <section className="section-padding overflow-hidden bg-transparent">
+  return <section className="section-padding overflow-hidden bg-white">
       <div className="container-custom">
         <div className="text-center mb-14 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-slate-950">Wellness Programs Available To You</h2>
