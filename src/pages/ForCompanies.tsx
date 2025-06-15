@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import LogoCarousel from '../components/LogoCarousel';
 import VideoTestimonial from '../components/VideoTestimonial';
 import { useSmoothScroll } from '../hooks/useSmoothScroll';
+import CompanySuccessStoriesSection from "../components/companies/CompanySuccessStoriesSection";
 
 // Trusted Companies Logos
 const trustedCompanies = [{
@@ -303,43 +304,8 @@ const ForCompanies = () => {
         </div>
       </section>
 
-      {/* Success Stories & Testimonials */}
-      <section className="bg-gradient-to-br from-yellow-50 to-gray-50 section-padding" id="testimonials">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-4 px-6 py-2 bg-amber-100 rounded-full text-amber-700 font-medium text-sm">SUCCESS STORIES</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Hear From Our Clients</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              See how companies have transformed their workplace wellness with our solutions
-            </p>
-          </div>
-
-          {/* Desktop view (grid) */}
-          <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {successStories.map((story, index) => <VideoTestimonial key={index} title={story.title} name={story.name} role={story.role} linkTo={story.linkTo} />)}
-          </div>
-
-          {/* Mobile view (list) */}
-          <div className="md:hidden space-y-6">
-            {successStories.map((story, index) => <VideoTestimonial key={index} title={story.title} name={story.name} role={story.role} linkTo={story.linkTo} />)}
-          </div>
-          
-          {/* Video Dialog */}
-          <Dialog open={!!selectedVideo} onOpenChange={() => {
-          setSelectedVideo(null);
-          setIsLoading(false);
-        }}>
-            <DialogContent className="sm:max-w-4xl p-1 sm:p-2 bg-black rounded-lg border-none">
-              {isLoading && <div className="flex justify-center items-center h-40 text-white">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-                </div>}
-              {selectedVideo && <video src={selectedVideo} controls autoPlay className={`w-full rounded-lg ${isLoading ? 'hidden' : 'block'}`} onCanPlay={() => setIsLoading(false)}>
-                  Your browser does not support the video tag.
-                </video>}
-            </DialogContent>
-          </Dialog>
-        </div>
-      </section>
+      {/* Success Stories & Testimonials - redesigned */}
+      <CompanySuccessStoriesSection />
 
       {/* FAQ Section */}
       <section className="bg-gray-50 section-padding">
