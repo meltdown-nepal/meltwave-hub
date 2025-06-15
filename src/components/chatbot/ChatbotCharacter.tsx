@@ -11,17 +11,17 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
   animate = false 
 }) => {
   const sizeClasses = {
-    tiny: 'w-6 h-6',
-    small: 'w-8 h-8',
-    medium: 'w-12 h-12',
-    large: 'w-16 h-16'
+    tiny: 'w-5 h-5',
+    small: 'w-6 h-6',
+    medium: 'w-10 h-10',
+    large: 'w-14 h-14'
   };
 
   const textSizeClasses = {
     tiny: 'text-xs',
-    small: 'text-sm',
-    medium: 'text-xl',
-    large: 'text-3xl'
+    small: 'text-xs',
+    medium: 'text-lg',
+    large: 'text-2xl'
   };
 
   return (
