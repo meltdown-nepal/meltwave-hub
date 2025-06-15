@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import OptimizedImage from "@/components/OptimizedImage";
 import EventGalleryModal from "./EventGalleryModal";
@@ -36,7 +35,7 @@ const EVENTS = [{
       alt: "Tranquil lake surrounded by vibrant trees"
     },
     {
-      src: "/lovable-uploads/98d7df7b-902e-4e7f-a71d-c7ebdc3106f8.png",
+      src: "/lovable-uploads/d0ecc7b2-ea5e-4f69-a192-950f0b573e9b.png",
       title: "Wednesday Run Club at Meltdown",
       alt: "Participants gathering outside a coffeeshop for Wednesday Run Club event"
     }
