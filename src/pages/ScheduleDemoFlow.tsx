@@ -100,7 +100,7 @@ export default function ScheduleDemoFlow() {
       className="relative min-h-[calc(100dvh-70px)] py-5 px-2 sm:px-3 lg:px-4 flex items-center justify-center"
       style={{
         minHeight: "100dvh",
-        background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #fef08a 50%, #fef08a 100%)",
+        background: "linear-gradient(to bottom, #fff 0%, #fff 30%, #fef08a 100%)",
       }}
     >
       {/* Content with relative positioning to appear above background */}
