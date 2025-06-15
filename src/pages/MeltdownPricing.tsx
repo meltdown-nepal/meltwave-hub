@@ -72,16 +72,24 @@ const features = [{
   values: [false, false, true]
 }];
 const MeltdownPricing = () => {
-  return <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-10 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 gradient-text">Meltdown Pricing Packages</h1>
-          <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">Compare our flexible membership options and choose your ideal plan.</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 gradient-text">
+            Meltdown Pricing Packages
+          </h1>
+          <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">
+            Compare our flexible membership options and choose your ideal plan.
+          </p>
         </div>
         {/* Package Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 md:gap-10 max-w-6xl mx-auto mb-10">
-          {packages.map((pkg, i) => <div key={pkg.name} className={`
+          {packages.map((pkg, i) => (
+            <div
+              key={pkg.name}
+              className={`
                 relative flex flex-col items-center justify-between
                 rounded-2xl border transition-transform duration-200 
                 ${pkg.color} 
@@ -89,59 +97,85 @@ const MeltdownPricing = () => {
                 px-5 md:px-7 
                 min-h-[430px] md:min-h-[480px] max-w-sm mx-auto
                 h-full
-              `} style={pkg.highlight ? {
-          marginTop: "-15px"
-        } : {}}>
-              {pkg.highlight && <Badge variant="secondary" className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow">
-                Most Popular
-              </Badge>}
-              <CardHeader className="text-center pt-2 pb-2 px-0 border-none bg-transparent">
-                <CardTitle className="text-2xl md:text-3xl font-bold uppercase mb-1">
+              `}
+              style={pkg.highlight ? { marginTop: "-15px" } : {}}
+            >
+              {pkg.highlight && (
+                <Badge
+                  variant="secondary"
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow"
+                >
+                  Most Popular
+                </Badge>
+              )}
+              
+              {/* Title at the top */}
+              <div className="w-full flex flex-col gap-0.5 items-center mb-2">
+                <span className="text-2xl md:text-3xl font-bold uppercase text-center">
                   {pkg.name}
-                  <span className="text-sm font-semibold block uppercase tracking-wide mt-0.5 text-gray-500">Subscription</span>
-                </CardTitle>
-                <CardDescription className="!mt-4 mb-0 p-0">
-                  {/* PRICING - Clear, clean, grouped */}
-                  <div className="flex flex-col gap-2 items-center text-base md:text-lg w-full">
-                    <div className="flex items-center gap-2 font-semibold text-gray-900">
-                      
-                      <span>Offline Cost:</span>
-                      <span className="font-bold ml-2 text-nowrap">{pkg.offline}</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-gray-700 mt-2 w-full flex-col">
-                      <span className="flex items-center font-medium">
-                        
-                        <span>Via Meltdown:</span>
-                      </span>
-                      <ul className="ml-7 space-y-1 w-full">
-                        {pkg.online.map(onlinePrice => <li key={onlinePrice} className="text-base text-gray-800">
-                            {onlinePrice}
-                          </li>)}
-                      </ul>
-                    </div>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center flex-1 w-full mt-2 mb-2 px-0">
+                </span>
+                <span className="text-sm font-semibold uppercase tracking-wider text-gray-500 mt-0.5 mb-0">
+                  Subscription
+                </span>
+              </div>
+              
+              <CardContent className="flex flex-col items-center flex-1 w-full px-0 pt-2 pb-0">
+                {/* Facilities (centered middle content) */}
                 <div className="text-base font-medium mb-4 text-gray-700 w-full flex flex-col items-center">
-                  <span className="font-medium text-gray-700">Facilities:</span>
-                  <span className={`font-semibold gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}>{pkg.centers}</span>
+                  <span className="font-medium text-gray-700">
+                    Facilities:
+                  </span>
+                  <span
+                    className={`font-semibold gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}
+                  >
+                    {pkg.centers}
+                  </span>
                 </div>
-                <div className="mt-auto w-full">
-                  <Button size="lg" asChild variant={pkg.highlight ? "default" : "outline"} className={`
+                <div className="flex-grow" /> {/* Spacer to push price info to bottom */}
+                {/* Price info at bottom */}
+                <div className="w-full flex flex-col gap-2 items-start mt-2 mb-3">
+                  <div className="flex items-center gap-2 font-semibold text-gray-900 text-base">
+                    <span>Offline Cost :</span>
+                    <span className="font-bold ml-1 text-nowrap">{pkg.offline}</span>
+                  </div>
+                  <div className="flex flex-col gap-1 text-gray-700 text-base w-full">
+                    <span className="flex items-center font-medium">
+                      Via Meltdown:
+                    </span>
+                    <ul className="ml-7 space-y-1 w-full">
+                      {pkg.online.map((onlinePrice) => (
+                        <li key={onlinePrice} className="text-base text-gray-800">
+                          {onlinePrice}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="w-full">
+                  <Button
+                    size="lg"
+                    asChild
+                    variant={pkg.highlight ? "default" : "outline"}
+                    className={`
                       w-full max-w-full 
                       ${pkg.buttonStyle} 
                       ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""}
                       ${pkg.name === "PLATINUM" ? "bg-blue-400 text-white font-bold shadow-md hover:bg-blue-300 focus:ring-2 focus:ring-blue-400" : ""}
-                      py-3 px-5 mt-4 rounded-lg text-base
-                    `}>
+                      py-3 px-5 mt-2 rounded-lg text-base
+                    `}
+                  >
                     <Link to="/contact">
-                      {pkg.highlight ? "Choose Gold" : pkg.name === "PLATINUM" ? "Choose Platinum" : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
+                      {pkg.highlight
+                        ? "Choose Gold"
+                        : pkg.name === "PLATINUM"
+                        ? "Choose Platinum"
+                        : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
                     </Link>
                   </Button>
                 </div>
               </CardContent>
-            </div>)}
+            </div>
+          ))}
         </div>
         {/* Table / Comparison */}
         <div className="rounded-2xl shadow bg-white/90 overflow-x-auto max-w-5xl mx-auto border border-gray-200 mb-8">
@@ -149,25 +183,65 @@ const MeltdownPricing = () => {
             <TableHeader>
               <TableRow className="bg-gray-50">
                 <TableHead className="w-2/6 text-lg lg:text-xl font-semibold py-4">Facilities</TableHead>
-                {packages.map((pkg, i) => <TableHead key={pkg.name} className={`text-lg lg:text-xl font-bold text-center px-2 py-4
-                    ${pkg.highlight ? "bg-yellow-100 dark:bg-yellow-200 text-yellow-800 ring-2 ring-yellow-400" : i === 0 ? "bg-gray-100 text-gray-700" : pkg.name === "PLATINUM" ? "bg-blue-100 text-blue-900" : "bg-green-100 text-green-900"}`}>
+                {packages.map((pkg, i) => (
+                  <TableHead
+                    key={pkg.name}
+                    className={`text-lg lg:text-xl font-bold text-center px-2 py-4
+                    ${
+                      pkg.highlight
+                        ? "bg-yellow-100 dark:bg-yellow-200 text-yellow-800 ring-2 ring-yellow-400"
+                        : i === 0
+                        ? "bg-gray-100 text-gray-700"
+                        : pkg.name === "PLATINUM"
+                        ? "bg-blue-100 text-blue-900"
+                        : "bg-green-100 text-green-900"
+                    }`}
+                  >
                     {pkg.name}
-                  </TableHead>)}
+                  </TableHead>
+                ))}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {features.map((feature, fIdx) => <TableRow key={feature.name} className={fIdx % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+              {features.map((feature, fIdx) => (
+                <TableRow
+                  key={feature.name}
+                  className={fIdx % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                >
                   <TableCell className="font-medium text-gray-700 text-base">
                     {feature.name}
                   </TableCell>
-                  {feature.values.map((hasFeature, pIdx) => <TableCell key={pIdx} className="text-center">
-                      {feature.notes ? <span className="inline-block font-semibold text-gray-800">{feature.notes[pIdx]}</span> : hasFeature ? <span className={`inline-block rounded-full ${pIdx === 2 ? "bg-blue-100" : "bg-green-100"} p-1`}>
-                          <CheckCircle2 className={`${pIdx === 2 ? "text-blue-600" : "text-green-600"} h-6 w-6`} aria-label="Included" />
-                        </span> : <span className="inline-block rounded-full bg-gray-100 p-1">
-                          <XCircle className="text-gray-300 h-6 w-6" aria-label="Not included" />
-                        </span>}
-                    </TableCell>)}
-                </TableRow>)}
+                  {feature.values.map((hasFeature, pIdx) => (
+                    <TableCell key={pIdx} className="text-center">
+                      {feature.notes ? (
+                        <span className="inline-block font-semibold text-gray-800">
+                          {feature.notes[pIdx]}
+                        </span>
+                      ) : hasFeature ? (
+                        <span
+                          className={`inline-block rounded-full ${
+                            pIdx === 2 ? "bg-blue-100" : "bg-green-100"
+                          } p-1`}
+                        >
+                          <CheckCircle2
+                            className={`${
+                              pIdx === 2 ? "text-blue-600" : "text-green-600"
+                            } h-6 w-6`}
+                            aria-label="Included"
+                          />
+                        </span>
+                      ) : (
+                        <span className="inline-block rounded-full bg-gray-100 p-1">
+                          <XCircle
+                            className="text-gray-300 h-6 w-6"
+                            aria-label="Not included"
+                          />
+                        </span>
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </div>
@@ -179,6 +253,7 @@ const MeltdownPricing = () => {
           <p className="text-gray-500 mt-4 text-sm">No hidden fees &middot; Cancel anytime</p>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 export default MeltdownPricing;
