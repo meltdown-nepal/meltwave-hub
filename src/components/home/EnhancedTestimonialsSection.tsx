@@ -56,7 +56,7 @@ const EnhancedTestimonialsSection = ({
         </div>
 
         <AnimatedElement animation="slideUp" delay={0.4}>
-          <div className="relative max-w-6xl mx-auto px-4">
+          <div className="relative max-w-6xl mx-auto px-4 pb-8">
             <Carousel 
               setApi={setApi} 
               opts={{
@@ -67,15 +67,15 @@ const EnhancedTestimonialsSection = ({
             >
               <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/2">
-                    <Card className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0 h-full">
-                      <CardContent className="p-6 md:p-8 relative h-full flex flex-col">
+                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/2 flex">
+                    <Card className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0 w-full min-h-[280px] md:min-h-[320px]">
+                      <CardContent className="p-6 md:p-8 relative h-full flex flex-col min-h-[240px] md:min-h-[280px]">
                         {/* Quote Icon */}
                         <div className="absolute -left-1 -top-1 text-primary/20 z-0">
                           <Quote size={40} />
                         </div>
                         
-                        <div className="relative z-10 flex-1 flex flex-col">
+                        <div className="relative z-10 flex-1 flex flex-col h-full">
                           {/* Testimonial Text */}
                           <blockquote className="text-base md:text-lg font-medium mb-6 md:mb-8 italic text-gray-800 flex-1 leading-relaxed">
                             "{testimonial.title}"
