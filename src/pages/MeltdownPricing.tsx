@@ -130,7 +130,9 @@ const MeltdownPricing = () => {
                   <div className="flex flex-col gap-1 text-gray-700 text-base w-full">
                     
                     <ul className="ml-7 space-y-1 w-full">
-                      {pkg.online.map(onlinePrice => {})}
+                      {pkg.online.map(onlinePrice => (
+                        <li key={onlinePrice}>{onlinePrice}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>
