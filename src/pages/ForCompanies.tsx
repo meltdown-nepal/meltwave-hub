@@ -284,7 +284,7 @@ const ForCompanies = () => {
                 
                 <div className="flex flex-col items-start p-3 bg-amber-50 rounded-lg border border-amber-200">
                   <span className="font-medium text-base">Gold</span>
-                  <span className="text-gray-600 text-sm mt-1">+ Golfing, Yoga, Rock Climbing</span>
+                  <span className="text-gray-600 text-sm mt-1">+ Golfing, Yoga, Rock Climbing etc</span>
                 </div>
                 
                 <div className="flex flex-col items-start p-3 bg-blue-50 rounded-lg border border-blue-200">
