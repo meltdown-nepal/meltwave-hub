@@ -267,9 +267,7 @@ const ForCompanies = () => {
             <div className="bg-white rounded-lg p-6 shadow-xl px-4 relative">
               {/* View Details Button */}
               <Link to="/packages" className="absolute right-5 top-5">
-                <Button variant="outline" className="!px-4 py-1 text-sm">
-                  View Details
-                </Button>
+                <Button variant="outline" className="!px-4 py-1 text-sm">Details</Button>
               </Link>
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center">
