@@ -72,8 +72,7 @@ const features = [{
   values: [false, false, true]
 }];
 const MeltdownPricing = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
+  return <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-10 md:mb-16">
@@ -86,10 +85,7 @@ const MeltdownPricing = () => {
         </div>
         {/* Package Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 md:gap-10 max-w-6xl mx-auto mb-10">
-          {packages.map((pkg, i) => (
-            <div
-              key={pkg.name}
-              className={`
+          {packages.map((pkg, i) => <div key={pkg.name} className={`
                 relative flex flex-col items-center justify-between
                 rounded-2xl border transition-transform duration-200 
                 ${pkg.color} 
@@ -97,17 +93,12 @@ const MeltdownPricing = () => {
                 px-5 md:px-7 
                 min-h-[430px] md:min-h-[480px] max-w-sm mx-auto
                 h-full
-              `}
-              style={pkg.highlight ? { marginTop: "-15px" } : {}}
-            >
-              {pkg.highlight && (
-                <Badge
-                  variant="secondary"
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow"
-                >
+              `} style={pkg.highlight ? {
+          marginTop: "-15px"
+        } : {}}>
+              {pkg.highlight && <Badge variant="secondary" className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow">
                   Most Popular
-                </Badge>
-              )}
+                </Badge>}
               
               {/* Title at the top */}
               <div className="w-full flex flex-col gap-0.5 items-center mb-2">
@@ -125,9 +116,7 @@ const MeltdownPricing = () => {
                   <span className="font-medium text-gray-700">
                     Facilities:
                   </span>
-                  <span
-                    className={`font-semibold gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}
-                  >
+                  <span className={`font-semibold gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}>
                     {pkg.centers}
                   </span>
                 </div>
@@ -139,43 +128,29 @@ const MeltdownPricing = () => {
                     <span className="font-bold ml-1 text-nowrap">{pkg.offline}</span>
                   </div>
                   <div className="flex flex-col gap-1 text-gray-700 text-base w-full">
-                    <span className="flex items-center font-medium">
-                      Via Meltdown:
-                    </span>
+                    
                     <ul className="ml-7 space-y-1 w-full">
-                      {pkg.online.map((onlinePrice) => (
-                        <li key={onlinePrice} className="text-base text-gray-800">
+                      {pkg.online.map(onlinePrice => <li key={onlinePrice} className="text-base text-gray-800">
                           {onlinePrice}
-                        </li>
-                      ))}
+                        </li>)}
                     </ul>
                   </div>
                 </div>
                 <div className="w-full">
-                  <Button
-                    size="lg"
-                    asChild
-                    variant={pkg.highlight ? "default" : "outline"}
-                    className={`
+                  <Button size="lg" asChild variant={pkg.highlight ? "default" : "outline"} className={`
                       w-full max-w-full 
                       ${pkg.buttonStyle} 
                       ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""}
                       ${pkg.name === "PLATINUM" ? "bg-blue-400 text-white font-bold shadow-md hover:bg-blue-300 focus:ring-2 focus:ring-blue-400" : ""}
                       py-3 px-5 mt-2 rounded-lg text-base
-                    `}
-                  >
+                    `}>
                     <Link to="/contact">
-                      {pkg.highlight
-                        ? "Choose Gold"
-                        : pkg.name === "PLATINUM"
-                        ? "Choose Platinum"
-                        : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
+                      {pkg.highlight ? "Choose Gold" : pkg.name === "PLATINUM" ? "Choose Platinum" : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
                     </Link>
                   </Button>
                 </div>
               </CardContent>
-            </div>
-          ))}
+            </div>)}
         </div>
         {/* Table / Comparison */}
         <div className="rounded-2xl shadow bg-white/90 overflow-x-auto max-w-5xl mx-auto border border-gray-200 mb-8">
@@ -183,65 +158,27 @@ const MeltdownPricing = () => {
             <TableHeader>
               <TableRow className="bg-gray-50">
                 <TableHead className="w-2/6 text-lg lg:text-xl font-semibold py-4">Facilities</TableHead>
-                {packages.map((pkg, i) => (
-                  <TableHead
-                    key={pkg.name}
-                    className={`text-lg lg:text-xl font-bold text-center px-2 py-4
-                    ${
-                      pkg.highlight
-                        ? "bg-yellow-100 dark:bg-yellow-200 text-yellow-800 ring-2 ring-yellow-400"
-                        : i === 0
-                        ? "bg-gray-100 text-gray-700"
-                        : pkg.name === "PLATINUM"
-                        ? "bg-blue-100 text-blue-900"
-                        : "bg-green-100 text-green-900"
-                    }`}
-                  >
+                {packages.map((pkg, i) => <TableHead key={pkg.name} className={`text-lg lg:text-xl font-bold text-center px-2 py-4
+                    ${pkg.highlight ? "bg-yellow-100 dark:bg-yellow-200 text-yellow-800 ring-2 ring-yellow-400" : i === 0 ? "bg-gray-100 text-gray-700" : pkg.name === "PLATINUM" ? "bg-blue-100 text-blue-900" : "bg-green-100 text-green-900"}`}>
                     {pkg.name}
-                  </TableHead>
-                ))}
+                  </TableHead>)}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {features.map((feature, fIdx) => (
-                <TableRow
-                  key={feature.name}
-                  className={fIdx % 2 === 0 ? "bg-gray-50" : "bg-white"}
-                >
+              {features.map((feature, fIdx) => <TableRow key={feature.name} className={fIdx % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                   <TableCell className="font-medium text-gray-700 text-base">
                     {feature.name}
                   </TableCell>
-                  {feature.values.map((hasFeature, pIdx) => (
-                    <TableCell key={pIdx} className="text-center">
-                      {feature.notes ? (
-                        <span className="inline-block font-semibold text-gray-800">
+                  {feature.values.map((hasFeature, pIdx) => <TableCell key={pIdx} className="text-center">
+                      {feature.notes ? <span className="inline-block font-semibold text-gray-800">
                           {feature.notes[pIdx]}
-                        </span>
-                      ) : hasFeature ? (
-                        <span
-                          className={`inline-block rounded-full ${
-                            pIdx === 2 ? "bg-blue-100" : "bg-green-100"
-                          } p-1`}
-                        >
-                          <CheckCircle2
-                            className={`${
-                              pIdx === 2 ? "text-blue-600" : "text-green-600"
-                            } h-6 w-6`}
-                            aria-label="Included"
-                          />
-                        </span>
-                      ) : (
-                        <span className="inline-block rounded-full bg-gray-100 p-1">
-                          <XCircle
-                            className="text-gray-300 h-6 w-6"
-                            aria-label="Not included"
-                          />
-                        </span>
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
+                        </span> : hasFeature ? <span className={`inline-block rounded-full ${pIdx === 2 ? "bg-blue-100" : "bg-green-100"} p-1`}>
+                          <CheckCircle2 className={`${pIdx === 2 ? "text-blue-600" : "text-green-600"} h-6 w-6`} aria-label="Included" />
+                        </span> : <span className="inline-block rounded-full bg-gray-100 p-1">
+                          <XCircle className="text-gray-300 h-6 w-6" aria-label="Not included" />
+                        </span>}
+                    </TableCell>)}
+                </TableRow>)}
             </TableBody>
           </Table>
         </div>
@@ -253,7 +190,6 @@ const MeltdownPricing = () => {
           <p className="text-gray-500 mt-4 text-sm">No hidden fees &middot; Cancel anytime</p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
 export default MeltdownPricing;
