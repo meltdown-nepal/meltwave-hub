@@ -1,6 +1,6 @@
+
 import React from "react";
 import EventGalleryImage from "@/components/EventGalleryImage";
-import { useGalleryImagePreloader } from "@/hooks/useGalleryImagePreloader";
 
 const galleryImages = [
   {
@@ -21,9 +21,6 @@ const galleryImages = [
 ];
 
 export default function EventGallerySection() {
-  // Preload just before render; feel free to add logic to only enable when near viewport
-  useGalleryImagePreloader(galleryImages.map(img => ({ src: img.src })), true);
-
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-custom">
