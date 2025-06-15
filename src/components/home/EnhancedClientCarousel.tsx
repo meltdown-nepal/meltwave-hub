@@ -111,7 +111,7 @@ const EnhancedClientCarousel = () => {
               {duplicatedLogos.map((logo, index) => (
                 <div 
                   key={`${logo.id}-${index}`} 
-                  className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4"
+                  className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4 bg-white rounded-lg shadow-sm mx-2"
                 >
                   <img
                     src={logo.src}
@@ -124,14 +124,13 @@ const EnhancedClientCarousel = () => {
                     onLoad={handleImageLoad}
                     onError={handleImageError}
                     style={{ 
-                      filter: 'brightness(0.9)',
-                      transition: 'opacity 0.3s ease, filter 0.3s ease'
+                      transition: 'opacity 0.3s ease, transform 0.3s ease'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.filter = 'brightness(1)';
+                      e.currentTarget.style.transform = 'scale(1.05)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.filter = 'brightness(0.9)';
+                      e.currentTarget.style.transform = 'scale(1)';
                     }}
                   />
                 </div>
