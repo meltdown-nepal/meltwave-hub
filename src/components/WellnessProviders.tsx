@@ -1,4 +1,7 @@
+
 import React from 'react';
+import OptimizedImage from './OptimizedImage';
+
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/397c4685-d91a-452b-b4fa-51c0f4236ee7.png",
@@ -47,25 +50,15 @@ const clientLogos = [{
   id: 12,
   src: "/lovable-uploads/5c9d285f-e605-40e0-9db4-01d516e2b888.png",
   alt: "Riddhi Pilates Studios"
-}, {
-  id: 13,
-  src: "/lovable-uploads/53894216-71b2-4325-ab38-8344563caa74.png",
-  alt: "Super Fitness"
-}, {
-  id: 14,
-  src: "/lovable-uploads/d7f9a37a-1fe9-488e-b4e3-cbcef131cafe.png",
-  alt: "Tapout Fitness"
-}, {
-  id: 15,
-  src: "/lovable-uploads/98c39ae5-f842-422f-89a8-b8b626e945ad.png",
-  alt: "Three Lions Fitness Center"
-}, {
-  id: 16,
-  src: "/lovable-uploads/20d63b1f-921f-4e7c-b6a6-e9e511c135e0.png",
-  alt: "Tranquility Spa"
 }];
+
 const WellnessProvidersCarousel = () => {
-  return <section className="py-8 bg-yellow-50 overflow-hidden">
+  // Optimize by limiting visible logos for better performance
+  const visibleLogos = clientLogos.slice(0, 12);
+  const duplicatedLogos = [...visibleLogos, ...visibleLogos];
+
+  return (
+    <section className="py-8 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8 py-[20px]">Wellness Providers</h3>
         <div className="relative">
@@ -75,15 +68,25 @@ const WellnessProvidersCarousel = () => {
           
           {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
-            <div className="animate-seamless-scroll flex">
-              {/* First set of logos */}
-              {clientLogos.map(logo => <div key={`first-${logo.id}`} className="flex-shrink-0 flex items-center justify-center px-6 py-4">
-                  <img src={logo.src} alt={logo.alt} className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300" draggable={false} loading="lazy" width="180" height="80" decoding="async" />
-                </div>)}
-              {/* Duplicate set for seamless loop */}
-              {clientLogos.map(logo => <div key={`second-${logo.id}`} className="flex-shrink-0 flex items-center justify-center px-6 py-4">
-                  <img src={logo.src} alt={logo.alt} className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300" draggable={false} loading="lazy" width="180" height="80" decoding="async" />
-                </div>)}
+            <div className="animate-seamless-scroll flex will-change-transform">
+              {duplicatedLogos.map((logo, index) => (
+                <div 
+                  key={`${logo.id}-${index}`} 
+                  className="flex-shrink-0 flex items-center justify-center px-6 py-4"
+                >
+                  <OptimizedImage
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300"
+                    width={180}
+                    height={80}
+                    lazy={index > 8}
+                    sizes="180px"
+                    quality="medium"
+                    responsive={false}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -92,16 +95,12 @@ const WellnessProvidersCarousel = () => {
       {/* Optimized CSS animation for better performance */}
       <style>{`
         @keyframes seamless-scroll {
-          0% {
-            transform: translate3d(0, 0, 0);
-          }
-          100% {
-            transform: translate3d(-50%, 0, 0);
-          }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
 
         .animate-seamless-scroll {
-          animation: seamless-scroll 60s linear infinite;
+          animation: seamless-scroll 45s linear infinite;
           width: fit-content;
           will-change: transform;
           backface-visibility: hidden;
@@ -109,18 +108,18 @@ const WellnessProvidersCarousel = () => {
           transform: translateZ(0);
         }
 
-        /* Pause animation on hover for better UX */
         .animate-seamless-scroll:hover {
           animation-play-state: paused;
         }
 
-        /* Reduce motion for users who prefer it */
         @media (prefers-reduced-motion: reduce) {
           .animate-seamless-scroll {
-            animation-duration: 120s;
+            animation-duration: 90s;
           }
         }
       `}</style>
-    </section>;
+    </section>
+  );
 };
+
 export default WellnessProvidersCarousel;

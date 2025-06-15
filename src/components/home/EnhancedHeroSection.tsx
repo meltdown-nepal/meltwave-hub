@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import AnimatedElement from '../animations/AnimatedElement';
-import HeroImage from '../HeroImage';
+import OptimizedImage from '../OptimizedImage';
+import { useCriticalImagePreloader } from '../../hooks/useCriticalImagePreloader';
 
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -12,6 +13,11 @@ const EnhancedHeroSection = () => {
     "/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.png", 
     "/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.png"
   ];
+
+  // Preload critical hero images
+  useCriticalImagePreloader(
+    backgroundImages.map(src => ({ src, priority: true, formats: ['webp', 'jpg'] }))
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -101,7 +107,7 @@ const EnhancedHeroSection = () => {
             </AnimatedElement>
           </div>
 
-          {/* Image Side with Slideshow - Using optimized HeroImage */}
+          {/* Image Side with Slideshow - Using optimized images */}
           <div className="relative">
             <AnimatedElement animation="scaleIn" delay={0.5}>
               <div className="relative">
@@ -112,13 +118,15 @@ const EnhancedHeroSection = () => {
                       key={index} 
                       className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
                     >
-                      <HeroImage 
+                      <OptimizedImage 
                         src={image} 
                         alt={`Wellness activities ${index + 1}`} 
                         className="w-full h-full object-cover" 
                         priority={index === 0}
                         width={800}
                         height={800}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality="high"
                       />
                     </div>
                   ))}

@@ -24,8 +24,9 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
   showViewAllButton = false,
   viewAllLink = "/wellness-partners"
 }) => {
-  // Duplicate logos to create seamless infinite scroll
-  const duplicatedLogos = [...logos, ...logos];
+  // Optimize carousel - only show first set + buffer for smooth animation
+  const visibleLogos = logos.slice(0, Math.min(logos.length, 12));
+  const duplicatedLogos = [...visibleLogos, ...visibleLogos];
   
   return (
     <section className="py-12 bg-yellow-50 overflow-hidden">
@@ -52,21 +53,23 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
         </div>
         
         <div className="relative">
-          {/* Infinite scroll container */}
-          <div className="flex animate-scroll">
+          {/* Optimized infinite scroll container */}
+          <div className="flex animate-scroll will-change-transform">
             {duplicatedLogos.map((logo, index) => (
               <div 
                 key={`${logo.id}-${index}`}
-                className="flex-shrink-0 bg-white p-6 rounded-xl shadow-sm flex items-center justify-center h-32 w-48 mx-3"
+                className="flex-shrink-0 bg-white p-4 rounded-xl shadow-sm flex items-center justify-center h-24 w-40 mx-2"
               >
                 <OptimizedImage
                   src={logo.src}
                   alt={logo.alt}
-                  className="max-h-16 w-auto max-w-full object-contain"
+                  className="max-h-12 w-auto max-w-full object-contain"
                   width={120}
-                  height={64}
-                  lazy={true}
+                  height={48}
+                  lazy={index > 8} // Only lazy load logos not immediately visible
                   sizes="120px"
+                  quality="medium"
+                  responsive={false} // Logos don't need responsive treatment
                 />
               </div>
             ))}
@@ -74,15 +77,27 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
         </div>
       </div>
 
-      {/* CSS Animation */}
+      {/* Optimized CSS Animation */}
       <style>{`
         @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
 
         .animate-scroll {
-          animation: scroll 40s linear infinite;
+          animation: scroll 30s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
+        }
+
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-scroll {
+            animation-duration: 60s;
+          }
         }
       `}</style>
     </section>
