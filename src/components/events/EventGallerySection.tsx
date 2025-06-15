@@ -1,7 +1,5 @@
-
 import React from "react";
 import OptimizedImage from "@/components/OptimizedImage";
-
 const EVENTS = [{
   key: "wednesday-run",
   title: "Wednesday Run Clubs",
@@ -78,56 +76,6 @@ const EVENTS = [{
     alt: "Happy group dancing together outside"
   }]
 }];
-
 export default function EventGallerySection() {
-  return (
-    <section className="section-padding bg-gradient-to-t from-yellow-50/80 to-white">
-      <div className="container-custom">
-        <div className="grid gap-12 md:grid-cols-3">
-          {EVENTS.map(event => (
-            <div key={event.key} className="group rounded-2xl shadow bg-white border border-yellow-100 hover:shadow-lg transition overflow-hidden flex flex-col">
-              <div className="relative w-full aspect-[3/2] md:aspect-[5/3] overflow-hidden">
-                {/* Show first image only */}
-                <OptimizedImage
-                  src={event.images[0].src}
-                  alt={event.images[0].alt}
-                  className="w-full h-full object-cover transition group-hover:scale-105"
-                  width={480}
-                  height={320}
-                  sizes="55vw"
-                  priority
-                />
-                {/* Small overlay with number of photos */}
-                <div className="absolute top-2 right-2 bg-black/65 text-white text-xs px-2 py-1 rounded shadow">
-                  {event.images.length} photos
-                </div>
-              </div>
-              <div className="flex-1 flex flex-col px-6 py-5">
-                <div className="text-xl font-bold mb-1 text-yellow-900">{event.title}</div>
-                <div className="text-gray-600 mb-4">{event.subtitle}</div>
-                {/* Static thumbnail strip */}
-                <div className="flex gap-2 overflow-x-auto mt-auto pb-2 min-h-[40px]">
-                  {event.images.map((img, idx) => (
-                    <div
-                      key={img.src}
-                      className="rounded-md border-2 border-yellow-100 bg-white min-w-[48px] w-12 h-10 overflow-hidden"
-                    >
-                      <OptimizedImage
-                        src={img.src}
-                        alt={img.alt}
-                        className="object-cover w-full h-full"
-                        width={48}
-                        height={40}
-                        sizes="48px"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return;
 }
