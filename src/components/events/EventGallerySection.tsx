@@ -2,6 +2,7 @@
 import React from "react";
 import EventGalleryImage from "@/components/EventGalleryImage";
 
+// Updated: use a "masonry" variable-width responsive grid and catchy heading
 const galleryImages = [
   {
     src: "/lovable-uploads/a57234a5-bf11-4976-b2b0-beb02e66466d.png",
@@ -22,26 +23,33 @@ const galleryImages = [
 
 export default function EventGallerySection() {
   return (
-    <section className="section-padding bg-gray-50">
-      <div className="container-custom">
+    <section className="relative section-padding bg-gradient-to-br from-yellow-50/75 to-amber-50/50 overflow-hidden">
+      <div className="container-custom z-10 relative">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">Highlights from Past Events</h2>
-          <p className="text-lg max-w-2xl mx-auto text-gray-600">
-            Relive the energy and inspiration from our wellness community gatherings
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 gradient-text animate-slide-up">Vibrant Event Memories</h2>
+          <p className="text-lg max-w-2xl mx-auto text-gray-600 animate-fade-in">
+            Relive the joy, energy, and spirit of our wellness gatherings!
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((img) => (
-            <div key={img.src}>
+        <div 
+          className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 mb-6 md:mb-0 animate-fade-in"
+          style={{breakInside: "avoid"}}
+        >
+          {galleryImages.map((img, idx) => (
+            <div key={img.src} className="break-inside-avoid mb-6 last:mb-0 group transition-all">
               <EventGalleryImage
                 src={img.src}
                 title={img.title}
                 alt={img.alt}
+                icon={idx === 1 ? "heart" : "magnifying-glass"}
               />
             </div>
           ))}
         </div>
       </div>
+      {/* Decorative floating dots at corners */}
+      <div className="absolute -bottom-6 left-4 w-32 h-32 bg-amber-200/50 blur-3xl rounded-full pointer-events-none"></div>
+      <div className="absolute -top-8 right-6 w-28 h-20 bg-primary/30 blur-2xl rounded-full pointer-events-none"></div>
     </section>
   );
 }
