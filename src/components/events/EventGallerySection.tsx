@@ -1,8 +1,30 @@
 
 import React from "react";
 import EventGalleryImage from "@/components/EventGalleryImage";
+import { useGalleryImagePreloader } from "@/hooks/useGalleryImagePreloader";
+
+const galleryImages = [
+  {
+    src: "/lovable-uploads/a57234a5-bf11-4976-b2b0-beb02e66466d.png",
+    title: "Community Fun Events",
+    alt: "Group of people doing handstand with friends watching"
+  },
+  {
+    src: "/lovable-uploads/761279cd-bc8e-49ce-897a-1b52b2f6e467.png",
+    title: "Pet Friendly Hike",
+    alt: "Group of hikers with dogs enjoying an outdoor trek"
+  },
+  {
+    src: "/lovable-uploads/c7877f89-f497-4cf4-8cb7-63d1104518c3.png",
+    title: "Community Run Event",
+    alt: "Group of people running together in a park"
+  }
+];
 
 export default function EventGallerySection() {
+  // Preload just before render; feel free to add logic to only enable when near viewport
+  useGalleryImagePreloader(galleryImages.map(img => ({ src: img.src })), true);
+
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-custom">
@@ -13,9 +35,18 @@ export default function EventGallerySection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <EventGalleryImage src="/lovable-uploads/a57234a5-bf11-4976-b2b0-beb02e66466d.png" title="Community Fun Events" alt="Group of people doing handstand with friends watching" />
-          <EventGalleryImage src="/lovable-uploads/761279cd-bc8e-49ce-897a-1b52b2f6e467.png" title="Pet Friendly Hike" alt="Group of hikers with dogs enjoying an outdoor trek" />
-          <EventGalleryImage src="/lovable-uploads/c7877f89-f497-4cf4-8cb7-63d1104518c3.png" title="Community Run Event" alt="Group of people running together in a park" />
+          {galleryImages.map((img, idx) => (
+            <div key={img.src}>
+              <EventGalleryImage
+                src={img.src}
+                title={img.title}
+                alt={img.alt}
+                // Options for possible quality and progressive loading in the future
+                quality={idx === 0 ? 'high' : 'medium'}   // First image high quality, rest medium
+                lazy={idx !== 0} // Eager-load first, lazy for others
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

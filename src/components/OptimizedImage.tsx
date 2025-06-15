@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -15,6 +15,12 @@ interface OptimizedImageProps {
   quality?: 'low' | 'medium' | 'high';
   responsive?: boolean;
 }
+
+const skeletonBg: Record<'low'|'medium'|'high', string> = {
+  low: 'bg-gray-200',
+  medium: 'bg-gray-100',
+  high: 'bg-gray-50',
+};
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
@@ -33,58 +39,72 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState('');
+  const observer = useRef<IntersectionObserver | null>(null);
 
-  // For now, let's be conservative and just use the original image format
-  // This prevents 404 errors from trying to load non-existent .webp/.avif files
-  const getOptimizedSrc = useCallback(() => {
-    return src; // Use original source without format conversion for now
-  }, [src]);
+  // For now, just return PNG/Original for src
+  const getOptimizedSrc = useCallback(() => src, [src]);
 
-  const handleLoad = useCallback(() => {
-    setIsLoaded(true);
-    if (onLoad) onLoad();
-    console.log(`✅ Image loaded: ${src}`);
-  }, [onLoad, src]);
-
-  const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    console.warn(`❌ Failed to load image: ${src}`);
-    setHasError(true);
-    if (onError) onError();
-  }, [onError, src]);
-
-  // Intersection Observer for lazy loading
+  // Lazy/eager logic with Intersection Observer
   React.useEffect(() => {
     if (!lazy || priority) {
       setCurrentSrc(getOptimizedSrc());
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setCurrentSrc(getOptimizedSrc());
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: '50px' }
-    );
+    const imgId = `img-${Math.random().toString(36).slice(2, 8)}`;
+    let node: HTMLElement | null = null;
 
-    // We'll observe the placeholder div
-    const placeholder = document.querySelector(`[data-img-src="${src}"]`);
-    if (placeholder) {
-      observer.observe(placeholder);
-    }
+    const doLoad = () => setCurrentSrc(getOptimizedSrc());
 
-    return () => observer.disconnect();
+    // Observe the placeholder for visibility
+    setTimeout(() => {
+      node = document.querySelector(`[data-img-holder="${imgId}"]`);
+      if (node && "IntersectionObserver" in window) {
+        observer.current = new window.IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              doLoad();
+              obs.disconnect();
+            }
+          });
+        }, { rootMargin: '75px' });
+        observer.current.observe(node);
+      } else {
+        // Fallback: load immediately if observer missing
+        doLoad();
+      }
+    }, 0);
+
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
   }, [lazy, priority, getOptimizedSrc, src]);
+
+  const handleLoad = useCallback(() => {
+    setIsLoaded(true);
+    if (onLoad) onLoad();
+    // Remove skeleton only after actual image is loaded
+    console.log(`✅ Image loaded: ${src}`);
+  }, [onLoad, src]);
+
+  const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    setHasError(true);
+    if (onError) onError();
+    console.warn(`❌ Failed to load image: ${src}`);
+  }, [onError, src]);
+
+  // Shutdown the observer if component removed early (avoid memory leaks)
+  React.useEffect(() => {
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, []);
 
   // Fallback for broken images
   if (hasError) {
     return (
       <div 
-        className={`bg-gray-100 flex items-center justify-center ${className}`}
+        className={`flex items-center justify-center ${className} bg-gray-100`}
         style={{ width, height }}
         data-img-error={src}
       >
@@ -96,17 +116,15 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     );
   }
 
-  // Show placeholder while loading
-  if (!currentSrc) {
+  // Show skeleton placeholder while image is loading or waiting to lazy load
+  if (!currentSrc || !isLoaded) {
     return (
-      <div 
-        className={`bg-gray-100 animate-pulse ${className}`}
+      <div
+        className={`flex items-center justify-center ${className} ${skeletonBg[quality]} animate-pulse`}
         style={{ width, height, aspectRatio: width && height ? `${width}/${height}` : undefined }}
-        data-img-src={src}
+        data-img-holder={`img-${src.replace(/[^a-z0-9]/gi,'')}`}
       >
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
-        </div>
+        <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
       </div>
     );
   }
@@ -115,7 +133,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     <img
       src={currentSrc}
       alt={alt}
-      className={`${className} ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+      className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-400`}
       width={width}
       height={height}
       loading={priority ? 'eager' : lazy ? 'lazy' : 'eager'}
@@ -125,6 +143,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       style={{
         aspectRatio: width && height ? `${width}/${height}` : undefined,
       }}
+      sizes={sizes}
     />
   );
 };
