@@ -87,18 +87,20 @@ export default function EventHeroSection({
 
   return (
     <section className="relative min-h-[440px] md:min-h-[500px] flex items-center justify-center section-padding">
-      {/* Background Image with optimization */}
+      {/* Background Image with optimization and blur */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <HeroImage 
-          src="/lovable-uploads/06f13e5b-dd31-41bf-abda-f09377f873fe.png" 
-          alt="Group of fitness enthusiasts at a stadium track" 
-          className="w-full h-full object-cover" 
-          priority
-          width={1400} 
-          height={800}
-        />
+        <div className="w-full h-full">
+          <HeroImage 
+            src="/lovable-uploads/06f13e5b-dd31-41bf-abda-f09377f873fe.png" 
+            alt="Group of fitness enthusiasts at a stadium track" 
+            className="w-full h-full object-cover blur-md md:blur-lg transition-all duration-500"
+            priority
+            width={1400} 
+            height={800}
+          />
+        </div>
         {/* Dark overlay with gradient for better text visibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30" />
       </div>
 
       {/* Optimized floating fitness icons */}
