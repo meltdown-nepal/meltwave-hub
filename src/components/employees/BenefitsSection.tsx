@@ -36,7 +36,8 @@ const benefits = [{
   description: "Compete with your friends and win rewards."
 }];
 const BenefitsSection = () => {
-  return <section className="section-padding overflow-hidden bg-white">
+  return (
+    <section className="section-padding overflow-hidden bg-white">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How You Benefit</h2>
@@ -45,9 +46,10 @@ const BenefitsSection = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-4 max-w-2xl mx-auto">
-          {benefits.map(benefit => <div key={benefit.title} className="flex items-center bg-white py-4 px-4 sm:px-6 rounded-lg shadow hover:shadow-lg transition-all border border-amber-50">
-              
+        {/* Grid for 2 columns on md+ screens, 1 column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          {benefits.map(benefit => (
+            <div key={benefit.title} className="flex items-center bg-white py-4 px-4 sm:px-6 rounded-lg shadow hover:shadow-lg transition-all border border-amber-50">
               <div className="flex-shrink-0 mr-5 flex items-center justify-center w-12 h-12 rounded-full bg-amber-100">
                 {benefit.icon}
               </div>
@@ -55,9 +57,11 @@ const BenefitsSection = () => {
                 <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1">{benefit.title}</h3>
                 <p className="text-sm md:text-base text-gray-700">{benefit.description}</p>
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default BenefitsSection;
