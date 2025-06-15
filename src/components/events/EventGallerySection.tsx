@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import OptimizedImage from "@/components/OptimizedImage";
 
@@ -44,7 +44,20 @@ const GALLERY_IMAGES = [
 
 const SECTION_ID = "event-gallery";
 
+// Simple Fisher-Yates shuffle
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 export default function EventGallerySection() {
+  // Shuffle images only once per mount
+  const shuffledImages = useMemo(() => shuffleArray(GALLERY_IMAGES), []);
+
   return (
     <section id={SECTION_ID} className="bg-white section-padding">
       <div className="container-custom">
@@ -54,7 +67,7 @@ export default function EventGallerySection() {
         </div>
         <Carousel opts={{ align: "start" }}>
           <CarouselContent className="pl-0 md:pl-4">
-            {GALLERY_IMAGES.map((img, idx) => (
+            {shuffledImages.map((img) => (
               <CarouselItem
                 key={img.src}
                 className="basis-11/12 md:basis-1/4 px-2"
@@ -78,3 +91,4 @@ export default function EventGallerySection() {
     </section>
   );
 }
+
