@@ -292,17 +292,17 @@ const ForCompanies = () => {
                   </div>
                   <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-200">
                     <span className="font-medium text-gray-700">Gold</span>
-                    <span className="text-sm text-amber-600">+ Swimming, Mental Health</span>
+                    <span className="text-sm text-amber-600">+ Golfing, Yoga, Rock Climbing</span>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
                     <span className="font-medium text-gray-700">Platinum</span>
-                    <span className="text-sm text-blue-600">+ 1-on-1 Services</span>
+                    <span className="text-sm text-blue-600">+ Swimming, Mental Health, Pilates</span>
                   </div>
                 </div>
 
                 <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
                   <div className="text-center">
-                    <p className="text-sm font-medium text-green-700">40-50% Savings</p>
+                    <p className="text-sm font-medium text-green-700">30-40% Savings</p>
                     <p className="text-xs text-green-600">Below market rates</p>
                   </div>
                 </div>
