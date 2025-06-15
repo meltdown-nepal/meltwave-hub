@@ -125,17 +125,91 @@ const MeltFit = () => {
               Choose the right program to match your goals, fitness level, and preferences.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {programCards.map((prog, i) => (
-              <Card key={i} className="flex flex-col items-center p-7 text-center hover:shadow-lg transition-shadow min-h-[265px]">
-                <div>{prog.icon}</div>
-                <h3 className="text-lg md:text-xl font-bold mb-2">{prog.title}</h3>
-                <p className="text-gray-600 mb-4">{prog.description}</p>
+          <div className="space-y-12 max-w-4xl mx-auto">
+            {/* Group Classes */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
+              <div className="flex-shrink-0">
+                <LayoutGrid className="h-10 w-10 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Group Strength and Conditioning Classes</h3>
+                <p className="text-gray-700 mb-2">
+                  Our signature group classes focus on building real-world strength, stamina, and movement. Scalable for all fitness levels—workouts are personalized so everyone feels challenged and included.
+                </p>
+                <ul className="mb-3 pl-5 list-disc text-gray-600">
+                  <li>Functional strength and endurance training</li>
+                  <li>Mobility and injury-prevention focused</li>
+                  <li>Supportive community atmosphere</li>
+                  <li>Flexible class timings mornings and evenings</li>
+                </ul>
                 <Button size="sm" asChild>
-                  <Link to={prog.ctaLink}>{prog.cta}</Link>
+                  <Link to="/contact">See Class Timings</Link>
                 </Button>
-              </Card>
-            ))}
+              </div>
+            </div>
+            {/* Transformation Program */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
+              <div className="flex-shrink-0">
+                <Grid2x2 className="h-10 w-10 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">6-Week Transformation Program</h3>
+                <p className="text-gray-700 mb-2">
+                  An intensive, results-driven system combining group training, 1-on-1 nutrition coaching, and accountability. Designed for those who want to see significant change in just 6 weeks—and build the habits to keep it for life.
+                </p>
+                <ul className="mb-3 pl-5 list-disc text-gray-600">
+                  <li>6 weeks of focused group training</li>
+                  <li>Nutrition plan tailored to you</li>
+                  <li>Weekly check-ins and progress tracking</li>
+                  <li>Community and coach support all the way</li>
+                </ul>
+                <Button size="sm" asChild>
+                  <Link to="/contact">Apply for Transformation Program</Link>
+                </Button>
+              </div>
+            </div>
+            {/* Corrective Exercise */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
+              <div className="flex-shrink-0">
+                <LayoutList className="h-10 w-10 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Corrective Exercise Program</h3>
+                <p className="text-gray-700 mb-2">
+                  A gentle, movement-quality-first program ideal for seniors or anyone coming back from injuries—focused on moving well, reducing pain, and rebuilding confidence.
+                </p>
+                <ul className="mb-3 pl-5 list-disc text-gray-600">
+                  <li>Custom corrective exercises for joints and muscles</li>
+                  <li>Open to all ages, perfect for seniors</li>
+                  <li>One-on-one attention in a group setting</li>
+                  <li>Progress at your own comfortable pace</li>
+                </ul>
+                <Button size="sm" asChild>
+                  <Link to="/contact">Learn More About Corrective Training</Link>
+                </Button>
+              </div>
+            </div>
+            {/* Personal Training */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
+              <div className="flex-shrink-0">
+                <List className="h-10 w-10 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Personal Training</h3>
+                <p className="text-gray-700 mb-2">
+                  Get focused, personalized support with 1-on-1 coaching—perfect for individual goals, rehabilitation, or sport-specific improvement. You set the schedule and the goal, your coach guides you all the way.
+                </p>
+                <ul className="mb-3 pl-5 list-disc text-gray-600">
+                  <li>Custom training plans for your goals</li>
+                  <li>Flexible scheduling</li>
+                  <li>Expert accountability and motivation</li>
+                  <li>Open to all ages and needs</li>
+                </ul>
+                <Button size="sm" asChild>
+                  <Link to="/contact">Book a Free Consultation</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
