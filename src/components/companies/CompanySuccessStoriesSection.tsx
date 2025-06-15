@@ -17,7 +17,7 @@ const successStories = [
     title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     name: "Bibha Tandukar",
     role: "Project Manager, Young Innovation",
-    image: "/lovable-uploads/8c61e61c-2c08-4a78-8212-aaef826700a5.png",
+    image: "/lovable-uploads/75c33a27-3bcf-4168-b101-b170d7ca4ac7.png", // UPDATED to new Bibha photo
     linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/",
   },
   {
