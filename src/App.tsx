@@ -9,6 +9,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import SmartChatbot from "./components/chatbot/SmartChatbot";
 
 // Eagerly load critical pages
 import EnhancedHome from "./pages/EnhancedHome";
@@ -76,6 +77,9 @@ function AppContent() {
         </Suspense>
       </main>
       <Footer />
+      
+      {/* Smart Chatbot - Available on all pages */}
+      <SmartChatbot />
     </>
   );
 }
