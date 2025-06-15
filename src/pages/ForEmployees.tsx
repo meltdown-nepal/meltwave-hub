@@ -28,7 +28,8 @@ const employeeTestimonials = [
 
 const ForEmployees = () => {
   return (
-    <div>
+    <div className="min-h-screen w-full bg-gradient-to-b from-amber-50 via-yellow-50 to-white">
+      {/* Whole-page background applied here */}
       <HeroSection />
       <BenefitsSection />
       <ProgramsSection />

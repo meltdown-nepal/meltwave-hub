@@ -4,7 +4,7 @@ import ProgramCategoryTabs from "./ProgramCategoryTabs";
 
 const ProgramsSection = () => {
   return (
-    <section className="section-padding bg-gradient-to-b from-white via-yellow-50 to-white overflow-hidden">
+    <section className="section-padding overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-14 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Wellness Programs Available To You</h2>

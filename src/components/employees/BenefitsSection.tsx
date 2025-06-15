@@ -3,31 +3,7 @@ import React from 'react';
 
 const BenefitsSection = () => {
   return (
-    <section className="relative section-padding overflow-hidden">
-      {/* Gradient BG Layer */}
-      <div
-        className="absolute inset-0 -z-10"
-        aria-hidden="true"
-      >
-        {/* Even lighter radial amber/yellow background */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-amber-50 via-yellow-50 to-white opacity-100" />
-        {/* Softer Blurred Accent Shape */}
-        <div className="absolute left-1/2 top-10 -translate-x-1/2 w-[48rem] h-[32rem] rounded-full bg-amber-100 opacity-15 blur-3xl pointer-events-none" />
-        {/* Extra subtle geometric SVG flare */}
-        <svg
-          width="900"
-          height="400"
-          viewBox="0 0 900 400"
-          fill="none"
-          className="absolute right-0 top-0 opacity-10 pointer-events-none hidden sm:block"
-          aria-hidden="true"
-        >
-          <circle cx="700" cy="100" r="130" fill="#FFD838" fillOpacity="0.14" />
-          <ellipse cx="850" cy="80" rx="90" ry="70" fill="#FCB017" fillOpacity="0.08" />
-          <circle cx="650" cy="340" r="70" fill="#FCB017" fillOpacity="0.08" />
-        </svg>
-      </div>
-
+    <section className="section-padding overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How You Benefit</h2>
