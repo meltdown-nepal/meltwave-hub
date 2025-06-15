@@ -66,14 +66,14 @@ const PackageDetail = () => {
     <div
       className="min-h-screen w-full"
       style={{
-        // Multi-stop gradient for a soft, blended 60-40 transition.
+        // Multi-stop gradient for a soft, blended 60-40 transition with a lighter yellow.
         background: `linear-gradient(
           180deg,
           #fff 0%,
           #fff 51%,
           #fffbe9 60%,
-          #ffd838 72%,
-          #FFD838 100%
+          #FFF7B2 72%,
+          #FFF7B2 100%
         )`
       }}
     >
