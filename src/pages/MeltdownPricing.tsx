@@ -27,12 +27,12 @@ const packages = [
     highlight: true // Most Popular
   },
   {
-    name: "PREMIUM",
+    name: "PLATINUM",
     offline: "Rs.14,000/month",
     online: ["Rs.16,500/3 months", "Rs.27,000/6 months"],
     centers: "60+ centers",
-    color: "bg-green-50 border-green-300",
-    buttonStyle: "border-2 border-green-400 text-green-900 hover:bg-green-100 focus:ring-2 focus:ring-green-400",
+    color: "bg-blue-50 border-blue-300",
+    buttonStyle: "border-2 border-blue-400 text-blue-900 hover:bg-blue-100 focus:ring-2 focus:ring-blue-400",
     highlight: false
   }
 ];
@@ -55,7 +55,7 @@ const features = [
 
 const MeltdownPricing = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-green-50 py-10">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -101,16 +101,20 @@ const MeltdownPricing = () => {
               <CardContent className="flex flex-col items-center mt-2 mb-2 px-0">
                 <div className="text-base font-medium mb-3 text-gray-700">
                   <span className="font-medium text-gray-700">Facilities:</span>
-                  <span className="font-semibold ml-1 gradient-text">{pkg.centers}</span>
+                  <span className={`font-semibold ml-1 gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}>{pkg.centers}</span>
                 </div>
                 <Button
                   size="lg"
                   asChild
                   variant={pkg.highlight ? "default" : "outline"}
-                  className={`mt-2 w-full max-w-xs ${pkg.buttonStyle} ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""}`}
+                  className={`mt-2 w-full max-w-xs ${pkg.buttonStyle} ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""} ${pkg.name === "PLATINUM" ? "bg-blue-400 text-white font-bold shadow-md hover:bg-blue-300 focus:ring-2 focus:ring-blue-400" : ""}`}
                 >
                   <Link to="/contact">
-                    {pkg.highlight ? "Choose Gold" : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
+                    {pkg.highlight
+                      ? "Choose Gold"
+                      : pkg.name === "PLATINUM"
+                        ? "Choose Platinum"
+                        : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
                   </Link>
                 </Button>
               </CardContent>
@@ -128,7 +132,7 @@ const MeltdownPricing = () => {
                     className={`text-lg lg:text-xl font-bold text-center px-2 py-4
                     ${pkg.highlight
                       ? "bg-yellow-100 dark:bg-yellow-200 text-yellow-800 ring-2 ring-yellow-400"
-                      : i === 0 ? "bg-gray-100 text-gray-700" : "bg-green-100 text-green-900"
+                      : i === 0 ? "bg-gray-100 text-gray-700" : (pkg.name === "PLATINUM" ? "bg-blue-100 text-blue-900" : "bg-green-100 text-green-900")
                     }`}>
                     {pkg.name}
                   </TableHead>
@@ -146,8 +150,8 @@ const MeltdownPricing = () => {
                       {feature.notes ? (
                         <span className="inline-block font-semibold text-gray-800">{feature.notes[pIdx]}</span>
                       ) : hasFeature ? (
-                        <span className="inline-block rounded-full bg-green-100 p-1">
-                          <CheckCircle2 className="text-green-600 h-6 w-6" aria-label="Included" />
+                        <span className={`inline-block rounded-full ${pIdx === 2 ? "bg-blue-100" : "bg-green-100"} p-1`}>
+                          <CheckCircle2 className={`${pIdx === 2 ? "text-blue-600" : "text-green-600"} h-6 w-6`} aria-label="Included" />
                         </span>
                       ) : (
                         <span className="inline-block rounded-full bg-gray-100 p-1">
