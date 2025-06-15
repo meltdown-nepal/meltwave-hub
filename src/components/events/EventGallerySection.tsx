@@ -1,43 +1,34 @@
-
 import React from "react";
 import OptimizedImage from "@/components/OptimizedImage";
-
 const EVENTS = [{
   key: "wednesday-run",
   title: "Wednesday Run Clubs",
   subtitle: "Join us for our weekly community runs!",
-  images: [
-    {
-      src: "/lovable-uploads/55217816-bf30-4150-a365-8d449c852bc2.png",
-      title: "Wednesday Run Club Warm-up",
-      alt: "People in active wear doing warm-up stretches in a park with birds flying overhead and Jeep showroom in background"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
-      title: "City evening fun run",
-      alt: "People running in a city park at dusk"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-      title: "Team Relay Race",
-      alt: "Group of athletes performing relay handoff"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80",
-      title: "Mindfulness in Nature",
-      alt: "Mindfulness meditation by a flowing river"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      title: "Nature Wellness Retreat",
-      alt: "Tranquil lake surrounded by vibrant trees"
-    },
-    {
-      src: "/lovable-uploads/d0ecc7b2-ea5e-4f69-a192-950f0b573e9b.png",
-      title: "Wednesday Run Club at Meltdown",
-      alt: "Participants gathering outside a coffeeshop for Wednesday Run Club event"
-    }
-  ]
+  images: [{
+    src: "/lovable-uploads/55217816-bf30-4150-a365-8d449c852bc2.png",
+    title: "Wednesday Run Club Warm-up",
+    alt: "People in active wear doing warm-up stretches in a park with birds flying overhead and Jeep showroom in background"
+  }, {
+    src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+    title: "City evening fun run",
+    alt: "People running in a city park at dusk"
+  }, {
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+    title: "Team Relay Race",
+    alt: "Group of athletes performing relay handoff"
+  }, {
+    src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80",
+    title: "Mindfulness in Nature",
+    alt: "Mindfulness meditation by a flowing river"
+  }, {
+    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    title: "Nature Wellness Retreat",
+    alt: "Tranquil lake surrounded by vibrant trees"
+  }, {
+    src: "/lovable-uploads/d0ecc7b2-ea5e-4f69-a192-950f0b573e9b.png",
+    title: "Wednesday Run Club at Meltdown",
+    alt: "Participants gathering outside a coffeeshop for Wednesday Run Club event"
+  }]
 }, {
   key: "pet-hike",
   title: "Pet Friendly Hikes",
@@ -63,85 +54,28 @@ const EVENTS = [{
   key: "java-run",
   title: "Java Run Venture",
   subtitle: "Our biggest community run, in partnership with Himalayan Java.",
-  images: [
-    {
-      src: "/lovable-uploads/5ef9d378-6d8a-42fe-8412-5e9955e47beb.png",
-      title: "Team posing at Java Run Venture 2025",
-      alt: "Four runners posing with TEAM 50 bibs in front of Java Run Venture 2025 event banner"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80",
-      title: "Fun Community Gathering",
-      alt: "People gathered running and drinking coffee"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-      title: "Team Building Exercise",
-      alt: "Coworkers engaging in race with big smiles"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
-      title: "Outdoor Meditation",
-      alt: "People doing yoga outdoors with mountain backdrop"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
-      title: "Dance Wellness Event",
-      alt: "Happy group dancing together outside"
-    }
-  ]
+  images: [{
+    src: "/lovable-uploads/5ef9d378-6d8a-42fe-8412-5e9955e47beb.png",
+    title: "Team posing at Java Run Venture 2025",
+    alt: "Four runners posing with TEAM 50 bibs in front of Java Run Venture 2025 event banner"
+  }, {
+    src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80",
+    title: "Fun Community Gathering",
+    alt: "People gathered running and drinking coffee"
+  }, {
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+    title: "Team Building Exercise",
+    alt: "Coworkers engaging in race with big smiles"
+  }, {
+    src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
+    title: "Outdoor Meditation",
+    alt: "People doing yoga outdoors with mountain backdrop"
+  }, {
+    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+    title: "Dance Wellness Event",
+    alt: "Happy group dancing together outside"
+  }]
 }];
-
 export default function EventGallerySection() {
-  return (
-    <section className="relative section-padding bg-gradient-to-br from-yellow-50/75 to-amber-50/50 overflow-hidden">
-      <div className="container-custom z-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
-          {EVENTS.map((ev) => (
-            <div
-              key={ev.key}
-              className="rounded-2xl bg-gradient-to-br from-white to-yellow-50 shadow-lg border border-primary/20 flex flex-col"
-            >
-              {/* Main event banner image */}
-              <div className="relative aspect-video w-full rounded-t-2xl overflow-hidden">
-                <OptimizedImage
-                  src={ev.images[0].src}
-                  alt={ev.images[0].alt || ev.images[0].title}
-                  className="w-full h-full object-cover"
-                  width={600}
-                  height={340}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={false}
-                />
-              </div>
-              {/* Event text */}
-              <div className="p-5">
-                <h3 className="text-2xl font-bold mb-1">{ev.title}</h3>
-                <div className="text-primary/80 text-base mb-3">{ev.subtitle}</div>
-                {/* Gallery grid for event images */}
-                <div className="grid grid-cols-2 gap-2 mt-2">
-                  {ev.images.slice(1).map((img, idx) => (
-                    <div key={img.src + idx} className="rounded-lg overflow-hidden bg-gray-100 aspect-video shadow-sm">
-                      <OptimizedImage
-                        src={img.src}
-                        alt={img.alt || img.title}
-                        className="w-full h-full object-cover"
-                        width={300}
-                        height={200}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        priority={false}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Floating deco dots */}
-      <div className="absolute -bottom-6 left-4 w-32 h-32 bg-amber-200/50 blur-3xl rounded-full pointer-events-none"></div>
-      <div className="absolute -top-8 right-6 w-28 h-20 bg-primary/30 blur-2xl rounded-full pointer-events-none"></div>
-    </section>
-  );
+  return;
 }
