@@ -103,13 +103,25 @@ const SmartChatbot = () => {
       {/* Floating Action Button */}
       {!isOpen && (
         <div className="fixed bottom-6 right-6 z-50">
-          <Button
-            onClick={toggleChatbot}
-            className="w-16 h-16 rounded-full bg-white hover:bg-gray-50 shadow-lg transition-all duration-300 hover:scale-110 border"
-            size="icon"
-          >
-            <ChatbotCharacter size="large" animate />
-          </Button>
+          <div className="relative">
+            {/* Pulse ring animation */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-300 to-orange-300 opacity-30 animate-ping"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-200 to-orange-200 opacity-40 animate-pulse"></div>
+            
+            {/* Main button */}
+            <Button
+              onClick={toggleChatbot}
+              className="relative w-16 h-16 rounded-full bg-white hover:bg-gray-50 shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-yellow-200 hover:border-yellow-300 group"
+              size="icon"
+            >
+              <ChatbotCharacter size="large" animate />
+              
+              {/* Tooltip */}
+              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                Chat with Meltzy! 💬
+              </div>
+            </Button>
+          </div>
         </div>
       )}
 
