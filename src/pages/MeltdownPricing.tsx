@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
@@ -194,3 +195,4 @@ const MeltdownPricing = () => {
     </div>;
 };
 export default MeltdownPricing;
+
