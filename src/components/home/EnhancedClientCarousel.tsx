@@ -116,7 +116,7 @@ const EnhancedClientCarousel = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300 opacity-0"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-opacity duration-300 opacity-0"
                     width={180}
                     height={80}
                     loading={index > 8 ? 'lazy' : 'eager'}
@@ -124,13 +124,7 @@ const EnhancedClientCarousel = () => {
                     onLoad={handleImageLoad}
                     onError={handleImageError}
                     style={{ 
-                      transition: 'opacity 0.3s ease, transform 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.05)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1)';
+                      transition: 'opacity 0.3s ease'
                     }}
                   />
                 </div>
@@ -154,10 +148,6 @@ const EnhancedClientCarousel = () => {
           backface-visibility: hidden;
           perspective: 1000px;
           transform: translateZ(0);
-        }
-
-        .animate-seamless-scroll:hover {
-          animation-play-state: paused;
         }
 
         @media (prefers-reduced-motion: reduce) {
