@@ -23,13 +23,15 @@ export default function EventGalleryModal({
   images,
   initialIndex = 0
 }: Props) {
+  //  Guard: If not open, do not render modal at all
+  if (!open) return null;
+  if (!images || images.length === 0) return null;
+
   const [currentIdx, setCurrentIdx] = useState(initialIndex);
 
   useEffect(() => {
     if (open) setCurrentIdx(initialIndex);
   }, [open, initialIndex]);
-
-  if (images.length === 0) return null;
 
   const prev = () =>
     setCurrentIdx((idx) => (idx === 0 ? images.length - 1 : idx - 1));
