@@ -1,7 +1,7 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Images } from "lucide-react";
 import OptimizedImage from "@/components/OptimizedImage";
 
 type GalleryImage = {
@@ -25,7 +25,7 @@ export default function EventGalleryModal({
 }: Props) {
   const [currentIdx, setCurrentIdx] = useState(initialIndex);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) setCurrentIdx(initialIndex);
   }, [open, initialIndex]);
 
@@ -51,7 +51,7 @@ export default function EventGalleryModal({
         <div className="flex items-center justify-center min-h-[60vh] relative">
           <button
             aria-label="Prev"
-            className="absolute left-1 top-1/2 -translate-y-1/2 z-10 bg-gray-800/70 hover:bg-gray-700 p-2 rounded-full"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-gray-800/70 hover:bg-gray-700 p-2 rounded-full"
             onClick={prev}
           >
             <ChevronLeft className="w-7 h-7 text-white" />
@@ -67,7 +67,7 @@ export default function EventGalleryModal({
           />
           <button
             aria-label="Next"
-            className="absolute right-1 top-1/2 -translate-y-1/2 z-10 bg-gray-800/70 hover:bg-gray-700 p-2 rounded-full"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-gray-800/70 hover:bg-gray-700 p-2 rounded-full"
             onClick={next}
           >
             <ChevronRight className="w-7 h-7 text-white" />
@@ -78,27 +78,30 @@ export default function EventGalleryModal({
           <div className="text-xs text-gray-200 mt-2">{current.alt}</div>
         </div>
         {/* Thumbnail Strip */}
-        <div className="flex overflow-x-auto gap-2 px-3 pb-3 pt-2">
-          {images.map((img, idx) => (
-            <button
-              key={img.src}
-              className={`transition border-2 rounded-md ${idx === currentIdx ? "border-yellow-400" : "border-transparent"}`}
-              tabIndex={0}
-              aria-label={`Go to image ${idx + 1}`}
-              onClick={() => setCurrentIdx(idx)}
-            >
-              <OptimizedImage
-                src={img.src}
-                alt={img.alt}
-                className={`object-cover w-20 h-14 rounded-md ${idx === currentIdx ? "ring ring-yellow-400" : ""}`}
-                width={80}
-                height={56}
-                sizes="64px"
-              />
-            </button>
-          ))}
-        </div>
+        {images.length > 1 && (
+          <div className="flex overflow-x-auto gap-2 px-3 pb-3 pt-2">
+            {images.map((img, idx) => (
+              <button
+                key={img.src}
+                className={`transition border-2 rounded-md ${idx === currentIdx ? "border-yellow-400" : "border-transparent"}`}
+                tabIndex={0}
+                aria-label={`Go to image ${idx + 1}`}
+                onClick={() => setCurrentIdx(idx)}
+              >
+                <OptimizedImage
+                  src={img.src}
+                  alt={img.alt}
+                  className={`object-cover w-20 h-14 rounded-md ${idx === currentIdx ? "ring ring-yellow-400" : ""}`}
+                  width={80}
+                  height={56}
+                  sizes="64px"
+                />
+              </button>
+            ))}
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
 }
+
