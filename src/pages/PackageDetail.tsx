@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -30,10 +29,13 @@ const packageDetailMap: Record<string, {
   "health-nutrition": {
     name: "Health and Nutrition Package",
     howItWorks: [
-      "Fill out your wellness profile for tailored advice.",
-      "Receive your custom nutrition and meal plan.",
-      "Periodic chat with certified nutritionist for check-ins.",
-      "Get grocery lists and simple, healthy recipes.",
+      "You enrol in a package of your choice",
+      "You fill in your additional key details like food preferences, preferred time to contact, any medical issues etc",
+      "Coach calls you within 24 hours at your preferred time",
+      "Coach understands your goals, sets expectations about how this will work",
+      "Coach evaluates and prepares the best plan for you",
+      "Coach assesses your weekly progress and makes course adjustments",
+      "You get results, yay!"
     ],
     whyChoose: [
       "Professional nutritional support for all goals.",
