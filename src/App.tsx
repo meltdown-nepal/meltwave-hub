@@ -1,4 +1,3 @@
-
 import React, { useState, Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -34,6 +33,7 @@ const Careers = lazy(() => import("./pages/Careers"));
 const AnalyticsPage = lazy(() => import("./pages/Analytics"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Pricing = lazy(() => import("./pages/Pricing"));
+const MeltdownPricing = lazy(() => import("./pages/MeltdownPricing")); // Added
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -72,6 +72,7 @@ function AppContent() {
             <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/meltdown-pricing" element={<MeltdownPricing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
