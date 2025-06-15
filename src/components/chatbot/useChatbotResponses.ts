@@ -92,7 +92,7 @@ export const useChatbotResponses = () => {
     }
   };
 
-  // Enhanced knowledge base that includes page-specific responses
+  // Enhanced knowledge base now covers ALL important website content
   const createPageAwareKnowledgeBase = (pageContent?: PageContent): KnowledgeItem[] => {
     const baseKnowledge: KnowledgeItem[] = [];
 
@@ -115,49 +115,77 @@ export const useChatbotResponses = () => {
       baseKnowledge.push(...pageSpecificKnowledge);
     }
 
-    // Add general knowledge
+    // NEW: Website-wide knowledge base—covers all major pages, features, and unique value
     const generalKnowledge: KnowledgeItem[] = [
+      // Home Page
       {
-        content: "Oh my goodness, our packages are absolutely amazing! 🎁 We have three fantastic options: Basic (20+ gyms - perfect for getting started!), Gold (40+ wellness options including yoga, mindfulness, boxing, group classes - so much fun!), and Platinum (70+ options including swimming, mental health counseling, physiotherapy - the ultimate wellness experience!). Each package gives you magical single-scan access to multiple wellness services! ✨",
-        keywords: ['package', 'packages', 'plan', 'plans', 'membership', 'subscription', 'basic', 'gold', 'platinum', 'gym', 'yoga', 'swimming', 'counseling', 'options', 'services included', 'what do i get'],
-        category: 'Services',
-        priority: 9
+        content: "Meltdown's home page showcases how we provide innovative wellness solutions for companies and employees. Discover multiple gym access, wellbeing challenges, and a comprehensive wellness app—everything centered around joyful, active living for all!",
+        keywords: ['home', 'homepage', 'meltdown', 'main', 'start', 'empower', 'wellness solutions'],
+        category: 'Home',
+        priority: 14
       },
+      // Pricing Page
       {
-        content: "Get ready to be amazed! 🚀 Our implementation is lightning-fast - we can set up your corporate wellness system in less than a day! That's faster than ordering pizza! 🍕 Our super friendly onboarding team provides admin access, helps with employee activation, and offers ongoing support throughout the whole journey. It's like having wellness wizards on your team! ✨",
-        keywords: ['implementation', 'setup', 'onboarding', 'how long', 'time to implement', 'quick setup', 'fast implementation', 'getting started', 'timeline', 'launch'],
-        category: 'Implementation',
-        priority: 8
-      },
-      {
-        content: "Let's talk about the sweet stuff - our pricing! 💰✨ We use a subscription-based model with exclusive corporate rates that'll make your budget smile! Companies pay a monthly fee for system access, and here's the best part - employees get subsidized packages at more than half the regular cost! It's like getting a VIP discount! We offer 6-month minimum commitments to keep these exclusive rates super special. 🎉",
-        keywords: ['cost', 'price', 'pricing', 'expensive', 'cheap', 'budget', 'investment', 'subscription', 'monthly', 'yearly', 'corporate rates', 'subsidized', 'discount', 'affordable'],
+        content: "Our pricing is fully transparent: Basic, Gold, and Platinum packages offer corporate rates with access to 20, 40, or up to 70+ wellness options respectively. Packages include gyms, group classes, yoga, swimming, counseling, physiotherapy, and more. Visit the Meltdown Pricing page for detailed comparisons—each plan is designed for maximum flexibility and value.",
+        keywords: ['pricing', 'price', 'cost', 'rates', 'compare', 'packages', 'plans', 'basic', 'gold', 'platinum'],
         category: 'Pricing',
-        priority: 9
+        priority: 15
       },
+      // Employee Page
       {
-        content: "Oh, this is where the magic happens! ✨ We boost engagement through super fun gamification with leaderboards (who doesn't love a little friendly competition?), wellness challenges that'll get everyone excited, step tracking, amazing rewards, and recognition systems that make everyone feel like wellness champions! 🏆 Our community-building approach creates accountability partners within teams and makes movement the coolest thing in the workplace! 🎯",
-        keywords: ['engagement', 'participation', 'motivation', 'gamification', 'challenges', 'leaderboard', 'competition', 'rewards', 'recognition', 'team building', 'community', 'accountability'],
+        content: "Employees love flexible wellness with Meltdown! Access 20+ gyms (Basic), 40+ wellness options (Gold), or 70+ amenities (Platinum). Enjoy mental wellbeing, fitness challenges, community, leaderboards, rewards, and a mobile app for easy check-ins. Hear real employee stories on our employees page!",
+        keywords: ['employee', 'for employees', 'perks', 'wellbeing', 'testimonials', 'stories', 'mobile app', 'checkin', 'leaderboard', 'community', 'rewards'],
+        category: 'Employees',
+        priority: 13
+      },
+      // Corporate Wellness Page
+      {
+        content: "Meltdown's Corporate Wellness platform transforms company culture with tailored wellness memberships, centralized admin control, gamification, ROI analytics, and rapid onboarding. Trusted by IT, education, hospitality, and FMCG companies—contact us to bring Meltdown to your workplace.",
+        keywords: ['corporate', 'companies', 'workplace', 'admin', 'setup', 'wellness program', 'gamification', 'roi', 'analytics', 'retention', 'engagement'],
+        category: 'Corporate Wellness',
+        priority: 15
+      },
+      // Events Page
+      {
+        content: "Our Events connect teams and communities via runs, group challenges, fun activities, and environmental action! Check the Events page for wellness runs, Java coffee teaming, and tree-planting partnerships—let us run your next event!",
+        keywords: ['event', 'events', 'run', 'challenges', 'team building', 'gallery', 'photos', 'environment', 'community', 'wellness event'],
+        category: 'Events',
+        priority: 13
+      },
+      // App/Platform
+      {
+        content: "The Meltdown app is your wellness command center: scan to check in at multiple gyms and studios, track leaderboard ranks, join challenges, and monitor your wellbeing stats—all from your phone!",
+        keywords: ['app', 'mobile', 'platform', 'scan', 'check-in', 'dashboard', 'leaderboard', 'stats', 'tracking', 'app download'],
+        category: 'App',
+        priority: 13
+      },
+      // Providers
+      {
+        content: "Meltdown partners with best-in-class providers—gyms, fitness instructors, yoga studios, mental health counselors, and more! Providers can join our network to grow their reach and serve top employers.",
+        keywords: ['provider', 'wellness provider', 'partner', 'gyms', 'studios', 'join', 'grow', 'partnership'],
+        category: 'Providers',
+        priority: 11
+      },
+      // Success Stories & Testimonials
+      {
+        content: "Real people, real results: Meltdown clients rave about improved motivation, positive work culture, easy gym access, and diverse wellness. Read stories from Jyoti Pokharel, Bibha Tandukar, Pabin Karki, Chiring Sherpa and more on the testimonials section.",
+        keywords: ['testimonials', 'success', 'stories', 'reviews', 'feedback', 'jyoti', 'bibha', 'pabin', 'chiring', 'clients', 'case studies'],
+        category: 'Testimonials',
+        priority: 12
+      },
+      // General Product/Offering
+      {
+        content: "Meltdown offers membership-based access to: gyms, yoga, Zumba, boxing, golf simulation, swimming, physiotherapy, Pilates, group classes, and counseling—all via a single subscription for each user (corporate or employee).",
+        keywords: ['services', 'included', 'offerings', 'membership', 'access', 'features', 'what', 'included', 'gym', 'yoga', 'zumba', 'boxing', 'group', 'counseling', 'pilates', 'physiotherapy', 'swimming'],
+        category: 'Services',
+        priority: 15
+      },
+      // Engagement, Gamification & ROI
+      {
+        content: "Meltdown's platform makes wellness engaging with gamification—challenges, leaderboards, achievements, and community-building for any size workforce. Detailed reporting tracks ROI, participation, cost savings, and wellness outcomes for your organization.",
+        keywords: ['engagement', 'gamification', 'roi', 'leaderboard', 'metrics', 'participation', 'report', 'challenge', 'engage', 'progress'],
         category: 'Engagement',
-        priority: 8
-      },
-      {
-        content: "Numbers that'll make you happy dance! 📊💃 Our ROI measurement includes super detailed reports on employee participation, check-ins, step counts, cost savings, wellness trends, and engagement metrics. We provide monthly/quarterly analytics that show the amazing impact of your wellness investment - it's like getting a progress report card, but way more fun! 📈✨",
-        keywords: ['roi', 'return on investment', 'metrics', 'analytics', 'reports', 'measurement', 'tracking', 'statistics', 'data', 'results', 'impact', 'value', 'effectiveness'],
-        category: 'Analytics',
-        priority: 7
-      },
-      {
-        content: "Our mission is so close to my heart! 💖 We're here to create innovative solutions that empower people to lead active, joyful lifestyles and connect through wellness. We dream of a world where everyone engages in and connects through wellness - imagine how amazing that would be! 🌍✨",
-        keywords: ['mission', 'vision', 'purpose', 'goal', 'why meltdown', 'company values', 'philosophy', 'believe', 'mission statement'],
-        category: 'Mission',
-        priority: 6
-      },
-      {
-        content: "We're making magic happen with 13+ amazing companies across IT, Education, Hospitality, and FMCG sectors! 🌟 Our clients are seeing incredible improvements in employee satisfaction, fewer sick days, better team bonding, and increased productivity. It's like watching workplace transformation happen in real-time! The success stories just keep coming! 🎉",
-        keywords: ['clients', 'customers', 'companies', 'success stories', 'case studies', 'testimonials', 'experience', 'track record', 'results', 'industries', 'sectors'],
-        category: 'Success Stories',
-        priority: 7
+        priority: 13
       }
     ];
 
