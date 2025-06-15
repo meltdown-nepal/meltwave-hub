@@ -43,11 +43,9 @@ const WellnessAppShowcaseSection: React.FC = () => {
               key={screen.title}
               className="
                 flex flex-col items-center
-                bg-white/60 rounded-3xl shadow-xl border border-amber-100
-                px-4 py-6 md:px-6 md:py-8
-                w-full max-w-[320px]
                 animate-fade-in
                 transition-transform hover:scale-105
+                w-full max-w-[320px]
               "
               style={{ animationDelay: `${0.1 + 0.08 * i}s` }}
             >
