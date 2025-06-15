@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Minimize2, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ChatbotCharacter } from './ChatbotCharacter';
 import { ChatMessage } from './ChatMessage';
 import { useChatbotResponses } from './useChatbotResponses';
+import { usePageContext } from '../../hooks/usePageContext';
 
 interface Message {
   id: string;
@@ -22,19 +22,47 @@ const SmartChatbot = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   const { getResponse } = useChatbotResponses();
+  const { pageContent } = usePageContext();
 
   // Welcome message when chatbot opens
   useEffect(() => {
     if (isOpen && messages.length === 0) {
+      let welcomeContent = "Hey there! 👋 I'm Meltzy, your friendly wellness buddy! ✨\n\nI'm super excited to help you discover amazing things about Meltdown's wellness platform! ";
+      
+      // Add page-specific welcome message
+      if (pageContent) {
+        switch (pageContent.pageType) {
+          case 'academy':
+            welcomeContent += "I can see you're exploring our Academy certification programs! I'm here to help with any questions about our CSCS®, CES®, and Sports Nutrition courses. 🎓";
+            break;
+          case 'corporate-wellness':
+            welcomeContent += "I notice you're checking out our Corporate Wellness solutions! I can help explain how we transform workplace wellness for companies like yours. 🏢";
+            break;
+          case 'events':
+            welcomeContent += "You're looking at our Events page! I can tell you all about our exciting wellness events and team-building activities. 🎉";
+            break;
+          case 'employees':
+            welcomeContent += "Perfect! You're exploring employee benefits. I can show you all the amazing perks and wellness options available to you! 👥";
+            break;
+          case 'contact':
+            welcomeContent += "You're on our Contact page! While you can reach our team directly here, I'm also ready to answer any questions right away! 📞";
+            break;
+          default:
+            welcomeContent += "I can help you understand everything on this page and answer any questions about our services! 🌟";
+        }
+      }
+      
+      welcomeContent += "\n\nI can help with:\n🏋️‍♀️ Questions about what you see on this page\n💰 Pricing and packages\n🌟 Wellness programs & features\n⚡ Getting started with Meltdown\n🎯 Employee engagement strategies\n\nWhat would you love to explore together? 😊";
+
       const welcomeMessage: Message = {
         id: '1',
         type: 'bot',
-        content: "Hey there! 👋 I'm Meltzy, your friendly wellness buddy! ✨\n\nI'm super excited to help you discover amazing things about:\n\n🏋️‍♀️ Fun corporate wellness programs\n💰 Sweet pricing deals & packages\n🌟 Awesome employee benefits\n⚡ Our cool technology platform\n🚀 Getting started with Meltdown\n\nWhat would you love to know more about? I'm all ears! 😊",
+        content: welcomeContent,
         timestamp: new Date()
       };
       setMessages([welcomeMessage]);
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen, messages.length, pageContent]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -57,7 +85,7 @@ const SmartChatbot = () => {
 
     // Simulate typing delay
     setTimeout(async () => {
-      const response = await getResponse(inputValue);
+      const response = await getResponse(inputValue, pageContent);
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
@@ -67,7 +95,7 @@ const SmartChatbot = () => {
       
       setMessages(prev => [...prev, botMessage]);
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+    }, 1000 + Math.random() * 1000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -87,10 +115,10 @@ const SmartChatbot = () => {
   };
 
   const quickQuestions = [
-    "What makes Meltdown special? ✨",
-    "How much does it cost? 💝",
-    "What wellness goodies do you offer? 🎁",
-    "How do I get this awesome thing started? 🚀"
+    "What's on this page? 👀",
+    "How much does it cost? 💝", 
+    "How do I get started? 🚀",
+    "What wellness services do you offer? 🎁"
   ];
 
   const handleQuickQuestion = (question: string) => {

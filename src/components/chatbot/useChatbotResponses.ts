@@ -13,29 +13,39 @@ interface KnowledgeItem {
   priority: number;
 }
 
+interface PageContent {
+  title: string;
+  headings: string[];
+  paragraphs: string[];
+  links: string[];
+  images: string[];
+  pageType: string;
+  route: string;
+}
+
 export const useChatbotResponses = () => {
   const [conversationContext, setConversationContext] = useState<string[]>([]);
 
   const quickResponses: QuickResponse[] = [
     {
       keywords: ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
-      response: "Hello there, lovely human! 👋✨ I'm Meltzy, and I'm absolutely thrilled to meet you! 🌟 I'm bursting with knowledge about Meltdown's amazing wellness services, super cool pricing, awesome technology, and how we can help make your workplace the happiest, healthiest place ever! What exciting thing would you love to explore together? 🎉"
+      response: "Hello there, lovely human! 👋✨ I'm Meltzy, and I'm absolutely thrilled to meet you! 🌟 I can see you're exploring our amazing platform, and I'm here to help you with anything you'd like to know about what you're seeing on this page or about Meltdown in general! What exciting thing would you love to explore together? 🎉"
     },
     {
       keywords: ['thank', 'thanks', 'appreciate', 'grateful', 'awesome', 'great', 'perfect'],
-      response: "Aww, you're so sweet! 🥰 It totally makes my day when I can help! I'm like a wellness encyclopedia with legs - well, if I had legs! 😄 Is there anything else about our magical wellness platform that you'd love to discover? I'm here and ready to share all the amazing details! ✨"
+      response: "Aww, you're so sweet! 🥰 It totally makes my day when I can help! I'm here and ready to assist you with anything on this page or about our wellness services. Is there anything else you'd love to discover? ✨"
     }
   ];
 
-  // Comprehensive knowledge base beyond just FAQ
-  const createComprehensiveKnowledgeBase = (): KnowledgeItem[] => {
-    const knowledgeBase: KnowledgeItem[] = [];
+  // Enhanced knowledge base that includes page-specific responses
+  const createPageAwareKnowledgeBase = (pageContent?: PageContent): KnowledgeItem[] => {
+    const baseKnowledge: KnowledgeItem[] = [];
 
     // Add FAQ data with enhanced keywords
     faqData.forEach(section => {
       section.questions.forEach(q => {
         const enhancedKeywords = extractEnhancedKeywords(q.question + ' ' + q.answer);
-        knowledgeBase.push({
+        baseKnowledge.push({
           content: `**${q.question}**\n\n${q.answer}`,
           keywords: enhancedKeywords,
           category: section.title,
@@ -44,8 +54,14 @@ export const useChatbotResponses = () => {
       });
     });
 
-    // Add additional comprehensive knowledge
-    const additionalKnowledge: KnowledgeItem[] = [
+    // Add page-specific knowledge if available
+    if (pageContent) {
+      const pageSpecificKnowledge = generatePageSpecificKnowledge(pageContent);
+      baseKnowledge.push(...pageSpecificKnowledge);
+    }
+
+    // Add general knowledge
+    const generalKnowledge: KnowledgeItem[] = [
       {
         content: "Oh my goodness, our packages are absolutely amazing! 🎁 We have three fantastic options: Basic (20+ gyms - perfect for getting started!), Gold (40+ wellness options including yoga, mindfulness, boxing, group classes - so much fun!), and Platinum (70+ options including swimming, mental health counseling, physiotherapy - the ultimate wellness experience!). Each package gives you magical single-scan access to multiple wellness services! ✨",
         keywords: ['package', 'packages', 'plan', 'plans', 'membership', 'subscription', 'basic', 'gold', 'platinum', 'gym', 'yoga', 'swimming', 'counseling', 'options', 'services included', 'what do i get'],
@@ -90,64 +106,106 @@ export const useChatbotResponses = () => {
       }
     ];
 
-    return [...knowledgeBase, ...additionalKnowledge];
+    return [...baseKnowledge, ...generalKnowledge];
+  };
+
+  const generatePageSpecificKnowledge = (pageContent: PageContent): KnowledgeItem[] => {
+    const pageKnowledge: KnowledgeItem[] = [];
+
+    // Create contextual responses based on page type
+    switch (pageContent.pageType) {
+      case 'academy':
+        pageKnowledge.push({
+          content: `I can see you're interested in our Academy! 🎓 On this page, you'll find information about our amazing certification programs: ${pageContent.headings.slice(0, 3).join(', ')}. Our Academy prepares you for internationally recognized certifications like CSCS® and CES® while providing hands-on experience. What specific aspect of our training programs would you like to know more about? ✨`,
+          keywords: ['academy', 'certification', 'training', 'course', 'cscs', 'ces', 'fitness', 'education', 'learn'],
+          category: 'Page Context',
+          priority: 15
+        });
+        break;
+
+      case 'corporate-wellness':
+        pageKnowledge.push({
+          content: `Welcome to our Corporate Wellness page! 🏢✨ I can see you're exploring how we can transform your workplace wellness. ${pageContent.paragraphs[0] ? pageContent.paragraphs[0].slice(0, 200) + '...' : ''} Our corporate solutions are designed to boost employee engagement and create healthier, happier workplaces! What specific corporate wellness challenge can I help you solve? 🌟`,
+          keywords: ['corporate', 'workplace', 'employee', 'company', 'business', 'wellness program', 'engagement'],
+          category: 'Page Context',
+          priority: 15
+        });
+        break;
+
+      case 'events':
+        pageKnowledge.push({
+          content: `You're checking out our Events page! 🎉 I can see information about exciting wellness events and activities. Our events are designed to bring people together through fitness and wellness activities. Whether you're looking for corporate team building or community wellness events, we've got something amazing for everyone! What type of event are you interested in? ✨`,
+          keywords: ['events', 'activities', 'team building', 'group', 'community', 'fitness events'],
+          category: 'Page Context',
+          priority: 15
+        });
+        break;
+
+      case 'employees':
+        pageKnowledge.push({
+          content: `Perfect! You're on our Employee Benefits page! 👥✨ This page shows how our platform benefits individual employees like you. You'll discover amazing perks like access to multiple gyms, wellness classes, health tracking, and so much more - all through one simple app! What employee benefit would you like to explore further? 🏃‍♀️`,
+          keywords: ['employee', 'benefits', 'perks', 'individual', 'personal', 'gym access', 'wellness classes'],
+          category: 'Page Context',
+          priority: 15
+        });
+        break;
+
+      case 'contact':
+        pageKnowledge.push({
+          content: `Great! You're on our Contact page! 📞✨ I can help you right here with most questions, but if you need to speak with our amazing team directly, you'll find all the contact information on this page. Whether you want to schedule a demo, ask about pricing, or just chat about wellness solutions, we're here to help! What would you like to connect about? 🌟`,
+          keywords: ['contact', 'reach out', 'get in touch', 'speak', 'call', 'email', 'demo', 'meeting'],
+          category: 'Page Context',
+          priority: 15
+        });
+        break;
+
+      default:
+        if (pageContent.headings.length > 0) {
+          pageKnowledge.push({
+            content: `I can see you're exploring this page about ${pageContent.headings[0]}! 🌟 Based on what I can see here, there's lots of great information about ${pageContent.headings.slice(0, 2).join(' and ')}. I'm here to help you understand anything you see on this page or answer questions about Meltdown's services! What catches your eye? ✨`,
+            keywords: extractEnhancedKeywords(pageContent.headings.join(' ') + ' ' + pageContent.paragraphs.slice(0, 2).join(' ')),
+            category: 'Page Context',
+            priority: 12
+          });
+        }
+    }
+
+    // Add content-based knowledge from page
+    if (pageContent.paragraphs.length > 0) {
+      pageKnowledge.push({
+        content: `Based on what I can see on this page: ${pageContent.paragraphs[0].slice(0, 300)}... I'm here to help explain any of this content or answer related questions! What would you like to know more about? ✨`,
+        keywords: extractEnhancedKeywords(pageContent.paragraphs.slice(0, 3).join(' ')),
+        category: 'Page Content',
+        priority: 8
+      });
+    }
+
+    return pageKnowledge;
   };
 
   const extractEnhancedKeywords = (text: string): string[] => {
     const commonWords = new Set(['the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'can', 'a', 'an', 'this', 'that', 'these', 'those']);
     
-    // Extract base keywords
     const baseKeywords = text.toLowerCase()
       .replace(/[^\w\s]/g, ' ')
       .split(/\s+/)
       .filter(word => word.length > 2 && !commonWords.has(word));
 
-    // Add synonyms and variations
-    const synonymMap: { [key: string]: string[] } = {
-      'price': ['cost', 'pricing', 'fee', 'charge', 'rate', 'expensive', 'cheap', 'budget', 'investment'],
-      'company': ['business', 'organization', 'corporate', 'enterprise', 'firm'],
-      'employee': ['worker', 'staff', 'team member', 'personnel', 'workforce'],
-      'wellness': ['health', 'fitness', 'wellbeing', 'exercise', 'activity'],
-      'service': ['offering', 'program', 'solution', 'option'],
-      'engagement': ['participation', 'involvement', 'activity', 'usage'],
-      'benefit': ['advantage', 'value', 'gain', 'positive', 'help'],
-      'start': ['begin', 'launch', 'implement', 'setup', 'onboard'],
-      'work': ['function', 'operate', 'perform', 'run'],
-      'different': ['various', 'multiple', 'diverse', 'alternative'],
-      'access': ['use', 'utilize', 'entry', 'availability'],
-      'support': ['help', 'assistance', 'guidance', 'aid'],
-      'track': ['monitor', 'measure', 'follow', 'record'],
-      'challenge': ['competition', 'contest', 'game', 'activity'],
-      'team': ['group', 'staff', 'workforce', 'colleagues']
-    };
-
-    const enhancedKeywords = new Set(baseKeywords);
-    
-    baseKeywords.forEach(keyword => {
-      if (synonymMap[keyword]) {
-        synonymMap[keyword].forEach(synonym => enhancedKeywords.add(synonym));
-      }
-    });
-
-    return Array.from(enhancedKeywords);
+    return Array.from(new Set(baseKeywords));
   };
 
-  const knowledgeBase = createComprehensiveKnowledgeBase();
-
-  const findIntelligentMatch = (userMessage: string): string | null => {
+  const findIntelligentMatch = (userMessage: string, pageContent?: PageContent): string | null => {
     const lowerMessage = userMessage.toLowerCase();
+    const knowledgeBase = createPageAwareKnowledgeBase(pageContent);
     
-    // Enhanced preprocessing for better understanding
     const processedMessage = lowerMessage
       .replace(/[^\w\s]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
 
     const messageWords = processedMessage.split(' ').filter(word => word.length > 2);
-    
-    // Add conversation context for better understanding
     const contextWords = conversationContext.slice(-10).join(' ').toLowerCase().split(' ');
-    const allWords = [...messageWords, ...contextWords.slice(-5)]; // Include recent context
+    const allWords = [...messageWords, ...contextWords.slice(-5)];
 
     let bestMatches: Array<{ item: KnowledgeItem; score: number }> = [];
 
@@ -159,137 +217,72 @@ export const useChatbotResponses = () => {
         score += 50;
       }
 
+      // Page context bonus
+      if (item.category === 'Page Context') {
+        score += 20;
+      } else if (item.category === 'Page Content') {
+        score += 15;
+      }
+
       // Keyword matching with different weights
       allWords.forEach(word => {
         item.keywords.forEach(keyword => {
           if (keyword === word) {
-            score += 5; // Exact match
+            score += 5;
           } else if (keyword.includes(word) && word.length > 3) {
-            score += 3; // Partial match
+            score += 3;
           } else if (word.includes(keyword) && keyword.length > 3) {
-            score += 2; // Reverse partial match
+            score += 2;
           }
         });
       });
 
-      // Question pattern matching
-      const questionPatterns = [
-        { pattern: /how (does|do|can|will)/, bonus: 5 },
-        { pattern: /what (is|are|does|do)/, bonus: 5 },
-        { pattern: /why (is|are|does|do)/, bonus: 5 },
-        { pattern: /when (can|will|do)/, bonus: 5 },
-        { pattern: /where (can|do|is)/, bonus: 5 },
-        { pattern: /(tell me|explain|describe)/, bonus: 3 },
-        { pattern: /(help|assist|support)/, bonus: 3 }
-      ];
-
-      questionPatterns.forEach(({ pattern, bonus }) => {
-        if (pattern.test(lowerMessage)) {
-          score += bonus;
-        }
-      });
-
-      // Intent recognition
-      const intents = [
-        { intent: 'pricing', patterns: ['cost', 'price', 'expensive', 'budget', 'pay', 'fee'], bonus: 10 },
-        { intent: 'services', patterns: ['service', 'offer', 'provide', 'include', 'feature'], bonus: 8 },
-        { intent: 'implementation', patterns: ['start', 'begin', 'setup', 'implement', 'onboard'], bonus: 8 },
-        { intent: 'benefits', patterns: ['benefit', 'advantage', 'help', 'improve', 'better'], bonus: 7 },
-        { intent: 'engagement', patterns: ['engage', 'participate', 'motivate', 'encourage'], bonus: 7 }
-      ];
-
-      intents.forEach(({ patterns, bonus }) => {
-        if (patterns.some(pattern => lowerMessage.includes(pattern))) {
-          score += bonus;
-        }
-      });
-
-      // Category relevance
       score += item.priority;
 
-      if (score > 5) { // Minimum threshold
+      if (score > 8) {
         bestMatches.push({ item, score });
       }
     });
 
-    // Sort by score and get best matches
     bestMatches.sort((a, b) => b.score - a.score);
     
     if (bestMatches.length > 0) {
-      // Update conversation context
       setConversationContext(prev => [...prev.slice(-5), userMessage].slice(-10));
-      
-      const bestMatch = bestMatches[0];
-      return formatIntelligentResponse(bestMatch.item, userMessage);
+      return formatIntelligentResponse(bestMatches[0].item, userMessage, pageContent);
     }
 
     return null;
   };
 
-  const formatIntelligentResponse = (item: KnowledgeItem, originalQuestion: string): string => {
+  const formatIntelligentResponse = (item: KnowledgeItem, originalQuestion: string, pageContent?: PageContent): string => {
     let response = item.content;
     
-    // Make response more conversational
-    if (!response.includes('**')) {
-      response = `Oh, what a fantastic question! 🌟 ${response}`;
+    // Add page context if relevant
+    if (pageContent && item.category !== 'Page Context' && item.category !== 'Page Content') {
+      response += `\n\n💡 Since you're on our ${pageContent.pageType.replace('-', ' ')} page, I can also help you understand anything specific you see here!`;
     }
     
-    // Add contextual follow-ups based on the category
-    const followUps = {
-      'Services': "Would you love to know more about specific services or see how they work their magic together? 🏃‍♂️✨",
-      'Implementation': "I can also explain our super smooth onboarding process or help you understand the timeline! ⚡💫",
-      'Pricing': "I'd be absolutely delighted to discuss how this amazing investment compares to traditional wellness programs! 💰🎉",
-      'Engagement': "Want to know more about our fun gamification features or success strategies? They're so cool! 🎯🏆",
-      'Analytics': "I can explain more about specific metrics or how other companies use this awesome data! 📊✨",
-      'Mission': "Would you like to know how this beautiful mission translates into real benefits for companies? 🎯💖"
-    };
+    return response;
+  };
 
-    const categoryFollowUp = followUps[item.category as keyof typeof followUps];
-    if (categoryFollowUp) {
-      response += `\n\n${categoryFollowUp}`;
+  const getEnhancedDefaultResponse = (userMessage: string, pageContent?: PageContent): string => {
+    let response = "I have so much knowledge about Meltdown's wellness solutions and I'm super excited to help! ✨ ";
+    
+    // Add page-specific context to default response
+    if (pageContent) {
+      response += `I can see you're on our ${pageContent.pageType.replace('-', ' ')} page`;
+      if (pageContent.headings.length > 0) {
+        response += ` exploring ${pageContent.headings[0]}`;
+      }
+      response += "! ";
     }
 
-    // Add dynamic suggestions based on question intent
-    if (originalQuestion.toLowerCase().includes('price') || originalQuestion.toLowerCase().includes('cost')) {
-      response += "\n\n💡 Ready to see the amazing value? I can help you schedule a personalized demo that'll blow your mind! ✨";
-    } else if (originalQuestion.toLowerCase().includes('start') || originalQuestion.toLowerCase().includes('begin')) {
-      response += "\n\n🚀 Ready to embark on this wellness adventure? Let me connect you with our fantastic team for next steps! 🌟";
-    }
+    response += "You can ask me about:\n• What you see on this page 👀\n• Pricing and packages 💰\n• Services and features 🏃‍♀️\n• Implementation process ⚡\n• Employee engagement strategies 🎯\n• ROI and analytics 📊\n• Success stories and case studies 🌟\n\nWhat would you love to know more about? 🤔✨";
 
     return response;
   };
 
-  const getEnhancedDefaultResponse = (userMessage: string): string => {
-    const lowerMessage = userMessage.toLowerCase();
-    
-    // Analyze what the user might be asking about
-    const topicSuggestions = [];
-    
-    if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-      topicSuggestions.push("💰 Ask about our sweet pricing structure and amazing corporate discounts");
-    }
-    if (lowerMessage.includes('service') || lowerMessage.includes('offer')) {
-      topicSuggestions.push("🏃‍♂️ Learn about our fantastic Basic, Gold, and Platinum packages");
-    }
-    if (lowerMessage.includes('work') || lowerMessage.includes('function')) {
-      topicSuggestions.push("⚙️ Understand how our magical platform operates");
-    }
-    if (lowerMessage.includes('benefit') || lowerMessage.includes('help')) {
-      topicSuggestions.push("📈 Discover the incredible benefits for companies and employees");
-    }
-
-    let response = "Ooh, I have so much knowledge about Meltdown's wellness solutions and I'm super excited to help! ✨ ";
-    
-    if (topicSuggestions.length > 0) {
-      response += "Here are some specific areas where I can sprinkle some magic:\n\n" + topicSuggestions.join('\n') + "\n\n";
-    }
-
-    response += "You can ask me about:\n• Pricing and packages 💰\n• Services and features 🏃‍♂️\n• Implementation process ⚡\n• Employee engagement strategies 🎯\n• ROI and analytics 📊\n• Success stories and case studies 🌟\n\nWhat adventure would you like to go on together? 🤔✨";
-
-    return response;
-  };
-
-  const getResponse = async (userMessage: string): Promise<string> => {
+  const getResponse = async (userMessage: string, pageContent?: PageContent): Promise<string> => {
     const lowerMessage = userMessage.toLowerCase();
     
     // Check for quick responses first
@@ -298,19 +291,18 @@ export const useChatbotResponses = () => {
     );
 
     if (quickResponse) {
-      // Update context even for quick responses
       setConversationContext(prev => [...prev.slice(-5), userMessage].slice(-10));
       return quickResponse.response;
     }
 
-    // Try intelligent matching
-    const intelligentResponse = findIntelligentMatch(userMessage);
+    // Try intelligent matching with page context
+    const intelligentResponse = findIntelligentMatch(userMessage, pageContent);
     if (intelligentResponse) {
       return intelligentResponse;
     }
 
-    // Enhanced default response
-    return getEnhancedDefaultResponse(userMessage);
+    // Enhanced default response with page context
+    return getEnhancedDefaultResponse(userMessage, pageContent);
   };
 
   return { getResponse };
