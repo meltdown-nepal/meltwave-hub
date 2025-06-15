@@ -17,38 +17,29 @@ export const useCriticalImagePreloader = (images: CriticalImage[] = []) => {
 
     const preloadedLinks: HTMLLinkElement[] = [];
 
-    images.forEach(({ src, priority = true, formats = ['webp', 'jpg'] }) => {
+    images.forEach(({ src, priority = true }) => {
       // Skip if already preloaded
       if (document.head.querySelector(`link[href="${src}"]`)) return;
 
-      formats.forEach(format => {
-        const formatSrc = format === 'jpg' ? src : src.replace(/\.(jpe?g|png)$/i, `.${format}`);
-        
-        const link = document.createElement('link');
-        link.rel = priority ? 'preload' : 'prefetch';
-        link.as = 'image';
-        link.href = formatSrc;
-        link.crossOrigin = 'anonymous';
-        
-        // Add format-specific attributes
-        if (format === 'webp') {
-          link.type = 'image/webp';
-        } else if (format === 'avif') {
-          link.type = 'image/avif';
-        }
+      // For now, only preload the original image format to avoid 404s
+      // We can enhance this later when we have proper image optimization pipeline
+      const link = document.createElement('link');
+      link.rel = priority ? 'preload' : 'prefetch';
+      link.as = 'image';
+      link.href = src;
+      link.crossOrigin = 'anonymous';
 
-        // Error handling
-        link.onerror = () => {
-          console.warn(`Failed to preload ${formatSrc}`);
-        };
+      // Error handling
+      link.onerror = () => {
+        console.warn(`Failed to preload ${src}`);
+      };
 
-        link.onload = () => {
-          console.log(`✅ Preloaded: ${formatSrc}`);
-        };
+      link.onload = () => {
+        console.log(`✅ Preloaded: ${src}`);
+      };
 
-        document.head.appendChild(link);
-        preloadedLinks.push(link);
-      });
+      document.head.appendChild(link);
+      preloadedLinks.push(link);
     });
 
     // Cleanup

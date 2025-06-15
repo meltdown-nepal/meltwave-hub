@@ -14,9 +14,9 @@ const EnhancedHeroSection = () => {
     "/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.png"
   ];
 
-  // Preload critical hero images
+  // Preload critical hero images - simplified to avoid format issues
   useCriticalImagePreloader(
-    backgroundImages.map(src => ({ src, priority: true, formats: ['webp', 'jpg'] }))
+    backgroundImages.map(src => ({ src, priority: true }))
   );
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const EnhancedHeroSection = () => {
             </AnimatedElement>
           </div>
 
-          {/* Image Side with Slideshow - Using optimized images */}
+          {/* Image Side with Slideshow - Using simplified optimized images */}
           <div className="relative">
             <AnimatedElement animation="scaleIn" delay={0.5}>
               <div className="relative">
@@ -125,8 +125,7 @@ const EnhancedHeroSection = () => {
                         priority={index === 0}
                         width={800}
                         height={800}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        quality="high"
+                        lazy={false}
                       />
                     </div>
                   ))}

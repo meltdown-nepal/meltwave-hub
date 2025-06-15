@@ -34,37 +34,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState('');
 
-  // Generate optimized image sources
-  const generateSources = useCallback(() => {
-    const isLocalAsset = src.startsWith('/') && !src.startsWith('//');
-    
-    if (!isLocalAsset) {
-      return { webp: src, avif: src, fallback: src };
-    }
-
-    // For local assets, generate multiple formats and sizes
-    const baseUrl = src.replace(/\.(jpe?g|png|webp)$/i, '');
-    const extension = src.match(/\.(jpe?g|png|webp)$/i)?.[1] || 'jpg';
-    
-    return {
-      avif: `${baseUrl}.avif`,
-      webp: `${baseUrl}.webp`, 
-      fallback: src
-    };
+  // For now, let's be conservative and just use the original image format
+  // This prevents 404 errors from trying to load non-existent .webp/.avif files
+  const getOptimizedSrc = useCallback(() => {
+    return src; // Use original source without format conversion for now
   }, [src]);
-
-  // Generate responsive srcSet
-  const generateSrcSet = useCallback((imageSrc: string) => {
-    if (!responsive || !src.startsWith('/')) return undefined;
-    
-    const widths = [640, 768, 1024, 1280, 1920];
-    return widths
-      .filter(w => !width || w <= width * 2) // Don't generate larger than 2x the display size
-      .map(w => `${imageSrc}?w=${w}&q=${quality === 'high' ? 90 : quality === 'medium' ? 75 : 60} ${w}w`)
-      .join(', ');
-  }, [responsive, src, width, quality]);
-
-  const sources = generateSources();
 
   const handleLoad = useCallback(() => {
     setIsLoaded(true);
@@ -73,38 +47,23 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [onLoad, src]);
 
   const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget;
-    
-    // Try fallback sources in order: AVIF -> WebP -> Original
-    if (img.src.includes('.avif') && sources.webp !== sources.avif) {
-      img.src = sources.webp;
-      return;
-    }
-    
-    if ((img.src.includes('.webp') || img.src.includes('.avif')) && sources.fallback !== img.src) {
-      img.src = sources.fallback;
-      return;
-    }
-    
-    // All sources failed
+    console.warn(`❌ Failed to load image: ${src}`);
     setHasError(true);
     if (onError) onError();
-    console.warn(`❌ Failed to load image: ${src}`);
-  }, [onError, src, sources]);
+  }, [onError, src]);
 
   // Intersection Observer for lazy loading
   React.useEffect(() => {
     if (!lazy || priority) {
-      setCurrentSrc(sources.avif || sources.webp || sources.fallback);
+      setCurrentSrc(getOptimizedSrc());
       return;
     }
 
-    const img = new Image();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            setCurrentSrc(sources.avif || sources.webp || sources.fallback);
+            setCurrentSrc(getOptimizedSrc());
             observer.disconnect();
           }
         });
@@ -119,7 +78,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [lazy, priority, sources, src]);
+  }, [lazy, priority, getOptimizedSrc, src]);
 
   // Fallback for broken images
   if (hasError) {
@@ -153,43 +112,20 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }
 
   return (
-    <picture>
-      {/* AVIF for modern browsers - smallest file size */}
-      {sources.avif !== sources.fallback && (
-        <source 
-          srcSet={generateSrcSet(sources.avif)}
-          type="image/avif"
-          sizes={sizes || (responsive ? '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw' : undefined)}
-        />
-      )}
-      
-      {/* WebP for most browsers - good compression */}
-      {sources.webp !== sources.fallback && (
-        <source 
-          srcSet={generateSrcSet(sources.webp)}
-          type="image/webp"
-          sizes={sizes || (responsive ? '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw' : undefined)}
-        />
-      )}
-      
-      {/* Fallback for older browsers */}
-      <img
-        src={currentSrc}
-        srcSet={generateSrcSet(currentSrc)}
-        sizes={sizes || (responsive ? '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw' : undefined)}
-        alt={alt}
-        className={`${className} ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
-        width={width}
-        height={height}
-        loading={priority ? 'eager' : lazy ? 'lazy' : 'eager'}
-        decoding={priority ? 'sync' : 'async'}
-        onLoad={handleLoad}
-        onError={handleError}
-        style={{
-          aspectRatio: width && height ? `${width}/${height}` : undefined,
-        }}
-      />
-    </picture>
+    <img
+      src={currentSrc}
+      alt={alt}
+      className={`${className} ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+      width={width}
+      height={height}
+      loading={priority ? 'eager' : lazy ? 'lazy' : 'eager'}
+      decoding={priority ? 'sync' : 'async'}
+      onLoad={handleLoad}
+      onError={handleError}
+      style={{
+        aspectRatio: width && height ? `${width}/${height}` : undefined,
+      }}
+    />
   );
 };
 
