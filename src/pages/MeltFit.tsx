@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import VideoTestimonial from '@/components/VideoTestimonial';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList } from 'lucide-react';
+import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList, Dumbbell, Leaf } from 'lucide-react';
 
 const MeltFit = () => {
   const {
@@ -100,18 +100,37 @@ const MeltFit = () => {
         </div>
       </section>
 
-      {/* About MeltFit */}
+      {/* About MeltFit - IMPROVED REPRESENTATION */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">About MeltFit</h2>
-            <p className="text-lg text-gray-700 mb-8">
-              At MeltFit, we specialize in Strength and Conditioning for everyday people.
-              Whether you're aiming to get stronger, improve your mobility, transform your physique, or prevent injuries, MeltFit programs are designed to build a body that performs better in real life — not just in the gym.
+            <p className="text-lg text-gray-700 mb-5">
+              Strength & Conditioning made for <span className="font-semibold text-primary">everybody</span>. Build a body that performs in the real world, not just the gym.
             </p>
-            <p className="text-lg font-medium">
-              MeltFit isn't just a workout — it's a community focused on long-term health, strength, and vitality.
-            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <Card className="bg-primary/10 border-0 text-center py-8 px-6 hover:shadow-lg transition-shadow">
+              <div className="mx-auto mb-4 flex items-center justify-center w-14 h-14 rounded-full bg-primary/20">
+                <Dumbbell className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Functional Strength</h3>
+              <p className="text-gray-700 text-base">Train for real-life movement, not just aesthetics. Improve strength, mobility, and confidence for daily living.</p>
+            </Card>
+            <Card className="bg-primary/10 border-0 text-center py-8 px-6 hover:shadow-lg transition-shadow">
+              <div className="mx-auto mb-4 flex items-center justify-center w-14 h-14 rounded-full bg-primary/20">
+                <Heart className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Inclusive Community</h3>
+              <p className="text-gray-700 text-base">Join a positive, supportive group where everyone is welcomed, celebrated, and progress is shared.</p>
+            </Card>
+            <Card className="bg-primary/10 border-0 text-center py-8 px-6 hover:shadow-lg transition-shadow">
+              <div className="mx-auto mb-4 flex items-center justify-center w-14 h-14 rounded-full bg-primary/20">
+                <Leaf className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Sustainable Health</h3>
+              <p className="text-gray-700 text-base">Programs built to create lasting healthy habits so you can move, feel, and live better—long term.</p>
+            </Card>
           </div>
         </div>
       </section>
