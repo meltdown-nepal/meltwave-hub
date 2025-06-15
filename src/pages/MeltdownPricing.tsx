@@ -75,7 +75,7 @@ const features = [{
 }];
 const MeltdownPricing = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-100 to-white py-10">
+    <div className="min-h-screen bg-gradient-to-tl from-yellow-200 via-yellow-100 to-white py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">
