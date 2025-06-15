@@ -11,22 +11,27 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
   animate = false 
 }) => {
   const sizeClasses = {
-    tiny: 'w-6 h-6 text-xs',
-    small: 'w-8 h-8 text-sm',
-    medium: 'w-12 h-12 text-lg',
-    large: 'w-8 h-8 text-lg'
+    tiny: 'w-6 h-6',
+    small: 'w-8 h-8',
+    medium: 'w-12 h-12',
+    large: 'w-8 h-8'
   };
 
   return (
     <div 
       className={`
         ${sizeClasses[size]} 
-        rounded-full bg-gradient-to-br from-primary to-secondary 
+        rounded-full bg-white 
         flex items-center justify-center
-        shadow-sm
+        shadow-lg
+        ${animate ? 'transition-transform hover:scale-110' : ''}
       `}
     >
-      <span className="font-bold text-black">🤖</span>
+      <img 
+        src="/lovable-uploads/6a8d21a6-d52d-4b26-84f3-c858e2d69169.png" 
+        alt="Meltzy"
+        className="w-full h-full object-contain"
+      />
     </div>
   );
 };
