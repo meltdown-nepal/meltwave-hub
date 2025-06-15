@@ -1,3 +1,4 @@
+
 import React from 'react';
 import HeroSection from '@/components/employees/HeroSection';
 import ProgramsSection from '@/components/employees/ProgramsSection';
@@ -32,8 +33,8 @@ const ForEmployees = () => {
       {/* Whole-page background applied here */}
       <HeroSection />
       <ProgramsSection />
-      <WellnessAppShowcaseSection />
       <BenefitsSection />
+      <WellnessAppShowcaseSection />
       <TestimonialsSection 
         testimonials={employeeTestimonials}
         title="Employee Success Stories"
@@ -46,3 +47,4 @@ const ForEmployees = () => {
 };
 
 export default ForEmployees;
+
