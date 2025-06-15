@@ -277,19 +277,19 @@ const ForCompanies = () => {
               <h3 className="text-xl font-bold text-center mb-6">Package Options</h3>
               
               <div className="space-y-4">
-                <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium">Basic</span>
-                  <span className="text-gray-600">Gym & Group Fitness</span>
+                <div className="flex flex-col items-start p-3 bg-gray-50 rounded-lg">
+                  <span className="font-medium text-base">Basic</span>
+                  <span className="text-gray-600 text-sm mt-1">Gym & Group Fitness</span>
                 </div>
                 
-                <div className="flex justify-between items-center p-3 bg-amber-50 rounded-lg border border-amber-200">
-                  <span className="font-medium">Gold</span>
-                  <span className="text-gray-600">+ Golfing, Yoga, Rock Climbing</span>
+                <div className="flex flex-col items-start p-3 bg-amber-50 rounded-lg border border-amber-200">
+                  <span className="font-medium text-base">Gold</span>
+                  <span className="text-gray-600 text-sm mt-1">+ Golfing, Yoga, Rock Climbing</span>
                 </div>
                 
-                <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200">
-                  <span className="font-medium">Platinum</span>
-                  <span className="text-gray-600">+ Swimming, Mental Health, Pilates</span>
+                <div className="flex flex-col items-start p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <span className="font-medium text-base">Platinum</span>
+                  <span className="text-gray-600 text-sm mt-1">+ Swimming, Mental Health, Pilates</span>
                 </div>
               </div>
               
