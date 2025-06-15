@@ -4,6 +4,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import VideoTestimonial from '@/components/VideoTestimonial';
 import LogoCarousel from '@/components/LogoCarousel';
+import HowItWorksStepper from "../components/HowItWorksStepper";
 
 // Wellness provider logos
 const wellnessLogos = [{
@@ -193,54 +194,7 @@ const ForProviders = () => {
       />
 
       {/* How It Works */}
-      <section className="bg-gray-50 section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works for Providers</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              A simple process to join our network and start growing your wellness business.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                1
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-center">Apply</h3>
-                <p>
-                  Submit your application with details about your wellness services, credentials, and experience. Our team will review your application and contact you for the next steps.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                2
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-center">Onboard</h3>
-                <p>
-                  Complete our onboarding process, including profile setup, service definition, and training on our platform. You'll also have access to our Academy for additional certification.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                3
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-3 text-center">Connect</h3>
-                <p>
-                  Start receiving bookings from corporate clients whose needs match your services. Deliver your wellness programs with our full administrative and marketing support.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HowItWorksStepper />
 
       {/* Wellness Facilities Section */}
       <section className="section-padding">
