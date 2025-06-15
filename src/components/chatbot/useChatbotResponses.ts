@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { faqData } from '../../data/faqData';
 
@@ -20,11 +19,11 @@ export const useChatbotResponses = () => {
   const quickResponses: QuickResponse[] = [
     {
       keywords: ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
-      response: "Hello! 👋 I'm your intelligent wellness assistant. I have comprehensive knowledge about Meltdown's services, pricing, technology, and how we can help transform your workplace wellness. What would you like to explore?"
+      response: "Hello there, lovely human! 👋✨ I'm Meltzy, and I'm absolutely thrilled to meet you! 🌟 I'm bursting with knowledge about Meltdown's amazing wellness services, super cool pricing, awesome technology, and how we can help make your workplace the happiest, healthiest place ever! What exciting thing would you love to explore together? 🎉"
     },
     {
       keywords: ['thank', 'thanks', 'appreciate', 'grateful', 'awesome', 'great', 'perfect'],
-      response: "You're very welcome! 😊 I'm here to provide detailed information about all aspects of our wellness platform. Is there anything specific about our services, implementation, or benefits you'd like to dive deeper into?"
+      response: "Aww, you're so sweet! 🥰 It totally makes my day when I can help! I'm like a wellness encyclopedia with legs - well, if I had legs! 😄 Is there anything else about our magical wellness platform that you'd love to discover? I'm here and ready to share all the amazing details! ✨"
     }
   ];
 
@@ -48,43 +47,43 @@ export const useChatbotResponses = () => {
     // Add additional comprehensive knowledge
     const additionalKnowledge: KnowledgeItem[] = [
       {
-        content: "Meltdown offers three main packages: Basic (20+ gyms), Gold (40+ wellness options including yoga, mindfulness, boxing, group classes), and Platinum (70+ options including swimming, mental health counseling, physiotherapy). Each package provides single-scan access to multiple wellness services.",
+        content: "Oh my goodness, our packages are absolutely amazing! 🎁 We have three fantastic options: Basic (20+ gyms - perfect for getting started!), Gold (40+ wellness options including yoga, mindfulness, boxing, group classes - so much fun!), and Platinum (70+ options including swimming, mental health counseling, physiotherapy - the ultimate wellness experience!). Each package gives you magical single-scan access to multiple wellness services! ✨",
         keywords: ['package', 'packages', 'plan', 'plans', 'membership', 'subscription', 'basic', 'gold', 'platinum', 'gym', 'yoga', 'swimming', 'counseling', 'options', 'services included', 'what do i get'],
         category: 'Services',
         priority: 9
       },
       {
-        content: "Implementation is incredibly fast - we can set up your corporate wellness system in less than a day! Our onboarding team provides admin access, helps with employee activation, and offers ongoing support throughout the process.",
+        content: "Get ready to be amazed! 🚀 Our implementation is lightning-fast - we can set up your corporate wellness system in less than a day! That's faster than ordering pizza! 🍕 Our super friendly onboarding team provides admin access, helps with employee activation, and offers ongoing support throughout the whole journey. It's like having wellness wizards on your team! ✨",
         keywords: ['implementation', 'setup', 'onboarding', 'how long', 'time to implement', 'quick setup', 'fast implementation', 'getting started', 'timeline', 'launch'],
         category: 'Implementation',
         priority: 8
       },
       {
-        content: "Our pricing is subscription-based with exclusive corporate rates. Companies pay a monthly fee for the system access, and employees get subsidized packages at more than half the regular cost. We offer 6-month minimum commitments to maintain these exclusive rates.",
+        content: "Let's talk about the sweet stuff - our pricing! 💰✨ We use a subscription-based model with exclusive corporate rates that'll make your budget smile! Companies pay a monthly fee for system access, and here's the best part - employees get subsidized packages at more than half the regular cost! It's like getting a VIP discount! We offer 6-month minimum commitments to keep these exclusive rates super special. 🎉",
         keywords: ['cost', 'price', 'pricing', 'expensive', 'cheap', 'budget', 'investment', 'subscription', 'monthly', 'yearly', 'corporate rates', 'subsidized', 'discount', 'affordable'],
         category: 'Pricing',
         priority: 9
       },
       {
-        content: "We boost engagement through gamification with leaderboards, wellness challenges, step tracking, rewards, and recognition systems. Our community-building approach creates accountability partners within teams and normalizes movement in the workplace.",
+        content: "Oh, this is where the magic happens! ✨ We boost engagement through super fun gamification with leaderboards (who doesn't love a little friendly competition?), wellness challenges that'll get everyone excited, step tracking, amazing rewards, and recognition systems that make everyone feel like wellness champions! 🏆 Our community-building approach creates accountability partners within teams and makes movement the coolest thing in the workplace! 🎯",
         keywords: ['engagement', 'participation', 'motivation', 'gamification', 'challenges', 'leaderboard', 'competition', 'rewards', 'recognition', 'team building', 'community', 'accountability'],
         category: 'Engagement',
         priority: 8
       },
       {
-        content: "ROI measurement includes detailed reports on employee participation, check-ins, step counts, cost savings, wellness trends, and engagement metrics. We provide monthly/quarterly analytics showing the impact of your wellness investment.",
+        content: "Numbers that'll make you happy dance! 📊💃 Our ROI measurement includes super detailed reports on employee participation, check-ins, step counts, cost savings, wellness trends, and engagement metrics. We provide monthly/quarterly analytics that show the amazing impact of your wellness investment - it's like getting a progress report card, but way more fun! 📈✨",
         keywords: ['roi', 'return on investment', 'metrics', 'analytics', 'reports', 'measurement', 'tracking', 'statistics', 'data', 'results', 'impact', 'value', 'effectiveness'],
         category: 'Analytics',
         priority: 7
       },
       {
-        content: "Our mission is to create innovative solutions that empower people to lead an active lifestyle and connect through wellness. We envision a world where everyone engages in and connects through wellness.",
+        content: "Our mission is so close to my heart! 💖 We're here to create innovative solutions that empower people to lead active, joyful lifestyles and connect through wellness. We dream of a world where everyone engages in and connects through wellness - imagine how amazing that would be! 🌍✨",
         keywords: ['mission', 'vision', 'purpose', 'goal', 'why meltdown', 'company values', 'philosophy', 'believe', 'mission statement'],
         category: 'Mission',
         priority: 6
       },
       {
-        content: "We're currently working with 13+ companies across IT, Education, Hospitality, and FMCG sectors. Our clients see significant improvements in employee satisfaction, reduced sick days, better team cohesion, and increased productivity.",
+        content: "We're making magic happen with 13+ amazing companies across IT, Education, Hospitality, and FMCG sectors! 🌟 Our clients are seeing incredible improvements in employee satisfaction, fewer sick days, better team bonding, and increased productivity. It's like watching workplace transformation happen in real-time! The success stories just keep coming! 🎉",
         keywords: ['clients', 'customers', 'companies', 'success stories', 'case studies', 'testimonials', 'experience', 'track record', 'results', 'industries', 'sectors'],
         category: 'Success Stories',
         priority: 7
@@ -232,17 +231,17 @@ export const useChatbotResponses = () => {
     
     // Make response more conversational
     if (!response.includes('**')) {
-      response = `Great question! ${response}`;
+      response = `Oh, what a fantastic question! 🌟 ${response}`;
     }
     
     // Add contextual follow-ups based on the category
     const followUps = {
-      'Services': "Would you like to know more about specific services or see how they work together? 🏃‍♂️",
-      'Implementation': "I can also explain our onboarding process or help you understand the timeline. ⚡",
-      'Pricing': "I'd be happy to discuss how the investment compares to traditional wellness programs! 💰",
-      'Engagement': "Want to know more about our gamification features or success strategies? 🎯",
-      'Analytics': "I can explain more about specific metrics or how other companies use this data. 📊",
-      'Mission': "Would you like to know how this mission translates into real benefits for companies? 🎯"
+      'Services': "Would you love to know more about specific services or see how they work their magic together? 🏃‍♂️✨",
+      'Implementation': "I can also explain our super smooth onboarding process or help you understand the timeline! ⚡💫",
+      'Pricing': "I'd be absolutely delighted to discuss how this amazing investment compares to traditional wellness programs! 💰🎉",
+      'Engagement': "Want to know more about our fun gamification features or success strategies? They're so cool! 🎯🏆",
+      'Analytics': "I can explain more about specific metrics or how other companies use this awesome data! 📊✨",
+      'Mission': "Would you like to know how this beautiful mission translates into real benefits for companies? 🎯💖"
     };
 
     const categoryFollowUp = followUps[item.category as keyof typeof followUps];
@@ -252,9 +251,9 @@ export const useChatbotResponses = () => {
 
     // Add dynamic suggestions based on question intent
     if (originalQuestion.toLowerCase().includes('price') || originalQuestion.toLowerCase().includes('cost')) {
-      response += "\n\n💡 Ready to see the value? I can help you schedule a personalized demo!";
+      response += "\n\n💡 Ready to see the amazing value? I can help you schedule a personalized demo that'll blow your mind! ✨";
     } else if (originalQuestion.toLowerCase().includes('start') || originalQuestion.toLowerCase().includes('begin')) {
-      response += "\n\n🚀 Ready to get started? Let me connect you with our team for next steps!";
+      response += "\n\n🚀 Ready to embark on this wellness adventure? Let me connect you with our fantastic team for next steps! 🌟";
     }
 
     return response;
@@ -267,25 +266,25 @@ export const useChatbotResponses = () => {
     const topicSuggestions = [];
     
     if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-      topicSuggestions.push("💰 Ask about our pricing structure and corporate discounts");
+      topicSuggestions.push("💰 Ask about our sweet pricing structure and amazing corporate discounts");
     }
     if (lowerMessage.includes('service') || lowerMessage.includes('offer')) {
-      topicSuggestions.push("🏃‍♂️ Learn about our Basic, Gold, and Platinum packages");
+      topicSuggestions.push("🏃‍♂️ Learn about our fantastic Basic, Gold, and Platinum packages");
     }
     if (lowerMessage.includes('work') || lowerMessage.includes('function')) {
-      topicSuggestions.push("⚙️ Understand how our platform operates");
+      topicSuggestions.push("⚙️ Understand how our magical platform operates");
     }
     if (lowerMessage.includes('benefit') || lowerMessage.includes('help')) {
-      topicSuggestions.push("📈 Discover the benefits for companies and employees");
+      topicSuggestions.push("📈 Discover the incredible benefits for companies and employees");
     }
 
-    let response = "I have comprehensive knowledge about Meltdown's wellness solutions and I'm here to help! ";
+    let response = "Ooh, I have so much knowledge about Meltdown's wellness solutions and I'm super excited to help! ✨ ";
     
     if (topicSuggestions.length > 0) {
-      response += "Here are some specific areas I can help with:\n\n" + topicSuggestions.join('\n') + "\n\n";
+      response += "Here are some specific areas where I can sprinkle some magic:\n\n" + topicSuggestions.join('\n') + "\n\n";
     }
 
-    response += "You can ask me about:\n• Pricing and packages 💰\n• Services and features 🏃‍♂️\n• Implementation process ⚡\n• Employee engagement strategies 🎯\n• ROI and analytics 📊\n• Success stories and case studies 🌟\n\nWhat would you like to explore? 🤔";
+    response += "You can ask me about:\n• Pricing and packages 💰\n• Services and features 🏃‍♂️\n• Implementation process ⚡\n• Employee engagement strategies 🎯\n• ROI and analytics 📊\n• Success stories and case studies 🌟\n\nWhat adventure would you like to go on together? 🤔✨";
 
     return response;
   };
