@@ -1,4 +1,3 @@
-
 import React from 'react';
 import FaqSection from '../components/FaqSection';
 import WellnessProviders from '../components/WellnessProviders';
@@ -8,6 +7,7 @@ import EnhancedClientCarousel from '../components/home/EnhancedClientCarousel';
 import EnhancedCtaSection from '../components/home/EnhancedCtaSection';
 import AppShowcaseSection from '../components/home/AppShowcaseSection';
 import EnhancedTestimonialsSection from '../components/home/EnhancedTestimonialsSection';
+import { Link } from 'react-router-dom';
 
 // Updated: homeTestimonials now include images for Jyoti and Bibha
 const homeTestimonials = [
@@ -84,6 +84,12 @@ const EnhancedHome = () => {
       {/* Enhanced CTA Section with reduced spacing */}
       <div className="-mt-4">
         <EnhancedCtaSection />
+      </div>
+
+      <div className="fixed bottom-4 right-4 z-40">
+        <Link to="/packages" className="bg-primary px-4 py-2 rounded-xl text-white shadow-xl hover:scale-105 transition-transform font-bold">
+          View Packages
+        </Link>
       </div>
     </div>
   );

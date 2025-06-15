@@ -34,6 +34,8 @@ const AnalyticsPage = lazy(() => import("./pages/Analytics"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const MeltdownPricing = lazy(() => import("./pages/MeltdownPricing")); // Added
+const Packages = lazy(() => import("./pages/Packages"));
+const PackageDetail = lazy(() => import("./pages/PackageDetail"));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -73,6 +75,8 @@ function AppContent() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/meltdown-pricing" element={<MeltdownPricing />} />
+            <Route path="/packages" element={<Packages />} />
+            <Route path="/packages/:packageId" element={<PackageDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
