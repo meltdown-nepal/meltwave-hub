@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Minimize2, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -111,7 +110,7 @@ const SmartChatbot = () => {
             {/* Main button */}
             <Button
               onClick={toggleChatbot}
-              className="relative w-16 h-16 rounded-full bg-white hover:bg-gray-50 shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-yellow-200 hover:border-yellow-300 group"
+              className="relative w-20 h-20 rounded-full bg-white hover:bg-gray-50 shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-yellow-200 hover:border-yellow-300 group"
               size="icon"
             >
               <ChatbotCharacter size="large" animate />

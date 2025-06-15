@@ -14,14 +14,14 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
     tiny: 'w-6 h-6',
     small: 'w-8 h-8',
     medium: 'w-12 h-12',
-    large: 'w-12 h-12'
+    large: 'w-16 h-16'
   };
 
   const imageSizeClasses = {
-    tiny: 'w-4 h-4',
-    small: 'w-6 h-6',
-    medium: 'w-10 h-10',
-    large: 'w-10 h-10'
+    tiny: 'w-5 h-5',
+    small: 'w-7 h-7',
+    medium: 'w-11 h-11',
+    large: 'w-14 h-14'
   };
 
   return (
