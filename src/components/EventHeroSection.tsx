@@ -93,7 +93,7 @@ export default function EventHeroSection({
           <HeroImage 
             src="/lovable-uploads/06f13e5b-dd31-41bf-abda-f09377f873fe.png" 
             alt="Group of fitness enthusiasts at a stadium track" 
-            className="w-full h-full object-cover blur-md md:blur-lg transition-all duration-500"
+            className="w-full h-full object-cover blur-sm md:blur transition-all duration-500"
             priority
             width={1400} 
             height={800}
