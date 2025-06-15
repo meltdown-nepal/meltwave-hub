@@ -1,4 +1,3 @@
-
 import React from 'react';
 import HeroSection from '@/components/employees/HeroSection';
 import ProgramsSection from '@/components/employees/ProgramsSection';
@@ -6,6 +5,7 @@ import BenefitsSection from '@/components/employees/BenefitsSection';
 import PartnerSuccessSection from '@/components/employees/PartnerSuccessSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CtaSection from '@/components/employees/CtaSection';
+import WellnessAppShowcaseSection from "@/components/employees/WellnessAppShowcaseSection";
 
 // Employee testimonials data (removed duplicate "Prashant Shrestha")
 const employeeTestimonials = [
@@ -32,6 +32,7 @@ const ForEmployees = () => {
       {/* Whole-page background applied here */}
       <HeroSection />
       <ProgramsSection />
+      <WellnessAppShowcaseSection />
       <BenefitsSection />
       <TestimonialsSection 
         testimonials={employeeTestimonials}
@@ -45,4 +46,3 @@ const ForEmployees = () => {
 };
 
 export default ForEmployees;
-
