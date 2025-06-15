@@ -32,9 +32,9 @@ const ForEmployees = () => {
     <div className="min-h-screen w-full bg-gradient-to-b from-amber-50 via-yellow-50 to-white">
       {/* Whole-page background applied here */}
       <HeroSection />
+      <WellnessAppShowcaseSection />
       <ProgramsSection />
       <BenefitsSection />
-      <WellnessAppShowcaseSection />
       <TestimonialsSection 
         testimonials={employeeTestimonials}
         title="Employee Success Stories"
@@ -47,4 +47,3 @@ const ForEmployees = () => {
 };
 
 export default ForEmployees;
-

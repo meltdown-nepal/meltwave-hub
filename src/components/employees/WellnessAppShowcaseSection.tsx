@@ -13,7 +13,7 @@ const WellnessAppShowcaseSection: React.FC = () => {
     <section className="section-padding bg-gradient-to-br from-yellow-50 via-amber-50 to-white overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
             Our Exclusive Wellness App
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-gray-700">
