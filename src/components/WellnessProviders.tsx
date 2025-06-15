@@ -92,7 +92,7 @@ const WellnessProvidersCarousel = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300 opacity-0"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-opacity duration-300 opacity-0"
                     width={180}
                     height={80}
                     loading={index > 8 ? 'lazy' : 'eager'}
@@ -100,14 +100,7 @@ const WellnessProvidersCarousel = () => {
                     onLoad={handleImageLoad}
                     onError={handleImageError}
                     style={{ 
-                      filter: 'brightness(0.9)',
-                      transition: 'opacity 0.3s ease, filter 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.filter = 'brightness(1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.filter = 'brightness(0.9)';
+                      transition: 'opacity 0.3s ease'
                     }}
                   />
                 </div>
@@ -131,10 +124,6 @@ const WellnessProvidersCarousel = () => {
           backface-visibility: hidden;
           perspective: 1000px;
           transform: translateZ(0);
-        }
-
-        .animate-seamless-scroll:hover {
-          animation-play-state: paused;
         }
 
         @media (prefers-reduced-motion: reduce) {
