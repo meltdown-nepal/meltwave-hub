@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -98,8 +97,11 @@ export default function ScheduleDemoFlow() {
 
   return (
     <div
-      className="relative min-h-[calc(100dvh-70px)] bg-gradient-to-tl from-yellow-100 via-yellow-100 to-white py-5 px-2 sm:px-3 lg:px-4 flex items-center justify-center"
-      style={{ minHeight: "100dvh" }}
+      className="relative min-h-[calc(100dvh-70px)] py-5 px-2 sm:px-3 lg:px-4 flex items-center justify-center"
+      style={{
+        minHeight: "100dvh",
+        background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #fef08a 50%, #fef08a 100%)",
+      }}
     >
       {/* Content with relative positioning to appear above background */}
       <div className="relative z-10 w-full max-w-lg md:max-w-2xl mx-auto">

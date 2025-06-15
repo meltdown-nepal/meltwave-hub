@@ -118,7 +118,13 @@ const WellnessOnboarding = () => {
   };
 
   return (
-    <div className="relative min-h-[calc(100dvh-70px)] bg-gradient-to-tl from-yellow-100 via-yellow-100 to-white py-5 px-2 sm:px-3 lg:px-4 flex items-center justify-center" style={{ minHeight: "100dvh" }}>
+    <div
+      className="relative min-h-[calc(100dvh-70px)] py-5 px-2 sm:px-3 lg:px-4 flex items-center justify-center"
+      style={{
+        minHeight: "100dvh",
+        background: "linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #fef08a 50%, #fef08a 100%)",
+      }}
+    >
       {/* Content with relative positioning */}
       <div className="relative z-10 max-w-xl mx-auto">
         {/* Header with Progress */}
