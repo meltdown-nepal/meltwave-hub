@@ -197,7 +197,7 @@ const ForCompanies = () => {
       </section>
 
       {/* How It Works - Redesigned */}
-      <section className="bg-gray-100 section-padding">
+      <section className="section-padding bg-zinc-50">
         <div className="container-custom">
           <div className="text-center mb-16">
             <div className="inline-block mb-4 px-6 py-2 bg-blue-100 rounded-full text-blue-700 font-medium text-sm uppercase tracking-wide">
