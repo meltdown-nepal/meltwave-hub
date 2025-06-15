@@ -1,4 +1,3 @@
-
 import React from "react";
 import EventGalleryImage from "@/components/EventGalleryImage";
 import { useGalleryImagePreloader } from "@/hooks/useGalleryImagePreloader";
@@ -35,15 +34,12 @@ export default function EventGallerySection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((img, idx) => (
+          {galleryImages.map((img) => (
             <div key={img.src}>
               <EventGalleryImage
                 src={img.src}
                 title={img.title}
                 alt={img.alt}
-                // Options for possible quality and progressive loading in the future
-                quality={idx === 0 ? 'high' : 'medium'}   // First image high quality, rest medium
-                lazy={idx !== 0} // Eager-load first, lazy for others
               />
             </div>
           ))}
