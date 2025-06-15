@@ -1,4 +1,6 @@
+
 import React from 'react';
+
 const clientLogos = [{
   id: 1,
   src: "/lovable-uploads/Veda.png",
@@ -72,32 +74,68 @@ const clientLogos = [{
   src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
   alt: "CloudFactory Logo"
 }];
+
 const EnhancedClientCarousel = () => {
-  return <section id="trusted-companies-section" className="py-12 bg-gradient-to-r from-gray-50 via-white to-gray-50 overflow-hidden">
+  // Optimize by limiting visible logos for better performance
+  const visibleLogos = clientLogos.slice(0, 12);
+  const duplicatedLogos = [...visibleLogos, ...visibleLogos];
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    console.warn(`Failed to load client company image: ${img.src}`);
+    // Hide the image container if it fails to load
+    const container = img.closest('.logo-container');
+    if (container) {
+      (container as HTMLElement).style.display = 'none';
+    }
+  };
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    console.log(`✅ Client company image loaded: ${img.src}`);
+    img.style.opacity = '1';
+  };
+
+  return (
+    <section className="py-8 bg-yellow-50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
-        <h3 className="text-3xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-          Trusted by Leading Companies
-        </h3>
+        <h3 className="text-2xl font-bold mb-8 py-[20px]">Trusted by Leading Companies</h3>
         <div className="relative">
           {/* Gradient edges for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-gray-50 via-white to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-gray-50 via-white to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-yellow-50 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none" />
           
           {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
-            <div className="animate-seamless-scroll flex">
-              {/* First set of logos */}
-              {clientLogos.map(logo => <div key={`first-${logo.id}`} className="flex-shrink-0 flex items-center justify-center px-8 py-6 group ">
-                  <div className="relative overflow-hidden rounded-xl p-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg bg-white/50 backdrop-blur-sm border border-gray-100/50 group-hover:bg-white/70">
-                    <img src={logo.src} alt={logo.alt} className="h-12 md:h-16 w-auto max-w-[120px] md:max-w-[150px] object-contain transition-all duration-300 filter brightness-90 group-hover:brightness-100" draggable={false} loading="lazy" width="150" height="64" decoding="async" />
-                  </div>
-                </div>)}
-              {/* Duplicate set for seamless loop */}
-              {clientLogos.map(logo => <div key={`second-${logo.id}`} className="flex-shrink-0 flex items-center justify-center px-8 py-6 group">
-                  <div className="relative overflow-hidden rounded-xl p-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg bg-white/50 backdrop-blur-sm border border-gray-100/50 group-hover:bg-white/70">
-                    <img src={logo.src} alt={logo.alt} className="h-12 md:h-16 w-auto max-w-[120px] md:max-w-[150px] object-contain transition-all duration-300 filter brightness-90 group-hover:brightness-100" draggable={false} loading="lazy" width="150" height="64" decoding="async" />
-                  </div>
-                </div>)}
+            <div className="animate-seamless-scroll flex will-change-transform">
+              {duplicatedLogos.map((logo, index) => (
+                <div 
+                  key={`${logo.id}-${index}`} 
+                  className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-all duration-300 opacity-0"
+                    width={180}
+                    height={80}
+                    loading={index > 8 ? 'lazy' : 'eager'}
+                    decoding="async"
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                    style={{ 
+                      filter: 'brightness(0.9)',
+                      transition: 'opacity 0.3s ease, filter 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'brightness(1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'brightness(0.9)';
+                    }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -106,16 +144,12 @@ const EnhancedClientCarousel = () => {
       {/* Optimized CSS animation for better performance */}
       <style>{`
         @keyframes seamless-scroll {
-          0% {
-            transform: translate3d(0, 0, 0);
-          }
-          100% {
-            transform: translate3d(-50%, 0, 0);
-          }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
 
         .animate-seamless-scroll {
-          animation: seamless-scroll 60s linear infinite;
+          animation: seamless-scroll 45s linear infinite;
           width: fit-content;
           will-change: transform;
           backface-visibility: hidden;
@@ -123,18 +157,18 @@ const EnhancedClientCarousel = () => {
           transform: translateZ(0);
         }
 
-        /* Pause animation on hover for better UX */
         .animate-seamless-scroll:hover {
           animation-play-state: paused;
         }
 
-        /* Reduce motion for users who prefer it */
         @media (prefers-reduced-motion: reduce) {
           .animate-seamless-scroll {
-            animation-duration: 120s;
+            animation-duration: 90s;
           }
         }
       `}</style>
-    </section>;
+    </section>
+  );
 };
+
 export default EnhancedClientCarousel;
