@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import OptimizedImage from './OptimizedImage';
@@ -66,10 +65,7 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
                   className="max-h-12 w-auto max-w-full object-contain"
                   width={120}
                   height={48}
-                  lazy={index > 8} // Only lazy load logos not immediately visible
                   sizes="120px"
-                  quality="medium"
-                  responsive={false} // Logos don't need responsive treatment
                 />
               </div>
             ))}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -125,7 +124,6 @@ const EnhancedHeroSection = () => {
                         priority={index === 0}
                         width={800}
                         height={800}
-                        lazy={false}
                       />
                     </div>
                   ))}

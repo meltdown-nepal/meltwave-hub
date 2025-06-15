@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ZoomIn, Heart } from "lucide-react";
@@ -59,7 +58,6 @@ export default function EventGalleryImage({
           width={600}
           height={400}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          lazy={true}
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import OptimizedImage from '../../OptimizedImage';
@@ -40,7 +39,6 @@ const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => 
                       priority={index === 0} 
                       width={screen.width} 
                       height={screen.height} 
-                      lazy={false}
                     />
                     {/* Scroll indicator for long content */}
                     <div className="absolute bottom-2 right-2 bg-black/20 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-white/80 pointer-events-none">
@@ -56,7 +54,6 @@ const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => 
                   priority={index === 0} 
                   width={screen.width} 
                   height={screen.height} 
-                  lazy={false}
                 />
               )}
             </div>

@@ -45,10 +45,9 @@ const ClientLogoCarousel = () => {
                     className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain"
                     width={180}
                     height={80}
-                    lazy={index > 6}
+                    // REMOVED lazy
                     sizes="180px"
-                    quality="medium"
-                    responsive={false}
+                    // REMOVED quality and responsive, since not in props
                   />
                 </div>
               ))}
