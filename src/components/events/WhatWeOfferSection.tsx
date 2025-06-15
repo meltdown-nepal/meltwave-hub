@@ -3,16 +3,9 @@ import React from "react";
 import EventOfferCard from "@/components/EventOfferCard";
 import { Activity, Award, Mountain, Puzzle, Bike, CalendarDays } from "lucide-react";
 
-// Card accent colors
-const cardColors = [
-  "from-orange-100 to-yellow-50 border-primary",
-  "from-yellow-100 to-amber-50 border-secondary",
-  "from-lime-50 to-green-100 border-green-400",
-  "from-cyan-50 to-blue-100 border-blue-300",
-  "from-pink-50 to-rose-100 border-pink-300",
-  "from-purple-50 to-fuchsia-100 border-fuchsia-300",
-  "from-amber-50 to-yellow-100 border-amber-400"
-];
+// Single card accent style—simple neutral palette
+const cardStyles =
+  "bg-white border-primary/20 hover:border-primary hover:shadow-lg";
 
 export default function WhatWeOfferSection() {
   const offerTypes = [
@@ -53,7 +46,7 @@ export default function WhatWeOfferSection() {
     }
   ];
   return (
-    <section className="section-padding bg-gradient-to-r from-white via-yellow-50 to-amber-50/70">
+    <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
@@ -64,13 +57,13 @@ export default function WhatWeOfferSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {offerTypes.map((offer, i) => (
+          {offerTypes.map((offer) => (
             <EventOfferCard
               key={offer.title}
               Icon={offer.icon}
               title={offer.title}
               description={offer.description}
-              className={`bg-gradient-to-br ${cardColors[i % cardColors.length]} hover:scale-105 hover:shadow-xl transition-transform border-2`}
+              className={`transition-transform duration-300 border-2 ${cardStyles} hover:scale-105`}
             />
           ))}
         </div>
