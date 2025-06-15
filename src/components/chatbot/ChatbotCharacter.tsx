@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Bot } from 'lucide-react';
 
 interface ChatbotCharacterProps {
   size?: 'tiny' | 'small' | 'medium' | 'large';
@@ -17,27 +18,25 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
     large: 'w-16 h-16'
   };
 
-  const imageSizeClasses = {
-    tiny: 'w-5 h-5',
-    small: 'w-7 h-7',
-    medium: 'w-11 h-11',
-    large: 'w-14 h-14'
+  const iconSizeClasses = {
+    tiny: 'w-3 h-3',
+    small: 'w-4 h-4',
+    medium: 'w-6 h-6',
+    large: 'w-8 h-8'
   };
 
   return (
     <div 
       className={`
         ${sizeClasses[size]} 
-        rounded-full bg-gradient-to-br from-yellow-100 to-orange-100
+        rounded-full bg-white
         flex items-center justify-center
-        shadow-lg border-2 border-white
+        shadow-lg border-2 border-gray-200
         ${animate ? 'transition-all duration-300 hover:scale-110 hover:shadow-xl' : ''}
       `}
     >
-      <img 
-        src="/lovable-uploads/6a8d21a6-d52d-4b26-84f3-c858e2d69169.png" 
-        alt="Meltzy"
-        className={`${imageSizeClasses[size]} object-contain drop-shadow-sm`}
+      <Bot 
+        className={`${iconSizeClasses[size]} text-gray-600`}
       />
     </div>
   );
