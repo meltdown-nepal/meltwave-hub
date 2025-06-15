@@ -63,13 +63,15 @@ const PackageDetail = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto py-16 px-4">
-      <div className="mb-6">
+    <div className="max-w-4xl mx-auto py-10 px-2">
+      <div className="mb-7">
         <Link to="/packages" className="inline-flex items-center text-primary font-medium hover:underline">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Packages
         </Link>
       </div>
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">{pkg.name}</h1>
+      {/* Bigger accent at the top */}
+      <div className="h-1 rounded bg-gradient-to-r from-primary to-secondary w-32 mx-auto mb-8" />
+      {/* Details Content */}
       <PackageDetailsContent
         name={pkg.name}
         howItWorks={pkg.howItWorks}
