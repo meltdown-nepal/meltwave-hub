@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -155,15 +154,8 @@ const ProgramCategoryTabs: React.FC = () => {
               }}
             >
               <div className="flex flex-col gap-0 h-full">
-                <div className="relative w-full h-48 bg-gray-50 mb-4 overflow-hidden">
-                  {/* Use the custom image if needed */}
-                  <OptimizedImage
-                    src={program.imageUrl}
-                    alt={program.title}
-                    className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <div className="flex flex-col flex-1 px-5 pb-5">
+                {/* IMAGE REMOVED */}
+                <div className="flex flex-col flex-1 px-5 pb-5 pt-8">
                   <h3 className="text-xl font-bold mb-2 gradient-text">{program.title}</h3>
                   <p className="mb-3 text-gray-700">{program.description}</p>
                   <ul className="space-y-1 mb-2 text-sm">
