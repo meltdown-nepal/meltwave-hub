@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
@@ -94,7 +93,7 @@ const TestimonialsSection = ({
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
         </div>
         {/* Desktop: Grid with rich cards */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, idx) => (
             <Card key={idx} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 border-0 h-full transform hover:-translate-y-1 relative overflow-visible">
               <CardContent className="p-8 lg:p-10 relative h-full flex flex-col min-h-[300px]">
