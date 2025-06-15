@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Minimize2, HelpCircle } from 'lucide-react';
+import { MessageCircle, X, Send, Minimize2, HelpCircle, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ChatbotCharacter } from './ChatbotCharacter';
 import { ChatMessage } from './ChatMessage';
@@ -11,6 +12,7 @@ interface Message {
   type: 'user' | 'bot';
   content: string;
   timestamp: Date;
+  isAI?: boolean;
 }
 
 const SmartChatbot = () => {
@@ -21,7 +23,7 @@ const SmartChatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const { getResponse } = useChatbotResponses();
+  const { getResponse, isUsingAI } = useChatbotResponses();
   const { pageContent } = usePageContext();
 
   // Welcome message when chatbot opens
@@ -90,7 +92,8 @@ const SmartChatbot = () => {
         id: (Date.now() + 1).toString(),
         type: 'bot',
         content: response,
-        timestamp: new Date()
+        timestamp: new Date(),
+        isAI: isUsingAI
       };
       
       setMessages(prev => [...prev, botMessage]);
@@ -161,10 +164,19 @@ const SmartChatbot = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-white rounded-t-2xl">
             <div className="flex items-center space-x-3">
-              <ChatbotCharacter size="small" animate />
+              <div className="relative">
+                <ChatbotCharacter size="small" animate />
+                {(isTyping && isUsingAI) && (
+                  <div className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full p-1" title="AI Enhanced">
+                    <Brain className="w-3 h-3" />
+                  </div>
+                )}
+              </div>
               <div>
                 <h3 className="font-semibold text-black text-sm">Meltzy 🌟</h3>
-                <p className="text-xs text-black/70">Your wellness buddy!</p>
+                <p className="text-xs text-black/70">
+                  {isTyping && isUsingAI ? 'AI thinking...' : 'Your wellness buddy!'}
+                </p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
@@ -202,7 +214,15 @@ const SmartChatbot = () => {
               {/* Messages */}
               <div className="flex-1 p-4 h-80 overflow-y-auto">
                 {messages.map((message) => (
-                  <ChatMessage key={message.id} message={message} />
+                  <div key={message.id} className="relative">
+                    <ChatMessage message={message} />
+                    {message.type === 'bot' && message.isAI && (
+                      <div className="flex items-center text-xs text-blue-600 mb-2 ml-8">
+                        <Brain className="w-3 h-3 mr-1" />
+                        AI Enhanced Response
+                      </div>
+                    )}
+                  </div>
                 ))}
                 
                 {/* Quick Questions - Show only if no messages yet */}
@@ -224,12 +244,22 @@ const SmartChatbot = () => {
                 {/* Typing Indicator */}
                 {isTyping && (
                   <div className="flex items-center space-x-2 mb-4">
-                    <ChatbotCharacter size="tiny" />
+                    <div className="relative">
+                      <ChatbotCharacter size="tiny" />
+                      {isUsingAI && (
+                        <div className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full p-0.5">
+                          <Brain className="w-2 h-2" />
+                        </div>
+                      )}
+                    </div>
                     <div className="bg-gray-100 rounded-2xl px-4 py-2">
-                      <div className="flex space-x-1">
+                      <div className="flex space-x-1 items-center">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        {isUsingAI && (
+                          <Brain className="w-3 h-3 text-blue-500 ml-2 animate-pulse" />
+                        )}
                       </div>
                     </div>
                   </div>

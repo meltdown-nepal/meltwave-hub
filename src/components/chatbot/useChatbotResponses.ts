@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { faqData } from '../../data/faqData';
+import { supabase } from '@/integrations/supabase/client';
 
 interface QuickResponse {
   keywords: string[];
@@ -25,6 +26,7 @@ interface PageContent {
 
 export const useChatbotResponses = () => {
   const [conversationContext, setConversationContext] = useState<string[]>([]);
+  const [isUsingAI, setIsUsingAI] = useState(false);
 
   const quickResponses: QuickResponse[] = [
     {
@@ -36,6 +38,59 @@ export const useChatbotResponses = () => {
       response: "Aww, you're so sweet! 🥰 It totally makes my day when I can help! I'm here and ready to assist you with anything on this page or about our wellness services. Is there anything else you'd love to discover? ✨"
     }
   ];
+
+  // Check if we should use AI for complex queries
+  const shouldUseAI = (userMessage: string): boolean => {
+    const complexIndicators = [
+      'how', 'why', 'what if', 'compare', 'difference', 'better', 'best',
+      'explain', 'tell me about', 'can you help', 'i need', 'problem',
+      'issue', 'concern', 'specific', 'custom', 'unique', 'detailed'
+    ];
+    
+    const lowerMessage = userMessage.toLowerCase();
+    const hasComplexIndicators = complexIndicators.some(indicator => 
+      lowerMessage.includes(indicator)
+    );
+    
+    const isLongMessage = userMessage.length > 50;
+    const hasQuestionWords = /\b(how|what|when|where|why|which|who)\b/i.test(userMessage);
+    
+    return hasComplexIndicators || isLongMessage || hasQuestionWords;
+  };
+
+  // Get AI response from edge function
+  const getAIResponse = async (userMessage: string, pageContent?: PageContent): Promise<string | null> => {
+    try {
+      setIsUsingAI(true);
+      console.log('🤖 Getting AI response for:', userMessage.slice(0, 50) + '...');
+      
+      const { data, error } = await supabase.functions.invoke('intelligent-chat', {
+        body: {
+          message: userMessage,
+          pageContent,
+          conversationHistory: conversationContext.slice(-10)
+        }
+      });
+
+      if (error) {
+        console.error('Edge function error:', error);
+        return null;
+      }
+
+      if (data?.success && data?.response) {
+        console.log('✅ AI response received successfully');
+        return data.response;
+      }
+
+      console.warn('AI response failed, using fallback');
+      return null;
+    } catch (error) {
+      console.error('Error calling AI:', error);
+      return null;
+    } finally {
+      setIsUsingAI(false);
+    }
+  };
 
   // Enhanced knowledge base that includes page-specific responses
   const createPageAwareKnowledgeBase = (pageContent?: PageContent): KnowledgeItem[] => {
@@ -295,7 +350,17 @@ export const useChatbotResponses = () => {
       return quickResponse.response;
     }
 
-    // Try intelligent matching with page context
+    // Try AI for complex queries first
+    if (shouldUseAI(userMessage)) {
+      console.log('🧠 Using AI for complex query:', userMessage.slice(0, 50) + '...');
+      const aiResponse = await getAIResponse(userMessage, pageContent);
+      if (aiResponse) {
+        setConversationContext(prev => [...prev.slice(-5), userMessage, aiResponse].slice(-10));
+        return aiResponse;
+      }
+    }
+
+    // Fall back to knowledge base matching
     const intelligentResponse = findIntelligentMatch(userMessage, pageContent);
     if (intelligentResponse) {
       return intelligentResponse;
@@ -305,5 +370,5 @@ export const useChatbotResponses = () => {
     return getEnhancedDefaultResponse(userMessage, pageContent);
   };
 
-  return { getResponse };
+  return { getResponse, isUsingAI };
 };

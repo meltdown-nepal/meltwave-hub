@@ -9,3 +9,6 @@ verify_jwt = false
 
 [functions.wellness-provider]
 verify_jwt = false
+
+[functions.intelligent-chat]
+verify_jwt = false
