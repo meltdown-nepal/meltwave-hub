@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import OptimizedImage from "@/components/OptimizedImage";
 import EventGalleryModal from "./EventGalleryModal";
@@ -8,23 +9,33 @@ const EVENTS = [{
   key: "wednesday-run",
   title: "Wednesday Run Clubs",
   subtitle: "Join us for our weekly community runs!",
-  images: [{
-    src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
-    title: "City evening fun run",
-    alt: "People running in a city park at dusk"
-  }, {
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-    title: "Team Relay Race",
-    alt: "Group of athletes performing relay handoff"
-  }, {
-    src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80",
-    title: "Mindfulness in Nature",
-    alt: "Mindfulness meditation by a flowing river"
-  }, {
-    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    title: "Nature Wellness Retreat",
-    alt: "Tranquil lake surrounded by vibrant trees"
-  }]
+  images: [
+    {
+      src: "/lovable-uploads/55217816-bf30-4150-a365-8d449c852bc2.png",
+      title: "Wednesday Run Club Warm-up",
+      alt: "People in active wear doing warm-up stretches in a park with birds flying overhead and Jeep showroom in background"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+      title: "City evening fun run",
+      alt: "People running in a city park at dusk"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+      title: "Team Relay Race",
+      alt: "Group of athletes performing relay handoff"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80",
+      title: "Mindfulness in Nature",
+      alt: "Mindfulness meditation by a flowing river"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      title: "Nature Wellness Retreat",
+      alt: "Tranquil lake surrounded by vibrant trees"
+    }
+  ]
 }, {
   key: "pet-hike",
   title: "Pet Friendly Hikes",
