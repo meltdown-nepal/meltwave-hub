@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -68,7 +67,7 @@ const PackageDetail = () => {
       className="min-h-screen w-full"
       style={{
         background: `linear-gradient(
-          90deg,
+          180deg,
           #fff 0%,
           #fff 60%,
           #FFD838 60%,
@@ -82,9 +81,7 @@ const PackageDetail = () => {
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Packages
           </Link>
         </div>
-        {/* Bigger accent at the top */}
         <div className="h-1 rounded bg-gradient-to-r from-primary to-secondary w-32 mx-auto mb-8" />
-        {/* Details Content */}
         <PackageDetailsContent
           name={pkg.name}
           howItWorks={pkg.howItWorks}
@@ -97,4 +94,3 @@ const PackageDetail = () => {
 };
 
 export default PackageDetail;
-
