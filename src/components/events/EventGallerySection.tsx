@@ -57,15 +57,15 @@ export default function EventGallerySection() {
             {GALLERY_IMAGES.map((img, idx) => (
               <CarouselItem
                 key={img.src}
-                className="basis-11/12 md:basis-1/3 px-2"
+                className="basis-11/12 md:basis-1/4 px-2"
               >
-                <div className="rounded-lg overflow-hidden hover-scale shadow-lg transition-all duration-300 group cursor-pointer">
+                <div className="rounded-lg overflow-hidden hover-scale shadow-lg transition-all duration-300 group cursor-pointer aspect-[3/4] bg-gray-100 flex items-center justify-center">
                   <OptimizedImage
                     src={img.src}
                     alt={img.alt}
-                    className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
-                    width={600}
-                    height={400}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    width={450}
+                    height={600}
                   />
                 </div>
               </CarouselItem>
