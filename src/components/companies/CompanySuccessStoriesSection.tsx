@@ -24,7 +24,7 @@ const successStories = [
     title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
     name: "Pabin Karki",
     role: "CEO, Kaya Sports",
-    image: "/lovable-uploads/f9bf14a9-e727-494e-80d5-a6dd6927a72d.png",
+    image: "/lovable-uploads/117df8a4-df31-4e42-acbf-7819a0f69782.png", // UPDATED to new Pabin photo
     linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/",
   },
 ];
@@ -54,7 +54,6 @@ const CompanySuccessStoriesSection = () => {
           {successStories.map((story, idx) => (
             <Card
               key={idx}
-              // Add overflow-visible to prevent clipping; add pt-10 for top space; pb-6 for bottom space
               className={cn(
                 "relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full animate-fade-in overflow-visible pt-10 pb-6",
                 idx === 1 ? "md:scale-105 md:-translate-y-2 z-10" : ""
@@ -65,7 +64,7 @@ const CompanySuccessStoriesSection = () => {
               }}
             >
               <div className="flex flex-col h-full">
-                <div className="flex justify-center mb-2" /* removed -mt-8 */>
+                <div className="flex justify-center mb-2">
                   <div className="h-20 w-20 rounded-full overflow-hidden border-4 border-primary bg-gradient-to-br from-yellow-100 to-amber-200 shadow-lg">
                     <img
                       src={story.image || placeholderImg}
@@ -116,7 +115,6 @@ const CompanySuccessStoriesSection = () => {
           ))}
         </div>
       </div>
-      {/* Animation is now handled by Tailwind animate-fade-in utility; custom CSS no longer needed */}
     </section>
   );
 };
