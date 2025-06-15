@@ -196,74 +196,136 @@ const ForCompanies = () => {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-gray-50 section-padding">
+      {/* How It Works - Redesigned */}
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Meltdown Works for Your Company</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              A simple, effective process to implement comprehensive wellness solutions.
+            <div className="inline-block mb-4 px-6 py-2 bg-blue-100 rounded-full text-blue-700 font-medium text-sm uppercase tracking-wide">
+              How It Works
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              Simple Steps to Healthier Employees
+            </h2>
+            <p className="text-lg max-w-3xl mx-auto text-gray-600">
+              Get your team started with comprehensive wellness in just a few easy steps
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <div className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                1
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            {/* Left side - Steps */}
+            <div className="space-y-6">
+              {/* Step 1 */}
+              <div className="flex gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                    1
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">Your Investment</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Make an annual investment per employee (minimum 5 employees). This unlocks access to our comprehensive wellness platform for your entire team.
+                  </p>
+                </div>
               </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-4 text-gray-950">Company Invests per Employee</h3>
-                <p className="text-gray-700">
-                  Your organization makes an annual investment per employee, starting with a minimum of 5 employees. This gives your team access to a customized wellness platform built to support physical, mental, and social well-being.
-                </p>
+
+              {/* Step 2 */}
+              <div className="flex gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                    2
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">Custom App Setup</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    We create a personalized Meltdown app for your company. Employees can explore services, track progress, and join wellness challenges.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                    3
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">Employee Choice</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Team members choose from Basic, Gold, or Platinum packages - all heavily subsidized (40-50% below market rates) thanks to your investment.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="flex gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                    4
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">Track & Measure</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Get real-time insights through your HR dashboard with participation data, engagement reports, and wellness trends across departments.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                2
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-4 text-slate-950">Customized App for Your Employees</h3>
-                <p className="text-gray-700">
-                  Once enrolled, your employees receive access to a Meltdown app customized exclusively for your company. Through the app, employees can explore wellness services, choose packages, track progress, join challenges, and access company-specific content.
-                </p>
+            {/* Right side - Visual */}
+            <div className="lg:pl-8">
+              <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-black">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="m22 2-5 10-5-5-5 10"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Package Options</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span className="font-medium text-gray-700">Basic</span>
+                    <span className="text-sm text-gray-500">Gym & Group Fitness</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-200">
+                    <span className="font-medium text-gray-700">Gold</span>
+                    <span className="text-sm text-amber-600">+ Swimming, Mental Health</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <span className="font-medium text-gray-700">Platinum</span>
+                    <span className="text-sm text-blue-600">+ 1-on-1 Services</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="text-center">
+                    <p className="text-sm font-medium text-green-700">40-50% Savings</p>
+                    <p className="text-xs text-green-600">Below market rates</p>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                3
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-4 text-slate-950">Employees Choose Their Own Package</h3>
-                <p className="text-gray-700">
-                  We offer tiered packages: Basic (gym & group fitness), Gold (includes swimming, mental health, nutrition), Platinum (full access with 1-on-1 services). All packages are heavily subsidized (40–50% below market rates) thanks to your company's investment.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md relative md:col-span-2 xl:col-span-1">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                4
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-4 text-slate-950">Transparent Reporting for HR</h3>
-                <p className="text-gray-700">
-                  Your HR team gets access to a secure corporate dashboard with real-time participation data, monthly engagement reports, wellness trend insights across departments, and tools to launch internal wellness campaigns.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md relative md:col-span-2 xl:col-span-1 xl:col-start-2">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-black font-bold w-8 h-8 rounded-full flex items-center justify-center">
-                5
-              </div>
-              <div className="pt-4">
-                <h3 className="text-xl font-bold mb-4 text-slate-950">Continuous Support & Engagement</h3>
-                <p className="text-gray-700">
-                  Meltdown provides a dedicated account manager, regular check-ins and program reviews, optional on-site workshops, events, and pop-ups, plus custom marketing material to encourage participation.
-                </p>
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-gray-100">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Ready to Get Started?</h3>
+              <p className="text-gray-600 mb-6">Join leading companies who trust Meltdown for their employee wellness programs</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/schedule-demo" className="btn-primary">
+                  Schedule Demo
+                </Link>
+                <button onClick={() => scrollToSection('testimonials')} className="btn-outline">
+                  See Success Stories
+                </button>
               </div>
             </div>
           </div>
