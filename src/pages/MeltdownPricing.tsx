@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
@@ -9,7 +8,7 @@ import { Link } from "react-router-dom";
 const packages = [{
   name: "BASIC",
   offline: "Rs.4,000/month",
-  online: ["Rs.4,500/3 months", "Rs.7,500/6 months"],
+  online: ["Rs.4,500/3 months"],
   centers: "15+ centers",
   color: "bg-gray-50 border-gray-200",
   buttonStyle: "border border-gray-300 text-gray-900 hover:bg-gray-100 focus:ring-2 focus:ring-primary",
@@ -17,7 +16,7 @@ const packages = [{
 }, {
   name: "GOLD",
   offline: "Rs.9,500/month",
-  online: ["Rs.10,500/3 months", "Rs.18,000/6 months"],
+  online: ["Rs.10,500/3 months"],
   centers: "40+ centers",
   color: "bg-yellow-50 border-yellow-300",
   buttonStyle: "border-2 border-yellow-400 text-yellow-900 hover:bg-yellow-100 focus:ring-2 focus:ring-yellow-400",
@@ -25,7 +24,7 @@ const packages = [{
 }, {
   name: "PLATINUM",
   offline: "Rs.14,000/month",
-  online: ["Rs.16,500/3 months", "Rs.27,000/6 months"],
+  online: ["Rs.16,500/3 months"],
   centers: "60+ centers",
   color: "bg-blue-50 border-blue-300",
   buttonStyle: "border-2 border-blue-400 text-blue-900 hover:bg-blue-100 focus:ring-2 focus:ring-blue-400",
@@ -116,7 +115,7 @@ const MeltdownPricing = () => {
                         <span>Via Meltdown:</span>
                       </span>
                       <ul className="ml-7 space-y-1 w-full">
-                        {pkg.online.map((onlinePrice, idx) => (
+                        {pkg.online.map((onlinePrice) => (
                           <li key={onlinePrice} className="text-base text-gray-800">
                             {onlinePrice}
                           </li>
