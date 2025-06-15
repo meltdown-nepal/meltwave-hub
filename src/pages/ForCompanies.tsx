@@ -308,7 +308,7 @@ const ForCompanies = () => {
       <CompanySuccessStoriesSection />
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 section-padding">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
@@ -317,7 +317,7 @@ const ForCompanies = () => {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-4 md:p-8">
+          <div className="max-w-3xl mx-auto bg-white rounded-lg  p-4 md:p-8">
             <Accordion type="single" collapsible className="w-full">
               {companyFaqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left font-medium text-lg hover:no-underline">
