@@ -54,8 +54,9 @@ const CompanySuccessStoriesSection = () => {
           {successStories.map((story, idx) => (
             <Card
               key={idx}
+              // Add overflow-visible to prevent clipping; add pt-10 for top space; pb-6 for bottom space
               className={cn(
-                "relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full animate-fade-in",
+                "relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full animate-fade-in overflow-visible pt-10 pb-6",
                 idx === 1 ? "md:scale-105 md:-translate-y-2 z-10" : ""
               )}
               style={{
@@ -64,7 +65,7 @@ const CompanySuccessStoriesSection = () => {
               }}
             >
               <div className="flex flex-col h-full">
-                <div className="flex justify-center -mt-8 mb-2">
+                <div className="flex justify-center mb-2" /* removed -mt-8 */>
                   <div className="h-20 w-20 rounded-full overflow-hidden border-4 border-primary bg-gradient-to-br from-yellow-100 to-amber-200 shadow-lg">
                     <img
                       src={story.image || placeholderImg}
@@ -115,16 +116,7 @@ const CompanySuccessStoriesSection = () => {
           ))}
         </div>
       </div>
-      <style>{`
-        .animate-fade-in {
-          opacity: 0;
-          animation: fade-in 0.7s ease-out forwards;
-        }
-        @keyframes fade-in {
-          to { opacity: 1; transform: none; }
-          from { opacity: 0; transform: translateY(24px); }
-        }
-      `}</style>
+      {/* Animation is now handled by Tailwind animate-fade-in utility; custom CSS no longer needed */}
     </section>
   );
 };
