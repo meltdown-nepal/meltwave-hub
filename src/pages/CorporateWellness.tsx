@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
+
 const roles = [{
   label: "For Companies",
   description: "Implement tailored wellness programs that boost productivity, retention, and wellbeing for your teams. Our expert-guided platform makes it simple to launch effective wellness initiatives that fit your organizational goals.",
@@ -17,24 +18,33 @@ const roles = [{
   href: "/providers",
   img: "/lovable-uploads/30f61b7c-2119-402c-9a49-c5f940a79247.png" // swapped with employees image
 }];
-const CorporateWellness = () => {
-  // Define testimonials for this page
-  const corporateTestimonials = [{
+
+const corporateTestimonials = [
+  {
     name: "Jyoti Pokharel",
     title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
     role: "HR Director, Leapfrog Technology",
+    image: "/lovable-uploads/ad4772d6-9991-455c-8eb5-7b16e5786191.png",
     linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
-  }, {
+  }, 
+  {
     name: "Bibha Tandukar",
     title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     role: "Project Manager, Young Innovation",
+    image: "/lovable-uploads/75c33a27-3bcf-4168-b101-b170d7ca4ac7.png",
     linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
-  }, {
+  }, 
+  {
     name: "Pabin Karki",
     title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
     role: "CEO, Kaya Sports",
+    image: "/lovable-uploads/117df8a4-df31-4e42-acbf-7819a0f69782.png",
     linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
-  }];
+  }
+];
+
+const CorporateWellness = () => {
+  // Define testimonials for this page
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
