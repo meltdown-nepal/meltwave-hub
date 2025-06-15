@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Bot } from 'lucide-react';
 
 interface ChatbotCharacterProps {
   size?: 'tiny' | 'small' | 'medium' | 'large';
@@ -18,11 +17,11 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
     large: 'w-16 h-16'
   };
 
-  const iconSizeClasses = {
-    tiny: 'w-3 h-3',
-    small: 'w-4 h-4',
-    medium: 'w-6 h-6',
-    large: 'w-8 h-8'
+  const textSizeClasses = {
+    tiny: 'text-xs',
+    small: 'text-sm',
+    medium: 'text-xl',
+    large: 'text-3xl'
   };
 
   return (
@@ -35,9 +34,9 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
         ${animate ? 'transition-all duration-300 hover:scale-110 hover:shadow-xl' : ''}
       `}
     >
-      <Bot 
-        className={`${iconSizeClasses[size]} text-gray-600`}
-      />
+      <span className={`${textSizeClasses[size]}`}>
+        🤖
+      </span>
     </div>
   );
 };
