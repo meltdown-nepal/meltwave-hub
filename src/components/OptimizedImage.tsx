@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 
 interface OptimizedImageProps {
@@ -35,22 +36,22 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   quality = 'medium',
   responsive = true
 }) => {
+  // Diagnostic log: render start
+  console.log("[OptimizedImage] Render:", { src, alt, width, height, priority, lazy });
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState('');
   const observer = useRef<IntersectionObserver | null>(null);
 
-  // Correct: Create a stable ID string for this instance based on `src`
   const placeholderId = React.useMemo(() => {
     const digest = btoa(encodeURIComponent(src)).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12);
     return `img-${digest}`;
   }, [src]);
   const placeholderIdRef = useRef<string>(placeholderId);
 
-  // For now, just return PNG/Original for src
   const getOptimizedSrc = useCallback(() => src, [src]);
 
-  // Lazy/eager logic with Intersection Observer
   React.useEffect(() => {
     if (!lazy || priority) {
       setCurrentSrc(getOptimizedSrc());
@@ -58,10 +59,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     let node: HTMLElement | null = null;
-
     const doLoad = () => setCurrentSrc(getOptimizedSrc());
 
-    // Select using the fixed stable placeholder ID
     setTimeout(() => {
       node = document.querySelector(`[data-img-holder="${placeholderIdRef.current}"]`);
       if (node && "IntersectionObserver" in window) {
@@ -75,7 +74,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         }, { rootMargin: '75px' });
         observer.current.observe(node);
       } else {
-        // Fallback: load immediately if observer missing or placeholder not found
         doLoad();
       }
     }, 0);
@@ -83,7 +81,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return () => {
       if (observer.current) observer.current.disconnect();
     };
-    // Only rerun if lazy/priority/placeholderId/src changes
   }, [lazy, priority, getOptimizedSrc, placeholderId, src]);
 
   const handleLoad = useCallback(() => {
@@ -96,37 +93,38 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     setHasError(true);
     if (onError) onError();
+    // Distinct log for debugging
     console.warn(`❌ Failed to load image: ${src}`);
   }, [onError, src]);
 
-  // Shutdown the observer if component removed early (avoid memory leaks)
   React.useEffect(() => {
     return () => {
       if (observer.current) observer.current.disconnect();
     };
   }, []);
 
-  // Fallback for broken images
   if (hasError) {
+    // Diagnostic border
     return (
       <div 
-        className={`flex items-center justify-center ${className} bg-gray-100`}
+        className={`flex items-center justify-center ${className} bg-gray-100 border-4 border-red-600`}
         style={{ width, height }}
         data-img-error={src}
       >
         <div className="text-center p-4">
           <div className="w-8 h-8 bg-gray-300 rounded mx-auto mb-2"></div>
           <span className="text-gray-500 text-xs">Image unavailable</span>
+          <div className="text-[10px] text-red-800 mt-1 break-all">{src}</div>
         </div>
       </div>
     );
   }
 
-  // Show skeleton placeholder while image is loading or waiting to lazy load
   if (!currentSrc || !isLoaded) {
+    // Diagnostic border
     return (
       <div
-        className={`flex items-center justify-center ${className} ${skeletonBg[quality]} animate-pulse`}
+        className={`flex items-center justify-center ${className} ${skeletonBg[quality]} animate-pulse border-4 border-orange-400`}
         style={{ width, height, aspectRatio: width && height ? `${width}/${height}` : undefined }}
         data-img-holder={placeholderIdRef.current}
       >
@@ -135,11 +133,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     );
   }
 
+  // Diagnostic border on the loaded image
   return (
     <img
       src={currentSrc}
       alt={alt}
-      className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-400`}
+      className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-400 border-4 border-green-500`}
       width={width}
       height={height}
       loading={priority ? 'eager' : lazy ? 'lazy' : 'eager'}
