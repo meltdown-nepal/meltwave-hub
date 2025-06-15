@@ -9,35 +9,39 @@ import EnhancedCtaSection from '../components/home/EnhancedCtaSection';
 import AppShowcaseSection from '../components/home/AppShowcaseSection';
 import EnhancedTestimonialsSection from '../components/home/EnhancedTestimonialsSection';
 
-const EnhancedHome = () => {
-  // Home page testimonials
-  const homeTestimonials = [
-    {
-      name: "Jyoti Pokharel",
-      title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
-      role: "People Managment Senior Officer, Leapfrog Technology",
-      linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
-    },
-    {
-      name: "Bibha Tandukar",
-      title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
-      role: "Project Manager, Young Innovation",
-      linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
-    },
-    {
-      name: "Pabin Karki",
-      title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
-      role: "CEO, Kaya Sports",
-      linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
-    },
-    {
-      name: "Chiring Sherpa",
-      title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
-      role: "Security Research Analyst, Security Pal",
-      linkTo: "https://www.instagram.com/p/DIqwP8yIqr4/"
-    }
-  ];
+// Updated: homeTestimonials now include images for Jyoti and Bibha
+const homeTestimonials = [
+  {
+    name: "Jyoti Pokharel",
+    title: "Meltdown has brought a jolly spirit to our workplace, making every day feel more positive and energizing.",
+    role: "People Managment Senior Officer, Leapfrog Technology",
+    image: "/lovable-uploads/ad4772d6-9991-455c-8eb5-7b16e5786191.png",
+    linkTo: "https://www.instagram.com/p/DFP4tBFTzbC/"
+  },
+  {
+    name: "Bibha Tandukar",
+    title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
+    role: "Project Manager, Young Innovation",
+    image: "/lovable-uploads/75c33a27-3bcf-4168-b101-b170d7ca4ac7.png",
+    linkTo: "https://www.instagram.com/p/DG-wZ4HIpLs/"
+  },
+  {
+    name: "Pabin Karki",
+    title: "Meltdown's fresh approach to the fitness market and its diverse features have reignited my motivation.",
+    role: "CEO, Kaya Sports",
+    image: "/lovable-uploads/117df8a4-df31-4e42-acbf-7819a0f69782.png",
+    linkTo: "https://www.instagram.com/p/DGa0GjtzQCn/"
+  },
+  {
+    name: "Chiring Sherpa",
+    title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
+    role: "Security Research Analyst, Security Pal",
+    // Can add image for Chiring Sherpa if available
+    linkTo: "https://www.instagram.com/p/DIqwP8yIqr4/"
+  }
+];
 
+const EnhancedHome = () => {
   return (
     <div className="overflow-hidden">
       {/* Enhanced Hero Section */}

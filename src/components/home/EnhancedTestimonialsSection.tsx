@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
@@ -108,11 +107,19 @@ const EnhancedTestimonialsSection = ({
                           {/* User Info & CTA */}
                           <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                             <div className="flex items-center space-x-3 flex-1 min-w-0">
-                              {/* User Avatar */}
+                              {/* User Avatar (show image if present, else fallback to initial) */}
                               <div className="relative">
-                                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-black font-bold text-lg shadow-lg">
-                                  {testimonial.name?.charAt(0)}
-                                </div>
+                                {testimonial.image ? (
+                                  <img
+                                    src={testimonial.image}
+                                    alt={testimonial.name}
+                                    className="h-10 w-10 rounded-full object-cover shadow-lg border-2 border-primary bg-white"
+                                  />
+                                ) : (
+                                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                                    {testimonial.name?.charAt(0)}
+                                  </div>
+                                )}
                                 <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
                                   <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                                 </div>
