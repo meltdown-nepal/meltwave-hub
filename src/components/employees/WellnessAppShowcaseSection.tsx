@@ -18,6 +18,11 @@ const appScreens = [
     description: "See where you and your company stand for rewards.",
     image: "/lovable-uploads/1afeb7f0-633e-4f9d-8c6a-7c3ce21c9c97.png",
   },
+  {
+    title: "Profile & Badges",
+    description: "Show off your progress, achievements, and connect with teammates.",
+    image: "/lovable-uploads/profile.png",
+  },
 ];
 
 const WellnessAppShowcaseSection: React.FC = () => {
@@ -75,3 +80,4 @@ const WellnessAppShowcaseSection: React.FC = () => {
 };
 
 export default WellnessAppShowcaseSection;
+
