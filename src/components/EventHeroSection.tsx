@@ -90,7 +90,7 @@ export default function EventHeroSection({
       {/* Background Image with optimization */}
       <div className="absolute inset-0 w-full h-full z-0">
         <HeroImage 
-          src="/lovable-uploads/eventsherosection.png" 
+          src="/lovable-uploads/06f13e5b-dd31-41bf-abda-f09377f873fe.png" 
           alt="Group of fitness enthusiasts at a stadium track" 
           className="w-full h-full object-cover" 
           priority
