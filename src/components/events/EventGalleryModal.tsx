@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight, X, Images } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import OptimizedImage from "@/components/OptimizedImage";
 
 type GalleryImage = {
@@ -41,6 +41,10 @@ export default function EventGalleryModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-black max-w-3xl relative p-0">
+        {/* Accessibility: Must provide a DialogTitle for Radix Dialog */}
+        <DialogTitle className="sr-only">{current.title}</DialogTitle>
+        {/* Optionally, add a description for screen readers */}
+        <DialogDescription className="sr-only">{current.alt}</DialogDescription>
         <button
           className="absolute top-3 right-3 z-20 rounded-full bg-gray-800/80 hover:bg-gray-700 p-2 transition"
           aria-label="Close"
