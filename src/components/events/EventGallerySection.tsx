@@ -1,6 +1,9 @@
+
 import React, { useMemo } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import OptimizedImage from "@/components/OptimizedImage";
+import { useGalleryImagePreloader } from "@/hooks/useGalleryImagePreloader";
+
 const GALLERY_IMAGES = [{
   src: "/lovable-uploads/16e392a3-04e0-4afa-bbb8-eaa8106a7921.png",
   alt: "Group of runners in front of Bikers Cafe"
@@ -55,9 +58,18 @@ function shuffleArray<T>(array: T[]): T[] {
   }
   return arr;
 }
+
 export default function EventGallerySection() {
   // Shuffle images only once per mount
   const shuffledImages = useMemo(() => shuffleArray(GALLERY_IMAGES), []);
+  // Preload all images for smoother UX
+  useGalleryImagePreloader(
+    shuffledImages.map(img => ({
+      src: img.src
+    })),
+    true // enable preloading
+  );
+
   return <section id={SECTION_ID} className="bg-white section-padding">
       <div className="container-custom">
         <div className="mb-8 text-center">
