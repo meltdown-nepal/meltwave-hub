@@ -2,7 +2,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import HowItWorksTimeline from "./HowItWorksTimeline";
-import { BadgeCheck, CheckCircle2 } from "lucide-react";
+import { BadgeCheck, CheckCircle2, Info } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Mock price & duration for now
 const PACKAGE_PRICE = "NPR 3,999";
@@ -29,12 +30,33 @@ const PackageDetailsContent: React.FC<PackageDetailsContentProps> = ({
 }) => {
   return (
     <section className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mb-16 animate-fade-in">
-      {/* Top Title and Accent */}
-      <div className="px-6 pt-8 pb-2 sm:px-10">
-        <h1 className="text-2xl sm:text-3xl font-header font-bold text-center mb-2">{name}</h1>
-        {/* Accent Gradient Line */}
-        <div className="h-1 rounded bg-gradient-to-r from-primary to-secondary w-24 mx-auto mb-2" />
+      {/* Custom Heading Card */}
+      <div className="flex flex-col md:flex-row items-center justify-between bg-gradient-to-tr from-primary/20 to-secondary/10 px-6 pt-8 pb-2 sm:px-10 rounded-t-2xl border-b border-gray-100 gap-4">
+        <div className="flex items-center gap-4 w-full md:w-auto">
+          {/* Icon */}
+          <div className="bg-white rounded-full shadow border p-3 flex items-center justify-center">
+            <Info className="w-10 h-10 text-primary" />
+          </div>
+          {/* Package name */}
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-header font-bold text-gray-900">
+            {name}
+          </h1>
+        </div>
+        {/* Request More Info Button */}
+        <div className="w-full md:w-auto flex justify-end mt-4 md:mt-0">
+          <Link to="/contact">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="font-semibold border-2 border-gray-300"
+            >
+              Request More Info
+            </Button>
+          </Link>
+        </div>
       </div>
+      {/* Accent Gradient Line */}
+      <div className="h-1 rounded bg-gradient-to-r from-primary to-secondary w-24 mx-auto mb-2" />
 
       {/* Pricing & CTA Box */}
       <div className="flex justify-center items-center">
@@ -63,7 +85,6 @@ const PackageDetailsContent: React.FC<PackageDetailsContentProps> = ({
             ))}
           </ul>
         </section>
-
         {/* How it Works Section */}
         <section>
           <h2 className="text-lg font-semibold mb-4 text-gray-900">How it Works</h2>
@@ -87,3 +108,4 @@ const PackageDetailsContent: React.FC<PackageDetailsContentProps> = ({
 };
 
 export default PackageDetailsContent;
+
