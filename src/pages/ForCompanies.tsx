@@ -264,7 +264,7 @@ const ForCompanies = () => {
             </div>
 
             {/* Right side - Package Options Card */}
-            <div className="bg-white rounded-lg p-6 shadow-md px-[50px]">
+            <div className="bg-white rounded-lg p-6 shadow-xl px-4">
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center">
                   <Package className="w-8 h-8 text-primary" />
