@@ -7,23 +7,18 @@ import PartnerSuccessSection from '@/components/employees/PartnerSuccessSection'
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CtaSection from '@/components/employees/CtaSection';
 
-// Employee testimonials data
+// Employee testimonials data (removed duplicate "Prashant Shrestha")
 const employeeTestimonials = [
   {
     title: "Gym consistency was a struggle. Having multiple fitness centers to choose from made it so much easier.",
     name: "Chiring Sherpa",
     role: ""
-  }, 
+  },
   {
     title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     name: "Prashant Shrestha",
     role: ""
-  }, 
-  {
-    title: "Partnering with Meltdown has helped me build a more positive mindset around fitness.",
-    name: "Prashant Shrestha",
-    role: ""
-  }, 
+  },
   {
     title: "I used to lack motivation and dread going to the same fitness center, but Meltdown completely changed that with its uplifting vibe.",
     name: "Bibha Tandukar",
