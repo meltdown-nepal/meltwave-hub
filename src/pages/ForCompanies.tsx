@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Play } from "lucide-react";
+import { Play, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LogoCarousel from '../components/LogoCarousel';
@@ -280,11 +280,7 @@ const ForCompanies = () => {
               <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
                 <div className="text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-black">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="m22 2-5 10-5-5-5 10" />
-                    </svg>
+                    <Package className="text-black" size={32} strokeWidth={2.5} />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Package Options</h3>
                 </div>
