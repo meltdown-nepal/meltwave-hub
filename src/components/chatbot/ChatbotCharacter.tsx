@@ -21,12 +21,12 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
     <div 
       className={`
         ${sizeClasses[size]} 
-        rounded-full bg-gradient-to-br from-blue-500 to-blue-600 
+        rounded-full bg-gradient-to-br from-primary to-secondary 
         flex items-center justify-center
         shadow-sm
       `}
     >
-      <span className="font-bold text-white">🤖</span>
+      <span className="font-bold text-black">🤖</span>
     </div>
   );
 };
