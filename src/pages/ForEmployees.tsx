@@ -1,8 +1,8 @@
 
 import React from 'react';
 import HeroSection from '@/components/employees/HeroSection';
-import BenefitsSection from '@/components/employees/BenefitsSection';
 import ProgramsSection from '@/components/employees/ProgramsSection';
+import BenefitsSection from '@/components/employees/BenefitsSection';
 import PartnerSuccessSection from '@/components/employees/PartnerSuccessSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CtaSection from '@/components/employees/CtaSection';
@@ -31,8 +31,8 @@ const ForEmployees = () => {
     <div className="min-h-screen w-full bg-gradient-to-b from-amber-50 via-yellow-50 to-white">
       {/* Whole-page background applied here */}
       <HeroSection />
-      <BenefitsSection />
       <ProgramsSection />
+      <BenefitsSection />
       <TestimonialsSection 
         testimonials={employeeTestimonials}
         title="Employee Success Stories"
@@ -45,3 +45,4 @@ const ForEmployees = () => {
 };
 
 export default ForEmployees;
+
