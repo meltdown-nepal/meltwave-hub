@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
@@ -178,6 +177,13 @@ const MeltdownPricing = () => {
             </TableBody>
           </Table>
         </div>
+        {/* Terms and conditions note */}
+        <div className="max-w-5xl mx-auto mb-6">
+          <p className="text-xs text-gray-500 italic text-right pr-1">
+            Terms and conditions apply.
+          </p>
+        </div>
+
         {/* CTA */}
         <div className="text-center mt-10 flex flex-col items-center">
           <Button size="lg" asChild className="bg-primary text-black hover:bg-secondary text-xl px-10 py-5 rounded-full shadow-lg font-bold tracking-wider transition-transform duration-200 transform hover:scale-105">
@@ -189,4 +195,3 @@ const MeltdownPricing = () => {
     </div>;
 };
 export default MeltdownPricing;
-
