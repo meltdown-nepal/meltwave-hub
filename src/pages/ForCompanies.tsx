@@ -293,7 +293,7 @@ const ForCompanies = () => {
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-green-50 rounded-lg text-center">
+              <div className="mt-6 p-4 bg-green-50 rounded-lg text-center py-0 my-[50px]">
                 <div className="text-green-600 font-bold text-lg">30-40% Savings</div>
                 <div className="text-green-600 text-sm">Below market rates</div>
               </div>
