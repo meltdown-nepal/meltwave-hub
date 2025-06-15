@@ -1,9 +1,6 @@
-
 import React from 'react';
-
 const BenefitsSection = () => {
-  return (
-    <section className="section-padding overflow-hidden">
+  return <section className="section-padding overflow-hidden bg-white">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How You Benefit</h2>
@@ -46,7 +43,6 @@ const BenefitsSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default BenefitsSection;

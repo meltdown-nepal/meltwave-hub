@@ -41,7 +41,7 @@ const PartnerSuccessSection = () => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-  return <section className="section-padding bg-gray-50">
+  return <section className="section-padding bg-white">
       <div className="container-custom">
         
         
