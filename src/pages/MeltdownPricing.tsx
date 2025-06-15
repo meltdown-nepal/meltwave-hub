@@ -1,146 +1,180 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-const PACKAGE_COLORS = ["bg-gray-100",
-// BASIC
-"bg-yellow-100",
-// GOLD
-"bg-green-100" // PREMIUM
+
+const packages = [
+  {
+    name: "BASIC",
+    offline: "Rs.4,000/month",
+    online: ["Rs.4,500/3 months", "Rs.7,500/6 months"],
+    centers: "15+ centers",
+    color: "bg-gray-50 border-gray-200",
+    buttonStyle: "border border-gray-300 text-gray-900 hover:bg-gray-100 focus:ring-2 focus:ring-primary",
+    highlight: false
+  },
+  {
+    name: "GOLD",
+    offline: "Rs.9,500/month",
+    online: ["Rs.10,500/3 months", "Rs.18,000/6 months"],
+    centers: "40+ centers",
+    color: "bg-yellow-50 border-yellow-300",
+    buttonStyle: "border-2 border-yellow-400 text-yellow-900 hover:bg-yellow-100 focus:ring-2 focus:ring-yellow-400",
+    highlight: true // Most Popular
+  },
+  {
+    name: "PREMIUM",
+    offline: "Rs.14,000/month",
+    online: ["Rs.16,500/3 months", "Rs.27,000/6 months"],
+    centers: "60+ centers",
+    color: "bg-green-50 border-green-300",
+    buttonStyle: "border-2 border-green-400 text-green-900 hover:bg-green-100 focus:ring-2 focus:ring-green-400",
+    highlight: false
+  }
 ];
-const packages = [{
-  name: "BASIC",
-  offline: "Rs.4,000/month",
-  online: ["Rs.4,500/3 months", "Rs.7,500/6 months"],
-  centers: "15+ centers",
-  color: "bg-gray-100",
-  buttonStyle: "border border-gray-300 text-gray-900 hover:bg-gray-200"
-}, {
-  name: "GOLD",
-  offline: "Rs.9,500/month",
-  online: ["Rs.10,500/3 months", "Rs.18,000/6 months"],
-  centers: "40+ centers",
-  color: "bg-yellow-100",
-  buttonStyle: "border border-yellow-400 text-yellow-950 hover:bg-yellow-200"
-}, {
-  name: "PREMIUM",
-  offline: "Rs.14,000/month",
-  online: ["Rs.16,500/3 months", "Rs.27,000/6 months"],
-  centers: "60+ centers",
-  color: "bg-green-100",
-  buttonStyle: "border border-green-400 text-green-900 hover:bg-green-200"
-}];
-const features = [{
-  name: "Gym & Cardio",
-  values: [true, true, true],
-  notes: ["15+ centers", "40+ centers", "60+ centers"]
-}, {
-  name: "Yoga",
-  values: [false, true, true]
-}, {
-  name: "Zumba",
-  values: [false, true, true]
-}, {
-  name: "Boxing/Muaythai",
-  values: [false, true, true]
-}, {
-  name: "Functional Fitness",
-  values: [false, true, true]
-}, {
-  name: "Simulated Golf",
-  values: [false, true, true]
-}, {
-  name: "Group Classes",
-  values: [false, true, true]
-}, {
-  name: "Rock Climbing/Bouldering",
-  values: [false, true, true]
-}, {
-  name: "Physiotherapy Classes",
-  values: [false, false, true]
-}, {
-  name: "Swimming",
-  values: [false, false, true]
-}, {
-  name: "Mental Health Counseling",
-  values: [false, false, true]
-}, {
-  name: "Steam/Sauna",
-  values: [false, false, true]
-}, {
-  name: "Pilates",
-  values: [false, false, true]
-}];
+
+const features = [
+  { name: "Gym & Cardio", values: [true, true, true], notes: ["15+ centers", "40+ centers", "60+ centers"] },
+  { name: "Yoga", values: [false, true, true] },
+  { name: "Zumba", values: [false, true, true] },
+  { name: "Boxing/Muaythai", values: [false, true, true] },
+  { name: "Functional Fitness", values: [false, true, true] },
+  { name: "Simulated Golf", values: [false, true, true] },
+  { name: "Group Classes", values: [false, true, true] },
+  { name: "Rock Climbing/Bouldering", values: [false, true, true] },
+  { name: "Physiotherapy Classes", values: [false, false, true] },
+  { name: "Swimming", values: [false, false, true] },
+  { name: "Mental Health Counseling", values: [false, false, true] },
+  { name: "Steam/Sauna", values: [false, false, true] },
+  { name: "Pilates", values: [false, false, true] }
+];
+
 const MeltdownPricing = () => {
-  return <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-gray-50 to-green-50 py-10">
-      <div className="container mx-auto px-4">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-green-50 py-10">
+      <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            Meltdown Pricing Packages
-          </h1>
-          <p className="text-lg text-gray-700 max-w-xl mx-auto">
-            Compare our flexible fitness membership options and choose your ideal plan.
-          </p>
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 gradient-text">Meltdown Pricing Packages</h1>
+          <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">Compare our flexible membership options and choose your ideal plan.</p>
         </div>
         {/* Package Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
-          {packages.map((pkg, i) => <Card key={pkg.name} className={`rounded-2xl shadow transition-all border-2 ${pkg.color} border-opacity-40`}>
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="text-2xl font-bold uppercase">{pkg.name} Subscription</CardTitle>
-                <CardDescription className="text-base text-gray-800 mt-2 mb-4">
-                  <span className="block font-semibold text-gray-900">Offline: <span className="font-bold">{pkg.offline}</span></span>
-                  <span className="block">
-                    <span className="text-gray-600">Via Meltdown:</span>
-                    <br />
-                    <span className="font-medium">{pkg.online[0]}</span>
-                    <span className="mx-1">|</span>
-                    <span className="font-medium">{pkg.online[1]}</span>
-                  </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-6 md:mb-10">
+          {packages.map((pkg, i) => (
+            <div
+              key={pkg.name}
+              className={`relative z-0 transition-transform duration-200 ${pkg.highlight
+                ? "scale-105 md:scale-110 shadow-xl border-yellow-400 border-2"
+                : "shadow-lg hover:scale-105 hover:z-10"} 
+                ${pkg.color} rounded-2xl border 
+                ${pkg.highlight ? "py-8" : "py-6"} px-4 md:px-6 flex flex-col items-center`}
+              style={pkg.highlight ? { marginTop: "-15px" } : {}}
+            >
+              {pkg.highlight && (
+                <Badge variant="secondary" className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow">
+                  Most Popular
+                </Badge>
+              )}
+              <CardHeader className="text-center pt-2 pb-2 px-0 border-none bg-transparent">
+                <CardTitle className="text-2xl md:text-3xl font-bold uppercase">
+                  {pkg.name}
+                  <span className="text-sm font-semibold block uppercase tracking-wide mt-1 text-gray-500">Subscription</span>
+                </CardTitle>
+                <CardDescription className="mt-3 space-y-1 text-base text-gray-800/90">
+                  <div className="font-semibold text-gray-900 text-lg">
+                    Offline: <span className="font-bold">{pkg.offline}</span>
+                  </div>
+                  <div className="text-gray-700">
+                    <span className="font-medium">Via Meltdown:</span>
+                    <div className="flex gap-2 justify-center mt-0.5">
+                      <span className="font-semibold bg-gray-100 px-2 py-1 rounded inline-block">{pkg.online[0]}</span>
+                      <span className="mx-1 text-gray-400 font-medium">|</span>
+                      <span className="font-semibold bg-gray-100 px-2 py-1 rounded inline-block">{pkg.online[1]}</span>
+                    </div>
+                  </div>
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex flex-col items-center">
-                <div className="text-lg font-medium mb-3">
-                  <span className="text-gray-800">Facilities:</span> <span className="font-semibold">{pkg.centers}</span>
+              <CardContent className="flex flex-col items-center mt-2 mb-2 px-0">
+                <div className="text-base font-medium mb-3 text-gray-700">
+                  <span className="font-medium text-gray-700">Facilities:</span>
+                  <span className="font-semibold ml-1 gradient-text">{pkg.centers}</span>
                 </div>
-                
+                <Button
+                  size="lg"
+                  asChild
+                  variant={pkg.highlight ? "default" : "outline"}
+                  className={`mt-2 w-full max-w-xs ${pkg.buttonStyle} ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""}`}
+                >
+                  <Link to="/contact">
+                    {pkg.highlight ? "Choose Gold" : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
+                  </Link>
+                </Button>
               </CardContent>
-            </Card>)}
+            </div>
+          ))}
         </div>
         {/* Table / Comparison */}
-        <div className="rounded-2xl shadow bg-white overflow-auto max-w-5xl mx-auto">
+        <div className="rounded-2xl shadow bg-white/90 overflow-x-auto max-w-5xl mx-auto border border-gray-200">
           <Table>
             <TableHeader>
-              <TableRow className="bg-gray-100">
-                <TableHead className="w-2/6 text-lg py-4">Facilities</TableHead>
-                {packages.map((pkg, i) => <TableHead key={pkg.name} className={`text-lg text-center bg-opacity-60`} style={{
-                backgroundColor: i === 0 ? "#f3f4f6" : i === 1 ? "#fef9c3" : "#d1fae5"
-              }}>
+              <TableRow className="bg-gray-50">
+                <TableHead className="w-2/6 text-lg lg:text-xl font-semibold py-4">Facilities</TableHead>
+                {packages.map((pkg, i) => (
+                  <TableHead key={pkg.name}
+                    className={`text-lg lg:text-xl font-bold text-center px-2 py-4
+                    ${pkg.highlight
+                      ? "bg-yellow-100 dark:bg-yellow-200 text-yellow-800 ring-2 ring-yellow-400"
+                      : i === 0 ? "bg-gray-100 text-gray-700" : "bg-green-100 text-green-900"
+                    }`}>
                     {pkg.name}
-                  </TableHead>)}
+                  </TableHead>
+                ))}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {features.map((feature, fIdx) => <TableRow key={feature.name} className={fIdx % 2 === 0 ? "bg-gray-50" : ""}>
-                  <TableCell className="font-medium">
+              {features.map((feature, fIdx) => (
+                <TableRow key={feature.name} className={fIdx % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                  <TableCell className="font-medium text-gray-700 text-base">
                     {feature.name}
                   </TableCell>
-                  {feature.values.map((hasFeature, pIdx) => <TableCell key={pIdx} className="text-center">
-                      {feature.notes ? <span className="inline-block font-semibold text-gray-800">{feature.notes[pIdx]}</span> : hasFeature ? <CheckCircle2 className="mx-auto text-green-500 h-6 w-6" aria-label="Included" /> : <XCircle className="mx-auto text-gray-300 h-6 w-6" aria-label="Not included" />}
-                    </TableCell>)}
-                </TableRow>)}
+                  {feature.values.map((hasFeature, pIdx) => (
+                    <TableCell key={pIdx} className="text-center">
+                      {feature.notes ? (
+                        <span className="inline-block font-semibold text-gray-800">{feature.notes[pIdx]}</span>
+                      ) : hasFeature ? (
+                        <span className="inline-block rounded-full bg-green-100 p-1">
+                          <CheckCircle2 className="text-green-600 h-6 w-6" aria-label="Included" />
+                        </span>
+                      ) : (
+                        <span className="inline-block rounded-full bg-gray-100 p-1">
+                          <XCircle className="text-gray-300 h-6 w-6" aria-label="Not included" />
+                        </span>
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </div>
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button size="lg" asChild className="bg-primary text-white hover:bg-primary/90 text-lg px-8 py-4 rounded-full shadow">
+        <div className="text-center mt-12 flex flex-col items-center">
+          <Button
+            size="lg"
+            asChild
+            className="bg-primary text-black hover:bg-secondary text-xl px-10 py-5 rounded-full shadow-lg font-bold tracking-wider transition-transform duration-200 transform hover:scale-105"
+          >
             <Link to="/contact">Get Started with Meltdown</Link>
           </Button>
+          <p className="text-gray-500 mt-4 text-sm">No hidden fees &middot; Cancel anytime</p>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default MeltdownPricing;
