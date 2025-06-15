@@ -58,20 +58,24 @@ const MeltdownPricing = () => {
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-gray-50 to-blue-50 py-10">
       <div className="container mx-auto px-2 md:px-4">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 gradient-text">Meltdown Pricing Packages</h1>
           <p className="text-lg text-gray-700 font-medium max-w-2xl mx-auto">Compare our flexible membership options and choose your ideal plan.</p>
         </div>
         {/* Package Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-6 md:mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 md:gap-10 max-w-6xl mx-auto mb-10">
           {packages.map((pkg, i) => (
             <div
               key={pkg.name}
-              className={`relative z-0 transition-transform duration-200 ${pkg.highlight
-                ? "scale-105 md:scale-110 shadow-xl border-yellow-400 border-2"
-                : "shadow-lg hover:scale-105 hover:z-10"} 
-                ${pkg.color} rounded-2xl border 
-                ${pkg.highlight ? "py-8" : "py-6"} px-4 md:px-6 flex flex-col items-center`}
+              className={`
+                relative flex flex-col items-center justify-between
+                rounded-2xl border transition-transform duration-200 
+                ${pkg.color} 
+                ${pkg.highlight ? "scale-105 md:scale-110 shadow-xl border-yellow-400 border-2 py-8" : "shadow-lg hover:scale-105 hover:z-10 py-6"}
+                px-5 md:px-7 
+                min-h-[430px] md:min-h-[480px] max-w-sm mx-auto
+                h-full
+              `}
               style={pkg.highlight ? { marginTop: "-15px" } : {}}
             >
               {pkg.highlight && (
@@ -90,39 +94,47 @@ const MeltdownPricing = () => {
                   </div>
                   <div className="text-gray-700">
                     <span className="font-medium">Via Meltdown:</span>
-                    <div className="flex gap-2 justify-center mt-0.5">
-                      <span className="font-semibold bg-gray-100 px-2 py-1 rounded inline-block">{pkg.online[0]}</span>
+                    <div className="flex gap-2 justify-center mt-1">
+                      <span className="font-semibold bg-gray-100 px-2 py-1 rounded">{pkg.online[0]}</span>
                       <span className="mx-1 text-gray-400 font-medium">|</span>
-                      <span className="font-semibold bg-gray-100 px-2 py-1 rounded inline-block">{pkg.online[1]}</span>
+                      <span className="font-semibold bg-gray-100 px-2 py-1 rounded">{pkg.online[1]}</span>
                     </div>
                   </div>
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex flex-col items-center mt-2 mb-2 px-0">
-                <div className="text-base font-medium mb-3 text-gray-700">
+              <CardContent className="flex flex-col items-center flex-1 w-full mt-2 mb-2 px-0">
+                <div className="text-base font-medium mb-4 text-gray-700 w-full flex flex-col items-center">
                   <span className="font-medium text-gray-700">Facilities:</span>
-                  <span className={`font-semibold ml-1 gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}>{pkg.centers}</span>
+                  <span className={`font-semibold gradient-text ${pkg.name === "PLATINUM" ? "text-blue-800" : ""}`}>{pkg.centers}</span>
                 </div>
-                <Button
-                  size="lg"
-                  asChild
-                  variant={pkg.highlight ? "default" : "outline"}
-                  className={`mt-2 w-full max-w-xs ${pkg.buttonStyle} ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""} ${pkg.name === "PLATINUM" ? "bg-blue-400 text-white font-bold shadow-md hover:bg-blue-300 focus:ring-2 focus:ring-blue-400" : ""}`}
-                >
-                  <Link to="/contact">
-                    {pkg.highlight
-                      ? "Choose Gold"
-                      : pkg.name === "PLATINUM"
-                        ? "Choose Platinum"
-                        : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
-                  </Link>
-                </Button>
+                <div className="mt-auto w-full">
+                  <Button
+                    size="lg"
+                    asChild
+                    variant={pkg.highlight ? "default" : "outline"}
+                    className={`
+                      w-full max-w-full 
+                      ${pkg.buttonStyle} 
+                      ${pkg.highlight ? "bg-yellow-400 text-gray-900 font-bold shadow-md hover:bg-yellow-300" : ""}
+                      ${pkg.name === "PLATINUM" ? "bg-blue-400 text-white font-bold shadow-md hover:bg-blue-300 focus:ring-2 focus:ring-blue-400" : ""}
+                      py-3 px-5 mt-4 rounded-lg text-base
+                    `}
+                  >
+                    <Link to="/contact">
+                      {pkg.highlight
+                        ? "Choose Gold"
+                        : pkg.name === "PLATINUM"
+                          ? "Choose Platinum"
+                          : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </div>
           ))}
         </div>
         {/* Table / Comparison */}
-        <div className="rounded-2xl shadow bg-white/90 overflow-x-auto max-w-5xl mx-auto border border-gray-200">
+        <div className="rounded-2xl shadow bg-white/90 overflow-x-auto max-w-5xl mx-auto border border-gray-200 mb-8">
           <Table>
             <TableHeader>
               <TableRow className="bg-gray-50">
@@ -166,7 +178,7 @@ const MeltdownPricing = () => {
           </Table>
         </div>
         {/* CTA */}
-        <div className="text-center mt-12 flex flex-col items-center">
+        <div className="text-center mt-10 flex flex-col items-center">
           <Button
             size="lg"
             asChild
