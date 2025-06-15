@@ -27,7 +27,7 @@ export const ChatbotCharacter: React.FC<ChatbotCharacterProps> = ({
         shadow-sm
       `}
     >
-      <span className="font-bold text-black">🎧</span>
+      <span className="font-bold text-black">🤖</span>
     </div>
   );
 };
