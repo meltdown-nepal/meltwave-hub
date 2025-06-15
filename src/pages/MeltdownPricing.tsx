@@ -145,7 +145,7 @@ const MeltdownPricing = () => {
                       ${pkg.name === "PLATINUM" ? "bg-blue-400 text-white font-bold shadow-md hover:bg-blue-300 focus:ring-2 focus:ring-blue-400" : ""}
                       py-3 px-5 mt-2 rounded-lg text-base
                     `}>
-                    <Link to="/contact">
+                    <Link to="/schedule-demo">
                       {pkg.highlight ? "Choose Gold" : pkg.name === "PLATINUM" ? "Choose Platinum" : `Choose ${pkg.name.charAt(0)}${pkg.name.slice(1).toLowerCase()}`}
                     </Link>
                   </Button>
@@ -186,7 +186,7 @@ const MeltdownPricing = () => {
         {/* CTA */}
         <div className="text-center mt-10 flex flex-col items-center">
           <Button size="lg" asChild className="bg-primary text-black hover:bg-secondary text-xl px-10 py-5 rounded-full shadow-lg font-bold tracking-wider transition-transform duration-200 transform hover:scale-105">
-            <Link to="/contact">Get Started with Meltdown</Link>
+            <Link to="/schedule-demo">Get Started with Meltdown</Link>
           </Button>
           <p className="text-gray-500 mt-4 text-sm">No hidden fees &middot; Cancel anytime</p>
         </div>
