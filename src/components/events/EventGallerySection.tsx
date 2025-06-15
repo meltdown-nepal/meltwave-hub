@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import OptimizedImage from "@/components/OptimizedImage";
 import EventGalleryModal from "./EventGalleryModal";
@@ -11,24 +12,24 @@ const EVENTS = [
     subtitle: "Join us for our weekly community runs!",
     images: [
       {
-        src: "/lovable-uploads/c7877f89-f497-4cf4-8cb7-63d1104518c3.png",
-        title: "Community Run Event",
-        alt: "Group of people running together in a park"
+        src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+        title: "City evening fun run",
+        alt: "People running in a city park at dusk"
       },
       {
-        src: "/lovable-uploads/f7972173-3fe4-4946-b941-6a5882f9788b.png",
+        src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
         title: "Team Relay Race",
-        alt: "Happy office team during relay race"
+        alt: "Group of athletes performing relay handoff"
       },
       {
-        src: "/lovable-uploads/398c4685-d91a-452b-b4fa-51c0f4236ee7.png",
+        src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80",
         title: "Mindfulness in Nature",
-        alt: "Small group practicing mindfulness beside a stream"
+        alt: "Mindfulness meditation by a flowing river"
       },
       {
         src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
         title: "Nature Wellness Retreat",
-        alt: "Body of water surrounded by trees"
+        alt: "Tranquil lake surrounded by vibrant trees"
       }
     ]
   },
@@ -38,24 +39,24 @@ const EVENTS = [
     subtitle: "Adventure hikes where your furry friends are welcome.",
     images: [
       {
-        src: "/lovable-uploads/761279cd-bc8e-49ce-897a-1b52b2f6e467.png",
-        title: "Pet Friendly Hike",
-        alt: "Group of hikers with dogs enjoying an outdoor trek"
-      },
-      {
         src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80",
+        title: "Pet Friendly Hike",
+        alt: "Hikers with dogs walking on a mountain trail"
+      },
+      {
+        src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80",
         title: "Mountain Hike",
-        alt: "Two deer in mountains, pet-friendly landscape"
+        alt: "Mountain landscape with a few hikers"
       },
       {
-        src: "/lovable-uploads/14a3b627-4a42-469a-a6a5-d6f54dbb06ad.png",
-        title: "Group Hiking",
-        alt: "People hiking together with their pets"
+        src: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=600&q=80",
+        title: "Hiking Herd",
+        alt: "Herd of sheep running on grassy hillside"
       },
       {
-        src: "/lovable-uploads/6a8d21a6-d52d-4b26-84f3-c858e2d69169.png",
-        title: "Cycle Club",
-        alt: "Group biking event, often with dogs"
+        src: "https://images.unsplash.com/photo-1439886183900-e79ec0057170?auto=format&fit=crop&w=600&q=80",
+        title: "Forest Friends",
+        alt: "Deer in a sunlit forest"
       }
     ]
   },
@@ -65,24 +66,24 @@ const EVENTS = [
     subtitle: "Our biggest community run, in partnership with Himalayan Java.",
     images: [
       {
-        src: "/lovable-uploads/a57234a5-bf11-4976-b2b0-beb02e66466d.png",
-        title: "Community Fun Events",
-        alt: "Group of people doing handstand with friends watching"
+        src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80",
+        title: "Fun Community Gathering",
+        alt: "People gathered running and drinking coffee"
       },
       {
-        src: "/lovable-uploads/970fc08a-beac-4b49-9f57-a5ba9f74356a.png",
-        title: "Office Team Workout",
-        alt: "Coworkers doing a team fitness challenge"
+        src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+        title: "Team Building Exercise",
+        alt: "Coworkers engaging in race with big smiles"
       },
       {
-        src: "/lovable-uploads/201cad4a-1cf7-49c2-961f-5e1c1760e01f.png",
+        src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
         title: "Outdoor Meditation",
-        alt: "People meditating outdoors at sunset"
+        alt: "People doing yoga outdoors with mountain backdrop"
       },
       {
-        src: "/lovable-uploads/b4863552-29ab-4f82-a691-89315c7a3124.png",
+        src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
         title: "Dance Wellness Event",
-        alt: "Group dance class in progress"
+        alt: "Happy group dancing together outside"
       }
     ]
   }
