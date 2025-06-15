@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
@@ -93,8 +94,7 @@ const MeltdownPricing = () => {
                 ${pkg.color} 
                 ${pkg.highlight ? "scale-105 md:scale-110 shadow-xl border-yellow-400 border-2 py-8" : "shadow-lg hover:scale-105 hover:z-10 py-6"}
                 px-5 md:px-7 
-                min-h-[430px] md:min-h-[480px] max-w-sm mx-auto
-                h-full
+                max-w-sm mx-auto
               `} style={pkg.highlight ? {
           marginTop: "-15px"
         } : {}}>
@@ -189,3 +189,4 @@ const MeltdownPricing = () => {
     </div>;
 };
 export default MeltdownPricing;
+
