@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock } from "lucide-react";
@@ -98,6 +97,7 @@ function WeeklyWednesdayRunCard() {
 
 // Environmental Run Card
 function EnvironmentalRunCard() {
+  const { scrollToSection } = useSmoothScroll();
   return (
     <div className="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       <div className="absolute top-0 right-0 text-yellow-100 opacity-50">
@@ -131,16 +131,13 @@ function EnvironmentalRunCard() {
             <span>1 tree planted for every 5 runners!</span>
           </div>
         </div>
-        <a 
-          href="#" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="mt-auto w-full block"
+        <Button
+          className="bg-primary hover:bg-secondary text-black font-semibold w-full"
+          type="button"
+          onClick={() => scrollToSection('event-gallery')}
         >
-          <Button className="bg-primary hover:bg-secondary text-black font-semibold w-full">
-            View Gallery 
-          </Button>
-        </a>
+          View Gallery
+        </Button>
       </div>
     </div>
   );
