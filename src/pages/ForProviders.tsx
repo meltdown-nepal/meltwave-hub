@@ -85,7 +85,6 @@ const partnerFaqs = [{
   question: "How does payment work?",
   answer: "You'll receive timely payments on a regular cycle for the services utilised by employees, with detailed reporting and analysis."
 }];
-
 const providerTestimonials = [{
   videoSrc: "https://storage.googleapis.com/webfundamentals-assets/videos/chrome.mp4",
   title: "Grew my client base by 40%",
@@ -134,7 +133,7 @@ const ForProviders = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding">
+      <section className="section-padding bg-transparent">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Benefits for Wellness Providers</h2>
@@ -280,13 +279,7 @@ const ForProviders = () => {
       </section>
 
       {/* Our Wellness Network Section */}
-      <LogoCarousel 
-        logos={wellnessLogos} 
-        title="Our Wellness Network" 
-        description="These amazing gyms, studios, and wellness centers help power the Meltdown experience."
-        showViewAllButton={true}
-        viewAllLink="/wellness-partners"
-      />
+      <LogoCarousel logos={wellnessLogos} title="Our Wellness Network" description="These amazing gyms, studios, and wellness centers help power the Meltdown experience." showViewAllButton={true} viewAllLink="/wellness-partners" />
 
       {/* Partner FAQs Section */}
       <section className="section-padding">
