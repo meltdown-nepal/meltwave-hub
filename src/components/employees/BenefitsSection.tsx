@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Check } from "lucide-react";
 
@@ -67,6 +68,7 @@ const BenefitsSection = () => {
               key={benefit.title}
               className="flex items-center bg-white py-4 px-4 sm:px-6 rounded-lg shadow hover:shadow-lg transition-all border border-amber-50"
             >
+              <Check className="text-green-600 mr-3 flex-shrink-0" size={22} strokeWidth={3} />
               <div className="flex-shrink-0 mr-5 flex items-center justify-center w-12 h-12 rounded-full bg-amber-100">
                 {benefit.icon}
               </div>
@@ -83,3 +85,4 @@ const BenefitsSection = () => {
 };
 
 export default BenefitsSection;
+
