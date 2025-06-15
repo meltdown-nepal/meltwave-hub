@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import OptimizedImage from "@/components/OptimizedImage";
 import EventGalleryModal from "./EventGalleryModal";
@@ -104,9 +103,10 @@ export default function EventGallerySection() {
     <section className="relative section-padding bg-gradient-to-br from-yellow-50/75 to-amber-50/50 overflow-hidden">
       <div className="container-custom z-10 relative">
         <div className="text-center mb-12">
-          <p className="text-lg max-w-2xl mx-auto text-gray-600">
-            Relive the joy, energy, and spirit of our signature events!
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+            Vibrant Event Memories
+          </h2>
+          {/* Removed the normal <p> caption as requested */}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
           {EVENTS.map((ev, i) => (
@@ -128,13 +128,17 @@ export default function EventGallerySection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   priority={i === 0}
                 />
-                <span className="absolute top-3 right-3 bg-yellow-300/80 rounded-full p-2 flex items-center justify-center">
+                {/* Hover title overlay */}
+                <span className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <span className="text-white text-xl font-bold drop-shadow">{ev.title}</span>
+                </span>
+                <span className="absolute top-3 right-3 bg-yellow-300/80 rounded-full p-2 flex items-center justify-center z-20">
                   <Images className="text-primary" size={28} />
                 </span>
               </div>
               <div className="p-5 grow flex flex-col items-start">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{ev.title}</h3>
-                <p className="text-gray-700 mb-2">{ev.subtitle}</p>
+                {/* Only keep the event subtitle if you'd like, otherwise just the "View Gallery" */}
+                {/* <p className="text-gray-700 mb-2">{ev.subtitle}</p> */}
                 <span className="ml-auto mt-auto text-primary font-semibold underline underline-offset-4 decoration-yellow-400">
                   View Gallery →
                 </span>
