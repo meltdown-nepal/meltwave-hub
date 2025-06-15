@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
@@ -6,7 +5,6 @@ import { Quote, Star, Play, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AnimatedElement from '../animations/AnimatedElement';
-
 type TestimonialProp = {
   name: string;
   title: string;
@@ -14,13 +12,11 @@ type TestimonialProp = {
   image?: string;
   linkTo?: string;
 };
-
 interface EnhancedTestimonialsSectionProps {
   testimonials: TestimonialProp[];
   title?: string;
   subtitle?: string;
 }
-
 const EnhancedTestimonialsSection = ({
   testimonials,
   title = "What Our Clients Say",
@@ -28,24 +24,18 @@ const EnhancedTestimonialsSection = ({
 }: EnhancedTestimonialsSectionProps) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-
   React.useEffect(() => {
     if (!api) return;
-
     const handleSelect = () => {
       setCurrent(api.selectedScrollSnap());
     };
-
     api.on("select", handleSelect);
     return () => api.off("select", handleSelect);
   }, [api]);
-
   const scrollToSlide = (index: number) => {
     api?.scrollTo(index);
   };
-
-  return (
-    <section className="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-50 via-white to-amber-50/30 overflow-hidden" id="testimonials">
+  return <section className="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-50 via-white to-amber-50/30 overflow-hidden" id="testimonials">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -70,17 +60,12 @@ const EnhancedTestimonialsSection = ({
         {/* Testimonials Carousel */}
         <AnimatedElement animation="slideUp" delay={0.4}>
           <div className="relative">
-            <Carousel 
-              setApi={setApi} 
-              opts={{
-                align: "start",
-                loop: true
-              }} 
-              className="w-full"
-            >
+            <Carousel setApi={setApi} opts={{
+            align: "start",
+            loop: true
+          }} className="w-full">
               <CarouselContent className="-ml-6">
-                {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/2">
+                {testimonials.map((testimonial, index) => <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/2">
                     <Card className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-0 h-full transform hover:-translate-y-2">
                       <CardContent className="p-8 md:p-10 relative h-full flex flex-col min-h-[400px]">
                         {/* Decorative Elements */}
@@ -97,9 +82,7 @@ const EnhancedTestimonialsSection = ({
                         <div className="relative z-10 flex-1 flex flex-col">
                           {/* Star Rating */}
                           <div className="flex items-center gap-1 mb-4">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                            ))}
+                            {[1, 2, 3, 4, 5].map(star => <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
                           </div>
 
                           {/* Testimonial Text */}
@@ -121,51 +104,30 @@ const EnhancedTestimonialsSection = ({
                               </div>
                               <div className="min-w-0 flex-1">
                                 <p className="font-bold text-gray-900 text-base truncate">{testimonial.name}</p>
-                                {testimonial.role && (
-                                  <p className="text-sm text-gray-600 leading-tight mt-1">{testimonial.role}</p>
-                                )}
+                                {testimonial.role && <p className="text-sm text-gray-600 leading-tight mt-1">{testimonial.role}</p>}
                               </div>
                             </div>
                             
                             {/* Watch Video Button */}
-                            {testimonial.linkTo && (
-                              <Button 
-                                variant="outline" 
-                                size="sm" 
-                                className="flex items-center gap-2 border-2 border-primary/20 hover:border-primary hover:bg-primary/10 text-gray-700 hover:text-black rounded-full px-4 py-2 text-sm font-medium group/btn transition-all duration-300" 
-                                asChild
-                              >
+                            {testimonial.linkTo && <Button variant="outline" size="sm" className="flex items-center gap-2 border-2 border-primary/20 hover:border-primary hover:bg-primary/10 text-gray-700 hover:text-black rounded-full px-4 py-2 text-sm font-medium group/btn transition-all duration-300" asChild>
                                 <Link to={testimonial.linkTo} target="_blank" rel="noopener noreferrer">
                                   <div className="w-6 h-6 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center group-hover/btn:scale-110 transition-transform duration-300">
                                     <Play className="w-3 h-3 text-black fill-current ml-0.5" />
                                   </div>
                                   <span>Watch</span>
                                 </Link>
-                              </Button>
-                            )}
+                              </Button>}
                           </div>
                         </div>
                       </CardContent>
                     </Card>
-                  </CarouselItem>
-                ))}
+                  </CarouselItem>)}
               </CarouselContent>
             </Carousel>
             
             {/* Custom Dot Indicators */}
             <div className="flex justify-center gap-3 mt-12">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    current === index 
-                      ? 'bg-gradient-to-r from-primary to-secondary scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
+              {testimonials.map((_, index) => <button key={index} onClick={() => scrollToSlide(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${current === index ? 'bg-gradient-to-r from-primary to-secondary scale-125' : 'bg-gray-300 hover:bg-gray-400'}`} aria-label={`Go to testimonial ${index + 1}`} />)}
             </div>
           </div>
         </AnimatedElement>
@@ -173,34 +135,10 @@ const EnhancedTestimonialsSection = ({
         {/* Bottom CTA Section */}
         <AnimatedElement animation="slideUp" delay={0.6}>
           <div className="text-center mt-20">
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-3xl p-8 md:p-12 border border-primary/20">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
-                Ready to Join Our Success Stories?
-              </h3>
-              <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
-                Join thousands of satisfied clients who have transformed their workplace wellness with Meltdown.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link 
-                  to="/schedule-demo" 
-                  className="group bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-black font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3 shadow-lg hover:shadow-xl"
-                >
-                  Start Your Wellness Journey
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className="text-gray-600 hover:text-gray-900 font-medium py-4 px-8 rounded-full border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 inline-flex items-center gap-2"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </div>
+            
           </div>
         </AnimatedElement>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default EnhancedTestimonialsSection;
