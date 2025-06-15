@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Minimize2 } from 'lucide-react';
+import { MessageCircle, X, Send, Minimize2, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ChatbotCharacter } from './ChatbotCharacter';
 import { ChatMessage } from './ChatMessage';
@@ -29,7 +29,7 @@ const SmartChatbot = () => {
       const welcomeMessage: Message = {
         id: '1',
         type: 'bot',
-        content: "Hi there! 👋 I'm your wellness assistant. I'm here to help you with information about Meltdown's corporate wellness programs, services, and answer any questions you might have!",
+        content: "Hi there! 👋 I'm your wellness assistant. I can help you with questions about:\n\n• Corporate wellness programs\n• Pricing and packages\n• Employee benefits\n• Our technology platform\n• Getting started with Meltdown\n\nWhat would you like to know?",
         timestamp: new Date()
       };
       setMessages([welcomeMessage]);
@@ -86,6 +86,18 @@ const SmartChatbot = () => {
     setIsMinimized(true);
   };
 
+  const quickQuestions = [
+    "What is Meltdown?",
+    "How does pricing work?",
+    "What services do you offer?",
+    "How do I get started?"
+  ];
+
+  const handleQuickQuestion = (question: string) => {
+    setInputValue(question);
+    setTimeout(() => handleSendMessage(), 100);
+  };
+
   return (
     <>
       {/* Floating Action Button */}
@@ -104,7 +116,7 @@ const SmartChatbot = () => {
       {/* Chat Window */}
       {isOpen && (
         <div className={`fixed bottom-6 right-6 z-50 bg-white rounded-2xl shadow-2xl border transition-all duration-300 ${
-          isMinimized ? 'w-80 h-16' : 'w-80 h-96'
+          isMinimized ? 'w-80 h-16' : 'w-80 h-[500px]'
         }`}>
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-primary rounded-t-2xl">
@@ -112,10 +124,19 @@ const SmartChatbot = () => {
               <ChatbotCharacter size="small" animate />
               <div>
                 <h3 className="font-semibold text-black text-sm">Wellness Assistant</h3>
-                <p className="text-xs text-black/70">Always here to help!</p>
+                <p className="text-xs text-black/70">Powered by our FAQ knowledge</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => window.open('#/faq', '_blank')}
+                className="w-6 h-6 text-black hover:bg-black/10"
+                title="View Full FAQ"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </Button>
               <Button
                 variant="ghost"
                 size="icon"
@@ -139,14 +160,30 @@ const SmartChatbot = () => {
           {!isMinimized && (
             <>
               {/* Messages */}
-              <div className="flex-1 p-4 h-64 overflow-y-auto space-y-3">
+              <div className="flex-1 p-4 h-80 overflow-y-auto">
                 {messages.map((message) => (
                   <ChatMessage key={message.id} message={message} />
                 ))}
                 
+                {/* Quick Questions - Show only if no messages yet */}
+                {messages.length === 1 && (
+                  <div className="mt-4 space-y-2">
+                    <p className="text-xs text-gray-500 mb-2">Try asking:</p>
+                    {quickQuestions.map((question, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleQuickQuestion(question)}
+                        className="block w-full text-left text-xs bg-gray-50 hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors"
+                      >
+                        {question}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                
                 {/* Typing Indicator */}
                 {isTyping && (
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 mb-4">
                     <ChatbotCharacter size="tiny" />
                     <div className="bg-gray-100 rounded-2xl px-4 py-2">
                       <div className="flex space-x-1">
@@ -168,7 +205,7 @@ const SmartChatbot = () => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Ask me anything about wellness..."
+                    placeholder="Ask about wellness programs, pricing, etc..."
                     className="flex-1 px-3 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     disabled={isTyping}
                   />
