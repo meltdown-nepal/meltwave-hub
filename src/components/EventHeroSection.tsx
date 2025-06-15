@@ -87,13 +87,13 @@ export default function EventHeroSection({
 
   return (
     <section className="relative min-h-[440px] md:min-h-[500px] flex items-center justify-center section-padding">
-      {/* Background Image with optimization and blur */}
+      {/* Background Image with optimization, NO blur */}
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="w-full h-full">
           <HeroImage 
             src="/lovable-uploads/06f13e5b-dd31-41bf-abda-f09377f873fe.png" 
             alt="Group of fitness enthusiasts at a stadium track" 
-            className="w-full h-full object-cover blur-sm md:blur transition-all duration-500"
+            className="w-full h-full object-cover transition-all duration-500"
             priority
             width={1400} 
             height={800}
