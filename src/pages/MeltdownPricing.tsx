@@ -132,10 +132,7 @@ const MeltdownPricing = () => {
                 {/* Price info */}
                 <div className="w-full flex flex-col gap-2 items-start mt-1 mb-3">
                   {/* Reduced mt-1 (was mt-2) for less gap */}
-                  <div className="flex items-center gap-2 font-semibold text-gray-900 text-base">
-                    <span>Price (3month)  :</span>
-                    <span className="font-bold ml-1 text-nowrap">{pkg.online[0]}</span>
-                  </div>
+                  
                 </div>
                 <div className="w-full">
                   <Button size="lg" asChild variant={pkg.highlight ? "default" : "outline"} className={`
