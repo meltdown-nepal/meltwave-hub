@@ -15,7 +15,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <img alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/6e5c0497-d07d-442c-acf4-9d7cfebe1cf9.png" />
+            <img alt="Employee Wellness" className="rounded-lg shadow-xl max-w-full h-auto" src="/lovable-uploads/f35664c9-1efb-40e7-9d28-a9193a09bf00.png" />
           </div>
         </div>
       </div>
