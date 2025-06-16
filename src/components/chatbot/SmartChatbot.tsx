@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Minimize2, HelpCircle, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,6 @@ import { ChatbotCharacter } from './ChatbotCharacter';
 import { ChatMessage } from './ChatMessage';
 import { useChatbotResponses } from './useChatbotResponses';
 import { usePageContext } from '../../hooks/usePageContext';
-
 interface Message {
   id: string;
   type: 'user' | 'bot';
@@ -14,7 +12,6 @@ interface Message {
   timestamp: Date;
   isAI?: boolean;
 }
-
 const SmartChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -22,15 +19,19 @@ const SmartChatbot = () => {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  
-  const { getResponse, isUsingAI } = useChatbotResponses();
-  const { pageContent } = usePageContext();
+  const {
+    getResponse,
+    isUsingAI
+  } = useChatbotResponses();
+  const {
+    pageContent
+  } = usePageContext();
 
   // Welcome message when chatbot opens
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       let welcomeContent = "Hey there! 👋 I'm Meltzy, your friendly wellness buddy! ✨\n\nI'm super excited to help you discover amazing things about Meltdown's wellness platform! ";
-      
+
       // Add page-specific welcome message
       if (pageContent) {
         switch (pageContent.pageType) {
@@ -53,9 +54,7 @@ const SmartChatbot = () => {
             welcomeContent += "I can help you understand everything on this page and answer any questions about our services! 🌟";
         }
       }
-      
       welcomeContent += "\n\nI can help with:\n🏋️‍♀️ Questions about what you see on this page\n💰 Pricing and packages\n🌟 Wellness programs & features\n⚡ Getting started with Meltdown\n🎯 Employee engagement strategies\n\nWhat would you love to explore together? 😊";
-
       const welcomeMessage: Message = {
         id: '1',
         type: 'bot',
@@ -68,19 +67,18 @@ const SmartChatbot = () => {
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    });
   }, [messages]);
-
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
-
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
       content: inputValue,
       timestamp: new Date()
     };
-
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsTyping(true);
@@ -95,56 +93,38 @@ const SmartChatbot = () => {
         timestamp: new Date(),
         isAI: isUsingAI
       };
-      
       setMessages(prev => [...prev, botMessage]);
       setIsTyping(false);
     }, 1000 + Math.random() * 1000);
   };
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
   };
-
   const toggleChatbot = () => {
     setIsOpen(!isOpen);
     setIsMinimized(false);
   };
-
   const minimizeChatbot = () => {
     setIsMinimized(true);
   };
-
-  const quickQuestions = [
-    "What's on this page? 👀",
-    "How much does it cost? 💝", 
-    "How do I get started? 🚀",
-    "What wellness services do you offer? 🎁"
-  ];
-
+  const quickQuestions = ["What's on this page? 👀", "How much does it cost? 💝", "How do I get started? 🚀", "What wellness services do you offer? 🎁"];
   const handleQuickQuestion = (question: string) => {
     setInputValue(question);
     setTimeout(() => handleSendMessage(), 100);
   };
-
-  return (
-    <>
+  return <>
       {/* Floating Action Button */}
-      {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
+      {!isOpen && <div className="fixed bottom-6 right-6 z-50">
           <div className="relative">
             {/* Pulse ring animation */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-300 to-orange-300 opacity-30 animate-ping"></div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-200 to-orange-200 opacity-40 animate-pulse"></div>
             
             {/* Main button */}
-            <Button
-              onClick={toggleChatbot}
-              className="relative w-16 h-16 rounded-full bg-white hover:bg-gray-50 shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-yellow-200 hover:border-yellow-300 group"
-              size="icon"
-            >
+            <Button onClick={toggleChatbot} size="icon" className="relative w-20 h-20 rounded-full bg-white hover:bg-gray-50 shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-yellow-200 hover:border-yellow-300 group">
               <ChatbotCharacter size="medium" animate />
               
               {/* Tooltip */}
@@ -153,24 +133,18 @@ const SmartChatbot = () => {
               </div>
             </Button>
           </div>
-        </div>
-      )}
+        </div>}
 
       {/* Chat Window */}
-      {isOpen && (
-        <div className={`fixed bottom-6 right-6 z-50 bg-white rounded-2xl shadow-2xl border transition-all duration-300 ${
-          isMinimized ? 'w-80 h-16' : 'w-80 h-[500px]'
-        }`}>
+      {isOpen && <div className={`fixed bottom-6 right-6 z-50 bg-white rounded-2xl shadow-2xl border transition-all duration-300 ${isMinimized ? 'w-80 h-16' : 'w-80 h-[500px]'}`}>
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-white rounded-t-2xl">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <ChatbotCharacter size="small" animate />
-                {(isTyping && isUsingAI) && (
-                  <div className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full p-1" title="AI Enhanced">
+                {isTyping && isUsingAI && <div className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full p-1" title="AI Enhanced">
                     <Brain className="w-3 h-3" />
-                  </div>
-                )}
+                  </div>}
               </div>
               <div>
                 <h3 className="font-semibold text-black text-sm">Meltzy 🌟</h3>
@@ -180,121 +154,73 @@ const SmartChatbot = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => window.open('#/faq', '_blank')}
-                className="w-6 h-6 text-black hover:bg-black/10"
-                title="View Full FAQ"
-              >
+              <Button variant="ghost" size="icon" onClick={() => window.open('#/faq', '_blank')} className="w-6 h-6 text-black hover:bg-black/10" title="View Full FAQ">
                 <HelpCircle className="w-4 h-4" />
               </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={minimizeChatbot}
-                className="w-6 h-6 text-black hover:bg-black/10"
-              >
+              <Button variant="ghost" size="icon" onClick={minimizeChatbot} className="w-6 h-6 text-black hover:bg-black/10">
                 <Minimize2 className="w-4 h-4" />
               </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleChatbot}
-                className="w-6 h-6 text-black hover:bg-black/10"
-              >
+              <Button variant="ghost" size="icon" onClick={toggleChatbot} className="w-6 h-6 text-black hover:bg-black/10">
                 <X className="w-4 h-4" />
               </Button>
             </div>
           </div>
 
           {/* Chat Content - Only show if not minimized */}
-          {!isMinimized && (
-            <>
+          {!isMinimized && <>
               {/* Messages */}
               <div className="flex-1 p-4 h-80 overflow-y-auto">
-                {messages.map((message) => (
-                  <div key={message.id} className="relative">
+                {messages.map(message => <div key={message.id} className="relative">
                     <ChatMessage message={message} />
-                    {message.type === 'bot' && message.isAI && (
-                      <div className="flex items-center text-xs text-blue-600 mb-2 ml-8">
+                    {message.type === 'bot' && message.isAI && <div className="flex items-center text-xs text-blue-600 mb-2 ml-8">
                         <Brain className="w-3 h-3 mr-1" />
                         AI Enhanced Response
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      </div>}
+                  </div>)}
                 
                 {/* Quick Questions - Show only if no messages yet */}
-                {messages.length === 1 && (
-                  <div className="mt-4 space-y-2">
+                {messages.length === 1 && <div className="mt-4 space-y-2">
                     <p className="text-xs text-gray-500 mb-2">Try asking me:</p>
-                    {quickQuestions.map((question, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleQuickQuestion(question)}
-                        className="block w-full text-left text-xs bg-gradient-to-r from-yellow-50 to-orange-50 hover:from-yellow-100 hover:to-orange-100 rounded-lg px-3 py-2 transition-colors border border-yellow-200"
-                      >
+                    {quickQuestions.map((question, index) => <button key={index} onClick={() => handleQuickQuestion(question)} className="block w-full text-left text-xs bg-gradient-to-r from-yellow-50 to-orange-50 hover:from-yellow-100 hover:to-orange-100 rounded-lg px-3 py-2 transition-colors border border-yellow-200">
                         {question}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                      </button>)}
+                  </div>}
                 
                 {/* Typing Indicator */}
-                {isTyping && (
-                  <div className="flex items-center space-x-2 mb-4">
+                {isTyping && <div className="flex items-center space-x-2 mb-4">
                     <div className="relative">
                       <ChatbotCharacter size="tiny" />
-                      {isUsingAI && (
-                        <div className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full p-0.5">
+                      {isUsingAI && <div className="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full p-0.5">
                           <Brain className="w-2 h-2" />
-                        </div>
-                      )}
+                        </div>}
                     </div>
                     <div className="bg-gray-100 rounded-2xl px-4 py-2">
                       <div className="flex space-x-1 items-center">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                        {isUsingAI && (
-                          <Brain className="w-3 h-3 text-blue-500 ml-2 animate-pulse" />
-                        )}
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{
+                  animationDelay: '0.1s'
+                }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{
+                  animationDelay: '0.2s'
+                }}></div>
+                        {isUsingAI && <Brain className="w-3 h-3 text-blue-500 ml-2 animate-pulse" />}
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
                 <div ref={messagesEndRef} />
               </div>
 
               {/* Input */}
               <div className="p-4 border-t">
                 <div className="flex items-center space-x-2">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Ask me anything about wellness! 💬✨"
-                    className="flex-1 px-3 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
-                    disabled={isTyping}
-                  />
-                  <Button
-                    onClick={handleSendMessage}
-                    disabled={!inputValue.trim() || isTyping}
-                    size="icon"
-                    className="w-8 h-8 rounded-full bg-white hover:bg-gray-50 border text-black"
-                  >
+                  <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress} placeholder="Ask me anything about wellness! 💬✨" className="flex-1 px-3 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-gray-300" disabled={isTyping} />
+                  <Button onClick={handleSendMessage} disabled={!inputValue.trim() || isTyping} size="icon" className="w-8 h-8 rounded-full bg-white hover:bg-gray-50 border text-black">
                     <Send className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
-            </>
-          )}
-        </div>
-      )}
-    </>
-  );
+            </>}
+        </div>}
+    </>;
 };
-
 export default SmartChatbot;
