@@ -27,6 +27,20 @@ const AppScreenShowcase: React.FC = () => {
 
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('🖼️ AppScreenShowcase mounted');
+    console.log('📱 Current screen:', appScreens[currentScreenIndex]);
+  }, []);
+
+  useEffect(() => {
+    console.log('🔄 Screen changed to:', appScreens[currentScreenIndex]);
+    setImageLoaded(false);
+    setImageError(false);
+  }, [currentScreenIndex]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,12 +51,24 @@ const AppScreenShowcase: React.FC = () => {
           (prevIndex + 1) % appScreens.length
         );
         setIsTransitioning(false);
-      }, 250); // Half of the transition duration for smooth crossfade
+      }, 250);
       
-    }, 3000); // Change every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [appScreens.length]);
+
+  const handleImageLoad = () => {
+    console.log('✅ Image loaded successfully:', appScreens[currentScreenIndex].image);
+    setImageLoaded(true);
+    setImageError(false);
+  };
+
+  const handleImageError = () => {
+    console.error('❌ Image failed to load:', appScreens[currentScreenIndex].image);
+    setImageError(true);
+    setImageLoaded(false);
+  };
 
   return (
     <div className="flex justify-center">
@@ -57,12 +83,34 @@ const AppScreenShowcase: React.FC = () => {
             
             {/* App Screen Content */}
             <div className="h-full w-full relative">
+              {/* Loading State */}
+              {!imageLoaded && !imageError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                </div>
+              )}
+
+              {/* Error State */}
+              {imageError && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 text-gray-500 p-4">
+                  <div className="text-2xl mb-2">📱</div>
+                  <div className="text-sm text-center">
+                    {appScreens[currentScreenIndex].title}
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">Preview</div>
+                </div>
+              )}
+
+              {/* Main Image */}
               <img 
                 src={appScreens[currentScreenIndex].image}
                 alt={appScreens[currentScreenIndex].title}
+                onLoad={handleImageLoad}
+                onError={handleImageError}
                 className={`w-full h-full object-cover object-top absolute inset-0 transition-all duration-500 ease-in-out ${
-                  isTransitioning ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
+                  isTransitioning || !imageLoaded ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
                 }`}
+                style={{ display: imageError ? 'none' : 'block' }}
               />
               
               {/* Screen indicator dots */}
@@ -78,6 +126,17 @@ const AppScreenShowcase: React.FC = () => {
                   />
                 ))}
               </div>
+
+              {/* Debug Info (only in development) */}
+              {process.env.NODE_ENV === 'development' && (
+                <div className="absolute top-12 left-2 right-2 text-xs text-white bg-black/50 p-1 rounded z-40">
+                  Screen: {currentScreenIndex + 1}/{appScreens.length}
+                  <br />
+                  Loaded: {imageLoaded ? '✅' : '❌'}
+                  <br />
+                  Error: {imageError ? '❌' : '✅'}
+                </div>
+              )}
             </div>
           </div>
         </div>
