@@ -16,7 +16,7 @@ const packages = [{
 }, {
   name: "GOLD",
   offline: "Rs.9,500/month",
-  online: ["Rs.9,500/3 months"],
+  online: ["Rs.10,500/3 months"],
   // updated price here!
   centers: "40+ centers",
   color: "bg-yellow-50 border-yellow-300",
