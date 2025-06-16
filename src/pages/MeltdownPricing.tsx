@@ -103,9 +103,7 @@ const MeltdownPricing = () => {
               `} style={pkg.highlight ? {
           marginTop: "-15px"
         } : {}}>
-              {pkg.highlight && <Badge variant="secondary" className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow">
-                  Most Popular
-                </Badge>}
+              {pkg.highlight && <Badge variant="secondary" className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 text-yellow-900 bg-yellow-200 border-yellow-400 px-5 py-1 text-sm rounded-full shadow">Popular</Badge>}
               
               {/* Title at the top */}
               <div className="w-full flex flex-col gap-0.5 items-center mb-2">
