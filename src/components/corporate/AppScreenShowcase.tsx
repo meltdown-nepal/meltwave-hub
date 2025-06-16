@@ -4,12 +4,8 @@ import React, { useState, useEffect } from 'react';
 const AppScreenShowcase: React.FC = () => {
   const appScreens = [
     {
-      title: "Meltdown App",
-      image: "/lovable-uploads/b92c4bbd-412e-499c-b482-5287d69d789a.png"
-    },
-    {
       title: "Home Dashboard",
-      image: "/lovable-uploads/d12f53a0-97ff-4324-926a-c235451e4ff2.png"
+      image: "/lovable-uploads/cb77fb1c-31c1-4d8b-a847-ec0e19c72cc3.png"
     },
     {
       title: "Explore Gyms",
@@ -17,15 +13,15 @@ const AppScreenShowcase: React.FC = () => {
     },
     {
       title: "QR Check-In",
-      image: "/lovable-uploads/9746da02-489f-47c5-840c-06c9389c8038.png"
+      image: "/lovable-uploads/ae12e042-70fd-4d39-84e7-1d419fc5a18d.png"
     },
     {
       title: "Leaderboard",
-      image: "/lovable-uploads/232b6ca3-c59e-4dbe-99f1-f459d90f82e9.png"
+      image: "/lovable-uploads/1afeb7f0-633e-4f9d-8c6a-7c3ce21c9c97.png"
     },
     {
       title: "Profile Dashboard",
-      image: "/lovable-uploads/748ee968-921d-46b1-92af-dbc618c0baf6.png"
+      image: "/lovable-uploads/6bfb027a-b127-4050-97d6-30abfb2b2565.png"
     }
   ];
 
