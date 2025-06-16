@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
+import AppScreenShowcase from '../components/corporate/AppScreenShowcase';
 
 const roles = [{
   label: "For Companies",
@@ -65,9 +66,7 @@ const CorporateWellness = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex justify-center">
-              <img alt="Corporate Wellness" className="rounded-lg shadow-xl max-w-full h-auto md:max-w-md lg:max-w-lg object-cover" src="/lovable-uploads/29f33744-5373-433e-bf16-c456ae75d366.png" />
-            </div>
+            <AppScreenShowcase />
           </div>
         </div>
       </section>
@@ -114,4 +113,5 @@ const CorporateWellness = () => {
       </section>
     </div>;
 };
+
 export default CorporateWellness;
