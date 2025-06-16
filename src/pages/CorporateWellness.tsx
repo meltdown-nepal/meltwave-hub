@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -55,8 +56,9 @@ const CorporateWellness = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Corporate Wellness Solutions
               </h1>
-              <p className="text-lg mb-8 text-left">We have developed a wellbeing system for companies to build an active work culture by providing their employees access to multiple wellness services under one membership and gamifying the entire experience.
-            </p>
+              <p className="text-lg mb-8 text-left">
+                We have developed a wellbeing system for companies to build an active work culture by providing their employees access to multiple wellness services under one membership and gamifying the entire experience.
+              </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-primary">
                   Get Started
