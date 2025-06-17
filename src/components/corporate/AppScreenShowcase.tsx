@@ -1,30 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
+import { appScreens } from '@/components/home/app-showcase/AppScreenData';
 
 const AppScreenShowcase: React.FC = () => {
-  const appScreens = [
-    {
-      title: "Home Dashboard",
-      image: "/lovable-uploads/cb77fb1c-31c1-4d8b-a847-ec0e19c72cc3.png"
-    },
-    {
-      title: "Explore Gyms",
-      image: "/lovable-uploads/e2299fe3-1e22-4533-90d2-f7eda65b5f30.png"
-    },
-    {
-      title: "QR Check-In",
-      image: "/lovable-uploads/ae12e042-70fd-4d39-84e7-1d419fc5a18d.png"
-    },
-    {
-      title: "Leaderboard",
-      image: "/lovable-uploads/1afeb7f0-633e-4f9d-8c6a-7c3ce21c9c97.png"
-    },
-    {
-      title: "Profile Dashboard",
-      image: "/lovable-uploads/6bfb027a-b127-4050-97d6-30abfb2b2565.png"
-    }
-  ];
-
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -32,12 +10,13 @@ const AppScreenShowcase: React.FC = () => {
 
   // Debug logging
   useEffect(() => {
-    console.log('🖼️ AppScreenShowcase mounted');
+    console.log('🖼️ Corporate AppScreenShowcase mounted');
+    console.log('📱 Available screens:', appScreens.length);
     console.log('📱 Current screen:', appScreens[currentScreenIndex]);
   }, []);
 
   useEffect(() => {
-    console.log('🔄 Screen changed to:', appScreens[currentScreenIndex]);
+    console.log('🔄 Corporate screen changed to:', appScreens[currentScreenIndex]);
     setImageLoaded(false);
     setImageError(false);
   }, [currentScreenIndex]);
@@ -59,13 +38,13 @@ const AppScreenShowcase: React.FC = () => {
   }, [appScreens.length]);
 
   const handleImageLoad = () => {
-    console.log('✅ Image loaded successfully:', appScreens[currentScreenIndex].image);
+    console.log('✅ Corporate image loaded successfully:', appScreens[currentScreenIndex].image);
     setImageLoaded(true);
     setImageError(false);
   };
 
   const handleImageError = () => {
-    console.error('❌ Image failed to load:', appScreens[currentScreenIndex].image);
+    console.error('❌ Corporate image failed to load:', appScreens[currentScreenIndex].image);
     setImageError(true);
     setImageLoaded(false);
   };
@@ -131,6 +110,8 @@ const AppScreenShowcase: React.FC = () => {
               {process.env.NODE_ENV === 'development' && (
                 <div className="absolute top-12 left-2 right-2 text-xs text-white bg-black/50 p-1 rounded z-40">
                   Screen: {currentScreenIndex + 1}/{appScreens.length}
+                  <br />
+                  Title: {appScreens[currentScreenIndex].title}
                   <br />
                   Loaded: {imageLoaded ? '✅' : '❌'}
                   <br />
