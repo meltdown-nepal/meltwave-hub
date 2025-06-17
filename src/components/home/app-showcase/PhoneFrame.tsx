@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import OptimizedImage from '../../OptimizedImage';
@@ -17,7 +18,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => 
       {/* iPhone Frame */}
       <div className={`
         relative bg-gray-900 rounded-[2rem] sm:rounded-[3rem] p-1.5 sm:p-2 transition-all duration-500 transform hover:-translate-y-2
-        ${isMobile ? 'w-64 mx-auto' : 'w-32 sm:w-40 md:w-48 lg:w-52'}
+        ${isMobile ? 'w-80 mx-auto' : 'w-40 sm:w-52 md:w-64 lg:w-72'}
         shadow-2xl shadow-gray-400/20 hover:shadow-gray-400/40 hover:shadow-3xl
       `}>
         {/* iPhone Screen with Dynamic Island */}
@@ -25,7 +26,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => 
           {/* Screen Content Area */}
           <div className="bg-white rounded-[1.4rem] sm:rounded-[2.4rem] overflow-hidden aspect-[9/19.5] relative">
             {/* Dynamic Island */}
-            <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 bg-black rounded-full z-30"></div>
+            <div className="absolute top-1 sm:top-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 md:w-24 lg:w-28 h-4 sm:h-5 md:h-6 lg:h-7 bg-black rounded-full z-30"></div>
             
             {/* App Screen Content */}
             <div className="h-full w-full">
@@ -61,15 +62,15 @@ const PhoneFrame: React.FC<PhoneFrameProps> = React.memo(({ screen, index }) => 
         </div>
         
         {/* Home Indicator */}
-        <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
+        <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 md:w-32 lg:w-36 h-0.5 sm:h-1 bg-gray-600 rounded-full"></div>
       </div>
 
       {/* Screen Labels */}
       <div className="text-center mt-3 sm:mt-4 md:mt-6 space-y-1 px-1">
-        <h3 className="font-semibold text-gray-900 text-sm sm:text-base">
+        <h3 className="font-semibold text-gray-900 text-sm sm:text-base lg:text-lg">
           {screen.title}
         </h3>
-        <p className="text-xs sm:text-sm text-gray-600">
+        <p className="text-xs sm:text-sm lg:text-base text-gray-600">
           {screen.description}
         </p>
       </div>
