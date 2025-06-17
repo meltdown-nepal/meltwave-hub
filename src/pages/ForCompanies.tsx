@@ -244,9 +244,7 @@ const ForCompanies = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2">Employee Choice</h3>
-                  <p className="text-gray-600">
-                    Team members choose from Basic, Gold, or Platinum packages - all heavily subsidized (40-50% below market rates) thanks to your investment.
-                  </p>
+                  <p className="text-gray-600">Team members choose from Basic, Gold, or Platinum packages - all heavily subsidized thanks to your investment.</p>
                 </div>
               </div>
 
