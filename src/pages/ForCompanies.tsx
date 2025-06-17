@@ -277,26 +277,23 @@ const ForCompanies = () => {
               <h3 className="text-xl font-bold text-center mb-6">Package Options</h3>
               
               <div className="space-y-4">
-                <div className="flex flex-col items-start p-3 bg-gray-50 rounded-lg">
+                <div className="flex flex-col items-start p-3 bg-gray-50 rounded-lg py-[15px]">
                   <span className="font-medium text-base">Basic</span>
                   <span className="text-gray-600 text-sm mt-1">Gym Cardio & Group Fitness</span>
                 </div>
                 
-                <div className="flex flex-col items-start p-3 bg-amber-50 rounded-lg border border-amber-200">
+                <div className="flex flex-col items-start p-3 bg-amber-50 rounded-lg border border-amber-200 py-[15px]">
                   <span className="font-medium text-base">Gold</span>
                   <span className="text-gray-600 text-sm mt-1">+ Golfing, Yoga, Rock Climbing, Boxing, Dance Classes</span>
                 </div>
                 
-                <div className="flex flex-col items-start p-3 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="flex flex-col items-start p-3 bg-blue-50 rounded-lg border border-blue-200 py-[15px]">
                   <span className="font-medium text-base">Platinum</span>
                   <span className="text-gray-600 text-sm mt-1">+ Swimming, Mental Health and many more</span>
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-green-50 rounded-lg text-center py-0 my-[50px]">
-                <div className="text-green-600 font-bold text-lg">30-40% Savings</div>
-                <div className="text-green-600 text-sm">Below market rates</div>
-              </div>
+              
             </div>
           </div>
 
