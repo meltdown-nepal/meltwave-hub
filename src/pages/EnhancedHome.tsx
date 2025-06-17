@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import FaqSection from '../components/FaqSection';
 import WellnessProviders from '../components/WellnessProviders';
 import EnhancedHeroSection from '../components/home/EnhancedHeroSection';
@@ -44,6 +45,46 @@ const homeTestimonials = [
 const EnhancedHome = () => {
   return (
     <div className="overflow-hidden">
+      <Helmet>
+        <title>Meltdown Wellbeing - Wellness Solutions for Companies & Employees in Nepal</title>
+        <meta name="description" content="Leading wellness solutions provider in Nepal. Corporate wellness programs, employee wellness services, fitness centers, and health initiatives for companies across Kathmandu and Nepal." />
+        <meta name="keywords" content="wellness Nepal, corporate wellness Nepal, employee wellness, fitness centers Nepal, workplace wellness, wellness programs Kathmandu, health initiatives Nepal, corporate health Nepal" />
+        <link rel="canonical" href="https://meltdownnepal.com/" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Meltdown Wellbeing - Wellness Solutions for Companies & Employees in Nepal" />
+        <meta property="og:description" content="Leading wellness solutions provider in Nepal. Corporate wellness programs, employee wellness services, and fitness centers for companies." />
+        <meta property="og:url" content="https://meltdownnepal.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://meltdownnepal.com/lovable-uploads/a44d1192-3b50-4319-8b71-b312a47bf095.png" />
+        
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Meltdown Wellbeing - Wellness Solutions Nepal" />
+        <meta name="twitter:description" content="Corporate wellness programs and employee wellness services in Nepal" />
+        <meta name="twitter:image" content="https://meltdownnepal.com/lovable-uploads/a44d1192-3b50-4319-8b71-b312a47bf095.png" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Meltdown Wellbeing",
+            "description": "Leading wellness solutions provider in Nepal offering corporate wellness programs and employee wellness services",
+            "url": "https://meltdownnepal.com",
+            "logo": "https://meltdownnepal.com/lovable-uploads/7067dee3-ca5b-449c-b05e-836f3b83b8e3.png",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "Nepal",
+              "addressLocality": "Kathmandu"
+            },
+            "sameAs": [
+              "https://www.instagram.com/meltdown_wellness/"
+            ]
+          })}
+        </script>
+      </Helmet>
+
       {/* Enhanced Hero Section */}
       <EnhancedHeroSection />
 
@@ -85,11 +126,8 @@ const EnhancedHome = () => {
       <div className="-mt-4">
         <EnhancedCtaSection />
       </div>
-
-      {/* Removed the View Packages floating button */}
     </div>
   );
 };
 
 export default EnhancedHome;
-

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play, Package, ArrowRight, CheckCircle, Users, Zap, BarChart3 } from "lucide-react";
@@ -125,7 +126,39 @@ const ForCompanies = () => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-  return <div>
+  
+  return (
+    <div>
+      <Helmet>
+        <title>Corporate Wellness Solutions Nepal - Employee Wellness Programs | Meltdown</title>
+        <meta name="description" content="Transform your workplace with our corporate wellness solutions in Nepal. Comprehensive employee wellness programs, fitness initiatives, and health services for companies in Kathmandu." />
+        <meta name="keywords" content="corporate wellness Nepal, employee wellness programs, workplace wellness Nepal, company fitness programs, corporate health initiatives Kathmandu, business wellness solutions" />
+        <link rel="canonical" href="https://meltdownnepal.com/companies" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Corporate Wellness Solutions Nepal - Employee Wellness Programs" />
+        <meta property="og:description" content="Transform your workplace with comprehensive corporate wellness solutions and employee wellness programs in Nepal" />
+        <meta property="og:url" content="https://meltdownnepal.com/companies" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://meltdownnepal.com/lovable-uploads/86d05d1c-7428-462e-bf36-6ed0b24be2d1.png" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Corporate Wellness Solutions",
+            "description": "Comprehensive corporate wellness programs and employee wellness services for companies in Nepal",
+            "provider": {
+              "@type": "Organization",
+              "name": "Meltdown Wellbeing"
+            },
+            "areaServed": "Nepal",
+            "serviceType": "Corporate Wellness Programs"
+          })}
+        </script>
+      </Helmet>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
         <div className="container-custom">
@@ -346,6 +379,8 @@ const ForCompanies = () => {
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default ForCompanies;
