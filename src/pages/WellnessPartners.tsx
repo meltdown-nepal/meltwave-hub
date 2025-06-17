@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, MapPin, Filter } from 'lucide-react';
 import { Input } from "@/components/ui/input";
@@ -95,7 +96,7 @@ const WellnessPartners = () => {
           {/* Results Summary */}
           <div className="mb-8">
             <p className="text-gray-600">
-              Showing {filteredPartners.length} wellness {filteredPartners.length === 1 ? 'center' : 'centers'}
+              Showing wellness centers
               {selectedTier !== 'All' && ` in ${selectedTier} tier`}
               {selectedLocation !== 'All' && ` in ${selectedLocation}`}
             </p>

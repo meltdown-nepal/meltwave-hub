@@ -57,7 +57,7 @@ const PartnerCarousel: React.FC<PartnerCarouselProps> = ({ tier, partners }) => 
         <div className="flex items-center gap-3">
           <TierBadge tier={tier} />
           <h2 className="text-2xl font-bold">
-            {tier} Partners ({partners.length})
+            {tier} Partners
           </h2>
         </div>
         
