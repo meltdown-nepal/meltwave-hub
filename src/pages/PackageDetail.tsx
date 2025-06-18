@@ -29,37 +29,39 @@ const packagePlansMap: Record<string, {
       {
         id: "3-weeks",
         duration: "3 Weeks Plan",
-        price: "NPR 2,999",
-        originalPrice: "NPR 3,999",
-        savings: "Save NPR 1,000"
+        price: "NPR 3,750",
+        originalPrice: "NPR 5,000",
+        savings: "Save NPR 1,250"
       },
       {
         id: "6-weeks",
         duration: "6 Weeks Plan",
-        price: "NPR 5,499",
-        originalPrice: "NPR 7,998",
-        savings: "Save NPR 2,499",
+        price: "NPR 7,500",
+        originalPrice: "NPR 10,000",
+        savings: "Save NPR 2,500",
         popular: true
       },
       {
         id: "12-weeks",
         duration: "12 Weeks Plan",
-        price: "NPR 9,999",
-        originalPrice: "NPR 15,996",
-        savings: "Save NPR 5,997"
+        price: "NPR 15,000",
+        originalPrice: "NPR 20,000",
+        savings: "Save NPR 5,000"
       }
     ],
     howItWorks: [
-      "Book a consultation with our certified personal trainer.",
-      "Get a custom fitness assessment and tailored workout plan.",
-      "Train with your coach (virtual or in-person) to achieve goals.",
-      "Track your progress and get regular feedback.",
+      "You enrol in a package of your choice",
+      "You fill in your additional key details like food preferences, preferred time to contact, any medical issues etc",
+      "Coach calls you within 24 hours at your preferred time",
+      "Coach understands your goals, sets expectations about how this will work",
+      "Coach evaluates and prepares the best plan for you",
+      "Coach assesses your weekly progress and makes course adjustments"
     ],
     whyChoose: [
-      "Personalized routines & attention.",
-      "Faster results with expert motivation and accountability.",
-      "Progress tracking and flexible scheduling.",
-      "Perfect for beginners or those needing a push."
+      "Plans designed only for you: Personalised fitness & nutrition consultation tailor-made for you—including diet plans, training programs with video links, progress tracker sheet and weekly 1-on-1 guidance.",
+      "Accountability and Progress Tracking: Your coach will set up in-depth weekly calls according to your schedule to discuss your progress. Changes in your plans will be made as needed.",
+      "Video Consultation: Three video consultations with your Coach during the plan duration, beside the regular weekly call just in case.",
+      "Continuous Support: You can communicate with the coaches via message regularly. You can also contact the Meltdown operations team in case any changes are needed from the coach."
     ],
     paymentLinkBase: "https://forms.gle/demo-personal-training",
   },
@@ -69,24 +71,24 @@ const packagePlansMap: Record<string, {
       {
         id: "3-weeks",
         duration: "3 Weeks Plan",
-        price: "NPR 2,499",
-        originalPrice: "NPR 3,299",
-        savings: "Save NPR 800"
+        price: "NPR 3,750",
+        originalPrice: "NPR 5,000",
+        savings: "Save NPR 1,250"
       },
       {
         id: "6-weeks",
         duration: "6 Weeks Plan",
-        price: "NPR 4,499",
-        originalPrice: "NPR 6,598",
-        savings: "Save NPR 2,099",
+        price: "NPR 7,500",
+        originalPrice: "NPR 10,000",
+        savings: "Save NPR 2,500",
         popular: true
       },
       {
         id: "12-weeks",
         duration: "12 Weeks Plan",
-        price: "NPR 7,999",
-        originalPrice: "NPR 13,196",
-        savings: "Save NPR 5,197"
+        price: "NPR 15,000",
+        originalPrice: "NPR 20,000",
+        savings: "Save NPR 5,000"
       }
     ],
     howItWorks: [
@@ -95,14 +97,13 @@ const packagePlansMap: Record<string, {
       "Coach calls you within 24 hours at your preferred time",
       "Coach understands your goals, sets expectations about how this will work",
       "Coach evaluates and prepares the best plan for you",
-      "Coach assesses your weekly progress and makes course adjustments",
-      "You get results, yay!"
+      "Coach assesses your weekly progress and makes course adjustments"
     ],
     whyChoose: [
-      "Professional nutritional support for all goals.",
-      "Achieve sustainable eating habits.",
-      "Boost your energy, immunity, and wellbeing.",
-      "Ongoing coach support and tasty recipes!"
+      "Plans designed only for you: Personalised fitness & nutrition consultation tailor-made for you—including diet plans, training programs with video links, progress tracker sheet and weekly 1-on-1 guidance.",
+      "Accountability and Progress Tracking: Your coach will set up in-depth weekly calls according to your schedule to discuss your progress. Changes in your plans will be made as needed.",
+      "Video Consultation: Three video consultations with your Coach during the plan duration, beside the regular weekly call just in case.",
+      "Continuous Support: You can communicate with the coaches via message regularly. You can also contact the Meltdown operations team in case any changes are needed from the coach."
     ],
     paymentLinkBase: "https://forms.gle/demo-health-nutrition",
   }
