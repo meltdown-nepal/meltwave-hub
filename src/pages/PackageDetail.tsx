@@ -1,17 +1,54 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import PackageDetailsContent from "@/components/packages/PackageDetailsContent";
+import PlanSelector from "@/components/packages/PlanSelector";
+import DynamicPackageDetails from "@/components/packages/DynamicPackageDetails";
 
-// Demo data for now (add/adjust content as needed)
-const packageDetailMap: Record<string, {
+// Plan data structure
+export interface PlanOption {
+  id: string;
+  duration: string;
+  price: string;
+  originalPrice?: string;
+  savings?: string;
+  popular?: boolean;
+}
+
+// Package plans data
+const packagePlansMap: Record<string, {
   name: string;
+  plans: PlanOption[];
   howItWorks: string[];
   whyChoose: string[];
-  paymentLink: string;
+  paymentLinkBase: string;
 }> = {
   "personal-training": {
     name: "Personal Training Package",
+    plans: [
+      {
+        id: "3-weeks",
+        duration: "3 Weeks Plan",
+        price: "NPR 2,999",
+        originalPrice: "NPR 3,999",
+        savings: "Save NPR 1,000"
+      },
+      {
+        id: "6-weeks",
+        duration: "6 Weeks Plan",
+        price: "NPR 5,499",
+        originalPrice: "NPR 7,998",
+        savings: "Save NPR 2,499",
+        popular: true
+      },
+      {
+        id: "12-weeks",
+        duration: "12 Weeks Plan",
+        price: "NPR 9,999",
+        originalPrice: "NPR 15,996",
+        savings: "Save NPR 5,997"
+      }
+    ],
     howItWorks: [
       "Book a consultation with our certified personal trainer.",
       "Get a custom fitness assessment and tailored workout plan.",
@@ -24,10 +61,34 @@ const packageDetailMap: Record<string, {
       "Progress tracking and flexible scheduling.",
       "Perfect for beginners or those needing a push."
     ],
-    paymentLink: "https://forms.gle/demo-personal-training", // Replace with real link
+    paymentLinkBase: "https://forms.gle/demo-personal-training",
   },
   "health-nutrition": {
     name: "Health and Nutrition Package",
+    plans: [
+      {
+        id: "3-weeks",
+        duration: "3 Weeks Plan",
+        price: "NPR 2,499",
+        originalPrice: "NPR 3,299",
+        savings: "Save NPR 800"
+      },
+      {
+        id: "6-weeks",
+        duration: "6 Weeks Plan",
+        price: "NPR 4,499",
+        originalPrice: "NPR 6,598",
+        savings: "Save NPR 2,099",
+        popular: true
+      },
+      {
+        id: "12-weeks",
+        duration: "12 Weeks Plan",
+        price: "NPR 7,999",
+        originalPrice: "NPR 13,196",
+        savings: "Save NPR 5,197"
+      }
+    ],
     howItWorks: [
       "You enrol in a package of your choice",
       "You fill in your additional key details like food preferences, preferred time to contact, any medical issues etc",
@@ -43,13 +104,14 @@ const packageDetailMap: Record<string, {
       "Boost your energy, immunity, and wellbeing.",
       "Ongoing coach support and tasty recipes!"
     ],
-    paymentLink: "https://forms.gle/demo-health-nutrition", // Replace with real link
+    paymentLinkBase: "https://forms.gle/demo-health-nutrition",
   }
 };
 
 const PackageDetail = () => {
   const { packageId } = useParams<{ packageId: string }>();
-  const pkg = packageDetailMap[packageId || ""];
+  const pkg = packagePlansMap[packageId || ""];
+  const [selectedPlan, setSelectedPlan] = useState<string>(pkg?.plans?.[1]?.id || pkg?.plans?.[0]?.id || "");
 
   if (!pkg) {
     return (
@@ -62,11 +124,12 @@ const PackageDetail = () => {
     );
   }
 
+  const currentPlan = pkg.plans.find(plan => plan.id === selectedPlan) || pkg.plans[0];
+
   return (
     <div
       className="min-h-screen w-full"
       style={{
-        // Multi-stop gradient using Tailwind's yellow-100 (#FEF9C3).
         background: `linear-gradient(
           180deg,
           #fff 0%,
@@ -77,19 +140,40 @@ const PackageDetail = () => {
         )`
       }}
     >
-      <div className="max-w-4xl mx-auto py-10 px-2">
+      <div className="max-w-7xl mx-auto py-10 px-4">
         <div className="mb-7">
           <Link to="/packages" className="inline-flex items-center text-primary font-medium hover:underline">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Packages
           </Link>
         </div>
-        <div className="h-1 rounded bg-gradient-to-r from-primary to-secondary w-32 mx-auto mb-8" />
-        <PackageDetailsContent
-          name={pkg.name}
-          howItWorks={pkg.howItWorks}
-          whyChoose={pkg.whyChoose}
-          paymentLink={pkg.paymentLink}
-        />
+        
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">{pkg.name}</h1>
+          <div className="h-1 rounded bg-gradient-to-r from-primary to-secondary w-32 mx-auto" />
+        </div>
+
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Plan Selector */}
+          <div className="lg:col-span-1">
+            <PlanSelector
+              plans={pkg.plans}
+              selectedPlan={selectedPlan}
+              onPlanSelect={setSelectedPlan}
+            />
+          </div>
+
+          {/* Right Column - Dynamic Package Details */}
+          <div className="lg:col-span-2">
+            <DynamicPackageDetails
+              packageName={pkg.name}
+              selectedPlan={currentPlan}
+              howItWorks={pkg.howItWorks}
+              whyChoose={pkg.whyChoose}
+              paymentLink={`${pkg.paymentLinkBase}-${selectedPlan}`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
