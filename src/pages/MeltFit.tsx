@@ -232,7 +232,7 @@ const MeltFit = () => {
                   <li>Open to all ages and needs</li>
                 </ul>
                 <Button size="sm" asChild>
-                  <Link to="/package-detail/personal-training">View Plans</Link>
+                  <Link to="/packages/personal-training">View Plans</Link>
                 </Button>
               </div>
             </div>
