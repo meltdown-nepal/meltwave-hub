@@ -72,6 +72,7 @@ export default function ScheduleDemoFlow() {
             email: data.email,
             phone: data.phone,
             userType: data.userType,
+            additionalDetails: data.additionalDetails,
           },
         }
       );

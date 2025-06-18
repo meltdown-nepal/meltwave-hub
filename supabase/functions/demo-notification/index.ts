@@ -57,6 +57,11 @@ serve(async (req) => {
           <p><strong>Company Size:</strong> ${companySizeDisplay}</p>
           <p><strong>Role:</strong> ${formData.role}</p>
           <p><strong>User Type:</strong> ${formData.userType || 'Not specified'}</p>
+
+          ${formData.additionalDetails ? `
+          <h3>Additional Details</h3>
+          <p>${formData.additionalDetails}</p>
+          ` : ''}
         `,
       }),
     })

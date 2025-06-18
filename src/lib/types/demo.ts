@@ -11,6 +11,7 @@ export const demoFormSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   phoneContact: z.boolean().default(false),
   phone: z.string().optional(),
+  additionalDetails: z.string().optional(),
 });
 
 export type DemoFormData = z.infer<typeof demoFormSchema>;

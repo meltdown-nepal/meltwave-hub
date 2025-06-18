@@ -1,7 +1,8 @@
 
 import React from "react";
-import { Mail, Phone, User } from "lucide-react";
+import { Mail, Phone, User, MessageSquare } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { DemoFormData } from "@/lib/types/demo";
@@ -99,6 +100,27 @@ export const ContactInfo: React.FC<Props> = ({
                   {...field} 
                   onKeyDown={handlePhoneKeyPress}
                   onChange={handlePhoneInput}
+                />
+              </div>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="additionalDetails"
+        render={({ field }) => (
+          <FormItem className="space-y-4">
+            <FormLabel className="text-2xl font-semibold">Additional Details</FormLabel>
+            <FormControl>
+              <div className="relative">
+                <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                <Textarea 
+                  className="pl-10 min-h-[100px]" 
+                  placeholder="Tell us more about what you're looking for or any specific requirements..."
+                  {...field} 
                 />
               </div>
             </FormControl>
