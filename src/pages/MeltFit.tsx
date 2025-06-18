@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import VideoTestimonial from '@/components/VideoTestimonial';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList, Dumbbell, Leaf } from 'lucide-react';
-
 const MeltFit = () => {
   const {
     scrollToSection
@@ -41,37 +40,31 @@ const MeltFit = () => {
   }];
 
   // Program data for simple cards with icons instead of large images
-  const programCards = [
-    {
-      icon: <LayoutGrid className="h-7 w-7 text-primary mb-2" />,
-      title: "Group Strength and Conditioning Classes",
-      description: "Signature group classes focused on functional strength, endurance, and improved movement for all levels.",
-      cta: "See Class Timings",
-      ctaLink: "/contact"
-    },
-    {
-      icon: <Grid2x2 className="h-7 w-7 text-primary mb-2" />,
-      title: "6-Week Transformation Program",
-      description: "An intensive 6-week system with group training, nutrition coaching, and weekly tracking for proven results.",
-      cta: "Apply for Transformation Program",
-      ctaLink: "/contact"
-    },
-    {
-      icon: <LayoutList className="h-7 w-7 text-primary mb-2" />,
-      title: "Corrective Exercise Program",
-      description: "Tailored for seniors or those recovering from injury, focusing on movement quality and pain management.",
-      cta: "Learn More About Corrective Training",
-      ctaLink: "/contact"
-    },
-    {
-      icon: <List className="h-7 w-7 text-primary mb-2" />,
-      title: "Personal Training",
-      description: "1-on-1 training with a coach to set goals and get custom support—ideal for specific needs and flexible scheduling.",
-      cta: "View Plans",
-      ctaLink: "/package-detail/personal-training"
-    }
-  ];
-
+  const programCards = [{
+    icon: <LayoutGrid className="h-7 w-7 text-primary mb-2" />,
+    title: "Group Strength and Conditioning Classes",
+    description: "Signature group classes focused on functional strength, endurance, and improved movement for all levels.",
+    cta: "See Class Timings",
+    ctaLink: "/contact"
+  }, {
+    icon: <Grid2x2 className="h-7 w-7 text-primary mb-2" />,
+    title: "6-Week Transformation Program",
+    description: "An intensive 6-week system with group training, nutrition coaching, and weekly tracking for proven results.",
+    cta: "Apply for Transformation Program",
+    ctaLink: "/contact"
+  }, {
+    icon: <LayoutList className="h-7 w-7 text-primary mb-2" />,
+    title: "Corrective Exercise Program",
+    description: "Tailored for seniors or those recovering from injury, focusing on movement quality and pain management.",
+    cta: "Learn More About Corrective Training",
+    ctaLink: "/contact"
+  }, {
+    icon: <List className="h-7 w-7 text-primary mb-2" />,
+    title: "Personal Training",
+    description: "1-on-1 training with a coach to set goals and get custom support—ideal for specific needs and flexible scheduling.",
+    cta: "View Plans",
+    ctaLink: "/package-detail/personal-training"
+  }];
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white py-16 md:py-24">
@@ -228,9 +221,7 @@ const MeltFit = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  Personal Training
-                </h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">Online Personal Training</h3>
                 <p className="text-gray-700 mb-2">
                   Get focused, personalized support with 1-on-1 coaching—perfect for individual goals, rehabilitation, or sport-specific improvement. You set the schedule and the goal, your coach guides you all the way.
                 </p>
