@@ -24,7 +24,7 @@ const packagePlansMap: Record<string, {
   paymentLinkBase: string;
 }> = {
   "personal-training": {
-    name: "Personal Training Package",
+    name: "Online Personal Training Package",
     plans: [
       {
         id: "6-weeks",
