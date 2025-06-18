@@ -67,8 +67,8 @@ const MeltFit = () => {
       icon: <List className="h-7 w-7 text-primary mb-2" />,
       title: "Personal Training",
       description: "1-on-1 training with a coach to set goals and get custom support—ideal for specific needs and flexible scheduling.",
-      cta: "Book a Free Consultation",
-      ctaLink: "/contact"
+      cta: "View Plans",
+      ctaLink: "/package-detail/personal-training"
     }
   ];
 
@@ -241,7 +241,7 @@ const MeltFit = () => {
                   <li>Open to all ages and needs</li>
                 </ul>
                 <Button size="sm" asChild>
-                  <Link to="/contact">Book a Free Consultation</Link>
+                  <Link to="/package-detail/personal-training">View Plans</Link>
                 </Button>
               </div>
             </div>
