@@ -40,8 +40,8 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center space-x-2 text-2xl font-bold text-primary" onClick={closeMenu}>
               <img
-  src="/images/meltdown-logo-64.png"
-  srcSet="/images/meltdown-logo-64.png 1x, /images/meltdown-logo-128.png 2x"
+  src="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png"
+  srcSet="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png 1x, /lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png 2x"
   alt="Meltdown Logo"
   className="h-8 w-auto"
 />
@@ -94,9 +94,6 @@ const Navbar = () => {
             <Link to="/wellness-partners" className={`text-gray-700 hover:text-primary transition-colors ${isActive('/wellness-partners') ? 'text-primary font-semibold' : ''}`} onClick={closeMenu}>
               Partners
             </Link>
-            <Link to="/careers" className={`text-gray-700 hover:text-primary transition-colors ${isActive('/careers') ? 'text-primary font-semibold' : ''}`} onClick={closeMenu}>
-              Careers
-            </Link>
             <Link to="/contact" className={`text-gray-700 hover:text-primary transition-colors ${isActive('/contact') ? 'text-primary font-semibold' : ''}`} onClick={closeMenu}>
               Contact
             </Link>
@@ -140,9 +137,6 @@ const Navbar = () => {
               </Link>
               <Link to="/wellness-partners" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
                 Partners
-              </Link>
-              <Link to="/careers" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
-                Careers
               </Link>
               <Link to="/contact" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
                 Contact
