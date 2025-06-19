@@ -6,7 +6,7 @@ import OptimizedImage from '../OptimizedImage';
 import { useCriticalImagePreloader } from '../../hooks/useCriticalImagePreloader';
 const EnhancedHeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const backgroundImages = ["/lovable-uploads/ec4d86e4-ddaf-4d5e-8c78-412c449ba69f.png", "/lovable-uploads/9da7e4a7-0722-4a0d-bab4-fcfc02257eef.png", "/lovable-uploads/e845019e-510b-498c-80e2-cbbcfbd10160.png"];
+  const backgroundImages = ["/lovable-uploads/Activelifestyle.webp", "/lovable-uploads/HappyEmployees.webp", "/lovable-uploads/WellnessSessions.webp"];
 
   // Preload critical hero images - simplified to avoid format issues
   useCriticalImagePreloader(backgroundImages.map(src => ({
