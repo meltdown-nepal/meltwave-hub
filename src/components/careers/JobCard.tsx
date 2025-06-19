@@ -1,39 +1,46 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { MapPin } from "lucide-react";
-import { Job } from "@/data/jobListings";
+import { Job } from '@/data/jobListings';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { MapPin, Calendar } from 'lucide-react';
 
 interface JobCardProps {
   job: Job;
   onJobClick: (job: Job) => void;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job, onJobClick }) => {
+const JobCard = ({ job, onJobClick }: JobCardProps) => {
   return (
-    <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer group">
+    <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
       <CardHeader>
-        <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
-          {job.title}
-        </CardTitle>
-        <div className="flex items-center text-gray-500 text-sm">
-          <MapPin className="w-4 h-4 mr-1" />
-          {job.location}
+        <CardTitle className="text-xl">{job.title}</CardTitle>
+        <div className="flex items-center text-gray-600 text-sm space-x-4">
+          <div className="flex items-center">
+            <MapPin className="w-4 h-4 mr-1" />
+            {job.location}
+          </div>
+          <div className="flex items-center">
+            <Calendar className="w-4 h-4 mr-1" />
+            Deadline: {job.deadline}
+          </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <p className="text-gray-600 mb-4 line-clamp-3">
+      
+      <CardContent className="flex-grow">
+        <p className="text-gray-600 text-sm leading-relaxed">
           {job.summary}
         </p>
+      </CardContent>
+      
+      <CardFooter>
         <Button 
           onClick={() => onJobClick(job)}
-          variant="outline" 
-          className="w-full group-hover:bg-primary group-hover:text-black transition-colors"
+          className="w-full"
         >
-          View More Information
+          View Details
         </Button>
-      </CardContent>
+      </CardFooter>
     </Card>
   );
 };
