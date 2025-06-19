@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Upload, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface CVSubmissionModalProps {
   isOpen: boolean;
@@ -51,6 +52,20 @@ const CVSubmissionModal = ({ isOpen, onClose }: CVSubmissionModalProps) => {
     }
   };
 
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const result = reader.result as string;
+        // Remove the data URL prefix to get just the base64 content
+        const base64Content = result.split(',')[1];
+        resolve(base64Content);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -66,10 +81,28 @@ const CVSubmissionModal = ({ isOpen, onClose }: CVSubmissionModalProps) => {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically upload to a backend service
-      // For now, we'll simulate the submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      // Convert file to base64
+      const cvBase64 = await convertFileToBase64(formData.cv);
+
+      // Call the edge function
+      const { data, error } = await supabase.functions.invoke('cv-submission', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          position: formData.position,
+          cvFile: {
+            name: formData.cv.name,
+            type: formData.cv.type,
+            content: cvBase64
+          }
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
       toast({
         title: "CV Submitted Successfully!",
         description: "Thank you for your interest. We'll review your CV and contact you if there's a suitable opportunity.",
@@ -86,6 +119,7 @@ const CVSubmissionModal = ({ isOpen, onClose }: CVSubmissionModalProps) => {
       
       onClose();
     } catch (error) {
+      console.error('CV submission error:', error);
       toast({
         title: "Submission failed",
         description: "There was an error submitting your CV. Please try again.",

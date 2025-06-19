@@ -12,3 +12,6 @@ verify_jwt = false
 
 [functions.intelligent-chat]
 verify_jwt = false
+
+[functions.cv-submission]
+verify_jwt = false
