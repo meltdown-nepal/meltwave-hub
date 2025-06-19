@@ -39,13 +39,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center space-x-2 text-2xl font-bold text-primary" onClick={closeMenu}>
-              <img
-  src="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png"
-  srcSet="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png 1x, /lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png 2x"
-  alt="Meltdown Logo"
-  className="h-8 w-auto"
-/>
-
+              <img src="/lovable-uploads/13b31893-1e73-4f68-bf9b-b72e0a0afc8d.png" alt="Meltdown Logo" className="h-8 w-auto" />
               <span>Meltdown</span>
             </Link>
           </div>
