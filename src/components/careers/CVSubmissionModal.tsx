@@ -54,7 +54,7 @@ const CVSubmissionModal = ({ isOpen, onClose }: CVSubmissionModalProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.cv) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.cv) {
       toast({
         title: "Missing information",
         description: "Please fill in all required fields and upload your CV",
@@ -132,13 +132,14 @@ const CVSubmissionModal = ({ isOpen, onClose }: CVSubmissionModalProps) => {
           </div>
           
           <div>
-            <Label htmlFor="phone">Phone Number</Label>
+            <Label htmlFor="phone">Phone Number *</Label>
             <Input
               id="phone"
               type="tel"
               value={formData.phone}
               onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
               placeholder="Enter your phone number"
+              required
             />
           </div>
           
