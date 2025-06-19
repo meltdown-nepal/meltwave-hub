@@ -88,6 +88,9 @@ const Navbar = () => {
             <Link to="/wellness-partners" className={`text-gray-700 hover:text-primary transition-colors ${isActive('/wellness-partners') ? 'text-primary font-semibold' : ''}`} onClick={closeMenu}>
               Partners
             </Link>
+            <Link to="/careers" className={`text-gray-700 hover:text-primary transition-colors ${isActive('/careers') ? 'text-primary font-semibold' : ''}`} onClick={closeMenu}>
+              Careers
+            </Link>
             <Link to="/contact" className={`text-gray-700 hover:text-primary transition-colors ${isActive('/contact') ? 'text-primary font-semibold' : ''}`} onClick={closeMenu}>
               Contact
             </Link>
@@ -131,6 +134,9 @@ const Navbar = () => {
               </Link>
               <Link to="/wellness-partners" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
                 Partners
+              </Link>
+              <Link to="/careers" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
+                Careers
               </Link>
               <Link to="/contact" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
                 Contact
