@@ -20,7 +20,7 @@ const packagePlansMap: Record<string, {
   name: string;
   plans: PlanOption[];
   howItWorks: string[];
-  whyChoose: string[];
+  whyChoose: Record<string, string[]>;
   paymentLinkBase: string;
 }> = {
   "personal-training": {
@@ -57,12 +57,35 @@ const packagePlansMap: Record<string, {
       "Coach evaluates and prepares the best plan for you",
       "Coach assesses your weekly progress and makes course adjustments"
     ],
-    whyChoose: [
-      "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
-      "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
-      "Video Consultations: Up to 3 video calls with your coach during the program, plus weekly reviews.",
-      "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
-    ],
+    whyChoose: {
+      "6-weeks": [
+        "Customized 6-week training plan (gym/home)",
+        "Bi-weekly check-ins via WhatsApp",
+        "Video demos for all exercises",
+        "Goal-based programming (fat loss, strength, mobility, etc.)",
+        "Habit tracker for consistency",
+        "Standard support (Mon–Fri response within 24 hrs)"
+      ],
+      "8-weeks": [
+        "Customized 8-week training plan (gym/home)",
+        "Weekly check-ins via WhatsApp",
+        "Video demos for all exercises",
+        "Goal-based programming (fat loss, strength, mobility, etc.)",
+        "Habit tracker for consistency",
+        "Enhanced support (Mon–Sat response within 18 hrs)",
+        "Mid-program assessment and plan adjustment"
+      ],
+      "12-weeks": [
+        "Customized 12-week training plan (gym/home)",
+        "Weekly check-ins via WhatsApp",
+        "Video demos for all exercises",
+        "Goal-based programming (fat loss, strength, mobility, etc.)",
+        "Habit tracker for consistency",
+        "Priority support (Mon–Sat response within 12 hrs)",
+        "Accountability and tracking",
+        "Two comprehensive progress assessments"
+      ]
+    },
     paymentLinkBase: "https://forms.gle/demo-personal-training",
   },
   "health-nutrition": {
@@ -99,12 +122,26 @@ const packagePlansMap: Record<string, {
       "Coach evaluates and prepares the best plan for you",
       "Coach assesses your weekly progress and makes course adjustments"
     ],
-    whyChoose: [
-      "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
-      "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
-      "Video Consultations: Up to 3 video calls with your coach during the program, plus weekly reviews.",
-      "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
-    ],
+    whyChoose: {
+      "6-weeks": [
+        "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
+        "Bi-weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
+        "Video Consultations: Up to 2 video calls with your coach during the program.",
+        "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
+      ],
+      "8-weeks": [
+        "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
+        "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
+        "Video Consultations: Up to 2 video calls with your coach during the program, plus weekly reviews.",
+        "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
+      ],
+      "12-weeks": [
+        "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
+        "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
+        "Video Consultations: Up to 3 video calls with your coach during the program, plus weekly reviews.",
+        "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
+      ]
+    },
     paymentLinkBase: "https://forms.gle/demo-health-nutrition",
   }
 };
@@ -126,6 +163,7 @@ const PackageDetail = () => {
   }
 
   const currentPlan = pkg.plans.find(plan => plan.id === selectedPlan) || pkg.plans[0];
+  const currentWhyChoose = pkg.whyChoose[selectedPlan] || pkg.whyChoose[pkg.plans[0].id];
 
   return (
     <div
@@ -170,7 +208,7 @@ const PackageDetail = () => {
               packageName={pkg.name}
               selectedPlan={currentPlan}
               howItWorks={pkg.howItWorks}
-              whyChoose={pkg.whyChoose}
+              whyChoose={currentWhyChoose}
               paymentLink={`${pkg.paymentLinkBase}-${selectedPlan}`}
             />
           </div>
