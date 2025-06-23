@@ -18,7 +18,7 @@ export function PersonalInfoFields({ form }: FormFieldsProps) {
           name="firstName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>First Name</FormLabel>
+              <FormLabel>First Name <span className="text-red-500">*</span></FormLabel>
               <FormControl>
                 <Input placeholder="Your first name" {...field} />
               </FormControl>
@@ -31,7 +31,7 @@ export function PersonalInfoFields({ form }: FormFieldsProps) {
           name="lastName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Last Name</FormLabel>
+              <FormLabel>Last Name <span className="text-red-500">*</span></FormLabel>
               <FormControl>
                 <Input placeholder="Your last name" {...field} />
               </FormControl>
@@ -46,7 +46,7 @@ export function PersonalInfoFields({ form }: FormFieldsProps) {
         name="email"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Email Address</FormLabel>
+            <FormLabel>Email Address <span className="text-red-500">*</span></FormLabel>
             <FormControl>
               <Input placeholder="Your email address" type="email" {...field} />
             </FormControl>
@@ -60,7 +60,7 @@ export function PersonalInfoFields({ form }: FormFieldsProps) {
         name="phone"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Phone Number (Optional)</FormLabel>
+            <FormLabel>Phone Number <span className="text-red-500">*</span></FormLabel>
             <FormControl>
               <Input placeholder="Your phone number" type="tel" {...field} />
             </FormControl>
@@ -74,7 +74,7 @@ export function PersonalInfoFields({ form }: FormFieldsProps) {
         name="company"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Company/Organization (Optional)</FormLabel>
+            <FormLabel>Company/Organization <span className="text-red-500">*</span></FormLabel>
             <FormControl>
               <Input placeholder="Your company or organization" {...field} />
             </FormControl>
@@ -94,7 +94,7 @@ export function InterestAndMessageFields({ form }: FormFieldsProps) {
         name="interest"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>I'm interested in:</FormLabel>
+            <FormLabel>I'm interested in: <span className="text-red-500">*</span></FormLabel>
             <FormControl>
               <select 
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white"
@@ -119,7 +119,7 @@ export function InterestAndMessageFields({ form }: FormFieldsProps) {
         name="message"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Message</FormLabel>
+            <FormLabel>Message <span className="text-red-500">*</span></FormLabel>
             <FormControl>
               <Textarea 
                 placeholder="Please provide any additional information about your inquiry"
