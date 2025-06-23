@@ -138,6 +138,31 @@ const MeltFit = () => {
             </p>
           </div>
           <div className="space-y-12 max-w-4xl mx-auto">
+            {/* Personal Training - MOVED TO FIRST */}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
+              <div className="flex-shrink-0">
+                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
+                  <List className="h-7 w-7 text-primary" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  Online Personal Training
+                </h3>
+                <p className="text-gray-700 mb-2">
+                  Get focused, personalized support with 1-on-1 coaching—perfect for individual goals, rehabilitation, or sport-specific improvement. You set the schedule and the goal, your coach guides you all the way.
+                </p>
+                <ul className="mb-3 pl-5 list-disc text-gray-600">
+                  <li>Custom training plans for your goals</li>
+                  <li>Flexible scheduling</li>
+                  <li>Expert accountability and motivation</li>
+                  <li>Open to all ages and needs</li>
+                </ul>
+                <Button size="sm" asChild>
+                  <Link to="/packages/personal-training">View Plans</Link>
+                </Button>
+              </div>
+            </div>
             {/* Group Classes */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
@@ -210,29 +235,6 @@ const MeltFit = () => {
                 </ul>
                 <Button size="sm" asChild>
                   <Link to="/contact">Learn More About Corrective Training</Link>
-                </Button>
-              </div>
-            </div>
-            {/* Personal Training */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
-              <div className="flex-shrink-0">
-                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                  <List className="h-7 w-7 text-primary" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">Online Personal Training</h3>
-                <p className="text-gray-700 mb-2">
-                  Get focused, personalized support with 1-on-1 coaching—perfect for individual goals, rehabilitation, or sport-specific improvement. You set the schedule and the goal, your coach guides you all the way.
-                </p>
-                <ul className="mb-3 pl-5 list-disc text-gray-600">
-                  <li>Custom training plans for your goals</li>
-                  <li>Flexible scheduling</li>
-                  <li>Expert accountability and motivation</li>
-                  <li>Open to all ages and needs</li>
-                </ul>
-                <Button size="sm" asChild>
-                  <Link to="/packages/personal-training">View Plans</Link>
                 </Button>
               </div>
             </div>

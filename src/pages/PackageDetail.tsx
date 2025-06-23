@@ -86,7 +86,7 @@ const packagePlansMap: Record<string, {
         "Two comprehensive progress assessments"
       ]
     },
-    paymentLinkBase: "https://forms.gle/demo-personal-training",
+    paymentLinkBase: "https://docs.google.com/forms/d/e/1FAIpQLSfEsOR_hkYjRd00hZW5XmYuaH3lzRnl0NTmAvgzjyVadqRMGA/viewform?usp=header",
   },
   "health-nutrition": {
     name: "Health and Nutrition Package",
@@ -136,7 +136,7 @@ const packagePlansMap: Record<string, {
         "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
       ],
       "12-weeks": [
-        "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
+        "Tailore Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
         "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
         "Video Consultations: Up to 3 video calls with your coach during the program, plus weekly reviews.",
         "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
@@ -164,6 +164,11 @@ const PackageDetail = () => {
 
   const currentPlan = pkg.plans.find(plan => plan.id === selectedPlan) || pkg.plans[0];
   const currentWhyChoose = pkg.whyChoose[selectedPlan] || pkg.whyChoose[pkg.plans[0].id];
+
+  // For personal training package, use the Google Form directly without plan ID
+  const paymentLink = packageId === "personal-training" 
+    ? pkg.paymentLinkBase 
+    : `${pkg.paymentLinkBase}-${selectedPlan}`;
 
   return (
     <div
@@ -209,7 +214,7 @@ const PackageDetail = () => {
               selectedPlan={currentPlan}
               howItWorks={pkg.howItWorks}
               whyChoose={currentWhyChoose}
-              paymentLink={`${pkg.paymentLinkBase}-${selectedPlan}`}
+              paymentLink={paymentLink}
             />
           </div>
         </div>
