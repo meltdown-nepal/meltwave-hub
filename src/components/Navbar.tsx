@@ -69,7 +69,7 @@ const Navbar = () => {
                       For Employees
                     </Link>
                     <Link to="/providers" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors" onClick={closeMenu}>
-                      For Wellness Providers
+                      For Wellness Partners
                     </Link>
                   </div>
                 </div>
