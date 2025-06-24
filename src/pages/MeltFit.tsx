@@ -87,7 +87,7 @@ const MeltFit = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="/lovable-uploads/meltfittraning.webp" alt="MeltFit Group Training" className="rounded-lg shadow-xl max-w-full h-auto" loading="lazy" width="600" height="400" />
+              <img src="/lovable-uploads/meltfittraning.webp" alt="MeltFit Group Training" className="rounded-lg shadow-lg w-full max-w-sm md:max-w-md h-auto object-cover" loading="lazy" width="400" height="300" />
             </div>
           </div>
         </div>
