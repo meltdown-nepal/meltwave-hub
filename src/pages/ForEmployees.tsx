@@ -7,6 +7,7 @@ import PartnerSuccessSection from '@/components/employees/PartnerSuccessSection'
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CtaSection from '@/components/employees/CtaSection';
 import WellnessAppShowcaseSection from "@/components/employees/WellnessAppShowcaseSection";
+import EmployeePackageShowcase from "@/components/employees/EmployeePackageShowcase";
 
 // Employee testimonials data (removed duplicate "Prashant Shrestha")
 const employeeTestimonials = [
@@ -34,6 +35,7 @@ const ForEmployees = () => {
       <HeroSection />
       <WellnessAppShowcaseSection />
       <ProgramsSection />
+      <EmployeePackageShowcase />
       <BenefitsSection />
       <TestimonialsSection 
         testimonials={employeeTestimonials}
