@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -91,7 +92,9 @@ const MeltFit = () => {
                   <Link to="/contact">Join MeltFit</Link>
                 </Button>
                 <Button variant="outline" size="lg" className="text-base" asChild>
-                  <Link to="/contact">Try a Free Class</Link>
+                  <a href="https://meltdownnepal.com/packages/personal-training" target="_blank" rel="noopener noreferrer">
+                    Start Online Training
+                  </a>
                 </Button>
               </div>
             </div>
