@@ -14,9 +14,7 @@ const steps = [{
 }];
 const HowItWorksStepper = () => {
   return <section aria-labelledby="how-it-works-heading" className="w-full max-w-3xl mx-auto px-2 md:px-0 py-[50px] bg-transparent">
-      <h2 id="how-it-works-heading" className="text-3xl md:text-4xl font-bold mb-4 text-center">
-        How It Works for Providers
-      </h2>
+      <h2 id="how-it-works-heading" className="text-3xl md:text-4xl font-bold mb-4 text-center">How It Works for Partners</h2>
       <p className="text-lg max-w-2xl mx-auto text-center mb-10">
         A simple process to join our network and start growing your wellness business.
       </p>
