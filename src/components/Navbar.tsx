@@ -118,7 +118,7 @@ const Navbar = () => {
                 For Employees
               </Link>
               <Link to="/providers" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
-                For Wellness Providers
+                For Wellness Partners
               </Link>
               <Link to="/events" className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors" onClick={closeMenu}>
                 Events
