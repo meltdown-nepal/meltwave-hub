@@ -1,13 +1,10 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Package } from "lucide-react";
-
 const EmployeePackageShowcase = () => {
-  return (
-    <section className="section-padding bg-gray-50">
+  return <section className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Wellness Package</h2>
@@ -79,12 +76,12 @@ const EmployeePackageShowcase = () => {
               
               <div className="flex flex-col items-start p-3 bg-amber-50 rounded-lg border border-amber-200 py-[15px]">
                 <span className="font-medium text-base">Gold Package</span>
-                <span className="text-gray-600 text-sm mt-1">+ Golfing, Yoga, Rock Climbing, Boxing, Dance Classes</span>
+                <span className="text-gray-600 text-sm mt-1">Basic + Golfing, Yoga, Rock Climbing, Boxing, Dance Classes</span>
               </div>
               
               <div className="flex flex-col items-start p-3 bg-blue-50 rounded-lg border border-blue-200 py-[15px]">
                 <span className="font-medium text-base">Platinum Package</span>
-                <span className="text-gray-600 text-sm mt-1">+ Swimming, Mental Health Services and many more</span>
+                <span className="text-gray-600 text-sm mt-1">Gold + Swimming, Mental Health Services and many more</span>
               </div>
             </div>
 
@@ -98,8 +95,6 @@ const EmployeePackageShowcase = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default EmployeePackageShowcase;
