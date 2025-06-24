@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -8,7 +7,6 @@ import VideoTestimonial from '@/components/VideoTestimonial';
 import CyclingHeroImage from '@/components/CyclingHeroImage';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList, Dumbbell, Leaf } from 'lucide-react';
-
 const MeltFit = () => {
   const {
     scrollToSection
@@ -70,11 +68,7 @@ const MeltFit = () => {
   }];
 
   // Hero images for cycling
-  const heroImages = [
-    "/lovable-uploads/meltfittraning.webp",
-    "/lovable-uploads/439aa1b0-5b3b-4ec6-aeb3-d3bcd6ad20fe.png"
-  ];
-
+  const heroImages = ["/lovable-uploads/meltfittraning.webp", "/lovable-uploads/439aa1b0-5b3b-4ec6-aeb3-d3bcd6ad20fe.png"];
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white py-16 md:py-24">
@@ -89,7 +83,7 @@ const MeltFit = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" className="text-base" asChild>
-                  <Link to="/contact">Join MeltFit</Link>
+                  <Link to="/contact">View Programs</Link>
                 </Button>
                 <Button variant="outline" size="lg" className="text-base" asChild>
                   <a href="https://meltdownnepal.com/packages/personal-training" target="_blank" rel="noopener noreferrer">
@@ -99,14 +93,7 @@ const MeltFit = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <CyclingHeroImage
-                images={heroImages}
-                alt="MeltFit Group Training"
-                className="rounded-lg shadow-lg w-full max-w-sm md:max-w-md h-auto object-cover"
-                width={400}
-                height={300}
-                interval={2500}
-              />
+              <CyclingHeroImage images={heroImages} alt="MeltFit Group Training" className="rounded-lg shadow-lg w-full max-w-sm md:max-w-md h-auto object-cover" width={400} height={300} interval={2500} />
             </div>
           </div>
         </div>
@@ -420,5 +407,4 @@ const MeltFit = () => {
       </section>
     </div>;
 };
-
 export default MeltFit;
