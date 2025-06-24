@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -39,14 +38,14 @@ const programs: Record<
 > = {
   fitness: [
     {
-      title: "MeltFit Access",
-      description: "Access to multiple fitness centers through a single membership.",
+      title: "One-Stop Fitness",
+      description: "Your all-access pass to top fitness centers across Nepal — all in one membership.",
       imageUrl: "/lovable-uploads/30f61b7c-2119-402c-9a49-c5f940a79247.png",
       benefits: [
-        "Multiple fitness centers",
-        "Flexible scheduling",
-        "No long-term contracts",
-        "Track your progress",
+        "Access to multiple fitness centers",
+        "Total flexibility — go when and where you want",
+        "No restrictions or commitments",
+        "Track your fitness progress with ease",
       ],
     },
     {
