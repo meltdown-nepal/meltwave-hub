@@ -4,8 +4,10 @@ import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import VideoTestimonial from '@/components/VideoTestimonial';
+import CyclingHeroImage from '@/components/CyclingHeroImage';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList, Dumbbell, Leaf } from 'lucide-react';
+
 const MeltFit = () => {
   const {
     scrollToSection
@@ -65,6 +67,13 @@ const MeltFit = () => {
     cta: "View Plans",
     ctaLink: "/package-detail/personal-training"
   }];
+
+  // Hero images for cycling
+  const heroImages = [
+    "/lovable-uploads/meltfittraning.webp",
+    "/lovable-uploads/439aa1b0-5b3b-4ec6-aeb3-d3bcd6ad20fe.png"
+  ];
+
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white py-16 md:py-24">
@@ -87,7 +96,14 @@ const MeltFit = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="/lovable-uploads/meltfittraning.webp" alt="MeltFit Group Training" className="rounded-lg shadow-lg w-full max-w-sm md:max-w-md h-auto object-cover" loading="lazy" width="400" height="300" />
+              <CyclingHeroImage
+                images={heroImages}
+                alt="MeltFit Group Training"
+                className="rounded-lg shadow-lg w-full max-w-sm md:max-w-md h-auto object-cover"
+                width={400}
+                height={300}
+                interval={2500}
+              />
             </div>
           </div>
         </div>
@@ -401,4 +417,5 @@ const MeltFit = () => {
       </section>
     </div>;
 };
+
 export default MeltFit;
