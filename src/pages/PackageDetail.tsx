@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -82,8 +81,7 @@ const packagePlansMap: Record<string, {
         "Goal-based programming (fat loss, strength, mobility, etc.)",
         "Habit tracker for consistency",
         "Priority support (Mon–Sat response within 12 hrs)",
-        "Accountability and tracking",
-        "Two comprehensive progress assessments"
+        "Accountability and tracking"
       ]
     },
     paymentLinkBase: "https://docs.google.com/forms/d/e/1FAIpQLSfEsOR_hkYjRd00hZW5XmYuaH3lzRnl0NTmAvgzjyVadqRMGA/viewform?usp=header",
