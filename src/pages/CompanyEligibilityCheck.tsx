@@ -5,17 +5,51 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Building2, Search, CheckCircle, AlertCircle } from "lucide-react";
+import { Building2, Search, CheckCircle, AlertCircle, Lightbulb } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import CompanyFoundModal from "@/components/demo/CompanyFoundModal";
 import { Separator } from "@/components/ui/separator";
+
+// Simple fuzzy matching function
+const calculateSimilarity = (str1: string, str2: string): number => {
+  const s1 = str1.toLowerCase().trim();
+  const s2 = str2.toLowerCase().trim();
+  
+  // Exact match
+  if (s1 === s2) return 1;
+  
+  // Check if one contains the other
+  if (s1.includes(s2) || s2.includes(s1)) return 0.8;
+  
+  // Levenshtein distance calculation for fuzzy matching
+  const matrix = Array(s2.length + 1).fill(null).map(() => Array(s1.length + 1).fill(null));
+  
+  for (let i = 0; i <= s1.length; i++) matrix[0][i] = i;
+  for (let j = 0; j <= s2.length; j++) matrix[j][0] = j;
+  
+  for (let j = 1; j <= s2.length; j++) {
+    for (let i = 1; i <= s1.length; i++) {
+      const indicator = s1[i - 1] === s2[j - 1] ? 0 : 1;
+      matrix[j][i] = Math.min(
+        matrix[j][i - 1] + 1,
+        matrix[j - 1][i] + 1,
+        matrix[j - 1][i - 1] + indicator
+      );
+    }
+  }
+  
+  const distance = matrix[s2.length][s1.length];
+  const maxLength = Math.max(s1.length, s2.length);
+  return 1 - distance / maxLength;
+};
 
 const CompanyEligibilityCheck = () => {
   const [companyName, setCompanyName] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [foundCompany, setFoundCompany] = useState(null);
+  const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -30,15 +64,14 @@ const CompanyEligibilityCheck = () => {
     }
 
     setIsSearching(true);
+    setSuggestions([]);
     
     try {
-      // Search for the company (case-insensitive)
+      // Get all active companies for fuzzy matching
       const { data, error } = await supabase
         .from("registered_companies")
         .select("*")
-        .ilike("company_name", `%${companyName.trim()}%`)
-        .eq("is_active", true)
-        .limit(1);
+        .eq("is_active", true);
 
       if (error) {
         console.error("Search error:", error);
@@ -50,18 +83,53 @@ const CompanyEligibilityCheck = () => {
         return;
       }
 
-      if (data && data.length > 0) {
-        // Company found - show success modal
-        setFoundCompany(data[0]);
+      if (!data || data.length === 0) {
+        toast({
+          title: "No Companies Found",
+          description: "No companies are currently registered. Redirecting to registration...",
+        });
+        setTimeout(() => {
+          navigate("/schedule-demo", { 
+            state: { 
+              userType: "company", 
+              companyName: companyName.trim(),
+              fromEmployeeFlow: true 
+            } 
+          });
+        }, 2000);
+        return;
+      }
+
+      // Calculate similarity scores for all companies
+      const companiesWithScores = data.map(company => ({
+        ...company,
+        similarity: calculateSimilarity(companyName.trim(), company.company_name)
+      }));
+
+      // Sort by similarity score
+      companiesWithScores.sort((a, b) => b.similarity - a.similarity);
+
+      const bestMatch = companiesWithScores[0];
+
+      // If we have a very good match (90% or higher), show it as found
+      if (bestMatch.similarity >= 0.9) {
+        setFoundCompany(bestMatch);
         setShowModal(true);
-      } else {
-        // Company not found - redirect to registration
+      } 
+      // If we have decent matches (60% or higher), show suggestions
+      else if (bestMatch.similarity >= 0.6) {
+        const topSuggestions = companiesWithScores
+          .filter(company => company.similarity >= 0.6)
+          .slice(0, 5);
+        setSuggestions(topSuggestions);
+      } 
+      // No good matches found
+      else {
         toast({
           title: "Company Not Found",
           description: "We couldn't find your company in our system. Redirecting to registration...",
         });
         
-        // Wait a moment for user to read the message, then redirect
         setTimeout(() => {
           navigate("/schedule-demo", { 
             state: { 
@@ -82,6 +150,12 @@ const CompanyEligibilityCheck = () => {
     } finally {
       setIsSearching(false);
     }
+  };
+
+  const handleSuggestionClick = (company: any) => {
+    setFoundCompany(company);
+    setShowModal(true);
+    setSuggestions([]);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -159,6 +233,35 @@ const CompanyEligibilityCheck = () => {
               </Button>
             </div>
 
+            {/* Suggestions */}
+            {suggestions.length > 0 && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                <div className="flex items-start space-x-3 mb-3">
+                  <Lightbulb className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-blue-800 mb-2">Did you mean one of these companies?</p>
+                    <div className="space-y-2">
+                      {suggestions.map((company: any) => (
+                        <button
+                          key={company.id}
+                          onClick={() => handleSuggestionClick(company)}
+                          className="block w-full text-left p-2 bg-white rounded border hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                        >
+                          <div className="flex items-center space-x-2">
+                            <Building2 className="w-4 h-4 text-blue-600" />
+                            <span className="font-medium text-blue-800">{company.company_name}</span>
+                          </div>
+                          {company.industry && (
+                            <span className="text-xs text-blue-600 ml-6">{company.industry}</span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Info section */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
               <div className="flex items-start space-x-3">
@@ -168,6 +271,7 @@ const CompanyEligibilityCheck = () => {
                   <ul className="space-y-1 text-blue-700">
                     <li>• <strong>Company Found:</strong> You'll get instructions to contact your HR team</li>
                     <li>• <strong>Company Not Found:</strong> We'll help your company get registered</li>
+                    <li>• <strong>Similar Names:</strong> We'll show suggestions if we find close matches</li>
                   </ul>
                 </div>
               </div>
