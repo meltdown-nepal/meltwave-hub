@@ -1,6 +1,8 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocation } from "react-router-dom";
 import { Form } from "@/components/ui/form";
 import { Progress } from "@/components/ui/progress";
 import { CompanySize } from "@/components/demo/CompanySize";
@@ -10,7 +12,7 @@ import { Success } from "@/components/demo/Success";
 import { UserTypeSelection } from "@/components/demo/UserTypeSelection";
 import { DemoFormData, demoFormSchema } from "@/lib/types/demo";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const steps = [
   "Who Are You?",
@@ -25,6 +27,7 @@ export default function ScheduleDemoFlow() {
   const [progress, setProgress] = React.useState(0);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
+  const location = useLocation();
 
   React.useEffect(() => {
     setProgress((step / (steps.length - 1)) * 100);
@@ -34,8 +37,21 @@ export default function ScheduleDemoFlow() {
     resolver: zodResolver(demoFormSchema),
     defaultValues: {
       phoneContact: false,
+      // Pre-fill data if coming from employee flow
+      ...(location.state?.fromEmployeeFlow && {
+        companyName: location.state.companyName,
+        userType: "company"
+      })
     },
   });
+
+  // Auto-advance if coming from employee flow
+  React.useEffect(() => {
+    if (location.state?.fromEmployeeFlow && location.state?.userType === "company") {
+      form.setValue("userType", "company");
+      setStep(1); // Skip user type selection
+    }
+  }, [location.state, form]);
 
   const onSubmit = async (data: DemoFormData) => {
     try {
@@ -73,6 +89,7 @@ export default function ScheduleDemoFlow() {
             phone: data.phone,
             userType: data.userType,
             additionalDetails: data.additionalDetails,
+            fromEmployeeFlow: location.state?.fromEmployeeFlow || false,
           },
         }
       );

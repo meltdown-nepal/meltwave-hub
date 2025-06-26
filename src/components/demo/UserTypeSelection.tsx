@@ -3,18 +3,23 @@ import React from "react";
 import { User, Building2, Heart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useNavigate } from "react-router-dom"; // Import for navigation
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   onSelect: (type: "employee" | "company" | "provider") => void;
 }
 
 export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate();
+  
+  // Handle employee selection with new flow
+  const handleEmployeeSelect = () => {
+    navigate("/company-eligibility-check");
+  };
   
   // Handle wellness provider selection separately
   const handleProviderSelect = () => {
-    navigate("/wellness-onboarding"); // Navigate to dedicated wellness provider flow
+    navigate("/wellness-onboarding");
   };
   
   return (
@@ -42,7 +47,7 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
             description: "Looking for wellness solutions",
             icon: User,
             color: "bg-primary/10 text-primary",
-            onClick: () => onSelect("employee"),
+            onClick: handleEmployeeSelect,
           },
           {
             type: "provider" as const,
@@ -50,7 +55,7 @@ export const UserTypeSelection: React.FC<Props> = ({ onSelect }) => {
             description: "Want to join our network",
             icon: Heart,
             color: "bg-primary/20 text-primary",
-            onClick: handleProviderSelect, // Use special handler for providers
+            onClick: handleProviderSelect,
           },
         ].map((option) => (
           <Card

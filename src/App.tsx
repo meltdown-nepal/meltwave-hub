@@ -17,6 +17,7 @@ import EnhancedHome from "./pages/EnhancedHome";
 import Contact from "./pages/Contact";
 import ForEmployees from "./pages/ForEmployees";
 import ForCompanies from "./pages/ForCompanies";
+import CompanyEligibilityCheck from "./pages/CompanyEligibilityCheck";
 
 // Lazy load non-critical pages
 const CorporateWellness = lazy(() => import("./pages/CorporateWellness"));
@@ -67,6 +68,7 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
+            <Route path="/company-eligibility-check" element={<CompanyEligibilityCheck />} />
             <Route path="/wellness-providers" element={<WellnessProviders />} />
             <Route path="/wellness-onboarding" element={<WellnessOnboarding />} />
             <Route path="/wellness-partners" element={<WellnessPartners />} />

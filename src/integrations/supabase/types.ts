@@ -183,6 +183,51 @@ export type Database = {
         }
         Relationships: []
       }
+      registered_companies: {
+        Row: {
+          address: string | null
+          company_email: string | null
+          company_name: string
+          contact_person: string | null
+          created_at: string
+          employee_count: number | null
+          id: string
+          industry: string | null
+          is_active: boolean
+          phone: string | null
+          registration_date: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          company_email?: string | null
+          company_name: string
+          contact_person?: string | null
+          created_at?: string
+          employee_count?: number | null
+          id?: string
+          industry?: string | null
+          is_active?: boolean
+          phone?: string | null
+          registration_date?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          company_email?: string | null
+          company_name?: string
+          contact_person?: string | null
+          created_at?: string
+          employee_count?: number | null
+          id?: string
+          industry?: string | null
+          is_active?: boolean
+          phone?: string | null
+          registration_date?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       trainer_slots: {
         Row: {
           created_at: string
