@@ -213,7 +213,7 @@ const MeltFit = () => {
                   <li>WhatsApp Support (Mon–Fri, 2hr Response)</li>
                 </ul>
                 <Button size="sm" asChild>
-                  <Link to="/contact">Learn More </Link>
+                  <Link to="/essential-plan">Learn More</Link>
                 </Button>
               </div>
             </div>
@@ -221,9 +221,8 @@ const MeltFit = () => {
         </div>
       </section>
 
-      {/* Essential Plan Section */}
-      <EssentialPlanSection />
-
+      {/* Essential Plan Section - REMOVE THIS ENTIRE SECTION */}
+      
       {/* Why Choose MeltFit */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">

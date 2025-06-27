@@ -1,4 +1,3 @@
-
 import React, { useState, Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -38,6 +37,7 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const MeltdownPricing = lazy(() => import("./pages/MeltdownPricing"));
 const Packages = lazy(() => import("./pages/Packages"));
 const PackageDetail = lazy(() => import("./pages/PackageDetail"));
+const EssentialPlan = lazy(() => import("./pages/EssentialPlan"));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -65,6 +65,7 @@ function AppContent() {
             <Route path="/events" element={<Events />} />
             <Route path="/academy" element={<Academy />} />
             <Route path="/meltfit" element={<MeltFit />} />
+            <Route path="/essential-plan" element={<EssentialPlan />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />

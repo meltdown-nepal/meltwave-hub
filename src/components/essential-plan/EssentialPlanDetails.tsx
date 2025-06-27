@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
@@ -47,10 +46,9 @@ const EssentialPlanDetails: React.FC<EssentialPlanDetailsProps> = ({
 
         {/* Main Info Sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 py-8 sm:px-10">
-          {/* What's Included Section */}
+          {/* What's Included Section - Remove heading and display content directly */}
           <section>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">What's Included</h2>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mb-6">
               {whatsIncluded.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <CheckCircle2 className="text-green-500 w-5 h-5 flex-shrink-0 mt-0.5" />
