@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -17,8 +18,8 @@ const MeltFit = () => {
     question: "I'm a beginner. Can I still join MeltFit classes?",
     answer: "Absolutely. Our coaches scale every workout to match your current fitness level."
   }, {
-    question: "What is the difference between Group Classes and the Transformation Program?",
-    answer: "Group classes focus on strength and conditioning, while the Transformation Program includes training, nutrition coaching, and weekly tracking for maximum results."
+    question: "What is the difference between Group Classes and the Essential Plan?",
+    answer: "Group classes focus on strength and conditioning, while the Essential Plan includes personalized 1:1 coaching, nutrition support, and weekly tracking for maximum results."
   }, {
     question: "How do I know which program is right for me?",
     answer: "You can book a free consultation with our coaches. We'll guide you based on your goals."
@@ -49,10 +50,10 @@ const MeltFit = () => {
     ctaLink: "/contact"
   }, {
     icon: <Grid2x2 className="h-7 w-7 text-primary mb-2" />,
-    title: "6-Week Transformation Program",
-    description: "An intensive 6-week system with group training, nutrition coaching, and weekly tracking for proven results.",
-    cta: "Apply for Transformation Program",
-    ctaLink: "/contact"
+    title: "Essential Plan",
+    description: "A flexible, personalized coaching system that adapts to your lifestyle with expert support for long-term changes.",
+    cta: "View Essential Plans",
+    ctaLink: "#essential-plan"
   }, {
     icon: <LayoutList className="h-7 w-7 text-primary mb-2" />,
     title: "Corrective Exercise Program",
@@ -194,31 +195,6 @@ const MeltFit = () => {
                 </Button>
               </div>
             </div>
-            {/* Transformation Program */}
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
-              <div className="flex-shrink-0">
-                <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                  <Grid2x2 className="h-7 w-7 text-primary" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  6-Week Transformation Program
-                </h3>
-                <p className="text-gray-700 mb-2">
-                  An intensive, results-driven system combining group training, 1-on-1 nutrition coaching, and accountability. Designed for those who want to see significant change in just 6 weeks—and build the habits to keep it for life.
-                </p>
-                <ul className="mb-3 pl-5 list-disc text-gray-600">
-                  <li>6 weeks of focused group training</li>
-                  <li>Nutrition plan tailored to you</li>
-                  <li>Weekly check-ins and progress tracking</li>
-                  <li>Community and coach support all the way</li>
-                </ul>
-                <Button size="sm" asChild>
-                  <Link to="/contact">Apply for Transformation Program</Link>
-                </Button>
-              </div>
-            </div>
             {/* Corrective Exercise */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
@@ -243,6 +219,152 @@ const MeltFit = () => {
                   <Link to="/contact">Learn More About Corrective Training</Link>
                 </Button>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Essential Plan Section */}
+      <section id="essential-plan" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">💼 Essential Plan</h2>
+            <p className="text-lg max-w-3xl mx-auto mb-6">
+              A flexible, personalized coaching system that adapts to your lifestyle. Whether you want to focus on fitness, nutrition, or both — the Essential Plan gives you the structure, accountability, and expert support to make long-term changes.
+            </p>
+            <div className="max-w-2xl mx-auto text-left space-y-2 text-gray-700">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <span>Choose Your Coach: Diet, Fitness, or Both</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <span>Weekly 1:1 Coaching Sessions</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <span>Personalized Plans (Updated Weekly)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <span>WhatsApp Support (Mon–Fri, 2hr Response)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <span>Progress Tracking: Workout, Meal, Habit & Weigh-ins</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Essential Plan Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+            {/* Single Coach Plan */}
+            <Card className="relative p-6 rounded-xl border-2 border-gray-200 bg-white hover:shadow-lg transition-all duration-300">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Single Coach</h3>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-3xl font-bold text-gray-900">NPR 7,500</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">Choose either Diet Coach or Fitness Coach</p>
+              </div>
+
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                  <span className="text-green-600">🟢</span> Includes:
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Personalized weekly plan</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Weekly 1:1 sessions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Tracker access (based on coach type)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>WhatsApp support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Weekly weigh-ins</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Button className="w-full bg-primary hover:bg-primary/90 text-black font-semibold">
+                Pay Now
+              </Button>
+            </Card>
+
+            {/* Both Coaches Plan */}
+            <Card className="relative p-6 rounded-xl border-2 border-primary bg-primary/5 hover:shadow-lg transition-all duration-300">
+              <div className="absolute -top-2 left-4">
+                <span className="bg-primary text-black font-semibold px-3 py-1 rounded text-sm">
+                  Most Popular
+                </span>
+              </div>
+              
+              <div className="mb-4 mt-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Both Coaches</h3>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-3xl font-bold text-gray-900">NPR 14,000</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">Get Diet + Fitness coaching in one synchronized plan</p>
+              </div>
+
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                  <span className="text-green-600">🟢</span> Includes everything from both plans:
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Personalized diet + workout plans</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Weekly 1:1 coaching sessions with both or a unified coach</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Meal, Workout & Habit trackers</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>WhatsApp support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Weekly weigh-ins</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Button className="w-full bg-primary hover:bg-primary/90 text-black font-semibold">
+                Pay Now
+              </Button>
+            </Card>
+          </div>
+
+          {/* Additional Durations */}
+          <div className="text-center">
+            <h3 className="text-xl font-semibold mb-4">🗓️ Additional Durations:</h3>
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <span className="bg-gray-100 px-4 py-2 rounded-lg text-gray-700">3 Months</span>
+              <span className="bg-gray-100 px-4 py-2 rounded-lg text-gray-700">6 Months</span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/contact">Talk to a Coach</Link>
+              </Button>
+              <Button size="lg" asChild>
+                <Link to="/contact">Start Now</Link>
+              </Button>
             </div>
           </div>
         </div>
