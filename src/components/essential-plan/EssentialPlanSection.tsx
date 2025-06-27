@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import EssentialPlanSelector, { EssentialPlanOption } from "./EssentialPlanSelector";
 import EssentialPlanDetails from "./EssentialPlanDetails";
@@ -43,7 +42,7 @@ const howItWorks = [
 const whatsIncluded = [
   "Personalized weekly plan tailored to your goals",
   "Weekly 1:1 coaching sessions via call/video",
-  "WhatsApp support (Mon–Fri, 2hr response time)",
+  "WhatsApp support (Mon–Fri, 8hr response time)",
   "Progress reviews and weekly check-ins",
   "Tracker access: meal, workout, and/or habits based on selected plan",
   "Weekly weigh-ins"
