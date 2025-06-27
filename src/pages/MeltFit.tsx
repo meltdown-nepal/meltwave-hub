@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -83,8 +84,8 @@ const MeltFit = () => {
                 MeltFit offers group strength and conditioning classes, transformation programs, corrective exercise training, and personal training — built to help you move better, feel better, and live better.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="text-base" asChild>
-                  <Link to="/contact">View Programs</Link>
+                <Button size="lg" className="text-base" onClick={() => scrollToSection('programs')}>
+                  View Programs
                 </Button>
                 <Button variant="outline" size="lg" className="text-base" asChild>
                   <a href="https://meltdownnepal.com/packages/personal-training" target="_blank" rel="noopener noreferrer">
