@@ -7,6 +7,8 @@ import VideoTestimonial from '@/components/VideoTestimonial';
 import CyclingHeroImage from '@/components/CyclingHeroImage';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList, Dumbbell, Leaf } from 'lucide-react';
+import EssentialPlanSection from '@/components/essential-plan/EssentialPlanSection';
+
 const MeltFit = () => {
   const {
     scrollToSection
@@ -220,7 +222,7 @@ const MeltFit = () => {
       </section>
 
       {/* Essential Plan Section */}
-      
+      <EssentialPlanSection />
 
       {/* Why Choose MeltFit */}
       <section className="py-16 bg-white">
@@ -381,4 +383,5 @@ const MeltFit = () => {
       </section>
     </div>;
 };
+
 export default MeltFit;
