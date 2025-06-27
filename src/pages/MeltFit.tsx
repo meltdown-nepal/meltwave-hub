@@ -8,7 +8,6 @@ import CyclingHeroImage from '@/components/CyclingHeroImage';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, Clock, Users, Trophy, Activity, Heart, ChevronRight, LayoutGrid, List, Grid2x2, LayoutList, Dumbbell, Leaf } from 'lucide-react';
 import EssentialPlanSection from '@/components/essential-plan/EssentialPlanSection';
-
 const MeltFit = () => {
   const {
     scrollToSection
@@ -210,7 +209,7 @@ const MeltFit = () => {
                   <li>Choose Your Coach: Diet, Fitness, or Both</li>
                   <li>Weekly 1:1 Coaching Sessions</li>
                   <li>Progress Tracking: Workout, Meal, Habit & Weigh-ins</li>
-                  <li>WhatsApp Support (Mon–Fri, 2hr Response)</li>
+                  <li>WhatsApp Support (Mon–Fri, 8hr Response)</li>
                 </ul>
                 <Button size="sm" asChild>
                   <Link to="/essential-plan">Learn More</Link>
@@ -382,5 +381,4 @@ const MeltFit = () => {
       </section>
     </div>;
 };
-
 export default MeltFit;
