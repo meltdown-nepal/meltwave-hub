@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -203,20 +202,16 @@ const MeltFit = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  Corrective Exercise Program
-                </h3>
-                <p className="text-gray-700 mb-2">
-                  A gentle, movement-quality-first program ideal for seniors or anyone coming back from injuries—focused on moving well, reducing pain, and rebuilding confidence.
-                </p>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">Essential Plan</h3>
+                <p className="text-gray-700 mb-2">A flexible, personalized coaching system that adapts to your lifestyle. Whether you want to focus on fitness, nutrition, or both — the Essential Plan gives you the structure, accountability, and expert support to make long-term changes.</p>
                 <ul className="mb-3 pl-5 list-disc text-gray-600">
-                  <li>Custom corrective exercises for joints and muscles</li>
-                  <li>Open to all ages, perfect for seniors</li>
-                  <li>One-on-one attention in a group setting</li>
-                  <li>Progress at your own comfortable pace</li>
+                  <li>Choose Your Coach: Diet, Fitness, or Both</li>
+                  <li>Weekly 1:1 Coaching Sessions</li>
+                  <li>Progress Tracking: Workout, Meal, Habit & Weigh-ins</li>
+                  <li>WhatsApp Support (Mon–Fri, 2hr Response)</li>
                 </ul>
                 <Button size="sm" asChild>
-                  <Link to="/contact">Learn More About Corrective Training</Link>
+                  <Link to="/contact">Learn More </Link>
                 </Button>
               </div>
             </div>
