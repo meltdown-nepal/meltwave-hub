@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock, Flag, Mountain, Heart } from "lucide-react";
@@ -98,15 +97,14 @@ function WeeklyWednesdayRunCard() {
 
 // Kathmandu Marathon 2025 Card
 function KathmanduMarathonCard() {
-  const { scrollToSection } = useSmoothScroll();
   return (
-    <div className="rounded-xl bg-gradient-to-br from-red-50 via-white to-blue-50 border-2 border-red-400 shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+    <div className="rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Prayer flags decoration */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-400 via-yellow-400 to-blue-400 opacity-70"></div>
-      <div className="absolute top-2 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-orange-400 to-purple-400 opacity-60"></div>
+      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 opacity-70"></div>
+      <div className="absolute top-2 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 opacity-60"></div>
       
       {/* Mountain silhouette */}
-      <div className="absolute top-0 right-0 text-gray-200 opacity-30">
+      <div className="absolute top-0 right-0 text-amber-100 opacity-30">
         <Mountain size={120} />
       </div>
       
@@ -116,45 +114,37 @@ function KathmanduMarathonCard() {
           <h3 className="text-xl font-bold text-gray-800">Kathmandu Marathon 2025</h3>
           <span className="text-lg">🇳🇵</span>
         </div>
-        <p className="text-gray-700 font-bold mb-4 flex items-center gap-1 text-red-700">
+        <p className="text-gray-700 font-bold mb-4 flex items-center gap-1 text-amber-700">
           Run for Unity. Run for Nepal. <span>🔥</span>
         </p>
         <div className="space-y-3 mb-4">
           <div className="flex items-center gap-2 text-gray-700">
-            <MapPin size={16} className="text-red-500" />
+            <MapPin size={16} className="text-primary" />
             <span className="font-medium">Tundikhel, Kathmandu</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
-            <CalendarDays size={16} className="text-red-500" />
+            <CalendarDays size={16} className="text-primary" />
             <span className="font-medium">October 12, 2025 (Sunday) | From 6 AM</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
-            <Users size={16} className="text-red-500" />
+            <Users size={16} className="text-primary" />
             <span className="font-medium">Open to all — runners, dreamers & changemakers!</span>
           </div>
         </div>
-        <div className="bg-red-50 rounded-lg p-3 mb-4 border border-red-200">
+        <div className="bg-primary/15 rounded-lg p-3 mb-4 border border-primary/30">
           <div className="flex items-center gap-2 text-gray-800 font-semibold text-sm">
-            <span className="text-red-600">🎟️</span>
-            <span>Use Code: <strong className="text-red-700">17KM-MD-10</strong> for special offer!</span>
+            <span className="text-amber-600">🎟️</span>
+            <span>Use Code: <strong className="text-amber-700">17KM-MD-10</strong> for special offer!</span>
           </div>
         </div>
-        <div className="flex gap-2 mt-auto">
-          <Button
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold flex-1 text-sm"
-            type="button"
-            onClick={() => scrollToSection('event-gallery')}
-          >
-            🏅 Register Now
-          </Button>
-          <Button
-            variant="outline"
-            className="border-red-400 text-red-700 hover:bg-red-50 text-sm px-3"
-            asChild
-          >
-            <Link to="/contact">Login</Link>
-          </Button>
-        </div>
+        <Button
+          className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full"
+          asChild
+        >
+          <a href="https://kathmandumarathon.com.np/member-login" target="_blank" rel="noopener noreferrer">
+            Register Now
+          </a>
+        </Button>
       </div>
     </div>
   );
