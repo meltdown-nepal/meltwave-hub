@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -154,9 +153,7 @@ const MeltFit = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  Online Personal Training
-                </h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">Online Fitness Training</h3>
                 <p className="text-gray-700 mb-2">
                   Get focused, personalized support with 1-on-1 coaching—perfect for individual goals, rehabilitation, or sport-specific improvement. You set the schedule and the goal, your coach guides you all the way.
                 </p>
