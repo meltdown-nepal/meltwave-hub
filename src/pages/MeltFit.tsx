@@ -171,32 +171,32 @@ const MeltFit = () => {
                 </Button>
               </div>
             </div>
-            {/* Group Classes */}
+            {/* Nutrition Only Packages */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
                 <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                  <LayoutGrid className="h-7 w-7 text-primary" />
+                  <Leaf className="h-7 w-7 text-primary" />
                 </div>
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  Group Strength and Conditioning Classes
+                  Nutrition Only Packages
                 </h3>
                 <p className="text-gray-700 mb-2">
-                  Our signature group classes focus on building real-world strength, stamina, and movement. Scalable for all fitness levels—workouts are personalized so everyone feels challenged and included.
+                  Transform your relationship with food through personalized nutrition coaching. Get custom meal plans, nutritional guidance, and ongoing support to achieve your health goals through better eating habits.
                 </p>
                 <ul className="mb-3 pl-5 list-disc text-gray-600">
-                  <li>Functional strength and endurance training</li>
-                  <li>Mobility and injury-prevention focused</li>
-                  <li>Supportive community atmosphere</li>
-                  <li>Flexible class timings mornings and evenings</li>
+                  <li>Personalized meal plans and nutrition guidance</li>
+                  <li>Food preference customization and local ingredients</li>
+                  <li>Weekly nutrition coaching and progress tracking</li>
+                  <li>Sustainable eating habits for long-term success</li>
                 </ul>
                 <Button size="sm" asChild>
-                  <Link to="/contact">See Class Timings</Link>
+                  <Link to="/packages/nutrition-only">View Plans</Link>
                 </Button>
               </div>
             </div>
-            {/* Corrective Exercise */}
+            {/* Essential Plan */}
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 bg-white rounded-2xl shadow-sm p-7 mb-4">
               <div className="flex-shrink-0">
                 <div className="bg-primary/10 rounded-full w-14 h-14 flex items-center justify-center mb-2">

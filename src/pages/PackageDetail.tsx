@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -86,6 +87,70 @@ const packagePlansMap: Record<string, {
     },
     paymentLinkBase: "https://docs.google.com/forms/d/e/1FAIpQLSfEsOR_hkYjRd00hZW5XmYuaH3lzRnl0NTmAvgzjyVadqRMGA/viewform?usp=header",
   },
+  "nutrition-only": {
+    name: "Nutrition Only Package",
+    plans: [
+      {
+        id: "6-weeks",
+        duration: "6 Weeks Plan",
+        price: "NPR 6,500",
+        originalPrice: "NPR 8,500",
+        savings: "Save NPR 2,000"
+      },
+      {
+        id: "8-weeks",
+        duration: "8 Weeks Plan",
+        price: "NPR 8,500",
+        originalPrice: "NPR 11,000",
+        savings: "Save NPR 2,500"
+      },
+      {
+        id: "12-weeks",
+        duration: "12 Weeks Plan",
+        price: "NPR 12,000",
+        originalPrice: "NPR 16,000",
+        savings: "Save NPR 4,000",
+        popular: true
+      }
+    ],
+    howItWorks: [
+      "You enrol in a nutrition package of your choice",
+      "You fill in your dietary preferences, health goals, food allergies, and lifestyle details",
+      "Nutrition coach calls you within 24 hours at your preferred time",
+      "Coach understands your eating habits, goals, and creates a personalized nutrition strategy",
+      "Coach prepares a customized meal plan with local ingredients and your preferences",
+      "Coach monitors your progress weekly and adjusts your nutrition plan accordingly"
+    ],
+    whyChoose: {
+      "6-weeks": [
+        "Personalized 6-week nutrition plan with local ingredients",
+        "Bi-weekly nutrition coaching sessions via WhatsApp",
+        "Custom meal plans based on your preferences and goals",
+        "Food tracking and habit building guidance",
+        "Recipe suggestions and meal prep tips",
+        "Standard nutrition support (Mon–Fri response within 24 hrs)"
+      ],
+      "8-weeks": [
+        "Personalized 8-week nutrition plan with local ingredients",
+        "Weekly nutrition coaching sessions via WhatsApp",
+        "Custom meal plans based on your preferences and goals",
+        "Food tracking and habit building guidance",
+        "Recipe suggestions and meal prep tips",
+        "Enhanced nutrition support (Mon–Sat response within 18 hrs)",
+        "Mid-program nutrition assessment and plan refinement"
+      ],
+      "12-weeks": [
+        "Personalized 12-week nutrition plan with local ingredients",
+        "Weekly nutrition coaching sessions via WhatsApp",
+        "Custom meal plans based on your preferences and goals",
+        "Food tracking and habit building guidance",
+        "Recipe suggestions and meal prep tips",
+        "Priority nutrition support (Mon–Sat response within 12 hrs)",
+        "Comprehensive nutrition education and long-term habit formation"
+      ]
+    },
+    paymentLinkBase: "https://docs.google.com/forms/d/e/1FAIpQLSfEsOR_hkYjRd00hZW5XmYuaH3lzRnl0NTmAvgzjyVadqRMGA/viewform?usp=header",
+  },
   "health-nutrition": {
     name: "Health and Nutrition Package",
     plans: [
@@ -163,8 +228,8 @@ const PackageDetail = () => {
   const currentPlan = pkg.plans.find(plan => plan.id === selectedPlan) || pkg.plans[0];
   const currentWhyChoose = pkg.whyChoose[selectedPlan] || pkg.whyChoose[pkg.plans[0].id];
 
-  // For personal training package, use the Google Form directly without plan ID
-  const paymentLink = packageId === "personal-training" 
+  // For personal training and nutrition-only packages, use the Google Form directly without plan ID
+  const paymentLink = (packageId === "personal-training" || packageId === "nutrition-only") 
     ? pkg.paymentLinkBase 
     : `${pkg.paymentLinkBase}-${selectedPlan}`;
 
