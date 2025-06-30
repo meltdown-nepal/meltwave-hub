@@ -1,31 +1,32 @@
+
 import React, { useState } from "react";
 import EssentialPlanSelector, { EssentialPlanOption } from "./EssentialPlanSelector";
 import EssentialPlanDetails from "./EssentialPlanDetails";
 
 const essentialPlans: EssentialPlanOption[] = [
   {
-    id: "diet-coach",
-    title: "Diet Coach Only",
-    duration: "6 Weeks Plan",
-    price: "NPR 7,500",
-    originalPrice: "NPR 10,000",
-    savings: "Save NPR 2,500"
-  },
-  {
-    id: "fitness-coach",
-    title: "Fitness Coach Only",
-    duration: "6 Weeks Plan",
-    price: "NPR 7,500",
-    originalPrice: "NPR 10,000",
-    savings: "Save NPR 2,500"
-  },
-  {
-    id: "both-coaches",
+    id: "both-coaches-6",
     title: "Both Coaches",
     duration: "6 Weeks Plan",
     price: "NPR 14,000",
     originalPrice: "NPR 18,000",
-    savings: "Save NPR 4,000",
+    savings: "Save NPR 4,000"
+  },
+  {
+    id: "both-coaches-8",
+    title: "Both Coaches",
+    duration: "8 Weeks Plan",
+    price: "NPR 18,000",
+    originalPrice: "NPR 24,000",
+    savings: "Save NPR 6,000"
+  },
+  {
+    id: "both-coaches-12",
+    title: "Both Coaches",
+    duration: "12 Weeks Plan",
+    price: "NPR 26,000",
+    originalPrice: "NPR 35,000",
+    savings: "Save NPR 9,000",
     popular: true
   }
 ];
@@ -44,35 +45,36 @@ const whatsIncluded = [
   "Weekly 1:1 coaching sessions via call/video",
   "WhatsApp support (Mon–Fri, 8hr response time)",
   "Progress reviews and weekly check-ins",
-  "Tracker access: meal, workout, and/or habits based on selected plan",
+  "Tracker access: meal, workout, and habits tracking",
   "Weekly weigh-ins"
 ];
 
 const planSpecificsMap: Record<string, string[]> = {
-  "diet-coach": [
-    "Custom 7-day diet plan updated weekly",
-    "Food preferences, goals, local/seasonal ingredients",
-    "Work-life meal timing & flexibility",
-    "Meal tracking + guidance"
-  ],
-  "fitness-coach": [
-    "Personalized workout plan for gym/home",
-    "Strength, endurance, flexibility goals",
-    "Habit + workout tracking"
-  ],
-  "both-coaches": [
-    "Integrated fitness + nutrition strategy",
-    "All trackers included",
+  "both-coaches-6": [
+    "Integrated fitness + nutrition strategy for 6 weeks",
+    "All trackers included (meal, workout, habits)",
     "Coaches coordinate to align plans",
-    "Best for holistic transformation"
+    "Bi-weekly progress assessments"
+  ],
+  "both-coaches-8": [
+    "Integrated fitness + nutrition strategy for 8 weeks",
+    "All trackers included (meal, workout, habits)",
+    "Coaches coordinate to align plans",
+    "Weekly progress assessments and plan adjustments"
+  ],
+  "both-coaches-12": [
+    "Integrated fitness + nutrition strategy for 12 weeks",
+    "All trackers included (meal, workout, habits)",
+    "Coaches coordinate to align plans",
+    "Weekly progress assessments and comprehensive transformation support"
   ]
 };
 
 const EssentialPlanSection: React.FC = () => {
-  const [selectedPlan, setSelectedPlan] = useState<string>("both-coaches");
+  const [selectedPlan, setSelectedPlan] = useState<string>("both-coaches-12");
 
   const currentPlan = essentialPlans.find(plan => plan.id === selectedPlan) || essentialPlans[0];
-  const currentPlanSpecifics = planSpecificsMap[selectedPlan] || planSpecificsMap["both-coaches"];
+  const currentPlanSpecifics = planSpecificsMap[selectedPlan] || planSpecificsMap["both-coaches-12"];
   const paymentLink = "https://docs.google.com/forms/d/e/1FAIpQLSfEsOR_hkYjRd00hZW5XmYuaH3lzRnl0NTmAvgzjyVadqRMGA/viewform?usp=header";
 
   return (
