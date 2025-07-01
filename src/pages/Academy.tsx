@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -167,7 +168,7 @@ const Academy = () => {
   // FAQ items
   const faqItems = [{
     question: "Are these certifications recognized internationally?",
-    answer: "Yes, the CSCS® and CES® certifications we prepare you for are internationally recognized industry standards. Our Meltdown certification adds practical value and is recognized throughout South Asia."
+    answer: "Yes, the CSCS® and CES® certifications we prepare you for are internationally recognized industry standards. Our Meltdown certification adds practical value and is recognized throughout South Asia. In Nepal, Meltdown is currently recognized as a leading fitness education provider, with our graduates working in top gyms, sports teams, and wellness centers across the country. We maintain partnerships with major fitness facilities and corporate wellness programs in Kathmandu, Pokhara, and other major cities."
   }, {
     question: "What prerequisites are required to enroll?",
     answer: "For CSCS® preparation, a bachelor's degree in a related field or final year student status is recommended. For CES® and Sports Nutrition programs, a background in fitness or health is beneficial but not required."
