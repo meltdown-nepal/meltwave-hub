@@ -177,9 +177,7 @@ const MeltFit = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  Nutrition Only Packages
-                </h3>
+                <h3 className="text-xl font-bold mb-2 flex items-center gap-2">Nutrition Coach Packages</h3>
                 <p className="text-gray-700 mb-2">
                   Transform your relationship with food through personalized nutrition coaching. Get custom meal plans, nutritional guidance, and ongoing support to achieve your health goals through better eating habits.
                 </p>
