@@ -201,7 +201,7 @@ const MeltFit = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-2 flex items-center gap-2">Essential Plan</h3>
-                <p className="text-gray-700 mb-2">A flexible, personalized coaching system that adapts to your lifestyle. Whether you want to focus on fitness, nutrition, or both — the Essential Plan gives you the structure, accountability, and expert support to make long-term changes.</p>
+                <p className="text-gray-700 mb-2">A flexible, personalized coaching system that adapts to your lifestyle. Whether you want to focus on fitness and nutrition with a single package  — the Essential Plan gives you the structure, accountability, and expert support to make long-term changes.</p>
                 <ul className="mb-3 pl-5 list-disc text-gray-600">
                   <li>Choose Your Coach: Diet, Fitness, or Both</li>
                   <li>Weekly 1:1 Coaching Sessions</li>
