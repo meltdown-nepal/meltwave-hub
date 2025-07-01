@@ -118,7 +118,7 @@ function KathmanduMarathonCard() {
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <CalendarDays size={16} className="text-primary" />
-            <span className="font-medium">November 1, 2025 (Sunday) | From 5 AM</span>
+            <span className="font-medium">November 1, 2025 (Saturday) | From 5 AM</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <Users size={16} className="text-primary" />
