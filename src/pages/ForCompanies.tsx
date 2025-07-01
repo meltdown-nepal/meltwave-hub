@@ -126,9 +126,7 @@ const ForCompanies = () => {
     setIsLoading(true);
     setSelectedVideo(videoUrl);
   };
-  
-  return (
-    <div>
+  return <div>
       <Helmet>
         <title>Corporate Wellness Solutions Nepal - Employee Wellness Programs | Meltdown</title>
         <meta name="description" content="Transform your workplace with our corporate wellness solutions in Nepal. Comprehensive employee wellness programs, fitness initiatives, and health services for companies in Kathmandu." />
@@ -145,17 +143,17 @@ const ForCompanies = () => {
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Corporate Wellness Solutions",
-            "description": "Comprehensive corporate wellness programs and employee wellness services for companies in Nepal",
-            "provider": {
-              "@type": "Organization",
-              "name": "Meltdown Wellbeing"
-            },
-            "areaServed": "Nepal",
-            "serviceType": "Corporate Wellness Programs"
-          })}
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Corporate Wellness Solutions",
+          "description": "Comprehensive corporate wellness programs and employee wellness services for companies in Nepal",
+          "provider": {
+            "@type": "Organization",
+            "name": "Meltdown Wellbeing"
+          },
+          "areaServed": "Nepal",
+          "serviceType": "Corporate Wellness Programs"
+        })}
         </script>
       </Helmet>
 
@@ -167,9 +165,7 @@ const ForCompanies = () => {
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Wellness Solutions for Companies
               </h1>
-              <p className="text-lg mb-8">
-                Create a healthier, more productive workplace with customized wellness programs that meet your company's specific needs and goals.
-              </p>
+              <p className="text-lg mb-8">Elevate your HR strategy with our comprehensive wellness solution. Craft tailored programs from mental health to physical fitness that resonate with employees and deliver measurable results. Transform well-being into your organization's greatest strength</p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/schedule-demo" className="btn-primary">Schedule a Demo</Link>
                 <button onClick={() => scrollToSection('testimonials')} className="btn-outline">
@@ -379,8 +375,6 @@ const ForCompanies = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default ForCompanies;
