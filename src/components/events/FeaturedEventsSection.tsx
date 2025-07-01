@@ -113,7 +113,8 @@ function KathmanduMarathonCard() {
         <div className="space-y-3 mb-4">
           <div className="flex items-center gap-2 text-gray-700">
             <MapPin size={16} className="text-primary" />
-            <span className="font-medium">Tundikhel, Kathmandu</span>
+            <span className="font-medium">Dasharath Rangasala
+, Kathmandu</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <CalendarDays size={16} className="text-primary" />
