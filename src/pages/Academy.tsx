@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
-import { BookOpen, GraduationCap, Users, Award, CheckCircle, Calendar, ChevronDown } from 'lucide-react';
+import { BookOpen, GraduationCap, Users, Award, CheckCircle, Calendar, ChevronDown, Clock, Monitor, MapPin } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import FacultyPhotosSection from '@/components/academy/FacultyPhotosSection';
+
 const Academy = () => {
   const {
     scrollToSection
@@ -43,6 +45,91 @@ const Academy = () => {
     certification: "Meltdown Academy certification upon successful completion.",
     duration: "6 weeks (weekends)"
   }];
+
+  // Schedule data
+  const scheduleData = [
+    {
+      course: "Strength & Conditioning Specialist",
+      weekdays: {
+        online: {
+          time: "7:00 PM - 9:00 PM",
+          days: "Monday, Wednesday, Friday",
+          format: "Theory Sessions"
+        },
+        offline: {
+          time: "6:00 AM - 8:00 AM",
+          days: "Tuesday, Thursday",
+          format: "Practical Training"
+        }
+      },
+      weekends: {
+        online: {
+          time: "9:00 AM - 12:00 PM",
+          days: "Saturday",
+          format: "Live Theory & Q&A"
+        },
+        offline: {
+          time: "9:00 AM - 1:00 PM",
+          days: "Sunday",
+          format: "Hands-on Practicals"
+        }
+      }
+    },
+    {
+      course: "Corrective Exercise Specialist",
+      weekdays: {
+        online: {
+          time: "8:00 PM - 9:30 PM",
+          days: "Monday, Wednesday",
+          format: "Theory Sessions"
+        },
+        offline: {
+          time: "6:30 AM - 8:00 AM",
+          days: "Thursday",
+          format: "Movement Assessment"
+        }
+      },
+      weekends: {
+        online: {
+          time: "10:00 AM - 12:00 PM",
+          days: "Saturday",
+          format: "Case Study Reviews"
+        },
+        offline: {
+          time: "2:00 PM - 6:00 PM",
+          days: "Sunday",
+          format: "Practical Applications"
+        }
+      }
+    },
+    {
+      course: "Sports Nutrition Specialist",
+      weekdays: {
+        online: {
+          time: "7:30 PM - 9:00 PM",
+          days: "Tuesday, Thursday",
+          format: "Theory & Guidelines"
+        },
+        offline: {
+          time: "7:00 AM - 8:30 AM",
+          days: "Friday",
+          format: "Meal Planning Lab"
+        }
+      },
+      weekends: {
+        online: {
+          time: "11:00 AM - 1:00 PM",
+          days: "Saturday",
+          format: "Interactive Sessions"
+        },
+        offline: {
+          time: "10:00 AM - 3:00 PM",
+          days: "Sunday",
+          format: "Practical Workshops"
+        }
+      }
+    }
+  ];
 
   // Upcoming batches
   const upcomingBatches = [{
@@ -94,6 +181,7 @@ const Academy = () => {
     question: "Do you offer job placement assistance?",
     answer: "Yes, we provide ongoing career support including resume building, interview preparation, and connections with our industry partners who regularly hire our graduates."
   }];
+
   return <div>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/20 to-white section-padding">
@@ -277,8 +365,123 @@ const Academy = () => {
         </div>
       </section>
 
-      {/* Upcoming Batches Section */}
+      {/* Schedule & Timetable Section */}
       <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Class Schedule & Timetable</h2>
+            <p className="text-lg max-w-3xl mx-auto">
+              Our flexible schedule accommodates working professionals with a mix of online theory sessions and offline practical training.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {scheduleData.map((schedule, index) => (
+              <Card key={index} className="overflow-hidden">
+                <CardHeader className="bg-primary/5">
+                  <CardTitle className="text-xl flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5 text-primary" />
+                    {schedule.course}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x">
+                    {/* Weekdays Schedule */}
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-primary" />
+                        Weekdays Schedule
+                      </h3>
+                      <div className="space-y-4">
+                        <div className="border rounded-lg p-4 bg-blue-50/50">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Monitor className="h-4 w-4 text-blue-600" />
+                            <span className="font-medium text-blue-800">Online Sessions</span>
+                          </div>
+                          <div className="text-sm space-y-1 text-gray-700">
+                            <p><Clock className="h-3 w-3 inline mr-1" />{schedule.weekdays.online.time}</p>
+                            <p>{schedule.weekdays.online.days}</p>
+                            <p className="font-medium">{schedule.weekdays.online.format}</p>
+                          </div>
+                        </div>
+                        <div className="border rounded-lg p-4 bg-green-50/50">
+                          <div className="flex items-center gap-2 mb-2">
+                            <MapPin className="h-4 w-4 text-green-600" />
+                            <span className="font-medium text-green-800">Offline Sessions</span>
+                          </div>
+                          <div className="text-sm space-y-1 text-gray-700">
+                            <p><Clock className="h-3 w-3 inline mr-1" />{schedule.weekdays.offline.time}</p>
+                            <p>{schedule.weekdays.offline.days}</p>
+                            <p className="font-medium">{schedule.weekdays.offline.format}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Weekends Schedule */}
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-primary" />
+                        Weekend Schedule
+                      </h3>
+                      <div className="space-y-4">
+                        <div className="border rounded-lg p-4 bg-blue-50/50">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Monitor className="h-4 w-4 text-blue-600" />
+                            <span className="font-medium text-blue-800">Online Sessions</span>
+                          </div>
+                          <div className="text-sm space-y-1 text-gray-700">
+                            <p><Clock className="h-3 w-3 inline mr-1" />{schedule.weekends.online.time}</p>
+                            <p>{schedule.weekends.online.days}</p>
+                            <p className="font-medium">{schedule.weekends.online.format}</p>
+                          </div>
+                        </div>
+                        <div className="border rounded-lg p-4 bg-green-50/50">
+                          <div className="flex items-center gap-2 mb-2">
+                            <MapPin className="h-4 w-4 text-green-600" />
+                            <span className="font-medium text-green-800">Offline Practicals</span>
+                          </div>
+                          <div className="text-sm space-y-1 text-gray-700">
+                            <p><Clock className="h-3 w-3 inline mr-1" />{schedule.weekends.offline.time}</p>
+                            <p>{schedule.weekends.offline.days}</p>
+                            <p className="font-medium">{schedule.weekends.offline.format}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Schedule Notes */}
+          <div className="mt-8 bg-gray-50 rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Important Schedule Notes</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+              <div className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>All online sessions are conducted via Zoom with recorded sessions available for review</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Offline practicals are held at our fully equipped training facility</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Make-up sessions available for missed classes with advance notice</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Weekend practicals include hands-on client work and case studies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Batches Section */}
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Upcoming Batches</h2>
@@ -309,7 +512,7 @@ const Academy = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Student Success Stories</h2>
@@ -427,4 +630,5 @@ const Academy = () => {
       </section>
     </div>;
 };
+
 export default Academy;
