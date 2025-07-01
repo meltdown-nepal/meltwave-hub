@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -24,7 +23,7 @@ const packagePlansMap: Record<string, {
   paymentLinkBase: string;
 }> = {
   "personal-training": {
-    name: "Online Personal Training Package",
+    name: "Only Fitness Trainer Package",
     plans: [
       {
         id: "6-weeks",
