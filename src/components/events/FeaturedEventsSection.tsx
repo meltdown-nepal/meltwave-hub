@@ -6,9 +6,10 @@ import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 // Java Run Venture Card
 function JavaRunVentureCard() {
-  const { scrollToSection } = useSmoothScroll();
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+  const {
+    scrollToSection
+  } = useSmoothScroll();
+  return <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       <div className="absolute top-0 right-0 text-amber-100 opacity-50">
         <Coffee size={120} />
       </div>
@@ -40,22 +41,16 @@ function JavaRunVentureCard() {
             <span>Collect fun goodies at every station!</span>
           </div>
         </div>
-        <Button
-          className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full"
-          type="button"
-          onClick={() => scrollToSection('event-gallery')}
-        >
+        <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full" type="button" onClick={() => scrollToSection('event-gallery')}>
           View Gallery
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 }
 
 // Weekly Wednesday Run Card
 function WeeklyWednesdayRunCard() {
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+  return <div className="rounded-xl bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-secondary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       <div className="absolute top-0 right-0 text-orange-100 opacity-50">
         <Target size={120} />
       </div>
@@ -91,14 +86,12 @@ function WeeklyWednesdayRunCard() {
           <Link to="/contact?event=weekly-run">🎯 Join the Challenge</Link>
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 }
 
 // Kathmandu Marathon 2025 Card
 function KathmanduMarathonCard() {
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+  return <div className="rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       {/* Prayer flags decoration */}
       <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 opacity-70"></div>
       <div className="absolute top-2 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 opacity-60"></div>
@@ -124,7 +117,7 @@ function KathmanduMarathonCard() {
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <CalendarDays size={16} className="text-primary" />
-            <span className="font-medium">October 12, 2025 (Sunday) | From 6 AM</span>
+            <span className="font-medium">November 1, 2025 (Sunday) | From 5 AM</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <Users size={16} className="text-primary" />
@@ -137,23 +130,18 @@ function KathmanduMarathonCard() {
             <span>Use Code: <strong className="text-amber-700">17KM-MD-10</strong> for special offer!</span>
           </div>
         </div>
-        <Button
-          className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full"
-          asChild
-        >
+        <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full" asChild>
           <a href="https://kathmandumarathon.com.np/member-login" target="_blank" rel="noopener noreferrer">
             Register Now
           </a>
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 }
 
 // The main events feature cards grid
 export default function FeaturedEventsSection() {
-  return (
-    <section id="upcoming" className="section-padding">
+  return <section id="upcoming" className="section-padding">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">Our Events  </h2>
@@ -170,6 +158,5 @@ export default function FeaturedEventsSection() {
           <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
