@@ -76,9 +76,9 @@ const packagePlansMap: Record<string, {
       {
         id: "4-weeks",
         duration: "4 Weeks Plan",
-        price: "NPR 4,500",
+        price: "NPR 5,000",
         originalPrice: "NPR 6,000",
-        savings: "Save NPR 1,500"
+        savings: "Save NPR 1,000"
       },
       {
         id: "12-weeks",
