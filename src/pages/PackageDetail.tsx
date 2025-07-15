@@ -26,18 +26,11 @@ const packagePlansMap: Record<string, {
     name: "Only Fitness Trainer Package",
     plans: [
       {
-        id: "6-weeks",
-        duration: "6 Weeks Plan",
-        price: "NPR 7,500",
-        originalPrice: "NPR 10,000",
-        savings: "Save NPR 2,500"
-      },
-      {
-        id: "8-weeks",
-        duration: "8 Weeks Plan",
-        price: "NPR 10,000",
-        originalPrice: "NPR 13,500",
-        savings: "Save NPR 3,500"
+        id: "4-weeks",
+        duration: "4 Weeks Plan",
+        price: "NPR 5,000",
+        originalPrice: "NPR 7,000",
+        savings: "Save NPR 2,000"
       },
       {
         id: "12-weeks",
@@ -57,22 +50,13 @@ const packagePlansMap: Record<string, {
       "Coach assesses your weekly progress and makes course adjustments"
     ],
     whyChoose: {
-      "6-weeks": [
-        "Customized 6-week training plan (gym/home)",
+      "4-weeks": [
+        "Customized 4-week training plan (gym/home)",
         "Bi-weekly check-ins via WhatsApp",
         "Video demos for all exercises",
         "Goal-based programming (fat loss, strength, mobility, etc.)",
         "Habit tracker for consistency",
         "Standard support (Mon–Fri response within 24 hrs)"
-      ],
-      "8-weeks": [
-        "Customized 8-week training plan (gym/home)",
-        "Weekly check-ins via WhatsApp",
-        "Video demos for all exercises",
-        "Goal-based programming (fat loss, strength, mobility, etc.)",
-        "Habit tracker for consistency",
-        "Enhanced support (Mon–Sat response within 18 hrs)",
-        "Mid-program assessment and plan adjustment"
       ],
       "12-weeks": [
         "Customized 12-week training plan (gym/home)",
@@ -90,18 +74,11 @@ const packagePlansMap: Record<string, {
     name: "Nutrition Only Package",
     plans: [
       {
-        id: "6-weeks",
-        duration: "6 Weeks Plan",
-        price: "NPR 6,500",
-        originalPrice: "NPR 8,500",
-        savings: "Save NPR 2,000"
-      },
-      {
-        id: "8-weeks",
-        duration: "8 Weeks Plan",
-        price: "NPR 8,500",
-        originalPrice: "NPR 11,000",
-        savings: "Save NPR 2,500"
+        id: "4-weeks",
+        duration: "4 Weeks Plan",
+        price: "NPR 4,500",
+        originalPrice: "NPR 6,000",
+        savings: "Save NPR 1,500"
       },
       {
         id: "12-weeks",
@@ -121,22 +98,13 @@ const packagePlansMap: Record<string, {
       "Coach monitors your progress weekly and adjusts your nutrition plan accordingly"
     ],
     whyChoose: {
-      "6-weeks": [
-        "Personalized 6-week nutrition plan with local ingredients",
+      "4-weeks": [
+        "Personalized 4-week nutrition plan with local ingredients",
         "Bi-weekly nutrition coaching sessions via WhatsApp",
         "Custom meal plans based on your preferences and goals",
         "Food tracking and habit building guidance",
         "Recipe suggestions and meal prep tips",
         "Standard nutrition support (Mon–Fri response within 24 hrs)"
-      ],
-      "8-weeks": [
-        "Personalized 8-week nutrition plan with local ingredients",
-        "Weekly nutrition coaching sessions via WhatsApp",
-        "Custom meal plans based on your preferences and goals",
-        "Food tracking and habit building guidance",
-        "Recipe suggestions and meal prep tips",
-        "Enhanced nutrition support (Mon–Sat response within 18 hrs)",
-        "Mid-program nutrition assessment and plan refinement"
       ],
       "12-weeks": [
         "Personalized 12-week nutrition plan with local ingredients",
@@ -154,18 +122,11 @@ const packagePlansMap: Record<string, {
     name: "Health and Nutrition Package",
     plans: [
       {
-        id: "6-weeks",
-        duration: "6 Weeks Plan",
-        price: "NPR 7,500",
-        originalPrice: "NPR 10,000",
-        savings: "Save NPR 2,500"
-      },
-      {
-        id: "8-weeks",
-        duration: "8 Weeks Plan",
-        price: "NPR 10,000",
-        originalPrice: "NPR 13,500",
-        savings: "Save NPR 3,500"
+        id: "4-weeks",
+        duration: "4 Weeks Plan",
+        price: "NPR 5,500",
+        originalPrice: "NPR 7,500",
+        savings: "Save NPR 2,000"
       },
       {
         id: "12-weeks",
@@ -185,20 +146,14 @@ const packagePlansMap: Record<string, {
       "Coach assesses your weekly progress and makes course adjustments"
     ],
     whyChoose: {
-      "6-weeks": [
+      "4-weeks": [
         "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
         "Bi-weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
-        "Video Consultations: Up to 2 video calls with your coach during the program.",
-        "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
-      ],
-      "8-weeks": [
-        "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
-        "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
-        "Video Consultations: Up to 2 video calls with your coach during the program, plus weekly reviews.",
+        "Video Consultations: Up to 1 video call with your coach during the program.",
         "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
       ],
       "12-weeks": [
-        "Tailore Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
+        "Tailored Fitness & Nutrition Plan: Custom workouts, diet plans, progress tracker & video tutorials—all built for you.",
         "Weekly 1-on-1 Coaching: Personalized check-ins to track progress and adjust your plan.",
         "Video Consultations: Up to 3 video calls with your coach during the program, plus weekly reviews.",
         "Ongoing Support: Message your coach anytime. Meltdown Ops team is also available for urgent needs or changes."
