@@ -6,18 +6,11 @@ import { PlanOption } from "@/pages/PackageDetail";
 
 const essentialPlans: PlanOption[] = [
   {
-    id: "6-weeks",
-    duration: "6 Weeks Plan",
-    price: "NPR 14,000",
-    originalPrice: "NPR 18,000",
-    savings: "Save NPR 4,000"
-  },
-  {
-    id: "8-weeks",
-    duration: "8 Weeks Plan",
-    price: "NPR 18,000",
-    originalPrice: "NPR 24,000",
-    savings: "Save NPR 6,000"
+    id: "4-weeks",
+    duration: "4 Weeks Plan",
+    price: "NPR 10,000",
+    originalPrice: "NPR 13,000",
+    savings: "Save NPR 3,000"
   },
   {
     id: "12-weeks",
@@ -39,24 +32,14 @@ const howItWorks = [
 ];
 
 const whyChoose: Record<string, string[]> = {
-  "6-weeks": [
-    "Integrated fitness + nutrition strategy for 6 weeks",
+  "4-weeks": [
+    "Integrated fitness + nutrition strategy for 4 weeks",
     "Customized workout plan (gym/home) + personalized meal plan",
     "Bi-weekly 1-on-1 coaching sessions via WhatsApp",
     "Video demos for exercises + recipe suggestions",
     "Goal-based programming (fat loss, strength, nutrition habits)",
     "All trackers included (workout, meal, habits)",
     "Standard support (Mon–Fri response within 24 hrs)"
-  ],
-  "8-weeks": [
-    "Integrated fitness + nutrition strategy for 8 weeks",
-    "Customized workout plan (gym/home) + personalized meal plan",
-    "Weekly 1-on-1 coaching sessions via WhatsApp",
-    "Video demos for exercises + recipe suggestions",
-    "Goal-based programming (fat loss, strength, nutrition habits)",
-    "All trackers included (workout, meal, habits)",
-    "Enhanced support (Mon–Sat response within 18 hrs)",
-    "Mid-program assessment and plan adjustment"
   ],
   "12-weeks": [
     "Integrated fitness + nutrition strategy for 12 weeks",
