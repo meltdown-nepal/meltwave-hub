@@ -38,6 +38,7 @@ const Footer: React.FC = () => {
                 <li><Link to="/meltfit" className="text-gray-600 hover:text-secondary transition-colors">MeltFit Programs</Link></li>
                 <li><Link to="/wellness-partners" className="text-gray-600 hover:text-secondary transition-colors">Partner Centers</Link></li>
                 <li><Link to="/meltdown-pricing" className="text-gray-600 hover:text-secondary transition-colors">Meltdown Pricing</Link></li>
+                <li><Link to="/blog" className="text-gray-600 hover:text-secondary transition-colors">Blog</Link></li>
                 <li><Link to="/careers" className="text-gray-600 hover:text-secondary transition-colors">Careers</Link></li>
                 <li><Link to="/contact" className="text-gray-600 hover:text-secondary transition-colors">Contact Us</Link></li>
                 <li><Link to="/faq" className="text-gray-600 hover:text-secondary transition-colors">FAQ</Link></li>
