@@ -83,7 +83,7 @@ function WeeklyWednesdayRunCard() {
           </div>
         </div>
         <Button className="mt-auto bg-secondary hover:bg-primary text-black font-semibold w-full" asChild>
-          <Link to="/contact?event=weekly-run">🎯 Join the Challenge</Link>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfC2UpIB4F5RbDFSgZNGwt1DQDEaxgSEuoj3RibEyiN3DD5yA/viewform" target="_blank" rel="noopener noreferrer">🎯 Join the Challenge</a>
         </Button>
       </div>
     </div>;
