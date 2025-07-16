@@ -7,45 +7,11 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "Building a Wellness Culture in Nepali Workplaces",
-      excerpt: "Learn how companies in Nepal are transforming their workplace culture through comprehensive wellness programs...",
-      date: "January 15, 2025",
-      readTime: "5 min read"
-    },
-    {
-      id: 2,
-      title: "Mental Health Awareness in Corporate Nepal",
-      excerpt: "Breaking the stigma around mental health discussions in professional environments across Nepal...",
-      date: "January 10, 2025",
-      readTime: "7 min read"
-    },
-    {
-      id: 3,
-      title: "The ROI of Employee Wellness Programs",
-      excerpt: "Discover how investing in employee wellbeing translates to measurable business outcomes for Nepali companies...",
-      date: "January 5, 2025",
-      readTime: "6 min read"
-    },
-    {
-      id: 4,
-      title: "Nutrition at Work: Healthy Eating Habits",
-      excerpt: "Simple strategies to promote better nutrition habits among employees in busy corporate environments...",
-      date: "December 28, 2024",
-      readTime: "4 min read"
-    },
-    {
-      id: 5,
-      title: "Stress Management Techniques for Teams",
-      excerpt: "Effective stress management strategies that teams can implement to improve productivity and wellbeing...",
-      date: "December 22, 2024",
-      readTime: "8 min read"
-    },
-    {
-      id: 6,
-      title: "Physical Activity Programs in the Workplace",
-      excerpt: "How to design and implement successful physical activity initiatives that engage employees of all fitness levels...",
-      date: "December 18, 2024",
-      readTime: "5 min read"
+      title: "Why Corporate Wellness Is More Than Just a Perk in 2025",
+      excerpt: "In the growing corporate ecosystem of Nepal where working hours are long and hustle culture is the standard, wellbeing of the employees is more than just an HR check-box, it's becoming a business essential.",
+      date: "January 16, 2025",
+      readTime: "8 min read",
+      image: "/lovable-uploads/9ffaea78-830d-4871-a60f-e24422f4ebd7.png"
     }
   ];
 
@@ -81,10 +47,12 @@ const Blog = () => {
             {blogPosts.map((post) => (
               <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card border-border/50">
                 <CardHeader className="space-y-4">
-                  <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg flex items-center justify-center border border-border/20">
-                    <div className="text-muted-foreground text-sm font-medium">
-                      Article Thumbnail
-                    </div>
+                  <div className="aspect-[16/9] rounded-lg overflow-hidden border border-border/20">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
