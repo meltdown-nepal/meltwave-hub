@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CalendarDays, Clock } from 'lucide-react';
@@ -45,39 +46,41 @@ const Blog = () => {
         <div className="container-custom mx-auto py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {blogPosts.map((post) => (
-              <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card border-border/50">
-                <CardHeader className="space-y-4">
-                  <div className="aspect-[16/9] rounded-lg overflow-hidden border border-border/20">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <CalendarDays className="h-4 w-4" />
-                      {post.date}
+              <Link key={post.id} to={`/blog/${post.id}`} className="block">
+                <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card border-border/50 h-full">
+                  <CardHeader className="space-y-4">
+                    <div className="aspect-[16/9] rounded-lg overflow-hidden border border-border/20">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {post.readTime}
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <CalendarDays className="h-4 w-4" />
+                        {post.date}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {post.readTime}
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <CardTitle className="text-xl font-header leading-tight group-hover:text-primary transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <button className="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center gap-1 group">
-                    Read More
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
-                </CardContent>
-              </Card>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <CardTitle className="text-xl font-header leading-tight group-hover:text-primary transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    <div className="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center gap-1 group">
+                      Read More
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
 

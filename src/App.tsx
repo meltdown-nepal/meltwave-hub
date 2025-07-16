@@ -25,6 +25,7 @@ const Events = lazy(() => import("./pages/Events"));
 const Academy = lazy(() => import("./pages/Academy"));
 const MeltFit = lazy(() => import("./pages/MeltFit"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ScheduleDemoFlow = lazy(() => import("./pages/ScheduleDemoFlow"));
 const WellnessProviders = lazy(() => import("./pages/WellnessProviders"));
@@ -68,6 +69,7 @@ function AppContent() {
             <Route path="/essential-plan" element={<EssentialPlan />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:postId" element={<BlogPost />} />
             <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
             <Route path="/company-eligibility-check" element={<CompanyEligibilityCheck />} />
             <Route path="/wellness-providers" element={<WellnessProviders />} />
