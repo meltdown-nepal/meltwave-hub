@@ -1,4 +1,3 @@
-
 export interface Job {
   id: number;
   title: string;
@@ -49,39 +48,35 @@ export const jobListings: Job[] = [
   },
   {
     id: 3,
-    title: "Events Manager",
-    summary: "Lead end-to-end planning and execution of events, from weekly runs to quarterly flagship events, while managing partnerships and driving community engagement.",
-    description: "We're looking for a proactive, creative, and hands-on Event Manager who can take complete ownership of events from concept to execution. You'll lead the events team, bring fresh ideas to life, and ensure every event aligns with our mission—to activate people and connect communities through wellness. This role involves leading weekly runs, corporate wellness events, and quarterly flagship events while building strategic partnerships and continuously innovating event formats.",
+    title: "Social Media Manager",
+    summary: "Manage and grow Meltdown Nepal's social media presence across Instagram, Facebook, and TikTok. Create compelling content, run paid campaigns, and ensure our digital brand remains creative, consistent, and ahead of the curve.",
+    description: "We're looking for a creative, independent, and strategic Social Media Manager to take charge of our digital storytelling. You'll be responsible for planning and posting engaging content, capturing behind-the-scenes moments, running ads, and analyzing performance to help us grow. This role is perfect for someone with a passion for content, community, and fitness culture.",
     requirements: [
-      "Proven experience (1+ years) organizing and leading events",
-      "Strong leadership, delegation, and coordination skills",
-      "Creative thinking with an understanding of fitness and wellness trends",
-      "Experience in sponsorship outreach and brand partnerships",
-      "Excellent time management and communication skills",
-      "Proficient with event planning tools (Google Sheets, Notion, etc.)"
+      "1+ year of experience managing social media for a brand, business, or influencer",
+      "Strong content creation skills (photo, video, editing) using a phone camera",
+      "Excellent writing skills for captions and campaign copy",
+      "Knowledge of Meta Ads Manager and TikTok platform dynamics",
+      "Familiarity with social media analytics tools",
+      "Ability to work independently, meet deadlines, and adapt creatively"
     ],
     responsibilities: [
-      "Lead end-to-end planning and execution of events (weekly runs, corporate wellness events, and quarterly flagship events)",
-      "Create event concepts that reflect our mission and engage diverse audiences",
-      "Prepare detailed event checklists, assign tasks, and ensure accountability within the team",
-      "Lead and manage the Events Team, ensuring clear delegation and communication",
-      "Coordinate with logistics, marketing, wellness, and sales teams for seamless delivery",
-      "Identify and secure collaborations with fitness brands, wellness companies, and sponsors",
-      "Build strategic relationships that add value and visibility to events",
-      "Continuously bring new event formats, activities, and themes to enhance participation",
-      "Track KPIs including attendance, engagement, revenue, and partnerships",
-      "Submit weekly and monthly reports to management"
+      "Manage and grow presence on Instagram, Facebook, and TikTok",
+      "Plan, post, and schedule engaging content consistently",
+      "Capture and edit content for the Meltdown App, fitness events, new launches, and promotional campaigns",
+      "Write effective, brand-aligned captions and stories",
+      "Run and manage paid ad campaigns and boost posts strategically",
+      "Monitor insights, track engagement metrics, and improve strategy based on data",
+      "Stay on top of trends and creatively apply them to keep Meltdown ahead of the curve"
     ],
     location: "Kathmandu, Nepal",
-    applyEmail: "meltdownnepal@gmail.com",
+    applyEmail: "kriti.meltdown@gmail.com",
     benefits: [
-      "Competitive salary with performance-based growth",
-      "High growth rate in the tech and corporate wellness sector",
-      "Attractive incentives based on performance",
-      "5-day work week (Monday to Friday)",
-      "Exclusive access to Meltdown's wellbeing services"
+      "Creative freedom and direct input in shaping our brand voice",
+      "Opportunities to attend and cover Meltdown events",
+      "A collaborative team that values your ideas and time",
+      "Room to grow as we scale and expand in the wellness-tech space"
     ],
-    deadline: "June 30, 2025"
+    deadline: "Open until filled"
   },
   {
     id: 4,

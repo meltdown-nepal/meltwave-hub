@@ -3,16 +3,26 @@ import React, { useState } from 'react';
 import { jobListings, Job } from "@/data/jobListings";
 import JobCard from './JobCard';
 import JobModal from './JobModal';
+import ApplyNowModal from './ApplyNowModal';
 
 const JobListingsSection = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [applyJob, setApplyJob] = useState<Job | null>(null);
 
   const handleJobClick = (job: Job) => {
     setSelectedJob(job);
   };
 
+  const handleApplyClick = (job: Job) => {
+    setApplyJob(job);
+  };
+
   const handleCloseModal = () => {
     setSelectedJob(null);
+  };
+
+  const handleCloseApplyModal = () => {
+    setApplyJob(null);
   };
 
   return (
@@ -32,6 +42,7 @@ const JobListingsSection = () => {
                 key={job.id}
                 job={job}
                 onJobClick={handleJobClick}
+                onApplyClick={handleApplyClick}
               />
             ))}
           </div>
@@ -42,6 +53,13 @@ const JobListingsSection = () => {
         job={selectedJob}
         isOpen={!!selectedJob}
         onClose={handleCloseModal}
+      />
+      
+      <ApplyNowModal
+        isOpen={!!applyJob}
+        onClose={handleCloseApplyModal}
+        jobTitle={applyJob?.title || ''}
+        applyEmail={applyJob?.applyEmail || ''}
       />
     </>
   );
