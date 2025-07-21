@@ -76,7 +76,7 @@ export const jobListings: Job[] = [
       "A collaborative team that values your ideas and time",
       "Room to grow as we scale and expand in the wellness-tech space"
     ],
-    deadline: "Open until filled"
+    deadline: "31st July"
   },
   {
     id: 4,
