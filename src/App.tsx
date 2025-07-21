@@ -39,6 +39,7 @@ const MeltdownPricing = lazy(() => import("./pages/MeltdownPricing"));
 const Packages = lazy(() => import("./pages/Packages"));
 const PackageDetail = lazy(() => import("./pages/PackageDetail"));
 const EssentialPlan = lazy(() => import("./pages/EssentialPlan"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -82,6 +83,7 @@ function AppContent() {
             <Route path="/meltdown-pricing" element={<MeltdownPricing />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:packageId" element={<PackageDetail />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
