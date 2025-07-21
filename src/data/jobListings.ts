@@ -44,7 +44,7 @@ export const jobListings: Job[] = [
       "5-day work week (Monday to Friday)",
       "Exclusive access to Meltdown's wellbeing services"
     ],
-    deadline: "June 30, 2025"
+    deadline: "31st July"
   },
   {
     id: 3,
@@ -111,6 +111,6 @@ export const jobListings: Job[] = [
       "5-day work week (Monday to Friday)",
       "Exclusive access to Meltdown's wellbeing services"
     ],
-    deadline: "June 30, 2025"
+    deadline: "31st July"
   }
 ];
