@@ -215,8 +215,8 @@ const BlogPost = () => {
                 Discover how Meltdown can help your company build a healthier, more engaged workforce through our comprehensive wellness programs.
               </p>
               <Button asChild size="lg">
-                <Link to="/companies">
-                  Explore Corporate Solutions
+                <Link to="/schedule-demo">
+                  Get Demo
                 </Link>
               </Button>
             </div>
