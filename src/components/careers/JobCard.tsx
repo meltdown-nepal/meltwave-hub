@@ -8,10 +8,9 @@ import { MapPin } from 'lucide-react';
 interface JobCardProps {
   job: Job;
   onJobClick: (job: Job) => void;
-  onApplyClick?: (job: Job) => void;
 }
 
-const JobCard = ({ job, onJobClick, onApplyClick }: JobCardProps) => {
+const JobCard = ({ job, onJobClick }: JobCardProps) => {
   return (
     <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
       <CardHeader>
@@ -37,10 +36,16 @@ const JobCard = ({ job, onJobClick, onApplyClick }: JobCardProps) => {
           View Details
         </Button>
         <Button 
-          onClick={() => onApplyClick?.(job)}
+          asChild
           className="flex-1"
         >
-          Apply Now
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLScGPjjHmNY_7RS0muM_-V0xPnpcD1CEg05_LpWpDCx2NJKxxw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apply Now
+          </a>
         </Button>
       </CardFooter>
     </Card>
