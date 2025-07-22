@@ -15,14 +15,7 @@ const JobModal = ({ job, isOpen, onClose }: JobModalProps) => {
   if (!job) return null;
 
   const handleApply = () => {
-    const subject = encodeURIComponent(`Application for ${job.title} Position`);
-    const body = encodeURIComponent(`Dear Hiring Manager,
-
-I am writing to express my interest in the ${job.title} position at Meltdown. Please find my resume attached.
-
-Best regards,`);
-    
-    window.open(`mailto:${job.applyEmail}?subject=${subject}&body=${body}`, '_blank');
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScGPjjHmNY_7RS0muM_-V0xPnpcD1CEg05_LpWpDCx2NJKxxw/viewform', '_blank');
   };
 
   return (
