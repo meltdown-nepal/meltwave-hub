@@ -17,18 +17,18 @@ serve(async (req) => {
     const formData = await req.json()
     console.log("Received form data:", formData)
     
-    // Map the form fields correctly based on the wellness onboarding form
+    // Map the form fields correctly based on the simplified wellness onboarding form
     const {
-      name,
-      email,
-      phone,
       serviceType,
       serviceTypeOther,
-      operationMode,
-      location,
-      clientsPerWeek,
-      gymCollaboration,
-      additionalInfo
+      companyName,
+      companyAddress,
+      companyEmail,
+      companyPhone,
+      senderName,
+      senderEmail,
+      senderPhone,
+      senderPosition
     } = formData
 
     // Determine the actual service type
@@ -43,23 +43,24 @@ serve(async (req) => {
       body: JSON.stringify({
         from: 'Meltdown Providers <onboarding@resend.dev>',
         to: ['sanskar.meltdown@gmail.com', 'support@meltdownnepal.com'],
-        subject: `New Wellness Provider Application from ${name}`,
+        subject: `New Wellness Provider Application from ${companyName}`,
         html: `
           <h2>New Wellness Provider Application</h2>
           
-          <h3>Personal Information</h3>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          
-          <h3>Professional Information</h3>
+          <h3>Service Information</h3>
           <p><strong>Service Type:</strong> ${actualServiceType}</p>
-          <p><strong>Operation Mode:</strong> ${operationMode}</p>
-          <p><strong>Location:</strong> ${location}</p>
-          <p><strong>Clients per Week:</strong> ${clientsPerWeek}</p>
-          <p><strong>Interested in Gym Collaboration:</strong> ${gymCollaboration ? 'Yes' : 'No'}</p>
           
-          ${additionalInfo ? `<h3>Additional Information</h3><p>${additionalInfo}</p>` : ''}
+          <h3>Company Information</h3>
+          <p><strong>Company Name:</strong> ${companyName}</p>
+          <p><strong>Address:</strong> ${companyAddress}</p>
+          <p><strong>Email:</strong> ${companyEmail}</p>
+          <p><strong>Phone:</strong> ${companyPhone}</p>
+          
+          <h3>Contact Person Information</h3>
+          <p><strong>Name:</strong> ${senderName}</p>
+          <p><strong>Email:</strong> ${senderEmail}</p>
+          <p><strong>Phone:</strong> ${senderPhone}</p>
+          <p><strong>Position/Role:</strong> ${senderPosition}</p>
         `,
       }),
     })
