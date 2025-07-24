@@ -23,20 +23,31 @@ import { supabase } from "@/integrations/supabase/client";
 
 // Wellness Provider Schema
 const wellnessProviderSchema = z.object({
-  serviceType: z.enum(["yoga", "nutrition", "meditation", "fitness", "therapy", "other"]),
-  serviceTypeOther: z.string().optional(),
+  serviceType: z.enum(["yoga", "nutrition", "meditation", "fitness", "therapy", "other"], {
+    required_error: "Please select a service type"
+  }),
+  serviceTypeOther: z.string().min(1, { message: "Please specify your service type" }).optional(),
   
   // Company Information
-  companyName: z.string().min(2, { message: "Please enter company name" }),
-  companyAddress: z.string().min(5, { message: "Please enter company address" }),
-  companyEmail: z.string().email({ message: "Please enter a valid company email" }),
-  companyPhone: z.string().min(10, { message: "Please enter company phone number" }),
+  companyName: z.string().min(1, { message: "Company name is required" }).min(2, { message: "Company name must be at least 2 characters" }),
+  companyAddress: z.string().min(1, { message: "Company address is required" }).min(5, { message: "Please enter a complete address" }),
+  companyEmail: z.string().min(1, { message: "Company email is required" }).email({ message: "Please enter a valid company email" }),
+  companyPhone: z.string().min(1, { message: "Company phone number is required" }).min(10, { message: "Please enter a valid phone number" }),
   
   // Sender Contact Information
-  senderName: z.string().min(2, { message: "Please enter your name" }),
-  senderEmail: z.string().email({ message: "Please enter a valid email" }),
-  senderPhone: z.string().min(10, { message: "Please enter your phone number" }),
-  senderPosition: z.string().min(2, { message: "Please enter your position" }),
+  senderName: z.string().min(1, { message: "Your name is required" }).min(2, { message: "Name must be at least 2 characters" }),
+  senderEmail: z.string().min(1, { message: "Your email is required" }).email({ message: "Please enter a valid email" }),
+  senderPhone: z.string().min(1, { message: "Your phone number is required" }).min(10, { message: "Please enter a valid phone number" }),
+  senderPosition: z.string().min(1, { message: "Your position is required" }).min(2, { message: "Position must be at least 2 characters" }),
+}).refine((data) => {
+  // If serviceType is "other", serviceTypeOther must be provided
+  if (data.serviceType === "other") {
+    return data.serviceTypeOther && data.serviceTypeOther.length > 0;
+  }
+  return true;
+}, {
+  message: "Please specify your service type",
+  path: ["serviceTypeOther"]
 });
 
 type WellnessProviderData = z.infer<typeof wellnessProviderSchema>;
@@ -213,7 +224,7 @@ const WellnessOnboarding = () => {
                     <Button 
                       type="button" 
                       onClick={nextStep}
-                      disabled={!form.watch("serviceType")}
+                      disabled={!form.watch("serviceType") || (form.watch("serviceType") === "other" && !form.watch("serviceTypeOther"))}
                       className="flex items-center gap-1"
                     >
                       Next <ChevronRight className="h-4 w-4" />
@@ -291,7 +302,7 @@ const WellnessOnboarding = () => {
                     <Button 
                       type="button" 
                       onClick={nextStep}
-                      disabled={!form.watch("companyName") || !form.watch("companyAddress") || !form.watch("companyEmail") || !form.watch("companyPhone")}
+                      disabled={!form.watch("companyName")?.trim() || !form.watch("companyAddress")?.trim() || !form.watch("companyEmail")?.trim() || !form.watch("companyPhone")?.trim()}
                       className="flex items-center gap-1"
                     >
                       Next <ChevronRight className="h-4 w-4" />
@@ -369,7 +380,7 @@ const WellnessOnboarding = () => {
                     <Button 
                       type="button" 
                       onClick={nextStep}
-                      disabled={!form.watch("senderName") || !form.watch("senderEmail") || !form.watch("senderPhone") || !form.watch("senderPosition")}
+                      disabled={!form.watch("senderName")?.trim() || !form.watch("senderEmail")?.trim() || !form.watch("senderPhone")?.trim() || !form.watch("senderPosition")?.trim()}
                       className="flex items-center gap-1"
                     >
                       Review <ChevronRight className="h-4 w-4" />
