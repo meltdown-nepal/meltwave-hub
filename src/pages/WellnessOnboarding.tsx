@@ -12,6 +12,10 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTitle, SheetDescription, SheetHeader, SheetFooter } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useForm } from "react-hook-form";
@@ -23,31 +27,41 @@ import { supabase } from "@/integrations/supabase/client";
 
 // Wellness Provider Schema
 const wellnessProviderSchema = z.object({
-  serviceType: z.enum(["yoga", "nutrition", "meditation", "fitness", "therapy", "other"], {
-    required_error: "Please select a service type"
-  }),
-  serviceTypeOther: z.string().min(1, { message: "Please specify your service type" }).optional(),
+  // Business Information
+  businessName: z.string().min(1, { message: "Business name is required" }).min(2, { message: "Business name must be at least 2 characters" }),
+  address: z.string().min(1, { message: "Address is required" }).min(5, { message: "Please enter a complete address" }),
   
-  // Company Information
-  companyName: z.string().min(1, { message: "Company name is required" }).min(2, { message: "Company name must be at least 2 characters" }),
-  companyAddress: z.string().min(1, { message: "Company address is required" }).min(5, { message: "Please enter a complete address" }),
-  companyEmail: z.string().min(1, { message: "Company email is required" }).email({ message: "Please enter a valid company email" }),
-  companyPhone: z.string().min(1, { message: "Company phone number is required" }).min(10, { message: "Please enter a valid phone number" }),
+  // Service Types (multi-select)
+  serviceTypes: z.array(z.string()).min(1, { message: "Please select at least one service type" }),
+  serviceTypeOther: z.string().optional(),
   
-  // Sender Contact Information
-  senderName: z.string().min(1, { message: "Your name is required" }).min(2, { message: "Name must be at least 2 characters" }),
-  senderEmail: z.string().min(1, { message: "Your email is required" }).email({ message: "Please enter a valid email" }),
-  senderPhone: z.string().min(1, { message: "Your phone number is required" }).min(10, { message: "Please enter a valid phone number" }),
-  senderPosition: z.string().min(1, { message: "Your position is required" }).min(2, { message: "Position must be at least 2 characters" }),
+  // Contact Person Information
+  contactName: z.string().min(1, { message: "Contact name is required" }).min(2, { message: "Contact name must be at least 2 characters" }),
+  contactRole: z.string().min(1, { message: "Please select a role" }),
+  contactRoleOther: z.string().optional(),
+  contactEmail: z.string().min(1, { message: "Contact email is required" }).email({ message: "Please enter a valid email" }),
+  contactPhone: z.string().min(1, { message: "Contact phone is required" }).min(10, { message: "Please enter a valid phone number" }),
+  
+  // Additional Notes (optional)
+  additionalNotes: z.string().optional(),
 }).refine((data) => {
-  // If serviceType is "other", serviceTypeOther must be provided
-  if (data.serviceType === "other") {
+  // If serviceTypes includes "other", serviceTypeOther must be provided
+  if (data.serviceTypes.includes("other")) {
     return data.serviceTypeOther && data.serviceTypeOther.length > 0;
   }
   return true;
 }, {
-  message: "Please specify your service type",
+  message: "Please specify your other service type",
   path: ["serviceTypeOther"]
+}).refine((data) => {
+  // If contactRole is "other", contactRoleOther must be provided
+  if (data.contactRole === "other") {
+    return data.contactRoleOther && data.contactRoleOther.length > 0;
+  }
+  return true;
+}, {
+  message: "Please specify your role",
+  path: ["contactRoleOther"]
 });
 
 type WellnessProviderData = z.infer<typeof wellnessProviderSchema>;
@@ -60,7 +74,7 @@ const WellnessOnboarding = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  const totalSteps = 3; // Total number of steps in the flow
+  const totalSteps = 4; // Total number of steps in the flow
   const progress = ((step + 1) / totalSteps) * 100;
   
   const form = useForm<WellnessProviderData>({
@@ -161,39 +175,95 @@ const WellnessOnboarding = () => {
         <Card className="bg-white/95 backdrop-blur-sm shadow-lg rounded-lg p-6 md:p-8 animate-fade-in">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-              {/* Step 1: Service Type */}
+              {/* Step 1: Wellness Provider Information */}
               {step === 0 && (
                 <div className="space-y-6">
                   <div className="text-center space-y-2">
-                    <h2 className="text-2xl font-semibold">What type of wellness service do you provide?</h2>
-                    <p className="text-gray-600">Select the option that best describes your practice</p>
+                    <h2 className="text-2xl font-semibold">🧘 Wellness Provider Information</h2>
+                    <p className="text-gray-600">Tell us about your business or organization</p>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="businessName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Business / Organization Name</FormLabel>
+                          <FormControl>
+                            <Input {...field} placeholder="e.g., FitLife Studio, Serenity Yoga Center" />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="address"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Address</FormLabel>
+                          <FormControl>
+                            <Input {...field} placeholder="Street, City, District" />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <div className="flex justify-end">
+                    <Button 
+                      type="button" 
+                      onClick={nextStep}
+                      disabled={!form.watch("businessName")?.trim() || !form.watch("address")?.trim()}
+                      className="flex items-center gap-1"
+                    >
+                      Next <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              )}
+              
+              {/* Step 2: Type of Service(s) Offered */}
+              {step === 1 && (
+                <div className="space-y-6">
+                  <div className="text-center space-y-2">
+                    <h2 className="text-2xl font-semibold">Type of Service(s) Offered</h2>
+                    <p className="text-gray-600">What type of wellness services do you offer? Select all that apply</p>
                   </div>
                   
                   <FormField
                     control={form.control}
-                    name="serviceType"
+                    name="serviceTypes"
                     render={({ field }) => (
                       <FormItem className="space-y-4">
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 gap-3">
                           {[
-                            { value: "yoga", label: "Yoga Instructor", icon: "🧘‍♀️" },
-                            { value: "nutrition", label: "Nutritionist", icon: "🥗" },
-                            { value: "meditation", label: "Meditation Guide", icon: "🧠" },
-                            { value: "fitness", label: "Fitness Coach", icon: "💪" },
-                            { value: "therapy", label: "Therapist", icon: "🧡" },
+                            { value: "gym", label: "Gym / Fitness Center", icon: "🏋️‍♀️" },
+                            { value: "yoga", label: "Yoga Studio", icon: "🧘‍♀️" },
+                            { value: "dance", label: "Dance Studio", icon: "💃" },
+                            { value: "therapy", label: "Therapy / Counseling", icon: "🧠" },
+                            { value: "martial-arts", label: "Martial Arts / Combat Sports", icon: "🥋" },
+                            { value: "spa", label: "Spa / Massage", icon: "💆‍♀️" },
+                            { value: "nutrition", label: "Nutrition / Diet Consultation", icon: "🥗" },
+                            { value: "physical-therapy", label: "Physical Therapy / Rehab", icon: "🏥" },
                             { value: "other", label: "Other", icon: "✨" },
                           ].map((option) => (
                             <FormControl key={option.value}>
-                              <div
-                                className={`
-                                  p-4 rounded-lg border-2 cursor-pointer flex flex-col items-center text-center gap-2
-                                  transition-all duration-200 hover:border-primary/70
-                                  ${field.value === option.value ? "border-primary bg-primary/10" : "border-gray-200"}
-                                `}
-                                onClick={() => field.onChange(option.value)}
-                              >
-                                <span className="text-2xl">{option.icon}</span>
-                                <Label className="font-medium">{option.label}</Label>
+                              <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <Checkbox
+                                  checked={field.value?.includes(option.value) || false}
+                                  onCheckedChange={(checked) => {
+                                    const currentValues = field.value || [];
+                                    if (checked) {
+                                      field.onChange([...currentValues, option.value]);
+                                    } else {
+                                      field.onChange(currentValues.filter((value: string) => value !== option.value));
+                                    }
+                                  }}
+                                />
+                                <span className="text-xl">{option.icon}</span>
+                                <Label className="font-medium cursor-pointer">{option.label}</Label>
                               </div>
                             </FormControl>
                           ))}
@@ -202,16 +272,16 @@ const WellnessOnboarding = () => {
                     )}
                   />
                   
-                  {form.watch("serviceType") === "other" && (
+                  {form.watch("serviceTypes")?.includes("other") && (
                     <FormField
                       control={form.control}
                       name="serviceTypeOther"
                       render={({ field }) => (
                         <FormItem>
+                          <FormLabel>Please specify your other service type</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Please specify your wellness service"
-                              className="w-full"
+                              placeholder="Describe your wellness service"
                               {...field}
                             />
                           </FormControl>
@@ -220,81 +290,6 @@ const WellnessOnboarding = () => {
                     />
                   )}
                   
-                  <div className="flex justify-end">
-                    <Button 
-                      type="button" 
-                      onClick={nextStep}
-                      disabled={!form.watch("serviceType") || (form.watch("serviceType") === "other" && !form.watch("serviceTypeOther"))}
-                      className="flex items-center gap-1"
-                    >
-                      Next <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-              
-              {/* Step 2: Company Information */}
-              {step === 1 && (
-                <div className="space-y-6">
-                  <div className="text-center space-y-2">
-                    <h2 className="text-2xl font-semibold">Tell us about your wellness center</h2>
-                    <p className="text-gray-600">Company contact information</p>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <FormField
-                      control={form.control}
-                      name="companyName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company/Wellness Center Name</FormLabel>
-                          <FormControl>
-                            <Input {...field} placeholder="Your wellness center name" />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="companyAddress"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company Address</FormLabel>
-                          <FormControl>
-                            <Input {...field} placeholder="Full address of your wellness center" />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="companyEmail"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company Email</FormLabel>
-                          <FormControl>
-                            <Input {...field} type="email" placeholder="info@yourcompany.com" />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="companyPhone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company Phone Number</FormLabel>
-                          <FormControl>
-                            <Input {...field} placeholder="+977 01-xxxxxxx" />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
                   <div className="flex justify-between">
                     <Button type="button" variant="outline" onClick={prevStep} className="flex items-center gap-1">
                       <ChevronLeft className="h-4 w-4" /> Back
@@ -302,7 +297,7 @@ const WellnessOnboarding = () => {
                     <Button 
                       type="button" 
                       onClick={nextStep}
-                      disabled={!form.watch("companyName")?.trim() || !form.watch("companyAddress")?.trim() || !form.watch("companyEmail")?.trim() || !form.watch("companyPhone")?.trim()}
+                      disabled={!form.watch("serviceTypes")?.length || (form.watch("serviceTypes")?.includes("other") && !form.watch("serviceTypeOther")?.trim())}
                       className="flex items-center gap-1"
                     >
                       Next <ChevronRight className="h-4 w-4" />
@@ -311,23 +306,23 @@ const WellnessOnboarding = () => {
                 </div>
               )}
               
-              {/* Step 3: Sender Contact Information */}
+              {/* Step 3: Contact Person Information */}
               {step === 2 && (
                 <div className="space-y-6">
                   <div className="text-center space-y-2">
-                    <h2 className="text-2xl font-semibold">Your contact information</h2>
-                    <p className="text-gray-600">Tell us about the person submitting this application</p>
+                    <h2 className="text-2xl font-semibold">Contact Person (Owner / Manager)</h2>
+                    <p className="text-gray-600">Primary contact for this wellness provider</p>
                   </div>
                   
                   <div className="space-y-4">
                     <FormField
                       control={form.control}
-                      name="senderName"
+                      name="contactName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Your Full Name</FormLabel>
+                          <FormLabel>Full Name of Contact Person</FormLabel>
                           <FormControl>
-                            <Input {...field} placeholder="Your full name" />
+                            <Input {...field} placeholder="Full name" />
                           </FormControl>
                         </FormItem>
                       )}
@@ -335,10 +330,51 @@ const WellnessOnboarding = () => {
                     
                     <FormField
                       control={form.control}
-                      name="senderEmail"
+                      name="contactRole"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Your Email Address</FormLabel>
+                          <FormLabel>Role in the Organization</FormLabel>
+                          <Select onValueChange={field.onChange} value={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select your role" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent className="bg-white border border-gray-200 shadow-lg z-50">
+                              <SelectItem value="owner">Owner</SelectItem>
+                              <SelectItem value="manager">Manager</SelectItem>
+                              <SelectItem value="admin">Admin Staff</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    {form.watch("contactRole") === "other" && (
+                      <FormField
+                        control={form.control}
+                        name="contactRoleOther"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Please specify your role</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Your role in the organization"
+                                {...field}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    )}
+                    
+                    <FormField
+                      control={form.control}
+                      name="contactEmail"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Contact Email</FormLabel>
                           <FormControl>
                             <Input {...field} type="email" placeholder="your@email.com" />
                           </FormControl>
@@ -348,25 +384,12 @@ const WellnessOnboarding = () => {
                     
                     <FormField
                       control={form.control}
-                      name="senderPhone"
+                      name="contactPhone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Your Phone Number</FormLabel>
+                          <FormLabel>Contact Phone Number</FormLabel>
                           <FormControl>
                             <Input {...field} placeholder="+977 98xxxxxxxx" />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="senderPosition"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Your Position/Role</FormLabel>
-                          <FormControl>
-                            <Input {...field} placeholder="e.g., Owner, Manager, Trainer" />
                           </FormControl>
                         </FormItem>
                       )}
@@ -380,10 +403,50 @@ const WellnessOnboarding = () => {
                     <Button 
                       type="button" 
                       onClick={nextStep}
-                      disabled={!form.watch("senderName")?.trim() || !form.watch("senderEmail")?.trim() || !form.watch("senderPhone")?.trim() || !form.watch("senderPosition")?.trim()}
+                      disabled={!form.watch("contactName")?.trim() || !form.watch("contactRole") || !form.watch("contactEmail")?.trim() || !form.watch("contactPhone")?.trim() || (form.watch("contactRole") === "other" && !form.watch("contactRoleOther")?.trim())}
                       className="flex items-center gap-1"
                     >
-                      Review <ChevronRight className="h-4 w-4" />
+                      Next <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              )}
+              
+              {/* Step 4: Additional Notes */}
+              {step === 3 && (
+                <div className="space-y-6">
+                  <div className="text-center space-y-2">
+                    <h2 className="text-2xl font-semibold">Additional Notes</h2>
+                    <p className="text-gray-600">Is there anything else you'd like us to know about your organization?</p>
+                  </div>
+                  
+                  <FormField
+                    control={form.control}
+                    name="additionalNotes"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea
+                            {...field}
+                            placeholder="Share any special instructions, business goals, or anything else you'd like us to consider..."
+                            className="min-h-32 resize-none"
+                          />
+                        </FormControl>
+                        <p className="text-sm text-gray-500 mt-2">Optional - but helps us understand your needs better</p>
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <div className="flex justify-between">
+                    <Button type="button" variant="outline" onClick={prevStep} className="flex items-center gap-1">
+                      <ChevronLeft className="h-4 w-4" /> Back
+                    </Button>
+                    <Button 
+                      type="button" 
+                      onClick={nextStep}
+                      className="flex items-center gap-1"
+                    >
+                      Review Application <ChevronRight className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
@@ -405,13 +468,29 @@ const WellnessOnboarding = () => {
           
           <div className="py-6 space-y-6">
             <div className="space-y-2">
-              <h3 className="font-medium text-lg">Service Information</h3>
+              <h3 className="font-medium text-lg">Business Information</h3>
               <div className="grid grid-cols-2 gap-2 text-sm">
-                <div className="text-muted-foreground">Service Type:</div>
+                <div className="text-muted-foreground">Business Name:</div>
+                <div className="font-medium">{form.watch("businessName")}</div>
+                
+                <div className="text-muted-foreground">Address:</div>
+                <div className="font-medium">{form.watch("address")}</div>
+              </div>
+            </div>
+            
+            <Separator />
+            
+            <div className="space-y-2">
+              <h3 className="font-medium text-lg">Services Offered</h3>
+              <div className="space-y-2">
+                <div className="text-muted-foreground">Service Types:</div>
                 <div className="font-medium">
-                  {form.watch("serviceType") === "other" 
-                    ? form.watch("serviceTypeOther") 
-                    : form.watch("serviceType")?.charAt(0).toUpperCase() + form.watch("serviceType")?.slice(1)}
+                  {form.watch("serviceTypes")?.map((service: string) => {
+                    if (service === "other") {
+                      return form.watch("serviceTypeOther");
+                    }
+                    return service.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+                  }).join(", ")}
                 </div>
               </div>
             </div>
@@ -419,40 +498,37 @@ const WellnessOnboarding = () => {
             <Separator />
             
             <div className="space-y-2">
-              <h3 className="font-medium text-lg">Company Information</h3>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <div className="text-muted-foreground">Company Name:</div>
-                <div className="font-medium">{form.watch("companyName")}</div>
-                
-                <div className="text-muted-foreground">Address:</div>
-                <div className="font-medium">{form.watch("companyAddress")}</div>
-                
-                <div className="text-muted-foreground">Email:</div>
-                <div className="font-medium">{form.watch("companyEmail")}</div>
-                
-                <div className="text-muted-foreground">Phone:</div>
-                <div className="font-medium">{form.watch("companyPhone")}</div>
-              </div>
-            </div>
-            
-            <Separator />
-            
-            <div className="space-y-2">
-              <h3 className="font-medium text-lg">Your Contact Information</h3>
+              <h3 className="font-medium text-lg">Contact Person</h3>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <div className="text-muted-foreground">Name:</div>
-                <div className="font-medium">{form.watch("senderName")}</div>
+                <div className="font-medium">{form.watch("contactName")}</div>
+                
+                <div className="text-muted-foreground">Role:</div>
+                <div className="font-medium">
+                  {form.watch("contactRole") === "other" 
+                    ? form.watch("contactRoleOther") 
+                    : form.watch("contactRole")?.charAt(0).toUpperCase() + form.watch("contactRole")?.slice(1)}
+                </div>
                 
                 <div className="text-muted-foreground">Email:</div>
-                <div className="font-medium">{form.watch("senderEmail")}</div>
+                <div className="font-medium">{form.watch("contactEmail")}</div>
                 
                 <div className="text-muted-foreground">Phone:</div>
-                <div className="font-medium">{form.watch("senderPhone")}</div>
-                
-                <div className="text-muted-foreground">Position:</div>
-                <div className="font-medium">{form.watch("senderPosition")}</div>
+                <div className="font-medium">{form.watch("contactPhone")}</div>
               </div>
             </div>
+            
+            {form.watch("additionalNotes") && (
+              <>
+                <Separator />
+                <div className="space-y-2">
+                  <h3 className="font-medium text-lg">Additional Notes</h3>
+                  <div className="text-sm text-muted-foreground">
+                    {form.watch("additionalNotes")}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           
           <SheetFooter>
