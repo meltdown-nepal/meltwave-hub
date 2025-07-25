@@ -101,9 +101,24 @@ const WellnessOnboarding = () => {
       setIsSubmitting(true);
       console.log("Form submitted with data:", data);
       
+      // Transform data to match the expected format in the edge function
+      const transformedData = {
+        serviceType: data.serviceTypes.length === 1 ? data.serviceTypes[0] : 'multiple',
+        serviceTypeOther: data.serviceTypeOther || '',
+        companyName: data.businessName,
+        companyAddress: data.address,
+        companyEmail: data.contactEmail,
+        companyPhone: data.contactPhone,
+        senderName: data.contactName,
+        senderEmail: data.contactEmail,
+        senderPhone: data.contactPhone,
+        senderPosition: data.contactRole === 'other' ? data.contactRoleOther : data.contactRole,
+        additionalNotes: data.additionalNotes || ''
+      };
+      
       // Send data to Supabase Edge Function
       const { error } = await supabase.functions.invoke('wellness-provider', {
-        body: data
+        body: transformedData
       });
       
       if (error) {
@@ -487,7 +502,7 @@ const WellnessOnboarding = () => {
                 <div className="font-medium">
                   {form.watch("serviceTypes")?.map((service: string) => {
                     if (service === "other") {
-                      return form.watch("serviceTypeOther");
+                      return form.watch("serviceTypeOther") || "Other";
                     }
                     return service.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
                   }).join(", ")}

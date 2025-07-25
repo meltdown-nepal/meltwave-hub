@@ -17,7 +17,7 @@ serve(async (req) => {
     const formData = await req.json()
     console.log("Received form data:", formData)
     
-    // Map the form fields correctly based on the simplified wellness onboarding form
+    // Map the form fields correctly based on the updated wellness onboarding form
     const {
       serviceType,
       serviceTypeOther,
@@ -28,7 +28,8 @@ serve(async (req) => {
       senderName,
       senderEmail,
       senderPhone,
-      senderPosition
+      senderPosition,
+      additionalNotes
     } = formData
 
     // Determine the actual service type
@@ -61,6 +62,11 @@ serve(async (req) => {
           <p><strong>Email:</strong> ${senderEmail}</p>
           <p><strong>Phone:</strong> ${senderPhone}</p>
           <p><strong>Position/Role:</strong> ${senderPosition}</p>
+          
+          ${additionalNotes ? `
+          <h3>Additional Notes</h3>
+          <p>${additionalNotes}</p>
+          ` : ''}
         `,
       }),
     })
