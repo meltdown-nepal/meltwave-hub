@@ -1,3 +1,4 @@
+
 import React from 'react';
 import SEO from '@/components/SEO';
 
@@ -19,7 +20,7 @@ const PrivacyPolicy = () => {
                   Privacy Policy
                 </h1>
                 <p className="text-muted-foreground text-lg">
-                  Effective Date: 21st July, 2025 | Last Updated: 21st July, 2025
+                  Effective Date: 31st July, 2025 | Last Updated: 31st July, 2025
                 </p>
               </div>
 
@@ -121,7 +122,28 @@ const PrivacyPolicy = () => {
                   <p className="mb-4">You have control over your data and can:</p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-4">
                     <li>Access or update your information within the app</li>
-                    <li>Request the deletion of your account and data by contacting us</li>
+                    <li>Delete your account permanently</li>
+                  </ul>
+                  
+                  <div className="bg-muted/30 rounded-lg p-6 mb-6">
+                    <p className="text-foreground mb-4">
+                      <strong>Account Deletion:</strong>
+                    </p>
+                    <p className="text-muted-foreground mb-4">
+                      You can delete your account at any time if you do not have an active subscription. If you wish to delete your account while your subscription is still active, please contact us at <a href="mailto:support@meltdownnepal.com" className="text-primary hover:underline">support@meltdownnepal.com</a>.
+                    </p>
+                    <p className="text-muted-foreground mb-4">
+                      When your account is deleted, we will permanently remove all personally identifiable information associated with your account — including your name, email address, contact number, profile picture, and personal notifications.
+                    </p>
+                    <p className="text-muted-foreground mb-4">
+                      However, we will retain non-personal data such as feedback, ratings, check-ins, steps, interests, and freeze history. This data is kept solely for financial auditing and business analysis purposes and cannot be linked back to you in any way.
+                    </p>
+                    <p className="text-muted-foreground">
+                      Your privacy and trust are important to us.
+                    </p>
+                  </div>
+
+                  <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-4">
                     <li>Withdraw permissions (such as location or health data access) via your device settings</li>
                   </ul>
                   <p className="text-muted-foreground">
@@ -138,8 +160,11 @@ const PrivacyPolicy = () => {
 
                 <section className="mb-10">
                   <h2 className="text-2xl font-semibold text-foreground mb-6">7. Children's Privacy</h2>
+                  <p className="text-muted-foreground mb-4">
+                    Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.
+                  </p>
                   <p className="text-muted-foreground">
-                    Meltdown is not intended for users under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal data, we will take steps to delete such information.
+                    If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.
                   </p>
                 </section>
 
