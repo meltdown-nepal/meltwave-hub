@@ -1,44 +1,45 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
-import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock, Flag, Mountain, Heart } from "lucide-react";
+import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock, Flag, Mountain, Heart, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
-// Java Run Venture Card
-function JavaRunVentureCard() {
+// App Launch Event Card (formerly Java Run Venture)
+function AppLaunchEventCard() {
   const {
     scrollToSection
   } = useSmoothScroll();
-  return <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
-      <div className="absolute top-0 right-0 text-amber-100 opacity-50">
-        <Coffee size={120} />
+  return <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+      <div className="absolute top-0 right-0 text-blue-100 opacity-50">
+        <Smartphone size={120} />
       </div>
       <div className="relative z-10 w-full">
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-2xl">☕</span>
-          <h3 className="text-xl font-bold text-gray-800">Java Run Venture</h3>
+          <span className="text-2xl">🚀</span>
+          <h3 className="text-xl font-bold text-gray-800">App Launch Event</h3>
         </div>
         <p className="text-gray-700 font-medium mb-4 flex items-center gap-1">
-          Run, Coffee, Repeat! <span>🏃‍♂️☕</span>
+          5 km run for everyone followed by app launch event <span>🏃‍♂️📱</span>
         </p>
         <div className="space-y-3 mb-4">
           <div className="flex items-center gap-2 text-gray-700">
             <CalendarDays size={16} className="text-primary" />
-            <span className="font-medium">10th May</span>
+            <span className="font-medium">6th August</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-700">
+            <MapPin size={16} className="text-primary" />
+            <span className="font-medium">Bikers Cafe</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <Target size={16} className="text-primary" />
-            <span className="font-medium">7km thrilling run with fitness challenges</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-700">
-            <Coffee size={16} className="text-primary" />
-            <span className="font-medium">Stop at every Himalayan Java location!</span>
+            <span className="font-medium">5km run + exclusive app launch celebration</span>
           </div>
         </div>
         <div className="bg-primary/15 rounded-lg p-3 mb-4 border border-primary/30">
           <div className="flex items-center gap-2 text-gray-800 font-semibold">
             <Award size={16} />
-            <span>Collect fun goodies at every station!</span>
+            <span>Be part of our exciting app launch journey!</span>
           </div>
         </div>
         <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full" type="button" onClick={() => scrollToSection('event-gallery')}>
@@ -151,7 +152,7 @@ export default function FeaturedEventsSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-          <JavaRunVentureCard />
+          <AppLaunchEventCard />
           <WeeklyWednesdayRunCard />
           <KathmanduMarathonCard />
         </div>
