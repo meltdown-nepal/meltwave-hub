@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock, Flag, Mountain, Heart, Smartphone } from "lucide-react";
@@ -7,9 +6,6 @@ import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 // App Launch Event Card (formerly Java Run Venture)
 function AppLaunchEventCard() {
-  const {
-    scrollToSection
-  } = useSmoothScroll();
   return <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
       <div className="absolute top-0 right-0 text-blue-100 opacity-50">
         <Smartphone size={120} />
@@ -42,8 +38,10 @@ function AppLaunchEventCard() {
             <span>Be part of our exciting app launch journey!</span>
           </div>
         </div>
-        <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full" type="button" onClick={() => scrollToSection('event-gallery')}>
-          View Gallery
+        <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full" asChild>
+          <a href="https://forms.gle/YKCf1QUKXnNBqRxHA" target="_blank" rel="noopener noreferrer">
+            Register Now
+          </a>
         </Button>
       </div>
     </div>;
