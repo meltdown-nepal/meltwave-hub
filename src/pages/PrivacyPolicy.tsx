@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
                   Privacy Policy
                 </h1>
                 <p className="text-muted-foreground text-lg">
-                  Effective Date: 31st July, 2025 | Last Updated: 31st July, 2025
+                  Effective Date: 31st July, 2025 | Last Updated: 5th August, 2025
                 </p>
               </div>
 
@@ -79,7 +79,7 @@ const PrivacyPolicy = () => {
                   <p className="mb-4">We use your information to:</p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                     <li>Enable account creation and secure login</li>
-                    <li>Track your fitness activities and steps</li>
+                    <li>Read your steps information</li>
                     <li>Offer personalized suggestions based on your location</li>
                     <li>Send push notifications (e.g., new fitness center, activity goals)</li>
                     <li>Enable check-ins at fitness centers via QR scan</li>
