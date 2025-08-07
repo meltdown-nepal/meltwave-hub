@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
     <>
       <SEO
         title="Privacy Policy"
-        description="Privacy Policy for Meltdown - Learn how we collect, use, and protect your personal information"
+        description="Privacy Policy for Meltdown Nepal - Learn how we collect, use, and protect your personal information"
         canonical="https://meltdownnepal.com/privacy-policy"
       />
       
@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
                   <div className="mb-6">
                     <h3 className="text-xl font-medium text-foreground mb-3">c. Health and Fitness Data</h3>
                     <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                      <li>Step count and related metrics from Apple Health and Google Fit</li>
+                      <li>Step count and related metrics from Apple Health and Health Connect</li>
                     </ul>
                   </div>
 
