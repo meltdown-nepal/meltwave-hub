@@ -20,22 +20,22 @@ const PrivacyPolicy = () => {
                   Privacy Policy
                 </h1>
                 <p className="text-muted-foreground text-lg">
-                  Effective Date: 31st July, 2025 | Last Updated: 5th August, 2025
+                  Effective Date: 31st July, 2025 | Last Updated: 7th August, 2025
                 </p>
               </div>
 
               <div className="prose prose-lg max-w-none text-foreground">
                 <p className="text-lg leading-relaxed mb-8">
-                  Welcome to Meltdown. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our mobile application and visit our website at <a href="https://meltdownnepal.com" className="text-primary hover:underline">https://meltdownnepal.com</a>.
+                  Welcome to Meltdown Nepal. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our mobile application and visit our website at <a href="https://meltdownnepal.com" className="text-primary hover:underline">https://meltdownnepal.com</a>.
                 </p>
                 
                 <p className="text-lg leading-relaxed mb-12">
-                  By using Meltdown, you agree to the practices described in this Privacy Policy.
+                  By using Meltdown Nepal, you agree to the practices described in this Privacy Policy.
                 </p>
 
                 <section className="mb-10">
                   <h2 className="text-2xl font-semibold text-foreground mb-6">1. Information We Collect</h2>
-                  <p className="mb-4">When you use Meltdown, we may collect the following information:</p>
+                  <p className="mb-4">When you use Meltdown Nepal, we may collect the following information:</p>
                   
                   <div className="mb-6">
                     <h3 className="text-xl font-medium text-foreground mb-3">a. Personal Information</h3>
@@ -96,7 +96,7 @@ const PrivacyPolicy = () => {
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-4">
                     <li>Firebase (Notification)</li>
-                    <li>Apple HealthKit and Google Fit (to access step data with your permission)</li>
+                    <li>Apple Health and Health Connect (to read steps data with your permission)</li>
                     <li>Sentry (for crash reporting and performance monitoring)</li>
                   </ul>
                   <p className="text-muted-foreground">
