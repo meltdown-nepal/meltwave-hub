@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Dumbbell, HeartPulse, Timer } from "lucide-react";
@@ -91,7 +92,7 @@ export default function EventHeroSection({
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="w-full h-full">
           <HeroImage 
-            src="/lovable-uploads/06f13e5b-dd31-41bf-abda-f09377f873fe.png" 
+            src="/lovable-uploads/e4ea04a4-da6f-43ab-8bc8-f7004937d9d7.png" 
             alt="Group of fitness enthusiasts at a stadium track" 
             className="w-full h-full object-cover transition-all duration-500"
             priority
