@@ -55,8 +55,8 @@ const TrainerDetail = () => {
 
   const { data: trainer, isLoading: trainerLoading } = useQuery({
     queryKey: ['public-trainer', trainerId],
-    queryFn: async () => {
-      const { data, error } = await supabase.rpc('get_public_trainers');
+    queryFn: async (): Promise<Trainer> => {
+      const { data, error } = await supabase.rpc('get_public_trainers') as { data: Trainer[] | null, error: any };
       
       if (error) throw error;
       
@@ -67,7 +67,7 @@ const TrainerDetail = () => {
       const trainerData = data.find((t: Trainer) => t.id === trainerId);
       if (!trainerData) throw new Error('Trainer not found');
       
-      return trainerData as Trainer;
+      return trainerData;
     }
   });
 

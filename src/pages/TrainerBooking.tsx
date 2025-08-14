@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -20,11 +19,11 @@ interface Trainer {
 const TrainerBooking = () => {
   const { data: trainers, isLoading, error } = useQuery({
     queryKey: ['public-trainers'],
-    queryFn: async () => {
-      const { data, error } = await supabase.rpc('get_public_trainers');
+    queryFn: async (): Promise<Trainer[]> => {
+      const { data, error } = await supabase.rpc('get_public_trainers') as { data: Trainer[] | null, error: any };
       
       if (error) throw error;
-      return data as Trainer[];
+      return data || [];
     }
   });
 
