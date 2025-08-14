@@ -2,7 +2,7 @@
 import { z } from "zod";
 
 export const demoFormSchema = z.object({
-  userType: z.enum(["company", "employee"]),
+  userType: z.enum(["company", "employee", "provider"]),
   companySize: z.string().min(1, "Please select company size"),
   companyName: z.string().min(2, "Company name must be at least 2 characters"),
   companyType: z.string().min(1, "Please select company type"),
