@@ -60,6 +60,10 @@ const TrainerDetail = () => {
       
       if (error) throw error;
       
+      if (!data || data.length === 0) {
+        throw new Error('No trainers found');
+      }
+      
       const trainerData = data.find((t: Trainer) => t.id === trainerId);
       if (!trainerData) throw new Error('Trainer not found');
       

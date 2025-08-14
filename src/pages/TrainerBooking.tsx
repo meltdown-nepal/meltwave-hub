@@ -12,8 +12,8 @@ interface Trainer {
   id: string;
   name: string;
   bio: string;
-  profile_picture_url: string;
-  specialties: string[];
+  profile_picture_url: string | null;
+  specialties: string[] | null;
   hourly_rate: number;
 }
 
