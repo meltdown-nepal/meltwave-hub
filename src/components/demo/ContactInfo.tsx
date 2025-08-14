@@ -1,144 +1,133 @@
 
 import React from "react";
-import { Mail, Phone, User, MessageSquare } from "lucide-react";
+import { UseFormReturn } from "react-hook-form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import { Checkbox } from "@/components/ui/checkbox";
 import { DemoFormData } from "@/lib/types/demo";
-import { UseFormReturn } from "react-hook-form";
 
-interface Props {
+interface ContactInfoProps {
   form: UseFormReturn<DemoFormData>;
   onSubmit: () => void;
   onBack: () => void;
-  isSubmitting?: boolean;
+  isSubmitting: boolean;
 }
 
-export const ContactInfo: React.FC<Props> = ({
-  form,
-  onSubmit,
-  onBack,
-  isSubmitting = false,
-}) => {
-  const handlePhoneKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Allow: backspace, delete, tab, escape, enter
-    if (
-      [8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
-      // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
-      (e.keyCode === 65 && e.ctrlKey === true) ||
-      (e.keyCode === 67 && e.ctrlKey === true) ||
-      (e.keyCode === 86 && e.ctrlKey === true) ||
-      (e.keyCode === 88 && e.ctrlKey === true) ||
-      // Allow: home, end, left, right
-      (e.keyCode >= 35 && e.keyCode <= 39)
-    ) {
-      return;
-    }
-
-    // Allow: numbers (0-9), space, hyphen, parentheses, plus sign
-    const char = String.fromCharCode(e.keyCode);
-    if (!/[0-9\s\-\(\)\+]/.test(char)) {
-      e.preventDefault();
-    }
-  };
-
-  const handlePhoneInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Remove any non-numeric characters except spaces, hyphens, parentheses, and plus
-    const value = e.target.value.replace(/[^0-9\s\-\(\)\+]/g, '');
-    form.setValue('phone', value);
-  };
-
+export function ContactInfo({ form, onSubmit, onBack, isSubmitting }: ContactInfoProps) {
   return (
-    <div className="space-y-6 animate-fade-in">
-      <FormField
-        control={form.control}
-        name="fullName"
-        render={({ field }) => (
-          <FormItem className="space-y-4">
-            <FormLabel className="text-2xl font-semibold">What's your name?</FormLabel>
-            <FormControl>
-              <div className="relative">
-                <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                <Input className="pl-10" placeholder="Full name" {...field} />
-              </div>
-            </FormControl>
-            <FormMessage className="text-red-500" />
-          </FormItem>
-        )}
-      />
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">Contact Information</h2>
+        <p className="text-gray-600">We'll use this to get in touch with you</p>
+      </div>
 
-      <FormField
-        control={form.control}
-        name="email"
-        render={({ field }) => (
-          <FormItem className="space-y-4">
-            <FormLabel className="text-2xl font-semibold">What's your work email?</FormLabel>
-            <FormControl>
-              <div className="relative">
-                <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                <Input className="pl-10" placeholder="work@company.com" {...field} />
-              </div>
-            </FormControl>
-            <FormMessage className="text-red-500" />
-          </FormItem>
-        )}
-      />
+      <div className="space-y-4">
+        <FormField
+          control={form.control}
+          name="fullName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Full Name *</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter your full name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-      <FormField
-        control={form.control}
-        name="phone"
-        render={({ field }) => (
-          <FormItem className="space-y-4">
-            <FormLabel className="text-2xl font-semibold">What's your phone number?</FormLabel>
-            <FormControl>
-              <div className="relative">
-                <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email Address *</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="Enter your email address" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone Number *</FormLabel>
+              <FormControl>
                 <Input 
-                  className="pl-10" 
-                  placeholder="Your phone number" 
+                  type="tel" 
+                  placeholder="Enter your phone number" 
                   {...field} 
-                  onKeyDown={handlePhoneKeyPress}
-                  onChange={handlePhoneInput}
                 />
-              </div>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-      <FormField
-        control={form.control}
-        name="additionalDetails"
-        render={({ field }) => (
-          <FormItem className="space-y-4">
-            <FormLabel className="text-2xl font-semibold">Additional Details</FormLabel>
-            <FormControl>
-              <div className="relative">
-                <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+        <FormField
+          control={form.control}
+          name="phoneContact"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="text-sm font-normal">
+                  I prefer to be contacted by phone
+                </FormLabel>
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="additionalDetails"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Additional Details (Optional)</FormLabel>
+              <FormControl>
                 <Textarea 
-                  className="pl-10 min-h-[100px]" 
-                  placeholder="Tell us more about what you're looking for or any specific requirements..."
-                  {...field} 
+                  placeholder="Tell us more about your wellness needs or any specific questions..."
+                  className="min-h-[100px]"
+                  {...field}
                 />
-              </div>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
 
-      <p className="text-sm text-gray-500">No spam. Only relevant info from our team.</p>
-
-      <div className="flex justify-between pt-6">
-        <Button type="button" variant="outline" onClick={onBack} disabled={isSubmitting}>
+      <div className="flex gap-3">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onBack}
+          className="flex-1"
+          disabled={isSubmitting}
+        >
           Back
         </Button>
-        <Button type="button" onClick={onSubmit} disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Submit"}
+        <Button
+          type="submit"
+          onClick={onSubmit}
+          disabled={isSubmitting}
+          className="flex-1 btn-primary"
+        >
+          {isSubmitting ? "Submitting..." : "Submit Request"}
         </Button>
       </div>
     </div>
   );
-};
+}
