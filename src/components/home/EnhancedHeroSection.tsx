@@ -83,15 +83,15 @@ const EnhancedHeroSection = () => {
             <AnimatedElement animation="slideUp" delay={1.0}>
               <div className="grid grid-cols-3 gap-4 pt-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900 font-inter">20+</div>
+                  <div className="text-2xl font-bold text-gray-900 font-inter">30+</div>
                   <div className="text-xs text-gray-600 font-inter">Companies</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900 font-inter">90+</div>
+                  <div className="text-2xl font-bold text-gray-900 font-inter">95+</div>
                   <div className="text-xs text-gray-600 font-inter">Wellness Partners</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900 font-inter">800+</div>
+                  <div className="text-2xl font-bold text-gray-900 font-inter">3,000+</div>
                   <div className="text-xs text-gray-600 font-inter">Happy Employees</div>
                 </div>
               </div>
