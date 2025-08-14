@@ -20,7 +20,10 @@ const TrainerBooking = () => {
   const { data: trainers, isLoading, error } = useQuery({
     queryKey: ['public-trainers'],
     queryFn: async (): Promise<Trainer[]> => {
-      const { data, error } = await supabase.rpc('get_public_trainers') as { data: Trainer[] | null, error: any };
+      // Query trainers table directly, selecting only public information
+      const { data, error } = await supabase
+        .from('trainers')
+        .select('id, name, bio, profile_picture_url, specialties, hourly_rate');
       
       if (error) throw error;
       return data || [];
