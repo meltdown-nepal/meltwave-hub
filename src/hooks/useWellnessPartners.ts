@@ -12,13 +12,25 @@ export const useWellnessPartners = () => {
     const fetchPartners = async () => {
       try {
         setLoading(true);
+        
+        // Note: This query may now require authentication due to updated RLS policies
+        // If wellness_partners table is not public, this will need to be updated
         const { data, error } = await supabase
           .from('wellness_partners')
           .select('*')
           .order('tier', { ascending: false }) // Platinum first, then Gold, then Basic
           .order('name', { ascending: true });
 
-        if (error) throw error;
+        if (error) {
+          // Handle the case where data might not be accessible due to RLS
+          if (error.code === 'PGRST116' || error.message.includes('row-level security')) {
+            console.warn('Wellness partners data requires authentication or is restricted');
+            setPartners([]);
+            setError('Wellness partners data is currently restricted');
+            return;
+          }
+          throw error;
+        }
 
         // Transform database data to match our Partner interface
         const transformedPartners: Partner[] = data.map(partner => ({

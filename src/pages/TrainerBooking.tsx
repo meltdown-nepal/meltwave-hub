@@ -13,19 +13,15 @@ interface Trainer {
   name: string;
   bio: string;
   profile_picture_url: string;
-  email: string;
   specialties: string[];
   hourly_rate: number;
 }
 
 const TrainerBooking = () => {
   const { data: trainers, isLoading, error } = useQuery({
-    queryKey: ['trainers'],
+    queryKey: ['public-trainers'],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('trainers')
-        .select('*')
-        .order('name');
+      const { data, error } = await supabase.rpc('get_public_trainers');
       
       if (error) throw error;
       return data as Trainer[];

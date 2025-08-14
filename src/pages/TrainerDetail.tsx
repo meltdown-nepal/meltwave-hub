@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -55,16 +54,16 @@ const TrainerDetail = () => {
   });
 
   const { data: trainer, isLoading: trainerLoading } = useQuery({
-    queryKey: ['trainer', trainerId],
+    queryKey: ['public-trainer', trainerId],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('trainers')
-        .select('*')
-        .eq('id', trainerId)
-        .single();
+      const { data, error } = await supabase.rpc('get_public_trainers');
       
       if (error) throw error;
-      return data as Trainer;
+      
+      const trainerData = data.find((t: Trainer) => t.id === trainerId);
+      if (!trainerData) throw new Error('Trainer not found');
+      
+      return trainerData as Trainer;
     }
   });
 
@@ -86,6 +85,13 @@ const TrainerDetail = () => {
 
   const bookingMutation = useMutation({
     mutationFn: async (booking: BookingForm) => {
+      // Note: This will now require authentication due to the new RLS policies
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        throw new Error('Authentication required to make a booking');
+      }
+
       const { data, error } = await supabase
         .from('bookings')
         .insert({
@@ -118,12 +124,21 @@ const TrainerDetail = () => {
       queryClient.invalidateQueries({ queryKey: ['trainer-slots', trainerId] });
       navigate('/booking-confirmation', { state: { bookingId: data.id } });
     },
-    onError: (error) => {
-      toast({
-        title: "Booking Failed",
-        description: "There was an error creating your booking. Please try again.",
-        variant: "destructive",
-      });
+    onError: (error: any) => {
+      if (error.message.includes('Authentication required')) {
+        toast({
+          title: "Authentication Required",
+          description: "Please sign in to make a booking.",
+          variant: "destructive",
+        });
+        // Could redirect to login page here
+      } else {
+        toast({
+          title: "Booking Failed",
+          description: "There was an error creating your booking. Please try again.",
+          variant: "destructive",
+        });
+      }
       console.error('Booking error:', error);
     }
   });
@@ -134,8 +149,21 @@ const TrainerDetail = () => {
     setShowBookingForm(true);
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check authentication before proceeding
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
+      toast({
+        title: "Authentication Required",
+        description: "Please sign in to make a booking.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!selectedSlot || !bookingForm.user_name || !bookingForm.user_email) {
       toast({
         title: "Missing Information",
@@ -144,6 +172,7 @@ const TrainerDetail = () => {
       });
       return;
     }
+    
     bookingMutation.mutate(bookingForm);
   };
 
@@ -271,6 +300,12 @@ const TrainerDetail = () => {
                         </p>
                       </div>
                     )}
+
+                    <div className="bg-yellow-50 p-4 rounded-lg">
+                      <p className="text-sm text-yellow-800">
+                        <strong>Note:</strong> You need to be signed in to make a booking. The booking system now requires authentication for security.
+                      </p>
+                    </div>
 
                     <form onSubmit={handleBookingSubmit} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
