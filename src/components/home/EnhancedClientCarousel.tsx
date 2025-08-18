@@ -73,6 +73,22 @@ const clientLogos = [{
   id: 18,
   src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
   alt: "CloudFactory Logo"
+}, {
+  id: 19,
+  src: "/lovable-uploads/d8eecbf8-572c-4c1b-9c58-56a63e1d0830.png",
+  alt: "Business Advantage Private Limited Logo"
+}, {
+  id: 20,
+  src: "/lovable-uploads/1e08929c-3292-4da2-bf8c-d3652b82bf11.png",
+  alt: "Alaya Logo"
+}, {
+  id: 21,
+  src: "/lovable-uploads/fd2c93b6-d24f-4360-9804-0638064fd657.png",
+  alt: "PMSquare Logo"
+}, {
+  id: 22,
+  src: "/lovable-uploads/00e2bcfc-5eb2-4061-82f4-05046939277a.png",
+  alt: "CareBoarding Technology Platform Logo"
 }];
 
 const EnhancedClientCarousel = () => {
