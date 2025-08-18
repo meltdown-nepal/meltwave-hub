@@ -47,7 +47,7 @@ export default function EventGallerySection() {
         }}>
           <CarouselContent className="pl-0 md:pl-4">
             {shuffledImages.map((img, index) => (
-              <CarouselItem key={img.src} className="basis-11/12 md:basis-1/4 px-2">
+              <CarouselItem key={`${img.src}-${index}`} className="basis-11/12 md:basis-1/4 px-2">
                 <div className="rounded-lg overflow-hidden hover-scale shadow-lg transition-all duration-300 group cursor-pointer aspect-[3/4] bg-gray-100 flex items-center justify-center">
                   <OptimizedImageV2 
                     src={img.src} 
@@ -57,6 +57,9 @@ export default function EventGallerySection() {
                     height={600}
                     priority={index < 4}
                     sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 25vw"
+                    onError={(e) => {
+                      console.error(`Failed to load gallery image: ${img.src}`);
+                    }}
                   />
                 </div>
               </CarouselItem>
