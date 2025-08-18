@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
@@ -13,16 +14,53 @@ const Blog = () => {
       date: "January 16, 2025",
       readTime: "8 min read",
       image: "/lovable-uploads/9ffaea78-830d-4871-a60f-e24422f4ebd7.png"
+    },
+    {
+      id: 2,
+      title: "Top 10 Gyms in Kathmandu Valley",
+      excerpt: "Looking for the best gyms in Kathmandu? Discover the top 10 gyms in Kathmandu Valley that offer quality equipment, expert trainers, and the perfect environment for your fitness journey.",
+      date: "January 18, 2025",
+      readTime: "12 min read",
+      image: "/lovable-uploads/WellnessSessions.webp"
     }
   ];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Meltdown Blog - Corporate Wellness Insights",
+    "description": "Expert insights on corporate wellness in Nepal, gym reviews, and employee wellbeing strategies",
+    "url": "https://meltdownnepal.com/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Meltdown Wellbeing",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://meltdownnepal.com/lovable-uploads/a44d1192-3b50-4319-8b71-b312a47bf095.png"
+      }
+    },
+    "blogPost": blogPosts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": new Date(post.date).toISOString(),
+      "author": {
+        "@type": "Organization",
+        "name": "Meltdown Wellbeing"
+      },
+      "image": `https://meltdownnepal.com${post.image}`,
+      "url": `https://meltdownnepal.com/blog/${post.id}`
+    }))
+  };
 
   return (
     <>
       <SEO 
-        title="Meltdown Blog – Corporate Wellness Insights"
-        description="Discover corporate wellness insights and trends in Nepal. Expert advice on employee wellbeing, workplace wellness programs, and healthy workplace culture."
-        keywords="Corporate wellness in Nepal, employee wellbeing, workplace wellness, corporate health programs, wellness insights Nepal"
+        title="Meltdown Blog – Corporate Wellness & Fitness Insights in Nepal"
+        description="Discover corporate wellness insights, gym reviews, and fitness trends in Nepal. Expert advice on employee wellbeing, workplace wellness programs, and the best gyms in Kathmandu Valley."
+        keywords="Corporate wellness Nepal, employee wellbeing, workplace wellness, best gyms Kathmandu, fitness centers Nepal, gym reviews Kathmandu Valley, corporate health programs"
         canonical="https://meltdownnepal.com/blog"
+        structuredData={structuredData}
       />
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -33,11 +71,11 @@ const Blog = () => {
               Meltdown Blog
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold text-foreground/90 mb-4">
-              Corporate Wellness Insights
+              Corporate Wellness & Fitness Insights
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Discover expert insights on corporate wellness in Nepal. Learn how to build healthier workplaces, 
-              improve employee wellbeing, and create sustainable wellness programs that drive business success.
+              Discover expert insights on corporate wellness in Nepal, comprehensive gym reviews, and fitness trends. 
+              Learn how to build healthier workplaces, find the best gyms in Kathmandu Valley, and create sustainable wellness programs.
             </p>
           </div>
         </div>
@@ -88,7 +126,7 @@ const Blog = () => {
           <div className="text-center bg-card/50 backdrop-blur-sm rounded-xl p-8 border border-border/20">
             <h3 className="text-2xl font-semibold font-header mb-4">Stay Updated</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              More insightful articles on corporate wellness in Nepal coming soon! 
+              More insightful articles on corporate wellness and fitness insights in Nepal coming soon! 
               Subscribe to our newsletter to be the first to know.
             </p>
             <a 
