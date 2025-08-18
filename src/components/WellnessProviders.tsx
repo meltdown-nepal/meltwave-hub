@@ -1,55 +1,14 @@
 
 import React from 'react';
+import OptimizedImageV2 from './OptimizedImageV2';
+import { IMAGE_REGISTRY } from '../utils/imageRegistry';
 
-const clientLogos = [{
-  id: 1,
-  src: "/lovable-uploads/397c4685-d91a-452b-b4fa-51c0f4236ee7.png",
-  alt: "Athlete Land"
-}, {
-  id: 2,
-  src: "/lovable-uploads/1b36a7dd-923f-4af1-8b78-0c422d5f576c.png",
-  alt: "AWA Club"
-}, {
-  id: 3,
-  src: "/lovable-uploads/14a3b627-4a42-469a-a6a5-d6f54dbb06ad.png",
-  alt: "Bajra Sports Centre"
-}, {
-  id: 4,
-  src: "/lovable-uploads/201cad4a-1cf7-49c2-961f-5e1c1760e01f.png",
-  alt: "Bands Fitness"
-}, {
-  id: 5,
-  src: "/lovable-uploads/cf919e11-e768-4da0-8356-f14df6a3e4f0.png",
-  alt: "Blackstar Fitness"
-}, {
-  id: 6,
-  src: "/lovable-uploads/bdc58112-4650-4b00-9673-ff29a29f2db5.png",
-  alt: "Beauty & The Beast Fitness Station"
-}, {
-  id: 7,
-  src: "/lovable-uploads/8acbd348-e2ba-45d5-9056-60b939d71eae.png",
-  alt: "Bob's Gym"
-}, {
-  id: 8,
-  src: "/lovable-uploads/06891232-b111-41e1-aa37-b381970e4df0.png",
-  alt: "E Dev Gym"
-}, {
-  id: 9,
-  src: "/lovable-uploads/719006e5-d062-44b4-99ba-8fbd518b54e7.png",
-  alt: "Ekarana Muay Thai"
-}, {
-  id: 10,
-  src: "/lovable-uploads/13b7cac1-6f5d-49af-a91d-95098751d3ee.png",
-  alt: "Happy Minds"
-}, {
-  id: 11,
-  src: "/lovable-uploads/ff546b12-05d6-4589-88bc-6dccce67bf1c.png",
-  alt: "Regal Fitness"
-}, {
-  id: 12,
-  src: "/lovable-uploads/5c9d285f-e605-40e0-9db4-01d516e2b888.png",
-  alt: "Riddhi Pilates Studios"
-}];
+// Convert registry to array format for carousel
+const clientLogos = Object.entries(IMAGE_REGISTRY.wellnessProviders).map(([key, src], index) => ({
+  id: index + 1,
+  src,
+  alt: key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1').trim()
+}));
 
 const WellnessProvidersCarousel = () => {
   // Optimize by limiting visible logos for better performance
@@ -69,7 +28,6 @@ const WellnessProvidersCarousel = () => {
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget;
     console.log(`✅ Wellness provider image loaded: ${img.src}`);
-    img.style.opacity = '1';
   };
 
   return (
@@ -89,19 +47,15 @@ const WellnessProvidersCarousel = () => {
                   key={`${logo.id}-${index}`} 
                   className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4"
                 >
-                  <img
+                  <OptimizedImageV2
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-opacity duration-300 opacity-0"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain"
                     width={180}
                     height={80}
-                    loading={index > 8 ? 'lazy' : 'eager'}
-                    decoding="async"
+                    priority={index < 8}
                     onLoad={handleImageLoad}
                     onError={handleImageError}
-                    style={{ 
-                      transition: 'opacity 0.3s ease'
-                    }}
                   />
                 </div>
               ))}

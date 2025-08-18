@@ -1,95 +1,14 @@
 
 import React from 'react';
+import OptimizedImageV2 from '../OptimizedImageV2';
+import { IMAGE_REGISTRY } from '../../utils/imageRegistry';
 
-const clientLogos = [{
-  id: 1,
-  src: "/lovable-uploads/Veda.png",
-  alt: "Veda Logo"
-}, {
-  id: 2,
-  src: "/lovable-uploads/Karobar.png",
-  alt: "Karobar Logo"
-}, {
-  id: 3,
-  src: "/lovable-uploads/naamche.png",
-  alt: "Naamche Logo"
-}, {
-  id: 4,
-  src: "/lovable-uploads/SecurityPal.png",
-  alt: "SecurityPal Logo"
-}, {
-  id: 5,
-  src: "/lovable-uploads/HimalayanJava.png",
-  alt: "Himalayan Java Logo"
-}, {
-  id: 6,
-  src: "/lovable-uploads/flextecs.png",
-  alt: "FlexTecs Logo"
-}, {
-  id: 7,
-  src: "/lovable-uploads/GolchhaGroup.png",
-  alt: "Golchha Group Logo"
-}, {
-  id: 8,
-  src: "/lovable-uploads/YoungInnovations.png",
-  alt: "Young Innovations Logo"
-}, {
-  id: 9,
-  src: "/lovable-uploads/leapfrog.png",
-  alt: "Leapfrog Logo"
-}, {
-  id: 10,
-  src: "/lovable-uploads/shanker.png",
-  alt: "Shanker Logo"
-}, {
-  id: 11,
-  src: "/lovable-uploads/KingsCollege.png",
-  alt: "Kings College Logo"
-}, {
-  id: 12,
-  src: "/lovable-uploads/ottr.png",
-  alt: "Ottr Logo"
-}, {
-  id: 13,
-  src: "/lovable-uploads/CodingMountain.png",
-  alt: "Coding Mountain Logo"
-}, {
-  id: 14,
-  src: "/lovable-uploads/JagadambaMotors.png",
-  alt: "Jagadamba Motors Logo"
-}, {
-  id: 15,
-  src: "/lovable-uploads/OwlDigital.png",
-  alt: "Owl Digital Logo"
-}, {
-  id: 16,
-  src: "/lovable-uploads/KavyaSports.png",
-  alt: "Kavya Sports Logo"
-}, {
-  id: 17,
-  src: "/lovable-uploads/Stalwart.png",
-  alt: "Stalwart Logo"
-}, {
-  id: 18,
-  src: "/lovable-uploads/e3eb0025-e6fd-41c8-8f07-efb1d04c635b.png",
-  alt: "CloudFactory Logo"
-}, {
-  id: 19,
-  src: "/lovable-uploads/d8eecbf8-572c-4c1b-9c58-56a63e1d0830.png",
-  alt: "Business Advantage Private Limited Logo"
-}, {
-  id: 20,
-  src: "/lovable-uploads/1e08929c-3292-4da2-bf8c-d3652b82bf11.png",
-  alt: "Alaya Logo"
-}, {
-  id: 21,
-  src: "/lovable-uploads/fd2c93b6-d24f-4360-9804-0638064fd657.png",
-  alt: "PMSquare Logo"
-}, {
-  id: 22,
-  src: "/lovable-uploads/00e2bcfc-5eb2-4061-82f4-05046939277a.png",
-  alt: "CareBoarding Technology Platform Logo"
-}];
+// Convert registry to array format for carousel
+const clientLogos = Object.entries(IMAGE_REGISTRY.companies).map(([key, src], index) => ({
+  id: index + 1,
+  src,
+  alt: `${key.charAt(0).toUpperCase() + key.slice(1)} Logo`
+}));
 
 const EnhancedClientCarousel = () => {
   // Show all logos instead of limiting to 12
@@ -109,7 +28,6 @@ const EnhancedClientCarousel = () => {
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget;
     console.log(`✅ Client company image loaded: ${img.src}`);
-    img.style.opacity = '1';
   };
 
   return (
@@ -129,19 +47,15 @@ const EnhancedClientCarousel = () => {
                   key={`${logo.id}-${index}`} 
                   className="logo-container flex-shrink-0 flex items-center justify-center px-6 py-4 bg-white rounded-lg shadow-sm mx-2"
                 >
-                  <img
+                  <OptimizedImageV2
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain transition-opacity duration-300 opacity-0"
+                    className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain"
                     width={180}
                     height={80}
-                    loading={index > 8 ? 'lazy' : 'eager'}
-                    decoding="async"
+                    priority={index < 8}
                     onLoad={handleImageLoad}
                     onError={handleImageError}
-                    style={{ 
-                      transition: 'opacity 0.3s ease'
-                    }}
                   />
                 </div>
               ))}

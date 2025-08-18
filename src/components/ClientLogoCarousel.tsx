@@ -1,21 +1,14 @@
 
 import React from 'react';
-import OptimizedImage from './OptimizedImage';
+import OptimizedImageV2 from './OptimizedImageV2';
+import { IMAGE_REGISTRY } from '../utils/imageRegistry';
 
-const clientLogos = [
-  { id: 1, src: "/lovable-uploads/Veda.png", alt: "Veda Logo" },
-  { id: 2, src: "/lovable-uploads/Karobar.png", alt: "Karobar Logo" },
-  { id: 3, src: "/lovable-uploads/naamche.png", alt: "Naamche Logo" },
-  { id: 4, src: "/lovable-uploads/SecurityPal.png", alt: "SecurityPal Logo" },
-  { id: 5, src: "/lovable-uploads/HimalayanJava.png", alt: "Himalayan Java Logo" },
-  { id: 6, src: "/lovable-uploads/flextecs.png", alt: "FlexTecs Logo" },
-  { id: 7, src: "/lovable-uploads/GolchhaGroup.png", alt: "Golchha Group Logo" },
-  { id: 8, src: "/lovable-uploads/YoungInnovations.png", alt: "Young Innovations Logo" },
-  { id: 9, src: "/lovable-uploads/leapfrog.png", alt: "Leapfrog Logo" },
-  { id: 10, src: "/lovable-uploads/shanker.png", alt: "Shanker Logo" },
-  { id: 11, src: "/lovable-uploads/KingsCollege.png", alt: "Kings College Logo" },
-  { id: 12, src: "/lovable-uploads/ottr.png", alt: "Ottr Logo" }
-];
+// Convert registry to array format for carousel
+const clientLogos = Object.entries(IMAGE_REGISTRY.companies).map(([key, src], index) => ({
+  id: index + 1,
+  src,
+  alt: `${key.charAt(0).toUpperCase() + key.slice(1)} Logo`
+}));
 
 const ClientLogoCarousel = () => {
   // Optimize by limiting visible logos
@@ -39,15 +32,14 @@ const ClientLogoCarousel = () => {
                   key={`${logo.id}-${index}`}
                   className="flex-shrink-0 flex items-center justify-center px-6 py-4"
                 >
-                  <OptimizedImage
+                  <OptimizedImageV2
                     src={logo.src}
                     alt={logo.alt}
                     className="h-16 md:h-20 w-auto max-w-[140px] md:max-w-[180px] object-contain"
                     width={180}
                     height={80}
-                    // REMOVED lazy
                     sizes="180px"
-                    // REMOVED quality and responsive, since not in props
+                    priority={index < 6}
                   />
                 </div>
               ))}
