@@ -29,31 +29,27 @@ const WellnessProviders = () => {
       <section className="py-12 bg-white">
         <div className="container-custom">
           <div className="relative">
-            {/* Gradient overlays */}
-            <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-            
             {/* Scrolling container with CSS animation */}
             <div className="flex overflow-hidden">
               <div 
                 className="flex will-change-transform" 
                 style={{
-                  animation: 'smoothScroll 80s linear infinite',
+                  animation: 'smoothScroll 40s linear infinite',
                   width: 'fit-content'
                 }}
               >
                 {duplicatedLogos.map((logo, index) => (
                   <div 
                     key={`${logo.id}-${index}`} 
-                    className="flex-shrink-0 mx-8 md:mx-10 h-20 flex items-center justify-center"
+                    className="flex-shrink-0 mx-4 md:mx-6 h-20 flex items-center justify-center"
                   >
                     <OptimizedImageV2 
                       src={logo.src} 
                       alt={logo.alt} 
-                      className="max-h-16 w-auto object-contain" 
-                      width={160} 
-                      height={64} 
-                      sizes="160px" 
+                      className="max-h-20 w-auto object-contain" 
+                      width={200} 
+                      height={80} 
+                      sizes="200px" 
                     />
                   </div>
                 ))}
@@ -71,7 +67,7 @@ const WellnessProviders = () => {
           
           @media (prefers-reduced-motion: reduce) {
             [style*="smoothScroll"] {
-              animation-duration: 160s !important;
+              animation-duration: 80s !important;
             }
           }
         `}</style>
