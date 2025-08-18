@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
@@ -388,8 +389,8 @@ const BlogPost = () => {
                 }
               </p>
               <Button asChild size="lg">
-                <Link to={blogPost.id === 2 ? "/packages" : "/schedule-demo"}>
-                  {blogPost.id === 2 ? "View Packages" : "Get Demo"}
+                <Link to="/schedule-demo">
+                  {blogPost.id === 2 ? "Get Demo" : "Get Demo"}
                 </Link>
               </Button>
             </div>
