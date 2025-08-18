@@ -41,7 +41,7 @@ const WellnessProvidersCarousel = () => {
           
           {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
-            <div className="animate-seamless-scroll flex will-change-transform">
+            <div className="animate-seamless-scroll-45 flex will-change-transform w-fit">
               {duplicatedLogos.map((logo, index) => (
                 <div 
                   key={`${logo.id}-${index}`} 
@@ -64,28 +64,7 @@ const WellnessProvidersCarousel = () => {
         </div>
       </div>
 
-      {/* Optimized CSS animation for better performance */}
-      <style>{`
-        @keyframes seamless-scroll {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        .animate-seamless-scroll {
-          animation: seamless-scroll 45s linear infinite;
-          width: fit-content;
-          will-change: transform;
-          backface-visibility: hidden;
-          perspective: 1000px;
-          transform: translateZ(0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .animate-seamless-scroll {
-            animation-duration: 90s;
-          }
-        }
-      `}</style>
+      {/* Removed inline CSS; animation handled by Tailwind config */}
     </section>
   );
 };

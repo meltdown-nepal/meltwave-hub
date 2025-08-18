@@ -41,7 +41,7 @@ const EnhancedClientCarousel = () => {
           
           {/* Optimized scrolling container */}
           <div className="flex overflow-hidden">
-            <div className="animate-seamless-scroll flex will-change-transform">
+            <div className="animate-seamless-scroll-60 flex will-change-transform w-fit hover:[animation-play-state:paused]">
               {duplicatedLogos.map((logo, index) => (
                 <div 
                   key={`${logo.id}-${index}`} 
@@ -64,28 +64,7 @@ const EnhancedClientCarousel = () => {
         </div>
       </div>
 
-      {/* Optimized CSS animation for better performance */}
-      <style>{`
-        @keyframes seamless-scroll {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        .animate-seamless-scroll {
-          animation: seamless-scroll 60s linear infinite;
-          width: fit-content;
-          will-change: transform;
-          backface-visibility: hidden;
-          perspective: 1000px;
-          transform: translateZ(0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .animate-seamless-scroll {
-            animation-duration: 120s;
-          }
-        }
-      `}</style>
+      {/* Removed inline CSS; animation handled by Tailwind config */}
     </section>
   );
 };
