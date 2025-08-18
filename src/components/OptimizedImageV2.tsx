@@ -9,8 +9,8 @@ interface OptimizedImageV2Props {
   width?: number;
   height?: number;
   sizes?: string;
-  onLoad?: () => void;
-  onError?: () => void;
+  onLoad?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
+  onError?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
   priority?: boolean;
   fallbackSrc?: string;
 }
@@ -31,12 +31,12 @@ const OptimizedImageV2: React.FC<OptimizedImageV2Props> = ({
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const handleLoad = useCallback(() => {
+  const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     setIsLoaded(true);
-    onLoad?.();
+    onLoad?.(e);
   }, [onLoad]);
 
-  const handleError = useCallback(() => {
+  const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     if (!hasError) {
       setHasError(true);
       // Try fallback to original format if WebP fails
@@ -46,7 +46,7 @@ const OptimizedImageV2: React.FC<OptimizedImageV2Props> = ({
         setCurrentSrc(fallbackSrc);
       }
     }
-    onError?.();
+    onError?.(e);
   }, [hasError, currentSrc, src, fallbackSrc, onError]);
 
   // Generate responsive srcSet for better performance
