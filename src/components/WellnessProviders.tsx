@@ -1,19 +1,15 @@
 import React from 'react';
 import { IMAGE_REGISTRY } from '../utils/imageRegistry';
 import OptimizedImageV2 from '../components/OptimizedImageV2';
-
 const wellnessLogos = Object.entries(IMAGE_REGISTRY.wellnessProviders).map(([key, src], index) => ({
   id: index + 1,
   src,
   alt: key.replace(/([A-Z])/g, ' $1').trim()
 }));
-
 const WellnessProviders = () => {
   // Duplicate logos for seamless scrolling
   const duplicatedLogos = [...wellnessLogos, ...wellnessLogos];
-
-  return (
-    <div>
+  return <div>
       <section className="py-20 bg-gradient-to-b from-primary/20 to-white">
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -27,12 +23,7 @@ const WellnessProviders = () => {
       
       <section className="py-12 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Wellness Network</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              These amazing gyms, studios, and wellness centers help power the Meltdown experience.
-            </p>
-          </div>
+          
 
           <div className="relative">
             {/* Gradient overlays */}
@@ -41,28 +32,13 @@ const WellnessProviders = () => {
             
             {/* Scrolling container with CSS animation */}
             <div className="flex overflow-hidden">
-              <div 
-                className="flex will-change-transform"
-                style={{
-                  animation: 'seamlessScroll 45s linear infinite',
-                  width: 'fit-content'
-                }}
-              >
-                {duplicatedLogos.map((logo, index) => (
-                  <div 
-                    key={`${logo.id}-${index}`} 
-                    className="flex-shrink-0 mx-6 md:mx-8 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
-                  >
-                    <OptimizedImageV2
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-h-12 w-auto object-contain filter brightness-75 hover:brightness-100 transition-all duration-300"
-                      width={120}
-                      height={48}
-                      sizes="120px"
-                    />
-                  </div>
-                ))}
+              <div className="flex will-change-transform" style={{
+              animation: 'seamlessScroll 45s linear infinite',
+              width: 'fit-content'
+            }}>
+                {duplicatedLogos.map((logo, index) => <div key={`${logo.id}-${index}`} className="flex-shrink-0 mx-6 md:mx-8 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                    <OptimizedImageV2 src={logo.src} alt={logo.alt} className="max-h-12 w-auto object-contain filter brightness-75 hover:brightness-100 transition-all duration-300" width={120} height={48} sizes="120px" />
+                  </div>)}
               </div>
             </div>
           </div>
@@ -133,8 +109,6 @@ const WellnessProviders = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default WellnessProviders;
