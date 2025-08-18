@@ -204,8 +204,8 @@ const BlogPost = () => {
         title={`${blogPost.title} | Meltdown Nepal Blog`}
         description={blogPost.excerpt}
         canonical={`https://meltdownnepal.com/blog/${blogPost.id}`}
-        image={blogPost.image}
-        type="article"
+        ogImage={blogPost.image}
+        ogType="article"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",
