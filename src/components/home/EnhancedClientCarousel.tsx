@@ -92,8 +92,8 @@ const clientLogos = [{
 }];
 
 const EnhancedClientCarousel = () => {
-  // Optimize by limiting visible logos for better performance
-  const visibleLogos = clientLogos.slice(0, 12);
+  // Show all logos instead of limiting to 12
+  const visibleLogos = clientLogos;
   const duplicatedLogos = [...visibleLogos, ...visibleLogos];
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -158,7 +158,7 @@ const EnhancedClientCarousel = () => {
         }
 
         .animate-seamless-scroll {
-          animation: seamless-scroll 45s linear infinite;
+          animation: seamless-scroll 60s linear infinite;
           width: fit-content;
           will-change: transform;
           backface-visibility: hidden;
@@ -168,7 +168,7 @@ const EnhancedClientCarousel = () => {
 
         @media (prefers-reduced-motion: reduce) {
           .animate-seamless-scroll {
-            animation-duration: 90s;
+            animation-duration: 120s;
           }
         }
       `}</style>
