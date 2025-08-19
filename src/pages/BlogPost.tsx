@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
@@ -178,7 +179,7 @@ const BlogPost = () => {
       date: "2025-03-20",
       readTime: "12 min read",
       tags: ["Fitness", "Gyms", "Kathmandu", "Health", "Exercise"],
-      image: "/lovable-uploads/WellnessSessions.webp"
+      image: "/lovable-uploads/506858f9-d81e-4f2a-904d-b99b7c4f81b1.png"
     }
   ];
 
