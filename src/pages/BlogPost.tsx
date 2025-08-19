@@ -16,7 +16,7 @@ const BlogPost = () => {
       content: `
         The landscape of corporate wellness is evolving rapidly. What once consisted of basic health insurance and perhaps an annual health fair has transformed into comprehensive, data-driven programs that address the whole employee—mind, body, and spirit.
 
-        ## Why Corporate Wellness Matters More Than Ever
+        Why Corporate Wellness Matters More Than Ever
 
         In today's competitive job market, employees are looking beyond salary and benefits. They want employers who genuinely care about their wellbeing. Companies that invest in robust wellness programs see remarkable returns:
 
@@ -25,44 +25,44 @@ const BlogPost = () => {
         - **50% lower turnover rates** as employees feel valued and supported
         - **Enhanced company reputation** that attracts top talent
 
-        ## The Modern Approach to Employee Wellness
+        The Modern Approach to Employee Wellness
 
         Today's most successful wellness programs go far beyond traditional offerings. They include:
 
-        ### Physical Wellness
+        Physical Wellness
         - On-site fitness facilities or gym partnerships
         - Ergonomic workspace assessments
         - Nutrition counseling and healthy meal options
         - Regular health screenings and preventive care
 
-        ### Mental Health Support
+        Mental Health Support
         - Employee assistance programs (EAPs)
         - Mindfulness and stress management workshops
         - Mental health days and flexible time off
         - Professional counseling services
 
-        ### Work-Life Balance
+        Work-Life Balance
         - Flexible working arrangements
         - Remote work options
         - Family support services
         - Time management training
 
-        ### Social Connection
+        Social Connection
         - Team building activities
         - Volunteer opportunities
         - Wellness challenges and competitions
         - Support groups and communities
 
-        ## Implementing a Successful Program
+        Implementing a Successful Program
 
         The key to a successful corporate wellness program lies in:
 
-        1. **Leadership commitment** - When executives actively participate, employees follow
-        2. **Personalization** - One-size-fits-all doesn't work; programs must adapt to diverse needs
-        3. **Data-driven decisions** - Regular measurement and adjustment based on results
-        4. **Sustained engagement** - Keeping programs fresh and relevant over time
+        1. Leadership commitment- When executives actively participate, employees follow
+        2. Personalization- One-size-fits-all doesn't work; programs must adapt to diverse needs
+        3. Data-driven decisions- Regular measurement and adjustment based on results
+        4. Sustained engagement - Keeping programs fresh and relevant over time
 
-        ## The ROI of Wellness Investment
+        The ROI of Wellness Investment
 
         Companies investing in comprehensive wellness programs typically see:
         - Every $1 spent returns $2.30 in reduced healthcare costs
@@ -70,7 +70,7 @@ const BlogPost = () => {
         - 26% reduction in health insurance premiums
         - Significant improvements in employee satisfaction scores
 
-        ## Looking Forward
+        Looking Forward
 
         The future of corporate wellness is bright, with emerging trends including:
         - AI-powered personalized health recommendations
@@ -82,7 +82,7 @@ const BlogPost = () => {
 
         *Ready to transform your workplace wellness program? Contact our team to learn how we can help you create a comprehensive solution tailored to your company's unique needs.*
       `,
-      author: "Sarah Chen",
+      author: "Jayani Subedi",
       date: "2024-03-15",
       readTime: "8 min read",
       tags: ["Corporate Wellness", "Employee Health", "Business Strategy", "ROI"],
