@@ -12,7 +12,7 @@ const clientLogos = Object.entries(IMAGE_REGISTRY.companies).map(([key, src], in
 
 const ClientLogoCarousel = () => {
   // Optimize by limiting visible logos
-  const visibleLogos = clientLogos.slice(0, 12);
+  const visibleLogos = clientLogos.slice(0, 20);
   const duplicatedLogos = [...visibleLogos, ...visibleLogos];
 
   return (

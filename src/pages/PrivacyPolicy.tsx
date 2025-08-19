@@ -21,6 +21,7 @@ const PrivacyPolicy = () => {
                 </h1>
                 <p className="text-muted-foreground text-lg">
                   Effective Date: 31st July, 2025 | Last Updated: 7th August, 2025
+>>>>>>> 1e2d33b4840ed29f9dce8c1faec31ba7a130b701
                 </p>
               </div>
 
