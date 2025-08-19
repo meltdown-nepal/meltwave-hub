@@ -3,17 +3,16 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-
 const BlogPost = () => {
-  const { postId } = useParams();
-
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of Corporate Wellness: Why Employee Health is Business Success",
-      slug: "future-corporate-wellness-employee-health-business-success",
-      excerpt: "Discover how forward-thinking companies are transforming their workplace culture through comprehensive wellness programs that boost productivity, reduce healthcare costs, and create happier, more engaged teams.",
-      content: `
+  const {
+    postId
+  } = useParams();
+  const blogPosts = [{
+    id: 1,
+    title: "The Future of Corporate Wellness: Why Employee Health is Business Success",
+    slug: "future-corporate-wellness-employee-health-business-success",
+    excerpt: "Discover how forward-thinking companies are transforming their workplace culture through comprehensive wellness programs that boost productivity, reduce healthcare costs, and create happier, more engaged teams.",
+    content: `
         The landscape of corporate wellness is evolving rapidly. What once consisted of basic health insurance and perhaps an annual health fair has transformed into comprehensive, data-driven programs that address the whole employee—mind, body, and spirit.
 
         Why Corporate Wellness Matters More Than Ever
@@ -82,18 +81,17 @@ const BlogPost = () => {
 
         *Ready to transform your workplace wellness program? Contact our team to learn how we can help you create a comprehensive solution tailored to your company's unique needs.*
       `,
-      author: "Jayani Subedi",
-      date: "2024-03-15",
-      readTime: "8 min read",
-      tags: ["Corporate Wellness", "Employee Health", "Business Strategy", "ROI"],
-      image: "/lovable-uploads/HappyEmployees.webp"
-    },
-    {
-      id: 2,
-      title: "Top 10 Gyms in Kathmandu Valley",
-      slug: "top-10-gyms-kathmandu-valley",
-      excerpt: "Discover the best gyms in Kathmandu Valley with comprehensive reviews of facilities, amenities, and what makes each one unique for your fitness journey.",
-      content: `
+    author: "Jayani Subedi",
+    date: "2024-03-15",
+    readTime: "8 min read",
+    tags: ["Corporate Wellness", "Employee Health", "Business Strategy", "ROI"],
+    image: "/lovable-uploads/HappyEmployees.webp"
+  }, {
+    id: 2,
+    title: "Top 10 Gyms in Kathmandu Valley",
+    slug: "top-10-gyms-kathmandu-valley",
+    excerpt: "Discover the best gyms in Kathmandu Valley with comprehensive reviews of facilities, amenities, and what makes each one unique for your fitness journey.",
+    content: `
         Looking for the best gyms in Kathmandu? Well, you're not alone. With Kathmandu's fitness culture quickly evolving, demands for gyms that serve quality and needs have never been higher. With so many options available it can be confusing to choose the best one for you.   
 
         At Meltdown, we are proud to be partnered with some of the most trusted and well equipped gyms around Kathmandu valley. These gyms not only provide you the space to grow strong but also the best trainers, equipment and environment in the valley.  
@@ -175,195 +173,130 @@ const BlogPost = () => {
 
         But with so much variety, sticking to just one space can feel limiting. This is where Meltdown transforms the experience. With a single membership, you unlock access to the valley's best gyms, studios and wellness studios, designed for busy professionals and lifestyle driven members. We bring you the freedom to train wherever you want, whenever you want.
       `,
-      author: "Pradeep Shrestha",
-      date: "2024-03-20",
-      readTime: "12 min read",
-      tags: ["Fitness", "Gyms", "Kathmandu", "Health", "Exercise"],
-      image: "/lovable-uploads/WellnessSessions.webp"
-    }
-  ];
-
+    author: "Pradeep Shrestha",
+    date: "2024-03-20",
+    readTime: "12 min read",
+    tags: ["Fitness", "Gyms", "Kathmandu", "Health", "Exercise"],
+    image: "/lovable-uploads/WellnessSessions.webp"
+  }];
   const blogPost = blogPosts.find(post => post.id === parseInt(postId || '1'));
-
   const formatBlogContent = (content: string) => {
     const sections = content.split('\n\n').filter(section => section.trim());
-    
     return sections.map((section, index) => {
       const trimmedSection = section.trim();
-      
+
       // Skip empty sections
       if (!trimmedSection) return null;
-      
+
       // Handle numbered list items (gym entries)
       if (/^\d+\./.test(trimmedSection)) {
         const lines = trimmedSection.split('\n');
         const titleLine = lines[0];
         const title = titleLine.replace(/^\d+\.\s*/, '');
         const bodyLines = lines.slice(1);
-        
-        return (
-          <div key={index} className="mb-8 bg-gray-50 p-6 rounded-lg">
+        return <div key={index} className="mb-8 bg-gray-50 p-6 rounded-lg">
             <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
             {bodyLines.map((line, lineIndex) => {
-              const trimmedLine = line.trim();
-              if (!trimmedLine) return null;
-              
-              if (trimmedLine.startsWith('**') && trimmedLine.includes(':**')) {
-                const [label, value] = trimmedLine.split(':**');
-                return (
-                  <p key={lineIndex} className="text-sm text-gray-600 mb-2">
+            const trimmedLine = line.trim();
+            if (!trimmedLine) return null;
+            if (trimmedLine.startsWith('**') && trimmedLine.includes(':**')) {
+              const [label, value] = trimmedLine.split(':**');
+              return <p key={lineIndex} className="text-sm text-gray-600 mb-2">
                     <strong>{label.replace(/^\*\*/, '')}</strong>: {value.trim()}
-                  </p>
-                );
-              }
-              
-              return (
-                <p 
-                  key={lineIndex} 
-                  className="text-gray-700 leading-relaxed mb-2"
-                  dangerouslySetInnerHTML={{
-                    __html: trimmedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                  }}
-                />
-              );
-            })}
-          </div>
-        );
+                  </p>;
+            }
+            return <p key={lineIndex} className="text-gray-700 leading-relaxed mb-2" dangerouslySetInnerHTML={{
+              __html: trimmedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            }} />;
+          })}
+          </div>;
       }
-      
+
       // Handle main headings (without markdown symbols)
-      if (trimmedSection.length < 100 && !trimmedSection.includes('.') && 
-          (trimmedSection === trimmedSection.toUpperCase() || 
-           /^[A-Z][^.]*[^.]$/.test(trimmedSection)) &&
-          !trimmedSection.startsWith('*')) {
-        return (
-          <h2 key={index} className="text-2xl font-bold text-gray-900 mt-10 mb-6">
+      if (trimmedSection.length < 100 && !trimmedSection.includes('.') && (trimmedSection === trimmedSection.toUpperCase() || /^[A-Z][^.]*[^.]$/.test(trimmedSection)) && !trimmedSection.startsWith('*')) {
+        return <h2 key={index} className="text-2xl font-bold text-gray-900 mt-10 mb-6">
             {trimmedSection}
-          </h2>
-        );
+          </h2>;
       }
-      
+
       // Handle subheadings
-      if (trimmedSection.length < 80 && 
-          /^[A-Z]/.test(trimmedSection) && 
-          !trimmedSection.includes('**') &&
-          !trimmedSection.startsWith('-') &&
-          !trimmedSection.startsWith('*') &&
-          trimmedSection.split(' ').length <= 8) {
-        return (
-          <h3 key={index} className="text-lg font-semibold text-gray-800 mt-6 mb-3">
+      if (trimmedSection.length < 80 && /^[A-Z]/.test(trimmedSection) && !trimmedSection.includes('**') && !trimmedSection.startsWith('-') && !trimmedSection.startsWith('*') && trimmedSection.split(' ').length <= 8) {
+        return <h3 key={index} className="text-lg font-semibold text-gray-800 mt-6 mb-3">
             {trimmedSection}
-          </h3>
-        );
+          </h3>;
       }
-      
+
       // Handle bullet points
       if (trimmedSection.includes('\n- ')) {
         const items = trimmedSection.split('\n').filter(line => line.trim().startsWith('- '));
-        return (
-          <ul key={index} className="list-disc list-inside space-y-2 mb-6 ml-4">
-            {items.map((item, itemIndex) => (
-              <li 
-                key={itemIndex} 
-                className="text-gray-700"
-                dangerouslySetInnerHTML={{
-                  __html: item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                }}
-              />
-            ))}
-          </ul>
-        );
+        return <ul key={index} className="list-disc list-inside space-y-2 mb-6 ml-4">
+            {items.map((item, itemIndex) => <li key={itemIndex} className="text-gray-700" dangerouslySetInnerHTML={{
+            __html: item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          }} />)}
+          </ul>;
       }
-      
+
       // Handle numbered lists
       if (/^\d+\./.test(trimmedSection) && trimmedSection.includes('\n')) {
         const items = trimmedSection.split('\n').filter(line => /^\d+\./.test(line.trim()));
-        return (
-          <ol key={index} className="list-decimal list-inside space-y-2 mb-6 ml-4">
-            {items.map((item, itemIndex) => (
-              <li 
-                key={itemIndex} 
-                className="text-gray-700"
-                dangerouslySetInnerHTML={{
-                  __html: item.replace(/^\d+\.\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                }}
-              />
-            ))}
-          </ol>
-        );
+        return <ol key={index} className="list-decimal list-inside space-y-2 mb-6 ml-4">
+            {items.map((item, itemIndex) => <li key={itemIndex} className="text-gray-700" dangerouslySetInnerHTML={{
+            __html: item.replace(/^\d+\.\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          }} />)}
+          </ol>;
       }
-      
+
       // Handle italic text (conclusion/call-to-action)
       if (trimmedSection.startsWith('*') && trimmedSection.endsWith('*')) {
-        return (
-          <div key={index} className="bg-blue-50 border-l-4 border-blue-200 p-6 my-8 rounded-r-lg">
+        return <div key={index} className="bg-blue-50 border-l-4 border-blue-200 p-6 my-8 rounded-r-lg">
             <p className="text-blue-800 italic font-medium">
               {trimmedSection.replace(/^\*|\*$/g, '')}
             </p>
-          </div>
-        );
+          </div>;
       }
-      
+
       // Handle regular paragraphs
-      return (
-        <p 
-          key={index} 
-          className="text-gray-700 leading-relaxed mb-6"
-          dangerouslySetInnerHTML={{
-            __html: trimmedSection.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          }}
-        />
-      );
+      return <p key={index} className="text-gray-700 leading-relaxed mb-6" dangerouslySetInnerHTML={{
+        __html: trimmedSection.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      }} />;
     }).filter(Boolean);
   };
-
   if (!blogPost) {
-    return (
-      <div className="min-h-screen bg-gray-50 py-12">
+    return <div className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Blog Post Not Found</h1>
           <Link to="/blog" className="text-primary hover:underline">
             ← Back to Blog
           </Link>
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <>
-      <SEO 
-        title={`${blogPost.title} | Meltdown Nepal Blog`}
-        description={blogPost.excerpt}
-        canonical={`https://meltdownnepal.com/blog/${blogPost.id}`}
-        ogImage={blogPost.image}
-        ogType="article"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": blogPost.title,
-          "description": blogPost.excerpt,
-          "image": blogPost.image,
-          "author": {
-            "@type": "Person",
-            "name": blogPost.author
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Meltdown Nepal",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://meltdownnepal.com/logo.png"
-            }
-          },
-          "datePublished": blogPost.date,
-          "dateModified": blogPost.date,
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": `https://meltdownnepal.com/blog/${blogPost.id}`
-          }
-        }}
-      />
+  return <>
+      <SEO title={`${blogPost.title} | Meltdown Nepal Blog`} description={blogPost.excerpt} canonical={`https://meltdownnepal.com/blog/${blogPost.id}`} ogImage={blogPost.image} ogType="article" structuredData={{
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": blogPost.title,
+      "description": blogPost.excerpt,
+      "image": blogPost.image,
+      "author": {
+        "@type": "Person",
+        "name": blogPost.author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Meltdown Nepal",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://meltdownnepal.com/logo.png"
+        }
+      },
+      "datePublished": blogPost.date,
+      "dateModified": blogPost.date,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://meltdownnepal.com/blog/${blogPost.id}`
+      }
+    }} />
       
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -378,22 +311,16 @@ const BlogPost = () => {
           <article className="bg-white rounded-lg shadow-sm overflow-hidden">
             {/* Hero Image */}
             <div className="aspect-w-16 aspect-h-9">
-              <img
-                src={blogPost.image}
-                alt={blogPost.title}
-                className="w-full h-64 md:h-80 object-cover"
-              />
+              <img src={blogPost.image} alt={blogPost.title} className="w-full h-64 md:h-80 object-cover" />
             </div>
 
             {/* Article Content */}
             <div className="p-6 md:p-8">
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
-                {blogPost.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">
+                {blogPost.tags.map(tag => <Badge key={tag} variant="secondary" className="text-xs">
                     {tag}
-                  </Badge>
-                ))}
+                  </Badge>)}
               </div>
 
               {/* Title */}
@@ -405,10 +332,10 @@ const BlogPost = () => {
               <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-8 pb-8 border-b">
                 <span>By {blogPost.author}</span>
                 <span>•</span>
-                <span>{new Date(blogPost.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
+                <span>{new Date(blogPost.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
                 })}</span>
                 <span>•</span>
                 <span>{blogPost.readTime}</span>
@@ -422,23 +349,16 @@ const BlogPost = () => {
           </article>
 
           {/* Enhanced CTA Section */}
-          <div className="mt-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-xl p-8 md:p-12 text-center shadow-lg">
+          <div className="mt-16 bg-gradient-to-br from-yellow-600 to-yellow-800 text-black rounded-xl p-8 md:p-12 text-center shadow-lg">
             <div className="max-w-3xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Ready to Transform Your Wellness Journey?
               </h3>
               <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-                {blogPost.id === 2 
-                  ? "Join thousands of professionals who've unlocked access to Kathmandu Valley's premier fitness network. One membership, unlimited possibilities."
-                  : "Discover how leading companies are revolutionizing employee wellness with data-driven programs that deliver measurable results."
-                }
+                {blogPost.id === 2 ? "Join thousands of professionals who've unlocked access to Kathmandu Valley's premier fitness network. One membership, unlimited possibilities." : "Discover how leading companies are revolutionizing employee wellness with data-driven programs that deliver measurable results."}
               </p>
               <div className="space-y-4">
-                <Button 
-                  asChild 
-                  size="lg" 
-                  className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 text-lg"
-                >
+                <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 text-lg">
                   <Link to="/schedule-demo">
                     Get Your Free Demo
                   </Link>
@@ -451,8 +371,6 @@ const BlogPost = () => {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default BlogPost;
