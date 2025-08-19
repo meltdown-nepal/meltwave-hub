@@ -185,6 +185,138 @@ const BlogPost = () => {
 
   const blogPost = blogPosts.find(post => post.id === parseInt(postId || '1'));
 
+  const formatBlogContent = (content: string) => {
+    const sections = content.split('\n\n').filter(section => section.trim());
+    
+    return sections.map((section, index) => {
+      const trimmedSection = section.trim();
+      
+      // Skip empty sections
+      if (!trimmedSection) return null;
+      
+      // Handle numbered list items (gym entries)
+      if (/^\d+\./.test(trimmedSection)) {
+        const lines = trimmedSection.split('\n');
+        const titleLine = lines[0];
+        const title = titleLine.replace(/^\d+\.\s*/, '');
+        const bodyLines = lines.slice(1);
+        
+        return (
+          <div key={index} className="mb-8 bg-gray-50 p-6 rounded-lg">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
+            {bodyLines.map((line, lineIndex) => {
+              const trimmedLine = line.trim();
+              if (!trimmedLine) return null;
+              
+              if (trimmedLine.startsWith('**') && trimmedLine.includes(':**')) {
+                const [label, value] = trimmedLine.split(':**');
+                return (
+                  <p key={lineIndex} className="text-sm text-gray-600 mb-2">
+                    <strong>{label.replace(/^\*\*/, '')}</strong>: {value.trim()}
+                  </p>
+                );
+              }
+              
+              return (
+                <p 
+                  key={lineIndex} 
+                  className="text-gray-700 leading-relaxed mb-2"
+                  dangerouslySetInnerHTML={{
+                    __html: trimmedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                  }}
+                />
+              );
+            })}
+          </div>
+        );
+      }
+      
+      // Handle main headings (without markdown symbols)
+      if (trimmedSection.length < 100 && !trimmedSection.includes('.') && 
+          (trimmedSection === trimmedSection.toUpperCase() || 
+           /^[A-Z][^.]*[^.]$/.test(trimmedSection)) &&
+          !trimmedSection.startsWith('*')) {
+        return (
+          <h2 key={index} className="text-2xl font-bold text-gray-900 mt-10 mb-6">
+            {trimmedSection}
+          </h2>
+        );
+      }
+      
+      // Handle subheadings
+      if (trimmedSection.length < 80 && 
+          /^[A-Z]/.test(trimmedSection) && 
+          !trimmedSection.includes('**') &&
+          !trimmedSection.startsWith('-') &&
+          !trimmedSection.startsWith('*') &&
+          trimmedSection.split(' ').length <= 8) {
+        return (
+          <h3 key={index} className="text-lg font-semibold text-gray-800 mt-6 mb-3">
+            {trimmedSection}
+          </h3>
+        );
+      }
+      
+      // Handle bullet points
+      if (trimmedSection.includes('\n- ')) {
+        const items = trimmedSection.split('\n').filter(line => line.trim().startsWith('- '));
+        return (
+          <ul key={index} className="list-disc list-inside space-y-2 mb-6 ml-4">
+            {items.map((item, itemIndex) => (
+              <li 
+                key={itemIndex} 
+                className="text-gray-700"
+                dangerouslySetInnerHTML={{
+                  __html: item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                }}
+              />
+            ))}
+          </ul>
+        );
+      }
+      
+      // Handle numbered lists
+      if (/^\d+\./.test(trimmedSection) && trimmedSection.includes('\n')) {
+        const items = trimmedSection.split('\n').filter(line => /^\d+\./.test(line.trim()));
+        return (
+          <ol key={index} className="list-decimal list-inside space-y-2 mb-6 ml-4">
+            {items.map((item, itemIndex) => (
+              <li 
+                key={itemIndex} 
+                className="text-gray-700"
+                dangerouslySetInnerHTML={{
+                  __html: item.replace(/^\d+\.\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                }}
+              />
+            ))}
+          </ol>
+        );
+      }
+      
+      // Handle italic text (conclusion/call-to-action)
+      if (trimmedSection.startsWith('*') && trimmedSection.endsWith('*')) {
+        return (
+          <div key={index} className="bg-blue-50 border-l-4 border-blue-200 p-6 my-8 rounded-r-lg">
+            <p className="text-blue-800 italic font-medium">
+              {trimmedSection.replace(/^\*|\*$/g, '')}
+            </p>
+          </div>
+        );
+      }
+      
+      // Handle regular paragraphs
+      return (
+        <p 
+          key={index} 
+          className="text-gray-700 leading-relaxed mb-6"
+          dangerouslySetInnerHTML={{
+            __html: trimmedSection.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          }}
+        />
+      );
+    }).filter(Boolean);
+  };
+
   if (!blogPost) {
     return (
       <div className="min-h-screen bg-gray-50 py-12">
@@ -284,73 +416,38 @@ const BlogPost = () => {
 
               {/* Article Body */}
               <div className="prose prose-lg max-w-none">
-                {blogPost.content.split('\n\n').map((paragraph, index) => {
-                  if (paragraph.startsWith('## ')) {
-                    return (
-                      <h2 key={index} className="text-2xl font-bold text-gray-900 mt-8 mb-4">
-                        {paragraph.replace('## ', '')}
-                      </h2>
-                    );
-                  } else if (paragraph.startsWith('### ')) {
-                    return (
-                      <h3 key={index} className="text-xl font-semibold text-gray-900 mt-6 mb-3">
-                        {paragraph.replace('### ', '')}
-                      </h3>
-                    );
-                  } else if (paragraph.startsWith('- ') || paragraph.includes('\n- ')) {
-                    const items = paragraph.split('\n').filter(item => item.startsWith('- '));
-                    return (
-                      <ul key={index} className="list-disc list-inside space-y-2 mb-6">
-                        {items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="text-gray-700">
-                            <span dangerouslySetInnerHTML={{
-                              __html: item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            }} />
-                          </li>
-                        ))}
-                      </ul>
-                    );
-                  } else if (paragraph.includes('**')) {
-                    return (
-                      <p key={index} className="text-gray-700 mb-4 leading-relaxed"
-                         dangerouslySetInnerHTML={{
-                           __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                         }}
-                      />
-                    );
-                  } else if (paragraph.startsWith('*') && paragraph.endsWith('*')) {
-                    return (
-                      <p key={index} className="text-gray-600 italic text-center my-8 p-4 bg-gray-50 rounded-lg">
-                        {paragraph.replace(/^\*|\*$/g, '')}
-                      </p>
-                    );
-                  } else if (paragraph.trim()) {
-                    return (
-                      <p key={index} className="text-gray-700 mb-4 leading-relaxed">
-                        {paragraph}
-                      </p>
-                    );
-                  }
-                  return null;
-                })}
+                {formatBlogContent(blogPost.content)}
               </div>
             </div>
           </article>
 
-          {/* CTA Section */}
-          <div className="mt-12 bg-primary text-white rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Wellness Journey?</h3>
-            <p className="text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
-              {blogPost.id === 2 
-                ? "Join Meltdown and get access to the best gyms and wellness centers across Kathmandu Valley with a single membership."
-                : "Let us help you create a comprehensive wellness program that drives real results for your team and business."
-              }
-            </p>
-            <Button asChild size="lg">
-              <Link to="/schedule-demo">
-                Get Demo
-              </Link>
-            </Button>
+          {/* Enhanced CTA Section */}
+          <div className="mt-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-xl p-8 md:p-12 text-center shadow-lg">
+            <div className="max-w-3xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                Ready to Transform Your Wellness Journey?
+              </h3>
+              <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+                {blogPost.id === 2 
+                  ? "Join thousands of professionals who've unlocked access to Kathmandu Valley's premier fitness network. One membership, unlimited possibilities."
+                  : "Discover how leading companies are revolutionizing employee wellness with data-driven programs that deliver measurable results."
+                }
+              </p>
+              <div className="space-y-4">
+                <Button 
+                  asChild 
+                  size="lg" 
+                  className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 text-lg"
+                >
+                  <Link to="/schedule-demo">
+                    Get Your Free Demo
+                  </Link>
+                </Button>
+                <p className="text-blue-200 text-sm">
+                  No commitment required • See results in 30 days
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
