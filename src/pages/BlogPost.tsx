@@ -303,7 +303,9 @@ const BlogPost = () => {
                       <ul key={index} className="list-disc list-inside space-y-2 mb-6">
                         {items.map((item, itemIndex) => (
                           <li key={itemIndex} className="text-gray-700">
-                            {item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
+                            <span dangerouslySetInnerHTML={{
+                              __html: item.replace('- ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            }} />
                           </li>
                         ))}
                       </ul>
