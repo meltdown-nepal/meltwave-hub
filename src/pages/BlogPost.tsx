@@ -174,12 +174,14 @@ const BlogPost = () => {
 
         But with so much variety, sticking to just one space can feel limiting. This is where Meltdown transforms the experience. With a single membership, you unlock access to the valley's best gyms, studios and wellness studios, designed for busy professionals and lifestyle driven members. We bring you the freedom to train wherever you want, whenever you want.
       `,
-    author: "Pradeep Shrestha",
-    date: "2024-03-20",
-    readTime: "12 min read",
-    tags: ["Fitness", "Gyms", "Kathmandu", "Health", "Exercise"],
-    image: "/lovable-uploads/WellnessSessions.webp"
-  }];
+      author: "Jayani Subedi ",
+      date: "2025-03-20",
+      readTime: "12 min read",
+      tags: ["Fitness", "Gyms", "Kathmandu", "Health", "Exercise"],
+      image: "/lovable-uploads/WellnessSessions.webp"
+    }
+  ];
+
   const blogPost = blogPosts.find(post => post.id === parseInt(postId || '1'));
   const formatBlogContent = (content: string) => {
     const sections = content.split('\n\n').filter(section => section.trim());
