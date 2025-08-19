@@ -22,7 +22,7 @@ const Blog = () => {
       excerpt: "Looking for the best gyms in Kathmandu? Discover the top 10 gyms in Kathmandu Valley that offer quality equipment, expert trainers, and the perfect environment for your fitness journey.",
       date: "January 18, 2025",
       readTime: "12 min read",
-      image: "/lovable-uploads/WellnessSessions.webp"
+      image: "/lovable-uploads/506858f9-d81e-4f2a-904d-b99b7c4f81b1.png"
     }
   ];
 
