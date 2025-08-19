@@ -100,76 +100,76 @@ const BlogPost = () => {
 
         Whether you're chasing a six pack, building strength or just showing up for yourself, the right gym can make all the difference. Here are the Top Ten Gyms in Kathmandu valley, where you can train smart, feel stronger and stay consistent.
 
-        ## 1. The Pump
+        1. The Pump
         **Locations:** Jhamsikhel and Chahabail  
         **Amenities:** Lockers, Showers, Parking  
         **Opening Hours:** 5:30 AM - 8:30 PM (Monday-Saturday), 7:00 AM - 12:00 PM (Sunday)
 
         The pump, with locations in Chahabail and Jhamsikhel is arguably one of the best well rounded fitness centres in Kathmandu valley. What sets pump apart from the rest is its excellent balance between traditional strength training and functional fitness. The gym floor is equipped with high-end machines for both resistance training and cardio along with a well maintained free weight section and dedicated section for stretching and body weight work. The members are most benefited by the thoughtful design that avoids overcrowding even at peak hour, creating a calm and focused training environment. The Pump is appealing to working professionals, disciplined listers and lifestyle focused people alike. It avoids the chaotic energy of the overly commercialised gyms and instead provides a well structured and motivating space where you can genuinely grow and improve. Whether you're looking for strength, endurance and mobility or just a reliable gym, The pump offers in all fronts- making it one of the best gyms in the valley.
 
-        ## 2. Total Physical Fitness Center (TPFC)
+        2. Total Physical Fitness Center (TPFC)
         **Location:** New Baneshowr  
         **Amenities:** Lockers, Shower, Sauna  
         **Opening Hours:** 5:30 PM - 9:00 PM (Sunday-Friday), 5:30 PM - 7:00 PM (Saturday)
 
         Known for its large training floor, versatile workout zones, and professional setup, TPFC is one of the most well equipped and spacious fitness centers in the valley. TPFC blends scale with quality, making it a top tier choice for both beginners and seasoned gym-goers. The gym offers a full spectrum of training zones from modern strength machines and free weights to a well equipped cardio area and open functional spaces. TPFC stands out because of its range: from modern strength and cardio classes to high energy group classes like kickboxing and boxing, the gym caters to diverse training classes. In terms of comfort TPFC does not compromise. Their facilities include sauna and steam rooms along with hot and cold showers. One of its most underrated strengths is ample on-site parking, making it one of the few large gyms in the valley where accessibility isn't a hassle. Any time, any style TPFC is built to support a wide range of fitness goals, if you value quality, variety and space this is the gym for you.
 
-        ## 3. Hilton Fitness
+        3. Hilton Fitness
         **Location:** Dibeshowr planning, Bhaktapur  
         **Amenities:** Lockers, Shower, Sauna and Steam, Jacuzzi  
         **Opening Hours:** 5:00 AM - 9:00 PM (All week)
 
         Hilton Fitness is a polished, full service gym offering a modern and wellness forward environment. Located in the heart of Bhaktapur, it brings a premium, wellness focused training experience to the eastern side of the valley. The space is organized and is equipped with modern strength training machines, free weights, and a dedicated cardio section, making it suitable for both beginners and serious lifters. Hilton's emphasis on balance, not just training styles but in lifestyle is what sets it apart from the others. Beyond the gym floor, members get access to a full suite of recovery-focused amenities, including a sauna, steam room and jacuzzi. These wellness add-ons make it easy to wind down post-workout and turn a simple gym visit into a full self care session. Hilton also offers a solid rotation of group classes, including zumba, aerobics and body-weight focused sessions, perfect for people trying to stay consistent through the movement community Hilton fitness is an excellent fit for wellness enthusiasts or anyone in Bhaktapur looking to train in a calm, elevated environment, where both physical progress and recovery are part of the experience.
 
-        ## 4. Rush Fitness
+        4. Rush Fitness
         **Location:** Bansbari, Kathmandu  
         **Amenities:** Locker, Shower, Parking  
         **Opening Hours:** 6:00 AM - 8:00 PM (Sunday-Friday), 6:00 AM - 12:00 PM (Saturday)
 
         Rush Fitness Nepal, located in Bansbari, is a dynamic and modern fitness gym that caters to versatility and functionality in every corner. The gym stands out for its commitment to functional training and performance driven programming. From high quality resistance machines to open areas for mobility, strength, and cardio, the space is thoughtfully laid for efficient and versatile workouts. The atmosphere is energetic yet welcoming, ideal for lifters, movement enthusiasts, and consistency driven members. Their balance between functional training and traditional gym is what differentiates Rush from the rest, the members can easily switch between strength, endurance and mobility sessions. Open facility layout and organized equipment placement make it easy to navigate without feeling crowded, even during peak hours. Rush has a visually fresh environment with ample space and greenery around the gym, not to mention convenient on site parking, which is quite rare in dense areas of the city. For a space that fuels your grind and keeps you inspired, Rush Fitness Nepal blends smart training options with a sleek, motivating environment, where every sweat takes you closer to your best self.
 
-        ## 5. ROC Fitness Clubs
+        5. ROC Fitness Clubs
         **Locations:** Tinkune / Jadibuti  
         **Amenities:** Shower, Locker, Parking  
         **Opening Hours:** 7:00 AM - 9 PM (Sunday - Friday, Closed on Saturday)
 
         ROC Fitness Club, with its flagship branch in Tinkune and a newer space in Jadibuti (V2.0), has steadily grown into one of the valley's most trusted names in strength and conditioning. It's not just another gym; ROC is built around a performance-driven culture where serious training meets solid structure. Their team of certified trainers adds value with well guided programs that support your growth. At Roc, the environment is thoughtfully designed to support focused and effective training. They have a full range of modern equipment, from strength machines and free weights to a dedicated cardio section. ROC is a gym with consistent energy, a supportive environment and a crowd that's here to work. From group classes to focused training zones in both branches, they've created a gym culture that's motivating but never overwhelming. From first milestones to major breakthroughs, ROC Fitness Club offers the structure, support, and energy needed to move with purpose and stay consistent.
 
-        ## 6. Athlete Land
+        6. Athlete Land
         **Location:** Balkumari, Lalitpur  
         **Amenities:** Lockers, Shower and Sauna  
         **Opening hours:** 24 hours (Sunday-Friday), Saturday (6 AM - 12 PM)
 
         If your training is non negotiable, Athlete Land Training Club in Balkumari, Lalitpur is ready anytime, literally. With round-the-clock access, this performance-first space blends weightlifting, mobility, and combat-style fitness under one roof. They have a spacious gym floor that is well equipped with high quality resistance machines, a solid free weights section and a large area dedicated to mobility, boxing and functional drills. Athlete Land also offers specialized group classes, from strength circuits to boxing and body weight focused programs, making it easy to stay consistent with carried movement styles. What makes Athlete Land shine is its grounded, community-centered energy and the freedom to train anytime. As a 24 hours facility, it removes the barrier of time, letting members stick to their own rhythm and routine. This is the place where you show up, put in work and walk out stronger every week. Athlete Land stands out for those who want to train and train whenever it works for them.
 
-        ## 7. Regal Fitness Club
+        7. Regal Fitness Club
         **Location:** Kamalpokhari/teku  
         **Amenities:** Lockers, shower
 
         With locations in City Centre, Kamalpokhari and Teku, Regal Fitness Club brings a polished, performance meets luxury gym experience to the busy Kathmandu Valley. It blends effective training with comfort and recovery, making it a standout choice for those who value result and ambiance. The gym is equipped with premium strength training machines, a full range of cardio equipment, free weights and functional zones that accommodate everything from heavy lifts to mobility work. Regal maintains a clean, spacious environment with structured membership tiers catering to students, professionals and fitness enthusiasts. Despite its upscale feel, the vibe remains grounded. Trainers are approachable, the energy is focused, and the layout avoids the chaos often found in trend driven gyms. With a balance of well maintained gym equipment, thoughtful design, and premium features, Regal Fitness Club is perfect for those who want a solid gym floor with a bit of wellness indulgence, all under one roof.
 
-        ## 8. Tapout Fitness
+        8. Tapout Fitness
         **Location:** Baluwatar, Kathmandu  
         **Amenities:** Shower, Locker, Parking  
         **Opening Hours:** 6:00 AM - 9:00 PM
 
         Located in Baluwatar, Kathmandu, Tapout Fitness is a high energy fitness destination that blends combat sport with functional training for a truly dynamic experience. The facility is equipped with dedicated spaces for MMA, Kickboxing, and strength training, alongside cardio and conditioning areas. Expert trainers guide members through technical skill work, high intensity drills, and strength sessions, making it an ideal space for both fighters in training and fitness enthusiasts seeking variety. Tapout's layout allows for seamless transitions between combat zones, free weight areas and cardio stations. The environment is electric yet focused, perfect for those who want their workouts to be intense. The open setting paired with professional coaching creates a motivating atmosphere, while its prime Baluwatar location makes it accessible for working professionals and city residents alike. If you're after a gym that goes beyond the basics and immerses you in a challenging, skill building environment, Tapout Fitness Nepal offers the tools, space and expertise to elevate your training.
 
-        ## 9. Grunt and Strain Fitness
+        9. Grunt and Strain Fitness
         **Location:** Golfutar, Budanilkanta  
         **Amenities:** Lockers, Shower, Parking  
         **Opening Hours:** 5:00 AM - 9:30 PM
 
         Grunt and Strain Fitness, located in Golfutar, Budanilkantha, delivers a holistic fitness experience that blends community, technique and top tier facilities. With a strong local following, it's quickly becoming a standout destination for both strength and movement training. Inside, you'll find a clean, well-spaced layout featuring resistance machines, free weights, and cardio equipment, alongside dedicated spaces for high energy activities like Zumba, Muay Thai, and Boxing. Whether you're here for traditional strength work or skill based training, the facility offers a smooth transition between workout styles without feeling crowded. The gym's energy is one of the strongest points, driven by motivating trainers who provide not just technical guidance, but also free nutrition advice and genuine encouragement. It's an environment where members of all fitness levels feel welcomed, challenged, and supported. Visually, the space is bright and organized, with clear functional zones that make navigation easy. The addition of a large Zumba hall and high tech Muay Thai arena sets it apart from typical gyms in the area, adding variety and excitement to your routine. At Grunt and Strain Fitness, you don't just work out, you build strength, skill and community.
 
-        ## 10. Banu's Total Fitness Center
+        10. Banu's Total Fitness Center
         **Location:** Kamalpokhari, Kathmandu  
         **Amenities:** Lockers, Showers and Sauna  
         **Opening Hours:** 6:00 AM - 9:00 PM (Sunday - Friday), 6:00 AM - 11:00 AM (Saturday)
 
         Located in the busy Kamalpokhari neighbourhood, Banu's Total Fitness Center is a well established local gym that has been serving fitness seekers since the early 1990s. Centrally positioned it has built its name on consistency and simplicity. Without the distractions of flash branding or upscale extras, it offers what matters the most: a clean, equipped space to lift, move and stay committed to your goals. The layout is straight forward- strength machines, cardio equipment, and free weights are well organized and easy to access, making it ideal for anyone who prefers to focus on workouts rather than the extras. The gym caters to a loyal base of regulars, with a friendly, welcoming vibe that reflects its local roots. It's not a class heavy gym, but for solo lifters or early risers looking for a solid session, Banu's delivers. If you prioritise routine, convenience, and clarity over bells and whistles, Banu's is a great fit especially if you're looking for a gym that is simple, consistent and dependable.
 
-        ## Conclusion
+        Conclusion
 
         The landscape of fitness in Kathmandu is thriving like never before. From gyms with carefully designed training environments to large scale clubs offering complete strength and cardio facilities, the Valley has grown into a hub for every kind of fitness enthusiast. Some spaces prioritize functional movement, others emphasise strength and conditioning.
 
