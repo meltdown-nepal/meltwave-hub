@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+
 const BlogPost = () => {
   const {
     postId
@@ -349,21 +350,21 @@ const BlogPost = () => {
           </article>
 
           {/* Enhanced CTA Section */}
-          <div className="mt-16 bg-gradient-to-br from-yellow-600 to-yellow-800 text-black rounded-xl p-8 md:p-12 text-center shadow-lg">
+          <div className="mt-16 bg-gradient-to-br from-yellow-400 to-yellow-500 text-black rounded-xl p-8 md:p-12 text-center shadow-lg">
             <div className="max-w-3xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Ready to Transform Your Wellness Journey?
               </h3>
-              <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+              <p className="text-black/80 text-lg mb-8 leading-relaxed">
                 {blogPost.id === 2 ? "Join thousands of professionals who've unlocked access to Kathmandu Valley's premier fitness network. One membership, unlimited possibilities." : "Discover how leading companies are revolutionizing employee wellness with data-driven programs that deliver measurable results."}
               </p>
               <div className="space-y-4">
-                <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 text-lg">
+                <Button asChild size="lg" className="bg-black text-yellow-400 hover:bg-gray-800 font-semibold px-8 py-3 text-lg">
                   <Link to="/schedule-demo">
                     Get Your Free Demo
                   </Link>
                 </Button>
-                <p className="text-blue-200 text-sm">
+                <p className="text-black/70 text-sm">
                   No commitment required • See results in 30 days
                 </p>
               </div>
