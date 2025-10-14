@@ -42,10 +42,10 @@ export default {
 					foreground: 'hsl(var(--sidebar-foreground))',
 				}
 			},
-			fontFamily: {
-				'header': ['Nunito', 'sans-serif'],
-				'body': ['Inter', 'sans-serif'],
-			},
+		fontFamily: {
+			'header': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+			'body': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+		},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

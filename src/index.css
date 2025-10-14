@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+/* Pretendard Variable font loaded via index.html for better performance */
 
 @tailwind base;
 @tailwind components;
@@ -53,11 +53,16 @@
 
   body {
     @apply bg-background text-foreground font-body;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    letter-spacing: -0.011em;
+    line-height: 1.6;
     scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-header font-bold;
+    letter-spacing: -0.022em;
+    line-height: 1.3;
   }
 }
 
@@ -87,8 +92,8 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .font-inter {
-    font-family: 'Inter', sans-serif;
+  .font-pretendard {
+    font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
   }
 
   /* Scrollbar hide utility */
