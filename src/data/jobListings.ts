@@ -112,5 +112,42 @@ export const jobListings: Job[] = [
       "Exclusive access to Meltdown's wellbeing services"
     ],
     deadline: "30th October 2025"
+  },
+  {
+    id: 5,
+    title: "HR Consultant",
+    summary: "Part-time HR Consultant to build a high-performing, growth-driven culture by setting up strong HR systems, ensuring compliance, and fostering engagement and retention.",
+    description: "We're looking for a proactive HR Consultant (part-time) to help us shape the foundation of our people and culture function. You'll manage HR operations, recruitment coordination, and administrative processes — while also driving initiatives that strengthen wellbeing, engagement, and performance across the team.\n\nYou'll work closely with the leadership team to design and implement systems that make our workplace efficient, compliant, and inspiring.\n\nPosition: Part-time (1 day/week)\nCommitment: On-site\nReports to: Leadership Team",
+    requirements: [
+      "3-5 years of experience in HR / People Operations / HR Consulting",
+      "Strong understanding of HR processes, tools, and compliance",
+      "Experience in setting up HRIS and automating workflows (preferred)",
+      "Excellent communication, organization, and people skills",
+      "Empathy-driven — passionate about creating a workplace people love",
+      "Comfortable working part-time, independently, and in a startup environment"
+    ],
+    responsibilities: [
+      "Coordinate and schedule interviews, issue offer letters, and maintain candidate communication",
+      "Manage employee contracts, documentation, and records",
+      "Partner with founders to develop HR policies aligned with company values",
+      "Oversee payroll, leave management, and attendance",
+      "Support performance reviews and career conversations",
+      "Ensure legal and operational HR compliance",
+      "Lead initiatives that promote wellbeing, recognition, and inclusion",
+      "Provide administrative support for HR and office coordination tasks",
+      "Set up or manage HRIS & payroll automation",
+      "Conduct quarterly Employee NPS surveys and action plans",
+      "Facilitate monthly recognition sessions celebrating team wins",
+      "Publish Quarterly People Pulse Reports summarizing engagement and wellbeing trends"
+    ],
+    location: "Kathmandu, Nepal",
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: [
+      "Help design the culture of a growing wellbeing-focused company",
+      "Flexible hours and supportive leadership",
+      "Opportunity to create visible impact on people and systems",
+      "Be part of a purpose-driven mission around health, wellbeing, and performance"
+    ],
+    deadline: "30th October 2025"
   }
 ];
