@@ -115,7 +115,7 @@ export const jobListings: Job[] = [
   },
   {
     id: 5,
-    title: "HR Consultant",
+    title: "HR Consultant (Part-time)",
     summary: "Part-time HR Consultant to build a high-performing, growth-driven culture by setting up strong HR systems, ensuring compliance, and fostering engagement and retention.",
     description: "We're looking for a proactive HR Consultant (part-time) to help us shape the foundation of our people and culture function. You'll manage HR operations, recruitment coordination, and administrative processes — while also driving initiatives that strengthen wellbeing, engagement, and performance across the team.\n\nYou'll work closely with the leadership team to design and implement systems that make our workplace efficient, compliant, and inspiring.\n\nPosition: Part-time (1 day/week)\nCommitment: On-site\nReports to: Leadership Team",
     requirements: [
@@ -149,5 +149,38 @@ export const jobListings: Job[] = [
       "Be part of a purpose-driven mission around health, wellbeing, and performance"
     ],
     deadline: "30th October 2025"
+  },
+  {
+    id: 6,
+    title: "Chief Product Officer (Technology)",
+    summary: "Lead the next evolution of Meltdown by owning the entire product lifecycle - defining vision, setting strategy, and building experiences that keep employees active, connected, physically & mentally strong.",
+    description: "We're looking for a bold, user-obsessed Chief Product Officer (CPO) to lead the next evolution of Meltdown. If you're energized by the idea of shaping the future of workplace wellbeing, driving innovation from user research to product design, and aligning technology with human behavior — this role is for you.\n\nYou'll own Meltdown's entire product lifecycle: defining vision, setting strategy, and building experiences that keep employees active, connected, physically & mentally strong. Working closely with design, data, and engineering teams, you'll turn insights into delightful features that drive real-world engagement.\n\nPosition: Senior Level",
+    requirements: [
+      "7+ years in product management, product leadership, or growth roles, ideally in wellness, healthtech, or consumer SaaS",
+      "Proven track record of building and scaling products that drive user engagement and retention",
+      "Experience with data analytics tools (Mixpanel, Amplitude, etc) and A/B testing frameworks",
+      "Strong understanding of UX principles, gamification, and user psychology",
+      "Ability to lead teams across product, design, and engineering",
+      "Excellent communication, prioritization, and stakeholder management skills"
+    ],
+    responsibilities: [
+      "Define and execute Meltdown's product strategy and roadmap aligned with our mission and business goals",
+      "Lead user research and behavioral insights to design features that drive daily engagement and long-term retention",
+      "Own product development from concept to launch, balancing user delight with scalability and performance",
+      "Prioritize feature development through data, experimentation, and feedback loops",
+      "Collaborate deeply across design, engineering, marketing, and partnerships to ensure seamless product delivery",
+      "Develop product metrics and dashboards to track usage, retention, and growth",
+      "Oversee UX, app experience, and product-market fit — ensuring Meltdown stays loved by users and trusted by clients",
+      "Build the foundation for scalable systems and documentation to support future in-house growth"
+    ],
+    location: "Kathmandu, Nepal",
+    applyEmail: "meltdownnepal@gmail.com",
+    benefits: [
+      "Your work directly impacts how thousands of people move, think, and feel every day",
+      "Help redefine employee wellness as a core driver of organizational culture and performance",
+      "Small, ambitious team with a big mission",
+      "Opportunity to shape a product that improves lives and builds better workplaces"
+    ],
+    deadline: "30th November 2025"
   }
 ];
