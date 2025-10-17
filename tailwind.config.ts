@@ -43,8 +43,9 @@ export default {
 				}
 			},
 		fontFamily: {
-			'header': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-			'body': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+			'header': ['Geist', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+			'body': ['Geist', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+			'sans': ['Geist', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
 		},
 			borderRadius: {
 				lg: 'var(--radius)',
