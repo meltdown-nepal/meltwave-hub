@@ -71,7 +71,7 @@ function AppContent() {
             <Route path="/essential-plan" element={<EssentialPlan />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:postId" element={<BlogPost />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/schedule-demo" element={<ScheduleDemoFlow />} />
             <Route path="/company-eligibility-check" element={<CompanyEligibilityCheck />} />
             <Route path="/wellness-providers" element={<WellnessProviders />} />

@@ -10,6 +10,7 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      slug: "corporate-wellness-more-than-perk-2025",
       title: "Why Corporate Wellness Is More Than Just a Perk in 2025",
       excerpt: "In the growing corporate ecosystem of Nepal where working hours are long and hustle culture is the standard, wellbeing of the employees is more than just an HR check-box, it's becoming a business essential.",
       date: "January 16, 2025",
@@ -18,6 +19,7 @@ const Blog = () => {
     },
     {
       id: 2,
+      slug: "top-10-gyms-kathmandu-valley",
       title: "Top 10 Gyms in Kathmandu Valley",
       excerpt: "Looking for the best gyms in Kathmandu? Discover the top 10 gyms in Kathmandu Valley that offer quality equipment, expert trainers, and the perfect environment for your fitness journey.",
       date: "January 18, 2025",
@@ -50,7 +52,7 @@ const Blog = () => {
         "name": "Meltdown Wellbeing"
       },
       "image": `https://meltdownnepal.com${post.image}`,
-      "url": `https://meltdownnepal.com/blog/${post.id}`
+      "url": `https://meltdownnepal.com/blog/${post.slug}`
     }))
   };
 
@@ -81,7 +83,7 @@ const Blog = () => {
         <section className="container-custom mx-auto py-16 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {blogPosts.map((post) => (
-              <Link key={post.id} to={`/blog/${post.id}`} className="block group">
+              <Link key={post.id} to={`/blog/${post.slug}`} className="block group">
                 <Card className="h-full overflow-hidden border border-border/50 bg-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="aspect-[16/10] overflow-hidden">
                     <img 

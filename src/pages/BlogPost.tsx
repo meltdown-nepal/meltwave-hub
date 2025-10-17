@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 
 const BlogPost = () => {
   const {
-    postId
+    slug
   } = useParams();
   const blogPosts = [{
     id: 1,
@@ -183,7 +183,7 @@ const BlogPost = () => {
     }
   ];
 
-  const blogPost = blogPosts.find(post => post.id === parseInt(postId || '1'));
+  const blogPost = blogPosts.find(post => post.slug === slug);
   const formatBlogContent = (content: string) => {
     const sections = content.split('\n\n').filter(section => section.trim());
     return sections.map((section, index) => {
@@ -276,7 +276,7 @@ const BlogPost = () => {
       </div>;
   }
   return <>
-      <SEO title={`${blogPost.title} | Meltdown Nepal Blog`} description={blogPost.excerpt} canonical={`https://meltdownnepal.com/blog/${blogPost.id}`} ogImage={blogPost.image} ogType="article" structuredData={{
+      <SEO title={`${blogPost.title} | Meltdown Nepal Blog`} description={blogPost.excerpt} canonical={`https://meltdownnepal.com/blog/${blogPost.slug}`} ogImage={blogPost.image} ogType="article" structuredData={{
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": blogPost.title,
@@ -298,7 +298,7 @@ const BlogPost = () => {
       "dateModified": blogPost.date,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://meltdownnepal.com/blog/${blogPost.id}`
+        "@id": `https://meltdownnepal.com/blog/${blogPost.slug}`
       }
     }} />
       
