@@ -11,9 +11,9 @@ const BlogPost = () => {
   } = useParams();
   const blogPosts = [{
     id: 1,
-    title: "The Future of Corporate Wellness: Why Employee Health is Business Success",
-    slug: "future-corporate-wellness-employee-health-business-success",
-    excerpt: "Discover how forward-thinking companies are transforming their workplace culture through comprehensive wellness programs that boost productivity, reduce healthcare costs, and create happier, more engaged teams.",
+    title: "Why Corporate Wellness Is More Than Just a Perk in 2025",
+    slug: "corporate-wellness-more-than-perk-2025",
+    excerpt: "In the growing corporate ecosystem of Nepal where working hours are long and hustle culture is the standard, wellbeing of the employees is more than just an HR check-box, it's becoming a business essential.",
     content: `
         The landscape of corporate wellness is evolving rapidly. What once consisted of basic health insurance and perhaps an annual health fair has transformed into comprehensive, data-driven programs that address the whole employee—mind, body, and spirit.
 
