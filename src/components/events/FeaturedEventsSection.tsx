@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock, Flag, Mountain, Heart, Smartphone } from "lucide-react";
+import { Award, CalendarDays, Coffee, MapPin, Target, Users, TreePine, Clock, Flag, Mountain, Heart, Smartphone, Waves, Bike } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
@@ -139,6 +139,53 @@ function KathmanduMarathonCard() {
     </div>;
 }
 
+// XTerra Nepal Race 2025 Card
+function XTerraNepalCard() {
+  return <div className="rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-primary shadow-lg p-6 flex flex-col items-start min-h-[300px] relative overflow-hidden">
+      {/* Wave decoration */}
+      <div className="absolute bottom-0 left-0 right-0 text-cyan-100 opacity-20">
+        <Waves size={140} />
+      </div>
+      
+      <div className="relative z-10 w-full">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-2xl">🏊‍♂️</span>
+          <h3 className="text-xl font-bold text-gray-800">XTerra Nepal Race 2025</h3>
+        </div>
+        <p className="text-gray-700 font-medium mb-4 flex items-center gap-1">
+          Ultimate Triathlon Challenge at Begnas Lake <span>🚴‍♂️🏃‍♂️💪</span>
+        </p>
+        <div className="space-y-3 mb-4">
+          <div className="flex items-center gap-2 text-gray-700">
+            <MapPin size={16} className="text-primary" />
+            <span className="font-medium">Begnas Lake, Pokhara</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-700">
+            <CalendarDays size={16} className="text-primary" />
+            <span className="font-medium">November 29, 2025</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-700">
+            <Target size={16} className="text-primary" />
+            <span className="font-medium">Swimming, Cycling & Running</span>
+          </div>
+        </div>
+        <div className="bg-cyan-50 rounded-lg p-3 mb-4 border border-cyan-200">
+          <div className="flex items-center gap-2 text-gray-800 font-semibold text-sm">
+            <Waves size={16} className="text-cyan-600" />
+            <Bike size={16} className="text-cyan-600" />
+            <Flag size={16} className="text-cyan-600" />
+            <span>Experience Nepal's premier triathlon event!</span>
+          </div>
+        </div>
+        <Button className="mt-auto bg-primary hover:bg-primary/90 text-black font-semibold w-full" asChild>
+          <a href="https://forms.gle/YKCf1QUKXnNBqRxHA" target="_blank" rel="noopener noreferrer">
+            Register Now
+          </a>
+        </Button>
+      </div>
+    </div>;
+}
+
 // The main events feature cards grid
 export default function FeaturedEventsSection() {
   return <section id="upcoming" className="section-padding">
@@ -149,10 +196,11 @@ export default function FeaturedEventsSection() {
             Discover and join our latest community-centered wellness events.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <AppLaunchEventCard />
           <WeeklyWednesdayRunCard />
           <KathmanduMarathonCard />
+          <XTerraNepalCard />
         </div>
         <div className="text-center">
           <Link to="/contact" className="btn-primary">Request Custom Event for Your Company</Link>
